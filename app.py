@@ -11,11 +11,19 @@ app = Flask(__name__)
 @app.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
     if request.endpoint == 'i':
-        msg = 'View function go() called from "i" route'
+        uid = request.args.get('uid')
+        msg = 'View function go() called from "i" route and uid='+ str(uid)
     elif request.endpoint == 'p':
-        msg = 'View function go() called from "p" route'
+        uid = request.args.get('uid')
+        msg = 'View function go() called from "p" route and uid='+ str(uid)
     else:
-        msg = 'View function go() from any other route'
+        header = '<head>'+\
+                    '<title>This is a test page</title>'+\
+                '</head>'
+        body = '<body>'+\
+                    '<a href="#">Hello World!</a>'+\
+                '</body>'
+        msg = '<html>'+header+body+'</html>'
 
     return msg
 
