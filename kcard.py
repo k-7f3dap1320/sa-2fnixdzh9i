@@ -30,14 +30,14 @@ def get_card(x,t):
     try:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=1 ORDER BY ranking DESC LIMIT 90"
+            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=1 ORDER BY ranking DESC LIMIT 60"
         if t == 9:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
             "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=9 ORDER BY ranking DESC LIMIT 30"
     except:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE type=1 ORDER BY ranking DESC LIMIT 90"
+            "WHERE type=1 ORDER BY ranking DESC LIMIT 60"
         if t == 9:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
             "WHERE type=9 ORDER BY ranking DESC LIMIT 30"
