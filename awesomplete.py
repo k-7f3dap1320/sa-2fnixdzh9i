@@ -5,7 +5,7 @@
 
 def get_awesomplete():
 
-    awesomeplete = '<link rel="stylesheet" href="lib/awesomplete/awesomplete.css" /><script src="lib/awesomplete/awesomplete.js" async></script>'
+    awesomeplete = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.3/awesomplete.css" /><script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.3/awesomplete.js" async></script>'
     r = awesomeplete
 
     return r
