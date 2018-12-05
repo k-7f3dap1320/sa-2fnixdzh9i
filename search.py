@@ -5,8 +5,6 @@
 from kdb import *
 access_obj = sa_db_access()
 import pymysql.cursors
-import string
-import random
 
 
 db_usr = access_obj.username()
@@ -21,17 +19,26 @@ connection = pymysql.connect(host=db_srv,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
-def get_uid(s):
+
+def get_search_suggestions():
+
 
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
+    sql = "SELECT search FROM feed ORDER BY search"
     cr.execute(sql)
     rs = cr.fetchall()
+    s = ''
+
+    i = 1
+
     for row in rs:
-        uid = row[0]
+        search = row[0]
+        if i == 1:
+            s = search
+        else:
+            s = s + ',' + search
+        i += 1
 
-    return uid
+    r = s
 
-def get_random_str(n):
-
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+    return r
