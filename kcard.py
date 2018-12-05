@@ -57,7 +57,7 @@ def get_card(x,t):
         portf_desc_part_1 = "A damn hot"
         portf_desc_part_2 = "portfolio that not only beat the market but the sh*t out of you."
 
-        color = "#42bcf4"
+        color = "gray"
 
         if badge.find('-') == -1:
             badge_class = 'badge badge-success'
