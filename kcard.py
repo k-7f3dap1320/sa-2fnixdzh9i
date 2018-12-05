@@ -72,6 +72,9 @@ def get_card(x,t):
             if t == 1:
                 color = "red"
 
+        if t == 9:
+            link_label = "How to potentially get " + badge + " in the next 7 days"
+
 
         r = r + get_card_chart(uid,color)
 
