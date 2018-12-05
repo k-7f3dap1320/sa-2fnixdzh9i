@@ -57,7 +57,7 @@ def get_card(x,t):
         portf_desc_part_1 = "A damn hot"
         portf_desc_part_2 = "portfolio that not only beat the market but the sh*t out of you."
 
-        color = "blue"
+        color = "#42bcf4"
 
         if badge.find('-') == -1:
             badge_class = 'badge badge-success'
@@ -82,7 +82,7 @@ def get_card(x,t):
             '                <div id="chart_div_'+str( uid )+'"></div>'+\
             '                <div class="title"><h4>'+short_title+'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
             '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
-            '                <a href="'+url+'">'+link_label+'</a>'+\
+            '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
             '            </div>'+\
             '        </div>'
@@ -93,7 +93,7 @@ def get_card(x,t):
             '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
             '                <div class="title"><h4>'+short_description+'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
             '                <div class="text"><span class="desc">'+portf_desc_part_1+' '+content+' '+portf_desc_part_2+'</span></div>'+\
-            '                <a href="'+url+'">'+link_label+'</a>'+\
+            '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
             '            </div>'+\
             '        </div>'
