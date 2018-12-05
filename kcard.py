@@ -57,16 +57,23 @@ def get_card(x,t):
         portf_desc_part_1 = "A damn hot"
         portf_desc_part_2 = "portfolio that not only beat the market but the sh*t out of you."
 
+        color = "blue"
+
         if badge.find('-') == -1:
             badge_class = 'badge badge-success'
             link_label = "Why you may buy?"
             expl_label = "*your potential return in the next 7 days"
-            r = r + get_card_chart(uid,"green")
+            if t == 1:
+                color = "green"
         else:
             badge_class = 'badge badge-danger'
             link_label = "Why you may sell?"
             expl_label = "*your potential risk in the next 7 days"
-            r = r + get_card_chart(uid,"red")
+            if t == 1:
+                color = "red"
+
+
+        r = r + get_card_chart(uid,color)
 
         if t == 1:
             r = r + ''+\

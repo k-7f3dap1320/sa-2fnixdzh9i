@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/s/', endpoint='s', methods=["POST", "GET"])
 @app.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
-    if request.endpoint == 'i':
+    if request.endpoint == 's':
         pass
 
     elif request.endpoint == 'p':
