@@ -7,6 +7,7 @@ from flask import Flask, request
 from search import *
 from kmain import *
 from kportf import *
+from ksign import *
 
 app = Flask(__name__)
 
@@ -14,11 +15,15 @@ app = Flask(__name__)
 @app.route('/s/', endpoint='s', methods=["POST", "GET"])
 @app.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
+
+    c = ''
+    uid = request.args.get('uid')
+
     if request.endpoint == 's':
-        pass
+        c = gen_sign_page(uid)
 
     elif request.endpoint == 'p':
-        c = gen_portf_page('uid')
+        c = gen_portf_page(uid)
 
     else:
         x = request.args.get('x')

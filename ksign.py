@@ -31,7 +31,7 @@ connection = pymysql.connect(host=db_srv,
                              cursorclass=pymysql.cursors.DictCursor)
 
 
-def gen_portf_page(uid):
+def gen_sign_page(uid):
 
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.fullname FROM `symbol_list` JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
