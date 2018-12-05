@@ -4,7 +4,9 @@
 # LICENSE file in the root directory of this source tree.
 
 from flask import Flask, request
+from search import *
 from kmain import *
+from kportf import *
 
 app = Flask(__name__)
 
@@ -16,11 +18,20 @@ def go():
         pass
 
     elif request.endpoint == 'p':
-        pass
+        c = gen_portf_page('uid')
 
     else:
         x = request.args.get('x')
         c = gen_main_page(x)
+
+    sid = request.args.get('sid')
+    q = request.args.get(sid)
+    try:
+        if len(sid)>5:
+            c = get_search_result(q)
+    except:
+        pass
+
 
     return c
 

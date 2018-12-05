@@ -5,6 +5,9 @@
 from kdb import *
 access_obj = sa_db_access()
 import pymysql.cursors
+from head import *
+from body import *
+from page import *
 
 
 db_usr = access_obj.username()
@@ -42,3 +45,18 @@ def get_search_suggestions():
     r = s
 
     return r
+
+def get_search_result(q):
+
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT url FROM feed WHERE search LIKE '%"+ str(q) +"%'"
+    cr.execute(sql)
+    rs = cr.fetchall()
+    url = ''
+    c = ''
+
+    for row in rs:
+        url = row[0]
+        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url) + '" />') + get_body(url) )
+
+    return c

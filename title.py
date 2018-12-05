@@ -5,7 +5,7 @@
 
 def get_title(t):
 
-    page_title = '<title>' + t + '</title>'
+    page_title = '<meta name="viewport" content="width=device-width, initial-scale=1"><title>' + t + '</title>'
     r = page_title
 
     return r
