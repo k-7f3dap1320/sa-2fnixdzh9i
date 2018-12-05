@@ -8,7 +8,7 @@ from body import *
 from bootstrap import *
 from google_chart import *
 from kstylesheet import *
-from awesomplete import *
+from awesomeplete import *
 from knavbar import *
 from kcard import *
 
