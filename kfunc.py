@@ -21,6 +21,20 @@ connection = pymysql.connect(host=db_srv,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
+
+class app_settings:
+
+    address = 'http://127.0.0.1'
+
+    def get_homepage(self):
+        return self.address
+
+    def get_navbar_logo(self):
+        return self.address + '/static/logo.png'
+
+    def get_page_loader(self):
+        return self.address + '/static/loader.gif'
+
 def get_uid(s):
 
     cr = connection.cursor(pymysql.cursors.SSCursor)

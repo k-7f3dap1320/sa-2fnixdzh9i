@@ -83,7 +83,7 @@ def get_card(x,t):
             '        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( uid )+'"></div>'+\
-            '                <div class="title"><h4>'+short_title+'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
+            '                <div class="title"><h5>'+short_title+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
             '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
             '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
@@ -94,7 +94,7 @@ def get_card(x,t):
             '        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
-            '                <div class="title"><h4>'+short_description+'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
+            '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
             '                <div class="text"><span class="desc">'+portf_desc_part_1+' '+content+' '+portf_desc_part_2+'</span></div>'+\
             '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\

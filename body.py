@@ -4,5 +4,5 @@
 # LICENSE file in the root directory of this source tree.
 
 def get_body(c):
-    r = '<body><div class="container-fluid">'+ c +'</div></body>'
+    r = '<body><div class="container-fluid" id="content">'+ c +'</div></body>'
     return r
