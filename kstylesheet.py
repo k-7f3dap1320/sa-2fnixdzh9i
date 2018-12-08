@@ -15,7 +15,7 @@ def get_stylesheet():
     box = '.box{padding:60px 0px;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px;}'
     text = '.text{margin:10px 0px;}'
-    btn = '.btn {font-size:small;}'
+    btn = '.btn {font-size:x-small;}'
 
     #Page loading gif display
     loading = ''+\
