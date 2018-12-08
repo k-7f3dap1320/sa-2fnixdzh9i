@@ -49,7 +49,7 @@ def write_func(uid,data,color):
     "      },"+\
     "      colors: ['"+str(color)+"'],"+\
     "      legend: {position: 'none'},"+\
-    "      lineWidth: 5"+\
+    "      lineWidth: 3"+\
     "    };"+\
     "    var chart = new google.visualization.LineChart(document.getElementById('chart_div_"+str(uid)+"'));"+\
     "    chart.draw(data, options);"+\

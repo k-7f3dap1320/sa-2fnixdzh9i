@@ -30,17 +30,17 @@ def get_card(x,t):
     try:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=1 ORDER BY ranking DESC LIMIT 60"
+            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=1 ORDER BY ranking DESC LIMIT 40"
         if t == 9:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=9 ORDER BY ranking DESC LIMIT 30"
+            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '"+x+"') AND type=9 ORDER BY ranking DESC LIMIT 20"
     except:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE type=1 ORDER BY ranking DESC LIMIT 60"
+            "WHERE type=1 ORDER BY ranking DESC LIMIT 40"
         if t == 9:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE type=9 ORDER BY ranking DESC LIMIT 30"
+            "WHERE type=9 ORDER BY ranking DESC LIMIT 20"
 
     cr.execute(sql)
     rs = cr.fetchall()
@@ -83,7 +83,7 @@ def get_card(x,t):
             '        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( uid )+'"></div>'+\
-            '                <div class="title"><h5>'+short_title+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
+            '                <div class="title"><h5>'+short_title+'&nbsp;</h5><h4><a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h4></div>'+\
             '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
             '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
@@ -94,9 +94,9 @@ def get_card(x,t):
             '        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
-            '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
+            '                <div class="title"><h5>'+short_description+'&nbsp;</h5></div>'+\
             '                <div class="text"><span class="desc">'+portf_desc_part_1+' '+content+' '+portf_desc_part_2+'</span></div>'+\
-            '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
+            '                <h4><a href="' + url + '" class="'+ badge_class +'" >'+link_label+'</a></h4>'+\
             '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
             '            </div>'+\
             '        </div>'
