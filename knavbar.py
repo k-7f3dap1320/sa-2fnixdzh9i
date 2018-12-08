@@ -10,7 +10,7 @@ def navbar():
 
     sid = get_random_str(9)
     r = ''+\
-    '<div id="navbar"><nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">'+\
+    '<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">'+\
     '<a class="navbar-brand" href="'+ aps.get_homepage() +'"><img src="'+ aps.get_navbar_logo() +'?'+ get_random_str(9) +'" height="30"></a>'+\
     '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">'+\
     '  <span class="navbar-toggler-icon"></span>'+\
@@ -36,6 +36,6 @@ def navbar():
     '    </li>'+\
     ' </ul>'+\
     '</div>'+\
-    '</nav></div>'
+    '</nav>'
 
     return r

@@ -80,7 +80,7 @@ def get_card(x,t):
 
         if t == 1:
             r = r + ''+\
-            '        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">'+\
+            '        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( uid )+'"></div>'+\
             '                <div class="title"><h5>'+short_title+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
@@ -91,7 +91,7 @@ def get_card(x,t):
             '        </div>'
         if t == 9:
             r = r + ''+\
-            '        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">'+\
+            '        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">'+\
             '            <div class="box-part text-center">'+\
             '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
             '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
