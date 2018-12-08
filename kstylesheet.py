@@ -23,7 +23,7 @@ def get_stylesheet():
     'width:100%;'+\
     'height:100%;'+\
     'position:fixed;'+\
-    'z-index:9999;'+\
+    'z-index:1000;'+\
     'background:url("'+ aps.get_page_loader() +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
 
     r = '<style>'+ body + desc + expl + box + boxpart + text + btn + loading + '</style>'
