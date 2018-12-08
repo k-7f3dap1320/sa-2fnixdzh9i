@@ -22,7 +22,7 @@ def get_loading_head():
     '       document.getElementById("interactive");'+\
     '       document.getElementById("load").style.visibility="hidden";'+\
     '       document.getElementById("content").style.visibility="visible";'+\
-    '    },1000);}}'+\
+    '    },10);}}'+\
     '</script>'
 
     return loading_script

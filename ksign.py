@@ -8,6 +8,7 @@ from title import *
 from body import *
 from bootstrap import *
 from google_chart import *
+from kloading import *
 from kstylesheet import *
 from awesomplete import *
 from knavbar import *
@@ -43,7 +44,7 @@ def gen_sign_page(uid):
         instfullname = row[0]
 
     r = get_head( get_title('Kahroo - Market intelligence - ' + instfullname ) + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
-    r = r + get_body( navbar() )
+    r = r + get_body( get_loading_body(), navbar() )
     r = set_page(r)
 
     return r
