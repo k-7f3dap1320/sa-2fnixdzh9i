@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from page import *
 from head import *
+from metatags import *
 from title import *
 from body import *
 from bootstrap import *
@@ -43,7 +44,7 @@ def gen_portf_page(uid):
     for row in rs:
         instfullname = row[0]
 
-    r = get_head( get_title('Kahroo - Market intelligence - ' + instfullname ) + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
+    r = get_head(  get_loading_head() +  get_title('Kahroo - Market intelligence - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
     r = r + get_body(  get_loading_body(), navbar() )
     r = set_page(r)
 

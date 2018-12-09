@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from page import *
 from head import *
+from metatags import *
 from title import *
 from body import *
 from bootstrap import *
@@ -16,7 +17,7 @@ from kcard import *
 
 def gen_main_page(x):
 
-    r = get_head( get_loading_head() + get_title('Kahroo - Market intelligence') + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
+    r = get_head( get_loading_head() + get_title('Kahroo - Market intelligence') + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
     r = r + get_body( get_loading_body(), navbar() + get_card(x,9) + get_card(x,1) )
     r = set_page(r)
 
