@@ -5,9 +5,6 @@
 from kdb import *
 access_obj = sa_db_access()
 import pymysql.cursors
-from head import *
-from body import *
-from page import *
 
 
 db_usr = access_obj.username()
@@ -23,40 +20,29 @@ connection = pymysql.connect(host=db_srv,
                              cursorclass=pymysql.cursors.DictCursor)
 
 
-def get_search_suggestions():
 
+def get_portf_alloc(uid):
 
+    '''
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT search FROM feed ORDER BY search"
+    sql = "SELECT "
     cr.execute(sql)
     rs = cr.fetchall()
-    s = ''
+    for row in rs_s:
+        symbol = row[0]
+    '''
 
-    i = 1
+    signal_box = '' +\
+    '        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">'+\
+    '            <div class="box-part">'+\
+    '            </div>'+\
+    '        </div>'
 
-    for row in rs:
-        search = row[0]
-        if i == 1:
-            s = search
-        else:
-            s = s + ',' + search
-        i += 1
+    pie_chart = '' +\
+    '        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+\
+    '            <div class="box-part">'+\
+    '            </div>'+\
+    '        </div>'
 
-    r = s
 
-    return r
-
-def get_search_result(q):
-
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT url FROM feed WHERE search LIKE '%"+ str(q) +"%'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    url = ''
-    c = ''
-
-    for row in rs:
-        url = row[0]
-        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url) + '" />') + get_body('','') )
-
-    return c
+    return signal_box + pie_chart

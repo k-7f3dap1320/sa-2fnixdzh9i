@@ -16,7 +16,7 @@ def navbar():
     '  <span class="navbar-toggler-icon"></span>'+\
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
-    '  <form class="form-inline my-2 my-lg-0">'+\
+    '  <form class="form-inline my-2 my-lg-0" action="'+ aps.get_homepage() +'" method="get" >'+\
     '    <input class="form-control mr-lg-4 btn-outline-info awesomplete"' +\
     '       type="search" name="'+ str(sid) +'" placeholder="Search" aria-label="Search" id="navBarSearchForm" data-list="'+ get_search_suggestions() +'" >'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
@@ -25,12 +25,12 @@ def navbar():
     '    <li class="nav-item dropdown">'+\
     '      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Market</a>'+\
     '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-    '        <a class="dropdown-item" href="?x=">Top of everything</a>'+\
-    '        <a class="dropdown-item" href="?x=EQ:">All Stocks</a>'+\
-    '        <a class="dropdown-item" href="?x=FX:">Forex</a>'+\
-    '        <a class="dropdown-item" href="?x=CR:">Cryptocurrency</a>'+\
+    '        <a class="dropdown-item" href="'+ aps.get_homepage() + '?x=">Top of everything</a>'+\
+    '        <a class="dropdown-item" href="'+ aps.get_homepage() + '?x=EQ:">All Stocks</a>'+\
+    '        <a class="dropdown-item" href="'+ aps.get_homepage() + '?x=FX:">Forex</a>'+\
+    '        <a class="dropdown-item" href="'+ aps.get_homepage() + '?x=CR:">Cryptocurrency</a>'+\
     '        <div class="dropdown-divider"></div>'+\
-    '        <a class="dropdown-item" href="?x=US>">U.S. Market</a>'+\
+    '        <a class="dropdown-item" href="'+ aps.get_homepage() + '?x=US>">U.S. Market</a>'+\
     '        <a class="dropdown-item disabled" href="#>">Thai Market</a>'+\
     '      </div>'+\
     '    </li>'+\

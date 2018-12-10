@@ -34,8 +34,7 @@ def go():
     try:
         if len(sid)>5:
             c = get_search_result(q)
-    except:
-        pass
+    except Exception as e: print(e)
 
 
     return c

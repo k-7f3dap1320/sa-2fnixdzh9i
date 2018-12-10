@@ -30,3 +30,8 @@ def get_stylesheet():
 
 
     return r
+
+def get_theme_color():
+
+    theme_color = '#343a40'
+    return theme_color
