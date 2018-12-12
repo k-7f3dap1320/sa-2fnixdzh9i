@@ -48,7 +48,7 @@ def gen_sign_page(uid):
         instfullname = row[0]
 
     r = get_head(  get_loading_head() + get_title('Kahroo - Market intelligence - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
-    r = r + get_body( get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart(uid) + get_sign_recommend() + '</div></div>')
+    r = r + get_body( get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart(uid) + get_sign_recommend(uid) + '</div></div>')
     r = set_page(r)
 
     return r
