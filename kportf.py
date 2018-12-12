@@ -2,6 +2,9 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from kfunc import *
+aps = app_settings()
+
 from page import *
 from head import *
 from metatags import *
@@ -15,6 +18,8 @@ from awesomplete import *
 from knavbar import *
 from kdetails_header import *
 from kportf_alloc import *
+from k_portf_desc import *
+from kportf_perf import *
 
 from kdb import *
 access_obj = sa_db_access()
@@ -45,8 +50,8 @@ def gen_portf_page(uid):
     for row in rs:
         instfullname = row[0]
 
-    r = get_head(  get_loading_head() +  get_title('Kahroo - Market intelligence - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
-    r = r + get_body(  get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_portf_alloc(uid) + '</div></div>' )
+    r = get_head(  get_loading_head() +  get_title( aps.get_app_name() +' - Market intelligence - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet() )
+    r = r + get_body(  get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_portf_alloc(uid) + get_portf_desc(uid) + get_portf_perf(uid) + '</div></div>' )
     r = set_page(r)
 
     return r

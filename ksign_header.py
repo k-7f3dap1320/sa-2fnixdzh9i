@@ -5,8 +5,6 @@
 from kdb import *
 access_obj = sa_db_access()
 import pymysql.cursors
-import string
-import random
 
 
 db_usr = access_obj.username()
@@ -22,34 +20,22 @@ connection = pymysql.connect(host=db_srv,
                              cursorclass=pymysql.cursors.DictCursor)
 
 
-class app_settings:
 
-    address = 'http://127.0.0.1'
-    appname = 'Project K'
+def get_sign_header(uid):
 
-    def get_homepage(self):
-        return self.address
-
-    def get_app_name(self):
-        return self.appname
-
-    def get_navbar_logo(self):
-        return self.address + '/static/logo.png'
-
-    def get_page_loader(self):
-        return self.address + '/static/loader.gif'
-
-def get_uid(s):
-
+    '''
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
+    sql = "SELECT "
     cr.execute(sql)
     rs = cr.fetchall()
-    for row in rs:
-        uid = row[0]
+    for row in rs_s:
+        symbol = row[0]
+    '''
 
-    return uid
+    descr_box = '' +\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part">'+\
+    '            </div>'+\
+    '        </div>'
 
-def get_random_str(n):
-
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+    return descr_box
