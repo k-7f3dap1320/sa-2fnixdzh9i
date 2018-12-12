@@ -2,11 +2,11 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from page import *
-from head import *
+from app_page import *
+from app_head import *
 from app_metatags import *
-from title import *
-from body import *
+from app_title import *
+from app_body import *
 from bootstrap import *
 from google_chart import *
 from app_loading import *

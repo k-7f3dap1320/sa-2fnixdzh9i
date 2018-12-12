@@ -5,11 +5,11 @@
 from sa_func import *
 aps = app_settings()
 
-from page import *
-from head import *
+from app_page import *
+from app_head import *
 from app_metatags import *
-from title import *
-from body import *
+from app_title import *
+from app_body import *
 from bootstrap import *
 from google_chart import *
 from app_loading import *

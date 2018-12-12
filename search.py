@@ -5,9 +5,9 @@
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
-from head import *
-from body import *
-from page import *
+from app_head import *
+from app_body import *
+from app_page import *
 
 
 db_usr = access_obj.username()

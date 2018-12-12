@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 from flask import Flask, request
-from page import *
+from app_page import *
 
 app = Flask(__name__)
 
