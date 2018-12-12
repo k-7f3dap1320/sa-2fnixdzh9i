@@ -2,21 +2,21 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from kfunc import *
+from sa_func import *
 aps = app_settings()
 
 from page import *
 from head import *
-from metatags import *
+from app_metatags import *
 from title import *
 from body import *
 from bootstrap import *
 from google_chart import *
-from kloading import *
-from kstylesheet import *
+from app_loading import *
+from app_stylesheet import *
 from awesomplete import *
-from knavbar import *
-from kcard import *
+from app_navbar import *
+from card import *
 
 def gen_main_page(x):
 

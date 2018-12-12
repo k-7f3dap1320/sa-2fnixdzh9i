@@ -5,9 +5,9 @@
 
 from flask import Flask, request
 from search import *
-from kmain import *
-from kportf import *
-from ksign import *
+from app_main import *
+from portf_main import *
+from signal_main import *
 
 app = Flask(__name__)
 

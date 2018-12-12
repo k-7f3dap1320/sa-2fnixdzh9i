@@ -2,7 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from kdb import *
+from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
@@ -21,7 +21,7 @@ connection = pymysql.connect(host=db_srv,
 
 
 
-def get_sign_ta_chart(uid):
+def get_portf_alloc(uid):
 
     '''
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -31,17 +31,18 @@ def get_sign_ta_chart(uid):
     for row in rs_s:
         symbol = row[0]
     '''
+
     signal_box = '' +\
-    '        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">'+\
+    '        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">'+\
     '            <div class="box-part">'+\
     '            </div>'+\
     '        </div>'
 
-    tech_chart = '' +\
-    '        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">'+\
+    pie_chart = '' +\
+    '        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+\
     '            <div class="box-part">'+\
     '            </div>'+\
     '        </div>'
 
 
-    return signal_box + tech_chart
+    return signal_box + pie_chart

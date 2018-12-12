@@ -2,26 +2,26 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from kfunc import *
+from sa_func import *
 aps = app_settings()
 
 from page import *
 from head import *
-from metatags import *
+from app_metatags import *
 from title import *
 from body import *
 from bootstrap import *
 from google_chart import *
-from kloading import *
-from kstylesheet import *
+from app_loading import *
+from app_stylesheet import *
 from awesomplete import *
-from knavbar import *
-from kdetails_header import *
-from kportf_alloc import *
-from k_portf_desc import *
-from kportf_perf import *
+from app_navbar import *
+from details_header import *
+from portf_alloc import *
+from portf_desc import *
+from portf_perf import *
 
-from kdb import *
+from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 

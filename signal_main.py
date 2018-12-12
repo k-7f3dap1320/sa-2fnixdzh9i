@@ -4,21 +4,21 @@
 # LICENSE file in the root directory of this source tree.
 from page import *
 from head import *
-from metatags import *
+from app_metatags import *
 from title import *
 from body import *
 from bootstrap import *
 from google_chart import *
-from kloading import *
-from kstylesheet import *
+from app_loading import *
+from app_stylesheet import *
 from awesomplete import *
-from knavbar import *
-from kdetails_header import *
-from ksign_header import *
-from ksign_ta_chart import *
-from ksign_recommend import *
+from app_navbar import *
+from details_header import *
+from signal_header import *
+from signal_ta_chart import *
+from signal_recomm import *
 
-from kdb import *
+from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
