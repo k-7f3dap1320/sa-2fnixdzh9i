@@ -7,4 +7,5 @@ SET APP_DIR=%~dp0
 SET _PIP_EXE="%LOCALAPPDATA%\Programs\Python\%PY_VER%\Scripts\pip.exe"
 SET _PY_EXE="%LOCALAPPDATA%\Programs\Python\%PY_VER%\python.exe"
 %_PIP_EXE% install flask
+%_PIP_EXE% install flask-compress
 %_PY_EXE% %APP_DIR%app.py
