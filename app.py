@@ -4,12 +4,19 @@
 # LICENSE file in the root directory of this source tree.
 
 from flask import Flask, request
+from flask_compress import Compress
 from search import *
 from app_main import *
 from portf_main import *
 from signal_main import *
 
 app = Flask(__name__)
+
+COMPRESS_MIMETYPES = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
+COMPRESS_LEVEL = 6
+COMPRESS_MIN_SIZE = 500
+Compress(app)
+
 
 @app.route('/')
 @app.route('/s/', endpoint='s', methods=["POST", "GET"])
