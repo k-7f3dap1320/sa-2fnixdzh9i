@@ -103,5 +103,6 @@ def get_card(x,t):
 
 
     r = r + '</div></div>'
+    cr.close()
 
     return r

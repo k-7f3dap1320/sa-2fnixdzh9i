@@ -54,4 +54,6 @@ def gen_portf_page(uid):
     r = r + get_body(  get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_portf_alloc(uid) + get_portf_desc(uid) + get_portf_perf(uid) + '</div></div>' )
     r = set_page(r)
 
+    cr.close()
+
     return r

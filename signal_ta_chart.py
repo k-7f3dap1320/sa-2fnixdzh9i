@@ -43,5 +43,9 @@ def get_sign_ta_chart(uid):
     '            </div>'+\
     '        </div>'
 
+    '''
+    cr.close()
+    '''
+
 
     return signal_box + tech_chart

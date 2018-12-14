@@ -1,0 +1,6 @@
+virtualenv
+PyMySQL
+python-dateutil
+beautifulsoup4
+flask
+flask-compress

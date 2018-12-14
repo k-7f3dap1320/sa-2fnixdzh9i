@@ -78,5 +78,6 @@ def get_card_chart(uid,color):
             data = data + "[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
         else:
             data = data + ",[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
+    cr.close()
 
     return write_func(uid,data,color)

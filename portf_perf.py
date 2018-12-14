@@ -38,4 +38,8 @@ def get_portf_perf(uid):
     '            </div>'+\
     '        </div>'
 
+    '''
+    cr.close()
+    '''
+
     return descr_box

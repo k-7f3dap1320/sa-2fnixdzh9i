@@ -43,6 +43,7 @@ def get_search_suggestions():
         i += 1
 
     r = s
+    cr.close()
 
     return r
 
@@ -58,5 +59,7 @@ def get_search_result(q):
     for row in rs:
         url = row[0]
         c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url) + '" />') + get_body('','') )
+
+    cr.close()
 
     return c

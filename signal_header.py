@@ -38,4 +38,8 @@ def get_sign_header(uid):
     '            </div>'+\
     '        </div>'
 
+    '''
+    cr.close()
+    '''
+
     return descr_box

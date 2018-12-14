@@ -48,6 +48,8 @@ def get_uid(s):
     for row in rs:
         uid = row[0]
 
+    cr.close()
+
     return uid
 
 def get_random_str(n):

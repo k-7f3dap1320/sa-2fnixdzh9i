@@ -37,5 +37,8 @@ def get_portf_desc(uid):
     '            <div class="box-part">'+\
     '            </div>'+\
     '        </div>'
+    '''
+    cr.close()
+    '''
 
     return descr_box

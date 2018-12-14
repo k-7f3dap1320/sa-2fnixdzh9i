@@ -10,17 +10,15 @@ from app_main import *
 from portf_main import *
 from signal_main import *
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 COMPRESS_MIMETYPES = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
-COMPRESS_LEVEL = 6
-COMPRESS_MIN_SIZE = 500
-Compress(app)
+COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 
 
-@app.route('/')
-@app.route('/s/', endpoint='s', methods=["POST", "GET"])
-@app.route('/p/', endpoint='p', methods=["POST", "GET"])
+@application.route('/')
+@application.route('/s/', endpoint='s', methods=["POST", "GET"])
+@application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
     c = ''
@@ -47,4 +45,4 @@ def go():
     return c
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=80)
+    application.run()

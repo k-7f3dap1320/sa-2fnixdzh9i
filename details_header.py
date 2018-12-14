@@ -55,5 +55,7 @@ def get_details_header(uid):
     '            </div>'+\
     '        </div>'
 
+    cr_s.close()
+
 
     return p_header

@@ -38,4 +38,8 @@ def get_sign_recommend(uid):
     '            </div>'+\
     '        </div>'
 
+    '''
+    cr.close()
+    '''
+
     return recomm_box

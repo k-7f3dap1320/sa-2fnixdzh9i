@@ -54,4 +54,6 @@ def gen_sign_page(uid):
     r = r + get_body( get_loading_body(), navbar() + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart(uid) + get_sign_recommend(uid) + '</div></div>')
     r = set_page(r)
 
+    cr.close()
+
     return r

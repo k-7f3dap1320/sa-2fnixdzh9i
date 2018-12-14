@@ -43,6 +43,8 @@ def get_portf_alloc(uid):
     '            <div class="box-part">'+\
     '            </div>'+\
     '        </div>'
-
+    '''
+    cr.close()
+    '''
 
     return signal_box + pie_chart
