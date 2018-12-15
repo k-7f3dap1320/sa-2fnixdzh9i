@@ -8,19 +8,7 @@ import pymysql.cursors
 import string
 import random
 
-
-db_usr = access_obj.username()
-db_pwd = access_obj.password()
-db_name = access_obj.db_name()
-db_srv = access_obj.db_server()
-
-connection = pymysql.connect(host=db_srv,
-                             user=db_usr,
-                             password=db_pwd,
-                             db=db_name,
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
-
+db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 class app_settings:
 
@@ -41,17 +29,20 @@ class app_settings:
 
 def get_uid(s):
 
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
-        uid = row[0]
-
-    cr.close()
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        uid = 0
+        for row in rs:
+            uid = row[0]
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
 
     return uid
 
 def get_random_str(n):
-
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))

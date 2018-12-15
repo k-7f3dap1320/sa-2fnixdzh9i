@@ -1,3 +1,4 @@
+awsebcli
 virtualenv
 PyMySQL
 python-dateutil
