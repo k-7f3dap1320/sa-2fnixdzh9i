@@ -22,7 +22,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 def go():
 
     appname = 'Project K'
-    burl = request.base_url
+    burl = request.url_root
 
     c = ''
     uid = request.args.get('uid')
