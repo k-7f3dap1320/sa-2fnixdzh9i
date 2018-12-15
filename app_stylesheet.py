@@ -3,10 +3,8 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 from sa_func import *
-aps = app_settings()
 
-
-def get_stylesheet():
+def get_stylesheet(burl):
 
     #Page main components
     body = 'body{background: #eee;}'
@@ -24,7 +22,7 @@ def get_stylesheet():
     'height:100%;'+\
     'position:fixed;'+\
     'z-index:1000;'+\
-    'background:url("'+ aps.get_page_loader() +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
+    'background:url("'+ burl + '/static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
 
     r = '<style>'+ body + desc + expl + box + boxpart + text + btn + loading + '</style>'
 

@@ -21,18 +21,21 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
+    appname = 'Project K'
+    burl = request.base_url
+
     c = ''
     uid = request.args.get('uid')
 
     if request.endpoint == 's':
-        c = gen_sign_page(uid)
+        c = gen_sign_page(uid,appname,burl)
 
     elif request.endpoint == 'p':
-        c = gen_portf_page(uid)
+        c = gen_portf_page(uid,appname,burl)
 
     else:
         x = request.args.get('x')
-        c = gen_main_page(x)
+        c = gen_main_page(x,appname,burl)
 
     sid = request.args.get('sid')
     q = request.args.get(sid)
