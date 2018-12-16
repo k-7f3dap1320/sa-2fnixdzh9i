@@ -23,8 +23,11 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 def go():
 
     appname = 'SmartAlpha | Market Intelligence'
+    dev_mode = False
 
-    burl = request.url_root; burl = burl.replace('http://','https://')
+    burl = request.url_root;
+    if not dev_mode:
+        burl = burl.replace('http://','https://')
     c = ''
 
     uid = request.args.get('uid')
@@ -47,12 +50,13 @@ def go():
     except Exception as e: print(e)
 
 
-    if burl.find('https://app.') == -1:
-        if burl.find('https://www.') > -1:
-            burl = burl.replace('https://www.','https://app.')
-        else:
-            burl = burl.replace('https://','https://app.')
-        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
+    if not dev_mode:
+        if burl.find('https://app.') == -1:
+            if burl.find('https://www.') > -1:
+                burl = burl.replace('https://www.','https://app.')
+            else:
+                burl = burl.replace('https://','https://app.')
+            c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
 
     return c
 

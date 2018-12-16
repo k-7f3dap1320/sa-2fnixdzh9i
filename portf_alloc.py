@@ -18,7 +18,7 @@ def get_portf_alloc(uid):
         signal_box = '' +\
         '        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">'+\
         '            <div class="box-part">'+\
-        '               <table class="table table-hover table-sm">'+\
+        '               <table class="table table-hover table-sm sa-table-sm">'+\
         '                   <thead>'+\
         '                       <tr>'+\
         '                          <th scope="col">Order</th>'+\
@@ -35,9 +35,12 @@ def get_portf_alloc(uid):
         sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, "+\
         "symbol_list.uid FROM portfolios JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol "+\
         "WHERE symbol_list.uid=" + str(uid) + " ORDER BY portfolios.symbol"
+
+        print(sql)
+
         cr.execute(sql)
         rs = cr.fetchall()
-        for row in rs_s:
+        for row in rs:
             order_type = row[0]
             quantity = row[1]
             symbol = row[2]
@@ -51,7 +54,7 @@ def get_portf_alloc(uid):
 
             signal_box = signal_box + '' +\
             '                       <tr>'+\
-            '                          <th scope="row"><span class="badge '+ badge +'">Success</span></th>'+\
+            '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
             '                          <td>'+ str(quantity)  +'</td>'+\
             '                          <td>'+ symbol +'</td>'+\
             '                          <td>'+ str(entry_price) +'</td>'+\
