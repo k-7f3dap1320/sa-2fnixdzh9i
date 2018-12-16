@@ -1,4 +1,4 @@
-# Copyright (c) 2018-present, Project K
+# Copyright (c) 2018-present, Taatu Ltd.
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
@@ -22,7 +22,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
-    appname = 'Project K'
+    appname = 'SmartAlpha | Market Intelligence'
 
     burl = request.url_root; burl = burl.replace('http://','https://')
     c = ''

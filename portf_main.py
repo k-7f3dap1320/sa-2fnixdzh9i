@@ -1,4 +1,4 @@
-# Copyright (c) 2018-present, Project K
+# Copyright (c) 2018-present, Taatu Ltd.
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
@@ -39,7 +39,7 @@ def gen_portf_page(uid,appname,burl):
         for row in rs:
             instfullname = row[0]
 
-        r = get_head(  get_loading_head() +  get_title( appname +' - Market intelligence - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet(burl) )
+        r = get_head(  get_loading_head() +  get_title( appname +' - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body(  get_loading_body(), navbar(burl) + '<div class="box"><div class="row">' + get_details_header(uid) + get_portf_alloc(uid) + get_portf_desc(uid) + get_portf_perf(uid) + '</div></div>' )
         r = set_page(r)
 
