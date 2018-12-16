@@ -48,7 +48,7 @@ def get_portf_alloc(uid):
                 badge = 'badge-success'
             else:
                 badge = 'badge-danger'
-                
+
             signal_box = signal_box +\
             '                       <tr>'+\
             '                          <th scope="row"><span class="badge '+ badge +'">Success</span></th>'+\
@@ -60,8 +60,6 @@ def get_portf_alloc(uid):
         signal_box = signal_box +\
         '                   </tbody>'+\
         '               </table>'+\
-
-
         '            </div>'+\
         '        </div>'
         cr.close()
