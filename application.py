@@ -23,6 +23,7 @@ def go():
 
     appname = 'Project K'
     burl = request.url_root
+    burl = burl.replace('http://','https://')
 
     c = ''
     uid = request.args.get('uid')
