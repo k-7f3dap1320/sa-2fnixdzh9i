@@ -22,16 +22,15 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
-    c = ''
     appname = 'Project K'
-    burl = request.url_root
-    burl = burl.replace('http://','https://')
 
-    if burl.find('https://app.') < 0:
-        if burl.find('https://www.'):
+    burl = request.url_root; burl = burl.replace('http://','https://')
+    c = ''
+    if burl.find('https://app.') == -1:
+        if burl.find('https://www.') > 1:
             burl = burl.replace('https://www.','https://app.')
         else:
-            burl = burl.replace('https://','https://apps')
+            burl = burl.replace('https://','https://app.')
         c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
 
     uid = request.args.get('uid')
