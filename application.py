@@ -48,7 +48,7 @@ def go():
 
 
     if burl.find('https://app.') == -1:
-        if burl.find('https://www.') > 1:
+        if burl.find('https://www.') > -1:
             burl = burl.replace('https://www.','https://app.')
         else:
             burl = burl.replace('https://','https://app.')
