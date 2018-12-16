@@ -9,6 +9,7 @@ from search import *
 from app_main import *
 from portf_main import *
 from signal_main import *
+from app_head import *; from app_body import *; from app_page import *
 
 application = Flask(__name__)
 
@@ -21,11 +22,18 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
+    c = ''
     appname = 'Project K'
     burl = request.url_root
     burl = burl.replace('http://','https://')
 
-    c = ''
+    if burl.find('https://app.') < 0:
+        if burl.find('https://www.'):
+            burl = burl.replace('https://www.','https://app.')
+        else:
+            burl = burl.replace('https://','https://apps')
+        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
+
     uid = request.args.get('uid')
 
     if request.endpoint == 's':
