@@ -49,7 +49,7 @@ def get_portf_alloc(uid):
             else:
                 badge = 'badge-danger'
 
-            signal_box = signal_box +\
+            signal_box = signal_box + '' +\
             '                       <tr>'+\
             '                          <th scope="row"><span class="badge '+ badge +'">Success</span></th>'+\
             '                          <td>'+ str(quantity)  +'</td>'+\
@@ -57,7 +57,7 @@ def get_portf_alloc(uid):
             '                          <td>'+ str(entry_price) +'</td>'+\
             '                          <td>'+ str(trade_expiration) +'</td>'+\
             '                       </tr>'
-        signal_box = signal_box +\
+        signal_box = signal_box + '' +\
         '                   </tbody>'+\
         '               </table>'+\
         '            </div>'+\
