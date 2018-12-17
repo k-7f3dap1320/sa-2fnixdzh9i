@@ -68,10 +68,30 @@ def get_portf_alloc(uid):
         cr.close()
         connection.close()
 
-
+        pie_chart_title = 'Portfolio Allocation'
         pie_chart = '' +\
         '        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+\
         '            <div class="box-part">'+\
+        '    <script type="text/javascript">'+\
+        '      google.charts.load("current", {packages:["corechart"]});'+\
+        '      google.charts.setOnLoadCallback(drawChart);'+\
+        '      function drawChart() {'+\
+        '        var data = google.visualization.arrayToDataTable(['+\
+        '          ["Language", "Speakers (in millions)"],'+\
+        '          ["Assamese", 13], ["Bengali", 83], ["Bodo", 1.4],'+\
+        '        ]);'+\
+        '        var options = {'+\
+        '          title: "'+ pie_chart_title +'",'+\
+        '          pieHole: 0.4,'+\
+        '          legend: "none",'+\
+        '          pieSliceText: "label",'+\
+        '          slices: {  2: {offset: 0.2},'+\
+        '          },'+\
+        '        };'+\
+        '        var chart = new google.visualization.PieChart(document.getElementById("piechart"));'+\
+        '        chart.draw(data, options);'+\
+        '      }'+\
+        '    </script>'+\
         '            </div>'+\
         '        </div>'
 
