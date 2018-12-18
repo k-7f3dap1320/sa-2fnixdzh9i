@@ -47,7 +47,7 @@ def get_portf_alloc(uid):
         connection.close()
 
         signal_box = '' +\
-        '        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">'+\
+        '        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">'+\
         '            <div class="box-part">'+\
         '               <table class="table table-hover table-sm sa-table-sm">'+\
         '                   <thead>'+\
@@ -115,9 +115,9 @@ def get_portf_alloc(uid):
                 if count_sell > 0:
                     if buy_color_B > num_rec:
                         buy_color_R = buy_color_R - num_rec
-                    if buy_color_G < (255 - num_rec):
+                    if buy_color_G < (255):
                         buy_color_G = buy_color_G + num_rec
-                    if buy_color_B < (255 - num_rec):
+                    if buy_color_B < (255):
                         buy_color_B = buy_color_B + num_rec
                 count_sell += 1
                 if i == 0:
@@ -132,7 +132,7 @@ def get_portf_alloc(uid):
         pie_chart_y = "Dollar Amount"
         pie_chart_font_size = 10
         pie_chart = '' +\
-        '        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+\
+        '        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">'+\
         '           <div class="box-part">'+\
         '               <script type="text/javascript">'+\
         '                   google.charts.load("current", {packages:["corechart"]});'+\
