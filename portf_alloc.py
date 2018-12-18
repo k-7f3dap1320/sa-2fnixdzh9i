@@ -113,12 +113,12 @@ def get_portf_alloc(uid):
                     pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( int(buy_color_R) ) +','+ str( int(buy_color_G) ) +','+ str( int(buy_color_B) ) +')"}'
             if order_type == 'sell':
                 if count_sell > 0:
-                    if buy_color_B > num_rec:
-                        buy_color_R = buy_color_R - num_rec
-                    if buy_color_G < (255):
-                        buy_color_G = buy_color_G + num_rec
-                    if buy_color_B < (255):
-                        buy_color_B = buy_color_B + num_rec
+                    if sell_color_B > num_rec:
+                        sell_color_R = sell_color_R - num_rec
+                    if sell_color_G < (255):
+                        sell_color_G = sell_color_G + num_rec
+                    if sell_color_B < (255):
+                        sell_color_B = sell_color_B + num_rec
                 count_sell += 1
                 if i == 0:
                     pie_chart_option =  str(i) +':{color:"rgb('+ str( int(sell_color_R) ) +','+ str( int(sell_color_G) ) +','+ str( int(sell_color_B) ) +')"}'
