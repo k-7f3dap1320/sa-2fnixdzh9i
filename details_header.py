@@ -40,7 +40,7 @@ def get_details_header(uid):
         p_header = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        '                <div class="title"><h5>'+ instr_name +'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h5></div>'+\
+        '                <div class="title"><h4>'+ instr_name +'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
         '                <div class="text"><span class="desc">'+ sector + ' | ' + asset_class + market + symbol + isin +'</span></div>'+\
         '            </div>'+\
         '        </div>'

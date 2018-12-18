@@ -103,8 +103,6 @@ def get_portf_alloc(uid):
                 if count_buy > 0:
                     if buy_color_B > num_rec:
                         buy_color_R = buy_color_R - num_rec
-                    if buy_color_G > num_rec:
-                        buy_color_G = buy_color_G - num_rec
                     if buy_color_B > num_rec:
                         buy_color_B = buy_color_B - num_rec
                 count_buy += 1
