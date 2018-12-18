@@ -48,7 +48,7 @@ def get_portf_alloc(uid):
 
         signal_box = '' +\
         '        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part sa_portf_alloc">'+\
+        '            <div class="box-part sa-portf-alloc">'+\
         '               <table class="table table-hover table-sm sa-table-sm">'+\
         '                   <thead>'+\
         '                       <tr>'+\
@@ -134,7 +134,7 @@ def get_portf_alloc(uid):
         pie_chart_font_size = 10
         pie_chart = '' +\
         '        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">'+\
-        '           <div class="box-part sa_portf_alloc">'+\
+        '           <div class="box-part sa-portf-alloc">'+\
         '               <script type="text/javascript">'+\
         '                   google.charts.load("current", {packages:["corechart"]});'+\
         '                   google.charts.setOnLoadCallback(drawChart);'+\
