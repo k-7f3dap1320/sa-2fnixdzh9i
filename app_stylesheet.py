@@ -14,7 +14,9 @@ def get_stylesheet(burl):
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
+
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
+    sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
 
     #Page loading gif display
     loading = ''+\
@@ -25,7 +27,7 @@ def get_stylesheet(burl):
     'z-index:1000;'+\
     'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
 
-    r = '<style>'+ body + desc + expl + box + boxpart + text + btn + sa_table_sm + loading + '</style>'
+    r = '<style>'+ body + desc + expl + box + boxpart + text + btn + sa_table_sm + sa_portf_alloc + loading + '</style>'
 
 
     return r
