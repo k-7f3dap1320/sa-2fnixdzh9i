@@ -77,7 +77,7 @@ def get_portf_alloc(uid):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT portfolios.alloc_fullname, portfolios.order_type, portfolios.dollar_amount "+\
+        sql = "SELECT portfolios.alloc_fullname, portfolios.order_type, portfolios.dollar_amount, portfolios.symbol "+\
         "FROM `portfolios` JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid) + " "+\
         "ORDER BY portfolios.dollar_amount"
         cr.execute(sql)
@@ -94,10 +94,11 @@ def get_portf_alloc(uid):
             alloc_fullname = row[0]
             order_type = row[1]
             dollar_amount = row[2]
+            alloc_symbol = row[3]
             if i == 0:
-                pie_chart_data = '["'+ alloc_fullname +'", '+ str(dollar_amount) +']'
+                pie_chart_data = '["'+ alloc_fullname +' ('+ alloc_symbol +')'+'", '+ str(dollar_amount) +']'
             else:
-                pie_chart_data = pie_chart_data + ', ' + '["'+ alloc_fullname +'", '+ str(dollar_amount) +']'
+                pie_chart_data = pie_chart_data + ', ' + '["'+ alloc_fullname + ' ('+ alloc_symbol +')' +'", '+ str(dollar_amount) +']'
             if order_type == 'buy':
                 if count_buy > 0:
                     if buy_color_B > num_rec:
