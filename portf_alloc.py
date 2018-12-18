@@ -142,7 +142,7 @@ def get_portf_alloc(uid):
         '                           title: "'+ pie_chart_title +'",'+\
         '                           pieHole: 0.2,'+\
         '                           legend: "none",'+\
-        '                           pieSliceText: "percentage",'
+        '                           pieSliceText: "percentage",'+\
         '                           slices: ' + pie_chart_option  + ''+\
         '                           legend: {position:"labeled", textStyle: {fontSize: 11}}'+\
         '                       },'+\
