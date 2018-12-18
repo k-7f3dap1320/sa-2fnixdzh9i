@@ -145,7 +145,7 @@ def get_portf_alloc(uid):
         '                           pieSliceText: "percentage",'+\
         '                           slices: {' + pie_chart_option  + '},'+\
         '                           legend: {position:"labeled", textStyle: {fontSize: 11}}'+\
-        '                       },'+\
+        '                       };'+\
         '                       var chart = new google.visualization.PieChart(document.getElementById("portf_alloc_pie_chart"));'+\
         '                       chart.draw(data, options);'+\
         '                   }'+\
