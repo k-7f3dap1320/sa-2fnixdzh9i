@@ -106,9 +106,9 @@ def get_portf_alloc(uid):
                 if buy_color_B > num_rec:
                     buy_color_B = buy_color_B - num_rec
                 if i == 0:
-                    pie_chart_option = '{'+ str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}}'
+                    pie_chart_option = str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}}'
                 else:
-                    pie_chart_option = pie_chart_option + ', {'+ str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}}'
+                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}}'
             if order_type == 'sell':
                 if buy_color_B > num_rec:
                     buy_color_R = buy_color_R - num_rec
@@ -117,9 +117,9 @@ def get_portf_alloc(uid):
                 if buy_color_B < (255 - num_rec):
                     buy_color_B = buy_color_B + num_rec
                 if i == 0:
-                    pie_chart_option = '{'+ str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}}'
+                    pie_chart_option = '{'+ str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}'
                 else:
-                    pie_chart_option = pie_chart_option + ', {'+ str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}}'
+                    pie_chart_option = pie_chart_option + ', {'+ str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}'
 
             i += 1
 
@@ -143,7 +143,7 @@ def get_portf_alloc(uid):
         '                           pieHole: 0.2,'+\
         '                           legend: "none",'+\
         '                           pieSliceText: "percentage",'+\
-        '                           slices: ' + pie_chart_option  + ''+\
+        '                           slices: {' + pie_chart_option  + '}'+\
         '                           legend: {position:"labeled", textStyle: {fontSize: 11}}'+\
         '                       },'+\
         '                       var chart = new google.visualization.PieChart(document.getElementById("portf_alloc_pie_chart"));'+\
