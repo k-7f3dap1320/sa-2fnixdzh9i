@@ -99,23 +99,27 @@ def get_portf_alloc(uid):
             else:
                 pie_chart_data = pie_chart_data + ', ' + '["'+ alloc_fullname +'", '+ str(dollar_amount) +']'
             if order_type == 'buy':
-                if buy_color_B > num_rec:
-                    buy_color_R = buy_color_R - num_rec
-                if buy_color_G > num_rec:
-                    buy_color_G = buy_color_G - num_rec
-                if buy_color_B > num_rec:
-                    buy_color_B = buy_color_B - num_rec
+                if count_buy > 0:
+                    if buy_color_B > num_rec:
+                        buy_color_R = buy_color_R - num_rec
+                    if buy_color_G > num_rec:
+                        buy_color_G = buy_color_G - num_rec
+                    if buy_color_B > num_rec:
+                        buy_color_B = buy_color_B - num_rec
+                count_buy += 1
                 if i == 0:
                     pie_chart_option = str(i) +':{color:"rgb('+ str( int(buy_color_R) ) +','+ str( int(buy_color_G) ) +','+ str( int(buy_color_B) ) +')"}'
                 else:
                     pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( int(buy_color_R) ) +','+ str( int(buy_color_G) ) +','+ str( int(buy_color_B) ) +')"}'
             if order_type == 'sell':
-                if buy_color_B > num_rec:
-                    buy_color_R = buy_color_R - num_rec
-                if buy_color_G < (255 - num_rec):
-                    buy_color_G = buy_color_G + num_rec
-                if buy_color_B < (255 - num_rec):
-                    buy_color_B = buy_color_B + num_rec
+                if count_sell > 0:
+                    if buy_color_B > num_rec:
+                        buy_color_R = buy_color_R - num_rec
+                    if buy_color_G < (255 - num_rec):
+                        buy_color_G = buy_color_G + num_rec
+                    if buy_color_B < (255 - num_rec):
+                        buy_color_B = buy_color_B + num_rec
+                count_sell += 1
                 if i == 0:
                     pie_chart_option =  str(i) +':{color:"rgb('+ str( int(sell_color_R) ) +','+ str( int(sell_color_G) ) +','+ str( int(sell_color_B) ) +')"}'
                 else:
@@ -126,6 +130,7 @@ def get_portf_alloc(uid):
         pie_chart_title = 'Portfolio Allocation'
         pie_chart_x = "Allocation"
         pie_chart_y = "Dollar Amount"
+        pie_chart_font_size = 10
         pie_chart = '' +\
         '        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+\
         '           <div class="box-part">'+\
@@ -144,7 +149,7 @@ def get_portf_alloc(uid):
         '                           legend: "none",'+\
         '                           pieSliceText: "percentage",'+\
         '                           slices: {' + pie_chart_option  + '},'+\
-        '                           legend: {position:"labeled", textStyle: {fontSize: 11}}'+\
+        '                           legend: {position:"labeled", textStyle: {fontSize: '+ str(pie_chart_font_size) +'}}'+\
         '                       };'+\
         '                       var chart = new google.visualization.PieChart(document.getElementById("portf_alloc_pie_chart"));'+\
         '                       chart.draw(data, options);'+\
