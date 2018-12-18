@@ -106,9 +106,9 @@ def get_portf_alloc(uid):
                 if buy_color_B > num_rec:
                     buy_color_B = buy_color_B - num_rec
                 if i == 0:
-                    pie_chart_option = str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}'
+                    pie_chart_option = str(i) +':{color:"rgb('+ str( round(buy_color_R,0) ) +','+ str( round(buy_color_G,0) ) +','+ str( round(buy_color_B,0) ) +')"}'
                 else:
-                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str(buy_color_R) +','+ str(buy_color_G) +','+ str(buy_color_B) +')"}'
+                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( round(buy_color_R,0) ) +','+ str( round(buy_color_G,0) ) +','+ str( round(buy_color_B,0) ) +')"}'
             if order_type == 'sell':
                 if buy_color_B > num_rec:
                     buy_color_R = buy_color_R - num_rec
@@ -117,9 +117,9 @@ def get_portf_alloc(uid):
                 if buy_color_B < (255 - num_rec):
                     buy_color_B = buy_color_B + num_rec
                 if i == 0:
-                    pie_chart_option =  str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}'
+                    pie_chart_option =  str(i) +':{color:"rgb('+ str( round(sell_color_R,0) ) +','+ str( round(sell_color_G,0) ) +','+ str( round(sell_color_B,0) ) +')"}'
                 else:
-                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str(sell_color_R) +','+ str(sell_color_G) +','+ str(sell_color_B) +')"}'
+                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( round(sell_color_R,0) ) +','+ str( round(sell_color_G,0) ) +','+ str( round(sell_color_B,0) ) +')"}'
 
             i += 1
 
