@@ -28,7 +28,7 @@ def get_stylesheet(burl):
     'z-index:1000;'+\
     'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
 
-    r = '<style>'+ body + desc + expl + box + boxpart + text + btn + sa_table_sm + sa_portf_alloc + loading + '</style>'
+    r = '<style>'+ body + desc + expl + box + boxpart + text + btn + sa_table_sm + sa_portf_alloc + sa_portf_perf_portf_chart + loading + '</style>'
 
 
     return r
