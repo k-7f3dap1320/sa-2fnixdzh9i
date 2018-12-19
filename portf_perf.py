@@ -52,9 +52,10 @@ def get_portf_perf(uid):
         '                       google.charts.load("current", {"packages":["corechart"]});'+\
         '                       google.charts.setOnLoadCallback(drawChart);'+\
         '                       function drawChart() {'+\
-        '                         var data = google.visualization.arrayToDataTable(['+\
-        '                            ["'+ hAxis +'", "'+ vAxis +'"],'+ data +\
-        '                          ]);'+\
+        '                          var data = new google.visualization.DataTable();'+\
+        '                          data.addColumn("date", "date");'+\
+        '                          data.addColumn("number", "price");'+\
+        '                          data.addRows(['+data+']);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\
         '                            vAxis: {minValue: 0},'+\
