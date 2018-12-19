@@ -59,14 +59,13 @@ def get_portf_perf(uid):
         '                          var options = {'+\
         '                            legend: "none",'+\
         '                            vAxis: {minValue: 0},'+\
-        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
-        '                            chartArea: {height: "95%"}'+\
+        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} }'+\
         '                          };'+\
         '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
         '                          chart.draw(data, options);'+\
         '                       }'+\
         '                   </script>'+\
-        '               <div id="portf_perf_chart"></div>'+\
+        '               <div id="portf_perf_chart" class="sa-chart-hw-100"></div>'+\
         '            </div>'+\
         '        </div>'
 
