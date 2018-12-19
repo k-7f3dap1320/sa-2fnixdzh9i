@@ -60,7 +60,7 @@ def get_portf_perf(uid):
         '                          var options = {'+\
         '                            legend: "none",'+\
         '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { color: "transparent" } },'+\
-        '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'} }, '+\
+        '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { count: 12 } }, '+\
         '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
         '                            chartArea:{width:"80%",height:"80%"}'+\
         '                          };'+\
