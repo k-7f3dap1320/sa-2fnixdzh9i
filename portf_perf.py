@@ -21,6 +21,7 @@ def get_portf_perf(uid):
         "JOIN symbol_list ON symbol_list.symbol = chart_data.symbol "+\
         "JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
         "WHERE symbol_list.uid=" + str(uid) + " ORDER BY chart_data.date"
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         data = ""
@@ -59,6 +60,7 @@ def get_portf_perf(uid):
         '                            legend: "none",'+\
         '                            vAxis: {minValue: 0},'+\
         '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} }'+\
+        '                            chartArea: {height: "95%"}'+\
         '                          };'+\
         '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
         '                          chart.draw(data, options);'+\
