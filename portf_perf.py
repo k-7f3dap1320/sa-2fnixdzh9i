@@ -43,6 +43,7 @@ def get_portf_perf(uid):
         box_title = "Portfolio 1-Year Performance"
         hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
         profit_1Y = price_close
+        portf_perf_font_size = 10
 
         portf_perf_box = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -58,8 +59,10 @@ def get_portf_perf(uid):
         '                          data.addRows(['+data+']);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\
-        '                            vAxis: {minValue: 0},'+\
-        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} }'+\
+        '                            vAxis: {minValue: 0, textStyle: fontSize:'+ str(portf_perf_font_size) +'},'+\
+        '                            hAxis: {textStyle: fontSize:'+ str(portf_perf_font_size) +'}, '+\
+        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
+        '                            chartArea:{width:"80%",height:"80%"}'+\
         '                          };'+\
         '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
         '                          chart.draw(data, options);'+\
