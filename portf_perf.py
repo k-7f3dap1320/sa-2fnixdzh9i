@@ -20,6 +20,7 @@ def get_portf_perf(uid):
         sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit FROM chart_data "+\
         "JOIN instruments ON chart_data.symbol = instruments.symbol "
         "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         data = ""
