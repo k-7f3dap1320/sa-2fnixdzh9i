@@ -18,7 +18,7 @@ def get_portf_perf(uid):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit FROM chart_data "+\
-        "JOIN instruments ON chart_data.symbol = instruments.symbol "
+        "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
         "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
         print(sql)
         cr.execute(sql)
