@@ -125,6 +125,8 @@ def get_portf_alloc(uid):
                     pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( int(sell_color_R) ) +','+ str( int(sell_color_G) ) +','+ str( int(sell_color_B) ) +')"}'
 
             i += 1
+        cr.close()
+        connection.close()
 
         pie_chart_title = 'Portfolio Allocation'
         pie_chart_x = "Allocation"
