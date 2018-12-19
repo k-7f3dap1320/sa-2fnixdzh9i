@@ -50,8 +50,6 @@ def get_portf_perf(uid):
         '                   <div><h5>'+ box_title +'</h5></div>'+\
         '                   <script>'+\
         '                       google.charts.load("current", {"packages":["corechart"]});'+\
-        '                       var data = google.visualization.arrayToDataTable(['+\
-        '                       ["Year", "Sales"],'+ data +']);'+\
         '                       google.charts.setOnLoadCallback(drawChart);'+\
         '                       function drawChart() {'+\
         '                         var data = google.visualization.arrayToDataTable(['+\
