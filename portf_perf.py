@@ -35,9 +35,9 @@ def get_portf_perf(uid):
             month = chart_date.strftime("%m")
             day = chart_date.strftime("%d")
             if data =="":
-                data = data + "[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
+                data = data + "[new Date("+str(year)+", "+str(int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
             else:
-                data = data + ",[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
+                data = data + ",[new Date("+str(year)+", "+str( int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
 
 
         box_title = fullname + " Portfolio 1-Year Performance"
