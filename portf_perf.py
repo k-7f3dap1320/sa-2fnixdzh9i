@@ -12,9 +12,18 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_portf_perf(uid):
 
     portf_perf_box = ''
+    portf_desc_box = ''
 
 
     try:
+        desc_box_title = 'Description & Recommendations'
+        portf_desc_box = '' +\
+        '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part sa-portf-perf-portf-chart">'+\
+        '               <div><h6>'+ box_title +'</h6></div>'+\
+        '            </div>'+\
+        '        </div>'
+
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit FROM chart_data "+\
@@ -40,15 +49,15 @@ def get_portf_perf(uid):
                 data = data + ",[new Date("+str(year)+", "+str( int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
 
 
-        box_title = "Portfolio 1-Year Performance"
+        chart_box_title = "Portfolio 1-Year Performance"
         hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
         profit_1Y = price_close
         portf_perf_font_size = 10
 
         portf_perf_box = '' +\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-portf-perf-portf-chart">'+\
-        '                   <div><h5>'+ box_title +'</h5></div>'+\
+        '                   <div><h6>'+ chart_box_title +'</h6></div>'+\
         '                   <script>'+\
         '                       google.charts.load("current", {"packages":["corechart"]});'+\
         '                       google.charts.setOnLoadCallback(drawChart);'+\
@@ -79,4 +88,4 @@ def get_portf_perf(uid):
 
     except Exception as e: print(e)
 
-    return portf_perf_box
+    return portf_desc_box + portf_perf_box
