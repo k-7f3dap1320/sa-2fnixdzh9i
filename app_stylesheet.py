@@ -16,7 +16,7 @@ def get_stylesheet(burl):
     btn = '.btn {font-size:x-small;}'
 
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
-    sa_chart_hw_100 = 'sa-chart-hw-100{width: 100%; height: 100%;}'
+    sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 500px; overflow: auto;}'
 

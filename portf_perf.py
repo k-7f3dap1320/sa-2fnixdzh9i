@@ -40,8 +40,8 @@ def get_portf_perf(uid):
                 data = data + ",[new Date("+str(year)+", "+str( int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
 
 
-        box_title = fullname + " Portfolio 1-Year Performance"
-        vAxis = "Date"; hAxis = "Price"
+        box_title = "Portfolio 1-Year Performance"
+        hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
         profit_1Y = price_close
 
         portf_perf_box = '' +\
@@ -53,8 +53,8 @@ def get_portf_perf(uid):
         '                       google.charts.setOnLoadCallback(drawChart);'+\
         '                       function drawChart() {'+\
         '                          var data = new google.visualization.DataTable();'+\
-        '                          data.addColumn("date", "date");'+\
-        '                          data.addColumn("number", "price");'+\
+        '                          data.addColumn("date", "'+ hAxis +'");'+\
+        '                          data.addColumn("number", "'+ vAxis +'");'+\
         '                          data.addRows(['+data+']);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\

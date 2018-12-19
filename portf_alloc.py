@@ -156,7 +156,7 @@ def get_portf_alloc(uid):
         '                       chart.draw(data, options);'+\
         '                   }'+\
         '               </script>'+\
-        '               <div id="portf_alloc_pie_chart"></div>'+\
+        '               <div id="portf_alloc_pie_chart" class="sa-chart-hw-100"></div>'+\
         '           </div>'+\
         '        </div>'
 
