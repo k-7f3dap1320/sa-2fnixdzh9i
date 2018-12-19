@@ -53,8 +53,7 @@ def get_portf_perf(uid):
         '                        google.charts.setOnLoadCallback(drawChart);'+\
         '                        function drawChart() {'+\
         '                         var data = google.visualization.arrayToDataTable(['+\
-        '                            ["'+ hAxis +'", "'+ vAxis +'"],'+\
-        '                            ["2013",  1000],'+\
+        '                            ["'+ hAxis +'", "'+ vAxis +'"],'+ data +\
         '                          ]);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\
