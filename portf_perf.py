@@ -11,7 +11,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_portf_perf(uid):
 
-    descr_box = ''
+    portf_perf_box = ''
 
 
     try:
@@ -24,7 +24,7 @@ def get_portf_perf(uid):
         cr.execute(sql)
         rs = cr.fetchall()
         data = ""
-        for row in rs_s:
+        for row in rs:
             symbol = row[0]
             chart_date = row[1]
             price_close = row[2]
@@ -44,7 +44,7 @@ def get_portf_perf(uid):
         vAxis = "Date"; hAxis = "Price"
         profit_1Y = price_close
 
-        descr_box = '' +\
+        portf_perf_box = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
         '                   <div><h5>'+ box_title +'</h5></div>'+\
@@ -76,4 +76,4 @@ def get_portf_perf(uid):
 
     except Exception as e: print(e)
 
-    return descr_box
+    return portf_perf_box
