@@ -17,6 +17,7 @@ def get_stylesheet(burl):
 
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
+    sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 300px; overflow: auto;}'
 
     #Page loading gif display
     loading = ''+\

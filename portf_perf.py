@@ -18,10 +18,7 @@ def get_portf_perf(uid):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit FROM chart_data "+\
-        "JOIN symbol_list ON symbol_list.symbol = chart_data.symbol "+\
-        "JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
-        "WHERE symbol_list.uid=" + str(uid) + " ORDER BY chart_data.date"
-        print(sql)
+        "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
         cr.execute(sql)
         rs = cr.fetchall()
         data = ""
@@ -47,24 +44,28 @@ def get_portf_perf(uid):
 
         portf_perf_box = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part sa-portf-perf-portf-chart">'+\
         '                   <div><h5>'+ box_title +'</h5></div>'+\
         '                   <script>'+\
         '                       google.charts.load("current", {"packages":["corechart"]});'+\
-        '                        google.charts.setOnLoadCallback(drawChart);'+\
-        '                        function drawChart() {'+\
+        '                       var data = new google.visualization.DataTable();'+\
+        '                       data.addColumn("date", "date");'+\
+        '                       data.addColumn("number", "price");'+\
+        '                       data.addRows(['+data+']);'+\
+        '                       google.charts.setOnLoadCallback(drawChart);'+\
+        '                       function drawChart() {'+\
         '                         var data = google.visualization.arrayToDataTable(['+\
         '                            ["'+ hAxis +'", "'+ vAxis +'"],'+ data +\
         '                          ]);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\
         '                            vAxis: {minValue: 0},'+\
-        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} }'+\
+        '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
         '                            chartArea: {height: "95%"}'+\
         '                          };'+\
         '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
         '                          chart.draw(data, options);'+\
-        '                        }'+\
+        '                       }'+\
         '                   </script>'+\
         '               <div id="portf_perf_chart"></div>'+\
         '            </div>'+\
