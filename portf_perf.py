@@ -59,8 +59,8 @@ def get_portf_perf(uid):
         '                          data.addRows(['+data+']);'+\
         '                          var options = {'+\
         '                            legend: "none",'+\
-        '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'} },'+\
-        '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'} }, '+\
+        '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { color: "transparent" } },'+\
+        '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'} , gridlines: { color: "transparent" } }, '+\
         '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
         '                            chartArea:{width:"80%",height:"80%"}'+\
         '                          };'+\
