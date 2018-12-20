@@ -18,7 +18,7 @@ def get_portf_alloc(uid):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname FROM portfolios "+\
-        "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol ORDER BY portfolios.symbol"
+        "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
         cr.execute(sql)
         rs = cr.fetchall()
         signal_box_data = ''
