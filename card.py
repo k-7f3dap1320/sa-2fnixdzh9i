@@ -45,10 +45,8 @@ def get_card(x,t):
             badge = row[5]
             symbol = row[6]
             uid = get_uid(symbol)
-            portf_desc_part_1 = "A damn hot"
-            portf_desc_part_2 = "portfolio that not only beat the market but the sh*t out of you."
-
             color = "gray"
+            portf_content_end_part = 'Portfolio'
 
             if badge.find('-') == -1:
                 badge_class = 'badge badge-success'
@@ -64,11 +62,12 @@ def get_card(x,t):
                     color = "red"
 
             if t == 9:
-                link_label = "Get " + badge + " in 7 days"
+                link_label = "Click here for details"
 
 
             r = r + get_card_chart(uid,color)
 
+            ### Trading Instruments ###
             if t == 1:
                 r = r + ''+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
@@ -80,14 +79,16 @@ def get_card(x,t):
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
                 '            </div>'+\
                 '        </div>'
+
+            ### Portfolios ###
             if t == 9:
                 r = r + ''+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
-                '                <div class="title"><h5>'+short_description+'&nbsp;</h5></div>'+\
-                '                <div class="text"><span class="desc">'+portf_desc_part_1+' '+content+' '+portf_desc_part_2+'</span></div>'+\
-                '                <h4><a href="' + url + '" class="'+ badge_class +'" >'+link_label+'</a></h4>'+\
+                '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h4></div>'+\
+                '                <div class="text"><span class="desc">'+ content + ' ' + portf_content_end_part +'</span></div>'+\
+                '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\                
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
                 '            </div>'+\
                 '        </div>'
