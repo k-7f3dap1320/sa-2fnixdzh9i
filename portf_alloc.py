@@ -17,9 +17,7 @@ def get_portf_alloc(uid):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, "+\
-        "symbol_list.uid FROM portfolios JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol "+\
-        "WHERE symbol_list.uid=" + str(uid) + " ORDER BY portfolios.symbol"
+        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname FROM portfolios ORDER BY portfolios.symbol"
         cr.execute(sql)
         rs = cr.fetchall()
         signal_box_data = ''
@@ -30,6 +28,7 @@ def get_portf_alloc(uid):
             entry_price = row[3]
             trade_expiration = row[4]
             exp_date_str = trade_expiration.strftime("%d-%b-%Y")
+            symbol_fullname = row[5]
 
             if order_type == 'buy':
                 badge = 'badge-success'
@@ -39,7 +38,7 @@ def get_portf_alloc(uid):
             '                       <tr>'+\
             '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
             '                          <td>'+ str(quantity)  +'</td>'+\
-            '                          <td>'+ symbol +'</td>'+\
+            '                          <td>'+ symbol_fullname +'</td>'+\
             '                          <td>'+ str(entry_price) +'</td>'+\
             '                          <td>'+ exp_date_str +'</td>'+\
             '                       </tr>'
@@ -54,7 +53,7 @@ def get_portf_alloc(uid):
         '                       <tr>'+\
         '                          <th scope="col">Order</th>'+\
         '                          <th scope="col">Quantity</th>'+\
-        '                          <th scope="col">Ticker</th>'+\
+        '                          <th scope="col">Trade</th>'+\
         '                          <th scope="col">Entry @</th>'+\
         '                          <th scope="col">Expires on</th>'+\
         '                       </tr>'+\
