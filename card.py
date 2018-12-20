@@ -51,13 +51,13 @@ def get_card(x,t):
             if badge.find('-') == -1:
                 badge_class = 'badge badge-success'
                 link_label = "Why you may buy?"
-                expl_label = "*your potential return in the next 7 days"
+                expl_label = "*Your potential return in the next 7 days"
                 if t == 1:
                     color = "green"
             else:
                 badge_class = 'badge badge-danger'
                 link_label = "Why you may sell?"
-                expl_label = "*your potential risk in the next 7 days"
+                expl_label = "*Your potential risk in the next 7 days"
                 if t == 1:
                     color = "red"
 
@@ -73,7 +73,7 @@ def get_card(x,t):
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( uid )+'"></div>'+\
-                '                <div class="title"><h5>'+short_title+'&nbsp;</h5><h4><a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h4></div>'+\
+                '                <div class="title"><h6>'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
@@ -86,7 +86,7 @@ def get_card(x,t):
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
-                '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h4></div>'+\
+                '                <div class="title"><h6>'+short_description+'&nbsp;<a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+ content + ' ' + portf_content_end_part +'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
