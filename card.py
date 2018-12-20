@@ -88,7 +88,7 @@ def get_card(x,t):
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
                 '                <div class="title"><h5>'+short_description+'&nbsp;</h5><h4><a href="' + url + '" class="'+badge_class+'">'+badge+'</a></h4></div>'+\
                 '                <div class="text"><span class="desc">'+ content + ' ' + portf_content_end_part +'</span></div>'+\
-                '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\                
+                '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
                 '            </div>'+\
                 '        </div>'
