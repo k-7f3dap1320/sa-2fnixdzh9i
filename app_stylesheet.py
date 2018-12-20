@@ -15,6 +15,8 @@ def get_stylesheet(burl):
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
 
+    awesomplete = '.awesomplete > ul {min-width: 250%;}'
+
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
@@ -29,7 +31,21 @@ def get_stylesheet(burl):
     'z-index:1000;'+\
     'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
 
-    r = '<style>'+ body + desc + expl + box + boxpart + text + btn + sa_table_sm + sa_chart_hw_100 + sa_portf_alloc + sa_portf_perf_portf_chart + loading + '</style>'
+    r = '<style>'+\
+    body +\
+    desc +\
+    expl +\
+    box +\
+    boxpart +\
+    text +\
+    btn +\
+    awesomplete +\
+    sa_table_sm +\
+    sa_chart_hw_100 +\
+    sa_portf_alloc +\
+    sa_portf_perf_portf_chart +\
+    loading +\
+    '</style>'
 
 
     return r
