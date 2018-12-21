@@ -45,7 +45,7 @@ def get_card(x,t):
             badge = row[5]
             symbol = row[6]
             uid = get_uid(symbol)
-            color = "gray"
+            color = "black"
             portf_content_end_part = 'Portfolio'
 
             if badge.find('-') == -1:

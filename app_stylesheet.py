@@ -15,8 +15,10 @@ def get_stylesheet(burl):
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
 
+    #Customized awesomplete
     awesomplete = '.awesomplete > ul {min-width: 250%;}'
 
+    #Specific settings
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'

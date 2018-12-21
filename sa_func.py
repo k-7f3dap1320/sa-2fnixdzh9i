@@ -12,9 +12,6 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 class app_settings:
 
-    address = 'http://127.0.0.1'
-    appname = 'Project K'
-
     def get_homepage(self):
         return self.address
 
@@ -46,3 +43,6 @@ def get_uid(s):
 
 def get_random_str(n):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+
+def get_selected_lang():
+    return 'en'

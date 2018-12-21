@@ -15,8 +15,7 @@ from awesomplete import *
 from app_navbar import *
 from details_header import *
 from portf_alloc import *
-from portf_desc import *
-from portf_perf import *
+from portf_perf_desc import *
 
 from sa_db import *
 access_obj = sa_db_access()

@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from sa_db import *
 access_obj = sa_db_access()
+from sa_func import *
 import pymysql.cursors
 
 
@@ -17,10 +18,46 @@ def get_portf_perf(uid):
 
     try:
         desc_box_title = 'Description & Recommendations'
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit from instruments JOIN symbol_list "+\
+        "ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
+        print(sql)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        portf_summary = ""
+        for row in rs:
+            portf_summary = row[0]
+            portf_forecast = row[1]
+            portf_account_ref = row[2]
+            portf_unit = row[3]
+
+        slang = get_selected_lang()
+        sql = "SELECT portf_descr, portf_recomm_buy, portf_recomm_sell FROM recommendations WHERE lang ='"+ slang +"' "
+        cr.execute(sql)
+        rs = cr.fetchall()
+        portf_descr =''; portf_recomm_buy =''; portf_recomm_sell = ''
+        for row in rs:
+            portf_descr = row[0]
+            portf_recomm_buy = row[1]
+            portf_recomm_sell = row[2]
+
+        #{account_minimum} {unit} {portf_recomm} {portf_last_price} {portf_unit}
+        #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
+        #{portf_recomm} = "sell {portf_alloc_instr} above {portf_alloc_entry_price}"
+
+        cr.close()
+        connection.close()
+
+        desc_box_content = portf_summary + ' ' + portf_descr
+
+
+
         portf_desc_box = '' +\
         '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-portf-perf-portf-chart">'+\
         '               <div><h6>'+ desc_box_title +'</h6></div>'+\
+        '               <div>'+ desc_box_content +'</div>'+\
         '            </div>'+\
         '        </div>'
 
