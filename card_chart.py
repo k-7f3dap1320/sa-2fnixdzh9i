@@ -66,9 +66,9 @@ def get_card_chart(uid,color):
             month = date.strftime("%m")
             day = date.strftime("%d")
             if data =="":
-                data = data + "[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
+                data = data + "[new Date("+str(year)+", "+str( int(month) -1 )+", "+str(day)+"),"+str(price_close)+"]"
             else:
-                data = data + ",[new Date("+str(year)+", "+str(month)+", "+str(day)+"),"+str(price_close)+"]"
+                data = data + ",[new Date("+str(year)+", "+str( int(month) -1 )+", "+str(day)+"),"+str(price_close)+"]"
         cr.close()
         connection.close()
     except Exception as e: print(e)
