@@ -155,13 +155,13 @@ def get_chart_box(uid):
     '            <div class="box-part sa-portf-perf-portf-chart">'+\
     '                  <ul class="nav nav-tabs" role="tablist">'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link active" data-toggle="tab" href="'+ tab_1tab_1_link +'">'+ tab_1_label +'</a>'+\
+    '                      <a class="nav-link active" data-toggle="tab" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_1tab_2_link +'">'+ tab_2_label +'</a>'+\
+    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
     '                    </li>'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_1tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
     '            </div>'+\
