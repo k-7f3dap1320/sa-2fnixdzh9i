@@ -166,12 +166,12 @@ def get_chart_box(uid):
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
     '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
-    '                      <div id="'+ tab_2_id +'" class="container tab-pane disabled">'+'</div>'+\
-    '                      <div id="'+ tab_3_id +'" class="container tab-pane disabled">'+'</div>'+\
+    '                      <div id="'+ tab_2_id +'" class="container tab-pane disable">'+'</div>'+\
+    '                      <div id="'+ tab_3_id +'" class="container tab-pane disable">'+'</div>'+\
     '                  </div>'
     '            </div>'+\
     '        </div>'
-    #class="fade" for not active tab
+    #class="fade" for not active tab; class="disable" for disabled tab
 
 
     return r
