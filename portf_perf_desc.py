@@ -57,7 +57,7 @@ def get_portf_perf(uid):
         '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-portf-perf-portf-chart">'+\
         '               <div><h6>'+ desc_box_title +'</h6></div>'+\
-        '               <div>'+ desc_box_content +'</div>'+\
+        '               <div class="sa-descr-box-sm">'+ desc_box_content +'</div>'+\
         '            </div>'+\
         '        </div>'
 

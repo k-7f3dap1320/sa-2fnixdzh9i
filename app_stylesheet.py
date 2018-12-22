@@ -20,6 +20,7 @@ def get_stylesheet(burl):
 
     #Specific settings
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
+    sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 350px; overflow: auto;}'
@@ -43,6 +44,7 @@ def get_stylesheet(burl):
     btn +\
     awesomplete +\
     sa_table_sm +\
+    sa_descr_box_sm +\
     sa_chart_hw_100 +\
     sa_portf_alloc +\
     sa_portf_perf_portf_chart +\

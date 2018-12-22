@@ -30,7 +30,6 @@ def navbar(burl):
     '        <a class="dropdown-item" href="'+ burl + '?x=CR:">Cryptocurrency</a>'+\
     '        <div class="dropdown-divider"></div>'+\
     '        <a class="dropdown-item" href="'+ burl + '?x=US>">U.S. Market</a>'+\
-    '        <a class="dropdown-item disabled" href="#>">Thai Market</a>'+\
     '      </div>'+\
     '    </li>'+\
     ' </ul>'+\
