@@ -7,7 +7,7 @@ from sa_func import *
 
 def get_metatags():
     theme_color = '<meta name="theme-color" content="'+ get_theme_color() +'" />'
-    favicon = '<link rel="icon" href="static/favicon.ico?r='+ get_random_str() +'">'
+    favicon = '<link rel="icon" href="static/favicon.ico?r='+ get_random_str(9) +'">'
 
     r = theme_color +\
         favicon
