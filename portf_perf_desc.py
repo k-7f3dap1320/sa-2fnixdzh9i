@@ -158,20 +158,20 @@ def get_chart_box(uid):
     '                      <a class="nav-link active" data-toggle="tab" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
+    '                      <a class="nav-link" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
     '                    </li>'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
     '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
-    '                      <div id="'+ tab_2_id +'" class="container tab-pane disable">'+'</div>'+\
-    '                      <div id="'+ tab_3_id +'" class="container tab-pane disable">'+'</div>'+\
+    '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
+    '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
     '                  </div>'
     '            </div>'+\
     '        </div>'
-    #class="fade" for not active tab; class="disable" for disabled tab
+    #To disable tab: remove the data-toggle="tab"
 
 
     return r
