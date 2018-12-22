@@ -74,7 +74,7 @@ def get_portf_perf(uid):
             i += 1
 
         portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
-        portf_descr = portf_descr.replace('{portf_last_price}', portf_last_price)
+        portf_descr = portf_descr.replace('{portf_last_price}', str(portf_last_price) )
 
         cr.close()
         connection.close()
