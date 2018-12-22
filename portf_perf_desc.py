@@ -164,17 +164,15 @@ def get_chart_box(uid):
     '                      <a class="nav-link" data-toggle="tab" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
+    '                  <div class="tab-content">'+\
+    '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
+    '                      <div id="'+ tab_2_id +'" class="container tab-pane disabled">'+'</div>'+\
+    '                      <div id="'+ tab_3_id +'" class="container tab-pane disabled">'+'</div>'+\
+    '                  </div>'
     '            </div>'+\
     '        </div>'
-
-
     #class="fade" for not active tab
-    r = r + ''+\
-    '<div class="tab-content">'+\
-    '<div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
-    '<div id="'+ tab_2_id +'" class="container tab-pane disabled">'+'</div>'+\
-    '<div id="'+ tab_3_id +'" class="container tab-pane disabled">'+'</div>'+\
-    '</div>'
+
 
     return r
 
