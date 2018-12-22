@@ -85,7 +85,7 @@ def get_desc_box(uid):
 
     return portf_descr
 
-def get_perf_box(uid):
+def get_perf_chart(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -144,7 +144,7 @@ def get_perf_box(uid):
     return portf_perf_box
 
 def get_chart_box(uid):
-    chart_1y_perf = get_portf_box(uid)
+    chart_1y_perf = get_portf_chart(uid)
 
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
     tab_2_label = 'Portfolio vs Benchmark'; tab_2_link = '#bench'; tab_2_id = tab_2_link.replace('#','')
