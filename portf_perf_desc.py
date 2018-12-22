@@ -75,17 +75,17 @@ def get_desc_box(uid):
     cr.close()
     connection.close()
 
-    return portf_descr
-
-def get_perf_box(uid):
-
     portf_desc_box = '' +\
     '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
     '            <div class="box-part sa-portf-perf-portf-chart">'+\
     '               <div><h6>'+ desc_box_title +'</h6></div>'+\
-    '               <div class="sa-descr-box-sm">'+ desc_box_content +'</div>'+\
+    '               <div class="sa-descr-box-sm">'+ portf_descr +'</div>'+\
     '            </div>'+\
     '        </div>'
+
+    return portf_descr
+
+def get_perf_box(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -144,7 +144,7 @@ def get_perf_box(uid):
     return portf_perf_box
 
 def get_chart_box(uid):
-    chart_1y_perf = get_desc_box(uid)
+    chart_1y_perf = get_portf_box(uid)
 
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
     tab_2_label = 'Portfolio vs Benchmark'; tab_2_link = '#bench'; tab_2_id = tab_2_link.replace('#','')
