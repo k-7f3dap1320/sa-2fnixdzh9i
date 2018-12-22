@@ -60,9 +60,9 @@ def get_portf_perf(uid):
             alloc_entry_price = row[2]
 
             if lower(alloc_order_type) == 'buy':
-                portf_recomm = portf_recomm + '('+str(i)') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+                portf_recomm = portf_recomm + '('+str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
             if lower(alloc_order_type) == 'sell':
-                portf_recomm = portf_recomm + '('+str(i)') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+                portf_recomm = portf_recomm + '('+str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
 
             portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
             i += 1
