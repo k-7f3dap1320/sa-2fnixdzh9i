@@ -37,7 +37,7 @@ def gen_sign_page(uid,appname,burl):
         for row in rs:
             instfullname = row[0]
 
-        r = get_head(  get_loading_head() + get_title( appname +' - ' + instfullname ) + get_metatags() + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet(burl) )
+        r = get_head(  get_loading_head() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart(uid) + get_sign_recommend(uid) + '</div></div>')
         r = set_page(r)
 
