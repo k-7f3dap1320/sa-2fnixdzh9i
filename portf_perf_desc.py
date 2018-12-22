@@ -67,7 +67,7 @@ def get_portf_perf(uid):
             portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
             i += 1
 
-        portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm)
+        portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
 
         cr.close()
         connection.close()
