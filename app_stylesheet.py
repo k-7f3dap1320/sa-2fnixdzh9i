@@ -19,7 +19,7 @@ def get_stylesheet(burl):
     awesomplete = '.awesomplete > ul {min-width: 200%;}'
 
     #Specific settings
-    sa_search_input = '#sa-search-input{width: 400px; font-size: 13px;}'
+    sa_search_input = '#sa-search-input{width: 340px; font-size: 13px;}'
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
