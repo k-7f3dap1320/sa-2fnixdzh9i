@@ -5,7 +5,7 @@
 from app_stylesheet import *
 from sa_func import *
 
-def get_metatags():
+def get_metatags(burl):
     theme_color = '<meta name="theme-color" content="'+ get_theme_color() +'" />'
     favicon = '<link rel="icon" href="static/favicon.ico?r='+ get_random_str(9) +'">'
 

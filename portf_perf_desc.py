@@ -43,8 +43,14 @@ def get_portf_perf(uid):
             portf_recomm_buy = row[1]
             portf_recomm_sell = row[2]
 
-        portf_descr = portf_descr.replace('{account_minimum}',str(portf_account_ref) )
+        portf_descr = portf_descr.replace('{account_minimum}',str(int( portf_account_ref) ) )
         portf_descr = portf_descr.replace('{unit}', portf_unit)
+
+        sql ="SELECT price_close FROM chart_data WHERE uid="+ str(uid) +" ORDER by date DESC LIMIT 1"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            portf_last_price = row[0]
 
         #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
         #{portf_recomm} = "sell {portf_alloc_instr} above {portf_alloc_entry_price}"
@@ -60,14 +66,15 @@ def get_portf_perf(uid):
             alloc_entry_price = row[2]
 
             if alloc_order_type.lower() == 'buy':
-                portf_recomm = portf_recomm + '('+str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+                portf_recomm = portf_recomm  + str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
             if alloc_order_type.lower() == 'sell':
-                portf_recomm = portf_recomm + '('+str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+                portf_recomm = portf_recomm + str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
 
             portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
             i += 1
 
         portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
+        portf_descr = portf_descr.replace('{portf_last_price}', portf_last_price)
 
         cr.close()
         connection.close()
