@@ -10,7 +10,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_portf_perf(uid):
+def get_portf_perf_desc(uid):
 
     portf_perf_box = ''
     portf_desc_box = ''
@@ -45,6 +45,7 @@ def get_portf_perf(uid):
 
         portf_descr = portf_descr.replace('{account_minimum}',str(int( portf_account_ref) ) )
         portf_descr = portf_descr.replace('{unit}', portf_unit)
+        portf_descr = portf_descr.replace('{display_forecast}',str(portf_forecast) )
 
         sql ="SELECT price_close FROM chart_data WHERE uid="+ str(uid) +" ORDER by date DESC LIMIT 1"
         cr.execute(sql)
