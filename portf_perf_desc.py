@@ -153,7 +153,7 @@ def get_chart_box(uid):
     r = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
     '            <div class="box-part sa-portf-perf-portf-chart">'+\
-    '                  <ul class="nav nav-tabs" role="tablist">'+\
+    '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
     '                    <li class="nav-item">'+\
     '                      <a class="nav-link active" data-toggle="tab" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\

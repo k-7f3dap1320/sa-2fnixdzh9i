@@ -24,7 +24,8 @@ def get_stylesheet(burl):
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 90%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
-    sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 350px; overflow: auto;}'
+    sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
+    sa_tab_sm = '#sa-tab-sm{font-size: 13px;}'
 
     #Page loading gif display
     loading = ''+\
@@ -50,6 +51,7 @@ def get_stylesheet(burl):
     sa_chart_hw_100 +\
     sa_portf_alloc +\
     sa_portf_perf_portf_chart +\
+    sa_tab_sm +\
     loading +\
     '</style>'
 
