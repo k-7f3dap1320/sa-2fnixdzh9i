@@ -7,6 +7,7 @@ from sa_func import *
 
 def navbar(burl):
 
+    search_placeholder = 'Enter function, ticker or search. Hit <enter> to go.'
     sid = get_random_str(9)
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
@@ -16,7 +17,7 @@ def navbar(burl):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
-    '    <input class="form-control mr-lg-4 btn-outline-info awesomplete"' +\
+    '    <input class="form-control mr-lg-4 btn-outline-info awesomplete sa-search-input"' +\
     '       type="search" name="'+ str(sid) +'" placeholder="Search & hit <enter>" aria-label="Search" id="navBarSearchForm" data-list="'+ get_search_suggestions() +'" >'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
     '  </form>'+\
