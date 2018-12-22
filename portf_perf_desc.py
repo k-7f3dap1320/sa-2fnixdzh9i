@@ -20,7 +20,7 @@ def get_portf_perf(uid):
         desc_box_title = 'Description & Recommendations'
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit from instruments JOIN symbol_list "+\
+        sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit, instruments.symbol from instruments JOIN symbol_list "+\
         "ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
         print(sql)
         cr.execute(sql)
@@ -31,6 +31,7 @@ def get_portf_perf(uid):
             portf_forecast = row[1]
             portf_account_ref = row[2]
             portf_unit = row[3]
+            portf_symbol = row[4]
 
         slang = get_selected_lang()
         sql = "SELECT portf_descr, portf_recomm_buy, portf_recomm_sell FROM recommendations WHERE lang ='"+ slang +"' "
@@ -42,9 +43,31 @@ def get_portf_perf(uid):
             portf_recomm_buy = row[1]
             portf_recomm_sell = row[2]
 
-        #{account_minimum} {unit} {portf_recomm} {portf_last_price} {portf_unit}
+        portf_descr = portf_descr.replace('{account_minimum}',str(portf_account_ref) )
+        portf_descr = portf_descr.replace('{unit}', portf_unit)
+
         #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
         #{portf_recomm} = "sell {portf_alloc_instr} above {portf_alloc_entry_price}"
+        portf_recomm = '<br /><br />'
+        sql = 'SELECT order_type, alloc_fullname, entry_level FROM portfolios '+\
+        "WHERE portf_symbol ='"+ portf_symbol +"'  ORDER BY alloc_fullname"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        i = 1
+        for row in rs:
+            alloc_order_type = row[0]
+            alloc_fullname = row[1]
+            alloc_entry_price = row[2]
+
+            if lower(alloc_order_type) == 'buy':
+                portf_recomm = portf_recomm + '('+str(i)') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+            if lower(alloc_order_type) == 'sell':
+                portf_recomm = portf_recomm + '('+str(i)') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+
+            portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
+            i += 1
+
+        portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm)
 
         cr.close()
         connection.close()
