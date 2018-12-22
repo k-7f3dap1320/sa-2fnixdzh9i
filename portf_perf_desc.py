@@ -83,7 +83,7 @@ def get_desc_box(uid):
     '            </div>'+\
     '        </div>'
 
-    return portf_descr
+    return portf_desc_box
 
 def get_perf_chart(uid):
 
