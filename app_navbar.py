@@ -17,7 +17,7 @@ def navbar(burl):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
-    '    <input class="sa-search-input form-control mr-lg-4 btn-outline-info awesomplete"' +\
+    '    <input id="sa-search-input" class="form-control mr-lg-4 btn-outline-info awesomplete"' +\
     '       type="search" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" id="navBarSearchForm" data-list="'+ get_search_suggestions() +'" >'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
     '  </form>'+\
