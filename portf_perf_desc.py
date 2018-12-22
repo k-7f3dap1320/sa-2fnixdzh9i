@@ -127,7 +127,7 @@ def get_perf_chart(uid):
     '                          data.addColumn("number", "'+ vAxis +'");'+\
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
-    '                            title: "'+ chart_date +'", '+\
+    '                            title: "'+ chart_title +'", '+\
     '                            legend: "none",'+\
     '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { count: 4 } }, '+\
