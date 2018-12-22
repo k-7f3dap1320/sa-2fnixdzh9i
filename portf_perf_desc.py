@@ -75,6 +75,8 @@ def get_desc_box(uid):
     cr.close()
     connection.close()
 
+    return portf_descr
+
 def get_perf_box(uid):
 
     portf_desc_box = '' +\
@@ -110,15 +112,12 @@ def get_perf_box(uid):
             data = data + ",[new Date("+str(year)+", "+str( int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
 
 
-    chart_box_title = "Portfolio 1-Year Performance"
+    chart_title = "Portfolio 1-Year Performance"
     hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
     profit_1Y = price_close
     portf_perf_font_size = 10
 
     portf_perf_box = '' +\
-    '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part sa-portf-perf-portf-chart">'+\
-    '                   <div><h6>'+ chart_box_title +'</h6></div>'+\
     '                   <script>'+\
     '                       google.charts.load("current", {"packages":["corechart"]});'+\
     '                       google.charts.setOnLoadCallback(drawChart);'+\
@@ -128,6 +127,7 @@ def get_perf_box(uid):
     '                          data.addColumn("number", "'+ vAxis +'");'+\
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
+    '                            title: "'+ chart_date +'", '+\
     '                            legend: "none",'+\
     '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { count: 4 } }, '+\
@@ -138,21 +138,50 @@ def get_perf_box(uid):
     '                          chart.draw(data, options);'+\
     '                       }'+\
     '                   </script>'+\
-    '               <div id="portf_perf_chart" class="sa-chart-hw-100"></div>'+\
+    '               <div id="portf_perf_chart" class="sa-chart-hw-100"></div>'
+    cr.close()
+    connection.close()
+    return portf_perf_box
+
+def get_chart_box(uid):
+    chart_1y_perf = get_desc_box(uid)
+
+    tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
+    tab_2_label = 'Portfolio vs Benchmark'; tab_2_link = '#bench'; tab_2_id = tab_2_link.replace('#','')
+    tab_3_label = 'Risk Assessment'; tab_3_link = '#risk'; tab_3_id = tab_3_link.replace('#','')
+
+    r = '' +\
+    '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part sa-portf-perf-portf-chart">'+\
+    '                  <ul class="nav nav-tabs" role="tablist">'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link active" data-toggle="tab" href="'+ tab_1tab_1_link +'">'+ tab_1_label +'</a>'+\
+    '                    </li>'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_1tab_2_link +'">'+ tab_2_label +'</a>'+\
+    '                    </li>'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link" data-toggle="tab" href="'+ tab_1tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '                    </li>'+\
+    '                  </ul>'+\
     '            </div>'+\
     '        </div>'
 
 
-    cr.close()
-    connection.close()
+    #class="fade" for not active tab
+    r = r + ''+\
+    '<div class="tab-content">'+\
+    '<div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
+    '<div id="'+ tab_2_id +'" class="container tab-pane disabled">'+'</div>'+\
+    '<div id="'+ tab_3_id +'" class="container tab-pane disabled">'+'</div>'+\
+    '</div>'
+
+    return r
 
 def get_portf_perf_desc(uid):
 
-    portf_perf_box = ''
-    portf_desc_box = ''
-
     try:
-        desc_box_content = get_portf_desc(uid) + ' ' + get_desc_box(uid)
+        r = get_desc_box(uid) + ' ' + get_chart_box(uid)
     except Exception as e: print(e)
 
-    return portf_desc_box + portf_perf_box
+    return r
