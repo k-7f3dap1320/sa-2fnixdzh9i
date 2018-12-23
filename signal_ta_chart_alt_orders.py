@@ -112,30 +112,26 @@ def get_ta_chart(uid):
     data = ''
     i = 0
     for row in rs:
-        symbol = row[0]; chart_date = row[1]; price_close = row[2]; forecast = row[3]
-        lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
-        st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
+        symbol = row[0]; chart_date = row[1]; price_close = str( row[2] ) ; forecast = str( row[3] )
+        lt_upper_trend_line = str( row[4] ) ; lt_lower_trend_line = str( row[5] )
+        st_upper_trend_line = str( row[6] ); st_lower_trend_line = str( row[7] )
 
         year = chart_date.strftime("%Y")
         month = chart_date.strftime("%m")
         day = chart_date.strftime("%d")
+
         price_close = price_close.replace('0','')
         forecast = forecast.replace('0','')
-
-        '''
-        price_close
-        forecast
-        lt_upper_trend_line
-        lt_lower_trend_line
-        st_lower_trend_line
-        st_upper_trend_line
-        '''
+        lt_upper_trend_line = lt_upper_trend_line.replace('0','')
+        lt_lower_trend_line = lt_lower_trend_line.replace('0','')
+        st_lower_trend_line = st_lower_trend_line.replace('0','')
+        st_upper_trend_line = st_upper_trend_line.replace('0','')
 
         if i > 0:
             data = data + ','
-        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close).replace('0','') +','+ str(forecast).replace('0','') + ','+\
-        str(lt_upper_trend_line).replace('0','') + ','+ str(lt_lower_trend_line).replace('0','') + ',' +\
-        str(st_upper_trend_line).replace('0','') + ','+ str(st_lower_trend_line).replace('0','') +']'
+        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close) +','+ str(forecast) + ','+\
+        str(lt_upper_trend_line) + ','+ str(lt_lower_trend_line) + ',' +\
+        str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
 
         i += 1
 
