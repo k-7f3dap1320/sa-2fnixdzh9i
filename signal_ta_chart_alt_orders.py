@@ -109,6 +109,7 @@ def get_ta_chart(uid):
     "st_upper_trend_line, st_lower_trend_line, ma200 FROM chart_data WHERE uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
+    data = ''
     for row in rs:
         symbol = row[0]; chart_date = row[1]; price_close = row[2]; forecast = row[3]
         lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
