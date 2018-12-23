@@ -122,7 +122,7 @@ def get_ta_chart(uid):
 
         if i > 0:
             data = data + ','
-        data = data + '["'+ symbol +'",'+ 'new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close)+','+ str(forecast) + ','+\
+        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close)+','+ str(forecast) + ','+\
         str(lt_upper_trend_line) + ','+ str(lt_lower_trend_line) + ',' +\
         str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
 
@@ -144,7 +144,6 @@ def get_ta_chart(uid):
     "      google.charts.setOnLoadCallback(drawChart);"+\
     "      function drawChart() {"+\
     "        var data = new google.visualization.DataTable();"+\
-    "        data.addColumn('string', '"+ l_symbol +"');"+\
     "        data.addColumn('date', '"+ l_date +"');"+\
     "        data.addColumn('number', '"+ l_price_close +"');"+\
     "        data.addColumn('number', '"+ l_forecast +"');"+\
