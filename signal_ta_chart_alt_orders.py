@@ -190,7 +190,7 @@ def get_sign_ta_chart_alt_orders(uid):
 
         signal_box_title = 'Alternative Orders'
         signal_box = '' +\
-        '        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">'+\
+        '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part sa-signal-ta-chart">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
@@ -204,7 +204,7 @@ def get_sign_ta_chart_alt_orders(uid):
 
 
         tech_chart = '' +\
-        '        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">'+\
+        '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part sa-signal-ta-chart">'+\
         '                  <ul id="sa-tab-sm" class="nav nav-pills" role="tablist">'+\
         '                    <li class="nav-item">'+\
