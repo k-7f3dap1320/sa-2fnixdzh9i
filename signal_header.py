@@ -70,13 +70,12 @@ def get_sign_header(uid):
         '               <table class="table table-sm sa-table-sm">'+\
         '                   <tbody>'+\
         '                       <tr>'+\
-        '                           <td style="width: 10%">'+ hd_signal +'</td>'+\
+        '                           <td style="width: 10%" rowspan="2"><h6>'+ c_signal +'</h6></td>'+\
         '                           <td style="width: 10%">'+ hd_entry +'</td>'+\
         '                           <td style="width: 10%">'+ hd_tp +'</td>'+\
         '                           <td style="width: 60%">'+ hd_sl +'</td>'+\
         '                       </tr>'+\
         '                       <tr>'+\
-        '                           <td><h6>'+ c_signal +'</h6></td>'+\
         '                           <td><h6>'+ c_entry +'</h6></td>'+\
         '                           <td><h6>'+ c_tp +'</h6></td>'+\
         '                           <td><h6>'+ c_sl +'</h6></td>'+\
