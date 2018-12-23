@@ -43,12 +43,12 @@ def get_sign_header(uid):
             badge = row[0]
 
         if badge.find('-') == -1:
-            signal = '<span class="btn btn-outline-success"><h6>Buy</h6></span>'
+            signal = '<span class="btn btn-outline-success"><h4>Buy</h4></span>'
             entry = trade_1_entry
             tp = trade_1_tp
             sl = trade_1_sl
         else:
-            signal = '<span class="btn btn-outline-danger"><h6>Sell</h6></span>'
+            signal = '<span class="btn btn-outline-danger"><h4>Sell</h4></span>'
             entry = trade_3_entry
             tp = trade_3_tp
             sl = trade_3_sl
