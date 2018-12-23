@@ -121,10 +121,16 @@ def get_ta_chart(uid):
         day = chart_date.strftime("%d")
         price_close = price_close.replace('0','')
         forecast = forecast.replace('0','')
-        lt_upper_trend_line = str( lt_upper_trend_line.replace('0','') )
-        lt_lower_trend_line = str( lt_lower_trend_line.replace('0','') )
-        st_upper_trend_line = str( st_upper_trend_line.replace('0','') )
-        st_lower_trend_line = str( st_lower_trend_line.replace('0','') )
+
+        lt_upper_trend_line = str( lt_upper_trend_line )
+        lt_lower_trend_line = str( lt_lower_trend_line )
+        st_lower_trend_line = str( st_lower_trend_line )
+        st_upper_trend_line = str( st_upper_trend_line )
+        
+        lt_upper_trend_line =  lt_upper_trend_line.replace('0','')
+        lt_lower_trend_line =  lt_lower_trend_line.replace('0','')
+        st_lower_trend_line =  st_lower_trend_line.replace('0','')
+        st_upper_trend_line =  st_upper_trend_line.replace('0','')
 
 
         if i > 0:
