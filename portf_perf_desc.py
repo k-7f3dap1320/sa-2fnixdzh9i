@@ -171,7 +171,7 @@ def get_chart_box(uid):
     '                  </div>'
     '            </div>'+\
     '        </div>'
-    #To disable tab: remove the data-toggle="tab"
+    #To disable tab: remove the data-toggle="pill"
 
 
     return r
