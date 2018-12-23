@@ -143,7 +143,7 @@ def get_ta_chart(uid):
 
         i += 1
 
-    chart_title = '1-week Technical analysis and Forecast'
+    chart_title = 'Technical analysis and Forecast'
     chart_font_size = 10
     l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
     l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
