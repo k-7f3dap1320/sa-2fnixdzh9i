@@ -108,6 +108,7 @@ def get_ta_chart(uid):
     sql = "SELECT symbol, date, price_close, forecast, lt_upper_trend_line, lt_lower_trend_line, "+\
     "st_upper_trend_line, st_lower_trend_line, ma200 FROM chart_data WHERE uid=" + str(uid) +" "+\
     "ORDER BY date "
+    print(sql)
     cr.execute(sql)
     rs = cr.fetchall()
     data = ''
@@ -141,9 +142,6 @@ def get_ta_chart(uid):
         str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
 
         i += 1
-
-    print(data)
-
 
     chart_title = '1-week Technical analysis and Forecast'
     chart_font_size = 10
