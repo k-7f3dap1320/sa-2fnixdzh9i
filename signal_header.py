@@ -19,7 +19,7 @@ def get_sign_header(uid):
         sql = "SELECT instruments.symbol, instruments.w_forecast_change, instruments.w_forecast_display_info, "+\
         "instruments.trade_1_type, instruments.trade_1_entry, instruments.trade_1_tp, instruments.trade_1_sl, "+\
         "instruments.trade_3_type, instruments.trade_3_entry, instruments.trade_3_tp, instruments.trade_3_sl "+\
-        "FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+        "instruments.decimal_places FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         " WHERE symbol_list.uid=" + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -31,10 +31,11 @@ def get_sign_header(uid):
             trade_1_entry = row[4]
             trade_1_tp = row[5]
             trade_1_sl = row[6]
-            trade_3_type = row[3]
-            trade_3_entry = row[4]
-            trade_3_tp = row[5]
-            trade_3_sl = row[6]
+            trade_3_type = row[7]
+            trade_3_entry = row[8]
+            trade_3_tp = row[9]
+            trade_3_sl = row[10]
+            decimal_places = row[11]
 
         sql = "SELECT price_instruments_data.date, price_instruments_data.price_close  "+\
         "FROM price_instruments_data JOIN symbol_list ON price_instruments_data.symbol = symbol_list.symbol "+\
@@ -64,11 +65,11 @@ def get_sign_header(uid):
         hd_tp = 'Target price'
         hd_sl = 'Stop loss'
 
-        c_price = str(price_close)
+        c_price = str( round(price_close, decimal_places) )
         c_signal = signal
-        c_entry = str(entry)
-        c_tp = str(tp)
-        c_sl = str(sl)
+        c_entry = str( round(entry, decimal_places) )
+        c_tp = str( round(tp, decimal_places) )
+        c_sl = str( round(sl, decimal_places) )
 
 
         descr_box = '' +\
@@ -84,7 +85,7 @@ def get_sign_header(uid):
         '                           <td>'+ hd_sl +'</td>'+\
         '                       </tr>'+\
         '                       <tr>'+\
-        '                           <td><h5>'+ c_price +'<h5></td>'+\
+        '                           <td><h4>'+ c_price +'<h4></td>'+\
         '                           <td><h6>'+ c_signal +'</h6></td>'+\
         '                           <td><h6>'+ c_entry +'</h6></td>'+\
         '                           <td><h6>'+ c_tp +'</h6></td>'+\
