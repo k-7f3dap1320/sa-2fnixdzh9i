@@ -122,10 +122,10 @@ def get_ta_chart(uid):
 
         price_close = price_close.replace('0','')
         forecast = forecast.replace('0','')
-        lt_upper_trend_line = lt_upper_trend_line.replace('0','')
-        lt_lower_trend_line = lt_lower_trend_line.replace('0','')
-        st_lower_trend_line = st_lower_trend_line.replace('0','')
-        st_upper_trend_line = st_upper_trend_line.replace('0','')
+        lt_upper_trend_line = lt_upper_trend_line.replace('0.0','null')
+        lt_lower_trend_line = lt_lower_trend_line.replace('0.0','null')
+        st_lower_trend_line = st_lower_trend_line.replace('0.0','null')
+        st_upper_trend_line = st_upper_trend_line.replace('0.0','null')
 
         if i > 0:
             data = data + ','
