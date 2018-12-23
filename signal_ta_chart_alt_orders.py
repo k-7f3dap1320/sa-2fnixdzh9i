@@ -115,7 +115,7 @@ def get_ta_chart(uid):
         lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
         st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
 
-    title = '1-week Technical analysis & Forecast'
+    title = '1-week Technical analysis and Forecast'
     l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
     l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
     l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
@@ -137,7 +137,7 @@ def get_ta_chart(uid):
     "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
     "        data.addRows(["+data+"]);"+\
     "        var options = {"+\
-    "          title: 'Company Performance',"+\
+    "          title: '"+ title +"',"+\
     "          vAxis: {minValue: 0}"+\
     "          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},"+\
     "        };"+\
