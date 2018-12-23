@@ -102,9 +102,49 @@ def get_alt_orders(uid):
 
     return r
 
+def get_ta_chart(uid):
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT symbol, date, price_close, forecast, lt_upper_trend_line, lt_lower_trend_line, st_upper_trend_line, st_lower_trend_line, ma200 WHERE uid=" + str(uid)
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs:
+        symbol = row[0]; chart_date = row[1]; price_close = row[2]; forecast = row[3]
+        lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
+        st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
+
+    l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
+    l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
+    l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
+
+    "<script>"+\
+    "      google.charts.load('current', {'packages':['corechart']});"+\
+    "      google.charts.setOnLoadCallback(drawChart);"+\
+    "      function drawChart() {"+\
+    "        var data = new google.visualization.DataTable();"+\
+    "        data.addColumn('string', '"+ l_symbol +"');"+\
+    "        data.addColumn('date', '"+ l_date +"');"+\
+    "        data.addColumn('number', '"+ l_price_close +"');"+\
+    "        data.addColumn('number', '"+ l_forecast +"');"+\
+    "        data.addColumn('number', '"+ l_lt_up_trend +"');"+\
+    "        data.addColumn('number', '"+ l_lt_low_trend +"');"+\
+    "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
+    "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
+    "        data.addRows(["+data+"]);"+\
+    "        var options = {"+\
+    "          title: 'Company Performance',"+\
+    "          vAxis: {minValue: 0}"+\
+    "          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},"+\
+    "        };"+\
+    "        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));"+\
+    "        chart.draw(data, options);"+\
+    "      }"+\
+    "</script>"
 
 
-def get_sign_ta_chart(uid):
+
+
+def get_sign_ta_chart_alt_orders(uid):
 
     try:
         signal_box = ''; tech_chart = ''
@@ -119,11 +159,32 @@ def get_sign_ta_chart(uid):
         '            </div>'+\
         '        </div>'
 
+        tab_1_label = 'Technical Analysis'; tab_1_link = '#ta'; tab_1_id = '#ta'
+        tab_2_label = 'Instrument vs Signal'; tab_2_link = '#vs'; tab_2_id = '#vs'
+        tab_3_label = 'Risk assessment'; tab_3_link = '#risk'; tab_3_id = '#risk'
+
         tech_chart = '' +\
         '        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part sa-signal-ta-chart">'+\
+        '                  <ul id="sa-tab-sm" class="nav nav-pills" role="tablist">'+\
+        '                    <li class="nav-item">'+\
+        '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
+        '                    </li>'+\
+        '                    <li class="nav-item">'+\
+        '                      <a class="nav-link" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
+        '                    </li>'+\
+        '                    <li class="nav-item">'+\
+        '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+        '                    </li>'+\
+        '                  </ul>'+\
+        '                  <div class="tab-content">'+\
+        '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+'</div>'+\
+        '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
+        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
+        '                  </div>'+\
         '            </div>'+\
         '        </div>'
+        #To disable tab: remove the data-toggle="pill"
     except Exception as e: print(e)
 
     return signal_box + tech_chart
