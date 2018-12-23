@@ -42,7 +42,7 @@ def get_sign_header(uid):
         for row in rs:
             badge = row[0]
 
-        if if badge.find('-') == -1:
+        if badge.find('-') == -1:
             signal = '<span class="btn btn-outline-success">Buy</span>'
             entry = trade_1_entry
             tp = trade_1_tp
