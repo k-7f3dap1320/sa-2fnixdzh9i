@@ -139,7 +139,7 @@ def get_ta_chart(uid):
     "        var options = {"+\
     "          title: '"+ title +"',"+\
     "          vAxis: {minValue: 0},"+\
-    "          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},"+\
+    "          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}"+\
     "        };"+\
     "        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));"+\
     "        chart.draw(data, options);"+\
