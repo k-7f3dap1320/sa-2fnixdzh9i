@@ -86,7 +86,7 @@ def get_alt_orders(uid):
     '</tr>'
 
     r = ''+\
-    '<table class="table table-sm">'+\
+    '<table class="table table-sm table-hover sa-table-sm">'+\
     '<thead>'+\
     '    <tr>'+\
     '      <th scope="col">'+ hd_order +'</th>'+\
@@ -109,9 +109,12 @@ def get_sign_ta_chart(uid):
     try:
         signal_box = ''; tech_chart = ''
 
+
+        signal_box_title = 'Alternative Orders'
         signal_box = '' +\
         '        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part">'+\
+        '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
         '        </div>'
