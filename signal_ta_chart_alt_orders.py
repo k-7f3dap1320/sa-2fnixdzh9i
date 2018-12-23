@@ -119,6 +119,13 @@ def get_ta_chart(uid):
         year = chart_date.strftime("%Y")
         month = chart_date.strftime("%m")
         day = chart_date.strftime("%d")
+        price_close = price_close.replace('0','')
+        forecast = forecast.replace('0','')
+        lt_upper_trend_line = str( lt_upper_trend_line.replace('0','') )
+        lt_lower_trend_line = str( lt_lower_trend_line.replace('0','') )
+        st_upper_trend_line = str( st_upper_trend_line.replace('0','') )
+        st_lower_trend_line = str( st_lower_trend_line.replace('0','') )
+
 
         if i > 0:
             data = data + ','
