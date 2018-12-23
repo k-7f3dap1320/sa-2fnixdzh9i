@@ -120,10 +120,10 @@ def get_ta_chart(uid):
         month = chart_date.strftime("%m")
         day = chart_date.strftime("%d")
 
-        if price_close == '0' or price_close == '0.0':
-            price_close = 'null'
         if forecast == '0' or forecast == '0.0':
             forecast = 'null'
+        if price_close == '0' or price_close == '0.0' or forecast != 'null':
+            price_close = 'null'
         if lt_upper_trend_line == '0' or lt_upper_trend_line == '0.0':
             lt_upper_trend_line = 'null'
         if lt_lower_trend_line == '0' or lt_lower_trend_line == '0.0':
