@@ -128,6 +128,8 @@ def get_ta_chart(uid):
 
         i += 1
 
+    print(data)
+
 
     chart_title = '1-week Technical analysis and Forecast'
     chart_font_size = 10
