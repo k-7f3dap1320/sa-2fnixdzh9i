@@ -171,12 +171,12 @@ def get_ta_chart(uid):
     '          vAxis: { textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { color: "transparent" } },'+\
     '          hAxis: {textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { count: 4 } }, '+\
     '          series:{'+\
-    '                   1: {areaOpacity: 0.1, color: "black", lineWidth: 2},'+\
+    '                   0: {areaOpacity: 0.1, color: "#9fc1e1", lineWidth: 2},'+\
+    '                   1: {areaOpacity: 0.1, color: "#ff9800", lineWidth: 1},'+\
     '                   2: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
     '                   3: {areaOpacity: 0, color: "black", lineWidth: 1},'+\
-    '                   4: {areaOpacity: 0, color: "black", lineWidth: 1},'+\
-    '                   5: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] },'+\
-    '                   6: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] }'+\
+    '                   4: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] },'+\
+    '                   5: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] }'+\
     '                  },'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
     '        };'+\
