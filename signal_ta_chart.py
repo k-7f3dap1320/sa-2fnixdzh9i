@@ -20,7 +20,7 @@ def get_alt_orders(uid):
     "instruments.decimal_places FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
-    for row in rs_s:
+    for row in rs:
         trade_1_entry = row[0]; trade_1_tp = row[1]; trade_1_sl = row[2]; trade_1_type = row[3]
         trade_2_entry = row[4]; trade_2_tp = row[5]; trade_2_sl = row[6]; trade_2_type = row[7]
         trade_3_entry = row[8]; trade_3_tp = row[9]; trade_3_sl = row[10]; trade_3_type = row[11]
