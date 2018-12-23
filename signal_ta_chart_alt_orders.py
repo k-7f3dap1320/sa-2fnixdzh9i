@@ -113,10 +113,13 @@ def get_ta_chart(uid):
         lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
         st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
 
+    title = '1-week Technical analysis & Forecast'
     l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
     l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
     l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
 
+
+    r = "" +\
     "<script>"+\
     "      google.charts.load('current', {'packages':['corechart']});"+\
     "      google.charts.setOnLoadCallback(drawChart);"+\
@@ -141,7 +144,7 @@ def get_ta_chart(uid):
     "      }"+\
     "</script>"
 
-
+    return r
 
 
 def get_sign_ta_chart_alt_orders(uid):
@@ -159,9 +162,11 @@ def get_sign_ta_chart_alt_orders(uid):
         '            </div>'+\
         '        </div>'
 
-        tab_1_label = 'Technical Analysis'; tab_1_link = '#ta'; tab_1_id = '#ta'
-        tab_2_label = 'Instrument vs Signal'; tab_2_link = '#vs'; tab_2_id = '#vs'
-        tab_3_label = 'Risk assessment'; tab_3_link = '#risk'; tab_3_id = '#risk'
+        tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
+        tab_2_label = 'Performance'; tab_2_link = '#perf'; tab_2_id = 'perf'
+        tab_3_label = 'Risk assessment'; tab_3_link = '#risk'; tab_3_id = 'risk'
+        tab_4_label = 'Live chart'; tab_4_link = '#chart'; tab_4_id = 'chart'
+
 
         tech_chart = '' +\
         '        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">'+\
@@ -178,7 +183,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
-        '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+'</div>'+\
+        '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) +'</div>'+\
         '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
         '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
         '                  </div>'+\
