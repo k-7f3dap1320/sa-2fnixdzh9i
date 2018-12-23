@@ -122,22 +122,20 @@ def get_ta_chart(uid):
         price_close = price_close.replace('0','')
         forecast = forecast.replace('0','')
 
-        lt_upper_trend_line = str( lt_upper_trend_line )
-        lt_lower_trend_line = str( lt_lower_trend_line )
-        st_lower_trend_line = str( st_lower_trend_line )
-        st_upper_trend_line = str( st_upper_trend_line )
-        
-        lt_upper_trend_line =  lt_upper_trend_line.replace('0','')
-        lt_lower_trend_line =  lt_lower_trend_line.replace('0','')
-        st_lower_trend_line =  st_lower_trend_line.replace('0','')
-        st_upper_trend_line =  st_upper_trend_line.replace('0','')
-
+        '''
+        price_close
+        forecast
+        lt_upper_trend_line
+        lt_lower_trend_line
+        st_lower_trend_line
+        st_upper_trend_line
+        '''
 
         if i > 0:
             data = data + ','
-        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close)+','+ str(forecast) + ','+\
-        str(lt_upper_trend_line) + ','+ str(lt_lower_trend_line) + ',' +\
-        str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
+        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close).replace('0','') +','+ str(forecast).replace('0','') + ','+\
+        str(lt_upper_trend_line).replace('0','') + ','+ str(lt_lower_trend_line).replace('0','') + ',' +\
+        str(st_upper_trend_line).replace('0','') + ','+ str(st_lower_trend_line).replace('0','') +']'
 
         i += 1
 
