@@ -115,7 +115,8 @@ def get_ta_chart(uid):
         lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
         st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
 
-    title = '1-week Technical analysis and Forecast'
+    chart_title = '1-week Technical analysis and Forecast'
+    chart_font_size = 10
     l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
     l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
     l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
@@ -136,15 +137,19 @@ def get_ta_chart(uid):
     "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
     "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
     "        data.addRows(["+data+"]);"+\
-    "        var options = {"+\
-    "          title: '"+ title +"',"+\
-    "          vAxis: {minValue: 0},"+\
-    "          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}"+\
-    "        };"+\
-    "        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));"+\
-    "        chart.draw(data, options);"+\
+    '        var options = {'+\
+    '          title: "'+ chart_title +'", '+\
+    '          legend: "none",'+\
+    '          vAxis: {minValue: 0, textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { color: "transparent" } },'+\
+    '          hAxis: {textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { count: 4 } }, '+\
+    '          series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
+    '          chartArea:{width:"80%",height:"80%"}'+\
+    '        };'+\
+    '        var chart = new google.visualization.AreaChart(document.getElementById("ta_chart"));'+\
+    '        chart.draw(data, options);'+\
     "      }"+\
-    "</script>"
+    "</script>"+\
+    '<div id="ta_chart" class="sa-chart-hw-100"></div>'
 
     return r
 
