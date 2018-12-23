@@ -113,7 +113,7 @@ def get_sign_ta_chart(uid):
         signal_box_title = 'Alternative Orders'
         signal_box = '' +\
         '        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part sa-signal-ta-chart">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
@@ -121,7 +121,7 @@ def get_sign_ta_chart(uid):
 
         tech_chart = '' +\
         '        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part sa-signal-ta-chart">'+\
         '            </div>'+\
         '        </div>'
     except Exception as e: print(e)
