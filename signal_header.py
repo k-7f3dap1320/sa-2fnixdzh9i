@@ -18,7 +18,7 @@ def get_sign_header(uid):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.symbol, instruments.w_forecast_change, instruments.w_forecast_display_info, "+\
         "instruments.trade_1_type, instruments.trade_1_entry, instruments.trade_1_tp, instruments.trade_1_sl, "+\
-        "instruments.trade_3_type, instruments.trade_3_entry, instruments.trade_3_tp, instruments.trade_3_sl "+\
+        "instruments.trade_3_type, instruments.trade_3_entry, instruments.trade_3_tp, instruments.trade_3_sl, "+\
         "instruments.decimal_places FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
         "WHERE symbol_list.uid=" + str(uid)
         cr.execute(sql)
