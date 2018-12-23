@@ -92,8 +92,6 @@ def get_sign_header(uid):
         '                       </tr>'+\
         '                   </tbody>'+\
         '               </table>'+\
-
-
         '            </div>'+\
         '        </div>'
 
