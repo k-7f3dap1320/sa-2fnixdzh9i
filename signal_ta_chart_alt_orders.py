@@ -168,7 +168,7 @@ def get_ta_chart(uid):
     '        var options = {'+\
     '          title: "'+ chart_title +'", '+\
     '          legend: "none",'+\
-    '          vAxis: {minValue: 0, textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { color: "transparent" } },'+\
+    '          vAxis: { textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { color: "transparent" } },'+\
     '          hAxis: {textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { count: 4 } }, '+\
     '          series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
