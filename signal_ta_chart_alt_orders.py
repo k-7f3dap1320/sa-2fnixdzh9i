@@ -110,10 +110,24 @@ def get_ta_chart(uid):
     cr.execute(sql)
     rs = cr.fetchall()
     data = ''
+    i = 0
     for row in rs:
         symbol = row[0]; chart_date = row[1]; price_close = row[2]; forecast = row[3]
         lt_upper_trend_line = row[4]; lt_lower_trend_line = row[5]
         st_upper_trend_line = row[6]; st_lower_trend_line = row[7]
+
+        year = chart_date.strftime("%Y")
+        month = chart_date.strftime("%m")
+        day = chart_date.strftime("%d")
+
+        if i > 0:
+            data = data + ','
+        data = data + '['+ symbol +','+ 'new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close)+','+ str(forecast) + ','+\
+        str(lt_upper_trend_line) + ','+ str(lt_lower_trend_line) + ',' +\
+        str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
+
+        i += 1
+
 
     chart_title = '1-week Technical analysis and Forecast'
     chart_font_size = 10
