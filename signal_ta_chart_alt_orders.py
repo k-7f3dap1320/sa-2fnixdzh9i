@@ -174,7 +174,7 @@ def get_ta_chart(uid):
     '                   1: {areaOpacity: 0.1, color: "black", lineWidth: 2},'+\
     '                   2: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
     '                   3: {areaOpacity: 0, color: "black", lineWidth: 1},'+\
-    '                   4: {areaOpacity: 0, color: "black", lineWidth: 1},'+\
+    '                   4: {areaOpacity: 0, color: "black", lineWidth: 1}'+\
     '                  }'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
     '        };'+\
@@ -184,12 +184,6 @@ def get_ta_chart(uid):
     "</script>"+\
     '<div id="ta_chart" class="sa-chart-hw-100"></div>'
 
-
-'''
-    '                   5: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] },'+\
-    '                   6: {areaOpacity: 0.02, color: "black", lineWidth: 1, lineDashStyle:[10,2] }'+\
-
-'''
 
     return r
 
