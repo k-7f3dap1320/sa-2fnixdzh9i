@@ -184,7 +184,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
         '                    </li>'+\
         '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+        '                      <a class="nav-link" href="'+ tab_4_link +'">'+ tab_4_label +'</a>'+\
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
