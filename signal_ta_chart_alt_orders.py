@@ -166,9 +166,10 @@ def get_ta_chart(uid):
     "        data.addRows(["+data+"]);"+\
     '        var options = {'+\
     '          title: "'+ chart_title +'", '+\
-    '          legend: "bottom",'+\
-    '          vAxis: { textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { color: "transparent" } },'+\
-    '          hAxis: {textStyle: {fontSize:'+ str(chart_font_size) +'}, gridlines: { count: 4 } }, '+\
+    '          fontSize: '+ str(chart_font_size)+','+\
+    '          legend: "top",'+\
+    '          vAxis: { gridlines: { color: "transparent" } },'+\
+    '          hAxis: { gridlines: { count: 4 } }, '+\
     '          series:{'+\
     '                   0: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
     '                   1: {areaOpacity: 0.2, color: "#ff9800", lineWidth: 3},'+\
