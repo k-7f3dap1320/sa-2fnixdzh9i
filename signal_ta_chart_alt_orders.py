@@ -189,6 +189,40 @@ def get_ta_chart(uid):
 
     return r
 
+def get_profile_content(uid):
+
+    r = ''
+
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT symbol_list.uid, instruments.fullname, instruments.description "+\
+        "FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
+        "WHERE symbol_list.uid=" + str(uid)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            uid = row[0]
+            fullname = row[1]
+            description = row[2]
+
+        box_title = fullname + ' profile'
+
+        if len(description) < 1:
+            box_description = 'No description available for this instrument.'
+        else:
+            box_description = description
+
+        r = ''+\
+        '   <div><h6>'+ box_title + '</h6></div>'+\
+        '   <div>'+ box_description +'</div>'
+
+        cr.close()
+        connection.close()
+
+    except Exception as e: print(e)
+
+    return r
 
 def get_sign_ta_chart_alt_orders(uid):
 
@@ -202,6 +236,13 @@ def get_sign_ta_chart_alt_orders(uid):
         '            <div class="box-part sa-signal-alt-ord-prf">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
+        '            </div>'+\
+        '        </div>'
+
+        profile_box = '' +\
+        '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
+        '            <div class="box-part sa-signal-alt-ord-prf">'+\
+        get_profile_content(uid) +\
         '            </div>'+\
         '        </div>'
 
@@ -238,4 +279,4 @@ def get_sign_ta_chart_alt_orders(uid):
         #To disable tab: remove the data-toggle="pill"
     except Exception as e: print(e)
 
-    return signal_box + tech_chart
+    return signal_box + profile_box + tech_chart
