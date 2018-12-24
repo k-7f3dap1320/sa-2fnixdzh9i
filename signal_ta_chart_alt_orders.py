@@ -237,10 +237,6 @@ def get_sign_ta_chart_alt_orders(uid):
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
-        '        </div>'
-
-        profile_box = '' +\
-        '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part sa-signal-alt-ord-prf">'+\
         get_profile_content(uid) +\
         '            </div>'+\
@@ -279,4 +275,4 @@ def get_sign_ta_chart_alt_orders(uid):
         #To disable tab: remove the data-toggle="pill"
     except Exception as e: print(e)
 
-    return signal_box + profile_box + tech_chart
+    return signal_box + tech_chart
