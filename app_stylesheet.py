@@ -27,6 +27,7 @@ def get_stylesheet(burl):
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
     sa_tab_sm = '#sa-tab-sm{font-size: 12px;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 400px; overflow: auto;}'
+    sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 200px; overflow: auto;}'
 
     #Page loading gif display
     loading = ''+\
@@ -54,6 +55,7 @@ def get_stylesheet(burl):
     sa_portf_perf_portf_chart +\
     sa_tab_sm +\
     sa_signal_ta_chart +\
+    sa_signal_alt_ord_prf +\
     loading +\
     '</style>'
 

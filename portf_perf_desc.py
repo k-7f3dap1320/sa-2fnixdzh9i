@@ -128,8 +128,9 @@ def get_perf_chart(uid):
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
     '                            title: "'+ chart_title +'", '+\
+    '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
     '                            legend: "none",'+\
-    '                            vAxis: {minValue: 0, textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { color: "transparent" } },'+\
+    '                            vAxis: {minValue: 0}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: {textStyle: {fontSize:'+ str(portf_perf_font_size) +'}, gridlines: { count: 4 } }, '+\
     '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
     '                            chartArea:{width:"80%",height:"80%"}'+\
