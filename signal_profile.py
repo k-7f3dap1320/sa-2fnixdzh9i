@@ -33,7 +33,7 @@ def get_box_content(uid):
 
         box_title = fullname + ' profile'
         box_content = '' +\
-        '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
+        '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
         '            <div class="box-part sa-signal-alt-ord-prf">'+\
         '               <div><h6>'+ box_title + '</h6></div>'+\
         '               <div>'+ box_description +'</div>'+\
