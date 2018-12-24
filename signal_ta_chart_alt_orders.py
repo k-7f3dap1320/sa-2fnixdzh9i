@@ -213,7 +213,7 @@ def get_sign_ta_chart_alt_orders(uid):
 
         tech_chart = '' +\
         '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part sa-signal-ta-char">'+\
+        '            <div class="box-part sa-signal-ta-chart">'+\
         '                  <ul id="sa-tab-sm" class="nav nav-pills" role="tablist">'+\
         '                    <li class="nav-item">'+\
         '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
