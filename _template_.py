@@ -9,9 +9,9 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_sign_recommend(uid):
+def get_box_content(uid):
 
-    recomm_box = ''
+    box_content = ''
 
     '''
     try:
@@ -23,10 +23,11 @@ def get_sign_recommend(uid):
         for row in rs:
             symbol = row[0]
 
-
-        recomm_box = '' +\
+        box_title = 'Title of box content'
+        box_content = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
+        '               <div><h6>'+ box_title + '</h6></div>'+\
         '            </div>'+\
         '        </div>'
 
@@ -38,4 +39,4 @@ def get_sign_recommend(uid):
     except Exception as e: print(e)
     '''
 
-    return recomm_box
+    return box_content
