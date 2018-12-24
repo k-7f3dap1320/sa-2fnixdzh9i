@@ -27,7 +27,7 @@ def get_stylesheet(burl):
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
     sa_tab_sm = '#sa-tab-sm{font-size: 12px;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 500px; overflow: auto;}'
-    sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto;}'
+    sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto; font-size: 12px;}'
 
     #Page loading gif display
     loading = ''+\
