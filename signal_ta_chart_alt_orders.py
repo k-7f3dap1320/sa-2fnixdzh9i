@@ -190,6 +190,74 @@ def get_ta_chart(uid):
     "</script>"+\
     '<div id="ta_chart" class="sa-chart-hw-100"></div>'
 
+    return r
+
+
+def get_rsi_chart(uid):
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT date, rsi, rsi_oversold, rsi_overbought FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date"
+    print(sql)
+    cr.execute(sql)
+    rs = cr.fetchall()
+    data = ''
+    i = 0
+    for row in rs:
+        rsi_date = row[0]
+        rsi_value = str( row[1] )
+        rsi_oversold = str( row[2] )
+        rsi_overbought = str( row[3] )
+
+        year = rsi_date.strftime("%Y")
+        month = rsi_date.strftime("%m")
+        day = rsi_date.strftime("%d")
+
+        if rsi_value == '0' or rsi_value == '0.0':
+            rsi_value = 'null'
+        if rsi_oversold == '0' or rsi_oversold == '0.0'
+            rsi_oversold = 'null'
+        if rsi_overbought == '0' or rsi_overbought == '0.0'
+            rsi_overbought = 'null'
+
+        if i > 0:
+            data = data + ','
+        data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(rsi_value) +','+ str(rsi_overbought)  + ',' + str(rsi_oversold)  + ']'
+
+        i += 1
+
+    chart_title = 'rsi14'
+    chart_font_size = 10
+    l_rsi_value = 'rsi14'; l_rsi_overbought = 'Overbought'; l_rsi_oversold = 'Oversold'
+
+    r = "" +\
+    "<script>"+\
+    "      google.charts.load('current', {'packages':['corechart']});"+\
+    "      google.charts.setOnLoadCallback(drawChart);"+\
+    "      function drawChart() {"+\
+    "        var data = new google.visualization.DataTable();"+\
+    "        data.addColumn('date', '"+ l_date +"');"+\
+    "        data.addColumn('number', '"+ l_rsi_value +"');"+\
+    "        data.addColumn('number', '"+ l_rsi_overbought +"');"+\
+    "        data.addColumn('number', '"+ l_rsi_oversold +"');"+\
+    "        data.addRows(["+data+"]);"+\
+    '        var options = {'+\
+    '          title: "'+ chart_title +'", '+\
+    '          fontSize: '+ str(chart_font_size)+','+\
+    '          legend: "top",'+\
+    '          vAxis: { gridlines: { color: "transparent" } },'+\
+    '          hAxis: { gridlines: { count: 4 } }, '+\
+    '          series:{'+\
+    '                   0: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
+    '                   1: {areaOpacity: 0.2, color: "red", lineWidth: 2},'+\
+    '                   2: {areaOpacity: 0, color: "green", lineWidth: 2}'+\
+    '                  },'+\
+    '          chartArea:{width:"80%",height:"80%"}'+\
+    '        };'+\
+    '        var chart = new google.visualization.AreaChart(document.getElementById("rsi_chart"));'+\
+    '        chart.draw(data, options);'+\
+    "      }"+\
+    "</script>"+\
+    '<div id="rsi_chart" class="sa-chart-hw-100"></div>'
 
     return r
 
@@ -270,7 +338,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
-        '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) +'</div>'+\
+        '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
         '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
         '                  </div>'+\
