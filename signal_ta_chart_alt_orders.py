@@ -257,7 +257,7 @@ def get_rsi_chart(uid):
     '        chart.draw(data, options);'+\
     "      }"+\
     "</script>"+\
-    '<div id="rsi_chart" class="sa-chart-hw-100"></div>'
+    '<div id="rsi_chart" class="sa-chart-hw-100-rsi"></div>'
 
     return r
 
