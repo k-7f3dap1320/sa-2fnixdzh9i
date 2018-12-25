@@ -23,7 +23,7 @@ def get_stylesheet(burl):
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 80%;}'
-    sa_chart_hw_100 = '.sa-chart-hw-100-rsi{height: 20%;}'
+    sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 20%;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
     sa_tab_sm = '#sa-tab-sm{font-size: 12px;}'
@@ -52,6 +52,7 @@ def get_stylesheet(burl):
     sa_search_input +\
     sa_descr_box_sm +\
     sa_chart_hw_100 +\
+    sa_chart_hw_100_rsi +\
     sa_portf_alloc +\
     sa_portf_perf_portf_chart +\
     sa_tab_sm +\
