@@ -116,7 +116,7 @@ def get_ta_chart(uid):
     for row in rs:
         symbol = row[0]; chart_date = row[1]; price_close = str( row[2] ) ; forecast = str( row[3] )
         lt_upper_trend_line = str( row[4] ) ; lt_lower_trend_line = str( row[5] )
-        st_upper_trend_line = str( row[6] ); st_lower_trend_line = str( row[7] )
+        st_upper_trend_line = str( row[6] ); st_lower_trend_line = str( row[7] ) ; ma200 = str( row[8] )
 
         year = chart_date.strftime("%Y")
         month = chart_date.strftime("%m")
@@ -134,12 +134,14 @@ def get_ta_chart(uid):
             st_upper_trend_line = 'null'
         if st_lower_trend_line == '0' or st_lower_trend_line == '0.0':
             st_lower_trend_line = 'null'
+        if ma200 == '0' or ma200 == '0.0':
+            ma200 == 'null'
 
         if i > 0:
             data = data + ','
         data = data + '[new Date('+str(year)+','+str(int(month)-1 )+', '+str(day)+')'+','+ str(price_close) +','+ str(forecast) + ','+\
         str(lt_upper_trend_line) + ','+ str(lt_lower_trend_line) + ',' +\
-        str(st_upper_trend_line) + ','+ str(st_lower_trend_line) +']'
+        str(st_upper_trend_line) + ','+ str(st_lower_trend_line) + ',' + str(ma200)  + ']'
 
         i += 1
 
@@ -148,7 +150,7 @@ def get_ta_chart(uid):
     l_symbol = 'Symbol'; l_date = 'Date'; l_price_close = "price"; l_forecast = 'Forecast'
     l_lt_up_trend = 'Long-term upper trend line'; l_lt_low_trend = 'Long-term lower trend line'
     l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
-
+    l_ma200 = 'MA200'
 
     r = "" +\
     "<script>"+\
@@ -163,6 +165,8 @@ def get_ta_chart(uid):
     "        data.addColumn('number', '"+ l_lt_low_trend +"');"+\
     "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
     "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
+    "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
+    "        data.addColumn('number', '"+ l_ma200 +"');"+\
     "        data.addRows(["+data+"]);"+\
     '        var options = {'+\
     '          title: "'+ chart_title +'", '+\
@@ -176,7 +180,8 @@ def get_ta_chart(uid):
     '                   2: {areaOpacity: 0, color: "#47808d", lineWidth: 2},'+\
     '                   3: {areaOpacity: 0, color: "#47808d", lineWidth: 2},'+\
     '                   4: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] },'+\
-    '                   5: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] }'+\
+    '                   5: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] },'+\
+    '                   6: {areaOpacity: 0, color: "red", lineWidth: 2}'+\    
     '                  },'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
     '        };'+\
