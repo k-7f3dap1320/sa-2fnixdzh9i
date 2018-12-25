@@ -196,7 +196,7 @@ def get_ta_chart(uid):
 def get_rsi_chart(uid):
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT date, rsi, rsi_oversold, rsi_overbought FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date"
+    sql = "SELECT date, rsi, rsi_oversold, rsi_overbought, forecast FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date"
     print(sql)
     cr.execute(sql)
     rs = cr.fetchall()
@@ -207,6 +207,7 @@ def get_rsi_chart(uid):
         rsi_value = str( row[1] )
         rsi_oversold = str( row[2] )
         rsi_overbought = str( row[3] )
+        forecast = str( row[4] )
 
         year = rsi_date.strftime("%Y")
         month = rsi_date.strftime("%m")
@@ -218,6 +219,10 @@ def get_rsi_chart(uid):
             rsi_oversold = 'null'
         if rsi_overbought == '0' or rsi_overbought == '0.0':
             rsi_overbought = 'null'
+        if forecast == '0' or forecast == '0.0':
+            forecast = 'null'
+        if forecast == 'null':
+            rsi_value = 'null'
 
         if i > 0:
             data = data + ','
