@@ -165,7 +165,6 @@ def get_ta_chart(uid):
     "        data.addColumn('number', '"+ l_lt_low_trend +"');"+\
     "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
     "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
-    "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
     "        data.addColumn('number', '"+ l_ma200 +"');"+\
     "        data.addRows(["+data+"]);"+\
     '        var options = {'+\
