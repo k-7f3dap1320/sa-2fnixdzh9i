@@ -214,9 +214,9 @@ def get_rsi_chart(uid):
 
         if rsi_value == '0' or rsi_value == '0.0':
             rsi_value = 'null'
-        if rsi_oversold == '0' or rsi_oversold == '0.0'
+        if rsi_oversold == '0' or rsi_oversold == '0.0':
             rsi_oversold = 'null'
-        if rsi_overbought == '0' or rsi_overbought == '0.0'
+        if rsi_overbought == '0' or rsi_overbought == '0.0':
             rsi_overbought = 'null'
 
         if i > 0:
