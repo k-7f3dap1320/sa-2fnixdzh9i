@@ -248,7 +248,7 @@ def get_rsi_chart(uid):
     '          hAxis: { gridlines: { count: 4 } }, '+\
     '          series:{'+\
     '                   0: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
-    '                   1: {areaOpacity: 0.2, color: "red", lineWidth: 2},'+\
+    '                   1: {areaOpacity: 0, color: "red", lineWidth: 2},'+\
     '                   2: {areaOpacity: 0, color: "green", lineWidth: 2}'+\
     '                  },'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
