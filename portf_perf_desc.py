@@ -139,7 +139,7 @@ def get_perf_chart(uid):
     '                          chart.draw(data, options);'+\
     '                       }'+\
     '                   </script>'+\
-    '               <div id="portf_perf_chart" class="sa-chart-hw-100"></div>'
+    '               <div id="portf_perf_chart" class="sa-chart-hw-90"></div>'
     cr.close()
     connection.close()
     return portf_perf_box
