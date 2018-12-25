@@ -227,7 +227,7 @@ def get_rsi_chart(uid):
 
     chart_title = 'rsi14'
     chart_font_size = 10
-    l_rsi_value = 'rsi14'; l_rsi_overbought = 'Overbought'; l_rsi_oversold = 'Oversold'
+    l_date = 'date'; l_rsi_value = 'rsi14'; l_rsi_overbought = 'Overbought'; l_rsi_oversold = 'Oversold'
 
     r = "" +\
     "<script>"+\
