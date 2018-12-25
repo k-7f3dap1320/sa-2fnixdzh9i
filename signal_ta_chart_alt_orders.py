@@ -221,7 +221,7 @@ def get_rsi_chart(uid):
             rsi_overbought = 'null'
         if forecast == '0' or forecast == '0.0':
             forecast = 'null'
-        if forecast == 'null':
+        if not forecast == 'null':
             rsi_value = 'null'
 
         if i > 0:
