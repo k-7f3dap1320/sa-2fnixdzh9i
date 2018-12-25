@@ -181,7 +181,7 @@ def get_ta_chart(uid):
     '                   3: {areaOpacity: 0, color: "#47808d", lineWidth: 2},'+\
     '                   4: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] },'+\
     '                   5: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] },'+\
-    '                   6: {areaOpacity: 0, color: "red", lineWidth: 2}'+\    
+    '                   6: {areaOpacity: 0, color: "red", lineWidth: 2}'+\
     '                  },'+\
     '          chartArea:{width:"80%",height:"80%"}'+\
     '        };'+\
