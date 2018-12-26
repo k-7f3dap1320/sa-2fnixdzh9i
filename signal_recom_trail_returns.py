@@ -87,6 +87,7 @@ def get_trailing_returns(uid):
     if not is_benchmark:
         sql = "SELECT symbol_list.uid, instruments.fullname FROM symbol_list JOIN instruments "+\
         "ON symbol_list.symbol = instruments.symbol WHERE instruments.market='"+ str( market ) +"' AND instruments.is_benchmark=1"
+        print(sql)
         cr.execute()
         rs = cr.fetchall()
         benchmark_uid = 0
