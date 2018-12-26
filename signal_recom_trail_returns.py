@@ -73,7 +73,7 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color:'pink'} }" +\
+    "        series: {0:{color:'pink'} }," +\
     "        hAxis: {" +\
     "          title: '' " +\
     "        }," +\
