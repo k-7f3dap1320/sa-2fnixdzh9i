@@ -24,6 +24,7 @@ def get_stylesheet(burl):
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 90%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 350px;}'
+    sa_chart_hw_50 = '.sa-chart-hw-50{height: 175px;}'
     sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 100px;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'

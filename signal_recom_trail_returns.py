@@ -68,6 +68,7 @@ def get_trailing_returns(uid):
     "            strokeWidth: 1," +\
     "            gradient: {" +\
     "              color1: 'yellow'," +\
+    "              color2: 'white'," +\
     "              x1: '0%', y1: '0%'," +\
     "              x2: '100%', y2: '100%'" +\
     "            }" +\
@@ -85,7 +86,7 @@ def get_trailing_returns(uid):
     "      chart.draw(data, options);" +\
     "    }" +\
     "    </script>" +\
-    "    <div id='trail_chart' class='sa-chart-hw-100'></div>"
+    "    <div id='trail_chart' class='sa-chart-hw-50'></div>"
 
 
     trail_chart = '' +\
