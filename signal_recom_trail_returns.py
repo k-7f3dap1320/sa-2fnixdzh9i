@@ -88,6 +88,8 @@ def get_trailing_returns(uid):
     '["'+ l_m1 + '",' + get_chart_data(uid,'m1') + ']' + ',' +\
     '["'+ l_w1 + '",' + get_chart_data(uid,'w1') + ']'
 
+    header = "    ['', ' " + fullname + " ', {type: 'string', role: 'annotation'}  ],"
+
 
     chart_content = "" +\
     "<script>" +\
@@ -95,8 +97,8 @@ def get_trailing_returns(uid):
     "google.charts.setOnLoadCallback(drawAnnotations);" +\
     "function drawAnnotations() {" +\
     "  var data = google.visualization.arrayToDataTable([" +\
-    "    ['instrument'," +\
-    " ' " + fullname + " ', {type: 'string', role: 'annotation'}]," +\
+    "    ['instrument',' " + fullname + " ', {type: 'string', role: 'annotation'}]," +\
+    header +\
     data +\
     "  ]);" +\
     "      var options = {" +\
