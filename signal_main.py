@@ -16,7 +16,7 @@ from app_navbar import *
 from details_header import *
 from signal_header import *
 from signal_ta_chart_alt_orders import *
-from signal_recomm import *
+from signal_recom_trail_returns import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -38,7 +38,7 @@ def gen_sign_page(uid,appname,burl):
             instfullname = row[0]
 
         r = get_head(  get_loading_head() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_google_chart_script() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend(uid) + '</div></div>')
+        r = r + get_body( get_loading_body(), navbar(burl) + '<div class="box"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend_trail_returns(uid) + '</div></div>')
         r = set_page(r)
 
         cr.close()
