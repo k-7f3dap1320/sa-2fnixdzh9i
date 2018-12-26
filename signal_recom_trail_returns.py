@@ -28,6 +28,7 @@ def get_trailing_returns(uid):
         w1 = row[5]
         unit = row[6]
 
+    fontSize = 10
     l_title = fullname + ' trailing returns in ('+ str( unit ) +')'
     l_y1 = '1-Year'
     l_m6 = '6-month'
@@ -58,10 +59,10 @@ def get_trailing_returns(uid):
     "        annotations: {" +\
     "          alwaysOutside: true," +\
     "          textStyle: {" +\
-    "            fontSize: 12," +\
+    "            fontSize: "+ str(fontSize) +"," +\
     "            auraColor: 'none'," +\
     "            color: '#555'" +\
-    "          }," +\" +\
+    "          }," +\
     "          boxStyle: {" +\
     "            stroke: '#ccc'," +\
     "            strokeWidth: 1," +\
