@@ -78,7 +78,7 @@ def get_trailing_returns(uid):
     "          title: '' " +\
     "        }," +\
     "        vAxis: {" +\
-    "          title: ' " +\
+    "          title: '' " +\
     "        }" +\
     "      };" +\
     "      var chart = new google.visualization.BarChart(document.getElementById('trail_chart'));" +\
