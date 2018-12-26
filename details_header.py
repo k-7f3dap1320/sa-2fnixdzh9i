@@ -37,10 +37,12 @@ def get_details_header(uid):
         else:
             badge_class = 'badge badge-danger'
 
+        badge_tooltip = 'Expected returns in the next 7 days'
+
         p_header = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        '                <div class="title"><h4>'+ instr_name +'&nbsp;<span class="'+badge_class+'">'+badge+'</span></h4></div>'+\
+        '                <div class="title"><h4>'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ badge_tooltip +'" >'+badge+'</span></h4></div>'+\
         '                <div class="text"><span class="desc">'+ sector + ' | ' + asset_class + market + symbol + isin +'</span></div>'+\
         '            </div>'+\
         '        </div>'
