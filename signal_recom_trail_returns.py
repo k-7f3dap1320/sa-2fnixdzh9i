@@ -158,12 +158,12 @@ def get_trailing_returns(uid):
     "      chart.draw(data, options);" +\
     "    }" +\
     "    </script>" +\
-    "    <div id='trail_chart' class='sa-chart-hw-50'></div>"
+    "    <div id='trail_chart' class='sa-chart-hw-90'></div>"
 
 
     trail_chart = '' +\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part">'+\
+    '            <div class="box-part sa-signal-recomm-trail-ret">'+\
     '               <div><h6>'+ l_title +'</h6></div>'+\
     chart_content +\
     '            </div>'+\
@@ -194,7 +194,7 @@ def get_recomm(uid):
 
     recomm_box = '' +\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part">'+\
+    '            <div class="box-part sa-signal-recomm-trail-ret">'+\
     '               <div><h6>'+ l_title +'</h6></div>'+\
     '               <div>'+ recommendation +'</div>'+\
     '            </div>'+\

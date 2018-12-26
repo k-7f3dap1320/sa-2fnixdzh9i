@@ -24,13 +24,13 @@ def get_stylesheet(burl):
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 90%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 350px;}'
-    sa_chart_hw_50 = '.sa-chart-hw-50{height: 300px;}'
     sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 100px;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
     sa_tab_sm = '#sa-tab-sm{font-size: 12px;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 510px; overflow: auto;}'
     sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto; font-size: 12px;}'
+    sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 300px; overflow: auto; font-size: 12px;}'
 
     #Page loading gif display
     loading = ''+\
@@ -53,7 +53,6 @@ def get_stylesheet(burl):
     sa_table_sm +\
     sa_search_input +\
     sa_descr_box_sm +\
-    sa_chart_hw_50 +\
     sa_chart_hw_90 +\
     sa_chart_hw_100 +\
     sa_chart_hw_100_rsi +\
@@ -62,6 +61,7 @@ def get_stylesheet(burl):
     sa_tab_sm +\
     sa_signal_ta_chart +\
     sa_signal_alt_ord_prf +\
+    sa_signal_recomm_trail_ret +\
     loading +\
     '</style>'
 
