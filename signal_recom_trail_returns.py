@@ -61,6 +61,18 @@ def get_trailing_returns(uid):
     for row in rs:
         fullname = row[0]
 
+    sql = "SELECT price_instruments_data.date FROM price_instruments_data JOIN symbol_list "+\
+    "ON symbol_list.symbol = price_instruments_data.symbol WHERE symbol_list.uid=" + str(uid) +" "+\
+    "ORDER BY date DESC LIMIT 1"
+
+    cr.execute(sql)
+    rs = cr.fetchall()
+
+    for row in rs:
+        as_date = row[0]
+
+    l_as_date = 'Trailing returns as of '+ as_date.strftime("%d-%b-%Y")
+
     fontSize = 10
     l_title = fullname + ' trailing returns'
     l_y1 = '1-Year'
@@ -83,7 +95,8 @@ def get_trailing_returns(uid):
     "google.charts.setOnLoadCallback(drawAnnotations);" +\
     "function drawAnnotations() {" +\
     "  var data = google.visualization.arrayToDataTable([" +\
-    "    ['instrument', 'returns', {type: 'string', role: 'annotation'}]," +\
+    "    ['instrument'," +\
+    " ' " + fullname + " ', {type: 'string', role: 'annotation'}]," +\
     data +\
     "  ]);" +\
     "      var options = {" +\
@@ -110,7 +123,7 @@ def get_trailing_returns(uid):
     "        }," +\
     "        series: {0:{color:'#497f8c'} }," +\
     "        hAxis: {" +\
-    "          title: '' " +\
+    "          title: '" + l_as_date + "' " +\
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
