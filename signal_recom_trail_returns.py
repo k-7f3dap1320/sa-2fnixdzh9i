@@ -127,10 +127,11 @@ def get_recomm(uid):
     '            </div>'+\
     '        </div>'
 
-
+    '''
     cr.close()
     connection.close()
-
+    '''
+    
     return recomm_box
 
 
