@@ -97,7 +97,6 @@ def get_trailing_returns(uid):
     "google.charts.setOnLoadCallback(drawAnnotations);" +\
     "function drawAnnotations() {" +\
     "  var data = google.visualization.arrayToDataTable([" +\
-    "    ['instrument',' " + fullname + " ', {type: 'string', role: 'annotation'}]," +\
     header +\
     data +\
     "  ]);" +\
