@@ -158,7 +158,7 @@ def get_trailing_returns(uid):
     "      chart.draw(data, options);" +\
     "    }" +\
     "    </script>" +\
-    "    <div id='trail_chart' class='sa-chart-hw-90'></div>"
+    "    <div id='trail_chart' class='sa-chart-hw-290'></div>"
 
 
     trail_chart = '' +\
