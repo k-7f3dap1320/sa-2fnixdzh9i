@@ -84,6 +84,7 @@ def get_trailing_returns(uid):
     l_w1 = '1-week'
 
     benchmark_header = ''; benchmark_data_y1 = ''; benchmark_data_m6 = ''; benchmark_data_m3 = ''; benchmark_data_m1 = ''; benchmark_data_w1 = ''
+    '''
     if not is_benchmark:
         sql = "SELECT symbol_list.uid, instruments.fullname FROM symbol_list JOIN instruments "+\
         "ON symbol_list.symbol = instruments.symbol WHERE instruments.market='"+ str( market ) +"' AND instruments.is_benchmark=1"
@@ -101,6 +102,7 @@ def get_trailing_returns(uid):
             benchmark_data_m3 = ','+ get_chart_data(benchmark_uid,'m3')
             benchmark_data_m1 = ','+ get_chart_data(benchmark_uid,'m1')
             benchmark_data_w1 = ','+ get_chart_data(benchmark_uid,'w1')
+    '''
 
 
     data = ''+\
