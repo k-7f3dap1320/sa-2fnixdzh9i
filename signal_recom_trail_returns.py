@@ -69,11 +69,12 @@ def get_trailing_returns(uid):
     l_m1 = '1-month'
     l_w1 = '1-week'
 
-    data = '["'+ l_y1 + '",' + get_chart_data(uid,'y1') +']' + ',' +\
-    '["'+ l_m6 + '",' + str(m6) + get_chart_data(uid,'m6') + ']' + ',' +\
-    '["'+ l_m3 + '",' + str(m3) + get_chart_data(uid,'m3') + ']' + ',' +\
-    '["'+ l_m1 + '",' + str(m1) + get_chart_data(uid,'m1') + ']' + ',' +\
-    '["'+ l_w1 + '",' + str(w1) + get_chart_data(uid,'w1') + ']'
+    data = ''+\
+    '["'+ l_y1 + '",' + get_chart_data(uid,'y1') +']' + ',' +\
+    '["'+ l_m6 + '",' + get_chart_data(uid,'m6') + ']' + ',' +\
+    '["'+ l_m3 + '",' + get_chart_data(uid,'m3') + ']' + ',' +\
+    '["'+ l_m1 + '",' + get_chart_data(uid,'m1') + ']' + ',' +\
+    '["'+ l_w1 + '",' + get_chart_data(uid,'w1') + ']'
 
 
     chart_content = "" +\
