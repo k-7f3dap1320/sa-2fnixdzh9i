@@ -60,7 +60,7 @@ def get_card(x,t):
                     color = "red"
 
             if t == 9:
-                expl_label = "*Potential risk in the next 7 days"
+                expl_label = "*Potential return in the next 7 days"
 
             link_label = "Click here for details"
 
