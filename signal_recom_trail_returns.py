@@ -53,13 +53,13 @@ def get_trailing_returns(uid):
     data +\
     "  ]);" +\
     "      var options = {" +\
+    "       fontSize: "+ str( fontSize ) + "," +\
     "      	legend: 'bottom'," +\
     "        title: ''," +\
     "        chartArea: {width: '50%'}," +\
     "        annotations: {" +\
     "          alwaysOutside: true," +\
     "          textStyle: {" +\
-    "            fontSize: "+ str(fontSize) +"," +\
     "            auraColor: 'none'," +\
     "            color: '#555'" +\
     "          }," +\
@@ -73,7 +73,7 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color:'pink'} }," +\
+    "        series: {0:{color:'#e5e5e5'} }," +\
     "        hAxis: {" +\
     "          title: '' " +\
     "        }," +\
