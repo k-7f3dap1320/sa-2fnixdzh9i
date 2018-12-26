@@ -53,6 +53,7 @@ def get_stylesheet(burl):
     sa_table_sm +\
     sa_search_input +\
     sa_descr_box_sm +\
+    sa_chart_hw_50 +\
     sa_chart_hw_90 +\
     sa_chart_hw_100 +\
     sa_chart_hw_100_rsi +\
