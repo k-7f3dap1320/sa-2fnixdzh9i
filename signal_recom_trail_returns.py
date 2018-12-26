@@ -125,7 +125,7 @@ def get_trailing_returns(uid):
     "  ]);" +\
     "      var options = {" +\
     "       fontSize: "+ str( fontSize ) + "," +\
-    "      	legend: 'none'," +\
+    "      	legend: 'right'," +\
     "        title: ''," +\
     "        chartArea: {width: '50%'}," +\
     "        annotations: {" +\
