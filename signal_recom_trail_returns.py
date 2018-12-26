@@ -181,15 +181,14 @@ def get_recomm(uid):
 
     recomm_box = ''
 
-    '''
+
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT "
+    sql = "SELECT instruments.recommendation FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
-        symbol = row[0]
-    '''
+        recommendation = row[0]
 
     l_title = 'Technical analysis & recommendation'
 
@@ -197,13 +196,12 @@ def get_recomm(uid):
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part">'+\
     '               <div><h6>'+ l_title +'</h6></div>'+\
+    '               <div>'+ recommendation +'</div>'+\
     '            </div>'+\
     '        </div>'
 
-    '''
     cr.close()
     connection.close()
-    '''
 
     return recomm_box
 
