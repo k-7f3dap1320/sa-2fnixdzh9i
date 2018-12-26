@@ -28,6 +28,13 @@ def get_trailing_returns(uid):
         w1 = row[5]
         unit = row[6]
 
+    if unit == '%':
+        y1 = round( y1*100 ,2 )
+        m6 = round( m6*100 ,2 )
+        m3 = round( m3*100 ,2 )
+        m1 = round( m1*100 ,2 )
+        w1 = round( w1*100 ,2 )
+
     fontSize = 10
     l_title = fullname + ' trailing returns in ('+ str( unit ) +')'
     l_y1 = '1-Year'
@@ -74,7 +81,7 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color:'#e5e5e5'} }," +\
+    "        series: {0:{color:'#497f8c'} }," +\
     "        hAxis: {" +\
     "          title: '' " +\
     "        }," +\
