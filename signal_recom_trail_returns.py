@@ -88,7 +88,7 @@ def get_trailing_returns(uid):
     '["'+ l_m1 + '",' + get_chart_data(uid,'m1') + ']' + ',' +\
     '["'+ l_w1 + '",' + get_chart_data(uid,'w1') + ']'
 
-    header = "    ['', ' " + fullname + " ', {type: 'string', role: 'annotation'}  ],"
+    header = "    ['x', ' " + fullname + " ', {type: 'string', role: 'annotation'}  ],"
 
 
     chart_content = "" +\
