@@ -44,7 +44,7 @@ def get_trailing_returns(uid):
     l_w1 = '1-week'
 
     data = '["'+ l_y1 + '",' + str(y1) + ',"' + str(y1) +' '+ str(unit)  + '"]' + ',' +\
-    '["'+ l_m6 + '",' + str(m6) + ',"' + str(y1) +' '+ str(unit) + '"]' + ',' +\
+    '["'+ l_m6 + '",' + str(m6) + ',"' + str(y6) +' '+ str(unit) + '"]' + ',' +\
     '["'+ l_m3 + '",' + str(m3) + ',"' + str(m3) +' '+ str(unit) + '"]' + ',' +\
     '["'+ l_m1 + '",' + str(m1) + ',"' + str(m1) +' '+ str(unit) + '"]' + ',' +\
     '["'+ l_w1 + '",' + str(w1) + ',"' + str(w1) +' '+ str(unit) + '"]'
