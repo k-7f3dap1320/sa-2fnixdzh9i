@@ -62,7 +62,7 @@ def get_trailing_returns(uid):
         fullname = row[0]
 
     fontSize = 10
-    l_title = fullname + ' trailing returns in ('+ str( unit ) +')'
+    l_title = fullname + ' trailing returns'
     l_y1 = '1-Year'
     l_m6 = '6-month'
     l_m3 = '3-month'
