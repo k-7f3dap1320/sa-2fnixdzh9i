@@ -319,7 +319,7 @@ def get_sign_ta_chart_alt_orders(uid):
 
         tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
         tab_2_label = 'Performance'; tab_2_link = '#perf'; tab_2_id = 'perf'
-        tab_3_label = 'Risk assessment'; tab_3_link = '#risk'; tab_3_id = 'risk'
+        tab_3_label = 'Risk/Reward assessment'; tab_3_link = '#risk'; tab_3_id = 'risk'
         tab_4_label = 'Live chart'; tab_4_link = '#chart'; tab_4_id = 'chart'
 
 
