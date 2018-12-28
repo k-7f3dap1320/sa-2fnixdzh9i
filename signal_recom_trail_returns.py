@@ -145,7 +145,7 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color:'#497f8c'} }," +\
+    "        series: {0:{color:'#497f8c'}, 1:{color: '#c9d6ea'} }," +\
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "' " +\

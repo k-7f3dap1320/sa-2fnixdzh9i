@@ -149,7 +149,6 @@ def get_chart_box(uid):
 
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
     tab_2_label = 'Portfolio vs Benchmark'; tab_2_link = '#bench'; tab_2_id = tab_2_link.replace('#','')
-    tab_3_label = 'Risk Assessment'; tab_3_link = '#risk'; tab_3_id = tab_3_link.replace('#','')
 
     r = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
@@ -161,14 +160,10 @@ def get_chart_box(uid):
     '                    <li class="nav-item">'+\
     '                      <a class="nav-link" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
     '                    </li>'+\
-    '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
-    '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
     '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
     '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
-    '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
     '                  </div>'
     '            </div>'+\
     '        </div>'
