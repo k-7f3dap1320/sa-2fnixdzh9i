@@ -80,6 +80,7 @@ def get_recomm(uid):
 def get_chart_box(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT price_instruments_data.date FROM price_instruments_data JOIN symbol_list "+\
     "ON symbol_list.symbol = price_instruments_data.symbol WHERE symbol_list.uid=" + str(uid) +" "+\
     "ORDER BY date DESC LIMIT 1"
