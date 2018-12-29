@@ -37,7 +37,7 @@ def get_chart_data(uid,p):
     cr.close()
     connection.close()
 
-    data = 'null'
+    data = "null,''"
     if p == 'y1':
         if not y1 == 0:
             data = str(y1) + ',"' + str(y1) +' '+ str(unit)  + '"'
