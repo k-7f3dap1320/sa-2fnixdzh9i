@@ -50,7 +50,7 @@ def get_card(x,t):
 
             if badge.find('-') == -1:
                 badge_class = 'badge badge-success'
-                expl_label = "*Potential return in the next 7 days"
+                expl_label = "*Potential returns in the next 7 days"
                 if t == 1:
                     color = "green"
             else:
@@ -60,7 +60,7 @@ def get_card(x,t):
                     color = "red"
 
             if t == 9:
-                expl_label = "*Potential return in the next 7 days"
+                expl_label = "*Potential returns in the next 7 days"
 
             link_label = "Click here for details"
 
