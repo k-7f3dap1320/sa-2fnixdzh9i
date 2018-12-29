@@ -29,24 +29,30 @@ def get_chart_data(uid,p):
         is_benchmark = row[7]
 
     if unit == '%':
-        y1 = round( y1*100 ,2 )
-        m6 = round( m6*100 ,2 )
-        m3 = round( m3*100 ,2 )
-        m1 = round( m1*100 ,2 )
-        w1 = round( w1*100 ,2 )
+        y1 = round( y1*100 ,2 ); m6 = round( m6*100 ,2 ); m3 = round( m3*100 ,2 ); m1 = round( m1*100 ,2 ); w1 = round( w1*100 ,2 )
+
+    if unit.lower() == 'pips':
+        y1 = int(y1); m6 = int(m6); m3 = int(m3); m1 = int(m1); w1 = int(w1)
+
     cr.close()
     connection.close()
 
+    data = ''
     if p == 'y1':
-        data = str(y1) + ',"' + str(y1) +' '+ str(unit)  + '"'
+        if not y1 == 0:
+            data = str(y1) + ',"' + str(y1) +' '+ str(unit)  + '"'
     if p == 'm6':
-        data = str(m6) + ',"' + str(m6) +' '+ str(unit)  + '"'
+        if not m6 == 0:
+            data = str(m6) + ',"' + str(m6) +' '+ str(unit)  + '"'
     if p == 'm3':
-        data = str(m3) + ',"' + str(m3) +' '+ str(unit)  + '"'
+        if not m3 == 0:
+            data = str(m3) + ',"' + str(m3) +' '+ str(unit)  + '"'
     if p == 'm1':
-        data = str(m1) + ',"' + str(m1) +' '+ str(unit)  + '"'
+        if not m1 == 0:
+            data = str(m1) + ',"' + str(m1) +' '+ str(unit)  + '"'
     if p == 'w1':
-        data = str(w1) + ',"' + str(w1) +' '+ str(unit)  + '"'
+        if not w1 == 0:
+            data = str(w1) + ',"' + str(w1) +' '+ str(unit)  + '"'
 
     return data
 
