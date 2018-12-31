@@ -14,7 +14,7 @@ def get_details_header(uid):
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr_s = connection.cursor(pymysql.cursors.SSCursor)
-        sql_s = "SELECT symbol_list.symbol, feed.short_description, feed.content, feed.badge, feed.asset_class, feed.market, symbol_list.isin FROM symbol_list "+\
+        sql_s = "SELECT symbol_list.symbol, feed.short_title, feed.content, feed.badge, feed.asset_class, feed.market, symbol_list.isin FROM symbol_list "+\
         "JOIN feed ON symbol_list.symbol = feed.symbol WHERE symbol_list.uid =" + str(uid) + " LIMIT 1"
         cr_s.execute(sql_s)
         rs_s = cr_s.fetchall()
