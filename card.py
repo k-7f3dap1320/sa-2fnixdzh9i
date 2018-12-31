@@ -45,6 +45,15 @@ def get_card(x,t):
             badge = row[5]
             symbol = row[6]
             uid = get_uid(symbol)
+
+            cr_s = connection.cursor(pymysql.cursors.SSCursor)
+            sql_s = "SELECT account_reference, unit FROM Instruments WHERE symbol='"+ symbol +"' "
+            rs_s = cr_s.execute(sql_s)
+            for row in rs_s:
+                account_reference = row[0]
+                unit = row[1]
+            cr_s.close()
+
             color = "black"
             portf_content_end_part = 'Portfolio'
 
@@ -60,7 +69,7 @@ def get_card(x,t):
                     color = "red"
 
             if t == 9:
-                expl_label = "*Potential returns in the next 7 days"
+                expl_label = "*Potential returns in the next 7 days for a "+ str(account_reference)+" "+ str(unit) + " invested capital"
 
             link_label = "Click here for details"
 
