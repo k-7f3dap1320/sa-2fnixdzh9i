@@ -89,6 +89,13 @@ def get_perf_chart(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
+
+    sql = "SELECT price_close FROM chart_data WHERE uid="+ str(uid) + " ORDER BY price_close DESC LIMIT 1"
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs:
+        minval = row[0]/2
+
     sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit, instruments.account_reference FROM chart_data "+\
     "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
     "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
@@ -131,7 +138,7 @@ def get_perf_chart(uid):
     '                            title: "'+ chart_title +'", '+\
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
     '                            legend: "none",'+\
-    '                            vAxis: {viewWindow:{min: '+ str(account_reference / 2 ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
+    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: { gridlines: { count: 4 } }, '+\
     '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
