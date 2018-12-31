@@ -31,7 +31,7 @@ def write_func(uid,data,color):
     "        }"+\
     "      },"+\
     "      vAxis: {"+\
-    "        viewWindow:{ viewWindowMode: 'explicit'}, "+\
+    "        viewWindow:{min:0, viewWindowMode: 'explicit'}, "+\
     "        title: '',"+\
     "        gridlines: {"+\
     "            color: 'transparent'"+\
