@@ -61,7 +61,7 @@ def get_card_chart(uid,color):
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
-            minval = row[0]/2
+            minval = row[0]-(row[0]/5)
 
         sql = "SELECT date, price_close FROM chart_data WHERE date>="+str(d)+" AND uid="+ str(uid)+" ORDER BY date"
         cr.execute(sql)

@@ -94,7 +94,7 @@ def get_perf_chart(uid):
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
-        minval = row[0]/2
+        minval = row[0]-(row[0]/5)
 
     sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit, instruments.account_reference FROM chart_data "+\
     "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
