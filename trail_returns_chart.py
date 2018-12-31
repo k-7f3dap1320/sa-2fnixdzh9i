@@ -5,9 +5,9 @@
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
+from sa_func import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
-
 
 def get_chart_data(uid,p):
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -60,7 +60,7 @@ def get_trailing_returns(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT instruments.fullname, instruments.is_benchmark, instruments.market FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
+    sql = "SELECT instruments.fullname, instruments.is_benchmark, instruments.market, instruments.symbol FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
 
@@ -68,10 +68,15 @@ def get_trailing_returns(uid):
         fullname = row[0]
         is_benchmark = row[1]
         market = row[2]
+        symbol_is_portf = row[3]
 
-    sql = "SELECT price_instruments_data.date FROM price_instruments_data JOIN symbol_list "+\
-    "ON symbol_list.symbol = price_instruments_data.symbol "+\
-    "WHERE symbol_list.uid=" + str(uid) +" ORDER BY date DESC LIMIT 1"
+    if symbol_is_portf.find( get_portf_suffix() ) > -1:
+        sql = "SELECT date FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date DESC LIMIT 1"
+    else:
+        sql = "SELECT price_instruments_data.date FROM price_instruments_data JOIN symbol_list "+\
+        "ON symbol_list.symbol = price_instruments_data.symbol "+\
+        "WHERE symbol_list.uid=" + str(uid) +" ORDER BY date DESC LIMIT 1"
+
     cr.execute(sql)
     rs = cr.fetchall()
 
