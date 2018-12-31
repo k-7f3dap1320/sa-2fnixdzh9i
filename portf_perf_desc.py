@@ -131,7 +131,7 @@ def get_perf_chart(uid):
     '                            title: "'+ chart_title +'", '+\
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
     '                            legend: "none",'+\
-    '                            vAxis: {viewWindow:{min: 1000, viewWindowMode: "explicit"}, minValue: '+ str(account_reference / 2 ) +', gridlines: { color: "transparent" } },'+\
+    '                            vAxis: {viewWindow:{min: '+ str(account_reference / 2 ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: { gridlines: { count: 4 } }, '+\
     '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
