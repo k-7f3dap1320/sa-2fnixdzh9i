@@ -28,11 +28,12 @@ def get_chart_data(uid,p):
         unit = row[6]
         is_benchmark = row[7]
 
-    if unit == '%':
-        y1 = round( y1*100 ,2 ); m6 = round( m6*100 ,2 ); m3 = round( m3*100 ,2 ); m1 = round( m1*100 ,2 ); w1 = round( w1*100 ,2 )
-
     if unit.lower() == 'pips':
         y1 = int(y1); m6 = int(m6); m3 = int(m3); m1 = int(m1); w1 = int(w1)
+    else:
+        y1 = round( y1*100 ,2 ); m6 = round( m6*100 ,2 ); m3 = round( m3*100 ,2 ); m1 = round( m1*100 ,2 ); w1 = round( w1*100 ,2 )
+        unit = '%'
+
 
     cr.close()
     connection.close()
