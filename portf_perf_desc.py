@@ -165,7 +165,7 @@ def get_chart_box(uid):
     '                  <div class="tab-content">'+\
     '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ chart_1y_perf +'</div>'+\
     '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
-    '                  </div>'
+    '                  </div>'+\
     '            </div>'+\
     '        </div>'
     #To disable tab: remove the data-toggle="pill"

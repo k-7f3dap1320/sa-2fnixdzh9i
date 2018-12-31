@@ -48,7 +48,8 @@ def get_box_trail_returns_content(uid):
         get_trailing_returns(uid) +\
         '            </div>'+\
         '        </div>'
-
+        cr.close()
+        connection.close()
 
     except Exception as e: print(e)
 
