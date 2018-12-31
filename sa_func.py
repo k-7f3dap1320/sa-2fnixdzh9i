@@ -10,19 +10,8 @@ import random
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-class app_settings:
-
-    def get_homepage(self):
-        return self.address
-
-    def get_app_name(self):
-        return self.appname
-
-    def get_navbar_logo(self):
-        return self.address + '/static/logo.png'
-
-    def get_page_loader(self):
-        return self.address + '/static/loader.gif'
+def get_portf_suffix():
+    return 'PRF:'
 
 def get_uid(s):
 
