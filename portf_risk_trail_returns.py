@@ -40,7 +40,7 @@ def get_box_trail_returns_content(uid):
         for row in rs:
             fullname = row[0]
 
-        l_title = fullname + 'portfolio trailing returns'
+        l_title = fullname + ' portfolio trailing returns'
         box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
