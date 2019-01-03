@@ -62,7 +62,7 @@ def get_card(x,t):
 
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
-                
+
             link_label = "Click here for details"
 
 
@@ -87,7 +87,7 @@ def get_card(x,t):
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
-                '                <div class="title"><h6>'+short_description+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
+                '                <div class="title"><h6>'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+ content + ' ' + portf_content_end_part +'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
