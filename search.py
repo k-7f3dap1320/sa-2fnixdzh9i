@@ -54,6 +54,9 @@ def get_search_result(q):
             url = row[0]
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url) + '" />') + get_body('','') )
 
+        if c == '':
+            c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=/?s=0" />') + get_body('','') )
+
         cr.close()
         connection.close()
     except Exception as e: print(e)
