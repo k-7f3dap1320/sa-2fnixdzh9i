@@ -338,19 +338,19 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
         '                    </li>'+\
         '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
         '                    </li>'+\
         '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
         '                    </li>'+\
         '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" href="'+ tab_4_link +'">'+ tab_4_label +'</a>'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_4_link +'">'+ tab_4_label +'</a>'+\
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
         '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
-        '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+'</div>'+\
-        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+'</div>'+\
+        '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
+        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'
