@@ -49,7 +49,7 @@ def get_box_risk_content(uid):
         box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-signal-recomm-trail-ret">'+\
-        '               <div>'+ l_title +'</div>'+\
+        '               <div><h6>'+ l_title +'</h6></div>'+\
         '                   <div>'+ text_content +'</div>'+\
         '            </div>'+\
         '        </div>'
