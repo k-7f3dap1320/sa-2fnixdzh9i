@@ -16,7 +16,7 @@ def get_risk_table(uid):
     t = ''
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SScursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.fullname, instruments.asset_class, instruments.market, is_benchmark, "+\
         "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
         "instruments.maximum_dd_st, instruments.romad_st, instruments.volatility_risk_st "+\
