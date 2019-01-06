@@ -92,7 +92,7 @@ def get_risk_table(uid):
         '  </tbody>'+\
         '</table>'
 
-        content = t
+        t = content
 
     except Exception as e: print(e)
 
