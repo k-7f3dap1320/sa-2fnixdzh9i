@@ -26,19 +26,19 @@ def get_risk_table(uid):
         cr.execute(sql)
         rs = cr.fetchall()
         a_fullname=''; a_asset_class=''; a_market=''; a_is_benchmark=0
-        a_beta_st=0; a_alpha_st=0; a_stdev_st=0; a_sharpe_ratio_st=0; a_maximum_dd_st=0; a_romad_st=0; a_volatility_risk_st=0
+        a_beta_st=''; a_alpha_st=''; a_stdev_st=''; a_sharpe_ratio_st=''; a_maximum_dd_st=''; a_romad_st=''; a_volatility_risk_st=''
         for row in rs:
             a_fullname = row[0]
             a_asset_class = row[1]
             a_market = row[2]
             a_is_benchmark = row[3]
-            a_beta_st = row[4]
-            a_alpha_st = row[5]
-            a_stdev_st = round(row[6],2)
-            a_sharpe_ratio_st = row[7]
-            a_maximum_dd_st = round( row[8]*100,2)
-            a_romad_st = round( row[9],2 )
-            a_volatility_risk_st = round( row[10]*100,2 )
+            a_beta_st = str( row[4] )
+            a_alpha_st = str( row[5] )
+            a_stdev_st = str( round(row[6],2) )
+            a_sharpe_ratio_st = str( row[7] )
+            a_maximum_dd_st = str( round( row[8]*100,2) ) +'%'
+            a_romad_st = str( round( row[9],2 ) )
+            a_volatility_risk_st = str( round( row[10]*100,2 ) ) +'%'
 
         sql = "SELECT instruments.fullname, instruments.asset_class, instruments.market, is_benchmark, "+\
         "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
@@ -49,19 +49,19 @@ def get_risk_table(uid):
         cr.execute(sql)
         rs = cr.fetchall()
         b_fullname=''; b_asset_class=''; b_market=''; b_is_benchmark=0
-        b_beta_st=0; b_alpha_st=0; b_stdev_st=0; b_sharpe_ratio_st=0; b_maximum_dd_st=0; b_romad_st=0; b_volatility_risk_st=0        
+        b_beta_st=''; b_alpha_st=''; b_stdev_st=''; b_sharpe_ratio_st=''; b_maximum_dd_st=''; b_romad_st=''; b_volatility_risk_st=''
         for row in rs:
             b_fullname = row[0]
             b_asset_class = row[1]
             b_market = row[2]
             b_is_benchmark = row[3]
-            b_beta_st = row[4]
-            b_alpha_st = row[5]
-            b_stdev_st = round( row[6],2)
-            b_sharpe_ratio_st = row[7]
-            b_maximum_dd_st = round( row[8]*100,2)
-            b_romad_st = round( row[9],2 )
-            b_volatility_risk_st = round( row[10]*100,2 )
+            b_beta_st = str( row[4] )
+            b_alpha_st = str( row[5] )
+            b_stdev_st = str( round( row[6],2) )
+            b_sharpe_ratio_st = str( row[7] )
+            b_maximum_dd_st = str( round( row[8]*100,2) ) +'%'
+            b_romad_st = str( round( row[9],2 ) )
+            b_volatility_risk_st = str( round( row[10]*100,2 ) ) +'%'
         cr.close()
         connection.close()
 
@@ -81,13 +81,13 @@ def get_risk_table(uid):
         ' <tbody>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_volatility_risk_st  +'</th>'+\
-        '      <td>'+ str(a_volatility_risk_st) +'%</td>'+\
-        '      <td>'+ str(b_volatility_risk_st) +'%</td>'+\
+        '      <td>'+ str(a_volatility_risk_st) +'</td>'+\
+        '      <td>'+ str(b_volatility_risk_st) +'</td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_maximum_dd_st  +'</th>'+\
-        '      <td>'+ str(a_maximum_dd_st) +'%</td>'+\
-        '      <td>'+ str(b_maximum_dd_st) +'%</td>'+\
+        '      <td>'+ str(a_maximum_dd_st) +'</td>'+\
+        '      <td>'+ str(b_maximum_dd_st) +'</td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_romad_st  +'</th>'+\
