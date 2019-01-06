@@ -36,7 +36,7 @@ def get_risk_table(uid):
             a_sharpe_ratio_st = row[7]
             a_maximum_dd_st = round( row[8]*100,2)
             a_romad_st = round( row[9],2 )
-            a_volatility_risk_st = row[10]
+            a_volatility_risk_st = round( row[10]*100,2 )
 
         sql = "SELECT instruments.fullname, instruments.asset_class, instruments.market, is_benchmark, "+\
         "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
@@ -57,7 +57,7 @@ def get_risk_table(uid):
             b_sharpe_ratio_st = row[7]
             b_maximum_dd_st = round( row[8]*100,2)
             b_romad_st = round( row[9],2 )
-            b_volatility_risk_st = row[10]
+            b_volatility_risk_st = round( row[10]*100,2 )
         cr.close()
         connection.close()
 
