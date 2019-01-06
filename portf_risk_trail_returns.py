@@ -27,7 +27,10 @@ def get_box_risk_content(uid):
         for row in rs:
             text_content = row[0]
 
-        sql = "SELECT instruments.account_reference, instruments.unit FROM instruments "+\
+        sql = "SELECT instruments.account_reference, instruments.unit, "+\
+        "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
+        "instruments.maximum_dd_st, instruments.romad_st, volatility_risk_st"
+        "  FROM instruments "+\
         "JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
         "WHERE symbol_list.uid=" + str(uid)
         cr.execute(sql)
@@ -35,11 +38,18 @@ def get_box_risk_content(uid):
         for row in rs:
             account_reference = row[0]
             unit = row[1]
+            beta_st = row[2]
+            alpha_st = row[3]
+            stdev_st = row[4]
+            sharpe_ratio_st = row[5]
+            maximum_dd_st = row[6]
+            romad_st = row[7]
+            volatility_risk_st = row[8]
 
-        dollar_amount = 0
-        percentage = 0
+        dollar_amount = round( stdev_st , 2)
+        percentage = round( volatility_risk_st*100, 2 )
 
-        text_content = text_content.replace('{account_reference}', str(account_reference) )
+        text_content = text_content.replace('{account_reference}', str( int(account_reference) ) )
         text_content = text_content.replace('{unit}', str(unit) )
         text_content = text_content.replace('{dollar_amount}', str(dollar_amount) )
         text_content = text_content.replace('{percentage}', str(percentage) )
