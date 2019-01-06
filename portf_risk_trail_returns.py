@@ -77,8 +77,8 @@ def get_risk_table(uid):
         ' <tbody>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_stdev_st  +'</th>'+\
-        '      <td>'+ str(a_volatility_risk_st) +'</td>'+\
-        '      <td>'+ str(b_volatility_risk_st) +'</td>'+\
+        '      <td>'+ str(a_volatility_risk_st) +'%</td>'+\
+        '      <td>'+ str(b_volatility_risk_st) +'%</td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_maximum_dd_st  +'</th>'+\
