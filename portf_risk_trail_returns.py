@@ -29,7 +29,7 @@ def get_box_risk_content(uid):
 
         sql = "SELECT instruments.account_reference, instruments.unit, "+\
         "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
-        "instruments.maximum_dd_st, instruments.romad_st, volatility_risk_st"
+        "instruments.maximum_dd_st, instruments.romad_st, instruments.volatility_risk_st"
         "  FROM instruments "+\
         "JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
         "WHERE symbol_list.uid=" + str(uid)
