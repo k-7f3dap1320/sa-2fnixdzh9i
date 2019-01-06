@@ -61,7 +61,7 @@ def get_trailing_returns(uid):
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT instruments.fullname, instruments.is_benchmark, instruments.market, instruments.symbol FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
+    sql = "SELECT instruments.fullname, instruments.is_benchmark, instruments.market, instruments.symbol, instruments.asset_class FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
 
@@ -70,6 +70,7 @@ def get_trailing_returns(uid):
         is_benchmark = row[1]
         market = row[2]
         symbol_is_portf = row[3]
+        asset_class = row[4]
 
     if symbol_is_portf.find( get_portf_suffix() ) > -1:
         sql = "SELECT date FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date DESC LIMIT 1"
@@ -97,7 +98,7 @@ def get_trailing_returns(uid):
 
     if not is_benchmark:
         sql = "SELECT symbol_list.uid, instruments.fullname FROM symbol_list JOIN instruments "+\
-        "ON symbol_list.symbol = instruments.symbol WHERE instruments.market='"+ str( market ) +"' AND instruments.is_benchmark=1"
+        "ON symbol_list.symbol = instruments.symbol WHERE instruments.market='"+ str( market ) +"' AND instruments.asset_class='"+ str( asset_class ) +"' AND instruments.is_benchmark=1"
         cr.execute(sql)
         rs = cr.fetchall()
         benchmark_uid = 0
