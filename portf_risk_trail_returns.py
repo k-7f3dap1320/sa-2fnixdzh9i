@@ -52,7 +52,7 @@ def get_box_risk_content(uid):
         text_content = text_content.replace('{account_reference}', str( int(account_reference) ) )
         text_content = text_content.replace('{unit}', str(unit) )
         text_content = text_content.replace('{dollar_amount}', str(dollar_amount) )
-        text_content = text_content.replace('{percentage}', str(percentage) )
+        text_content = text_content.replace('{percentage}', str(percentage) + "%" )
 
         l_title = 'Risk considerations'
 
