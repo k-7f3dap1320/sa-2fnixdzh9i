@@ -25,6 +25,8 @@ def get_risk_table(uid):
         "WHERE symbol_list.uid =" + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
+        a_fullname=''; a_asset_class=''; a_market=''; a_is_benchmark=0
+        a_beta_st=0; a_alpha_st=0; a_stdev_st=0; a_sharpe_ratio_st=0; a_maximum_dd_st=0; a_romad_st=0; a_volatility_risk_st=0
         for row in rs:
             a_fullname = row[0]
             a_asset_class = row[1]
@@ -46,6 +48,8 @@ def get_risk_table(uid):
         "WHERE instruments.asset_class='"+ a_asset_class +"' AND instruments.market='"+ a_market +"' AND is_benchmark=1 "
         cr.execute(sql)
         rs = cr.fetchall()
+        b_fullname=''; b_asset_class=''; b_market=''; b_is_benchmark=0
+        b_beta_st=0; b_alpha_st=0; b_stdev_st=0; b_sharpe_ratio_st=0; b_maximum_dd_st=0; b_romad_st=0; b_volatility_risk_st=0        
         for row in rs:
             b_fullname = row[0]
             b_asset_class = row[1]
