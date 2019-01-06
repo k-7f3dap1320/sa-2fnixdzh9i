@@ -11,6 +11,93 @@ from sa_func import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def get_risk_table(uid):
+
+    t = ''
+    try:
+        cr = connection.cursor(pymysql.cursors.SScursor)
+        sql = "SELECT instruments.fullname, instruments.asset_class, instruments.market, is_benchmark, "+\
+        "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
+        "instruments.maximum_dd_st, instruments.romad_st, instruments.volatility_risk_st "+\
+        "FROM smartalpha.instruments JOIN smartalpha.symbol_list "+\
+        "ON instruments.symbol = symbol_list.symbol "+\
+        "WHERE symbol_list.uid =" + str(uid)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            a_fullname = row[0]
+            a_asset_class = row[1]
+            a_market = row[2]
+            a_is_benchmark = row[3]
+            a_beta_st = row[4]
+            a_alpha_st = row[5]
+            a_stdev_st = round(row[6],2)
+            a_sharpe_ratio_st = row[7]
+            a_maximum_dd_st = round( row[8]*100,2)
+            a_romad_st = round( row[9],2 )
+            a_volatility_risk_st = row[10]
+
+        sql = "SELECT instruments.fullname, instruments.asset_class, instruments.market, is_benchmark, "+\
+        "instruments.beta_st, instruments.alpha_st, instruments.stdev_st, instruments.sharpe_ratio_st, "+\
+        "instruments.maximum_dd_st, instruments.romad_st, instruments.volatility_risk_st "+\
+        "FROM smartalpha.instruments JOIN smartalpha.symbol_list "+\
+        "ON instruments.symbol = symbol_list.symbol "+\
+        "WHERE instruments.asset_class='"+ a_asset_class +"' AND instruments.market='"+ a_market +"' AND is_benchmark=1 "
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            b_fullname = row[0]
+            b_asset_class = row[1]
+            b_market = row[2]
+            b_is_benchmark = row[3]
+            b_beta_st = row[4]
+            b_alpha_st = row[5]
+            b_stdev_st = round( row[6],2)
+            b_sharpe_ratio_st = row[7]
+            b_maximum_dd_st = round( row[8]*100,2)
+            b_romad_st = round( row[9],2 )
+            b_volatility_risk_st = row[10]
+        cr.close()
+        connection.close()
+
+        l_row_descr = 'Ratio/metric'
+        l_stdev_st = 'Standard Deviation (30 days)'
+        l_maximum_dd_st = 'Max drawdown over last 30 days'
+        l_romad_st = 'Return over max drawdown (30 days)'
+        content = ''+\
+        '<table class="table table-hover table-sm sa-table-sm">'+\
+        '  <thead>'+\
+        '    <tr>'+\
+        '      <th scope="col">'+ l_row_descr +'</th>'+\
+        '      <th scope="col">'+ a_fullname +'</th>'+\
+        '      <th scope="col">'+ b_fullname +'</th>'+\
+        '    </tr>'+\
+        ' </thead>'+\
+        ' <tbody>'+\
+        '    <tr>'+\
+        '      <th scope="row">'+ l_stdev_st  +'</th>'+\
+        '      <td>'+ str(a_stdev_st) +'</td>'+\
+        '      <td>'+ str(b_stdev_st) +'</td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <th scope="row">'+ l_maximum_dd_st  +'</th>'+\
+        '      <td>'+ str(a_maximum_dd_st) +'%</td>'+\
+        '      <td>'+ str(b_maximum_dd_st) +'%</td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <th scope="row">'+ l_romad_st  +'</th>'+\
+        '      <td>'+ str(a_romad_st) +'</td>'+\
+        '      <td>'+ str(b_romad_st) +'</td>'+\
+        '    </tr>'+\
+        '  </tbody>'+\
+        '</table>'
+
+        content = t
+
+    except Exception as e: print(e)
+
+    return t
+
 def get_box_risk_content(uid):
 
     box_content = ''
@@ -45,6 +132,8 @@ def get_box_risk_content(uid):
             maximum_dd_st = row[6]
             romad_st = row[7]
             volatility_risk_st = row[8]
+        cr.close()
+        connection.close()
 
         dollar_amount = round( stdev_st , 2)
         percentage = round( volatility_risk_st*100, 2 )
@@ -61,6 +150,7 @@ def get_box_risk_content(uid):
         '            <div class="box-part sa-signal-recomm-trail-ret">'+\
         '               <div><h6>'+ l_title +'</h6></div>'+\
         '                   <div>'+ text_content +'</div>'+\
+        '<div>'+ get_risk_table(uid) +'</div>'+\
         '            </div>'+\
         '        </div>'
 
