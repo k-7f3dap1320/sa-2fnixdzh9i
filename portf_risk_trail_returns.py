@@ -62,10 +62,10 @@ def get_risk_table(uid):
         connection.close()
 
         l_row_descr = 'Ratio/metric'
-        l_stdev_st = 'Standard Deviation (30 days)'
+        l_stdev_st = 'Standard Deviation over last 30 days (%)'
         l_maximum_dd_st = 'Max drawdown over last 30 days'
         l_romad_st = 'Return over max drawdown (30 days)'
-        content = ''+\
+        content = '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm sa-table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
@@ -77,8 +77,8 @@ def get_risk_table(uid):
         ' <tbody>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_stdev_st  +'</th>'+\
-        '      <td>'+ str(a_stdev_st) +'</td>'+\
-        '      <td>'+ str(b_stdev_st) +'</td>'+\
+        '      <td>'+ str(a_volatility_risk_st) +'</td>'+\
+        '      <td>'+ str(b_volatility_risk_st) +'</td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="row">'+ l_maximum_dd_st  +'</th>'+\
