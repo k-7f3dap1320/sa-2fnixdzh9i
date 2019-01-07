@@ -66,7 +66,7 @@ def get_trailing_returns(uid):
     rs = cr.fetchall()
 
     for row in rs:
-        fullname = row[0]
+        fullname = row[0].replace("'","")
         is_benchmark = row[1]
         market = row[2]
         symbol_is_portf = row[3]
@@ -104,7 +104,7 @@ def get_trailing_returns(uid):
         benchmark_uid = 0
         for row in rs:
             benchmark_uid = row[0]
-            benchmark_fullname = row[1]
+            benchmark_fullname = row[1].replace("'","")
         if not benchmark_uid == 0:
             benchmark_header = ", ' " + benchmark_fullname + " ', {type: 'string', role: 'annotation'}"
             benchmark_data_y1 = ','+ get_chart_data(benchmark_uid,'y1')

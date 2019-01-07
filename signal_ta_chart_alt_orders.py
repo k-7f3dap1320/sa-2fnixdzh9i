@@ -285,7 +285,7 @@ def get_profile_content(uid):
         rs = cr.fetchall()
         for row in rs:
             uid = row[0]
-            fullname = row[1]
+            fullname = row[1].replace("'","")
             description = row[2]
 
         box_title = fullname + ' profile'
