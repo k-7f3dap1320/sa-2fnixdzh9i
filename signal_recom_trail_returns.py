@@ -45,7 +45,7 @@ def get_chart_box(uid):
     rs = cr.fetchall()
 
     for row in rs:
-        fullname = row[0]
+        fullname = row[0].replace("'","")
 
     cr.close()
     connection.close()
