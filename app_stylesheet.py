@@ -21,6 +21,7 @@ def get_stylesheet(burl):
     #Specific settings
     sa_search_input = '#sa-search-input{width: 320px; font-size: 12px;}'
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
+    sa_box_h = '.sa-box-h{height: 200px;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 90%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 350px;}'
@@ -52,6 +53,7 @@ def get_stylesheet(burl):
     btn +\
     awesomplete +\
     sa_table_sm +\
+    sa_box_h +\
     sa_search_input +\
     sa_descr_box_sm +\
     sa_chart_hw_90 +\

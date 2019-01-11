@@ -98,7 +98,7 @@ def get_trades_tbl(uid,w):
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'
-
+        dn = datetime.datetime.now(); dn = dn.strftime("%d-%b-%Y")
         for row in rs:
             order_type = row[0]
             fullname = row[1]
@@ -110,6 +110,8 @@ def get_trades_tbl(uid,w):
             url = row[7]
             unit = row[8]
 
+            if dn == entry_date: badge_today = '<span class="badge badge-warning">today</span>'
+            else: badge_today = ''
             if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
             if pnl_pct >= 0: text_class = 'text text-success'
@@ -122,7 +124,7 @@ def get_trades_tbl(uid,w):
 
             r = r +\
             '    <tr>'+\
-            '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span></td>'+\
+            '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
             '      <td>'+ str(fullname) +'</td>'+\
             '      <td>'+ str(entry_date) +'</td>'+\
             '      <td>'+ str(entry_price) +'</td>'
@@ -152,9 +154,11 @@ def get_trades_box(uid,burl):
         if not uid == 0 or not get_user() == None:
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
+            sa_box_h = ''
+            if uid == 0: sa_box_h = 'sa-box-h'
             box_content = '' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part">'+\
+            '            <div class="box-part '+ sa_box_h +'">'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
