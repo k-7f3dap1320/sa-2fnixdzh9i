@@ -70,6 +70,7 @@ def get_trades_tbl(uid,w):
     sql = sql + single_selection
     sql = sql + user_symbol_selection
     sql = sql + portf_symbol_selection
+    sql = sql + 'order by trades.entry_date DESC'
     print(sql)
     cr.execute(sql)
     rs = cr.fetchall()
@@ -126,6 +127,7 @@ def get_trades_tbl(uid,w):
         '      <td>'+ str(entry_date) +'</td>'+\
         '      <td>'+ str(entry_price) +'</td>'
         if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
+        r = r +\
         '      <td>'+ str(expiration_date) +'</td>'+\
         '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
         '    </tr>'
@@ -162,8 +164,8 @@ def get_trades_box(uid,burl):
             '                   </li>'+\
             '               </ul>'+\
             '               <div class="tab-content">'+\
-            '                   <div id="'+ tab_active_id +'" class="container tab-pane active">'+ get_trades_tbl(uid,'active') +'</div>'+\
-            '                   <div id="'+ tab_expired_id +'" class="container tab-pane fade">'+ get_trades_tbl(uid,'expired') +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="container tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active') +'</div>'+\
+            '                   <div id="'+ tab_expired_id +'" class="container tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired') +'</div>'+\
             '               </div>'+\
             '            </div>'+\
             '        </div>'
