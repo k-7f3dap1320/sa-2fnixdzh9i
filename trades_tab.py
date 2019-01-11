@@ -50,6 +50,9 @@ def get_trades_tbl(uid,w):
             i += 1
         portf_symbol_selection = portf_symbol_selection + ') '
 
+    single_selection = ''
+    if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
+
     sql = "SELECT trades.order_type, "+\
         "trades.fullname, "+\
         "trades.entry_date,  "+\
@@ -64,6 +67,7 @@ def get_trades_tbl(uid,w):
     if w == 'active': sql = sql + "trades.status = 'active' "
     else: sql = sql + "trades.status = 'expired' "
 
+    sql = sql + single_selection
     sql = sql + user_symbol_selection
     sql = sql + portf_symbol_selection
     print(sql)
