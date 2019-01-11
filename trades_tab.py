@@ -41,7 +41,7 @@ def get_trades_tbl(uid,w):
     portf_symbol_selection = ''
     i = 0
     if selected_is_portf:
-        sql = "SELECT portfolios.symbol, FROM symbol_list JOIN portfolios ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid = "+ str(uid)
+        sql = "SELECT portfolios.symbol FROM symbol_list JOIN portfolios ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid = "+ str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
@@ -110,10 +110,11 @@ def get_trades_tbl(uid,w):
         fullname = row[1]
         entry_date = row[2].strftime("%d-%b-%Y")
         entry_price = row[3]
-        expiration_date = row[4].strftime("%d-%b-%Y")
-        pnl_pct = row[5]
-        url = row[6]
-        unit = row[7]
+        close_price = row[4]
+        expiration_date = row[5].strftime("%d-%b-%Y")
+        pnl_pct = row[6]
+        url = row[7]
+        unit = row[8]
 
         if order_type == 'buy': badge_class = 'badge badge-success'
         else: badge_class = 'badge badge-danger'
