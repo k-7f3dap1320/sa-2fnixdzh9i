@@ -114,11 +114,11 @@ def get_trades_tbl(uid,w):
             url = row[6]
             unit = row[7]
 
-            if order_type = 'buy': badge_class = 'badge badge-success'
+            if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
             if pnl_pct >= 0: text_class = 'text text-success'
             else: text_class = 'text text-danger'
-            if unit = 'pips':
+            if unit == 'pips':
                 pnl_pct = round( pnl_pct *10000, 2)
                 if pnl_pct > 1: str( pnl_pct ) + " pips"
                 else: str( pnl_pct ) + " pip"
