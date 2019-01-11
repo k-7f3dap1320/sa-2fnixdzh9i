@@ -50,26 +50,15 @@ def get_trades_tbl(uid,w):
             i += 1
         portf_symbol_selection = portf_symbol_selection + ') '
 
-
-    if w == 'active':
-        sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
-            "trades.entry_date, "+\
-            "trades.entry_price, "+\
-            "trades.expiration_date, "+\
-            "trades.pnl_pct, "+\
-            "trades.url, "+\
-            "instruments.unit "
-    else:
-        sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
-            "trades.entry_date,  "+\
-            "trades.entry_price, "+\
-            "trades.close_price, "+\
-            "trades.expiration_date, "+\
-            "trades.pnl_pct,  "+\
-            "trades.url,  "+\
-            "instruments.unit "
+    sql = "SELECT trades.order_type, "+\
+        "trades.fullname, "+\
+        "trades.entry_date,  "+\
+        "trades.entry_price, "+\
+        "trades.close_price, "+\
+        "trades.expiration_date, "+\
+        "trades.pnl_pct,  "+\
+        "trades.url,  "+\
+        "instruments.unit "
     sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE "
 
     if w == 'active': sql = sql + "trades.status = 'active' "
