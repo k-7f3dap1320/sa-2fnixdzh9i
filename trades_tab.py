@@ -152,7 +152,7 @@ def get_trades_box(uid,burl):
 
     try:
 
-        if not get_user() == None:
+        if not uid == 0 or not get_user() == None:
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             box_content = '' +\
