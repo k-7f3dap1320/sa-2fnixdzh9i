@@ -113,7 +113,7 @@ def get_trades_tbl(uid,w):
             url = row[7]
             unit = row[8]
 
-            if dn == entry_date: badge_today = '<span class="badge badge-warning">today</span>'
+            if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
             else: badge_today = ''
             if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
