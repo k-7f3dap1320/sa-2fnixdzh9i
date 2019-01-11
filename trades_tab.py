@@ -77,6 +77,7 @@ def get_trades_tbl(uid,w):
 
         sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
 
