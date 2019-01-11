@@ -17,7 +17,6 @@ def get_desc_box(uid):
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit, instruments.symbol from instruments JOIN symbol_list "+\
     "ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
-    print(sql)
     cr.execute(sql)
     rs = cr.fetchall()
     portf_summary = ""
@@ -99,7 +98,6 @@ def get_perf_chart(uid):
     sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit, instruments.account_reference FROM chart_data "+\
     "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
     "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
-    print(sql)
     cr.execute(sql)
     rs = cr.fetchall()
     data = ""
