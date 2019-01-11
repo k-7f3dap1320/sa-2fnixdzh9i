@@ -22,7 +22,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 def go():
 
-    appname = 'SmartAlpha | Market Intelligence'
+    appname = 'SmartAlpha | Trading Intelligence'
     dev_mode = False
 
     burl = request.url_root;
