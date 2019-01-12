@@ -55,6 +55,7 @@ def get_stylesheet(burl):
     awesomplete +\
     sa_table_sm +\
     sa_box_h +\
+    sa_signin_box +\
     sa_search_input +\
     sa_descr_box_sm +\
     sa_chart_hw_90 +\
