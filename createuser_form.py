@@ -19,7 +19,8 @@ def get_user_creation_form(burl):
         '         <div class="row">'+\
         '             <div class="col-md-3"></div>'+\
         '            <div class="col-md-6">'+\
-        '                <h2>Join SmartAlpha today.</h2>'+\
+        '                <img src="'+ burl +'static/logo.png?49W7N3G69" height="30" style="text-align: center;">'+\
+        '                <h3 style="text-align: center;">Join SmartAlpha today.</h3>'+\
         '                <hr>'+\
         '            </div>'+\
         '        </div>'+\
