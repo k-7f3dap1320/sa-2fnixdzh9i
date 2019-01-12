@@ -9,6 +9,7 @@ def get_login_form(burl):
     r = ''
     try:
         r = '' +\
+        '<div class="form-signin-text"><img src="'+ burl +'static/logo.png?'+ get_random_str(9) +'" height="30">&nbsp;Sign In</div>'+\
         '    <form class="form-signin">'+\
         '      <label for="inputEmail" class="sr-only">Email address</label>'+\
         '      <input type="email" id="inputEmail" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
