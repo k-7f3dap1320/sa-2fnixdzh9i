@@ -13,7 +13,8 @@ def get_stylesheet(burl):
     box = '.box{padding:0px 0px;}'
     boxtop = '.box-top{padding-top:60px;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
-    signpart = '.sign-part{background:#373c42; border-radius:0; margin:10px 0px;}'
+    signpart = '.sign-part{background:black; border-radius:0; margin:10px 0px;}'
+    signrow = '.sign-row{background-color: black;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
 
@@ -62,6 +63,7 @@ def get_stylesheet(burl):
     boxtop +\
     boxpart +\
     signpart +\
+    signrow +\
     text +\
     btn +\
     awesomplete +\
