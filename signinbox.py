@@ -8,7 +8,7 @@ def get_login_form(burl):
 
     r = ''
     try:
-        r = r '' +\
+        r = '' +\
         '    <form class="form-signin">'+\
         '      <label for="inputEmail" class="sr-only">Email address</label>'+\
         '      <input type="email" id="inputEmail" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
