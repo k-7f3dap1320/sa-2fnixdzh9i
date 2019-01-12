@@ -15,7 +15,7 @@ def get_user_creation_form(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        '     <form method="POST" action="'+ burl +'n/?uid=xxx" style="width: 50%; padding: 5%; margin: auto;">'+\
+        '     <form method="POST" action="'+ burl +'n/?uid=xxx" style="width: 100%; max-width: 600px; padding: 5%; margin: auto;">'+\
         '         <div>'+\
         '            <div>'+\
         '                <h3 style="text-align: center;">Join SmartAlpha today.</h3>'+\
