@@ -9,6 +9,7 @@ from search import *
 from app_main import *
 from portf_main import *
 from signal_main import *
+from createuser_main import *
 from app_head import *; from app_body import *; from app_page import *
 
 application = Flask(__name__)
@@ -20,27 +21,25 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/')
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
+@application.route('/n/', endpoint='p', methods=["POST", "GET"])
+@application.route('/a/', endpoint='p', methods=["POST", "GET"])
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
-    dev_mode = False
+    dev_mode = True
 
     burl = request.url_root;
     if not dev_mode:
         burl = burl.replace('http://','https://')
-    c = ''
 
+    c = ''
     uid = request.args.get('uid')
 
-    if request.endpoint == 's':
-        c = gen_sign_page(uid,appname,burl)
-
-    elif request.endpoint == 'p':
-        c = gen_portf_page(uid,appname,burl)
-
-    else:
-        x = request.args.get('x')
-        c = gen_main_page(x,appname,burl)
+    if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
+    elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl)
+    elif request.endpoint == 'n': c = gen_createuser_page(uid,appname,burl)
+    elif request.endpoint == 'a': pass
+    else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
 
     sid = request.args.get('sid')
     q = request.args.get(sid)
@@ -61,4 +60,6 @@ def go():
     return c
 
 if __name__ == '__main__':
-    application.run()
+    #For dev_mode and testing
+    #host='0.0.0.0', port=80, threaded=True
+    application.run(host='0.0.0.0', port=80, threaded=True)
