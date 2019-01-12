@@ -22,10 +22,11 @@ def get_stylesheet(burl):
 
     #Login Form
     form_signin = '.form-signin {width: 100%; max-width: 330px; padding: 15px; margin: 0 auto;}'
-    form_signin_form_control = '.form-signin .form-control {position: relative; box-sizing: border-box; height: auto; padding: 10px; font-size: 16px;}'
+    form_signin_form_control = '.form-signin .form-control {position: relative; box-sizing: border-box; height: auto; padding: 10px; font-size: medium;}'
     form_signin_form_control_focus = '.form-signin .form-control:focus {z-index: 2;}'
     form_signin_input_email = '.form-signin input[type="email"] {margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;}'
     form_signin_input_password = '.form-signin input[type="password"] {margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0;}'
+    form_signin_btn = '.form-signin-btn {font-size: medium;}'
 
     #Specific settings
     sa_search_input = '#sa-search-input{width: 320px; font-size: 12px;}'
@@ -85,8 +86,9 @@ def get_stylesheet(burl):
     form_signin_form_control_focus +\
     form_signin_input_email +\
     form_signin_input_password +\
+    form_signin_btn +\
     '</style>'
-    
+
     return r
 
 def get_theme_color():
