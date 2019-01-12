@@ -18,6 +18,7 @@ def get_user_creation_form(burl):
         '     <form method="POST" action="'+ burl +'n/?uid=xxx" style="width: 100%; max-width: 600px; padding: 5%; margin: auto;">'+\
         '         <div>'+\
         '            <div>'+\
+        '<div style="text-align: center;"><img src="'+ burl +'static/logo_light.png?'+ get_random_str(9) +'" height="30"></div>'+\
         '                <h3 style="text-align: center;">Join SmartAlpha today.</h3>'+\
         '                <hr>'+\
         '            </div>'+\
