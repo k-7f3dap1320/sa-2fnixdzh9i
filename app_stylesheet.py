@@ -11,7 +11,7 @@ def get_stylesheet(burl):
     desc = '.desc{font-size:14px;}'
     expl = '.expl{font-size:10px;}'
     box = '.box{padding:0px 0px;}'
-    boxtop = '.box-top{padding:60px 0px;}'
+    boxtop = '.box-top{padding-top:60px;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
     signpart = '.sign-part{background:#373c42; border-radius:0; margin:10px 0px; overflow-x: auto;}'
     text = '.text{margin:10px 0px;}'
