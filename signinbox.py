@@ -16,7 +16,7 @@ def get_signin_box(burl):
         '                <div class="col-lg-6 col-md-6 col-sm-23 col-xs-12 sa-signin-box">'+\
         '                   <div>&nbsp;</div>'+\
         '                   <h1>A.I. powered Trading Insight</h1>   '+\
-        '                   <div>&nbsp;</div>'+\
+        '                   <div>Your personal trading assistant. Access to more than 1,000 financial instruments market intelligence. Get daily signals powered by Artificial intelligence.</div>'+\
         '                </div>'+\
         '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '                </div>'+\

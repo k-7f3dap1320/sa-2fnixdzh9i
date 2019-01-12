@@ -12,7 +12,7 @@ def get_stylesheet(burl):
     expl = '.expl{font-size:10px;}'
     box = '.box{padding:60px 0px;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
-    signpart = '.sign-part{background:#FFF; border-radius:0; margin:10px 0px; overflow-x: auto;}'
+    signpart = '.sign-part{background:#373c42; border-radius:0; margin:10px 0px; overflow-x: auto;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
 
