@@ -33,7 +33,12 @@ def navbar(burl):
     '        <a class="dropdown-item" href="'+ burl + '?x=US>">U.S. Market</a>'+\
     '      </div>'+\
     '    </li>'+\
-    ' </ul>'+\
+    '  </ul>'+\
+    '  <ul class="navbar-nav ml-auto">'+\
+    '      <li class="nav-item">'+\
+    '         <a class="nav-link">Right Link 1</a>'+\
+    '      </li>'+\
+    '  </ul>'+\
     '</div>'+\
     '</nav>'
 
