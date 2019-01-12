@@ -14,8 +14,8 @@ def get_stylesheet(burl):
     boxtop = '.box-top{padding-top:60px;}'
     boxsign = '.box-sign{padding-top:45px;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
-    signpart = '.sign-part{background:#1B1B1C; border-radius:0; margin:10px 0px;}'
-    signrow = '.sign-row{background-color: #1B1B1C;}'
+    signpart = '.sign-part{background:#151517; border-radius:0; margin:10px 0px;}'
+    signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
 
