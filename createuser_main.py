@@ -17,7 +17,7 @@ from createuser_form import *
 
 def gen_createuser_page(uid,appname,burl):
     r = ''
-
+    print( str(uid) )
     if uid == 0:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_user_creation_form(burl) )
