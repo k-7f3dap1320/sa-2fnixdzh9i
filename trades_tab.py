@@ -159,7 +159,7 @@ def get_trades_box(uid,burl):
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             sa_box_h = ''
             if uid == 0: sa_box_h = 'sa-box-h'
-            box_content = '' +\
+            box_content = '<div class="box"><div class="row">' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part '+ sa_box_h +'">'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
@@ -175,7 +175,8 @@ def get_trades_box(uid,burl):
             '                   <div id="'+ tab_expired_id +'" class="container tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired') +'</div>'+\
             '               </div>'+\
             '            </div>'+\
-            '        </div>'
+            '        </div>'+\
+            '</div></div>'
 
     except Exception as e: print(e)
 
