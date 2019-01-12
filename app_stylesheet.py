@@ -18,6 +18,7 @@ def get_stylesheet(burl):
     signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
+    disable_overflow = '.disable-overflow{ overflow-x: hidden; overflow-y: hidden;}'
 
     #Customized awesomplete
     awesomplete = '.awesomplete > ul {min-width: 200%;}'
@@ -30,9 +31,6 @@ def get_stylesheet(burl):
     form_signin_input_email = '.form-signin input[type="email"] {margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;}'
     form_signin_input_password = '.form-signin input[type="password"] {margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0;}'
     form_signin_btn = '.form-signin-btn {font-size: medium;}'
-
-    #Create User Form
-    form_create_user = '@media(min-width: 768px) { .field-label-responsive { padding-top: .5rem; text-align: right; } }'
 
     #Specific settings
     sa_search_input = '#sa-search-input{width: 320px; font-size: 12px;}'
@@ -96,7 +94,7 @@ def get_stylesheet(burl):
     form_signin_input_email +\
     form_signin_input_password +\
     form_signin_btn +\
-    form_create_user +\
+    disable_overflow +\
     '</style>'
 
     return r

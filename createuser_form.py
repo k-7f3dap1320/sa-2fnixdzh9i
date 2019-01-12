@@ -80,7 +80,7 @@ def get_user_creation_form(burl):
         '        <div class="row">'+\
         '            <div class="col-md-3"></div>'+\
         '            <div class="col-md-6">'+\
-        '                <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-user-plus"></i> Register</button>'+\
+        '                <button type="submit" class="btn btn-success btn-lg form-signin-btn"><i class="fa fa-user-plus"></i> Register</button>'+\
         '            </div>'+\
         '        </div>'+\
         '    </form>'+\
