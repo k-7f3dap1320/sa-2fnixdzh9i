@@ -60,7 +60,7 @@ def get_user_creation_form(burl):
         '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>'+\
         '                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>'+\
         '                    </div>'+\
-        '                </div>'+\'+\
+        '                </div>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div class="row">'+\
