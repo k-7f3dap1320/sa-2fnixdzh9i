@@ -23,7 +23,7 @@ def get_stylesheet(burl):
     sa_search_input = '#sa-search-input{width: 320px; font-size: 12px;}'
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_box_h = '.sa-box-h{height: 200px;}'
-    sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif?'+ get_random_str(9)  + '); background-size:100% 100%; height: 300px; color: white; text-align: center; }'
+    sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif?'+ get_random_str(9)  + '); background-size:100% 100%; height: 300px; color: white; text-align: justify; }'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 90%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 350px;}'
