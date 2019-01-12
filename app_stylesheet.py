@@ -51,6 +51,7 @@ def get_stylesheet(burl):
     desc +\
     expl +\
     box +\
+    boxtop +\
     boxpart +\
     signpart +\
     text +\
