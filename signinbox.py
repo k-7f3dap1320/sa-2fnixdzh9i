@@ -25,7 +25,7 @@ def get_signin_box(burl):
 
     try:
 
-        box_content = '<div class="box-top"><div class="row">' +\
+        box_content = '<div class="box-sign"><div class="row">' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="sign-part">'+\
         '               <div class="row sign-row">'+\
