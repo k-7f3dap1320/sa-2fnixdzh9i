@@ -30,7 +30,7 @@ def get_user_creation_form(burl):
         '                <div class="form-group">'+\
         '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
         '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>'+\
-        '                        <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required autofocus>'+\
+        '                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required autofocus>'+\
         '                    </div>'+\
         '                </div>'+\
         '            </div>'+\
@@ -44,7 +44,7 @@ def get_user_creation_form(burl):
         '                <div class="form-group">'+\
         '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
         '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>'+\
-        '                        <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus>'+\
+        '                        <input type="text" name="email" class="form-control" id="email" placeholder="your email: you@example.com" required autofocus>'+\
         '                    </div>'+\
         '                </div>'+\
         '            </div>'+\
@@ -59,20 +59,6 @@ def get_user_creation_form(burl):
         '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
         '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>'+\
         '                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>'+\
-        '                    </div>'+\
-        '                </div>'+\
-        '            </div>'+\
-        '        </div>'+\
-        '        <div class="row">'+\
-        '            <div class="col-md-3 field-label-responsive">'+\
-        '            </div>'+\
-        '            <div class="col-md-6">'+\
-        '                <div class="form-group">'+\
-        '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
-        '                        <div class="input-group-addon" style="width: 2.6rem">'+\
-        '                            <i class="fa fa-repeat"></i>'+\
-        '                        </div>'+\
-        '                        <input type="password" name="password-confirmation" class="form-control" id="password-confirm" placeholder="Password" required>'+\
         '                    </div>'+\
         '                </div>'+\
         '            </div>'+\
