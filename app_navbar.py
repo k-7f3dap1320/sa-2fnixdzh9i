@@ -36,7 +36,7 @@ def navbar(burl):
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
-    '         <a href="'+burl+'a/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">Create an account</a>'+\
+    '         <a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">Create an account</a>'+\
     '      </li>'+\
     '  </ul>'+\
     '</div>'+\
