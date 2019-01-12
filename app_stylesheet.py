@@ -18,7 +18,7 @@ def get_stylesheet(burl):
     signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
-    disable_overflow = '.disable-overflow{ overflow-x: hidden; overflow-y: hidden;}'
+    disable_overflow = '.disable-overflow{ overflow-x: hidden; overflow-y: hidden; padding: 60px 0px;}'
 
     #Customized awesomplete
     awesomplete = '.awesomplete > ul {min-width: 200%;}'

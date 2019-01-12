@@ -14,7 +14,7 @@ def get_user_creation_form(burl):
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part disable-overflow">'+\
         '     <form class="form-horizontal" role="form" method="POST" action="/register">'+\
         '         <div class="row">'+\
         '             <div class="col-md-3"></div>'+\
@@ -80,7 +80,7 @@ def get_user_creation_form(burl):
         '        <div class="row">'+\
         '            <div class="col-md-3"></div>'+\
         '            <div class="col-md-6">'+\
-        '                <button type="submit" class="btn btn-success btn-lg form-signin-btn"><i class="fa fa-user-plus"></i> Register</button>'+\
+        '                <button type="submit" class="btn btn-success btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i> Register</button>'+\
         '            </div>'+\
         '        </div>'+\
         '    </form>'+\
