@@ -4,6 +4,21 @@
 # LICENSE file in the root directory of this source tree.
 from sa_func import *
 
+def get_login_form(burl):
+
+    r = ''
+    try:
+        r = r '' +\
+        '    <form class="form-signin">'+\
+        '      <label for="inputEmail" class="sr-only">Email address</label>'+\
+        '      <input type="email" id="inputEmail" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
+        '      <label for="inputPassword" class="sr-only">Password</label>'+\
+        '      <input type="password" id="inputPassword" class="form-control btn-outline-info" placeholder="Password" required>'+\
+        '      <button class="btn btn-lg btn-info btn-block" type="submit">Login</button>'+\
+        '    </form>'
+    except Exception as e: print(e)
+    return r
+
 def get_signin_box(burl):
 
     box_content = ''
@@ -19,6 +34,7 @@ def get_signin_box(burl):
         '                   <div>Your personal trading assistant. Access to more than 1,000 financial instruments, stocks, forex, commodities & cryptos. Get daily signals powered by Artificial intelligence.</div>'+\
         '                </div>'+\
         '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        get_login_form(burl) +\
         '                </div>'+\
         '            </div>'+\
         '        </div>'+\
