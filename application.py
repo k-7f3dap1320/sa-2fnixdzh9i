@@ -21,8 +21,8 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/')
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
-@application.route('/n/', endpoint='p', methods=["POST", "GET"])
-@application.route('/a/', endpoint='p', methods=["POST", "GET"])
+@application.route('/n/', endpoint='n', methods=["POST", "GET"])
+@application.route('/a/', endpoint='a', methods=["POST", "GET"])
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
