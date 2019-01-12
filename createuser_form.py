@@ -64,7 +64,7 @@ def get_user_creation_form(burl):
         '</div>'
 
 
-        box_content = '<div class="box">' +\
+        box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
