@@ -85,7 +85,7 @@ def get_user_creation_form(burl):
         '               <h3>Contact Us</h3>'+\
         '               <div>e: <a href="mailto:info@taatu.co">info@taatu.co</a></div>'+\
         '               <div>w: <a href="http://taatu.co">www.taatu.co</a></div>'+\
-        '               <div>&nbsp;</div>'+\        
+        '               <div>&nbsp;</div>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
