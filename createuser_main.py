@@ -21,12 +21,20 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def gen_createuser_page(uid,appname,burl):
     r = ''
-    print( str(uid) )
     if uid == '0':
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_user_creation_form(burl) )
         r = set_page(r)
     else:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' "
+        cr.execute(sql)
+        rs = cr.fetchall()
+        username = ''
+        for row in rs: username = row[0]
+        if not username == '':
+            r = 'No user found'
+        else:
+            r = 'user exists'
 
     return r
