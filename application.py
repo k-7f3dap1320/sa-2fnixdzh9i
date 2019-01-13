@@ -36,9 +36,15 @@ def go():
     uid = request.args.get('uid')
 
     if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
+
     elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl)
-    elif request.endpoint == 'n': c = gen_createuser_page(uid,appname,burl)
+
+    elif request.endpoint == 'n':
+        name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password');
+        c = gen_createuser_page(uid,appname,burl,name,email,password)
+
     elif request.endpoint == 'a': pass
+
     else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
 
     sid = request.args.get('sid')

@@ -19,7 +19,7 @@ from sa_db import *
 access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def gen_createuser_page(uid,appname,burl):
+def gen_createuser_page(uid,appname,burl,name,username,password):
     r = ''
     if uid == '0':
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
@@ -28,13 +28,13 @@ def gen_createuser_page(uid,appname,burl):
     else:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' "
+        sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' OR username LIKE '"+ str(username) +"' "
         cr.execute(sql)
         rs = cr.fetchall()
         username = ''
         for row in rs: username = row[0]
         if username == '':
-            r = 'No user found'
+            r = name + " " + username + " " + password
         else:
             r = 'user exists'
 
