@@ -40,8 +40,8 @@ def go():
     elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl)
 
     elif request.endpoint == 'n':
-        name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password');
-        c = gen_createuser_page(uid,appname,burl,name,email,password)
+        name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password')
+        c = gen_createuser_page(uid,appname,burl,name,uaername,password)
 
     elif request.endpoint == 'a': pass
 
