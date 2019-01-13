@@ -82,10 +82,11 @@ def get_user_creation_form(burl):
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
         '               <div>&nbsp;</div>'+\
-        '               <h3>Contact Us</h3>'+\
+        '               <h5>Contact Us, we love feedback</h5>'+\
         '               <div>e: <a href="mailto:info@taatu.co">info@taatu.co</a></div>'+\
         '               <div>w: <a href="http://taatu.co">www.taatu.co</a></div>'+\
         '               <div>&nbsp;</div>'+\
+        '               <div>Do you have any problem to log in? Drop us an <a href="mailto:info@taatu.co">email</a> or talk with us on <a href="https://www.facebook.com/messages/t/taatuco" target="_blank">messenger</a>.</div>'+\        
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
