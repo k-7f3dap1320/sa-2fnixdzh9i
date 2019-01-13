@@ -15,11 +15,8 @@ from app_navbar import *
 from font_awesome import *
 from createuser_form import *
 import pymysql.cursors
-
-sys.path.append(os.path.abspath( sett.get_path_pwd() ))
 from sa_access import *
 access_obj = sa_db_access()
-
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def gen_createuser_page(uid,appname,burl):
