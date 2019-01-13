@@ -34,7 +34,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
         check_exists = ''
         for row in rs: check_exists = row[0]
         if check_exists == '':
-            r = name + " " + username + " " + password
+            r = name + " " + username + " " + password + " " + uid
         else:
             r = 'user exists'
 
