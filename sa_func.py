@@ -7,10 +7,12 @@ access_obj = sa_db_access()
 import pymysql.cursors
 import string
 import random
+import hashlib
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_user():
+    #Read the cookie
     return None
 
 def get_portf_suffix():
@@ -38,3 +40,12 @@ def get_random_str(n):
 
 def get_selected_lang():
     return 'en'
+
+def hash_this_str(s):
+    r = ''
+    try:
+        hash_object = hashlib.md5(b''+s)
+        r = hash_object.hexdigest()
+        print(r)
+    except Exception as e: print(e)
+    return r
