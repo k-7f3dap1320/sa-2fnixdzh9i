@@ -27,6 +27,7 @@ def gen_createuser_page(uid,appname,burl):
         r = set_page(r)
     else:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' "
         cr.execute(sql)
         rs = cr.fetchall()
