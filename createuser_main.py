@@ -31,9 +31,9 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
         sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' OR username LIKE '"+ str(username) +"' "
         cr.execute(sql)
         rs = cr.fetchall()
-        username = ''
-        for row in rs: username = row[0]
-        if username == '':
+        check_exists = ''
+        for row in rs: check_exists = row[0]
+        if check_exists == '':
             r = name + " " + username + " " + password
         else:
             r = 'user exists'
