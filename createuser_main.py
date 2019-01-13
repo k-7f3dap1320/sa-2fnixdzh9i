@@ -33,7 +33,7 @@ def gen_createuser_page(uid,appname,burl):
         rs = cr.fetchall()
         username = ''
         for row in rs: username = row[0]
-        if not username == '':
+        if username == '':
             r = 'No user found'
         else:
             r = 'user exists'
