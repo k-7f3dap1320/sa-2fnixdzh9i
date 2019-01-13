@@ -16,7 +16,7 @@ def get_user_creation_form(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        '     <form method="POST" action="'+ burl +'n/?uid='+ hash_this_str( get_random_str(9) ) +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
+        '     <form method="POST" action="'+ burl +'n/?uid='+ get_random_str(99)  +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
         '         <div>'+\
         '            <div>'+\
         '<div style="text-align: center;"><img src="'+ burl +'static/logo_light.png?'+ get_random_str(9) +'" height="88"></div>'+\
