@@ -58,6 +58,7 @@ def get_user_creation_form(burl):
         '                <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i> Sign up</button>'+\
         '            </div>'+\
         '        </div>'+\
+        '<div class="expl" style="text-align: center;">*We respect your privacy and will never share your email address with any person or organization.</div>'+\
         '    </form>'+\
         '            </div>'+\
         '        </div>'+\
@@ -67,6 +68,15 @@ def get_user_creation_form(burl):
 
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
+        '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part">'+\
+        '               <h3>Taatu Ltd.</h3>'+\
+        '               <div>27 Old Gloucester Street</div>'+\
+        '               <div>London</div>'+\
+        '               <div>WC1N 3AX</div>'+\
+        '               <div>United Kingdom</div>'+\
+        '            </div>'+\
+        '        </div>'+\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
         '            </div>'+\
