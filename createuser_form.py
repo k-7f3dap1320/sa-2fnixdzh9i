@@ -69,7 +69,7 @@ def get_user_creation_form(burl):
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part" style="padding: 5%; height:250px">'+\
         '               <div>&nbsp;</div>'+\
         '               <h5>Taatu Ltd.</h5>'+\
         '               <div>27 Old Gloucester Street</div>'+\
@@ -80,7 +80,7 @@ def get_user_creation_form(burl):
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part" style="padding: 5%; height:250px">'+\
         '               <div>&nbsp;</div>'+\
         '               <h5>Contact Us, we love feedback</h5>'+\
         '               <div>e: <a href="mailto:info@taatu.co">info@taatu.co</a></div>'+\
