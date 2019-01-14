@@ -5,7 +5,7 @@
 
 def get_font_awesome():
 
-    fa = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">'
+    fa = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">'
     r = fa
 
     return r
