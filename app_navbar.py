@@ -9,6 +9,7 @@ def navbar(burl):
 
     search_placeholder = 'Enter function, ticker or search. Hit <enter> to go.'
     sid = get_random_str(9)
+    l_join_now_btn = 'Join now'
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
     '<a class="navbar-brand" href="'+ burl +'"><img src="'+ burl+'static/logo.png' +'?'+ get_random_str(9) +'" height="30"></a>'+\
@@ -36,7 +37,7 @@ def navbar(burl):
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
-    '         <a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">Create an account</a>'+\
+    '         <a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">'+ l_join_now_btn +'</a>'+\
     '      </li>'+\
     '  </ul>'+\
     '</div>'+\
