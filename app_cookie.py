@@ -22,6 +22,9 @@ def set_sa_cookie(usr,ref):
 
     return r
 
+def user_get_uid():
+    return = request.cookies.get('user')
+    
 def user_is_login():
 
     user_id = None
