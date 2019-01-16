@@ -34,6 +34,7 @@ def user_is_login():
     except Exception as e: print(e)
 
     if not user_id == '0' : r = 1
+    print('user is logged in: '+ str(r) )
     return r
 
 def user_logout(burl):
