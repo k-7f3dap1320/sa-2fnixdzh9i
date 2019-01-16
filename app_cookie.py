@@ -38,7 +38,7 @@ def user_logout(burl):
     resp = ''
     try:
         resp = make_response( set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(burl) + '" />') + get_body('','') ) )
-        resp.delete_cookie('user')
+        resp.set_cookie('user', '0')
     except Exception as e: print(e)
 
     return resp
