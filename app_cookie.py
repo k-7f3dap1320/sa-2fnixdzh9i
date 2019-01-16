@@ -8,16 +8,12 @@ from app_head import *
 from app_body import *
 
 def set_sa_ref_code(ref):
-    r = False
-    try:
-        resp = make_response(None)
-        ref_str = 'x'
-        if len(ref_str) > 1: ref_str = str(ref)
-        resp.set_cookie('ref_by', str(ref_str) )
-        r = True
-    except Exception as e: print(e)
+    resp = make_response( redirect("/") )
+    ref_str = 'x'
+    if len(ref_str) > 1: ref_str = str(ref)
+    resp.set_cookie('ref_by', str(ref_str) )
 
-    return r
+    return resp
 
 def set_sa_cookie(usr,ref):
     #try:
