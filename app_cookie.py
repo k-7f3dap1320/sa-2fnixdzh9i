@@ -28,6 +28,7 @@ def set_sa_cookie(usr,ref):
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('user', str(user_uid) )
         resp.set_cookie('ref_by', str(ref_str) )
+        print('user_id=' + user_uid )
         r = True
     except Exception as e: print(e)
 
