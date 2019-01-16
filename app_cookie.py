@@ -17,15 +17,15 @@ def set_sa_ref_code(ref):
     return resp
 
 def set_sa_cookie(usr,ref):
-    #try:
-    resp = make_response( redirect("/") )
-    user_uid = 'x'; ref_str = 'x'
-    if len(usr) > 1: user_uid = str(usr)
-    if len(ref_str) > 1: ref_str = str(ref)
-    resp.set_cookie('user', str(user_uid) )
-    resp.set_cookie('ref_by', str(ref_str) )
-    print('user_id=' + user_uid )
-    #except Exception as e: print(e)
+    try:
+        resp = make_response( redirect("/") )
+        user_uid = '0'; ref_str = '0'
+        if len(usr) > 1: user_uid = str(usr)
+        if len(ref_str) > 1: ref_str = str(ref)
+        resp.set_cookie('user', str(user_uid) )
+        resp.set_cookie('ref_by', str(ref_str) )
+        print('user_id=' + user_uid )
+    except Exception as e: print(e)
     return resp
 
 def user_get_uid():
@@ -48,7 +48,7 @@ def user_logout(burl):
 
     resp = ''
     try:
-        resp = make_response( set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(burl) + '" />') + get_body('','') ) )
+        resp = make_response( redirect("/") )
         resp.set_cookie('user', '0')
     except Exception as e: print(e)
 
