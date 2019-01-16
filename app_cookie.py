@@ -20,7 +20,6 @@ def set_sa_ref_code(ref):
     return r
 
 def set_sa_cookie(usr,ref):
-    r = False
     #try:
     resp = make_response( redirect("/") )
     user_uid = '0'; ref_str = '0'
@@ -29,7 +28,6 @@ def set_sa_cookie(usr,ref):
     resp.set_cookie('user', str(user_uid) )
     resp.set_cookie('ref_by', str(ref_str) )
     print('user_id=' + user_uid )
-    r = True
     #except Exception as e: print(e)
 
     return resp
@@ -46,7 +44,7 @@ def user_is_login():
     print('THIS IS USER_ID = ' + str(user_id) )
     #except Exception as e: print(e)
 
-    if not user_id == '0' : r = 1
+    if not user_id == None or not user_id == '0' : r = 1
     print('user is logged in: '+ str(r) )
     return r
 
