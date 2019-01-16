@@ -11,6 +11,7 @@ from portf_main import *
 from signal_main import *
 from createuser_main import *
 from app_head import *; from app_body import *; from app_page import *
+from app_cookie import *
 
 application = Flask(__name__)
 
@@ -23,6 +24,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
 @application.route('/a/', endpoint='a', methods=["POST", "GET"])
+@application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
@@ -34,6 +36,9 @@ def go():
 
     c = ''
     uid = request.args.get('uid')
+    ref = request.args.get('ref')
+    usr = request.values.get('usr')
+    set_sa_cookie(usr,ref)
 
     if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
 
@@ -44,6 +49,8 @@ def go():
         c = gen_createuser_page(uid,appname,burl,name,username,password)
 
     elif request.endpoint == 'a': pass
+
+    elif request.endpoint == 'logout': user_logout()
 
     else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
 

@@ -37,5 +37,9 @@ def get_uid(s):
 def get_random_str(n):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
 
+def get_random_num(n):
+    max = int(n)
+    return random.randint(1,max)
+
 def get_selected_lang():
     return 'en'
