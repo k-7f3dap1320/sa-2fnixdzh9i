@@ -48,7 +48,7 @@ def go():
 
     elif request.endpoint == 'a': pass
 
-    elif request.endpoint == 'logout': user_logout(burl)
+    elif request.endpoint == 'logout': c = user_logout(burl)
 
     else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
     ############
