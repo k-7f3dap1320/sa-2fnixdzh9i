@@ -19,14 +19,13 @@ def set_sa_ref_code(ref):
 def set_sa_cookie(usr,ref):
     #try:
     resp = make_response( redirect("/") )
-    #user_uid = 'x'; ref_str = 'x'
-    #if len(usr) > 1: user_uid = str(usr)
-    #if len(ref_str) > 1: ref_str = str(ref)
-    #resp.set_cookie('user', str(user_uid) )
-    #resp.set_cookie('ref_by', str(ref_str) )
-    #print('user_id=' + user_uid )
+    user_uid = 'x'; ref_str = 'x'
+    if len(usr) > 1: user_uid = str(usr)
+    if len(ref_str) > 1: ref_str = str(ref)
+    resp.set_cookie('user', str(user_uid) )
+    resp.set_cookie('ref_by', str(ref_str) )
+    print('user_id=' + user_uid )
     #except Exception as e: print(e)
-    resp.set_cookie('test','test')
     return resp
 
 def user_get_uid():
