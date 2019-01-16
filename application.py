@@ -34,8 +34,7 @@ def go():
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
-    usr = request.values.get('usr')
-    set_sa_cookie(usr,ref)
+    set_sa_ref_code(ref)
 
     #############
     if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)

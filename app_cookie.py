@@ -7,6 +7,17 @@ from app_page import *
 from app_head import *
 from app_body import *
 
+def set_sa_ref_code(ref):
+    r = False
+    try:
+        resp = make_response(None)
+        ref_str = '0'
+        if len(ref_str) > 1: ref_str = str(ref)
+        resp.set_cookie('ref_by', str(ref_str) )
+        r = True
+    except Exception as e: print(e)
+
+    return r
 
 def set_sa_cookie(usr,ref):
     r = False
