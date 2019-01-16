@@ -11,7 +11,7 @@ def set_sa_ref_code(ref):
     r = False
     try:
         resp = make_response(None)
-        ref_str = '0'
+        ref_str = 'x'
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('ref_by', str(ref_str) )
         r = True
@@ -22,7 +22,7 @@ def set_sa_ref_code(ref):
 def set_sa_cookie(usr,ref):
     #try:
     resp = make_response( redirect("/") )
-    user_uid = '0'; ref_str = '0'
+    user_uid = 'x'; ref_str = 'x'
     if len(usr) > 1: user_uid = str(usr)
     if len(ref_str) > 1: ref_str = str(ref)
     resp.set_cookie('user', str(user_uid) )
@@ -39,13 +39,13 @@ def user_is_login():
 
     user_id = '0'
     r = 0
-    #try:
-    user_id = request.cookies.get('user')
-    print('THIS IS USER_ID = ' + str(user_id) )
-    #except Exception as e: print(e)
+    try:
+        user_id = request.cookies.get('user')
+        print('THIS IS USER_ID = ' + str(user_id) )
+        if len(not user_id) > 1 : r = 1
+        print('user is logged in: '+ str(r) )
+    except Exception as e: print(e)
 
-    if len(not user_id) > 1 : r = 1
-    print('user is logged in: '+ str(r) )
     return r
 
 def user_logout(burl):
