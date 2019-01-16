@@ -22,7 +22,7 @@ def set_sa_ref_code(ref):
 def set_sa_cookie(usr,ref):
     r = False
     #try:
-    resp = make_response('')
+    resp = make_response( redirect(/) )
     user_uid = '0'; ref_str = '0'
     if len(usr) > 1: user_uid = str(usr)
     if len(ref_str) > 1: ref_str = str(ref)
@@ -32,7 +32,7 @@ def set_sa_cookie(usr,ref):
     r = True
     #except Exception as e: print(e)
 
-    return r
+    return resp
 
 def user_get_uid():
     return request.cookies.get('user')
