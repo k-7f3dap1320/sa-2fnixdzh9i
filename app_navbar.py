@@ -13,7 +13,7 @@ def navbar(burl):
     l_join_now_btn = 'Join now'
 
     if user_is_login() == 1:
-        rightsidemenu = '<a href="'+burl+'logout" class="btn btn-sm btn-primary btn-block form-signin-btn">'+ 'logout:'+ user_get_uid() +'</a>'
+        rightsidemenu = '<a href="'+burl+'logout" class="btn btn-sm btn-primary btn-block form-signin-btn">'+ 'logout:'+ str( user_get_uid() ) +'</a>'
     else:
         rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">'+ l_join_now_btn +'</a>'
 
