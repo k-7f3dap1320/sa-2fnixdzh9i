@@ -44,7 +44,7 @@ def user_is_login():
     print('THIS IS USER_ID = ' + str(user_id) )
     #except Exception as e: print(e)
 
-    if not user_id == 0 : r = 1
+    if len(not user_id) > 1 : r = 1
     print('user is logged in: '+ str(r) )
     return r
 
