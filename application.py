@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from flask import Flask, request
+from flask import Flask, request, make_response
 from flask_compress import Compress
 from search import *
 from app_main import *
@@ -35,7 +35,8 @@ def go():
     uid = request.args.get('uid')
     ref = request.args.get('ref')
     set_sa_ref_code(ref)
-    set_cookie('test','test')
+    resp = make_response( redirect("/") )
+    resp.set_cookie('test','test')
 
     #############
     if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
