@@ -9,6 +9,7 @@ from app_body import *
 
 
 def set_sa_cookie(usr,ref):
+    r = False
     try:
         resp = make_response(None)
         user_uid = '0'; ref_str = '0'
@@ -16,8 +17,10 @@ def set_sa_cookie(usr,ref):
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('user', str(user_uid) )
         resp.set_cookie('ref_by', str(ref_str) )
-
+        r = True
     except Exception as e: print(e)
+
+    return r
 
 def user_is_login():
 
