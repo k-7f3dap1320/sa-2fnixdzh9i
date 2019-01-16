@@ -41,9 +41,9 @@ def user_is_login():
 
     user_id = '0'
     r = 0
-    try:
-        user_id = request.cookies.get('user')
-    except Exception as e: print(e)
+    #try:
+    user_id = request.cookies.get('user')
+    #except Exception as e: print(e)
 
     if not user_id == '0' : r = 1
     print('user is logged in: '+ str(r) )
