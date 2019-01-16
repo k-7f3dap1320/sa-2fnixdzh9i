@@ -29,17 +29,15 @@ def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
     dev_mode = True
+    c = ''; burl = request.url_root;
+    if not dev_mode: burl = burl.replace('http://','https://')
 
-    burl = request.url_root;
-    if not dev_mode:
-        burl = burl.replace('http://','https://')
-
-    c = ''
     uid = request.args.get('uid')
     ref = request.args.get('ref')
     usr = request.values.get('usr')
     set_sa_cookie(usr,ref)
 
+    #############
     if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
 
     elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl)
@@ -50,9 +48,10 @@ def go():
 
     elif request.endpoint == 'a': pass
 
-    elif request.endpoint == 'logout': user_logout()
+    elif request.endpoint == 'logout': user_logout(burl)
 
     else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
+    ############
 
     sid = request.args.get('sid')
     q = request.args.get(sid)

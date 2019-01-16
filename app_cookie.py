@@ -33,7 +33,7 @@ def user_is_login():
     if not user_id == None or not user_id == '0' : r = True
     return r
 
-def user_logout():
+def user_logout(burl):
 
     resp = ''
     try:
