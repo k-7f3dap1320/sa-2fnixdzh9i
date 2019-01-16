@@ -27,13 +27,13 @@ def user_get_uid():
 
 def user_is_login():
 
-    user_id = None
+    user_id = '0'
     r = False
     try:
         user_id = request.cookies.get('user')
     except Exception as e: print(e)
 
-    if not user_id == None or not user_id == '0' : r = True
+    if not user_id == '0' : r = True
     return r
 
 def user_logout(burl):
