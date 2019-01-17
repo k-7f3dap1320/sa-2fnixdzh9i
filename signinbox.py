@@ -11,10 +11,10 @@ def get_login_form(burl):
         r = '' +\
         '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
         '    <form class="form-signin" method="post" action="'+ burl+'login' +'">'+\
-        '      <label for="inputEmail" class="sr-only">Email address</label>'+\
-        '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
-        '      <label for="inputPassword" class="sr-only">Password</label>'+\
-        '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
+        '      <label for="sa_user" class="sr-only">Email address</label>'+\
+        '      <input type="email" id="sa_user" name="sa_user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
+        '      <label for="sa_password" class="sr-only">Password</label>'+\
+        '      <input type="password" id="sa_password" name="sa_password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
         '    </form>'
     except Exception as e: print(e)
