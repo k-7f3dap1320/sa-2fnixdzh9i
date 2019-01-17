@@ -7,9 +7,9 @@ from app_page import *
 from app_head import *
 from app_body import *
 
-def set_sa_ref_code(ref,url):
+def set_sa_ref_code(ref,c):
     try:
-        resp = make_response( redirect("/") )
+        resp = make_response( c )
         ref_str = ref
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('ref_by', str(ref_str) )
