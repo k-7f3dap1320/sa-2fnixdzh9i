@@ -43,7 +43,7 @@ def go():
 
     elif request.endpoint == 'n':
         name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password')
-        c = gen_createuser_page(uid,appname,burl,name,username,password); c = set_sa_ref_code(ref,c)
+        c = gen_createuser_page(uid,appname,burl,name,username,password);
 
     elif request.endpoint == 'login':
         user = request.values.get('user'); password = request.values.get('password')
