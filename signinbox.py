@@ -10,7 +10,7 @@ def get_login_form(burl):
     try:
         r = '' +\
         '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
-        '    <form class="form-signin" method="POST" action="'+ burl+'login' +'">'+\
+        '    <form class="form-signin" method="POST" action="'+ burl+'login/' +'">'+\
         '      <label for="sa_user" class="sr-only">Email address</label>'+\
         '      <input type="email" id="sa_user" name="sa_user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
         '      <label for="sa_password" class="sr-only">Password</label>'+\
