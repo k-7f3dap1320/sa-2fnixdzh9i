@@ -10,11 +10,11 @@ def get_login_form(burl):
     try:
         r = '' +\
         '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
-        '    <form class="form-signin">'+\
+        '    <form class="form-signin" method="post" action="'+ burl+'login' +'">'+\
         '      <label for="inputEmail" class="sr-only">Email address</label>'+\
-        '      <input type="email" id="inputEmail" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
+        '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
         '      <label for="inputPassword" class="sr-only">Password</label>'+\
-        '      <input type="password" id="inputPassword" class="form-control btn-outline-info" placeholder="Password" required>'+\
+        '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
         '    </form>'
     except Exception as e: print(e)
@@ -32,7 +32,7 @@ def get_signin_box(burl):
         '               <div class="row sign-row">'+\
         '                <div class="col-lg-6 col-md-6 col-sm-23 col-xs-12 sa-signin-box">'+\
         '                   <div>&nbsp;</div>'+\
-        '                   <h1 style="text-align: left;">A.I. powered Trading Insight</h1>   '+\
+        '                   <h1 style="text-align: left;">A.I. powered Trading Insights</h1>   '+\
         '                   <div>Your personal trading assistant. Access to more than 1,000 financial instruments, stocks, forex, commodities & cryptos. Get daily signals powered by Artificial intelligence.</div>'+\
         '                </div>'+\
         '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 50px;">'+\

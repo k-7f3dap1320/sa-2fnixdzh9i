@@ -58,7 +58,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
         check_exists = ''
         for row in rs: check_exists = row[0]
         if check_exists == '':
-            r = name + " " + username + " " + password + " " + uid
+            name = name.lower()
             nickname = set_nickname()
             d = datetime.datetime.now() ; d = d.strftime('%Y%m%d')
             referred_by_code = get_refer_by_code()
@@ -66,7 +66,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
             "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+ str(d) +", '"+ str(referred_by_code) +"' )"
             cr.execute(sql)
             connection.commit()
-            r = set_sa_cookie(uid,referred_by_code)
+            r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
         else:
             r = 'user exists'
         cr.close()

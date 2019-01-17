@@ -12,6 +12,7 @@ from signal_main import *
 from createuser_main import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
+from app_login import *
 
 application = Flask(__name__)
 
@@ -44,7 +45,9 @@ def go():
         name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password')
         c = gen_createuser_page(uid,appname,burl,name,username,password); c = set_sa_ref_code(ref,c)
 
-    elif request.endpoint == 'login': c = set_sa_ref_code(ref,c)
+    elif request.endpoint == 'login':
+        user = request.values.get('user'); password = request.values.get('password')
+        c = user_login(user,password, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
 
     elif request.endpoint == 'logout': c = user_logout(burl); c = set_sa_ref_code(ref,c)
 
