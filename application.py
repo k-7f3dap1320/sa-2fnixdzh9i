@@ -24,7 +24,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
-@application.route('/login/', endpoint='a', methods=["POST", "GET"])
+@application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 def go():
 
