@@ -42,16 +42,6 @@ def user_is_login():
 
     return r
 
-def user_logout(burl):
-
-    resp = ''
-    try:
-        resp = make_response( redirect("/") )
-        resp.set_cookie('user', '0')
-    except Exception as e: print(e)
-
-    return resp
-
 def get_refer_by_code():
 
     refer_by_code = ''

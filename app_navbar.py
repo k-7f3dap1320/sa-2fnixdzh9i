@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from search import *
 from sa_func import *
-from app_cookie import *
+from app_login import *
 
 def navbar(burl):
 
