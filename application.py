@@ -46,7 +46,7 @@ def go():
         c = gen_createuser_page(uid,appname,burl,name,username,password);
 
     elif request.endpoint == 'login':
-        user = request.values.get('sa_user'); password = request.values.get('sa_password')
+        user = request.values.get('user'); password = request.values.get('password')
         print('LOGIN AS='+ user + ' :: ' + password)
         c = user_login(user,password, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
 
