@@ -25,7 +25,9 @@ def user_login(usr,pwd,c):
         cr.close()
         connection.close()
 
-        if not uid == '': set_sa_cookie(uid, c )
+        if not uid == '': c = set_sa_cookie(uid, c )
+
+        print( str(uid) )
 
     except Exception as e: print(e)
 
