@@ -23,7 +23,7 @@ def set_sa_cookie(uid,c):
     try:
         resp = make_response( c )
         user_uid = '0';
-        if len(usr) > 1: user_uid = str(uid)
+        if len(uid) > 1: user_uid = str(uid)
         resp.set_cookie('user', str(user_uid), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
     except Exception as e: print(e)
     return resp
