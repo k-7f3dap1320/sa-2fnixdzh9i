@@ -23,7 +23,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
-@application.route('/a/', endpoint='a', methods=["POST", "GET"])
+@application.route('/login/', endpoint='a', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 def go():
 
@@ -34,22 +34,21 @@ def go():
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
-    set_sa_ref_code(ref)
 
     #############
-    if request.endpoint == 's': c = gen_sign_page(uid,appname,burl)
+    if request.endpoint == 's': c = gen_sign_page(uid,appname,burl); c = set_sa_ref_code(ref,c)
 
-    elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl)
+    elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl); c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':
         name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password')
-        c = gen_createuser_page(uid,appname,burl,name,username,password)
+        c = gen_createuser_page(uid,appname,burl,name,username,password); c = set_sa_ref_code(ref,c)
 
-    elif request.endpoint == 'a': pass
+    elif request.endpoint == 'login': c = set_sa_ref_code(ref,c)
 
-    elif request.endpoint == 'logout': c = user_logout(burl)
+    elif request.endpoint == 'logout': c = user_logout(burl); c = set_sa_ref_code(ref,c)
 
-    else: x = request.args.get('x'); c = gen_main_page(x,appname,burl)
+    else: x = request.args.get('x'); c = gen_main_page(x,appname,burl); c = set_sa_ref_code(ref,c)
     ############
 
     sid = request.args.get('sid')

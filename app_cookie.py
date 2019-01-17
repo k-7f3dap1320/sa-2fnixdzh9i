@@ -7,7 +7,7 @@ from app_page import *
 from app_head import *
 from app_body import *
 
-def set_sa_ref_code(ref):
+def set_sa_ref_code(ref,url):
     try:
         resp = make_response( redirect("/") )
         ref_str = ref
