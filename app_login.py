@@ -17,6 +17,7 @@ def user_login(usr,pwd,c):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         usr = usr.lower()
         sql = "SELECT uid FROM users WHERE username ='"+ str(usr) +"' AND password ='"+ str(pwd) +"' LIMIT 1"
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         uid = ''
