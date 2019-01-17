@@ -13,6 +13,7 @@ from createuser_main import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from app_login import *
+from signin_page import *
 
 application = Flask(__name__)
 
@@ -26,6 +27,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
+@application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
@@ -36,24 +38,39 @@ def go():
     uid = request.args.get('uid')
     ref = request.args.get('ref')
 
-    #############
-    if request.endpoint == 's': c = gen_sign_page(uid,appname,burl); c = set_sa_ref_code(ref,c)
+    ############################################################################
+    if request.endpoint == 's':
+        c = gen_sign_page(uid,appname,burl)
+        c = set_sa_ref_code(ref,c)
 
-    elif request.endpoint == 'p': c = gen_portf_page(uid,appname,burl); c = set_sa_ref_code(ref,c)
+    elif request.endpoint == 'p':
+        c = gen_portf_page(uid,appname,burl)
+        c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':
-        name = request.values.get('name'); username = request.values.get('email'); password = request.values.get('password')
+        name = request.values.get('name')
+        username = request.values.get('email')
+        password = request.values.get('password')
         c = gen_createuser_page(uid,appname,burl,name,username,password);
 
     elif request.endpoint == 'login':
-        user = request.values.get('user'); password = request.values.get('password')
-        print('LOGIN AS='+ user + ' :: ' + password)
+        user = request.values.get('user')
+        password = request.values.get('password')
         c = user_login(user,password, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
 
-    elif request.endpoint == 'logout': c = user_logout(burl); c = set_sa_ref_code(ref,c)
+    elif request.endpoint == 'logout':
+        c = user_logout(burl)
+        c = set_sa_ref_code(ref,c)
 
-    else: x = request.args.get('x'); c = gen_main_page(x,appname,burl); c = set_sa_ref_code(ref,c)
-    ############
+    elif request.endpoint == 'signin':
+        c = get_signin_page(burl)
+        c = set_sa_ref_code(ref,c)
+
+    else:
+        x = request.args.get('x');
+        c = gen_main_page(x,appname,burl);
+        c = set_sa_ref_code(ref,c)
+    ############################################################################
 
     sid = request.args.get('sid')
     q = request.args.get(sid)

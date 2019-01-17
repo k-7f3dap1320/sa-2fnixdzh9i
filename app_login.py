@@ -38,8 +38,6 @@ def user_login(usr,pwd,c):
 
         if not uid == '': c = set_sa_cookie(uid, c )
 
-        print( str(uid) )
-
     except Exception as e: print(e)
 
     return c
