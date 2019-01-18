@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_head import *; from app_body import *; from app_page import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -58,6 +59,8 @@ def user_logout(burl):
 
 
 def user_login(usr,pwd,burl):
+
+    c = ''
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
