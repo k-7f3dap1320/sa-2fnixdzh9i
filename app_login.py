@@ -26,7 +26,7 @@ def get_login_form(burl):
     except Exception as e: print(e)
     return r
 
-def get_signin_page(burl):
+def get_signin_content(burl):
 
     box_content = ''
 
@@ -45,6 +45,16 @@ def get_signin_page(burl):
     except Exception as e: print(e)
 
     return box_content
+
+def get_signin_page(burl):
+    r = ''
+    try:
+        r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl) )
+        r = set_page(r)
+    except Exception as e: print(e)
+
+    return r
 
 
 def user_logout(burl):
@@ -81,7 +91,5 @@ def user_login(usr,pwd,burl):
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/" />') + get_body('','') )
 
     except Exception as e: print(e)
-
-    print('Return from login == '+ c)
 
     return c

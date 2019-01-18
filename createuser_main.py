@@ -68,7 +68,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
         else:
-            r = 'user exists'
+            r = 'user already exists :P !'
         cr.close()
         connection.close()
     return r
