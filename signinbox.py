@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 from sa_func import *
-from app_login import *
+from signal_main import *
 
 def get_signin_box(burl):
 
