@@ -48,7 +48,7 @@ def get_select_avatar(burl):
         '            <div class="box-part sa-center-content">'+\
         '                   <div><h3>'+ l_description +'</h3></div>'+\
         '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
-        '                       <form method="POST" action="'+ burl +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'
+        '                       <form method="POST" action="'+ burl +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
         '                           <div><input type="text" name="nickname" class="form-control btn-outline-info" id="nickname" placeholder="Your name" value="'+ str(nickname) +'" required autofocus></div>'+\
         '                           <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i>&nbsp;'+ l_button +'</button>'+\
         '                       </form>'+\
