@@ -44,11 +44,10 @@ def popup_login(err,burl):
             l_descr = l_error_descr
             l_class = l_error_class
 
-    r = ''+\
-    '<div class="'+ l_class +'" role="alert">' +\
-    '  <strong>'+ l_title +'</strong><br>'+ l_descr +\
-    '</div><div>&nbsp;</div>'
-
+        r = ''+\
+        '<div class="'+ l_class +'" role="alert">' +\
+        '  <strong>'+ l_title +'</strong><br>'+ l_descr +\
+        '</div><div>&nbsp;</div>'
 
     except Exception as e: print(e)
     print('This is err==' + r )
