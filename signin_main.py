@@ -34,7 +34,7 @@ def popup_login(err,burl):
     l_error_title = 'Email and password you entered did not match our records'
     l_error_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
     l_error_class = 'alert alert-danger'
-    l_title = 'Restricted access to members only'
+    l_title = '<i class="fas fa-lock"></i>&nbsp;Restricted access to members only'
     l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  '+\
     '<div>&nbsp;</div>' +\
     '<div><a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for a free account</a></div>'
