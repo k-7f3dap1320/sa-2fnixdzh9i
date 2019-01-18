@@ -6,12 +6,19 @@ from app_head import *; from app_body import *; from app_page import *; from app
 from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 
-def get_login_form(burl):
+def get_login_form(burl,theme):
 
     r = ''
     try:
+
+        if theme == 'dark':
+            sign_in_class = 'form-sign-text-dark'
+            logo = 'logo.png'
+        else:
+            sign_in_class = 'form-sign-text-light'
+            logo = 'logo_light.png'
         r = '' +\
-        '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
+        '<div class="'+ sign_in_class +'"><img src="'+ burl +'static/'+ logo +'" height="30">&nbsp;Sign In</div>'+\
         '    <form class="form-signin" method="POST" action="'+ burl+'login/' +'">'+\
         '      <label for="user" class="sr-only">Email address</label>'+\
         '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
@@ -32,7 +39,7 @@ def get_signin_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        get_login_form(burl) +\
+        get_login_form(burl,'light') +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\

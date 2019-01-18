@@ -23,7 +23,8 @@ def get_stylesheet(burl):
 
     #Login Form
     form_signin = '.form-signin {width: 100%; max-width: 330px; padding: 15px; margin: 0 auto;}'
-    form_signin_text = '.form-signin-text {color: white; text-align: center; }'
+    form_signin_text_dark = '.form-signin-text-dark {color: white; text-align: center; }'
+    form_signin_text_light = '.form-signin-text-light {text-align: center; }'
     form_signin_form_control = '.form-signin .form-control {position: relative; box-sizing: border-box; height: auto; padding: 10px; font-size: medium;}'
     form_signin_form_control_focus = '.form-signin .form-control:focus {z-index: 2;}'
     form_signin_input_email = '.form-signin input[type="email"] {margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;}'
@@ -86,7 +87,8 @@ def get_stylesheet(burl):
     sa_signal_recomm_trail_ret +\
     loading +\
     form_signin +\
-    form_signin_text +\
+    form_signin_text_dark +\
+    form_signin_text_light +\
     form_signin_form_control +\
     form_signin_form_control_focus +\
     form_signin_input_email +\

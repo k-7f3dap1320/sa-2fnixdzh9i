@@ -21,7 +21,7 @@ def get_signin_box(burl):
         '                   <div>Your personal trading assistant. Access to more than 1,000 financial instruments, stocks, forex, commodities & cryptos. Get daily signals powered by Artificial intelligence.</div>'+\
         '                </div>'+\
         '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 50px;">'+\
-        get_login_form(burl) +\
+        get_login_form(burl,'dark') +\
         '                </div>'+\
         '               </div>'+\
         '            </div>'+\
