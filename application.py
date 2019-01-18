@@ -13,7 +13,6 @@ from createuser_main import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from app_login import *
-from signin_page import *
 
 application = Flask(__name__)
 
@@ -56,7 +55,7 @@ def go():
     elif request.endpoint == 'login':
         user = request.values.get('user')
         password = request.values.get('password')
-        c = user_login(user,password, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
+        c = user_login(user,password, burl )
 
     elif request.endpoint == 'logout':
         c = user_logout(burl)

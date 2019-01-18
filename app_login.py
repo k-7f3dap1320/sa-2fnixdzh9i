@@ -6,9 +6,48 @@ from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
+from signinbox import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+
+def get_login_form(burl):
+
+    r = ''
+    try:
+        r = '' +\
+        '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
+        '    <form class="form-signin" method="POST" action="'+ burl+'login/' +'">'+\
+        '      <label for="user" class="sr-only">Email address</label>'+\
+        '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
+        '      <label for="password" class="sr-only">Password</label>'+\
+        '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
+        '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
+        '    </form>'
+    except Exception as e: print(e)
+    return r
+
+def get_signin_page(burl):
+
+    box_content = ''
+
+    try:
+
+        box_content = '<div class="box-top">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part">'+\
+        get_login_form(burl) +\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'
+
+    except Exception as e: print(e)
+
+    return box_content
+
 
 def user_logout(burl):
 
@@ -21,7 +60,7 @@ def user_logout(burl):
     return resp
 
 
-def user_login(usr,pwd,c):
+def user_login(usr,pwd,burl):
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -36,7 +75,10 @@ def user_login(usr,pwd,c):
         cr.close()
         connection.close()
 
-        if not uid == '': c = set_sa_cookie(uid, c )
+        if not uid == '':
+            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
+        else:
+            c: set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/" />') + get_body('','') )
 
     except Exception as e: print(e)
 

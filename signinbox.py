@@ -3,22 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 from sa_func import *
-
-def get_login_form(burl):
-
-    r = ''
-    try:
-        r = '' +\
-        '<div class="form-signin-text"><img src="'+ burl +'static/logo.png" height="30">&nbsp;Sign In</div>'+\
-        '    <form class="form-signin" method="POST" action="'+ burl+'login/' +'">'+\
-        '      <label for="user" class="sr-only">Email address</label>'+\
-        '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
-        '      <label for="password" class="sr-only">Password</label>'+\
-        '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
-        '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
-        '    </form>'
-    except Exception as e: print(e)
-    return r
+from app_login import *
 
 def get_signin_box(burl):
 
