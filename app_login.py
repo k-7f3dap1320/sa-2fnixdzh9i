@@ -62,24 +62,26 @@ def user_login(usr,pwd,burl):
 
     c = ''
 
-    #try:
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    usr = usr.lower()
-    sql = "SELECT uid FROM users WHERE username ='"+ str(usr) +"' AND password ='"+ str(pwd) +"' LIMIT 1"
-    print(sql)
-    cr.execute(sql)
-    rs = cr.fetchall()
-    uid = ''
-    for row in rs: uid = row[0]
-    cr.close()
-    connection.close()
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        usr = usr.lower()
+        sql = "SELECT uid FROM users WHERE username ='"+ str(usr) +"' AND password ='"+ str(pwd) +"' LIMIT 1"
+        print(sql)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        uid = ''
+        for row in rs: uid = row[0]
+        cr.close()
+        connection.close()
 
-    if not uid == '':
-        c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
-    else:
-        c: set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/" />') + get_body('','') )
+        if not uid == '':
+            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
+        else:
+            c: set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/" />') + get_body('','') )
 
-    #except Exception as e: print(e)
+    except Exception as e: print(e)
+
+    print('Return from login == '+ c)
 
     return c
