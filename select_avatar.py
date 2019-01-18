@@ -39,7 +39,7 @@ def get_select_avatar(burl):
         #avatar, from 1 to 19
         avatar_path = burl + "static/avatar/"; avatar_ext = ".png"
         avatar = avatar_path + str(avatar_id) + avatar_ext
-        l_desc_part_1 = 'Hey ' + str(name)
+        l_desc_part_1 = 'Hey ' + str(name).capitalize()
         l_desc_part_2 = 'We found you a trading floor nickname...'
         l_button = 'Save'
 
