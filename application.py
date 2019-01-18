@@ -62,7 +62,8 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'signin':
-        c = get_signin_page(burl)
+        err = request.args.get('error')
+        c = get_signin_page(appname,burl,err)
         c = set_sa_ref_code(ref,c)
 
     else:

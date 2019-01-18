@@ -47,7 +47,7 @@ def get_signin_content(burl):
 
     return box_content
 
-def get_signin_page(burl):
+def get_signin_page(appname,burl,err):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
