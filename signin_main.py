@@ -12,10 +12,10 @@ def get_login_form(burl,theme):
     try:
 
         if theme == 'dark':
-            sign_in_class = 'form-sign-text-dark'
+            sign_in_class = 'form-signin-text-dark'
             logo = 'logo.png'
         else:
-            sign_in_class = 'form-sign-text-light'
+            sign_in_class = 'form-signin-text-light'
             logo = 'logo_light.png'
         r = '' +\
         '<div class="'+ sign_in_class +'"><img src="'+ burl +'static/'+ logo +'" height="30">&nbsp;Sign In</div>'+\
