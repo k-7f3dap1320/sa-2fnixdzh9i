@@ -33,7 +33,7 @@ def popup_login_error(err):
     r = ''
     l_title = 'Email and password you entered did not match our records'
     l_descr = 'If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
-
+    print(str(err) )
     try:
         if err == 1:
             r = ''+\
