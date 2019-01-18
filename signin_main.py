@@ -32,14 +32,14 @@ def get_login_form(burl,theme):
 def popup_login_error(err):
     r = ''
     l_title = 'Email and password you entered did not match our records'
-    l_descr = 'If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
+    l_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
     print(str(err) )
     try:
         if err == '1':
             r = ''+\
             '<div class="alert alert-danger" role="alert">' +\
-            '  <strong>'+ l_title +'</strong> Please double-check and try again. '+ l_descr +\
-            '</div>'
+            '  <strong>'+ l_title +'</strong><br>'+ l_descr +\
+            '</div><div>&nbsp;</div>'
 
     except Exception as e: print(e)
     print('This is err==' + r )
@@ -55,8 +55,8 @@ def get_signin_content(burl,theme,err):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        get_login_form(burl,theme) +\
         popup_login_error(err) +\
+        get_login_form(burl,theme) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
