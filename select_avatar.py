@@ -39,19 +39,23 @@ def get_select_avatar(burl):
         #avatar, from 1 to 19
         avatar_path = burl + "static/avatar/"; avatar_ext = ".png"
         avatar = avatar_path + str(avatar_id) + avatar_ext
-        l_description = 'Hey ' + str(name) + '!<br>We found you a trading floor nickname...'
+        l_desc_part_1 = 'Hey ' + str(name)
+        l_desc_part_2 = 'We found you a trading floor nickname...'
         l_button = 'Save'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
-        '                   <div><h5>'+ l_description +'</h5></div>'+\
+        '                   <div class="alert alert-success" role="alert">' +\
+        '                       <strong>'+ l_desc_part_1 +'</strong><br>'+ l_desc_part_2 +\
+        '                   </div><div>&nbsp;</div>'+\
+        '                   <div>&nbsp;</div>'+\
         '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
-        '                       <form method="POST" action="'+ burl +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
+        '                       <form method="POST" action="'+ burl +'" style="width: 100%; max-width: 300px; padding: 2%; margin: auto;">'+\
         '                           <div><input type="text" name="nickname" class="form-control btn-outline-info" id="nickname" placeholder="Your name" value="'+ str(nickname) +'" required autofocus></div>'+\
         '                           <br>'+\
-        '                           <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i>&nbsp;'+ l_button +'</button>'+\
+        '                           <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_button +'</button>'+\
         '                       </form>'+\
         '            </div>'+\
         '        </div>'+\
