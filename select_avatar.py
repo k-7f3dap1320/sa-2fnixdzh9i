@@ -52,14 +52,13 @@ def get_select_avatar(burl):
         '</div>'
 
     except Exception as e: print(e)
-
     return box_content
 
-    def gen_createuser_avatar(burl):
-
-        try:
-            r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-            r = r + get_body( get_loading_body(), navbar(burl) + get_select_avatar(burl) )
-            r = set_page(r)
-        except Exception as e:
-            raise
+def gen_createuser_avatar(burl):
+    r = ''
+    try:
+        r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_select_avatar(burl) )
+        r = set_page(r)
+    except Exception as e: print(e)
+    return r
