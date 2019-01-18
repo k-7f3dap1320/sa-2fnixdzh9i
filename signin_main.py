@@ -36,7 +36,7 @@ def popup_login(err,burl):
     l_error_class = 'alert alert-danger'
     l_title = 'Restricted access to members only'
     l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  '+\
-    '<a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for a free account</a>'
+    '<div><a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for a free account</a></div>'
     l_class = 'alert alert-warning'
 
     try:
