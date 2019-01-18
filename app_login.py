@@ -6,8 +6,6 @@ from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
-from signinbox import *
-
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
