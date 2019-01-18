@@ -54,7 +54,7 @@ def get_select_avatar(burl):
     except Exception as e: print(e)
     return box_content
 
-def gen_createuser_avatar(burl):
+def gen_createuser_avatar(appname,burl):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
