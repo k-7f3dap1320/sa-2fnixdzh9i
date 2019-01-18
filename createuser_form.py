@@ -4,7 +4,8 @@
 # LICENSE file in the root directory of this source tree.
 from sa_func import *
 from sa_db import *
-access_obj = sa_db_access()
+from app_cookie import *
+
 
 def get_user_creation_form(burl):
 

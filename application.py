@@ -9,7 +9,7 @@ from search import *
 from app_main import *
 from portf_main import *
 from signal_main import *
-from createuser_main import *
+from createuser_main import *; from select_avatar import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from signin_main import *
@@ -50,7 +50,9 @@ def go():
         name = request.values.get('name')
         username = request.values.get('email')
         password = request.values.get('password')
-        c = gen_createuser_page(uid,appname,burl,name,username,password);
+        step = request.args.get('step')
+        if step == '': c = gen_createuser_page(uid,appname,burl,name,username,password)
+        if step == 'a': c = gen_createuser_avatar(burl)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
