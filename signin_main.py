@@ -31,7 +31,7 @@ def get_signin_content(burl):
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-signin-box">'+\
+        '            <div class="box-part">'+\
         get_login_form(burl) +\
         '            </div>'+\
         '        </div>'+\
