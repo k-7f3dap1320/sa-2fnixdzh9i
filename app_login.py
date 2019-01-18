@@ -50,11 +50,11 @@ def get_signin_content(burl):
 
 def get_signin_page(appname,burl,err):
     r = ''
-    try:
-        r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl) )
-        r = set_page(r)
-    except Exception as e: print(e)
+    #try:
+    r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+    r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl) )
+    r = set_page(r)
+    #except Exception as e: print(e)
 
     return r
 
