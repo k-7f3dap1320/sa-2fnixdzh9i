@@ -64,7 +64,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password):
             referred_by_code = get_refer_by_code()
             avatar_id = get_random_num(19)
             sql = "INSERT INTO users(uid, name, nickname, username, password, created_on, referred_by_code, avatar_id) "+\
-            "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+ str(d) +", '"+ str(referred_by_code) +", "+ str(avatar_id) +"' )"
+            "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+ str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +" )"
             cr.execute(sql)
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a" />') + get_body('','') ) )
