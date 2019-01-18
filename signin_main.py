@@ -29,7 +29,23 @@ def get_login_form(burl,theme):
     except Exception as e: print(e)
     return r
 
-def get_signin_content(burl):
+def popup_login_error(err):
+    r = ''
+    l_title = 'Email and password you entered did not match our records'
+    l_descr = 'If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
+
+    try:
+        if err == 1:
+            r = ''+\
+            '<div class="alert alert-danger" role="alert">' +\
+            '  <strong>'+ l_title +'</strong> Please double-check and try again. '+ l_descr +\
+            '</div>'
+
+    except Exception as e: print(e)
+
+    return r
+
+def get_signin_content(burl,theme,err):
 
     box_content = ''
 
@@ -39,7 +55,8 @@ def get_signin_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        get_login_form(burl,'light') +\
+        get_login_form(burl,theme) +\
+        popup_login_error(err) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -54,7 +71,7 @@ def get_signin_page(appname,burl,err):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl,'light',err) )
         r = set_page(r)
     except Exception as e: print(e)
 

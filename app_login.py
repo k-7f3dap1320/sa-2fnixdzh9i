@@ -40,7 +40,7 @@ def user_login(usr,pwd,burl):
         if not uid == '':
             c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') ) )
         else:
-            c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/" />') + get_body('','') )
+            c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/?err=1" />') + get_body('','') )
 
     except Exception as e: print(e)
 
