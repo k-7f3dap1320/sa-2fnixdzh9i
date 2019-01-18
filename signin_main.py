@@ -29,17 +29,26 @@ def get_login_form(burl,theme):
     except Exception as e: print(e)
     return r
 
-def popup_login_error(err):
+def popup_login(err,burl):
     r = ''
-    l_title = 'Email and password you entered did not match our records'
-    l_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
-    print(str(err) )
+    l_error_title = 'Email and password you entered did not match our records'
+    l_error_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
+    l_error_class = 'alert alert-danger'
+    l_title = 'Restricted access to members only'
+    l_descr = 'Provide your email and password to access to content. If you do not have an account yet, <a href="'+ burl +'n/?uid=0">join us</a>'
+    l_class = 'alert alert-warning'
+
     try:
         if err == '1':
-            r = ''+\
-            '<div class="alert alert-danger" role="alert">' +\
-            '  <strong>'+ l_title +'</strong><br>'+ l_descr +\
-            '</div><div>&nbsp;</div>'
+            l_title = l_error_title
+            l_descr = l_error_descr
+            l_class = l_error_class
+
+    r = ''+\
+    '<div class="'+ l_class +'" role="alert">' +\
+    '  <strong>'+ l_title +'</strong><br>'+ l_descr +\
+    '</div><div>&nbsp;</div>'
+
 
     except Exception as e: print(e)
     print('This is err==' + r )
@@ -55,7 +64,7 @@ def get_signin_content(burl,theme,err):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
-        popup_login_error(err) +\
+        popup_login(err,burl) +\
         get_login_form(burl,theme) +\
         '            </div>'+\
         '        </div>'+\
