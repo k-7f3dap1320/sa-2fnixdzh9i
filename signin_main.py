@@ -35,8 +35,8 @@ def popup_login(err,burl):
     l_error_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
     l_error_class = 'alert alert-danger'
     l_title = 'Restricted access to members only'
-    l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  "+\
-    "<a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-primary btn-block form-signin-btn">Signup for a free account</a>'
+    l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  '+\
+    '<a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for a free account</a>'
     l_class = 'alert alert-warning'
 
     try:
