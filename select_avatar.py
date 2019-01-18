@@ -37,7 +37,7 @@ def get_select_avatar(burl):
         for row in rs: avatar_id = row[0]; nickname = row[1]
 
         #avatar, from 1 to 19
-        avatar_path = burl + "static/avatar/"; avatar_ext = "png"
+        avatar_path = burl + "static/avatar/"; avatar_ext = ".png"
         avatar = avatar_path + str(avatar_id) + avatar_ext
 
 
