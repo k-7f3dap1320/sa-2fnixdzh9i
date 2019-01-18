@@ -42,7 +42,7 @@ def popup_login_error(err):
             '</div>'
 
     except Exception as e: print(e)
-
+    print('This is err==' + r )
     return r
 
 def get_signin_content(burl,theme,err):
