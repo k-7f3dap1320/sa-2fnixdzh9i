@@ -35,7 +35,7 @@ def popup_login_error(err):
     l_descr = 'If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
     print(str(err) )
     try:
-        if err == 1:
+        if err == '1':
             r = ''+\
             '<div class="alert alert-danger" role="alert">' +\
             '  <strong>'+ l_title +'</strong> Please double-check and try again. '+ l_descr +\
