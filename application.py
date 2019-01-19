@@ -54,7 +54,7 @@ def go():
         password = request.values.get('password')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
-        if step == 'a': c = gen_createuser_avatar(appname,burl)
+        if step == 'a': c = gen_createuser_avatar(appname,burl,err)
         elif step == 'b': c = save_avatar(burl,nickname,err)
         elif step == 'c': c = gen_selectmarket_page(appname,burl)
         elif step == 'd': c= save_selectmarket(burl,x)
