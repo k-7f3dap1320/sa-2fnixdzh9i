@@ -13,6 +13,7 @@ from app_stylesheet import *
 from awesomplete import *
 from app_navbar import *
 from font_awesome import *
+from app_cookie import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -20,6 +21,20 @@ import pymysql.cursors
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+def save_selectmarket(burl,x):
+    r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'p/" />') + get_body('','') )
+    try:
+        user_id = user_get_uid()
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "UPDATE users SET default_profile='"+ str(x) +"' WHERE uid=" + str(user_id)
+        cr.execute(sql)
+        connection.commit()
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+    return r
 
 def get_market_list(burl):
 
@@ -41,7 +56,7 @@ def get_market_list(burl):
             if asset_class_id == 'BD:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
             if asset_class_id == 'PF:': label = 'x'
-            if not label == 'x': r = r + ' <a href="#" class="list-group-item list-group-item-action">'+ label +'</a>'
+            if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ asset_class_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         sql = "SELECT market_id, market_label FROM markets order by market_label"
         cr.execute(sql)
@@ -51,7 +66,7 @@ def get_market_list(burl):
             label = market_label + ' Market'
             #Handle particularities
             if market_id == 'GO>': label = 'x'
-            if not label == 'x': r = r + ' <a href="#" class="list-group-item list-group-item-action">'+ label +'</a>'
+            if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ market_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         r = r + '</div>'
 

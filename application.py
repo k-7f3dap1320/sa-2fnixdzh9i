@@ -36,6 +36,7 @@ def go():
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
+    x = request.args.get('x');
 
     ############################################################################
     if request.endpoint == 's':
@@ -54,7 +55,8 @@ def go():
         step = request.args.get('step')
         if step == 'a': c = gen_createuser_avatar(appname,burl)
         elif step == 'b': c = save_avatar(burl,nickname)
-        elif step == 'c': c = gen_selectmarket_page(appname,burl) 
+        elif step == 'c': c = gen_selectmarket_page(appname,burl)
+        elif step == 'd': c= save_selectmarket(burl,x)
         else: c = gen_createuser_page(uid,appname,burl,name,username,password)
 
     elif request.endpoint == 'login':
@@ -72,7 +74,6 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     else:
-        x = request.args.get('x');
         c = gen_main_page(x,appname,burl);
         c = set_sa_ref_code(ref,c)
     ############################################################################
