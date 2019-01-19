@@ -6,10 +6,9 @@
 from flask import Flask, request
 from flask_compress import Compress
 from search import *
-from app_main import *
-from portf_main import *
-from signal_main import *
+from app_main import *; from portf_main import *; from signal_main import *
 from createuser_main import *; from select_avatar import *; from select_market import *
+from createportf_main import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from signin_main import *
@@ -45,7 +44,10 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'p':
+        ins = request.values.get('ins')
+        step == request.value.get('step')
         c = gen_portf_page(uid,appname,burl)
+        if ins == '1': c = gen_selectportf_page(appname,burl,step)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':

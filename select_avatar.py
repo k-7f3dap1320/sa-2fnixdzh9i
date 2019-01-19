@@ -57,7 +57,7 @@ def get_select_avatar(burl,err):
         #avatar, from 1 to 19
         avatar_path = burl + "static/avatar/"; avatar_ext = ".png"
         avatar = avatar_path + str(avatar_id) + avatar_ext
-        l_desc_part_1 = 'Hey ' + str(name).capitalize()
+        l_desc_part_1 = 'Hey ' + str(name).capitalize()+','
         l_desc_part_2 = 'We found you a trading floor nickname...'
         l_desc_err_part_1 = 'This nickname already exists.'
         l_desc_err_part_2 = 'Try another one!'
@@ -75,7 +75,7 @@ def get_select_avatar(burl,err):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
         '                   <div class="'+ alert_class +'" role="alert">' +\
-        '                       <h5><i class="fas fa-comment"></i>&nbsp;'+ l_desc_part_1 +',</h5>'+ l_desc_part_2 +\
+        '                       <h5><i class="fas fa-comment"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
         '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
         '                       <form method="POST" action="'+ burl +'n/?step=b" style="width: 100%; max-width: 300px; padding: 2%; margin: auto;">'+\
