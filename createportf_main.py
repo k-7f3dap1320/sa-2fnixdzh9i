@@ -28,7 +28,7 @@ def get_selectportf_box(burl,step):
     box_content = ''
     min_sel = '5'
     try:
-        l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +"of "+ str(min_sel) +")"
+        l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
         l_desc_part_2 = "Search and pick an item from the grid below"
         l_placeholder = "Type to search for an instrument..."
         box_content = '<div class="box-top">' +\
@@ -36,7 +36,7 @@ def get_selectportf_box(burl,step):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
         '                   <div class="alert alert-success" role="alert">' +\
-        '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
+        '                       <h5><i class="fas fa-list-ol" style="font-size: xx-large;"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
         '                    <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
         '                               <div class="form-group">'+\
