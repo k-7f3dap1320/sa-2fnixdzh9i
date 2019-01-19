@@ -67,7 +67,7 @@ def get_selectmarket_box(burl):
 
     try:
         l_desc_part_1 = "What do you most frequently trade?"
-        l__desc_part_2 = "Pick a Market from the list below..."
+        l_desc_part_2 = "Pick a Market from the list below..."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
