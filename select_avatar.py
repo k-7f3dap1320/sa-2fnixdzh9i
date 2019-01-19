@@ -27,25 +27,16 @@ def save_avatar(burl,nickname):
     try:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT uid FROM users WHERE nickname='"+ str(nickname) +"'"
+        sql = "UPDATE users SET nickname='"+ new_nickname +"' WHERE uid ='"+ str(uid) +"'"
         cr.execute(sql)
-        rs = cr.fetchall()
-        uid = ''
-        for row in rs: uid = row[0]
-
-        step = 'b'
-
-        if len(uid) > 1:
-            new_nickname = nickname + str( get_random_num(9) )
-            sql = "UPDATE users SET nickname='"+ new_nickname +"' WHERE uid ='"+ str(uid) +"'"
-            cr.execute(sql)
-            connection.commit()
-        else: step = 'c'
+        connection.commit()
         cr.close()
         connection.close()
 
-        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step='+ step +'" />') + get_body('','') )
-    except Exception as e: print(e)
+        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') )
+    except Exception as e:
+        print(e)
+        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=javascript:history.back();" />') + get_body('','') )        
     return r
 
 def get_select_avatar(burl):
@@ -77,7 +68,7 @@ def get_select_avatar(burl):
         '                       <h5><i class="fas fa-comment"></i>&nbsp;'+ l_desc_part_1 +',</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
         '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
-        '                       <form method="POST" action="'+ burl +'n/step=b" style="width: 100%; max-width: 300px; padding: 2%; margin: auto;">'+\
+        '                       <form method="POST" action="'+ burl +'n/?step=b" style="width: 100%; max-width: 300px; padding: 2%; margin: auto;">'+\
         '                           <div><input type="text" name="nickname" class="form-control btn-outline-info" id="nickname" placeholder="Your name" value="'+ str(nickname) +'" required autofocus></div>'+\
         '                           <br>'+\
         '                           <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_button +'</button>'+\
