@@ -50,8 +50,10 @@ def go():
         name = request.values.get('name')
         username = request.values.get('email')
         password = request.values.get('password')
+        nickname = request.values.get('nickname')
         step = request.args.get('step')
-        if step == 'a': c = gen_createuser_avatar(appname,burl)
+        if step == 'a': c = gen_createuser_avatar(appname,burl,step)
+        elif step == 'b': c = save_avatar(burl,nickname)
         else: c = gen_createuser_page(uid,appname,burl,name,username,password)
 
     elif request.endpoint == 'login':
