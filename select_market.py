@@ -52,7 +52,7 @@ def get_market_list(burl):
             label = asset_class_name
             #handle particularities
             if asset_class_id == 'EQ:': label = 'All stocks'
-            if asset_class_id == 'MA:': label = '<strong>Everything...</strong>'
+            if asset_class_id == 'MA:': label = '<strong>Everything...</strong>'; asset_class_id = ''
             if asset_class_id == 'BD:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
             if asset_class_id == 'PF:': label = 'x'

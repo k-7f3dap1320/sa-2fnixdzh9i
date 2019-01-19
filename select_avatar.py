@@ -37,10 +37,10 @@ def save_avatar(burl,nickname):
         r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') )
     except Exception as e:
         print(e)
-        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a" />') + get_body('','') )
+        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a&err=1" />') + get_body('','') )
     return r
 
-def get_select_avatar(burl):
+def get_select_avatar(burl,err):
 
     box_content = ''
 
@@ -59,13 +59,22 @@ def get_select_avatar(burl):
         avatar = avatar_path + str(avatar_id) + avatar_ext
         l_desc_part_1 = 'Hey ' + str(name).capitalize()
         l_desc_part_2 = 'We found you a trading floor nickname...'
+        l_desc_err_part_1 = 'This nickname already exists.'
+        l_desc_err_part_2 = 'Try another one!'
+        alert_class = "alert alert-success"
+        alert_class_err = "alert alert-danger"
         l_button = 'Save'
+
+        if err == '1':
+            l_desc_part_1 = l_desc_err_part_1
+            l_desc_part_2 = l_desc_err_part_2
+            alert_class = alert_class_err
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
-        '                   <div class="alert alert-success" role="alert">' +\
+        '                   <div class="'+ alert_class +'" role="alert">' +\
         '                       <h5><i class="fas fa-comment"></i>&nbsp;'+ l_desc_part_1 +',</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
         '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
@@ -82,11 +91,11 @@ def get_select_avatar(burl):
     except Exception as e: print(e)
     return box_content
 
-def gen_createuser_avatar(appname,burl):
+def gen_createuser_avatar(appname,burl,err):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_select_avatar(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_select_avatar(burl,err) )
         r = set_page(r)
     except Exception as e: print(e)
     return r
