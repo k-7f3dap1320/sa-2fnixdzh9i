@@ -52,7 +52,7 @@ def go():
         password = request.values.get('password')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
-        if step == 'a': c = gen_createuser_avatar(appname,burl,step)
+        if step == 'a': c = gen_createuser_avatar(appname,burl)
         elif step == 'b': c = save_avatar(burl,nickname)
         else: c = gen_createuser_page(uid,appname,burl,name,username,password)
 
