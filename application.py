@@ -9,7 +9,7 @@ from search import *
 from app_main import *
 from portf_main import *
 from signal_main import *
-from createuser_main import *; from select_avatar import *
+from createuser_main import *; from select_avatar import *; from select_market import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from signin_main import *
@@ -54,6 +54,7 @@ def go():
         step = request.args.get('step')
         if step == 'a': c = gen_createuser_avatar(appname,burl)
         elif step == 'b': c = save_avatar(burl,nickname)
+        elif step == 'c': c = gen_selectmarket_page(appname,burl) 
         else: c = gen_createuser_page(uid,appname,burl,name,username,password)
 
     elif request.endpoint == 'login':
