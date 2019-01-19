@@ -28,7 +28,7 @@ def save_selectmarket(burl,x):
         user_id = user_get_uid()
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "UPDATE users SET default_profile='"+ str(x) +"' WHERE uid=" + str(user_id)
+        sql = "UPDATE users SET default_profile='"+ str(x) +"' WHERE uid='" + str(user_id) +"'"
         cr.execute(sql)
         connection.commit()
         cr.close()
@@ -83,7 +83,7 @@ def get_selectmarket_box(burl):
 
     try:
         l_desc_part_1 = "What do you most frequently trade?"
-        l_desc_part_2 = "We are almost done, pick a Market from the list below..."
+        l_desc_part_2 = "Pick a Market from the list below..."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
