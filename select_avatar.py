@@ -36,7 +36,7 @@ def save_avatar(burl,nickname):
         r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') )
     except Exception as e:
         print(e)
-        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=javascript:history.back();" />') + get_body('','') )        
+        r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a" />') + get_body('','') )       
     return r
 
 def get_select_avatar(burl):
