@@ -25,9 +25,10 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def save_avatar(burl,nickname):
     r = ''
     try:
+        user_uid = user_get_uid()
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "UPDATE users SET nickname='"+ nickname +"' WHERE uid ='"+ str(uid) +"'"
+        sql = "UPDATE users SET nickname='"+ nickname +"' WHERE uid ='"+ str(user_uid) +"'"
         cr.execute(sql)
         connection.commit()
         cr.close()
