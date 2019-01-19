@@ -37,9 +37,10 @@ def get_market_list(burl):
             label = asset_class_name
             #handle particularities
             if asset_class_id == 'EQ:': label = 'All stocks'
-            if asset_class_id == 'MA:': label = 'Everything...'
+            if asset_class_id == 'MA:': label = '<strong>Everything...<strong>'
             if asset_class_id == 'BD:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
+            if asset_class_id == 'PF:': label = 'x'
             if not label == 'x': r = r + ' <a href="#" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         sql = "SELECT market_id, market_label FROM markets order by market_label"
@@ -67,13 +68,13 @@ def get_selectmarket_box(burl):
 
     try:
         l_desc_part_1 = "What do you most frequently trade?"
-        l_desc_part_2 = "Pick a Market from the list below..."
+        l_desc_part_2 = "We are almost done, pick a Market from the list below..."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
         '                   <div class="alert alert-success" role="alert">' +\
-        '                       <h5><i class="fas fa-chart-line"></i>&nbsp;'+ l_desc_part_1 +',</h5>'+ l_desc_part_2 +\
+        '                       <h5><i class="fas fa-chart-line"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
         get_market_list(burl) +\
         '            </div>'+\
