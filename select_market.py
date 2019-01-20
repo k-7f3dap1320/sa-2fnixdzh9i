@@ -36,7 +36,7 @@ def save_selectmarket(burl,x):
     except Exception as e: print(e)
     return r
 
-def get_market_list(burl):
+def get_market_list(burl,mode):
 
     r = ''
     try:
@@ -77,13 +77,18 @@ def get_market_list(burl):
     except Exception as e: print(e)
     return r
 
-def get_selectmarket_box(burl):
+def get_selectmarket_box(burl,mode):
 
     box_content = ''
 
     try:
-        l_desc_part_1 = "What do you most frequently trade?"
-        l_desc_part_2 = "Pick a Market from the list below..."
+        if mode == 'portf':
+            l_desc_part_1 = "Select a market for your portfolio"
+            l_desc_part_2 = "Pick from the list below..."
+        else:
+            l_desc_part_1 = "What do you most frequently trade?"
+            l_desc_part_2 = "Pick a Market from the list below..."
+
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -91,7 +96,7 @@ def get_selectmarket_box(burl):
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-chart-line"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
-        get_market_list(burl) +\
+        get_market_list(burl,mode) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -101,11 +106,11 @@ def get_selectmarket_box(burl):
     return box_content
 
 
-def gen_selectmarket_page(appname,burl):
+def gen_selectmarket_page(appname,burl,mode):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectmarket_box(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectmarket_box(burl,mode) )
         r = set_page(r)
     except Exception as e: print(e)
     return r
