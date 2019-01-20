@@ -30,6 +30,7 @@ def get_selectportf_box(burl,step,mode,x):
     min_sel = '5'
     try:
         portf_category = ''
+        progress_value = '0'
         try:
             if len(x) < 1: x = get_user_default_profile()
         except Exception as e: print(e)
@@ -53,14 +54,19 @@ def get_selectportf_box(burl,step,mode,x):
 
         if step == '1':
             l_desc_part_1 = "Let's Create your "+ str(portf_category)  +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            progress_value = '20'
         if step == '2':
             l_desc_part_1 = "Pick another item to add to your "+ str(portf_category) +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            progress_value = '40'
         if step == '3':
             l_desc_part_1 = "Almost there, pick another one (Step "+ str(step) +" of "+ str(min_sel) +")"
+            progress_value = '60'
         if step == '4':
             l_desc_part_1 = "You selected 3 items for your portfolio, choose another one, we need 5 of them (Step "+ str(step) +" of "+ str(min_sel) +")"
+            progress_value = '80'
         if step == '5':
             l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
+            progress_value = '95'
 
         l_desc_part_2 = "Search and pick an item from the list below"
         l_placeholder = "Type to search for an instrument..."
@@ -71,7 +77,10 @@ def get_selectportf_box(burl,step,mode,x):
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div>'+\
-        '                    <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
+        '                   <div class="progress">'+\
+        '                       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
+        '                   </div>'+\
+        '                   <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
         '                               <div class="form-group">'+\
         '                                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
         '                                       <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-search" style="font-size: xx-large;"></i></div>'+\
