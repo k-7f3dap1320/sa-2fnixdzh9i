@@ -46,8 +46,9 @@ def go():
     elif request.endpoint == 'p':
         ins = request.values.get('ins')
         step = request.values.get('step')
+        mode = request.values.get('mode')
         c = gen_portf_page(uid,appname,burl)
-        if ins == '1': c = gen_selectportf_page(appname,burl,step,'','')
+        if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':
