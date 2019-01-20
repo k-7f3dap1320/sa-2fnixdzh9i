@@ -22,7 +22,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def save_selectmarket(burl,x):
+def save_selectmarket(burl,mode,x):
     r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'p/?ins=1&step=1" />') + get_body('','') )
     try:
         user_id = user_get_uid()

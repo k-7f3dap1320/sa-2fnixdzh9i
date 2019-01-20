@@ -23,7 +23,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def get_selectportf_box(burl,step,x):
+def get_selectportf_box(burl,step,mode,x):
 
     box_content = ''
     min_sel = '5'
@@ -55,11 +55,11 @@ def get_selectportf_box(burl,step,x):
     return box_content
 
 
-def gen_selectportf_page(appname,burl,step,x):
+def gen_selectportf_page(appname,burl,step,mode,x):
     r = ''
     try:
         r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,x) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) )
         r = set_page(r)
     except Exception as e: print(e)
     return r
