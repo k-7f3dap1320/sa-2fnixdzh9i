@@ -38,7 +38,7 @@ def get_selectportf_box(burl,step,mode,x):
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div>'+\
-        '                    <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
+        '                    <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
         '                               <div class="form-group">'+\
         '                                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
         '                                       <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-search" style="font-size: xx-large;"></i></div>'+\
