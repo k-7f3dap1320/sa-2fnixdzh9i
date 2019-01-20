@@ -14,6 +14,7 @@ from awesomplete import *
 from app_navbar import *
 from font_awesome import *
 from app_cookie import *
+from sa_func import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -28,8 +29,40 @@ def get_selectportf_box(burl,step,mode,x):
     box_content = ''
     min_sel = '5'
     try:
-        l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
-        l_desc_part_2 = "Search and pick an item from the grid below"
+        portf_category = ''
+        try:
+            if len(x) < 1: x = get_user_default_profile()
+        except Exception as e: print(e)
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT asset_class_name FROM asset_class WHERE asset_class_id ='"+ str(x) +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: portf_category = row[0]
+
+        if portf_category == '':
+            sql = "SELECT market_label FROM markets WHERE market_id='"+ str(x) +"'"
+            cr.execute(sql)
+            rs = cr.fetchall()
+            for row in rs: portf_category = row[0] + ' Equity'
+        cr.close()
+        connection.close()
+
+        if not portf_category == '': portf_category = portf_category + ' '
+
+        if step == '1':
+            l_desc_part_1 = "Let's Create your "+ str(portf_category)  +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+        if step == '2':
+            l_desc_part_1 = "Pick another item to add to your "+ str(portf_category) +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+        if step == '3':
+            l_desc_part_1 = "Almost there, pick another one (Step "+ str(step) +" of "+ str(min_sel) +")"
+        if step == '4':
+            l_desc_part_1 = "You selected 3 items for your portfolio, choose another one, we need 5 of them (Step "+ str(step) +" of "+ str(min_sel) +")"
+        if step == '5':
+            l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
+
+        l_desc_part_2 = "Search and pick an item from the list below"
         l_placeholder = "Type to search for an instrument..."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\

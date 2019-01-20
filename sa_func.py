@@ -7,12 +7,12 @@ access_obj = sa_db_access()
 import pymysql.cursors
 import string
 import random
+from app_cookie import
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_user():
-    #Read the cookie
-    return None
+    return user_get_uid()
 
 def get_portf_suffix():
     return 'PRF:'
@@ -33,6 +33,27 @@ def get_uid(s):
     except Exception as e: print(e)
 
     return uid
+
+def get_user_default_profile():
+    r = ''
+    try:
+        user_uid = get_user()
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT default_profile FROM users WHERE uid = '"+ user_uid +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        default_profile = ''
+        for row in rs:
+            default_profile = row[0]
+        cr.close()
+        connection.close()
+
+        r = default_profile
+
+    except Exception as e: print(e)
+    return r
 
 def get_random_str(n):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
