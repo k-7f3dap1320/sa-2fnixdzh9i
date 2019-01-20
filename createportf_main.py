@@ -76,9 +76,9 @@ def get_selectportf_box(burl,step,mode,x):
         '            <div class="box-part sa-center-content">'+\
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
-        '                   </div>'+\
-        '                   <div class="progress">'+\
-        '                       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
+        '                          <div class="progress">'+\
+        '                               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
+        '                          </div>'+\
         '                   </div>'+\
         '                   <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
         '                               <div class="form-group">'+\
