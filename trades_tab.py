@@ -154,7 +154,7 @@ def get_trades_box(uid,burl):
 
     try:
 
-        if not uid == 0 or not get_user() == '0':
+        if not uid == 0 or not get_user() == '0' or not get_user() == '':
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             sa_box_h = ''
