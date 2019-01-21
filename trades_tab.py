@@ -67,8 +67,8 @@ def get_trades_tbl(uid,w):
             "instruments.unit "
         sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE "
 
-        if w == 'active': sql = sql + "trades.status = 'active' "
-        else: sql = sql + "trades.status = 'expired' "
+        if w == 'active': sql = sql + "( trades.status = 'active' "
+        else: sql = sql + "( trades.status = 'expired' "
 
         sql = sql + single_selection
         sql = sql + user_symbol_selection
