@@ -82,12 +82,12 @@ def get_selectportf_box(burl,step,mode,x):
         '                          </div>'+\
         '                   </div>'+\
         '                   <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
-        '                               <div class="form-group">'+\
-        '                                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
-        '                                       <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-search" style="font-size: xx-large;"></i></div>'+\
-        '                                       <input type="text" name="search" class="form-control btn-outline-info" id="search" placeholder="'+ l_placeholder +'" required autofocus>'+\
-        '                                   </div>'+\
-        '                               </div>'+\
+                                '<div class="input-group input-group-lg">'+\
+                                '  <div class="input-group-prepend">'+\
+                                '    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span>'+\
+                                '  </div>'+\
+                                '  <input type="text" id="search" name="search" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
+                                '</div>'+\
         '                   </form>'+\
         '            </div>'+\
         '        </div>'+\
