@@ -15,7 +15,7 @@ def navbar(burl):
     if user_is_login() == 1:
         rightsidemenu = '<a href="'+burl+'logout" class="btn btn-sm btn-primary btn-block form-signin-btn">'+ 'logout'+'</a>'
     else:
-        rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn">'+ l_join_now_btn +'</a>'
+        rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
