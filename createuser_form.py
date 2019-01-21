@@ -28,7 +28,7 @@ def get_user_creation_form(burl):
         '            <div>'+\
         '               <div class="input-group input-group-lg">'+\
         '                 <div class="input-group-prepend">'+\
-        '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user" style="font-size: large;"></i></span>'+\
+        '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                 </div>'+\
         '                 <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your name" required autofocus>'+\
         '               </div>'+\
@@ -56,6 +56,7 @@ def get_user_creation_form(burl):
         '        </div>'+\
         '        <div>'+\
         '            <div>'+\
+        '                <div>&nbsp;</div>'+\
         '                <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i> Sign up</button>'+\
         '            </div>'+\
         '        </div>'+\
