@@ -40,6 +40,7 @@ def get_trades_tbl(uid,w):
                 else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
                 i += 1
             user_symbol_selection = user_symbol_selection +') '
+            print(user_symbol_selection)
 
         portf_symbol_selection = ''
         i = 0
