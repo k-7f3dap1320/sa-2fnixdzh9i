@@ -17,7 +17,7 @@ from card import *
 from trades_tab import *
 from signinbox import *
 from font_awesome import *
-from google_analytics import *
+from googleanalytics import *
 
 def gen_main_page(x,appname,burl):
 

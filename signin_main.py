@@ -5,7 +5,7 @@
 from app_head import *; from app_body import *; from app_page import *; from app_loading import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
-from google_analytics import *
+from googleanalytics import *
 
 def get_login_form(burl,theme):
 
