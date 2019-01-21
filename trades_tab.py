@@ -27,7 +27,7 @@ def get_trades_tbl(uid,w):
         rs = cr.fetchall()
         for row in rs: selected_symbol = row[0]
         if not selected_symbol.find( get_portf_suffix() ) == -1: selected_is_portf = True
-        if uid == 0: is_user_prf = True
+        if uid == '0': is_user_prf = True
 
         user_symbol_selection = ''
         i = 0
@@ -40,7 +40,6 @@ def get_trades_tbl(uid,w):
                 else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
                 i += 1
             user_symbol_selection = user_symbol_selection +') '
-            print(user_symbol_selection)
 
         portf_symbol_selection = ''
         i = 0
