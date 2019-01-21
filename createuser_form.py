@@ -36,22 +36,22 @@ def get_user_creation_form(burl):
         '        </div>'+\
         '        <div>'+\
         '            <div>'+\
-        '                <div class="form-group">'+\
-        '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
-        '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>'+\
-        '                        <input type="email" name="email" class="form-control btn-outline-info" id="email" placeholder="Your email: you@example.com" required autofocus>'+\
-        '                    </div>'+\
-        '                </div>'+\
+        '               <div class="input-group input-group-lg">'+\
+        '                 <div class="input-group-prepend">'+\
+        '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: xx-large;"></i></span>'+\
+        '                 </div>'+\
+        '                 <input type="text" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your email: you@example.com" required autofocus>'+\
+        '               </div>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div>'+\
         '            <div>'+\
-        '                <div class="form-group has-danger">'+\
-        '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
-        '                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>'+\
-        '                        <input type="password" name="password" class="form-control btn-outline-info" id="password" placeholder="Password" required>'+\
-        '                    </div>'+\
-        '                </div>'+\
+        '               <div class="input-group input-group-lg">'+\
+        '                 <div class="input-group-prepend">'+\
+        '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-key" style="font-size: xx-large;"></i></span>'+\
+        '                 </div>'+\
+        '                 <input type="password" id="password" name="password" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Password" required>'+\
+        '               </div>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div>'+\
