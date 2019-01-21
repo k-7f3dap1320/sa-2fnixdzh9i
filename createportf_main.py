@@ -32,7 +32,8 @@ def get_selectportf_box(burl,step,mode,x):
         portf_category = ''
         progress_value = '0'
         try:
-            if len(x) < 1 or x == None: x = get_user_default_profile()
+            print('This is x='+ str(x) )
+            if len(x) < 1: x = get_user_default_profile()
         except Exception as e: print(e)
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
