@@ -32,7 +32,7 @@ def get_selectportf_box(burl,step,mode,x):
         portf_category = ''
         progress_value = '0'
         try:
-            if len(x) < 1: x = get_user_default_profile()
+            if len(x) < 1 or x == None: x = get_user_default_profile()
         except Exception as e: print(e)
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -76,6 +76,7 @@ def get_selectportf_box(burl,step,mode,x):
         '            <div class="box-part sa-center-content">'+\
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
+        '                          <div>&nbsp;</div> '+\
         '                          <div class="progress">'+\
         '                               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+ str(progress_value) +'%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '                          </div>'+\
