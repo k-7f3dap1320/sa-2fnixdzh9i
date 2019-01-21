@@ -20,6 +20,8 @@ from sa_db import *
 from app_cookie import *
 import datetime
 import time
+from google_analytics import *
+
 access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
@@ -46,7 +48,7 @@ def set_nickname():
 def gen_createuser_page(uid,appname,burl,name,username,password):
     r = ''
     if uid == '0':
-        r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_user_creation_form(burl) )
         r = set_page(r)
     else:

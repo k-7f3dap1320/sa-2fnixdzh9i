@@ -5,6 +5,7 @@
 from app_head import *; from app_body import *; from app_page import *; from app_loading import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
+from google_analytics import *
 
 def get_login_form(burl,theme):
 
@@ -80,7 +81,7 @@ def get_signin_content(burl,theme,err):
 def get_signin_page(appname,burl,err):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl,'light',err) )
         r = set_page(r)
     except Exception as e: print(e)
