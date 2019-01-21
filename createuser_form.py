@@ -26,12 +26,12 @@ def get_user_creation_form(burl):
         '        </div>'+\
         '        <div>'+\
         '            <div>'+\
-        '                <div class="form-group">'+\
-        '                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">'+\
-        '                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user" style="font-size: xx-large;"></i></span>'+\
-        '                        <input type="text" name="name" class="form-control btn-outline-info" id="name" placeholder="Your name" required autofocus>'+\
-        '                    </div>'+\
-        '                </div>'+\
+        '               <div class="input-group input-group-lg">'+\
+        '                 <div class="input-group-prepend">'+\
+        '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user" style="font-size: xx-large;"></i></span>'+\
+        '                 </div>'+\
+        '                 <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your name" required autofocus>'+\
+        '               </div>'+\        
         '            </div>'+\
         '        </div>'+\
         '        <div>'+\
