@@ -31,7 +31,7 @@ def get_user_creation_form(burl):
         '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user" style="font-size: xx-large;"></i></span>'+\
         '                 </div>'+\
         '                 <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your name" required autofocus>'+\
-        '               </div>'+\        
+        '               </div>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div>'+\
