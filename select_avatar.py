@@ -13,7 +13,7 @@ from app_stylesheet import *
 from awesomplete import *
 from app_navbar import *
 from font_awesome import *
-from google_analytics import *
+from googleanalytics import *
 
 from sa_func import *
 from sa_db import *

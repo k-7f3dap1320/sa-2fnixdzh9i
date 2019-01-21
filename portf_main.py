@@ -19,7 +19,7 @@ from portf_perf_desc import *
 from portf_risk_trail_returns import *
 from trades_tab import *
 from font_awesome import *
-from google_analytics import *
+from googleanalytics import *
 
 from sa_db import *
 access_obj = sa_db_access()

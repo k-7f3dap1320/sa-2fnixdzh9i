@@ -14,7 +14,7 @@ from awesomplete import *
 from app_navbar import *
 from font_awesome import *
 from app_cookie import *
-from google_analytics import *
+from googleanalytics import *
 
 from sa_db import *
 access_obj = sa_db_access()

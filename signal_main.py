@@ -19,7 +19,7 @@ from signal_ta_chart_alt_orders import *
 from signal_recom_trail_returns import *
 from trades_tab import *
 from font_awesome import *
-from google_analytics import *
+from googleanalytics import *
 
 from sa_db import *
 access_obj = sa_db_access()
