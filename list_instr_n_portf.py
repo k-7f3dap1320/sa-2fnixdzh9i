@@ -35,7 +35,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 y1_signal = row[4]; m6_signal = row[5]
                 m3_signal = row[6]; m1_signal = row[7]
                 w1_signal = row[8]; w_forecast_display_info = row[9]
-                unit = row[10], symbol = row[11]
+                unit = row[10]; symbol = row[11]
 
                 volatility_risk_st = str(round(volatility_risk_st*100),2)
 
