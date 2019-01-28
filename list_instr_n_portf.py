@@ -11,11 +11,11 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
 
-    r = '$(document).ready(function($) {'+\
+    r = '<script>$(document).ready(function($) {'+\
         '$(".sa-table-click-row").click(function() {'+\
         'window.document.location = $(this).data("href");'+\
         '});'+\
-        '});'
+        '});</script>'
     try:
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -26,6 +26,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
             "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "WHERE symbol_list.symbol NOT LIKE '%PRF:%' AND instruments.y1_signal > 0 AND ( instruments.market = 'FX:' OR instruments.asset_class = 'FX:') "+\
             "ORDER BY RAND()"
+            print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs:
