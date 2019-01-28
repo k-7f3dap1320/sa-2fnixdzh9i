@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
+def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow):
 
     r = '<script>$(document).ready(function($) {'+\
         '$(".sa-table-click-row").click(function() {'+\
@@ -25,7 +25,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
             "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
             "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "WHERE symbol_list.symbol NOT LIKE '%PRF:%' AND instruments.y1_signal > 0 AND ( instruments.market = 'FX:' OR instruments.asset_class = 'FX:') "+\
-            "ORDER BY RAND() LIMIT 20"
+            "ORDER BY RAND() LIMIT "+ str(maxrow)
             print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
@@ -63,7 +63,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 r = r +\
                 '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
                 '      <th scope="row">'+ order_type +'</th>'+\
-                '      <td>'+ str(fullname)+ ' (' + str(symbol) + ')' + '</td>'+\
+                '      <td>'+ '<strong>'str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
                 '      <td>'+ str(volatility_risk_st) +'</td>'+\
                 '      <td>'+ str(y1_signal) +'</td>'+\
                 '      <td>'+ str(m6_signal) +'</td>'+\
@@ -79,7 +79,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
     return r
 
 
-def gen_instr_n_portf_table(burl,mode,what,step,portf):
+def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow):
 
     r = ''
     try:
@@ -100,7 +100,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf):
         '    </tr>'+\
         ' </thead>'+\
         '  <tbody>'+\
-        get_table_content_list_instr_n_portf(burl,mode,what,step,portf) +\
+        get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow) +\
         '  </tbody>'+\
         '</table>'
 
@@ -108,7 +108,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf):
         print(e)
     return r
 
-def get_box_list_instr_n_portf(burl,mode,what,step,portf):
+def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow):
     # mode = 'view', mode = 'portf_select'
     # what = 'instr', what = 'portf'
     # portf = portf uid
@@ -121,7 +121,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content sa-list-select-100pct">'+\
-        gen_instr_n_portf_table(burl,mode,what,step,portf)
+        gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow)
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
