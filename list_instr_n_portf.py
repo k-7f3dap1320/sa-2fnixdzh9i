@@ -70,7 +70,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 '      <td>'+ str(m3_signal) +'</td>'+\
                 '      <td>'+ str(m1_signal) +'</td>'+\
                 '      <td>'+ str(w1_signal) +'</td>'+\
-                '      <td>'+ str(w_forecast_display_info) +'</td>'+\                
+                '      <td>'+ str(w_forecast_display_info) +'</td>'+\
                 '    </tr>'
             cr.close()
             connection.close()
