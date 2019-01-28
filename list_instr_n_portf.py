@@ -25,7 +25,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
             "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
             "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "WHERE symbol_list.symbol NOT LIKE '%PRF:%' AND instruments.y1_signal > 0 AND ( instruments.market = 'FX:' OR instruments.asset_class = 'FX:') "+\
-            "ORDER BY RAND()"
+            "ORDER BY RAND() LIMIT 20"
             print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
