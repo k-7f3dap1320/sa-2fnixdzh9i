@@ -16,6 +16,7 @@ from font_awesome import *
 from app_cookie import *
 from sa_func import *
 from googleanalytics import *
+from list_instr_n_portf import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -99,11 +100,11 @@ def get_selectportf_box(burl,step,mode,x):
     return box_content
 
 
-def gen_selectportf_page(appname,burl,step,mode,x):
+def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf) )
         r = set_page(r)
     except Exception as e: print(e)
     return r
