@@ -36,8 +36,6 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 m3_signal = row[6]; m1_signal = row[7]
                 w1_signal = row[8]; w_forecast_display_info = row[9]
                 unit = row[10], symbol = row[11]
-            cr.close()
-            connection.close()
 
                 volatility_risk_st = str(round(volatility_risk_st*100),2)
 
@@ -73,6 +71,8 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 '      <td>'+ str(m1_signal) +'</td>'+\
                 '      <td>'+ str(w1_signal) +'</td>'+\
                 '    </tr>'
+            cr.close()
+            connection.close()
 
     except Exception as e: print(e)
     return r
