@@ -63,7 +63,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow):
                 r = r +\
                 '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
                 '      <th scope="row">'+ order_type +'</th>'+\
-                '      <td>'+ '<strong>'str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+                '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
                 '      <td>'+ str(volatility_risk_st) +'</td>'+\
                 '      <td>'+ str(y1_signal) +'</td>'+\
                 '      <td>'+ str(m6_signal) +'</td>'+\
