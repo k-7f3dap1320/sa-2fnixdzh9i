@@ -49,7 +49,7 @@ def go():
         mode = request.values.get('mode')
         portf = request.values.get('portf')
         if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
-        if uid is not None: c = gen_portf_page(uid,appname,burl)
+        if ins is None: c = gen_portf_page(uid,appname,burl)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':
