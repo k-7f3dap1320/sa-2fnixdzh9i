@@ -37,14 +37,14 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 w1_signal = row[8]; w_forecast_display_info = row[9]
                 unit = row[10]; symbol = row[11]
 
-                volatility_risk_st = str(round(volatility_risk_st*100,2))
+                volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
                 if unit == 'pips':
-                    y1_signal = str(round( y1_signal ,2)) + ' pips'
-                    m6_signal = str(round( m6_signal ,2)) + ' pips'
-                    m3_signal = str(round( m3_signal ,2)) + ' pips'
-                    m1_signal = str(round( m1_signal ,2)) + ' pips'
-                    w1_signal = str(round( w1_signal ,2)) + ' pips'
+                    y1_signal = str(round( y1_signal ,0)) + ' pips'
+                    m6_signal = str(round( m6_signal ,0)) + ' pips'
+                    m3_signal = str(round( m3_signal ,0)) + ' pips'
+                    m1_signal = str(round( m1_signal ,0)) + ' pips'
+                    w1_signal = str(round( w1_signal ,0)) + ' pips'
                 else:
                     y1_signal = str(round( y1_signal * 100 ,2)) + '%'
                     m6_signal = str(round( m6_signal * 100 ,2)) + '%'
@@ -70,6 +70,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
                 '      <td>'+ str(m3_signal) +'</td>'+\
                 '      <td>'+ str(m1_signal) +'</td>'+\
                 '      <td>'+ str(w1_signal) +'</td>'+\
+                '      <td>'+ str(w_forecast_display_info) +'</td>'+\                
                 '    </tr>'
             cr.close()
             connection.close()
@@ -84,7 +85,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf):
     try:
 
         r = '' +\
-        '<table class="table table-hover table-sm">'+\
+        '<table class="table table-hover table-sm sa-table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">Signal</th>'+\
