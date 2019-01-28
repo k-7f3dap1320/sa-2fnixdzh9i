@@ -16,65 +16,65 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf):
         'window.document.location = $(this).data("href");'+\
         '});'+\
         '});</script>'
-    try:
+    #try:
 
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        if what == 'instr':
-            sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-            "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
-            "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-            "WHERE symbol_list.symbol NOT LIKE '%PRF:%' AND instruments.y1_signal > 0 AND ( instruments.market = 'FX:' OR instruments.asset_class = 'FX:') "+\
-            "ORDER BY RAND()"
-            print(sql)
-            cr.execute(sql)
-            rs = cr.fetchall()
-            for row in rs:
-                uid = row[0]; w_forecast_change = row[1]
-                fullname = row[2]; volatility_risk_st = row[3]
-                y1_signal = row[4]; m6_signal = row[5]
-                m3_signal = row[6]; m1_signal = row[7]
-                w1_signal = row[8]; w_forecast_display_info = row[9]
-                unit = row[10]; symbol = row[11]
+connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+cr = connection.cursor(pymysql.cursors.SSCursor)
+if what == 'instr':
+    sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
+    "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
+    "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+    "WHERE symbol_list.symbol NOT LIKE '%PRF:%' AND instruments.y1_signal > 0 AND ( instruments.market = 'FX:' OR instruments.asset_class = 'FX:') "+\
+    "ORDER BY RAND()"
+    print(sql)
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs:
+        uid = row[0]; w_forecast_change = row[1]
+        fullname = row[2]; volatility_risk_st = row[3]
+        y1_signal = row[4]; m6_signal = row[5]
+        m3_signal = row[6]; m1_signal = row[7]
+        w1_signal = row[8]; w_forecast_display_info = row[9]
+        unit = row[10]; symbol = row[11]
 
-                volatility_risk_st = str(round(volatility_risk_st*100),2)
+        volatility_risk_st = str(round(volatility_risk_st*100),2)
 
-                if unit == 'pips':
-                    y1_signal = str(round( y1_signal ,2)) + ' pips'
-                    m6_signal = str(round( m6_signal ,2)) + ' pips'
-                    m3_signal = str(round( m3_signal ,2)) + ' pips'
-                    m1_signal = str(round( m1_signal ,2)) + ' pips'
-                    w1_signal = str(round( w1_signal ,2)) + ' pips'
-                else:
-                    y1_signal = str(round( y1_signal * 100 ,2)) + '%'
-                    m6_signal = str(round( m6_signal * 100 ,2)) + '%'
-                    m3_signal = str(round( m3_signal * 100 ,2)) + '%'
-                    m1_signal = str(round( m1_signal * 100 ,2)) + '%'
-                    w1_signal = str(round( w1_signal * 100 ,2)) + '%'
+        if unit == 'pips':
+            y1_signal = str(round( y1_signal ,2)) + ' pips'
+            m6_signal = str(round( m6_signal ,2)) + ' pips'
+            m3_signal = str(round( m3_signal ,2)) + ' pips'
+            m1_signal = str(round( m1_signal ,2)) + ' pips'
+            w1_signal = str(round( w1_signal ,2)) + ' pips'
+        else:
+            y1_signal = str(round( y1_signal * 100 ,2)) + '%'
+            m6_signal = str(round( m6_signal * 100 ,2)) + '%'
+            m3_signal = str(round( m3_signal * 100 ,2)) + '%'
+            m1_signal = str(round( m1_signal * 100 ,2)) + '%'
+            w1_signal = str(round( w1_signal * 100 ,2)) + '%'
 
-                if w_forecast_change >=0:
-                    order_type = '<span class="badge badge-success">buy</span>'
-                else:
-                    order_type = '<span class="badge badge-danger">sell</span>'
+        if w_forecast_change >=0:
+            order_type = '<span class="badge badge-success">buy</span>'
+        else:
+            order_type = '<span class="badge badge-danger">sell</span>'
 
-                if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid)
-                if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
+        if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid)
+        if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
 
-                r = r +\
-                '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
-                '      <th scope="row">'+ order_type +'</th>'+\
-                '      <td>'+ str(fullname)+ ' (' + str(symbol) + ')' + '</td>'+\
-                '      <td>'+ str(volatility_risk_st) +'</td>'+\
-                '      <td>'+ str(y1_signal) +'</td>'+\
-                '      <td>'+ str(m6_signal) +'</td>'+\
-                '      <td>'+ str(m3_signal) +'</td>'+\
-                '      <td>'+ str(m1_signal) +'</td>'+\
-                '      <td>'+ str(w1_signal) +'</td>'+\
-                '    </tr>'
-            cr.close()
-            connection.close()
+        r = r +\
+        '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
+        '      <th scope="row">'+ order_type +'</th>'+\
+        '      <td>'+ str(fullname)+ ' (' + str(symbol) + ')' + '</td>'+\
+        '      <td>'+ str(volatility_risk_st) +'</td>'+\
+        '      <td>'+ str(y1_signal) +'</td>'+\
+        '      <td>'+ str(m6_signal) +'</td>'+\
+        '      <td>'+ str(m3_signal) +'</td>'+\
+        '      <td>'+ str(m1_signal) +'</td>'+\
+        '      <td>'+ str(w1_signal) +'</td>'+\
+        '    </tr>'
+    cr.close()
+    connection.close()
 
-    except Exception as e: print(e)
+    #except Exception as e: print(e)
     return r
 
 
