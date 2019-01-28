@@ -116,10 +116,10 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf):
 
     try:
 
-        box_content = '<div class="box-top">' +\
+        box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-center-content">'+\
+        '            <div class="box-part sa-center-content sa-list-select-100pct">'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf)
         '            </div>'+\
         '        </div>'+\
