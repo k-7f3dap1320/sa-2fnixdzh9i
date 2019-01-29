@@ -41,6 +41,25 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
                 volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
+                if y1_signal >= 0: class_y1 = "text text-success"
+                else: class_y1 = "text text-danger"
+
+                if m6_signal >= 0: class_m6 = "text text-success"
+                else: class_m6 = "text text-danger"
+
+                if m3_signal >= 0: class_m3 = "text text-success"
+                else: class_m3 = "text text-danger"
+
+                if m1_signal >= 0: class_m1 = "text text-success"
+                else: class_m1 = "text text-danger"
+
+                if w1_signal >= 0: class_w1 = "text text-success"
+                else: class_w1 = "text text-danger"
+
+                if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
+                else: class_forecast = "bg bg-danger text-white"
+
+
                 if unit == 'pips':
                     y1_signal = str(round( y1_signal ,0)) + ' pips'
                     m6_signal = str(round( m6_signal ,0)) + ' pips'
@@ -67,12 +86,12 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                 '      <th scope="row">'+ order_type +'</th>'+\
                 '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
                 '      <td>'+ str(volatility_risk_st) +'</td>'+\
-                '      <td>'+ str(y1_signal) +'</td>'+\
-                '      <td>'+ str(m6_signal) +'</td>'+\
-                '      <td>'+ str(m3_signal) +'</td>'+\
-                '      <td>'+ str(m1_signal) +'</td>'+\
-                '      <td>'+ str(w1_signal) +'</td>'+\
-                '      <td>'+ str(w_forecast_display_info) +'</td>'+\
+                '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'+\
+                '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'+\
+                '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'+\
+                '      <td class="'+ class_m1 +'">'+ str(m1_signal) +'</td>'+\
+                '      <td class="'+ class_w1 +'">'+ str(w1_signal) +'</td>'+\
+                '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
                 '    </tr>'
             cr.close()
             connection.close()
