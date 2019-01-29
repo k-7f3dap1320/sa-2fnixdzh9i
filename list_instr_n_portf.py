@@ -87,7 +87,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     try:
 
         r = '' +\
-        '<table class="table table-hover table-sm sa-table-sm">'+\
+        '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">Signal</th>'+\
@@ -118,10 +118,31 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     box_content = ''
 
     try:
+        box_content = '' +\
+        '<script>'+\
+        'function filterTable() {'+\
+        '  var input, filter, table, tr, td, i, txtValue;'+\
+        '  input = document.getElementById("filterInput");'+\
+        '  filter = input.value.toUpperCase();'+\
+        '  table = document.getElementById("table_instr_n_portf");'+\
+        '  tr = table.getElementsByTagName("tr");'+\
+        '  for (i = 0; i < tr.length; i++) {'+\
+        '    td = tr[i].getElementsByTagName("td")[1];'+\
+        '    if (td) {'+\
+        '      txtValue = td.textContent || td.innerText;'+\
+        '      if (txtValue.toUpperCase().indexOf(filter) > -1) {'+\
+        '        tr[i].style.display = "";'+\
+        '      } else {'+\
+        '        tr[i].style.display = "none";'+\
+        '      }'+\
+        '    }'+\
+        '  }'+\
+        '}'+\
+        '</script>'
+
 
         l_placeholder = "Type to find for an instrument..."
-
-        box_content = '<div class="box">' +\
+        box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content sa-list-select-100pct sa-instr-n-portf-list">'+\
@@ -131,7 +152,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                                 '  <div class="input-group-prepend">'+\
                                 '    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span>'+\
                                 '  </div>'+\
-                                '  <input type="text" id="search" name="search" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
+                                '  <input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
                                 '</div>'+\
         '                   </form>'+\
         '                   </div>'+\
