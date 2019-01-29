@@ -132,7 +132,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                                 '  <input type="text" id="search" name="search" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
                                 '</div>'+\
         '                   </form>'+\
-        '                   </div>'+\        
+        '                   </div>'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x)
         '            </div>'+\
         '        </div>'+\
