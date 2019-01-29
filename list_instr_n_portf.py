@@ -135,6 +135,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                                 '</div>'+\
         '                   </form>'+\
         '                   </div>'+\
+        '                   <div>&nbsp;</div>'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x)
         '            </div>'+\
         '        </div>'+\
