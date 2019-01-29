@@ -69,9 +69,8 @@ def get_selectportf_box(burl,step,mode,x):
         if step == '5':
             l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '95'
-
         l_desc_part_2 = "Find and pick an item from the list below"
-        l_placeholder = "Type to find for an instrument..."
+
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\

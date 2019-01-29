@@ -119,6 +119,8 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
     try:
 
+        l_placeholder = "Type to find for an instrument..."
+
         box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
