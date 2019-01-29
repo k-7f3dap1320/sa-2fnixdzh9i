@@ -87,7 +87,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     try:
 
         r = '' +\
-        '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter">'+\
+        '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter`">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">Signal</th>'+\
