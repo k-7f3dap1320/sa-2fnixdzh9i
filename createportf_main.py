@@ -70,8 +70,8 @@ def get_selectportf_box(burl,step,mode,x):
             l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '95'
 
-        l_desc_part_2 = "Search and pick an item from the list below"
-        l_placeholder = "Type to search for an instrument..."
+        l_desc_part_2 = "Find and pick an item from the list below"
+        l_placeholder = "Type to find for an instrument..."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -83,14 +83,6 @@ def get_selectportf_box(burl,step,mode,x):
         '                               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+ str(progress_value) +'%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '                          </div>'+\
         '                   </div>'+\
-        '                   <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
-                                '<div class="input-group input-group-lg">'+\
-                                '  <div class="input-group-prepend">'+\
-                                '    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span>'+\
-                                '  </div>'+\
-                                '  <input type="text" id="search" name="search" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
-                                '</div>'+\
-        '                   </form>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
