@@ -86,7 +86,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     r = ''
     try:
 
-        r = '' +\
+        r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
         '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter`">'+\
         '  <thead>'+\
         '    <tr>'+\
