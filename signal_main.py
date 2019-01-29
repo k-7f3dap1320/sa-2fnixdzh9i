@@ -12,6 +12,7 @@ from google_chart import *
 from app_loading import *
 from app_stylesheet import *
 from awesomplete import *
+from tablesorter import *
 from app_navbar import *
 from details_header import *
 from signal_header import *
@@ -40,7 +41,7 @@ def gen_sign_page(uid,appname,burl):
         for row in rs:
             instfullname = row[0]
 
-        r = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+        r = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + '<div class="box-top"><div class="row">' + get_details_header(uid) + get_sign_header(uid) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend_trail_returns(uid) + get_trades_box(uid,burl) + '</div></div>')
         r = set_page(r)
 

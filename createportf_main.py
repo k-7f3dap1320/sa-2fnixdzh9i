@@ -11,6 +11,7 @@ from bootstrap import *
 from app_loading import *
 from app_stylesheet import *
 from awesomplete import *
+from tablesorter import *
 from app_navbar import *
 from font_awesome import *
 from app_cookie import *
@@ -94,7 +95,7 @@ def get_selectportf_box(burl,step,mode,x):
 def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
         r = set_page(r)
     except Exception as e: print(e)
