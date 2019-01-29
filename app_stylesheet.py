@@ -35,6 +35,7 @@ def get_stylesheet(burl):
     sa_search_input = '#sa-search-input{width: 320px; font-size: 12px;}'
     sa_table_sm = '.sa-table-sm{font-size: 12px;}'
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
+    sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
     sa_box_h = '.sa-box-h{max-height: 400px;}'
     sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
@@ -74,6 +75,7 @@ def get_stylesheet(burl):
     awesomplete +\
     sa_table_sm +\
     sa_table_click_row +\
+    sa_instr_n_portf_list +\
     sa_box_h +\
     sa_signin_box +\
     sa_search_input +\

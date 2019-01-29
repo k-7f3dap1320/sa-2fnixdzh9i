@@ -124,7 +124,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-center-content sa-list-select-100pct">'+\
+        '            <div class="box-part sa-center-content sa-list-select-100pct sa-instr-n-portf-list">'+\
         '                   <div>'+\
         '                   <form method="POST" action="'+ burl +'/p" style="width: 100%; max-width: 600px; margin: auto;">'+\
                                 '<div class="input-group input-group-lg">'+\
