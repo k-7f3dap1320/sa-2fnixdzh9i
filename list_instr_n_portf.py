@@ -73,17 +73,22 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                     m1_signal = str(round( m1_signal * 100 ,2)) + '%'
                     w1_signal = str(round( w1_signal * 100 ,2)) + '%'
 
-                if w_forecast_change >=0:
-                    order_type = '<span class="badge badge-success">buy</span>'
+                if not mode == "portf_select":
+                    if w_forecast_change >=0:
+                        order_type = '<span class="badge badge-success">buy</span>'
+                    else:
+                        order_type = '<span class="badge badge-danger">sell</span>'
+                    column_order_type = '<td scope="row">'+ order_type +'</td>'
                 else:
-                    order_type = '<span class="badge badge-danger">sell</span>'
+                    order_type = ''
+                    column_order_type = ''
 
                 if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid)
                 if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
 
                 r = r +\
                 '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
-                '      <th scope="row">'+ order_type +'</th>'+\
+                column_order_type +\
                 '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
                 '      <td>'+ str(volatility_risk_st) +'</td>'+\
                 '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'+\
@@ -105,11 +110,16 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     r = ''
     try:
 
+        if mode = "portf_select":
+            signal_column = ""
+        else:
+            signal_column = '<th scope="col">Signal</th>'
+
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
         '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter`">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '      <th scope="col">Signal</th>'+\
+        signal_column +\
         '      <th scope="col">Instrument</th>'+\
         '      <th scope="col">Volatility risk (%)</th>'+\
         '      <th scope="col">1-Year</th>'+\
