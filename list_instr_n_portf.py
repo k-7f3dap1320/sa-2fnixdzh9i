@@ -83,7 +83,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                     order_type = ''
                     column_order_type = ''
 
-                if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid)
+                if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
                 if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
 
                 r = r +\

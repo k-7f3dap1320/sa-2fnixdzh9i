@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
 from app_metatags import *
@@ -90,6 +91,19 @@ def get_selectportf_box(burl,step,mode,x):
 
     except Exception as e: print(e)
     return box_content
+
+def save_portf_select(appname,burl,step,mode,x,portf,uid):
+    r = ''
+    try:
+        next_step = int(step) +1
+        r = gen_selectportf_page(appname,burl,next_step,mode,x,portf)
+
+        resp = make_response( r )
+        resp.set_cookie('portf_s_'+str(step), str(uid), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+
+    except Exception as e:
+        print(e)
+    return resp
 
 
 def gen_selectportf_page(appname,burl,step,mode,x,portf):
