@@ -110,7 +110,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     r = ''
     try:
 
-        if mode = "portf_select":
+        if mode == "portf_select":
             signal_column = ""
         else:
             signal_column = '<th scope="col">Signal</th>'
