@@ -82,7 +82,7 @@ def get_selectportf_box(burl,step,mode,x):
 
         try:
             if int(step) > 1:
-                portf_selection = 'your selection: '
+                portf_selection = 'your portfolio selection: ' + portf_selection
             else:
                 portf_selection = ''
         except:
