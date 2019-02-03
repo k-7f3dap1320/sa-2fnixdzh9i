@@ -16,8 +16,8 @@ def set_sa_ref_code(ref,c):
         ref_str = ref
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('ref_by', str(ref_str), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
+        return resp
     except Exception as e: print(e)
-    return resp
 
 def set_sa_cookie(uid,c):
     try:
@@ -25,8 +25,8 @@ def set_sa_cookie(uid,c):
         user_uid = '0';
         if len(uid) > 1: user_uid = str(uid)
         resp.set_cookie('user', str(user_uid), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
+        return resp
     except Exception as e: print(e)
-    return resp
 
 def user_get_uid():
     return request.cookies.get('user')
