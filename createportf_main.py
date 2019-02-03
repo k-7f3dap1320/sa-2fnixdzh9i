@@ -77,11 +77,14 @@ def get_selectportf_box(burl,step,mode,x):
         for i in range(5):
             select_instr = get_portf_select(i+1)
             if not select_instr == '':
-                portf_selection = portf_selection + '<span class="badge badge-info"><i class="fas fa-chart-pie"></i>'+ select_instr +'</span>&nbsp;&nbsp;'
+                portf_selection = portf_selection + '<span class="badge badge-info"><i class="fas fa-chart-pie">&nbsp;</i>'+ select_instr +'</span>&nbsp;&nbsp;'
         portf_selection = portf_selection + '</h5>'
 
         try:
-            if int(step) > 1: portf_selection = 'your selection: '
+            if int(step) > 1:
+                portf_selection = 'your selection: '
+            else:
+                portf_selection = ''
         except:
             pass
 
