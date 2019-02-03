@@ -109,10 +109,9 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
         else:
             resp = make_response( redirect(burl+'p/?ins=3' ) )
 
-        return resp
-
     except Exception as e:
         print(e)
+    return resp
 
 def get_portf_select(select):
     r = ''
@@ -136,15 +135,13 @@ def get_portf_select(select):
 
 def ini_portf_select(r):
     try:
-
         resp = make_response(r)
         for i in range(5):
             resp.set_cookie('portf_s_' + str(i+1),'0',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-        return resp
-        
+
     except Exception as e:
         print(e)
-
+    return resp
 
 def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
