@@ -73,11 +73,12 @@ def get_selectportf_box(burl,step,mode,x):
             progress_value = '95'
         l_desc_part_2 = "Find and pick an item from the list below"
 
-        portf_selection = ''
+        portf_selection = '<h4>'
         for i in range(5):
             select_instr = get_portf_select(i+1)
             if not select_instr == '':
-                portf_selection = portf_selection + '<h4><span class="badge badge-secondary">'+ select_instr +'</span>&nbsp;&nbsp;</h4>'
+                portf_selection = portf_selection + '<span class="badge badge-secondary">'+ select_instr +'</span>&nbsp;&nbsp;'
+        portf_selection = '</h4>'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -92,8 +93,8 @@ def get_selectportf_box(burl,step,mode,x):
         '                   </div>'+\
         '            </div>'+\
         '        </div>'+\
-        '   </div>'+\
         portf_selection +\
+        '   </div>'+\
         '</div>'
 
     except Exception as e: print(e)
@@ -149,6 +150,6 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
         r = set_page(r)
-        r = ini_portf_select(r)
+        if step == '1': r = ini_portf_select(r)
     except Exception as e: print(e)
     return r
