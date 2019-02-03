@@ -117,6 +117,7 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
             resp.set_cookie('portf_s_'+str(step), str(uid), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
         else:
             resp = make_response( redirect(burl+'p/?ins=3' ) )
+            resp.set_cookie('portf_s_'+str(step), str(uid), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
     except Exception as e:
         print(e)
