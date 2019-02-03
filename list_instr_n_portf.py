@@ -79,9 +79,19 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                     else:
                         order_type = '<span class="badge badge-danger">sell</span>'
                     column_order_type = '<td scope="row">'+ order_type +'</td>'
+                    column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
+                    column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'
+                    column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'
+                    column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1_signal) +'</td>'
+                    column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1_signal) +'</td>'
                 else:
                     order_type = ''
                     column_order_type = ''
+                    column_y1 = ''
+                    column_m6 = ''
+                    column_m3 = ''
+                    column_m1 = ''
+                    column_w1 = ''
 
                 if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
                 if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
@@ -91,11 +101,11 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                 column_order_type +\
                 '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
                 '      <td>'+ str(volatility_risk_st) +'</td>'+\
-                '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'+\
-                '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'+\
-                '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'+\
-                '      <td class="'+ class_m1 +'">'+ str(m1_signal) +'</td>'+\
-                '      <td class="'+ class_w1 +'">'+ str(w1_signal) +'</td>'+\
+                column_y1 +\
+                column_m6 +\
+                column_m3 +\
+                column_m1 +\
+                column_w1 +\
                 '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
                 '    </tr>'
             cr.close()
@@ -112,22 +122,36 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
 
         if mode == "portf_select":
             signal_column = ""
+            c_1_year_column = ""
+            c_6_month_column = ""
+            c_3_month_column = ""
+            c_1_month_column = ""
+            c_1_week_column = ""
+            l_performance_note = ""
+            small_font_class = "sa-table-sm"
         else:
             signal_column = '<th scope="col">Signal</th>'
+            c_1_year_column = '<th scope="col">1-Year</th>'
+            c_6_month_column = '<th scope="col">6-month</th>'
+            c_3_month_column = '<th scope="col">3-month</th>'
+            c_1_month_column = '<th scope="col">1-month</th>'
+            c_1_week_column = '<th scope="col">1-week</th>'
+            l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
+            small_font_class = ""
 
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
-        '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'+\
-        '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter`">'+\
+        l_performance_note +\
+        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' tablesorter`">'+\
         '  <thead>'+\
         '    <tr>'+\
         signal_column +\
         '      <th scope="col">Instrument</th>'+\
         '      <th scope="col">Volatility risk (%)</th>'+\
-        '      <th scope="col">1-Year</th>'+\
-        '      <th scope="col">6-month</th>'+\
-        '      <th scope="col">3-month</th>'+\
-        '      <th scope="col">1-month</th>'+\
-        '      <th scope="col">1-week</th>'+\
+        c_1_year_column +\
+        c_6_month_column +\
+        c_3_month_column +\
+        c_1_month_column +\
+        c_1_week_column +\
         '      <th scope="col">1-week Forecast</th>'+\
         '    </tr>'+\
         ' </thead>'+\
