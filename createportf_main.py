@@ -73,12 +73,17 @@ def get_selectportf_box(burl,step,mode,x):
             progress_value = '95'
         l_desc_part_2 = "Find and pick an item from the list below"
 
-        portf_selection = '<h4>'
+        portf_selection = '<h5>'
         for i in range(5):
             select_instr = get_portf_select(i+1)
             if not select_instr == '':
-                portf_selection = portf_selection + '<span class="badge badge-secondary">'+ select_instr +'</span>&nbsp;&nbsp;'
-        portf_selection = portf_selection + '</h4>'
+                portf_selection = portf_selection + '<span class="badge badge-info"><i class="fas fa-chart-pie"></i>'+ select_instr +'</span>&nbsp;&nbsp;'
+        portf_selection = portf_selection + '</h5>'
+
+        try:
+            if int(step) > 1: portf_selection = 'your selection: '
+        except:
+            pass
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -91,9 +96,9 @@ def get_selectportf_box(burl,step,mode,x):
         '                               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+ str(progress_value) +'%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '                          </div>'+\
         '                   </div>'+\
+        portf_selection +\
         '            </div>'+\
         '        </div>'+\
-        portf_selection +\
         '   </div>'+\
         '</div>'
 
