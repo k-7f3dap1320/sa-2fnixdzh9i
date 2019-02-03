@@ -116,7 +116,7 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
 def get_portf_select(select):
     r = ''
     try:
-        uid = return request.cookies.get('portf_s_' + str(select) )
+        uid = request.cookies.get('portf_s_' + str(select) )
 
         if not uid is None or uid == '':
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
