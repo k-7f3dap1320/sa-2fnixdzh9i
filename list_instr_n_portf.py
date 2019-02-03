@@ -128,7 +128,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             c_1_month_column = ""
             c_1_week_column = ""
             l_performance_note = ""
-            small_font_class = "sa-table-sm"
+            small_font_class = ""
         else:
             signal_column = '<th scope="col">Signal</th>'
             c_1_year_column = '<th scope="col">1-Year</th>'
@@ -137,7 +137,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             c_1_month_column = '<th scope="col">1-month</th>'
             c_1_week_column = '<th scope="col">1-week</th>'
             l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
-            small_font_class = ""
+            small_font_class = "sa-table-sm"
 
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
         l_performance_note +\
