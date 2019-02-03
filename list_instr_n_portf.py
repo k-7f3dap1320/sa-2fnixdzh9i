@@ -116,7 +116,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             signal_column = '<th scope="col">Signal</th>'
 
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
-        '<span style="text-align: center; font-size: small;">*Signals performance</span>'+\
+        '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'+\
         '<table id="table_instr_n_portf" class="table table-hover table-sm sa-table-sm tablesorter`">'+\
         '  <thead>'+\
         '    <tr>'+\

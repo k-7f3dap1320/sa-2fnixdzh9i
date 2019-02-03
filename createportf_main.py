@@ -59,19 +59,27 @@ def get_selectportf_box(burl,step,mode,x):
         if step == '1':
             l_desc_part_1 = "Let's Create your "+ str(portf_category)  +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
+            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '2':
             l_desc_part_1 = "Pick another item to add to your "+ str(portf_category) +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '40'
+            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '3':
             l_desc_part_1 = "Almost there, pick another one (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '60'
+            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '4':
             l_desc_part_1 = "You selected 3 items for your portfolio, choose another one, we need 5 of them (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '80'
+            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '5':
             l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '95'
-        l_desc_part_2 = "Find and pick an item from the list below"
+            l_desc_part_2 = "Find and pick an item from the list below"
+        if step == '6':
+            l_desc_part_1 = "Save portfolio"
+            progress_value = '100'
+            l_desc_part_2 = ""
 
         portf_selection = '<h5>'
         for i in range(5):
@@ -161,4 +169,13 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
         r = set_page(r)
         if step == '1': r = ini_portf_select(r)
     except Exception as e: print(e)
+    return r
+
+def custom_save_portf_page(appname,burl):
+    try:
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,x) )
+
+    except Exception as e:
+        print(e)
     return r
