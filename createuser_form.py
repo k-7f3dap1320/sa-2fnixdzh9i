@@ -40,7 +40,7 @@ def get_user_creation_form(burl):
         '                 <div class="input-group-prepend">'+\
         '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
         '                 </div>'+\
-        '                 <input type="text" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your email: you@example.com" required autofocus>'+\
+        '                 <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your email: you@example.com" required autofocus>'+\
         '               </div>'+\
         '            </div>'+\
         '        </div>'+\

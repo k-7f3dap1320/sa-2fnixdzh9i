@@ -75,7 +75,7 @@ def get_selectportf_box(burl,step,mode,x):
 
         portf_selection = ''
         for i in range(5):
-            select_instr = get_portf_select(i)
+            select_instr = get_portf_select(i+1)
             if not select_instr == '':
                 portf_selection = portf_selection + '<h4><span class="badge badge-secondary">'+ select_instr +'</span>&nbsp;&nbsp;</h4>'
 
@@ -138,7 +138,7 @@ def ini_portf_select(r):
 
         resp = make_response(r)
         for i in range(5):
-            resp.set_cookie('portf_s_' + str(i),'0',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            resp.set_cookie('portf_s_' + str(i+1),'0',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
     except Exception as e:
         print(e)
@@ -151,6 +151,6 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x) + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
         r = set_page(r)
-        ini_portf_select(r)
+        r = ini_portf_select(r)
     except Exception as e: print(e)
     return r
