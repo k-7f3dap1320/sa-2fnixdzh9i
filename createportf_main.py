@@ -78,7 +78,7 @@ def get_selectportf_box(burl,step,mode,x):
             select_instr = get_portf_select(i+1)
             if not select_instr == '':
                 portf_selection = portf_selection + '<span class="badge badge-secondary">'+ select_instr +'</span>&nbsp;&nbsp;'
-        portf_selection = '</h4>'
+        portf_selection = portf_selec + '</h4>'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
