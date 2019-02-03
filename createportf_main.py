@@ -103,7 +103,7 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
     r = ''
     try:
         next_step = int(step) +1
-        if step < 5:
+        if int(step) < 5:
             resp = make_response( redirect(burl+'p/?ins=1&step='+ str(next_step) ) )
             resp.set_cookie('portf_s_'+str(step), str(uid), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
         else:
