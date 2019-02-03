@@ -109,9 +109,10 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
         else:
             resp = make_response( redirect(burl+'p/?ins=3' ) )
 
+        return resp
+
     except Exception as e:
         print(e)
-    return resp
 
 def get_portf_select(select):
     r = ''
