@@ -89,7 +89,7 @@ def get_selectportf_box(burl,step,mode,x):
         portf_selection = portf_selection + '</h5>'
 
         try:
-            if int(step) > 1:
+            if int(step) > 1 and int(step) < 6:
                 portf_selection = 'your portfolio selection: ' + portf_selection
             else:
                 portf_selection = ''
