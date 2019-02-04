@@ -13,7 +13,7 @@ def get_user_ip_input():
         r = '' +\
         '<script type="application/javascript">'+\
         '  function getIP(json) {'+\
-        '    document.write("<input type=\"hidden\" value=\" ", json.ip,"\" id=\"from_ip\" name=\"from_ip\">");'+\
+        '    document.write("<input type=\'hidden\' value=\' ", json.ip,"\' id=\'from_ip\' name=\'from_ip\' >");'+\
         '  }'+\
         '</script>'+\
         '<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>'
