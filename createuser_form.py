@@ -7,6 +7,22 @@ from sa_db import *
 from app_cookie import *
 
 
+def get_user_ip_input():
+    r = ''
+    try:
+        r = '' +\
+        '<script type="application/javascript">'+\
+        '  function getIP(json) {'+\
+        '    document.write("<input type=\"hidden\" value=\" ", json.ip,"\" id=\"from_ip\" name=\"from_ip\">");'+\
+        '  }'+\
+        '</script>'+\
+        '<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>'
+
+    except Exception as e:
+        print(e
+    return r
+
+
 def get_user_creation_form(burl):
 
     box_content = ''
@@ -57,6 +73,7 @@ def get_user_creation_form(burl):
         '        <div>'+\
         '            <div>'+\
         '                <div>&nbsp;</div>'+\
+        get_user_ip_input() +\
         '                <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i> Sign up</button>'+\
         '            </div>'+\
         '        </div>'+\

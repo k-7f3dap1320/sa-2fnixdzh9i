@@ -58,6 +58,7 @@ def go():
         name = request.values.get('name')
         username = request.values.get('email')
         password = request.values.get('password')
+        from_ip = request.values.get('from_ip')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
         mode = request.values.get('mode')
@@ -65,7 +66,7 @@ def go():
         elif step == 'b': c = save_avatar(burl,nickname)
         elif step == 'c': c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': c= save_selectmarket(burl,mode,x)
-        else: c = gen_createuser_page(uid,appname,burl,name,username,password)
+        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
