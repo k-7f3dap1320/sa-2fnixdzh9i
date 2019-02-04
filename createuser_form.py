@@ -19,7 +19,7 @@ def get_user_ip_input():
         '<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>'
 
     except Exception as e:
-        print(e
+        print(e)
     return r
 
 
