@@ -157,6 +157,7 @@ def ini_portf_select(r):
         resp = make_response(r)
         for i in range(5):
             resp.set_cookie('portf_s_' + str(i+1),'0',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            resp.set_cookie('portf_s_' + str(i+1) + '_type','long/short',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
     except Exception as e:
         print(e)
