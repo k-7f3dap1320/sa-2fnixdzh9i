@@ -177,6 +177,7 @@ def custom_save_portf_page(appname,burl,mode,x):
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,x) + get_box_portf_save() )
+        r = set_page(r)
 
     except Exception as e:
         print(e)
