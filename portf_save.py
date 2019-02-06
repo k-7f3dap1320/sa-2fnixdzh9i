@@ -40,7 +40,7 @@ def get_list_portf_alloc():
         print(e)
     return r
 
-def get_box_portf_save(uid):
+def get_box_portf_save():
 
     box_content = ''
 
@@ -56,8 +56,8 @@ def get_box_portf_save(uid):
         '</div>'
 
 
-        cr.close()
-        connection.close()
+        #cr.close()
+        #connection.close()
 
     except Exception as e: print(e)
 
