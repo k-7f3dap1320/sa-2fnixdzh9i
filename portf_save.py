@@ -32,13 +32,23 @@ def get_portf_table_rows():
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             '               long/short'+\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
             '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
             '               <a class="dropdown-item" href="#">Buy Only (Long)</a>'+\
             '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
+            '           </div>'+\
+            '       </div>'+\
+            '       <div class="dropdown">'+\
+            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_1" name="strategy_conviction_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '               Neutral'+\
+            '           </button>'+\
+            '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
+            '               <a class="dropdown-item" href="#">Weak</a>'+\
+            '               <a class="dropdown-item" href="#">Strong</a>'+\
+            '               <a class="dropdown-item" href="#">Neutral</a>'+\
             '           </div>'+\
             '       </div>'+\
             '      </th>'+\
@@ -53,7 +63,7 @@ def get_list_portf_alloc(burl):
     try:
         l_conviction = 'What is your conviction?'
         l_instrument = 'Instruments'
-        l_buttonSave = 'Save'
+        l_buttonSave = 'Save and generate portfolio'
         r = '' +\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
@@ -69,7 +79,7 @@ def get_list_portf_alloc(burl):
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
         '<form method="GET" action="'+ burl +'p/?ins=4">'+\
-        '   <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
+        '   <button type="submit" class="btn btn-info btn-lg form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
         '</form>'
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
