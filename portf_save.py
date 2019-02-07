@@ -41,6 +41,8 @@ def get_portf_table_rows():
             '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
             '           </div>'+\
             '       </div>'+\
+            '       </th>'+\
+            '       <td>'+\
             '       <div class="dropdown">'+\
             '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_1" name="strategy_conviction_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             '               Neutral'+\
@@ -51,7 +53,7 @@ def get_portf_table_rows():
             '               <a class="dropdown-item" href="#">Neutral</a>'+\
             '           </div>'+\
             '       </div>'+\
-            '      </th>'+\
+            '      </td>'+\
             '      <td>{Instrument Name'+ str(i+1) +'}</td>'+\
             '    </tr>'
     except Exception as e:
@@ -69,6 +71,7 @@ def get_list_portf_alloc(burl):
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">'+ l_conviction +'</th>'+\
+        '      <th scope="col">&nbsp;</th>'+\        
         '      <th scope="col">'+ l_instrument +'</th>'+\
         '    </tr>'+\
         '  </thead>'+\
