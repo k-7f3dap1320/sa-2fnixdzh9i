@@ -66,7 +66,7 @@ def get_list_portf_alloc(burl):
         l_conviction = 'What is your conviction?'
         l_buttonSave = 'Save and generate portfolio'
         r = '' +\
-        '<table class="table table-hover table-sm">'+\
+        '<table class="table table-hover">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" colspan="3">'+ l_conviction +'</th>'+\
