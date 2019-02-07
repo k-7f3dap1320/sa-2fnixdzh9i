@@ -54,7 +54,7 @@ def get_portf_table_rows():
             '           </div>'+\
             '       </div>'+\
             '      </td>'+\
-            '      <td>{Instrument Name'+ str(i+1) +'}</td>'+\
+            '      <td width="100%">{Instrument Name'+ str(i+1) +'}</td>'+\
             '    </tr>'
     except Exception as e:
         print(e)
