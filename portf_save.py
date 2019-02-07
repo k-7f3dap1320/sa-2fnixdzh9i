@@ -27,7 +27,7 @@ def get_instr_fullname(uid):
 def get_portf_table_rows():
     r = ''
     try:
-        for i in range(4):
+        for i in range(5):
             r = r + ''+\
             '    <tr>'+\
             '      <th scope="row">'+\
@@ -48,21 +48,28 @@ def get_portf_table_rows():
         print(e)
     return r
 
-def get_list_portf_alloc():
+def get_list_portf_alloc(burl):
     r = ''
     try:
+        l_conviction = 'What is your conviction'
+        l_instrument = 'Instruments'
+        l_buttonSave = 'Save'
         r = '' +\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '      <th scope="col">#</th>'+\
-        '      <th scope="col">Asset A</th>'+\
+        '      <th scope="col">'+ l_conviction +'</th>'+\
+        '      <th scope="col">'+ l_instrument +'</th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
         get_portf_table_rows() +\
         '  </tbody>'+\
         '</table>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<form method="GET" action="'+ burl +'p/?ins=4>'
+        '<button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
@@ -76,7 +83,7 @@ def get_list_portf_alloc():
         print(e)
     return r
 
-def get_box_portf_save():
+def get_box_portf_save(burl):
 
     box_content = ''
 
@@ -86,7 +93,7 @@ def get_box_portf_save():
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content sa-instr-n-portf-list">'+\
-        get_list_portf_alloc()
+        get_list_portf_alloc(burl)
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
