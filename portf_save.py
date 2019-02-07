@@ -24,11 +24,35 @@ def get_instr_fullname(uid):
         print(e)
     return r
 
+def get_portf_table_rows():
+    r = ''
+    try:
+        for i in range(4):
+            r = r + ''+\
+            '    <tr>'+\
+            '      <th scope="row">'+\
+            '       <div class="dropdown">'+\
+            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '               long/short'+\
+            '           </button>'+\
+            '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
+            '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
+            '               <a class="dropdown-item" href="#">Buy Only (Long)</a>'+\
+            '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
+            '           </div>'+\
+            '       </div>'+\
+            '      </th>'+\
+            '      <td>{Instrument Name'+ str(i+1) +'}</td>'+\
+            '    </tr>'
+    except Exception as e:
+        print(e)
+    return r
+
 def get_list_portf_alloc():
     r = ''
     try:
         r = '' +\
-        '<table class="table table-hover">'+\
+        '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">#</th>'+\
@@ -36,24 +60,18 @@ def get_list_portf_alloc():
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
-        '    <tr>'+\
-        '      <th scope="row">'+\
-        '       <div class="dropdown">'+\
-        '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
-        '               long/short'+\
-        '           </button>'+\
-        '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-        '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
-        '               <a class="dropdown-item" href="#">Buy Only (Long)</a>'+\
-        '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
-        '           </div>'+\
-        '       </div>'+\
-        '</th>'+\
-        '      <td>{Instrument Name}</td>'+\
-        '    </tr>'+\
+        get_portf_table_rows() +\
         '  </tbody>'+\
-        '</table>'
-
+        '</table>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'+\
+        '<span>&nbsp;</span>'
     except Exception as e:
         print(e)
     return r
