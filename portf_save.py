@@ -51,7 +51,7 @@ def get_portf_table_rows():
 def get_list_portf_alloc(burl):
     r = ''
     try:
-        l_conviction = 'What is your conviction'
+        l_conviction = 'What is your conviction?'
         l_instrument = 'Instruments'
         l_buttonSave = 'Save'
         r = '' +\
@@ -68,8 +68,9 @@ def get_list_portf_alloc(burl):
         '</table>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
-        '<form method="GET" action="'+ burl +'p/?ins=4>'
-        '<button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
+        '<form method="GET" action="'+ burl +'p/?ins=4">'+\
+        '   <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
+        '</form>'
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
