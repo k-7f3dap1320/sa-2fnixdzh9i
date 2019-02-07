@@ -32,7 +32,7 @@ def get_portf_table_rows():
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             '               long/short'+\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
@@ -64,15 +64,12 @@ def get_list_portf_alloc(burl):
     r = ''
     try:
         l_conviction = 'What is your conviction?'
-        l_instrument = 'Instruments'
         l_buttonSave = 'Save and generate portfolio'
         r = '' +\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '      <th scope="col">'+ l_conviction +'</th>'+\
-        '      <th scope="col">&nbsp;</th>'+\
-        '      <th scope="col">'+ l_instrument +'</th>'+\
+        '      <th scope="col" colspan="3">'+ l_conviction +'</th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
