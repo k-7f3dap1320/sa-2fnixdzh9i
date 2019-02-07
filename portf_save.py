@@ -28,21 +28,31 @@ def get_list_portf_alloc():
     r = ''
     try:
         r = '' +\
-        '<ul class="list-group">'+\
-        '   <li class="list-group-item">'+\
+        '<table class="table table-hover">'+\
+        '  <thead>'+\
+        '    <tr>'+\
+        '      <th scope="col">#</th>'+\
+        '      <th scope="col">Asset A</th>'+\
+        '    </tr>'+\
+        '  </thead>'+\
+        '  <tbody>'+\
+        '    <tr>'+\
+        '      <th scope="row">'+\
         '       <div class="dropdown">'+\
-        '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+        '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
         '               long/short'+\
         '           </button>'+\
         '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-        '               <a class="dropdown-item" href="#">long/short</a>'+\
-        '               <a class="dropdown-item" href="#">Buy Only</a>'+\
-        '               <a class="dropdown-item" href="#">Sell Only</a>'+\
+        '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
+        '               <a class="dropdown-item" href="#">Buy Only (Long)</a>'+\
+        '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
         '           </div>'+\
         '       </div>'+\
-        '       <div>{Instrument Name}</div>'
-        '   </li>'+\
-        '</ul>'
+        '</th>'+\
+        '      <td>{Instrument Name}</td>'+\
+        '    </tr>'+\
+        '  </tbody>'+\
+        '</table>'
 
     except Exception as e:
         print(e)
@@ -57,7 +67,7 @@ def get_box_portf_save():
         box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-center-content">'+\
+        '            <div class="box-part sa-center-content sa-instr-n-portf-list">'+\
         get_list_portf_alloc()
         '            </div>'+\
         '        </div>'+\
