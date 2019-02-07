@@ -29,11 +29,19 @@ def get_list_portf_alloc():
     try:
         r = '' +\
         '<ul class="list-group">'+\
-        '<li class="list-group-item">Cras justo odio</li>'+\
-        '<li class="list-group-item">Dapibus ac facilisis in</li>'+\
-        '<li class="list-group-item">Morbi leo risus</li>'+\
-        '<li class="list-group-item">Porta ac consectetur ac</li>'+\
-        '<li class="list-group-item">Vestibulum at eros</li>'+\
+        '   <li class="list-group-item">'+\
+        '       <div class="dropdown">'+\
+        '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+        '               long/short'+\
+        '           </button>'+\
+        '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
+        '               <a class="dropdown-item" href="#">long/short</a>'+\
+        '               <a class="dropdown-item" href="#">Buy Only</a>'+\
+        '               <a class="dropdown-item" href="#">Sell Only</a>'+\
+        '           </div>'+\
+        '       </div>'+\
+        '       <div>{Instrument Name}</div>'
+        '   </li>'+\
         '</ul>'
 
     except Exception as e:
@@ -46,10 +54,11 @@ def get_box_portf_save():
 
     try:
 
-        box_content = '<div class="box-top">' +\
+        box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content">'+\
+        get_list_portf_alloc()
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
