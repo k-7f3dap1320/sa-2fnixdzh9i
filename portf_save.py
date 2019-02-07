@@ -71,7 +71,7 @@ def get_list_portf_alloc(burl):
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">'+ l_conviction +'</th>'+\
-        '      <th scope="col">&nbsp;</th>'+\        
+        '      <th scope="col">&nbsp;</th>'+\
         '      <th scope="col">'+ l_instrument +'</th>'+\
         '    </tr>'+\
         '  </thead>'+\
