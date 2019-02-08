@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from flask import Flask, make_response, request, redirect
 from sa_db import *
+from createportf_main import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
@@ -30,16 +31,15 @@ def get_portf_table_rows():
     try:
         for i in range(5):
 
-            request.cookies.get('portf_s_' + str(i+1) )
-            request.cookies.get('portf_s_type_' + str(i+1) )
-            request.cookies.get('portf_s_conv' + str(i+1) )
+            strategy_order_type = request.cookies.get('portf_s_type_' + str(i+1) )
+            strategy_conviction request.cookies.get('portf_s_conv' + str(i+1) )
 
             r = r + ''+\
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
             '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
-            '               long/short'+\
+            strategy_order_type +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
             '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
@@ -51,7 +51,7 @@ def get_portf_table_rows():
             '       <td>'+\
             '       <div class="dropdown">'+\
             '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
-            '               Neutral'+\
+            strategy_conviction +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
             '               <a class="dropdown-item" href="#">Weak</a>'+\
@@ -60,7 +60,7 @@ def get_portf_table_rows():
             '           </div>'+\
             '       </div>'+\
             '      </td>'+\
-            '      <td width="100%">{Instrument Name'+ str(i+1) +'}</td>'+\
+            '      <td width="100%">'+ get_portf_select(i+1) +'</td>'+\
             '    </tr>'
     except Exception as e:
         print(e)
