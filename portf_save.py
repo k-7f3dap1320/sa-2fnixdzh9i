@@ -32,7 +32,7 @@ def get_portf_table_rows():
         for i in range(5):
 
             strategy_order_type = request.cookies.get('portf_s_type_' + str(i+1) )
-            strategy_conviction = request.cookies.get('portf_s_conv' + str(i+1) )
+            strategy_conviction = request.cookies.get('portf_s_conv_' + str(i+1) )
 
             r = r + ''+\
             '    <tr>'+\
