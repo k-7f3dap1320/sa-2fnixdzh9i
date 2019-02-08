@@ -155,6 +155,7 @@ def get_portf_select(select):
 def ini_portf_select(r):
     try:
         resp = make_response(r)
+        conviction = 'neutral'
         for i in range(5):
 
             if get_random_num(3) == 1: conviction = 'neutral'
