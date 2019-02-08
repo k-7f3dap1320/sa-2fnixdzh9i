@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from flask import Flask, make_response, request, redirect
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -28,11 +29,16 @@ def get_portf_table_rows():
     r = ''
     try:
         for i in range(5):
+
+            request.cookies.get('portf_s_' + str(i+1) )
+            request.cookies.get('portf_s_type_' + str(i+1) )
+            request.cookies.get('portf_s_conv' + str(i+1) )
+
             r = r + ''+\
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_1" name="strategy_order_type_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             '               long/short'+\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
@@ -44,7 +50,7 @@ def get_portf_table_rows():
             '       </th>'+\
             '       <td>'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_1" name="strategy_conviction_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             '               Neutral'+\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
