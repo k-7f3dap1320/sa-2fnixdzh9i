@@ -30,8 +30,8 @@ def get_portf_table_rows():
     try:
         for i in range(5):
 
-            strategy_order_type = request.cookies.get('portf_s_type_' + str(i+1) )
-            strategy_conviction = request.cookies.get('portf_s_conv_' + str(i+1) )
+            strategy_order_type = request.cookies.get('portf_s_' + str(i+1) + '_type' )
+            strategy_conviction = request.cookies.get('portf_s_' + str(i+1) + '_conv' )
             instr_selection = ''
             uid = request.cookies.get('portf_s_' + str(i+1) )
 
@@ -98,7 +98,7 @@ def get_list_portf_alloc(burl):
         '<span>&nbsp;</span>'+\
         '<form method="GET" action="'+ burl +'p/?ins=4">'+\
         '   <button type="submit" class="btn btn-info btn-lg form-signin-btn"><i class="fas fa-save"></i>&nbsp;'+ l_buttonSave +'</button>'+\
-        '</form>'
+        '</form>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
@@ -122,7 +122,7 @@ def get_box_portf_save(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content sa-instr-n-portf-list">'+\
-        get_list_portf_alloc(burl)
+        get_list_portf_alloc(burl)+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
