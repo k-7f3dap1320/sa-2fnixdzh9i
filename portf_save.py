@@ -50,7 +50,7 @@ def get_portf_table_rows():
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             strategy_order_type +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
@@ -62,7 +62,7 @@ def get_portf_table_rows():
             '       </th>'+\
             '       <td>'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             strategy_conviction +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
