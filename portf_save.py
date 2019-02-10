@@ -48,7 +48,7 @@ def get_instr_fullname(uid):
         print(e)
     return r
 
-def get_portf_table_rows():
+def get_portf_table_rows(burl):
     r = ''
     try:
         for i in range(5):
@@ -114,7 +114,7 @@ def get_list_portf_alloc(burl):
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
-        get_portf_table_rows() +\
+        get_portf_table_rows(burl) +\
         '  </tbody>'+\
         '</table>'+\
         '<span>&nbsp;</span>'+\
