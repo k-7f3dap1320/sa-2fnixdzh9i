@@ -10,6 +10,29 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def portf_save_conviction(burl,mode,x):
+    #mode = "type1", "type2", "type3", "conv1", "conv2"...
+    #x = "long/short", "long", "short", "neutral", "weak", "strong"
+    r = ''
+    try:
+            resp = make_response( redirect(burl+'p/?ins=3') )
+            if mode == "type1": resp.set_cookie('portf_s_1_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "type2": resp.set_cookie('portf_s_2_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "type3": resp.set_cookie('portf_s_3_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "type4": resp.set_cookie('portf_s_4_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "type5": resp.set_cookie('portf_s_5_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+
+            if mode == "conv1": resp.set_cookie('portf_s_1_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "conv2": resp.set_cookie('portf_s_2_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "conv3": resp.set_cookie('portf_s_3_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "conv4": resp.set_cookie('portf_s_4_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+            if mode == "conv5": resp.set_cookie('portf_s_5_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+
+
+    except Exception as e:
+        print(e)
+    return resp
+
 def get_instr_fullname(uid):
     r = ''
     try:
@@ -54,9 +77,9 @@ def get_portf_table_rows():
             strategy_order_type +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-            '               <a class="dropdown-item" href="#">Buy and Sell (Long/Short)</a>'+\
-            '               <a class="dropdown-item" href="#">Buy Only (Long)</a>'+\
-            '               <a class="dropdown-item" href="#">Sell Only (Short)</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long/short'+'">Buy and Sell (long/short)</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long'+'">Buy Only (long)</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=short'+'">Sell Only (short)</a>'+\
             '           </div>'+\
             '       </div>'+\
             '       </th>'+\
@@ -66,9 +89,9 @@ def get_portf_table_rows():
             strategy_conviction +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-            '               <a class="dropdown-item" href="#">Weak</a>'+\
-            '               <a class="dropdown-item" href="#">Strong</a>'+\
-            '               <a class="dropdown-item" href="#">Neutral</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=weak'+'">weak</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=strong'+'">strong</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=neutral'+'">neutral</a>'+\
             '           </div>'+\
             '       </div>'+\
             '      </td>'+\

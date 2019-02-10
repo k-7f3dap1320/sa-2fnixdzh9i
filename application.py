@@ -51,6 +51,7 @@ def go():
         if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
         if ins == '2': c = save_portf_select(appname,burl,step,mode,x,portf,uid)
         if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
+        if ins == '4': c = portf_save_conviction(burl,mode,x)
         if ins is None: c = gen_portf_page(uid,appname,burl)
         c = set_sa_ref_code(ref,c)
 
