@@ -13,7 +13,6 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def portf_save_conviction(burl,mode,x):
     #mode = "type1", "type2", "type3", "conv1", "conv2"...
     #x = "long/short", "long", "short", "neutral", "weak", "strong"
-    r = ''
     try:
             resp = make_response( redirect(burl+'p/?ins=3') )
             if mode == "type1": resp.set_cookie('portf_s_1_type', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
@@ -90,8 +89,8 @@ def get_portf_table_rows(burl):
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
             '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=weak'+'">weak</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=strong'+'">strong</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=neutral'+'">neutral</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=strong'+'">strong</a>'+\
+            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=neutral'+'">neutral</a>'+\
             '           </div>'+\
             '       </div>'+\
             '      </td>'+\
