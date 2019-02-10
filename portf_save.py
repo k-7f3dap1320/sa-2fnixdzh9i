@@ -36,21 +36,6 @@ def portf_save_conviction(burl,mode,x):
         print(e)
     return resp
 
-def get_instr_fullname(uid):
-    r = ''
-    try:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT "
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            symbol = row[0]
-
-    except Exception as e:
-        print(e)
-    return r
-
 def get_portf_table_rows(burl):
     r = ''
     try:
@@ -71,12 +56,16 @@ def get_portf_table_rows(burl):
                 for row in rs: instr_selection = '<strong>' + row[0] + '</strong>&nbsp;('+ row[1] +')'
                 cr.close()
 
+            if strategy_order_type == 'long/short': class_order_type = 'btn-secondary'
+            if strategy_order_type == 'long': class_order_type = 'btn-success'
+            if strategy_order_type == 'short': class_order_type = 'btn-danger'
+
 
             r = r + ''+\
             '    <tr>'+\
             '      <th scope="row">'+\
             '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+            '           <button class="btn '+ class_order_type +' dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             strategy_order_type +\
             '           </button>'+\
             '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
