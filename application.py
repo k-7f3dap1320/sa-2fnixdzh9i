@@ -42,7 +42,8 @@ def go():
     ############################################################################
     if request.endpoint == 's':
         c = gen_sign_page(uid,appname,burl)
-        c = set_sa_ref_code(ref,lang,c)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'p':
         ins = request.values.get('ins')
@@ -54,7 +55,8 @@ def go():
         if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
         if ins == '4': c = portf_save_conviction(burl,mode,x)
         if ins is None: c = gen_portf_page(uid,appname,burl)
-        c = set_sa_ref_code(ref,lang,c)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'n':
         name = request.values.get('name')
@@ -77,15 +79,18 @@ def go():
 
     elif request.endpoint == 'logout':
         c = user_logout(burl)
-        c = set_sa_ref_code(ref,lang,c)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'signin':
         c = get_signin_page(appname,burl,err)
-        c = set_sa_ref_code(ref,lang,c)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
 
     else:
         c = gen_main_page(x,appname,burl);
-        c = set_sa_ref_code(ref,lang,c)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
     ############################################################################
 
     sid = request.args.get('sid')
