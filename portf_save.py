@@ -57,7 +57,7 @@ def get_portf_asset_class(what):
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs: asset_class_name = row[0]; asset_class_id = row[1]
-            if i = 0:
+            if i == 0:
                 select_asset_class_id = asset_class_id
             else:
                 if select_asset_class_id != asset_class_id: multi_asset_selected = True
