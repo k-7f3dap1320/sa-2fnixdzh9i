@@ -10,12 +10,14 @@ import datetime
 import time
 from datetime import timedelta
 
-def set_sa_ref_code(ref,c):
+def set_sa_ref_code(ref,lang,c):
     try:
         resp = make_response( c )
         ref_str = ref
         if len(ref_str) > 1: ref_str = str(ref)
         resp.set_cookie('ref_by', str(ref_str), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
+        if lang is None: lang = 'en'
+        resp.set_cookie('lang', str(lang), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
     except Exception as e: print(e)
     return resp
 

@@ -14,6 +14,9 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_user():
     return user_get_uid()
 
+def get_lang():
+    return request.cookies.get('lang')
+
 def get_portf_suffix():
     return 'PRF:'
 

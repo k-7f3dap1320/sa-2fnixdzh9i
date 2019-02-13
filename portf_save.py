@@ -5,6 +5,7 @@
 from flask import Flask, make_response, request, redirect
 from sa_db import *
 from sa_func import *
+from app_cookie import *
 import datetime
 import time
 from datetime import timedelta
@@ -134,7 +135,7 @@ def portf_save_generate():
         portf_market_name = get_portf_market('n')
         portf_strategy_type = get_portf_strategy_type()
         portf_fullname = set_portf_fullname(portf_symbol,portf_asset_class_name,portf_market_name,portf_strategy_type)
-        portf_owner = ''
+        portf_owner = user_get_uid()
         portf_description = ''
         portf_account_reference = 1000
         portf_decimal_place = 0
