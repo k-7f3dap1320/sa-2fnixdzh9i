@@ -11,7 +11,6 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-
 def get_card(x,t):
 
     r = ''
@@ -47,7 +46,7 @@ def get_card(x,t):
             uid = get_uid(symbol)
 
             color = "black"
-            portf_content_end_part = 'Portfolio'
+            portf_content_by = 'Portfolio by '
 
             if badge.find('-') == -1:
                 badge_class = 'badge badge-success'
@@ -88,7 +87,7 @@ def get_card(x,t):
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
                 '                <div class="title"><h6 style="line-height: 1.5;">'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
-                '                <div class="text"><span class="desc">'+ content + ' ' + portf_content_end_part +'</span></div>'+\
+                '                <div class="text"><span class="desc">'+ portf_content_by + content +'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
                 '            </div>'+\
