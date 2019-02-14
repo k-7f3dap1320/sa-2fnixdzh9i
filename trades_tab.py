@@ -73,7 +73,7 @@ def get_trades_tbl(uid,w):
         sql = sql + single_selection
         sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
-        sql = sql + ' order by trades.entry_date DESC LIMIT 300'
+        sql = sql + ' order by trades.entry_date DESC LIMIT 100'
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
