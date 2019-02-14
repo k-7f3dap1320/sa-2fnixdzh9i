@@ -126,7 +126,26 @@ def get_portf_strategy_type():
     except Exception as e: print(e)
     return r
 
-def portf_save_generate():
+def get_portf_description(ac,m,st):
+    r = ''
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT lang, portf_description FROM labels WHERE lang = '"+ get_lang() +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: portf_description = row[0]
+        #This {market_asset_class} portfolio is designed by {nickname}.
+        nickname = get_nickname()
+        market_asset_class = ac + ' ' + m + ' '+ st
+        portf_description = portf_description.replace('{market_asset_class}',market_asset_class)
+        portf_description = portf_description.replace('{nickname}',nickname)
+        r = portf_description
+    except Exception as e: print(e)
+    return r
+
+def portf_gen_portf_info():
+    r = ''
     try:
         portf_symbol = get_portf_suffix() + set_portf_symbol()
         portf_asset_class_id = get_portf_asset_class('i')
@@ -136,7 +155,7 @@ def portf_save_generate():
         portf_strategy_type = get_portf_strategy_type()
         portf_fullname = set_portf_fullname(portf_symbol,portf_asset_class_name,portf_market_name,portf_strategy_type)
         portf_owner = user_get_uid()
-        portf_description = ''
+        portf_description = get_portf_description(portf_asset_class_name,portf_market_name,portf_strategy_type)
         portf_account_reference = 1000
         portf_decimal_place = 0
         portf_pip = 1
@@ -144,7 +163,13 @@ def portf_save_generate():
         portf_unit = 'pts'
         portf_creation_date = set_portf_date()
         portf_default_alloc_quantity = 1
+        r = portf_symbol
+    except Exception as e: print(e)
+    return r
 
+def portf_save_generate():
+    try:
+        portf_symbol = portf_gen_portf_info()
     except Exception as e: print(e)
 
 def portf_save_conviction(burl,mode,x):
@@ -276,10 +301,6 @@ def get_box_portf_save(burl):
         '        </div>'+\
         '   </div>'+\
         '</div>'
-
-
-        #cr.close()
-        #connection.close()
 
     except Exception as e: print(e)
 

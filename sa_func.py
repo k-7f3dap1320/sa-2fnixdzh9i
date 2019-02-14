@@ -14,8 +14,17 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_user():
     return user_get_uid()
 
-def get_lang():
-    return request.cookies.get('lang')
+def get_nickname():
+    r = ''
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT nickname FROM users WHERE uid = '"+ get_user() +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: r = row[0]
+    except Exception as e: print(e)
+    return r
 
 def get_portf_suffix():
     return 'PRF:'
@@ -65,5 +74,8 @@ def get_random_num(n):
     max = int(n)
     return random.randint(1,max)
 
+def get_lang():
+    return request.cookies.get('lang')
+
 def get_selected_lang():
-    return 'en'
+    return get_lang()
