@@ -53,7 +53,7 @@ def get_search_result(q):
         c = ''
 
         for row in rs:
-            url = row[0]
+            url = row[0].replace('{burl}','')
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url) + '" />') + get_body('','') )
 
         if c == '':
