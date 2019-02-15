@@ -39,7 +39,7 @@ def get_card(x,t,burl):
             short_title = row[0]
             short_description = row[1]
             content = row[2]
-            url = row[3]
+            url = row[3].replace('{burl}',burl)
             ranking = row[4]
             badge = row[5]
             symbol = row[6]
@@ -87,7 +87,7 @@ def get_card(x,t,burl):
                 '            <div class="box-part text-center">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
                 '                <div class="title"><h6 style="line-height: 1.5;">'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
-                '                <div class="text"><span class="desc">'+ portf_content_by + content +'</span></div>'+\
+                '                <div class="text"><span class="desc">'+ portf_content_by + content.replace('{burl}',burl) +'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
                 '                <div class="text"><span class="expl">'+expl_label+'</span></div>'+\
                 '            </div>'+\
