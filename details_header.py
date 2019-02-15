@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_details_header(uid):
+def get_details_header(uid,burl):
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -21,7 +21,7 @@ def get_details_header(uid):
         for row in rs_s:
             symbol = row[0]
             instr_name = row[1]
-            sector = row[2]
+            content = row[2].replace('{burl}',burl)
             badge = row[3]
             asset_class = row[4]
             market = row[5]
@@ -43,7 +43,7 @@ def get_details_header(uid):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part">'+\
         '                <div class="title"><h4>'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="right" title="'+ badge_tooltip +'" >'+badge+'</span></h4></div>'+\
-        '                <div class="text"><span class="desc">'+ sector + ' | ' + asset_class + market + symbol + isin +'</span></div>'+\
+        '                <div class="text"><span class="desc">'+ content + ' | ' + asset_class + market + symbol + isin +'</span></div>'+\
         '            </div>'+\
         '        </div>'
 
