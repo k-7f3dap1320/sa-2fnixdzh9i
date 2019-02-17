@@ -86,7 +86,7 @@ def get_portf_market(what):
         market_id = ''
         for i in range(5):
             suid = request.cookies.get('portf_s_' + str(i+1) )
-            sql = "SELECT symbol_list.uid, markets.market_id, markets.market_label, instruments.currency_code, instruments.conv_to_usd FROM instruments "+\
+            sql = "SELECT symbol_list.uid, markets.market_id, markets.market_label, markets.currency_code, markets.conv_to_usd FROM instruments "+\
             "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "JOIN markets ON instruments.market = markets.market_id "+\
             "WHERE symbol_list.uid = " + str(suid)
