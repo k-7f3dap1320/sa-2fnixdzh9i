@@ -16,6 +16,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+################################################################################
 def set_portf_date():
     d = datetime.datetime.now();
     r = datetime.datetime.strptime(d, '%Y%m%d')
@@ -74,7 +75,7 @@ def get_portf_asset_class(what):
     return r
 
 def get_portf_market(what):
-    #what = "n" (name) ; what = "i" (id)
+    #what = "n" (name) ; what = "i" (id); what = "cur" (currency); what = "conv" (conversion rate)
     r = ''
     try:
         suid = ''
@@ -85,18 +86,20 @@ def get_portf_market(what):
         market_id = ''
         for i in range(5):
             suid = request.cookies.get('portf_s_' + str(i+1) )
-            sql = "SELECT symbol_list.uid, markets.market_id, markets.market_label FROM instruments "+\
+            sql = "SELECT symbol_list.uid, markets.market_id, markets.market_label, instruments.currency_code, instruments.conv_to_usd FROM instruments "+\
             "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "JOIN markets ON instruments.market = markets.market_id "+\
             "WHERE symbol_list.uid = " + str(suid)
             cr.execute(sql)
             rs = cr.fetchall()
-            for row in rs: market_id = row[0]; market_label = row[1]
+            for row in rs: market_id = row[0]; market_label = row[1]; currency_code = row[2]; conv_to_usd = row[3]
         cr.close()
         connection.close()
 
         if what == 'n': r = market_label
         if what == 'i': r = market_id
+        if what == 'cur': r = currency_code
+        if what == 'conv': r = conv_to_usd
     except Exception as e: print(e)
     return r
 
@@ -135,7 +138,6 @@ def get_portf_description(ac,m,st):
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs: portf_description = row[0]
-        #This {market_asset_class} portfolio is designed by {nickname}.
         nickname = get_nickname()
         market_asset_class = ac + ' ' + m + ' '+ st
         portf_description = portf_description.replace('{market_asset_class}',market_asset_class)
@@ -144,7 +146,26 @@ def get_portf_description(ac,m,st):
     except Exception as e: print(e)
     return r
 
-def portf_gen_portf_info():
+def get_portf_decimal_place():
+    r = 0
+    try:
+        suid = ''
+        decimal_places = 0;
+        for i in range(5):
+            suid = request.cookies.get('portf_s_' + str(i+1) )
+            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+            cr = connection.cursor(pymysql.cursors.SSCursor)
+            sql = "SELECT instruments.decimal_places FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid = " + str(suid)
+            cr.execute(sql)
+            rs = cr.fetchall()
+            for row in rs:
+                if row[0] > decimal_places: decimal_places = row[0]
+        r = decimal_places
+    except Exception as e: print(e)
+    return r
+
+def portf_gen_portf_t_instruments():
     r = ''
     try:
         portf_symbol = get_portf_suffix() + set_portf_symbol()
@@ -157,20 +178,72 @@ def portf_gen_portf_info():
         portf_owner = user_get_uid()
         portf_description = get_portf_description(portf_asset_class_name,portf_market_name,portf_strategy_type)
         portf_account_reference = 1000
-        portf_decimal_place = 0
+        portf_decimal_place = get_portf_decimal_place()
         portf_pip = 1
         portf_sector = 0
-        portf_unit = 'pts'
+        portf_unit = get_portf_market('cur')
         portf_creation_date = set_portf_date()
         portf_default_alloc_quantity = 1
+
+        try:
+            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+            cr = connection.cursor(pymysql.cursors.SSCursor)
+            sql = "INSERT INTO symbol_list(symbol) VALUES('"+ str(portf_symbol) +"')"
+            cr.execute(sql)
+            connection.commit()
+
+            sql = "INSERT INTO instruments(symbol,fullname,description,asset_class,market,decimal_places,pip, sector,unit,account_reference,owner,creation_date) "+\
+            "VALUES ('"+ str(portf_symbol) +"','"+ str(portf_fullname) +"','"+ str(portf_description) +"','"+ str(portf_asset_class_id) +"','"+ str(portf_market_id) +"','"+\
+            str(portf_decimal_place) +"','"+ str(portf_pip) +"','"+ str(portf_sector) +"','"+ str(portf_unit) +"','"+ str(portf_account_reference) +"','"+ str(portf_owner) +"','"+ str(portf_creation_date) +"')"
+            cr.execute(sql)
+            connection.commit()
+            cr.close()
+        except:
+            pass
         r = portf_symbol
     except Exception as e: print(e)
     return r
 
-def portf_save_generate():
+def portf_add_allocation(portf_symbol):
     try:
-        portf_symbol = portf_gen_portf_info()
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+
+        portf_suid = ''
+        portf_s = ''
+        portf_fullname = ''
+        portf_type = ''
+        portf_conv = ''
+        insert_values = ''
+
+        for i in range(5):
+            portf_suid = request.cookies.get('portf_s_' + str(i+1) )
+            portf_type = request.cookies.get('portf_s_' + str(i+1) + '_type' )
+            portf_conv = request.cookies.get('portf_s_' + str(i+1) + '_conv')
+
+            sql = "SELECT instruments.symbol, instruments.fullname FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid = " + str(portf_suid)
+            cr.execute(sql)
+            rs = cr.fetchall()
+            for row in rs: portf_s = row[0]; portf_fullname = row[1]
+
+            if i != 0: insert_values = insert_values + ','
+            insert_values = insert_values + "('"+ str(portf_symbol) +"','"+ str(portf_s) +"','"+ str(portf_fullname) +"',1,'"+ str(portf_type) +"','"+ str(portf_conv) +"')"
+
+        sql = "INSERT INTO portfolios(portf_symbol,symbol,alloc_fullname,quantity,strategy_order_type,strategy_conviction) VALUES "+ insert_values
+        cr.execute(sql)
+        connection.commit()
+
+
     except Exception as e: print(e)
+
+def portf_save_generate(appname,burl):
+    try:
+        portf_symbol = portf_gen_portf_t_instruments()
+        portf_add_allocation(portf_symbol)
+    except Exception as e: print(e)
+
+################################################################################
 
 def portf_save_conviction(burl,mode,x):
     #mode = "type1", "type2", "type3", "conv1", "conv2"...
