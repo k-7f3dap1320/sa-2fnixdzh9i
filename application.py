@@ -54,7 +54,7 @@ def go():
         if ins == '2': c = save_portf_select(appname,burl,step,mode,x,portf,uid)
         if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
         if ins == '4': c = portf_save_conviction(burl,mode,x)
-        if ins == '5': c = portf_save_generate(appname,burl)
+        if ins == '5': c = portf_save(appname,burl)
         if ins is None: c = gen_portf_page(uid,appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)

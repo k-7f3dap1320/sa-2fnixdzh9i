@@ -237,13 +237,20 @@ def portf_add_allocation(portf_symbol):
 
     except Exception as e: print(e)
 
-def portf_save_generate(appname,burl):
+def portf_insert_data():
     try:
         portf_symbol = portf_gen_portf_t_instruments()
         portf_add_allocation(portf_symbol)
     except Exception as e: print(e)
 
 ################################################################################
+
+def portf_save(appname,burl):
+    try:
+        resp = make_response( redirect(burl+'p/?portf_submit') )
+        portf_insert_data()
+    except Exception as e: print(e)
+    return resp
 
 def portf_save_conviction(burl,mode,x):
     #mode = "type1", "type2", "type3", "conv1", "conv2"...
