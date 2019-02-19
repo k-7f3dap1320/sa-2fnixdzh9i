@@ -44,14 +44,16 @@ def get_trades_tbl(uid,w):
         portf_symbol_selection = ''
         i = 0
         if selected_is_portf:
-            sql = "SELECT portfolios.symbol FROM symbol_list JOIN portfolios ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid = "+ str(uid)
+            sql = "SELECT portfolios.symbol, portfolios.portf_symbol FROM symbol_list JOIN portfolios ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid = "+ str(uid)
             cr.execute(sql)
             rs = cr.fetchall()
+            portf_symbol = ''
             for row in rs:
+                portf_symbol = row[1]
                 if i == 0: portf_symbol_selection = portf_symbol_selection + " AND (trades.symbol = '"+ str(row[0]) +"' "
                 else: portf_symbol_selection = portf_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
                 i += 1
-            portf_symbol_selection = portf_symbol_selection + ') '
+            portf_symbol_selection = portf_symbol_selection + ') AND portfolios.portf_symbol ="'+ str(portf_symbol) +'" '
 
         single_selection = ''
         if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
