@@ -53,6 +53,7 @@ def get_card_chart(uid,color):
     d = datetime.datetime.now() - timedelta(days=360)
     d = d.strftime("%Y%m%d")
     data = ""
+    minval = 0
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
