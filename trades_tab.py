@@ -129,19 +129,17 @@ def get_trades_tbl(uid,w):
                 else: pnl_pct = str( pnl_pct ) + " pip"
             else: pnl_pct = str( round( pnl_pct * 100, 2 ) ) + "%"
 
-            print(order_type + " -- "+ strategy_order_type)
-            if (order_type == 'buy' and strategy_order_type == 'long' ) or (order_type == 'sell' and strategy_order_type == 'short') or (strategy_order_type == 'long/short'):
-                r = r +\
-                '    <tr>'+\
-                '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                '      <td>'+ str(fullname) +'</td>'+\
-                '      <td>'+ str(entry_date) +'</td>'+\
-                '      <td>'+ str(entry_price) +'</td>'
-                if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
-                r = r +\
-                '      <td>'+ str(expiration_date) +'</td>'+\
-                '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
-                '    </tr>'
+            r = r +\
+            '    <tr>'+\
+            '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
+            '      <td>'+ str(fullname) +'</td>'+\
+            '      <td>'+ str(entry_date) +'</td>'+\
+            '      <td>'+ str(entry_price) +'</td>'
+            if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
+            r = r +\
+            '      <td>'+ str(expiration_date) +'</td>'+\
+            '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
+            '    </tr>'
 
         r = r +\
         '  </tbody>'+\
