@@ -94,8 +94,10 @@ def get_portf_alloc(uid):
         i = 0
         count_buy = 0
         count_sell = 0
+        count_hold = 0
         sell_color_R = 255; sell_color_G = 0; sell_color_B = 0
         buy_color_R = 198; buy_color_G = 255; buy_color_B = 0
+        hold_color_R = 220; hold_color_G = 220; hold_color_B = 220
 
         for row in rs:
             alloc_fullname = row[0]
@@ -135,6 +137,19 @@ def get_portf_alloc(uid):
                     pie_chart_option =  str(i) +':{color:"rgb('+ str( int(sell_color_R) ) +','+ str( int(sell_color_G) ) +','+ str( int(sell_color_B) ) +')"}'
                 else:
                     pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( int(sell_color_R) ) +','+ str( int(sell_color_G) ) +','+ str( int(sell_color_B) ) +')"}'
+            if order_type == 'hold':
+                if count_hold > 0:
+                    if hold_color_B > num_rec:
+                        hold_color_R = hold_color_R - num_rec
+                    if hold_color_G < (255):
+                        hold_color_G = hold_color_G + num_rec
+                    if hold_color_B < (255):
+                        hold_color_B = hold_color_B + num_rec
+                count_hold += 1
+                if i == 0:
+                    pie_chart_option =  str(i) +':{color:"rgb('+ str( int(hold_color_R) ) +','+ str( int(hold_color_G) ) +','+ str( int(hold_color_B) ) +')"}'
+                else:
+                    pie_chart_option = pie_chart_option + ', '+ str(i) +':{color:"rgb('+ str( int(hold_color_R) ) +','+ str( int(hold_color_G) ) +','+ str( int(hold_color_B) ) +')"}'
 
             i += 1
         cr.close()
