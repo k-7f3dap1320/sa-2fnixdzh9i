@@ -66,7 +66,7 @@ def get_trades_tbl(uid,w):
             "trades.url,  "+\
             "instruments.unit, "+\
             "portfolios.strategy_order_type"
-        sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = instruments.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE "
+        sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
         else: sql = sql + " trades.status = 'expired' "
