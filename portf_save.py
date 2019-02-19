@@ -121,7 +121,7 @@ def get_portf_strategy_type():
         selected_type = ''
         is_long_short = False
         for i in range(5):
-            strategy_type = request.cookies.get('portf_s_' + str(i+1) )
+            strategy_type = request.cookies.get('portf_s_' + str(i+1) + '_type' )
             if i == 0: selected_type = strategy_type
             if strategy_type == 'long/short': selected_type = 'long/short'
             if strategy_type != selected_type: selected_type = 'long/short'
