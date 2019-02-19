@@ -36,8 +36,7 @@ def get_portf_alloc(uid):
                 badge = 'badge-success'
             else:
                 badge = 'badge-danger'
-            if (order_type == 'buy' and (strategy_order_type == 'long' or strategy_order_type == 'long/short') ) and
-            (order_type == 'sell' and (strategy_order_type == 'short' or strategy_order_type == 'long/short') ):
+            if (order_type == 'buy' and (strategy_order_type == 'long' or strategy_order_type == 'long/short') ) and (order_type == 'sell' and (strategy_order_type == 'short' or strategy_order_type == 'long/short') ):
                 signal_box_data = signal_box_data + '' +\
                 '                       <tr>'+\
                 '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
