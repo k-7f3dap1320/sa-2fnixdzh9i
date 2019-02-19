@@ -36,15 +36,19 @@ def get_portf_alloc(uid):
                 badge = 'badge-success'
             else:
                 badge = 'badge-danger'
-            if (order_type == 'buy' and (strategy_order_type == 'long' or strategy_order_type == 'long/short') ) or (order_type == 'sell' and (strategy_order_type == 'short' or strategy_order_type == 'long/short') ):
-                signal_box_data = signal_box_data + '' +\
-                '                       <tr>'+\
-                '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
-                '                          <td>'+ str(quantity)  +'</td>'+\
-                '                          <td>'+ symbol_fullname +'</td>'+\
-                '                          <td>'+ str(entry_price) +'</td>'+\
-                '                          <td>'+ exp_date_str +'</td>'+\
-                '                       </tr>'
+            if (order_type == 'buy' and strategy_order_type == 'short') or (order_type == 'sell' and strategy_order_type == 'long'):
+                order_type = 'hold'
+                badge = 'badge-info'
+                entry_price = '-'
+
+            signal_box_data = signal_box_data + '' +\
+            '                       <tr>'+\
+            '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
+            '                          <td>'+ str(quantity)  +'</td>'+\
+            '                          <td>'+ symbol_fullname +'</td>'+\
+            '                          <td>'+ str(entry_price) +'</td>'+\
+            '                          <td>'+ exp_date_str +'</td>'+\
+            '                       </tr>'
         cr.close()
         connection.close()
 
@@ -79,7 +83,7 @@ def get_portf_alloc(uid):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT portfolios.alloc_fullname, portfolios.order_type, portfolios.dollar_amount, portfolios.symbol "+\
+        sql = "SELECT portfolios.alloc_fullname, portfolios.order_type, portfolios.dollar_amount, portfolios.symbol, portfolio.strategy_order_type "+\
         "FROM `portfolios` JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid) + " "+\
         "ORDER BY portfolios.dollar_amount"
         cr.execute(sql)
@@ -97,6 +101,11 @@ def get_portf_alloc(uid):
             order_type = row[1]
             dollar_amount = row[2]
             alloc_symbol = row[3]
+            strategy_order_type = row[4]
+
+            if (order_type == 'buy' and strategy_order_type == 'short') or (order_type == 'sell' and strategy_order_type == 'long'):
+                order_type = 'hold' 
+
             if i == 0:
                 pie_chart_data = '["'+ alloc_fullname +' ('+ alloc_symbol +')'+'", '+ str(dollar_amount) +']'
             else:
