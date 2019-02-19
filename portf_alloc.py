@@ -18,7 +18,7 @@ def get_portf_alloc(uid):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname FROM portfolios "+\
-        "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
+        "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol, portfolios.strategy_order_type WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
         cr.execute(sql)
         rs = cr.fetchall()
         signal_box_data = ''
@@ -30,19 +30,22 @@ def get_portf_alloc(uid):
             trade_expiration = row[4]
             exp_date_str = trade_expiration.strftime("%d-%b-%Y")
             symbol_fullname = row[5]
+            strategy_order_type = row[6]
 
             if order_type == 'buy':
                 badge = 'badge-success'
             else:
                 badge = 'badge-danger'
-            signal_box_data = signal_box_data + '' +\
-            '                       <tr>'+\
-            '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
-            '                          <td>'+ str(quantity)  +'</td>'+\
-            '                          <td>'+ symbol_fullname +'</td>'+\
-            '                          <td>'+ str(entry_price) +'</td>'+\
-            '                          <td>'+ exp_date_str +'</td>'+\
-            '                       </tr>'
+            if (order_type == 'buy' and (strategy_order_type == 'long' or strategy_order_type == 'long/short') ) and
+            (order_type == 'sell' and (strategy_order_type == 'short' or strategy_order_type == 'long/short') ):
+                signal_box_data = signal_box_data + '' +\
+                '                       <tr>'+\
+                '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
+                '                          <td>'+ str(quantity)  +'</td>'+\
+                '                          <td>'+ symbol_fullname +'</td>'+\
+                '                          <td>'+ str(entry_price) +'</td>'+\
+                '                          <td>'+ exp_date_str +'</td>'+\
+                '                       </tr>'
         cr.close()
         connection.close()
 

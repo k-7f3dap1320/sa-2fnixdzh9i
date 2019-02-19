@@ -64,7 +64,8 @@ def get_trades_tbl(uid,w):
             "trades.expiration_date, "+\
             "trades.pnl_pct,  "+\
             "trades.url,  "+\
-            "instruments.unit "
+            "instruments.unit, "+\
+            "instruments.strategy_order_type"
         sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
@@ -112,6 +113,7 @@ def get_trades_tbl(uid,w):
             pnl_pct = row[6]
             url = row[7]
             unit = row[8]
+            strategy_order_type = row[9]
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
             else: badge_today = ''
@@ -125,17 +127,20 @@ def get_trades_tbl(uid,w):
                 else: pnl_pct = str( pnl_pct ) + " pip"
             else: pnl_pct = str( round( pnl_pct * 100, 2 ) ) + "%"
 
-            r = r +\
-            '    <tr>'+\
-            '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-            '      <td>'+ str(fullname) +'</td>'+\
-            '      <td>'+ str(entry_date) +'</td>'+\
-            '      <td>'+ str(entry_price) +'</td>'
-            if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
-            r = r +\
-            '      <td>'+ str(expiration_date) +'</td>'+\
-            '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
-            '    </tr>'
+
+            if (order_type == 'buy' and (strategy_order_type == 'long' or strategy_order_type == 'long/short') ) and
+            (order_type == 'sell' and (strategy_order_type == 'short' or strategy_order_type == 'long/short') ):
+                r = r +\
+                '    <tr>'+\
+                '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
+                '      <td>'+ str(fullname) +'</td>'+\
+                '      <td>'+ str(entry_date) +'</td>'+\
+                '      <td>'+ str(entry_price) +'</td>'
+                if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
+                r = r +\
+                '      <td>'+ str(expiration_date) +'</td>'+\
+                '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
+                '    </tr>'
 
         r = r +\
         '  </tbody>'+\
