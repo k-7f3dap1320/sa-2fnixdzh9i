@@ -131,7 +131,7 @@ def get_trades_tbl(uid,w):
                 else: pnl_pct = str( pnl_pct ) + " pip"
             else: pnl_pct = str( round( pnl_pct * 100, 2 ) ) + "%"
 
-            if (order_type == 'buy' and strategy_order_type == 'long') or (order_type == 'sell' and strategy_order_type == 'short') or (strategy_order_type = 'long/short'):
+            if (order_type == 'buy' and strategy_order_type == 'long') or (order_type == 'sell' and strategy_order_type == 'short') or (strategy_order_type == 'long/short'):
                 r = r +\
                 '    <tr>'+\
                 '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
