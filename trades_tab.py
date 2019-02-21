@@ -142,7 +142,7 @@ def get_trades_tbl(uid,w):
                 '      <td>'+ str(expiration_date) +'</td>'+\
                 '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                 '    </tr>'
-                print(order_type + " - " + fullname + " - indent=" + str(i) )
+                print(str(entry_date) + " > " + order_type + " - " + fullname + " - indent=" + str(i) )
                 i += 1
                 if i == 50: break
 
