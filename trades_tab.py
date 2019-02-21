@@ -129,7 +129,7 @@ def get_trades_tbl(uid,w):
             pnl_pct = row[6]
             url = row[7]
             unit = row[8]
-            strategy_order_type = row[9]
+            if selected_is_portf: strategy_order_type = row[9]
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
             else: badge_today = ''
@@ -155,7 +155,6 @@ def get_trades_tbl(uid,w):
                 '      <td>'+ str(expiration_date) +'</td>'+\
                 '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                 '    </tr>'
-                print(str(entry_date) + " > " + order_type + " - " + fullname + " - indent=" + str(i) )
                 i += 1
                 if i == 50: break
 
