@@ -58,17 +58,30 @@ def get_trades_tbl(uid,w):
         single_selection = ''
         if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
 
-        sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
-            "trades.entry_date,  "+\
-            "trades.entry_price, "+\
-            "trades.close_price, "+\
-            "trades.expiration_date, "+\
-            "trades.pnl_pct,  "+\
-            "trades.url,  "+\
-            "instruments.unit, "+\
-            "portfolios.strategy_order_type "
-        sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE "
+
+        if selected_is_portf:
+            sql = "SELECT trades.order_type, "+\
+                "trades.fullname, "+\
+                "trades.entry_date,  "+\
+                "trades.entry_price, "+\
+                "trades.close_price, "+\
+                "trades.expiration_date, "+\
+                "trades.pnl_pct,  "+\
+                "trades.url,  "+\
+                "instruments.unit, "+\
+                "portfolios.strategy_order_type "
+            sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE "
+        else:
+            sql = "SELECT trades.order_type, "+\
+                "trades.fullname, "+\
+                "trades.entry_date,  "+\
+                "trades.entry_price, "+\
+                "trades.close_price, "+\
+                "trades.expiration_date, "+\
+                "trades.pnl_pct,  "+\
+                "trades.url,  "+\
+                "instruments.unit "
+            sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
         else: sql = sql + " trades.status = 'expired' "
