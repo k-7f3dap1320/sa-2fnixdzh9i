@@ -167,9 +167,9 @@ def get_trades_tbl(uid,w):
                     r = r +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
                     '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
-                    '    </tr>'                                    
-                i += 1
-                if i == 50: break
+                    '    </tr>'
+            i += 1
+            if i == 50: break
 
         r = r +\
         '  </tbody>'+\
