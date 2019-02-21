@@ -77,7 +77,6 @@ def get_trades_tbl(uid,w):
         sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
         sql = sql + ' order by trades.entry_date DESC'
-        #REMOVE THE LIMIT AND USE ITERATION INSTEAD BY COUNTING RECORDS
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -143,6 +142,7 @@ def get_trades_tbl(uid,w):
                 '      <td>'+ str(expiration_date) +'</td>'+\
                 '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                 '    </tr>'
+                print(order_type + " - " + fullname + " - indent=" + str(i) )
                 i += 1
                 if i == 50: break
 
