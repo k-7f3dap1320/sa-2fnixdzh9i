@@ -58,7 +58,7 @@ def get_trades_tbl(uid,w):
         single_selection = ''
         if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
 
-        dn = datetime.datetime.now(); dn = dn.strftime("%d-%b-%Y"); dnstr = dn.strftime("%Y%m%d")
+        dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d"); dn = dn.strftime("%d-%b-%Y")
 
         if selected_is_portf:
             sql = "SELECT trades.order_type, "+\
