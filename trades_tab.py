@@ -71,7 +71,7 @@ def get_trades_tbl(uid,w):
                 "trades.url,  "+\
                 "instruments.unit, "+\
                 "portfolios.strategy_order_type "
-            sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " "
+            sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
@@ -82,7 +82,7 @@ def get_trades_tbl(uid,w):
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
                 "instruments.unit "
-            sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " "
+            sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
         else: sql = sql + " trades.status = 'expired' "
