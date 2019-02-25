@@ -155,7 +155,7 @@ def get_trades_tbl(uid,w):
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
                     r = r +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span>'+ badge_today +'</td>'+\
+                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                     '    </tr>'
                     i += 1
             else:
@@ -168,7 +168,7 @@ def get_trades_tbl(uid,w):
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
                     r = r +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span>'+ badge_today +'</td>'+\
+                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                     '    </tr>'
                     i += 1
             if i == 50: break
