@@ -9,6 +9,7 @@ from app_cookie import *
 import datetime
 import time
 from datetime import timedelta
+from portf_gen_data import *
 
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -37,6 +38,8 @@ def set_portf_symbol():
         d = datetime.datetime.now(); frmd = datetime.datetime.strftime(d, '%d')
         symbol = symbol + frmd
         r = symbol.upper()
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
 
@@ -145,6 +148,8 @@ def get_portf_description(ac,m,st):
         portf_description = portf_description.replace('{market_asset_class}',market_asset_class)
         portf_description = portf_description.replace('{nickname}',nickname)
         r = portf_description
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
 
@@ -164,6 +169,7 @@ def get_portf_decimal_place():
             for row in rs:
                 if row[0] > decimal_places: decimal_places = row[0]
             cr.close()
+            connection.close()
         r = decimal_places
     except Exception as e: print(e)
     return r
@@ -179,6 +185,7 @@ def portf_get_user_numeric_id():
         rs = cr.fetchall()
         for row in rs: r = row[0]
         cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
 
@@ -214,6 +221,7 @@ def portf_gen_portf_t_instruments():
         cr.execute(sql)
         connection.commit()
         cr.close()
+        connection.close()
     except:
         pass
     r = portf_symbol
@@ -248,20 +256,40 @@ def portf_add_allocation(portf_symbol):
         sql = "INSERT INTO portfolios(portf_symbol,symbol,alloc_fullname,quantity,strategy_order_type,strategy_conviction) VALUES "+ insert_values
         cr.execute(sql)
         connection.commit()
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
 
 def portf_insert_data():
+    r = ''
     try:
-        portf_symbol = portf_gen_portf_t_instruments()
+        portf_symbol = portf_gen_portf_t_instruments(); r = portf_symbol
         portf_add_allocation(portf_symbol)
     except Exception as e: print(e)
+    return r
 
 ################################################################################
 
+def get_portf_uid_from_symbol(s):
+    r = ''
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT uid FROM symbol_list WHERE symbol = '"+ s +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: r = row[0]
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+    return r
+
 def portf_save(appname,burl):
     try:
-        resp = make_response( redirect(burl+'p/?portf_submit') )
-        portf_insert_data()
+        portf_symbol = portf_insert_data()
+        get_portf_perf(portf_symbol)
+        portf_uid = get_portf_uid_from_symbol(portf_symbol)
+        resp = make_response( redirect(burl+'p/?uid='+ str(portf_uid) ) )
     except Exception as e: print(e)
     return resp
 
