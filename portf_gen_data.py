@@ -38,10 +38,7 @@ def get_portf_content(user_id):
 def set_portf_feed(s):
 
     feed_id = 9
-    feed_type = "portfolios"
-    add_feed_type(feed_id, feed_type)
 
-    #Date [Today date]
     d = datetime.datetime.now()
     d = d.strftime("%Y%m%d")
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
