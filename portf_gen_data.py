@@ -18,6 +18,96 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
+def get_portf_content(user_id):
+    r = ''
+    try:
+        nickname = ''
+        avatar_id = ''
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT nickname, avatar_id FROM users WHERE id="+ str(user_id)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: nickname = row[0]; avatar_id = row[1]
+        r = '<img src="{burl}static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: 30px;">&nbsp;<strong>'+nickname+'</strong>'
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+    return r
+
+def set_portf_feed(s):
+
+    feed_id = 9
+    feed_type = "portfolios"
+    add_feed_type(feed_id, feed_type)
+
+    #Date [Today date]
+    d = datetime.datetime.now()
+    d = d.strftime("%Y%m%d")
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT instruments.symbol, instruments.fullname, instruments.asset_class, instruments.market, instruments.w_forecast_change, instruments.w_forecast_display_info, symbol_list.uid, instruments.owner, instruments.romad_st FROM instruments "+\
+    "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+    "WHERE instruments.symbol = '"+ s +"'"
+
+    cr.execute(sql)
+    rs = cr.fetchall()
+    i = 0
+    inserted_value = ''
+    for row in rs:
+        symbol = row[0]
+        fullname = row[1].replace("'","")
+        asset_class = row[2]
+        market = row[3]
+        w_forecast_change = row[4]
+        w_forecast_display_info = row[5]
+        uid = row[6]
+        owner = row[7]
+        romad_st = row[8]
+
+        short_title = fullname
+        short_description = symbol
+        content = get_portf_content(owner)
+        url = "{burl}p/?uid="+str(uid)
+        ranking = str( romad_st )
+        type = str(feed_id)
+
+        badge = w_forecast_display_info
+        search = asset_class + market + symbol + " " + fullname
+        print(search +": "+ os.path.basename(__file__) )
+
+        if i == 0:
+            sep = ''
+        else:
+            sep = ','
+        inserted_value = inserted_value + sep +\
+        "('"+d+"','"+short_title+"','"+short_description+"','"+content+"','"+url+"',"+\
+        "'"+ranking+"','"+symbol+"','"+type+"','"+badge+"',"+\
+        "'"+search+"','"+asset_class+"','"+market+"')"
+
+        i += 1
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr_i = connection.cursor(pymysql.cursors.SSCursor)
+    sql_i = "DELETE FROM feed WHERE (symbol = '"+ symbol+"' AND date<='"+d+"')"
+    cr_i.execute(sql_i)
+    connection.commit()
+
+    sql_i = "INSERT IGNORE INTO feed"+\
+    "(date, short_title, short_description, content, url,"+\
+        " ranking, symbol, type, badge, "+\
+    "search, asset_class, market) VALUES " + inserted_value
+    print(sql_i)
+    try:
+        cr_i.execute(sql_i)
+        connection.commit()
+    except Exception as e:
+        print(e + ' ' + os.path.basename(__file__) )
+        pass
+    cr_i.close()
+    cr.close()
+    connection.close()
+
+
 def get_pct_from_date(d, sql_select, lp):
     pct = 0
     pp = 0
@@ -241,6 +331,7 @@ def get_portf_perf(s):
             cr_i.close()
         except Exception as e: print(e)
         get_portf_perf_summ(portf_symbol, portf_uid)
+        set_portf_feed(portf_symbol)
 
     cr.close()
     connection.close()
