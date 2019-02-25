@@ -132,6 +132,7 @@ def get_trades_tbl(uid,w):
             if selected_is_portf: strategy_order_type = row[9]
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
+            elif dn == expiration_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
             else: badge_today = ''
             if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
@@ -154,7 +155,7 @@ def get_trades_tbl(uid,w):
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
                     r = r +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
+                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span>'+ badge_today +'</td>'+\
                     '    </tr>'
                     i += 1
             else:
@@ -167,7 +168,7 @@ def get_trades_tbl(uid,w):
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
                     r = r +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
+                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span>'+ badge_today +'</td>'+\
                     '    </tr>'
                     i += 1
             if i == 50: break
