@@ -58,6 +58,7 @@ def get_trades_tbl(uid,w):
         single_selection = ''
         if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
 
+        dn = datetime.datetime.now(); dn = dn.strftime("%d-%b-%Y"); dnstr = dn.strftime("%Y%m%d")
 
         if selected_is_portf:
             sql = "SELECT trades.order_type, "+\
@@ -70,7 +71,7 @@ def get_trades_tbl(uid,w):
                 "trades.url,  "+\
                 "instruments.unit, "+\
                 "portfolios.strategy_order_type "
-            sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE "
+            sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
@@ -81,7 +82,7 @@ def get_trades_tbl(uid,w):
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
                 "instruments.unit "
-            sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE "
+            sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
         else: sql = sql + " trades.status = 'expired' "
@@ -117,7 +118,6 @@ def get_trades_tbl(uid,w):
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'
-        dn = datetime.datetime.now(); dn = dn.strftime("%d-%b-%Y")
         i = 0
         for row in rs:
             order_type = row[0]
