@@ -13,7 +13,7 @@ def gen_portf_popup(uid,pop):
     r = ''
     try:
         label_header = 'Portfolio created!'
-        label_content = 'Wow! Your newly created portfolio: <strong>{portf_fullname}</strong> looks great. Actually it is expected that your portfolio will return <strong>{portf_forecast}</strong> with a {portf_account_reference} {portf_unit} invested.'
+        label_content = 'Wow! Your newly created portfolio: <strong>{portf_fullname}</strong> looks great. Actually, your portfolio is expected to return <strong>{portf_forecast}</strong> in the next 7 days with a {portf_account_reference} {portf_unit} invested.'
         label_button = 'View details, take me to my portfolio...'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
