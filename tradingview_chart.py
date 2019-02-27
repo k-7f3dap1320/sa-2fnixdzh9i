@@ -13,7 +13,7 @@ def get_tradingview_chart(suid):
     try:
         symbol = ''
         referral_id = 'smartalpha'
-        label_not available = 'Live chart is not available for this instrument'
+        label_not_available = 'Live chart is not available for this instrument'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
