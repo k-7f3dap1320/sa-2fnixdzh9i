@@ -545,6 +545,8 @@ def get_portf_alloc(s):
                 connection.commit()
                 cr_x.close()
 
+                alloc_forc_wf = abs(alloc_forc_wf * alloc_price)
+                
                 alloc_forc_pnl =  alloc_forc_pnl + abs( (alloc_price - float(alloc_forc_wf )) * portf_item_quantity * alloc_pip )
                 print(str(alloc_forc_pnl) + "=" + str(alloc_forc_pnl) + "abs(" + str(alloc_price) + "-" + str(alloc_forc_wf) +")" + "*" + str(portf_item_quantity) +"*"+ str(alloc_pip) + ")")
                 portf_forc_return = portf_forc_return + alloc_forc_pnl
