@@ -499,7 +499,7 @@ def get_portf_alloc(s):
 
             cr_t = connection.cursor(pymysql.cursors.SSCursor)
             sql_t = "SELECT instruments.symbol, instruments.fullname, instruments.decimal_places, "+\
-            "instruments.w_forecast_change, instruments.pip, symbol_list.uid, instruments.market, instruments.wf FROM instruments "+\
+            "instruments.w_forecast_change, instruments.pip, symbol_list.uid, instruments.market FROM instruments "+\
             "INNER JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE instruments.symbol ='"+portf_item_symbol+"'"
 
             cr_t.execute(sql_t)
@@ -514,7 +514,6 @@ def get_portf_alloc(s):
                 alloc_pip = row[4]
                 alloc_uid = row[5]
                 alloc_market = row[6]
-                alloc_forc_wf = row[7]
                 if alloc_w_forecast_change >= 0:
                     alloc_entry_level_sign = '<'
                     alloc_order_type = 'buy'
@@ -545,8 +544,8 @@ def get_portf_alloc(s):
                 connection.commit()
                 cr_x.close()
 
-                alloc_forc_wf = abs(alloc_forc_wf * alloc_price)
-                
+                alloc_forc_wf = abs(alloc_w_forecast_change * alloc_price )
+
                 alloc_forc_pnl =  alloc_forc_pnl + abs( (alloc_price - float(alloc_forc_wf )) * portf_item_quantity * alloc_pip )
                 print(str(alloc_forc_pnl) + "=" + str(alloc_forc_pnl) + "abs(" + str(alloc_price) + "-" + str(alloc_forc_wf) +")" + "*" + str(portf_item_quantity) +"*"+ str(alloc_pip) + ")")
                 portf_forc_return = portf_forc_return + alloc_forc_pnl
