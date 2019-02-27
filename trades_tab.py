@@ -32,7 +32,7 @@ def get_trades_tbl(uid,w):
         user_symbol_selection = ''
         i = 0
         if is_user_prf:
-            sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = '"+ get_user() +"' "
+            sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs:
