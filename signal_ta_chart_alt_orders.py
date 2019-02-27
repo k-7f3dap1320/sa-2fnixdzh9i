@@ -5,6 +5,7 @@
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
+from tradingview_chart import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -326,8 +327,7 @@ def get_sign_ta_chart_alt_orders(uid):
 
         tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
         tab_2_label = 'Performance'; tab_2_link = '#perf'; tab_2_id = 'perf'
-        tab_3_label = 'Risk/Reward assessment'; tab_3_link = '#risk'; tab_3_id = 'risk'
-        tab_4_label = 'Live chart'; tab_4_link = '#chart'; tab_4_id = 'chart'
+        tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
 
 
         tech_chart = '' +\
@@ -343,15 +343,11 @@ def get_sign_ta_chart_alt_orders(uid):
         '                    <li class="nav-item">'+\
         '                      <a class="nav-link" data-toggle="pill" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
         '                    </li>'+\
-        '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_4_link +'">'+ tab_4_label +'</a>'+\
-        '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
         '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
-        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
-        '                      <div id="'+ tab_4_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
+        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+ get_tradingview_chart(uid) +'</div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'
