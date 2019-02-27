@@ -50,7 +50,7 @@ def go():
         step = request.values.get('step')
         mode = request.values.get('mode')
         portf = request.values.get('portf')
-        popup = request.values.get('pop')
+        pop = request.values.get('pop')
         if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
         if ins == '2': c = save_portf_select(appname,burl,step,mode,x,portf,uid)
         if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
