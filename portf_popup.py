@@ -20,7 +20,7 @@ def gen_portf_popup(uid,pop):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.fullname, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit "+\
         "FROM symbol_list JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
-        "WHERE symbol_list = " + str(uid)
+        "WHERE symbol_list.uid = " + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
