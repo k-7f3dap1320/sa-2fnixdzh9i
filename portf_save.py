@@ -289,7 +289,7 @@ def portf_save(appname,burl):
         portf_symbol = portf_insert_data()
         generate_portfolio(portf_symbol)
         portf_uid = get_portf_uid_from_symbol(portf_symbol)
-        resp = make_response( redirect(burl+'p/?uid='+ str(portf_uid) ) )
+        resp = make_response( redirect(burl+'p/?uid='+ str(portf_uid) + '&pop=1' ) )
     except Exception as e: print(e)
     return resp
 
