@@ -347,7 +347,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                  <div class="tab-content">'+\
         '                      <div id="'+ tab_1_id +'" class="container tab-pane active">'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="container tab-pane fade">'+ 'This module is not yet available.' +'</div>'+\
-        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade">'+ get_tradingview_chart(uid) +'</div>'+\
+        '                      <div id="'+ tab_3_id +'" class="container tab-pane fade"><div style="height: 90%">'+ get_tradingview_chart(uid) +'</div></div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'
