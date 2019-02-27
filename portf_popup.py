@@ -55,7 +55,7 @@ def gen_portf_popup(uid,pop):
             '        </div>'+\
             '        <!-- Modal footer -->'+\
             '        <div class="modal-footer">'+\
-            '          <button type="button" class="btn btn-info" data-dismiss="modal">'+ label_button +'</button>'+\
+            '          <button type="button" class="btn btn-info form-signin-btn" data-dismiss="modal">'+ label_button +'</button>'+\
             '        </div>'+\
             '      </div>'+\
             '    </div>'+\
