@@ -50,7 +50,7 @@ def get_desc_box(uid):
     #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
     #{portf_recomm} = "sell {portf_alloc_instr} above {portf_alloc_entry_price}"
     portf_recomm = '<br /><br />'
-    sql = 'SELECT order_type, alloc_fullname, entry_level FROM portfolios '+\
+    sql = 'SELECT order_type, alloc_fullname, entry_level, strategy_order_type FROM portfolios '+\
     "WHERE portf_symbol ='"+ portf_symbol +"'  ORDER BY alloc_fullname"
     cr.execute(sql)
     rs = cr.fetchall()
@@ -59,17 +59,20 @@ def get_desc_box(uid):
         alloc_order_type = row[0]
         alloc_fullname = row[1]
         alloc_entry_price = row[2]
+        alloc_strategy_order_type = row[3]
 
-        if alloc_order_type.lower() == 'buy':
+        if alloc_order_type.lower() == 'buy' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'long'):
             portf_recomm = portf_recomm  + str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
-        if alloc_order_type.lower() == 'sell':
+            i += 1
+        if alloc_order_type.lower() == 'sell' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'short'):
             portf_recomm = portf_recomm + str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+            i += 1
 
         portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
-        i += 1
+
 
     portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
-    portf_descr = portf_descr.replace('{portf_last_price}', str(portf_last_price) )
+    portf_descr = portf_descr.replace('{portf_last_price}', str(portf_account_ref - portf_last_price) )
 
     cr.close()
     connection.close()
