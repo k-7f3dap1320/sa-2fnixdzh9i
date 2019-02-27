@@ -72,7 +72,7 @@ def get_desc_box(uid):
 
 
     portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
-    portf_descr = portf_descr.replace('{portf_last_price}', str(portf_account_ref - portf_last_price) )
+    portf_descr = portf_descr.replace('{portf_last_price}', str( round(portf_last_price - portf_account_ref,2) ) )
 
     cr.close()
     connection.close()
