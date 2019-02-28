@@ -17,7 +17,7 @@ from app_navbar import *
 from card import *
 from trades_tab import *
 from signinbox import *
-from get_box_user_profile_header import *
+from user_profile_header import *
 from font_awesome import *
 from googleanalytics import *
 
