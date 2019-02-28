@@ -27,7 +27,7 @@ def get_box_user_profile_header(burl):
                 name = row[1]
 
 
-            box_content = '<div class="box-userheader">' +\
+            box_content = '<div class="box-top">' +\
             '   <div class="row">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part sa-center-content">'+\
