@@ -28,7 +28,6 @@ def get_box_user_profile_header(burl):
                 name = row[1]
 
             avatar_img = get_avatar(burl,60)
-            nickname_label = 'nickname: '
 
 
             box_content = '<div class="box-uhead sa-uhead-box">' +\
@@ -36,8 +35,7 @@ def get_box_user_profile_header(burl):
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part sa-center-content sa-uhead-box">'+\
             '               <table style="color:white;">'+\
-            '                   <tr><td colspan="2">'+ avatar_img +'</td><td><h5> Hello '+ name.title() +'</h5><td></tr>'+\
-            '                   <tr><td></td><td>'+ nickname_label + ' '+ nickname +'</td></tr>'+\
+            '                   <tr><td>'+ avatar_img +'</td><td><span style="font-weight: bold; font-size: x-large;">Hello '+ name.title() + '</span><br><span style="font-size: small;">' + 'aka ' + ' '+ nickname +'</span><td></tr>'+\
             '               </table>'+\
             '            </div>'+\
             '        </div>'+\
