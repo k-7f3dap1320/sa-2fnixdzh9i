@@ -13,6 +13,7 @@ def get_stylesheet(burl):
     box = '.box{padding:0px 0px;}'
     boxtop = '.box-top{padding-top:60px;}'
     boxsign = '.box-sign{padding-top:45px;}'
+    boxuhead = '.box-uhead{padding-top:45px; background:#343a40;}'
     boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
     signpart = '.sign-part{background:#151517; border-radius:0; margin:10px 0px;}'
     signrow = '.sign-row{background-color: #151517;}'
@@ -38,7 +39,7 @@ def get_stylesheet(burl):
     sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
     sa_box_h = '.sa-box-h{max-height: 400px;}'
     sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
-    sa_user_header = '.sa-user-header-box{background-image:url('+ burl + 'static/uhead.png); background-size:100% 100%;}'
+    sa_user_header = '.sa-uhead-box{background:#343a40;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 90%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 350px;}'
@@ -68,6 +69,7 @@ def get_stylesheet(burl):
     box +\
     boxtop +\
     boxsign +\
+    boxuhead +\
     boxpart +\
     signpart +\
     signrow +\
