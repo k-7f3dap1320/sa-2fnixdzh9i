@@ -28,13 +28,17 @@ def get_box_user_profile_header(burl):
                 name = row[1]
 
             avatar_img = get_avatar(burl,60)
+            nickname_label = 'nickname: '
 
 
             box_content = '<div class="box-uhead sa-uhead-box">' +\
             '   <div class="row sa-uhead-box">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part sa-center-content sa-uhead-box">'+\
-            '<br><h5>'+ avatar_img +' Hello '+ name.title() +'</h5><br><br>'+\
+            '               <table>'+\
+            '                   <tr><td colspan="2">'+ avatar_img +'</td><td><h5> Hello '+ name.title() +'</h5><td></tr>'+\
+            '                   <tr><td>'+ nickname_label + ' '+ nickname +'</td></tr>+\'
+            '               </table>'+\
             '            </div>'+\
             '        </div>'+\
             '   </div>'+\
