@@ -14,6 +14,23 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_user():
     return user_get_uid()
 
+def get_avatar(burl,height):
+    r = ''
+    try:
+        uid = user_get_uid()
+        avatar_id = 0
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT avatar_id FROM users WHERE uid = '"+ str(uid) +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: avatar_id = row[0]
+        if avatar_id != 0:
+            r = '<img src="'+burl+'static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: '+ str(height) +'px;">'
+
+    except Exception as e: print(e)
+    return r
+
 def get_user_numeric_id():
     r = ''
     try:
