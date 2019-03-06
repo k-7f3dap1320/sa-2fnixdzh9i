@@ -22,6 +22,7 @@ def get_trades_tbl(uid,w):
         selected_symbol = ''
         selected_is_portf = False
         is_user_prf = False
+        list_limit = 500
         sql = "SELECT symbol FROM symbol_list WHERE uid=" + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -61,6 +62,7 @@ def get_trades_tbl(uid,w):
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d"); dn = dn.strftime("%d-%b-%Y")
 
         if selected_is_portf:
+            list_limit = 50
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
                 "trades.entry_date,  "+\
@@ -171,7 +173,7 @@ def get_trades_tbl(uid,w):
                     '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                     '    </tr>'
                     i += 1
-            if i == 50: break
+            if i == list_limit: break
 
         r = r +\
         '  </tbody>'+\
