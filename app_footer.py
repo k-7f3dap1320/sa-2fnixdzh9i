@@ -39,7 +39,6 @@ def get_page_footer(burl):
         '               <br /><br /><br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
-
         '   </div>'+\
         '</div>'
 
