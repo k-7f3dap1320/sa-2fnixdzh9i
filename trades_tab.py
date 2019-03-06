@@ -199,7 +199,7 @@ def get_trades_box(uid,burl):
             if uid == 0: sa_box_h = 'sa-box-h'
             box_content = '' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part '+ sa_box_h +'">'+\
+            '            <div class="box-part rounded '+ sa_box_h +'">'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\

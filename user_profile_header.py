@@ -33,7 +33,7 @@ def get_box_user_profile_header(burl):
             box_content = '<div class="box-uhead sa-uhead-box">' +\
             '   <div class="row sa-uhead-box">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part sa-center-content sa-uhead-box">'+\
+            '            <div class="box-part rounded sa-center-content sa-uhead-box">'+\
             '               <table style="color:white;">'+\
             '                   <tr><td>'+ avatar_img +'</td><td><span style="font-weight: bold; font-size: x-large;">Hello '+ name.title() + '</span><br><span style="font-size: small;">' + 'aka ' + ' '+ nickname +'</span><td></tr>'+\
             '               </table>'+\

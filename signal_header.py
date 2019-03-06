@@ -66,7 +66,7 @@ def get_sign_header(uid):
 
         descr_box = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part">'+\
+        '            <div class="box-part rounded">'+\
         '               <table class="table table-sm sa-table-sm">'+\
         '                   <tbody>'+\
         '                       <tr>'+\

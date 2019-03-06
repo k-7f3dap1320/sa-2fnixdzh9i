@@ -416,7 +416,7 @@ def get_box_portf_save(burl):
         box_content = '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-center-content sa-instr-n-portf-list">'+\
+        '            <div class="box-part rounded sa-center-content sa-instr-n-portf-list">'+\
         get_list_portf_alloc(burl)+\
         '            </div>'+\
         '        </div>'+\

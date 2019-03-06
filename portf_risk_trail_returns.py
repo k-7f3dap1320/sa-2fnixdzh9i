@@ -152,7 +152,7 @@ def get_box_risk_content(uid):
 
         box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-signal-recomm-trail-ret">'+\
+        '            <div class="box-part rounded sa-signal-recomm-trail-ret">'+\
         '               <div><h6>'+ l_title +'</h6></div>'+\
         '                   <div>'+ text_content +'</div>'+\
         '<div>'+ get_risk_table(uid) +'</div>'+\
@@ -180,7 +180,7 @@ def get_box_trail_returns_content(uid):
         l_title = fullname + ' portfolio trailing returns'
         box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-signal-recomm-trail-ret">'+\
+        '            <div class="box-part rounded sa-signal-recomm-trail-ret">'+\
         '               <div><h6>'+ l_title +'</h6></div>'+\
         get_trailing_returns(uid) +\
         '            </div>'+\
