@@ -22,7 +22,7 @@ def get_trades_tbl(uid,w):
         selected_symbol = ''
         selected_is_portf = False
         is_user_prf = False
-        list_limit = 500
+        list_limit = 50
         sql = "SELECT symbol FROM symbol_list WHERE uid=" + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -33,6 +33,7 @@ def get_trades_tbl(uid,w):
         user_symbol_selection = ''
         i = 0
         if is_user_prf:
+            list_limit = 500
             sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
             cr.execute(sql)
             rs = cr.fetchall()
@@ -62,7 +63,6 @@ def get_trades_tbl(uid,w):
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d"); dn = dn.strftime("%d-%b-%Y")
 
         if selected_is_portf:
-            list_limit = 50
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
                 "trades.entry_date,  "+\
