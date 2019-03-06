@@ -54,7 +54,7 @@ def get_page_footer(burl):
         '<div class="box">'+\
         '   <div class="row">'+\
         '      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '           <div class="sa-center-content text-secondary">Made with <i class="fas fa-heart"></i> from London, Nairobi to Bangkok</div>'+\
+        '           <div class="sa-center-content text-secondary">Made with <i class="fas fa-heart"></i> from London, Nairobi to Bangkok - <span class="text-muted small mb-0">Copyright &copy; Taatu Ltd. 2019</span></div>'+\
         '      </div>'+\
         '   </div>'+\
         '</div>'+\
