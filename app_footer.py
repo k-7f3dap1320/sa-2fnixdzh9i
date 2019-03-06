@@ -13,7 +13,7 @@ def get_page_footer(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="sa-center-content footer">'+\
-        '               <br /><br /><br /><br /><strong>'+\
+        '               <br /><br /><br /><strong>'+\
         '               <span><a href="'+ burl +'static/taatu/index.html" target="_blank">About Us</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +\
         '               <span><a href="'+ burl +'static/taatu/index.html#contact" target="_blank">Contact Us</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +\
         '               <span><a href="'+ burl +'static/taatu/index.html#tc" target="_blank">Terms and Conditions</a></span>' +\
