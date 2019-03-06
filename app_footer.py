@@ -18,28 +18,28 @@ def get_page_footer(burl):
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
         '               <br /><br /><strong>'+\
-        '               <span><a href="'+ burl +'static/taatu/index.html" target="_blank">About Us</a></span>' +\
+        '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html" target="_blank">About Us</a></span>' +\
         '               <br /><br /><br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
         '               <br /><br /><strong>'+\
-        '               <span><a href="'+ burl +'static/taatu/index.html#contact" target="_blank">Contact Us</a></span>' +\
+        '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank">Contact Us</a></span>' +\
         '               <br /><br /><br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
         '               <br /><br /><strong>'+\
-        '               <span><a href="'+ burl +'static/taatu/index.html#contact" target="_blank">SmartAlpha for Business</a></span>' +\
+        '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank">SmartAlpha for Business</a></span>' +\
         '               <br /><br /><br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
         '               <br /><br /><strong>'+\
-        '               <span><a href="'+ burl +'static/taatu/index.html#tc" target="_blank">Terms and Conditions</a></span>' +\
+        '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html#tc" target="_blank">Terms and Conditions</a></span>' +\
         '               <br /><br /><br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
