@@ -8,6 +8,7 @@ def get_stylesheet(burl):
 
     #Page main components
     body = 'body{background: #eee;}'
+    footer = '.footer{background: #eee;}'
     desc = '.desc{font-size:14px;}'
     expl = '.expl{font-size:10px;}'
     box = '.box{padding:0px 0px;}'
@@ -64,6 +65,7 @@ def get_stylesheet(burl):
 
     r = '<style>'+\
     body +\
+    footer +\
     desc +\
     expl +\
     box +\
