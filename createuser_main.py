@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_page import *
 from app_head import *
+from app_footer import *
 from app_metatags import *
 from app_title import *
 from app_body import *
@@ -52,7 +53,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip):
     r = ''
     if uid == '0':
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_user_creation_form(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_user_creation_form(burl) + get_page_footer(burl) )
         r = set_page(r)
     else:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
