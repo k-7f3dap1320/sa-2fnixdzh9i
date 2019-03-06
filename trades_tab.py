@@ -143,7 +143,7 @@ def get_trades_tbl(uid,w):
             if unit == 'pips':
                 pnl_pct = round( pnl_pct *10000, 2)
                 if pnl_pct > 1: pnl_pct = str( pnl_pct ) + " pips"
-                else: pnl_pct = str( pnl_pct ) + " pip"
+                else: pnl_pct = str( pnl_pct ) + " pips"
             else: pnl_pct = str( round( pnl_pct * 100, 2 ) ) + "%"
 
             if selected_is_portf:
