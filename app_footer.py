@@ -49,6 +49,9 @@ def get_page_footer(burl):
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
+        '   <div class="row">'+\
+        '       <div class="sa-center-content">Made with <i class="fas fa-heart"></i> from London, Nairobi to Bangkok</div>'+\
+        '   </div>'+\
         '</div>'
 
 
