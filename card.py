@@ -71,7 +71,7 @@ def get_card(x,t,burl):
             if t == 1:
                 r = r + ''+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
-                '            <div class="box-part text-center">'+\
+                '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( uid )+'"></div>'+\
                 '                <div class="title"><h6>'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
@@ -84,7 +84,7 @@ def get_card(x,t,burl):
             if t == 9:
                 r = r + ''+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
-                '            <div class="box-part text-center">'+\
+                '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
                 '                <div class="title"><h6 style="line-height: 1.5;">'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+ portf_content_by + content.replace('{burl}',burl) +'</span></div>'+\

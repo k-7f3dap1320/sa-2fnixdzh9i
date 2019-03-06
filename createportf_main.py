@@ -103,7 +103,7 @@ def get_selectportf_box(burl,step,mode,x):
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part sa-center-content">'+\
+        '            <div class="box-part sa-center-content rounded">'+\
         '                   <div class="alert alert-success" role="alert">' +\
         '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                          <div>&nbsp;</div> '+\
