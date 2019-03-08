@@ -195,11 +195,9 @@ def get_trades_box(uid,burl):
         if not uid == 0 or len(get_user()) > 1:
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
-            sa_box_h = ''
-            #if uid == 0: sa_box_h = 'sa-box-h'
             box_content = '' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part rounded '+ sa_box_h +'">'+\
+            '            <div class="box-part rounded">'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
