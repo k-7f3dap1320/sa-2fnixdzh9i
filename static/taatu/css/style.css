@@ -111,6 +111,10 @@ h6 {
   }
 }
 
+.mastbiz {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), url("../img/bg-fbz.jpg");
+}
+
 /* Side Menu */
 #sidebar-wrapper {
   position: fixed;
