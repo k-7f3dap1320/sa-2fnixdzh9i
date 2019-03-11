@@ -29,6 +29,7 @@ def get_card(x,t,burl):
                 "ON feed.symbol = instruments.symbol WHERE instruments.owner = 10089 AND feed.type=9 ORDER BY feed.globalRank) AS Q1 "+\
                 "UNION "+\
                 "SELECT * FROM (SELECT feed.*, instruments.owner FROM feed JOIN instruments ON feed.symbol = instruments.symbol WHERE feed.globalRank <> 0 AND instruments.y1 > 0 AND (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=9 LIMIT 19) AS Q2"
+            print(sql)
     except:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
@@ -42,7 +43,7 @@ def get_card(x,t,burl):
                 "ON feed.symbol = instruments.symbol WHERE instruments.owner = 10089 AND feed.type=9 ORDER BY feed.globalRank) AS Q1 "+\
                 "UNION "+\
                 "SELECT * FROM (SELECT feed.*, instruments.owner FROM feed JOIN instruments ON feed.symbol = instruments.symbol WHERE feed.globalRank <> 0 AND instruments.y1 > 0 AND type=9 LIMIT 19) AS Q2"
-
+            print(sql)
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
