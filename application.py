@@ -38,7 +38,8 @@ def go():
     ref = request.args.get('ref')
     lang = request.args.get('lang')
     x = request.args.get('x');
-    if len(x)< 1 : x = get_user_default_profile()
+    if x == '' or x == None : x = get_user_default_profile()
+
 
     err = request.args.get('err')
 
