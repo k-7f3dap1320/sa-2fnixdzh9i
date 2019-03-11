@@ -11,6 +11,7 @@ from createuser_main import *; from select_avatar import *; from select_market i
 from createportf_main import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
+from sa_func import *
 from signin_main import *
 
 application = Flask(__name__)
@@ -37,6 +38,8 @@ def go():
     ref = request.args.get('ref')
     lang = request.args.get('lang')
     x = request.args.get('x');
+    if x == '': x = get_user_default_profile()
+
     err = request.args.get('err')
 
     ############################################################################
