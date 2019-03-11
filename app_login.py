@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_head import *; from app_body import *; from app_page import *
 from sa_db import *
+from sa_func import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
@@ -38,7 +39,7 @@ def user_login(usr,pwd,burl):
         connection.close()
 
         if not uid == '':
-            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '?x='+ str(get_user_default_profile()) +'" />') + get_body('','') ) )
+            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '?x='+ str(get_user_default_profile() ) +'" />') + get_body('','') ) )
         else:
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/?err=1" />') + get_body('','') )
 
