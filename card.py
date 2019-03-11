@@ -5,7 +5,7 @@
 from sa_db import *
 from sa_func import *
 from card_chart import *
-fromm app_cookie import *
+from app_cookie import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
