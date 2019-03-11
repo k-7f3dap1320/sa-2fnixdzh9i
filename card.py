@@ -28,7 +28,7 @@ def get_card(x,t,burl):
                 sql = "SELECT * FROM (SELECT feed.short_title, feed.short_description, feed.content, feed.url, feed.ranking, feed.badge, feed.symbol FROM feed JOIN instruments "+\
                 "ON feed.symbol = instruments.symbol WHERE instruments.owner = 10089 AND feed.type=9 ORDER BY feed.globalRank) AS Q1 "+\
                 "UNION "+\
-                "SELECT * FROM (SELECT feed.short_title, feed.short_description, feed.content, feed.url, feed.ranking, feed.badge, feed.symbol FROM feed JOIN instruments ON feed.symbol = instruments.symbol WHERE feed.globalRank <> 0 AND instruments.y1 > 0 AND (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=9 LIMIT 19) AS Q2"
+                "SELECT * FROM (SELECT feed.short_title, feed.short_description, feed.content, feed.url, feed.ranking, feed.badge, feed.symbol FROM feed JOIN instruments ON feed.symbol = instruments.symbol WHERE feed.globalRank <> 0 AND instruments.y1 > 0 AND (feed.asset_class LIKE '%"+x+"%' OR feed.market LIKE '%"+x+"%') AND type=9 LIMIT 19) AS Q2"
             print(sql)
     except:
         if t == 1:
