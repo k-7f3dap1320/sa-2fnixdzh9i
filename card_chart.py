@@ -41,7 +41,7 @@ def write_func(uid,data,color,minval):
     "      legend: {position: 'none'},"+\
     "      lineWidth: 2"+\
     "    };"+\
-    "    var chart = new google.visualization.LineChart(document.getElementById('chart_div_"+str(uid)+"'));"+\
+    "    var chart = new google.visualization.AreaChart(document.getElementById('chart_div_"+str(uid)+"'));"+\
     "    chart.draw(data, options);"+\
     "  }"+\
     " </script>"
