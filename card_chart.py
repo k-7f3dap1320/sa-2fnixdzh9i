@@ -40,6 +40,7 @@ def write_func(uid,data,color,minval):
     "      colors: ['"+str(color)+"'],"+\
     "      legend: {position: 'none'},"+\
     "      lineWidth: 1"+\
+    "      chartArea:{width:'90%'',height:'80%'}"+\
     "    };"+\
     "    var chart = new google.visualization.AreaChart(document.getElementById('chart_div_"+str(uid)+"'));"+\
     "    chart.draw(data, options);"+\
