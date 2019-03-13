@@ -79,7 +79,7 @@ def get_stylesheet(burl):
     signrow +\
     text +\
     btn +\
-    sectiont +\
+    section_title +\
     awesomplete +\
     sa_table_sm +\
     sa_table_click_row +\
