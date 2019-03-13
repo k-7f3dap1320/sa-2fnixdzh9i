@@ -76,6 +76,8 @@ def get_card(x,t,burl):
                 expl_label = "*Potential returns in the next 7 days"
 
             link_label = "Click here for details"
+            title_portf = "Top Portfolios by Top Members"
+            title_signals = "Top Trading Signals"
 
 
             r = r + get_card_chart(uid,color)
@@ -83,6 +85,7 @@ def get_card(x,t,burl):
             ### Trading Instruments ###
             if t == 1:
                 r = r + ''+\
+                '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span>'+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( uid )+'"></div>'+\
@@ -96,6 +99,7 @@ def get_card(x,t,burl):
             ### Portfolios ###
             if t == 9:
                 r = r + ''+\
+                '<span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span>'+\                
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
