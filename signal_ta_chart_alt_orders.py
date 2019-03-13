@@ -272,37 +272,12 @@ def get_rsi_chart(uid):
 
     return r
 
-def get_profile_content(uid):
+def get_ads():
 
     r = ''
 
     try:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT symbol_list.uid, instruments.fullname, instruments.description "+\
-        "FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
-        "WHERE symbol_list.uid=" + str(uid)
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            uid = row[0]
-            fullname = row[1].replace("'","")
-            description = row[2]
-
-        box_title = fullname + ' profile'
-
-        if len(description) < 1:
-            box_description = 'No description available for this instrument.'
-        else:
-            box_description = description
-
-        r = ''+\
-        '   <div><h6>'+ box_title + '</h6></div>'+\
-        '   <div>'+ box_description +'</div>'
-
-        cr.close()
-        connection.close()
-
+        r = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1605085568476447" data-ad-slot="4165991783"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>'
     except Exception as e: print(e)
 
     return r
@@ -320,8 +295,8 @@ def get_sign_ta_chart_alt_orders(uid):
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
-        '            <div class="box-part rounded sa-signal-alt-ord-prf">'+\
-        get_profile_content(uid) +\
+        '            <div class="box-part rounded sa-signal-alt-ord-prf  sa-signal-ads">'+\
+        get_ads() +\
         '            </div>'+\
         '        </div>'
 

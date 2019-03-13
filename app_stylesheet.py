@@ -50,6 +50,7 @@ def get_stylesheet(burl):
     sa_tab_sm = '#sa-tab-sm{font-size: 12px;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 510px; overflow: auto;}'
     sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto; font-size: 12px;}'
+    sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
     sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; overflow: auto; font-size: 12px;}'
     sa_center_content = '.sa-center-content{text-align:center;}'
 
@@ -93,6 +94,7 @@ def get_stylesheet(burl):
     sa_tab_sm +\
     sa_signal_ta_chart +\
     sa_signal_alt_ord_prf +\
+    sa_signal_ads +\
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
     loading +\
