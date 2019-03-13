@@ -195,12 +195,12 @@ def get_trades_box(uid,burl):
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             l_box_user_profile_title = ''
-            if uid == 0 : l_box_user_profile_title = 'Your tradebook'
+            if uid == 0 : l_box_user_profile_title = '<i class="fas fa-piggy-bank"></i>&nbsp;Your tradebook'
 
             box_content = '' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded">'+\
-            '               <span class="sectiont">'+ '<i class="fas fa-piggy-bank"></i>&nbsp;' + l_box_user_profile_title +'</span>'+\
+            '               <span class="sectiont">'+ l_box_user_profile_title +'</span>'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
