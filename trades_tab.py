@@ -200,7 +200,7 @@ def get_trades_box(uid,burl):
             box_content = '' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded">'+\
-            '               <br /><br /><span class="sectiont">'+ l_box_user_profile_title +'<span><br /><br />'+\
+            '               <span class="sectiont">'+ '<i class="fas fa-piggy-bank"></i>' + l_box_user_profile_title +'<span><br /><br />'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
