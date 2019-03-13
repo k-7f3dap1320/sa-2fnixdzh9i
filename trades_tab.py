@@ -194,7 +194,11 @@ def get_trades_box(uid,burl):
         if not uid == 0 or len(get_user()) > 1:
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
+            l_box_user_profile_title = ''
+            if len(get_user()) > 1: l_box_user_profile_title = 'Your tradebook'
+
             box_content = '' +\
+            '         <h5>'+ l_box_user_profile_title +'</h5>'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded">'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
