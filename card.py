@@ -50,8 +50,8 @@ def get_card(x,t,burl):
         title_portf = "Top Portfolios by Top Members"
         title_signals = "Top Trading Signals"
 
-        if t == 1: r = '<div class="box"><div class="row"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span>'
-        if t == 9: r = '<div class="box"><div class="row"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span>'
+        if t == 9: r = '<div class="box"><div class="row"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><br /><br />'
+        if t == 1: r = '<div class="box"><div class="row"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><br /><br />'
 
         for row in rs:
             short_title = row[0]
