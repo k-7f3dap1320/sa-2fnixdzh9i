@@ -23,7 +23,7 @@ def write_func(uid,data,color,minval):
     "    data.addColumn('number', 'price');"+\
     "    data.addRows(["+data+"]);"+\
     "    var options = {"+\
-    "      chartArea:{width:'90%',height:'80%'}"+\    
+    "      chartArea:{width:'90%',height:'80%'},"+\    
     "      hAxis: {"+\
     "        textPosition: 'none',"+\
     "        title: '',"+\
