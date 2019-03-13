@@ -99,7 +99,7 @@ def get_card(x,t,burl):
             ### Portfolios ###
             if t == 9:
                 r = r + ''+\
-                '<span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span>'+\                
+                '<span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span>'+\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
