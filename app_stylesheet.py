@@ -20,7 +20,7 @@ def get_stylesheet(burl):
     signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
-    section_title = '.sectiont {font-weight: lighter; font-size: x-large;}'
+    section_title = '.sectiont {font-weight: lighter; font-size: x-large; line-height: 70px;}'
 
     #Customized awesomplete
     awesomplete = '.awesomplete > ul {min-width: 200%;}'
