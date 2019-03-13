@@ -206,8 +206,8 @@ def get_trades_box(uid,burl):
             '                   </li>'+\
             '               </ul>'+\
             '               <div class="tab-content">'+\
-            '                   <div id="'+ tab_active_id +'" class="container tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active') +'</div>'+\
-            '                   <div id="'+ tab_expired_id +'" class="container tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired') +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active') +'</div>'+\
+            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired') +'</div>'+\
             '               </div>'+\
             '            </div>'+\
             '        </div>'

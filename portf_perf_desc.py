@@ -171,8 +171,8 @@ def get_chart_box(uid):
     '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
-    '                      <div id="'+ tab_1_id +'" class="container tab-pane active"><br />'+ chart_1y_perf +'</div>'+\
-    '                      <div id="'+ tab_2_id +'" class="container tab-pane fade"><br />'+ 'This module is not yet available.' +'</div>'+\
+    '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ chart_1y_perf +'</div>'+\
+    '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br />'+ 'This module is not yet available.' +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'
