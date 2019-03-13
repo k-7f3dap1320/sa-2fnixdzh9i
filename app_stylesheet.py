@@ -20,6 +20,8 @@ def get_stylesheet(burl):
     signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
     btn = '.btn {font-size:x-small;}'
+    section_title = '.sectiont {font-weight: lighter; font-size: x-large;}'
+
     #Customized awesomplete
     awesomplete = '.awesomplete > ul {min-width: 200%;}'
 
@@ -77,6 +79,7 @@ def get_stylesheet(burl):
     signrow +\
     text +\
     btn +\
+    sectiont +\
     awesomplete +\
     sa_table_sm +\
     sa_table_click_row +\
