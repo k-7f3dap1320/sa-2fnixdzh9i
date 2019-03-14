@@ -113,8 +113,8 @@ def get_card(x,t,burl):
                 '            </div>'+\
                 '        </div>'
 
-        if t == 9: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-info btn-lg btn-block">'+button_portf+'</a>'
-        if t == 1: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-info btn-lg btn-block">'+button_signals+'</a>'
+        if t == 9: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_portf+'<i class="fas fa-angle-double-down"></i></strong></a>'
+        if t == 1: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_signals+'<i class="fas fa-angle-double-down"></i></strong></a>'
 
         cr.close()
         connection.close()
