@@ -47,8 +47,10 @@ def get_card(x,t,burl):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         cr.execute(sql)
         rs = cr.fetchall()
-        title_portf = "Top Portfolios by Top Members"
+        title_portf = "Top Portfolios by Members"
+        button_portf = "More Portfolios"
         title_signals = "Top Trading Signals"
+        button_signals = "More Trading Signals"
 
         if t == 9: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><div class="row">'
         if t == 1: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><div class="row">'
@@ -111,8 +113,9 @@ def get_card(x,t,burl):
                 '            </div>'+\
                 '        </div>'
 
+        if t == 9: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-info btn-lg btn-block">'+button_portf+'</a>'
+        if t == 1: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-info btn-lg btn-block">'+button_signals+'</a>'
 
-        r = r + '</div></div>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
