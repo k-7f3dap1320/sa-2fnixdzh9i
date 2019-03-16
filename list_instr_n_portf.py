@@ -196,8 +196,17 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find for an instrument..."
-        l_caption_to_more_assets = 'Unable find your instrument or symbol? '
-        l_link_to_more_assets = '<a href="'+ burl+'p/?ins=1&step='+ str(step) + '&x=' +'">Extended list of instruments</a>'
+        l_caption_to_more_assets = 'Unable find your instrument or symbol? More here: '
+        l_link_to_more_assets = ''
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT asset_class_id, asset_class_name FROM asset_class ORDER BY asset_class_name"
+        for row in rs:
+            asset_class_id = row[0]
+            asset_class_name = row[1]
+            l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'p/?ins=1&step='+ str(step) + '&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
+
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
