@@ -196,6 +196,8 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find for an instrument..."
+        l_caption_to_more_assets = 'Cannot find your instrument or symbol? '
+        l_link_to_more_assets = '<a href ="'+ burl+'/p/?ins='+ str(step) + '&x=' +'">Extended list of instruments</a>'
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -213,6 +215,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
+        '   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'</div>'
         '</div>'
 
 
