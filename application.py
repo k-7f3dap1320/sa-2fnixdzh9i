@@ -13,7 +13,7 @@ from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from sa_func import *
 from signin_main import *
-from gen_view_list_instr_n_portf import *
+from view_list_instr_n_portf import *
 
 application = Flask(__name__)
 
