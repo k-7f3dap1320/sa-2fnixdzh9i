@@ -8,6 +8,7 @@ from app_head import *
 from app_metatags import *
 from app_title import *
 from app_body import *
+from app_footer import *
 from bootstrap import *
 from app_loading import *
 from app_stylesheet import *
@@ -52,7 +53,7 @@ def gen_view_list_instr_n_portf(appname,burl,what,x):
         else:
             numrow = 200
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_top_instr_n_portf_list() + get_box_list_instr_n_portf(burl,'view',what,1,None,numrow,x) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_top_instr_n_portf_list() + get_box_list_instr_n_portf(burl,'view',what,1,None,numrow,x) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
     return r
