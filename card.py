@@ -52,7 +52,7 @@ def get_card(x,t,burl):
         button_portf_link = burl + 'ls/?w=portf&x='+ str(x)
         title_signals = "Top Trading Signals"
         button_signals = "More Trading Signals"
-        button_portf_link = burl + 'ls/?w=instr&x='+ str(x)
+        button_signals_link = burl + 'ls/?w=instr&x='+ str(x)
 
         if t == 9: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><div class="row">'
         if t == 1: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><div class="row">'
@@ -115,8 +115,8 @@ def get_card(x,t,burl):
                 '            </div>'+\
                 '        </div>'
 
-        if t == 9: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
-        if t == 1: r = r + '</div></div><a href="#" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
+        if t == 9: r = r + '</div></div><a href="'+ button_portf_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
+        if t == 1: r = r + '</div></div><a href="'+ button_signals_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block"><strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
 
         cr.close()
         connection.close()
