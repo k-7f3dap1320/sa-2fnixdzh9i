@@ -174,6 +174,11 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     box_content = ''
 
     try:
+        if mode == 'portf_select':
+            col_id = 0
+        else:
+            col_id = 1
+
         box_content = '' +\
         '<script>'+\
         'function filterTable() {'+\
@@ -183,7 +188,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '  table = document.getElementById("table_instr_n_portf");'+\
         '  tr = table.getElementsByTagName("tr");'+\
         '  for (i = 0; i < tr.length; i++) {'+\
-        '    td = tr[i].getElementsByTagName("td")[0];'+\
+        '    td = tr[i].getElementsByTagName("td")['+ str(col_id) +'];'+\
         '    if (td) {'+\
         '      txtValue = td.textContent || td.innerText;'+\
         '      if (txtValue.toUpperCase().indexOf(filter) > -1) {'+\
