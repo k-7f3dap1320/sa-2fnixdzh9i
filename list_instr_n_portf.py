@@ -201,7 +201,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_id, asset_class_name FROM asset_class WHERE asset_class_id <> 'PF:' ORDER BY asset_class_name"
+        sql = "SELECT asset_class_id, asset_class_name FROM asset_class WHERE asset_class_id <> 'PF:' and asset_class_id <>'MA:' ORDER BY asset_class_name"
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
