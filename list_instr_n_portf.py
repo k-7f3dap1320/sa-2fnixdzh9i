@@ -196,7 +196,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find for an instrument..."
-        l_caption_to_more_assets = 'Unable find your instrument or symbol? More here: '
+        l_caption_to_more_assets = 'Unable find your instrument or symbol? '
         l_link_to_more_assets = ''
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -223,7 +223,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br />'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>' +\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>' +\
         '   </div>'+\
         '</div>'
 
