@@ -168,6 +168,8 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     # mode = 'view', mode = 'portf_select'
     # what = 'instr', what = 'portf'
     # portf = portf uid
+    # maxrow = numeric number of row ie. 1000
+    #  step = step of portfolio selection
 
     box_content = ''
 

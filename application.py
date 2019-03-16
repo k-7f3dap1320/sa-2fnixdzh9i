@@ -13,6 +13,7 @@ from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from sa_func import *
 from signin_main import *
+from gen_view_list_instr_n_portf import *
 
 application = Flask(__name__)
 
@@ -63,6 +64,10 @@ def go():
         if ins is None: c = gen_portf_page(uid,appname,burl,pop)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
+
+    elif request.endpoint == 'ls':
+        what = request.values.get('w')
+        c = gen_view_list_instr_n_portf(appname,burl,what,x)
 
     elif request.endpoint == 'n':
         name = request.values.get('name')
