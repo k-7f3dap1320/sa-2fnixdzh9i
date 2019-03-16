@@ -202,15 +202,13 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content sa-list-select-100pct sa-instr-n-portf-list">'+\
-        '                   <div>'+\
-        '<div class="input-group input-group-lg">'+\
-        '  <div class="input-group-prepend">'+\
-        '    <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span>'+\
-        '  </div>'+\
-        '  <input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
-        '</div>'+\
+        '               <div class="input-group input-group-lg">'+\
+        '                   <div class="input-group-prepend">'+\
+        '                       <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span>'+\
         '                   </div>'+\
-        '                   <div>&nbsp;</div>'+\
+        '                       <input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus>'+\
+        '               </div>'+\
+        '            <div>&nbsp;</div>'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
