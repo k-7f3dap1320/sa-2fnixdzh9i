@@ -31,7 +31,7 @@ def get_top_instr_n_portf_list():
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        '<br /><br /><br /><br />'+\
+        '<br /><br />'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\

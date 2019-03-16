@@ -198,8 +198,12 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find for an instrument..."
-        l_caption_to_more_assets = 'Unable find your instrument or symbol? '
-        l_link_to_more_assets = ''
+        if mode == 'portf_select':
+            l_caption_to_more_assets = 'Unable find your instrument or symbol? '
+            l_link_to_more_assets = ''
+        else:
+            l_caption_to_more_assets = ''
+            l_link_to_more_assets = ''
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)

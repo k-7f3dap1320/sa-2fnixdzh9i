@@ -49,8 +49,10 @@ def get_card(x,t,burl):
         rs = cr.fetchall()
         title_portf = "Top Portfolios by Members"
         button_portf = "More Portfolios"
+        button_portf_link = burl + 'ls/?w=portf&x='+ str(x)
         title_signals = "Top Trading Signals"
         button_signals = "More Trading Signals"
+        button_portf_link = burl + 'ls/?w=instr&x='+ str(x)
 
         if t == 9: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><div class="row">'
         if t == 1: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><div class="row">'
