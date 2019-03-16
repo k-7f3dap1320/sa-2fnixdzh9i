@@ -130,13 +130,22 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             l_performance_note = ""
             small_font_class = ""
         else:
-            signal_column = '<th scope="col">Signal</th>'
+            if what == "instr":
+                signal_column = '<th scope="col">Signal</th>'
+                l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
+                l_instr_portf = '<th scope="col">Instrument</th>'
+                l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
+            else:
+                signal_column = '<th scope="col">Rank</th>'
+                l_performance_note = ''
+                l_instr_portf = '<th scope="col">portfolio</th>'
+                l_forc_expect_return = '<th scope="col">1-week Expected return</th>'
+
             c_1_year_column = '<th scope="col">1-Year</th>'
             c_6_month_column = '<th scope="col">6-month</th>'
             c_3_month_column = '<th scope="col">3-month</th>'
             c_1_month_column = '<th scope="col">1-month</th>'
             c_1_week_column = '<th scope="col">1-week</th>'
-            l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
             small_font_class = "sa-table-sm"
 
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
@@ -145,14 +154,14 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
         '  <thead>'+\
         '    <tr>'+\
         signal_column +\
-        '      <th scope="col">Instrument</th>'+\
+        l_instr_portf +\
         '      <th scope="col">Volatility risk (%)</th>'+\
         c_1_year_column +\
         c_6_month_column +\
         c_3_month_column +\
         c_1_month_column +\
         c_1_week_column +\
-        '      <th scope="col">1-week Forecast</th>'+\
+        l_forc_expect_return +\
         '    </tr>'+\
         ' </thead>'+\
         '  <tbody>'+\
