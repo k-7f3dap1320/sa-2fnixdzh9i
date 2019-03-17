@@ -78,6 +78,12 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 w1 = str(round( w1 * 100 ,2)) + '%'
 
             column_globalrank = '<td scope="row"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+            l_btn_delete = 'delete'
+            if user_portf == False:
+                column_fullname = '<td>'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
+            else:
+                column_fullname = '<td>'+ '<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
+
             column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1) +'</td>'
             column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6) +'</td>'
             column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3) +'</td>'
@@ -87,7 +93,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
-            '      <td>'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'+\
+            column_fullname +\
             '      <td>'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
