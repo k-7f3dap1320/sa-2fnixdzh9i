@@ -10,19 +10,16 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
-
-    r = '<script>$(document).ready(function($) {'+\
-        '$(".sa-table-click-row").click(function() {'+\
-        'window.document.location = $(this).data("href");'+\
-        '});'+\
-        '});</script>'
+def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
     try:
-
-        if x is None: x = get_user_default_profile()
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
         if what == 'instr':
+            r = '<script>$(document).ready(function($) {'+\
+            '$(".sa-table-click-row").click(function() {'+\
+            'window.document.location = $(this).data("href");'+\
+            '});'+\
+            '});</script>'
+            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+            cr = connection.cursor(pymysql.cursors.SSCursor)
             sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
             "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
             "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
@@ -110,6 +107,15 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
                 '    </tr>'
             cr.close()
             connection.close()
+    except Exception as e: print(e)
+    return r
+
+def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
+    r = ''
+    try:
+
+        #if x is None: x = get_user_default_profile()
+        draw_instr_table(burl,mode,what,step,portf,maxrow,x)
 
     except Exception as e: print(e)
     return r
