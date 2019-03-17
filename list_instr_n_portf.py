@@ -26,8 +26,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
             "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "JOIN feed ON instruments.symbol = feed.symbol "+\
-            "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-            "AND symbol_list.disabled=0 AND instruments.owner = "+ str( get_user_numeric_id() ) +" ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+            "WHERE instruments.owner = "+ str( get_user_numeric_id() ) +" ORDER BY feed.globalrank LIMIT "+ str(maxrow)
         else:
             sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
             "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
