@@ -10,6 +10,95 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
+    try:
+        r = '<script>$(document).ready(function($) {'+\
+        '$(".sa-table-click-row").click(function() {'+\
+        'window.document.location = $(this).data("href");'+\
+        '});'+\
+        '});</script>'
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
+        "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
+        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank FROM instruments "+\
+        "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+        "JOIN feed ON instruments.symbol = feed.symbol "+\
+        "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+        "AND symbol_list.disabled=0 ORDER BY RAND() LIMIT "+ str(maxrow)
+        print(sql)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            uid = row[0]; w_forecast_change = row[1]
+            fullname = row[2]; volatility_risk_st = row[3]
+            y1 = row[4]; m6 = row[5]
+            m3 = row[6]; m1 = row[7]
+            w1 = row[8]; w_forecast_display_info = row[9]
+            unit = row[10]; symbol = row[11]
+            globalrank  row[12]
+
+            volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
+
+            if y1 >= 0: class_y1 = "text text-success"
+            else: class_y1 = "text text-danger"
+
+            if m6 >= 0: class_m6 = "text text-success"
+            else: class_m6 = "text text-danger"
+
+            if m3 >= 0: class_m3 = "text text-success"
+            else: class_m3 = "text text-danger"
+
+            if m1 >= 0: class_m1 = "text text-success"
+            else: class_m1 = "text text-danger"
+
+            if w1 >= 0: class_w1 = "text text-success"
+            else: class_w1 = "text text-danger"
+
+            if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
+            else: class_forecast = "bg bg-danger text-white"
+
+
+            if unit == 'pips':
+                y1 = str(round( y1 ,0)) + ' pips'
+                m6 = str(round( m6 ,0)) + ' pips'
+                m3 = str(round( m3 ,0)) + ' pips'
+                m1 = str(round( m1 ,0)) + ' pips'
+                w1 = str(round( w1 ,0)) + ' pips'
+            else:
+                y1 = str(round( y1 * 100 ,2)) + '%'
+                m6 = str(round( m6 * 100 ,2)) + '%'
+                m3 = str(round( m3 * 100 ,2)) + '%'
+                m1 = str(round( m1 * 100 ,2)) + '%'
+                w1 = str(round( w1 * 100 ,2)) + '%'
+
+            column_globalrank = '<td scope="row"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+            column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1) +'</td>'
+            column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6) +'</td>'
+            column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3) +'</td>'
+            column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1) +'</td>'
+            column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1) +'</td>'
+
+            if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
+            if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
+
+            r = r +\
+            '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
+            column_globalrank +\
+            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+            '      <td>'+ str(volatility_risk_st) +'</td>'+\
+            column_y1 +\
+            column_m6 +\
+            column_m3 +\
+            column_m1 +\
+            column_w1 +\
+            '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
+            '    </tr>'
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+    return r
+
 def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
     try:
         r = '<script>$(document).ready(function($) {'+\
@@ -116,6 +205,8 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         #if x is None: x = get_user_default_profile()
         if what == 'instr':
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
+        if what == 'portf':
+            r = draw_portf_table(burl,mode,what,step,portf,maxrow,x)
 
     except Exception as e: print(e)
     return r
