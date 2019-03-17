@@ -24,8 +24,8 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
         "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
-        "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-        "AND symbol_list.disabled=0 ORDER BY RAND() LIMIT "+ str(maxrow)
+        "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+        "AND symbol_list.disabled=0 ORDER BY feed_globalrank LIMIT "+ str(maxrow)
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
