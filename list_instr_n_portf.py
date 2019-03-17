@@ -49,6 +49,8 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             globalrank  = row[12]
             portf_owner = row[13]
             volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
+            if globalrank == 0:
+                globalrank = 'Not ranked'
             if y1 >= 0: class_y1 = "text text-success"
             else: class_y1 = "text text-danger"
             if m6 >= 0: class_m6 = "text text-success"
