@@ -12,101 +12,100 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
     try:
-        if what == 'instr':
-            r = '<script>$(document).ready(function($) {'+\
-            '$(".sa-table-click-row").click(function() {'+\
-            'window.document.location = $(this).data("href");'+\
-            '});'+\
-            '});</script>'
-            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-            cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-            "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
-            "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-            "WHERE symbol_list.symbol NOT LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-            "AND symbol_list.disabled=0 ORDER BY RAND() LIMIT "+ str(maxrow)
-            print(sql)
-            cr.execute(sql)
-            rs = cr.fetchall()
-            for row in rs:
-                uid = row[0]; w_forecast_change = row[1]
-                fullname = row[2]; volatility_risk_st = row[3]
-                y1_signal = row[4]; m6_signal = row[5]
-                m3_signal = row[6]; m1_signal = row[7]
-                w1_signal = row[8]; w_forecast_display_info = row[9]
-                unit = row[10]; symbol = row[11]
+        r = '<script>$(document).ready(function($) {'+\
+        '$(".sa-table-click-row").click(function() {'+\
+        'window.document.location = $(this).data("href");'+\
+        '});'+\
+        '});</script>'
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
+        "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
+        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+        "WHERE symbol_list.symbol NOT LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+        "AND symbol_list.disabled=0 ORDER BY RAND() LIMIT "+ str(maxrow)
+        print(sql)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            uid = row[0]; w_forecast_change = row[1]
+            fullname = row[2]; volatility_risk_st = row[3]
+            y1_signal = row[4]; m6_signal = row[5]
+            m3_signal = row[6]; m1_signal = row[7]
+            w1_signal = row[8]; w_forecast_display_info = row[9]
+            unit = row[10]; symbol = row[11]
 
-                volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
+            volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
-                if y1_signal >= 0: class_y1 = "text text-success"
-                else: class_y1 = "text text-danger"
+            if y1_signal >= 0: class_y1 = "text text-success"
+            else: class_y1 = "text text-danger"
 
-                if m6_signal >= 0: class_m6 = "text text-success"
-                else: class_m6 = "text text-danger"
+            if m6_signal >= 0: class_m6 = "text text-success"
+            else: class_m6 = "text text-danger"
 
-                if m3_signal >= 0: class_m3 = "text text-success"
-                else: class_m3 = "text text-danger"
+            if m3_signal >= 0: class_m3 = "text text-success"
+            else: class_m3 = "text text-danger"
 
-                if m1_signal >= 0: class_m1 = "text text-success"
-                else: class_m1 = "text text-danger"
+            if m1_signal >= 0: class_m1 = "text text-success"
+            else: class_m1 = "text text-danger"
 
-                if w1_signal >= 0: class_w1 = "text text-success"
-                else: class_w1 = "text text-danger"
+            if w1_signal >= 0: class_w1 = "text text-success"
+            else: class_w1 = "text text-danger"
 
-                if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
-                else: class_forecast = "bg bg-danger text-white"
+            if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
+            else: class_forecast = "bg bg-danger text-white"
 
 
-                if unit == 'pips':
-                    y1_signal = str(round( y1_signal ,0)) + ' pips'
-                    m6_signal = str(round( m6_signal ,0)) + ' pips'
-                    m3_signal = str(round( m3_signal ,0)) + ' pips'
-                    m1_signal = str(round( m1_signal ,0)) + ' pips'
-                    w1_signal = str(round( w1_signal ,0)) + ' pips'
+            if unit == 'pips':
+                y1_signal = str(round( y1_signal ,0)) + ' pips'
+                m6_signal = str(round( m6_signal ,0)) + ' pips'
+                m3_signal = str(round( m3_signal ,0)) + ' pips'
+                m1_signal = str(round( m1_signal ,0)) + ' pips'
+                w1_signal = str(round( w1_signal ,0)) + ' pips'
+            else:
+                y1_signal = str(round( y1_signal * 100 ,2)) + '%'
+                m6_signal = str(round( m6_signal * 100 ,2)) + '%'
+                m3_signal = str(round( m3_signal * 100 ,2)) + '%'
+                m1_signal = str(round( m1_signal * 100 ,2)) + '%'
+                w1_signal = str(round( w1_signal * 100 ,2)) + '%'
+
+            if not mode == "portf_select":
+                if w_forecast_change >=0:
+                    order_type = '<span class="badge badge-success">buy</span>'
                 else:
-                    y1_signal = str(round( y1_signal * 100 ,2)) + '%'
-                    m6_signal = str(round( m6_signal * 100 ,2)) + '%'
-                    m3_signal = str(round( m3_signal * 100 ,2)) + '%'
-                    m1_signal = str(round( m1_signal * 100 ,2)) + '%'
-                    w1_signal = str(round( w1_signal * 100 ,2)) + '%'
+                    order_type = '<span class="badge badge-danger">sell</span>'
+                column_order_type = '<td scope="row">'+ order_type +'</td>'
+                column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
+                column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'
+                column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'
+                column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1_signal) +'</td>'
+                column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1_signal) +'</td>'
+            else:
+                order_type = ''
+                column_order_type = ''
+                column_y1 = ''
+                column_m6 = ''
+                column_m3 = ''
+                column_m1 = ''
+                column_w1 = ''
 
-                if not mode == "portf_select":
-                    if w_forecast_change >=0:
-                        order_type = '<span class="badge badge-success">buy</span>'
-                    else:
-                        order_type = '<span class="badge badge-danger">sell</span>'
-                    column_order_type = '<td scope="row">'+ order_type +'</td>'
-                    column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
-                    column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'
-                    column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'
-                    column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1_signal) +'</td>'
-                    column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1_signal) +'</td>'
-                else:
-                    order_type = ''
-                    column_order_type = ''
-                    column_y1 = ''
-                    column_m6 = ''
-                    column_m3 = ''
-                    column_m1 = ''
-                    column_w1 = ''
+            if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
+            if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
 
-                if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
-                if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
-
-                r = r +\
-                '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
-                column_order_type +\
-                '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
-                '      <td>'+ str(volatility_risk_st) +'</td>'+\
-                column_y1 +\
-                column_m6 +\
-                column_m3 +\
-                column_m1 +\
-                column_w1 +\
-                '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
-                '    </tr>'
-            cr.close()
-            connection.close()
+            r = r +\
+            '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
+            column_order_type +\
+            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+            '      <td>'+ str(volatility_risk_st) +'</td>'+\
+            column_y1 +\
+            column_m6 +\
+            column_m3 +\
+            column_m1 +\
+            column_w1 +\
+            '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
+            '    </tr>'
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
 
@@ -115,7 +114,8 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     try:
 
         #if x is None: x = get_user_default_profile()
-        draw_instr_table(burl,mode,what,step,portf,maxrow,x)
+        if what == 'instr':
+            r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
 
     except Exception as e: print(e)
     return r
