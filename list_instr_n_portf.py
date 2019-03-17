@@ -36,7 +36,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             m3 = row[6]; m1 = row[7]
             w1 = row[8]; w_forecast_display_info = row[9]
             unit = row[10]; symbol = row[11]
-            globalrank  row[12]
+            globalrank  = row[12]
 
             volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
