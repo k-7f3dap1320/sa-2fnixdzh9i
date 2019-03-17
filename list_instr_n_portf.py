@@ -21,7 +21,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
         "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
-        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank FROM instruments "+\
+        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
         "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
@@ -37,6 +37,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             w1 = row[8]; w_forecast_display_info = row[9]
             unit = row[10]; symbol = row[11]
             globalrank  = row[12]
+            portf_owner = row[13]
 
             volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
@@ -79,13 +80,12 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1) +'</td>'
             column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1) +'</td>'
 
-            if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
-            if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
+            target_url = burl + 'p/?uid=' + str(uid)
 
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
-            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '<br />By '+ str(content) +'</td>'+\
             '      <td>'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
