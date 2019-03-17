@@ -85,7 +85,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
-            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '<br />By '+ str(portf_owner) +'</td>'+\
+            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(portf_owner.replace('{burl}',burl) ) + ')</td>'+\
             '      <td>'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
