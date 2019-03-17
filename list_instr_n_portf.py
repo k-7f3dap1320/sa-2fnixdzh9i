@@ -4,13 +4,14 @@
 # LICENSE file in the root directory of this source tree.
 from sa_db import *
 from sa_func import *
+from app_cookie import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
+def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
     try:
         r = '<script>$(document).ready(function($) {'+\
         '$(".sa-table-click-row").click(function() {'+\
@@ -19,13 +20,23 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
         '});</script>'
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-        "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
-        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
-        "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-        "JOIN feed ON instruments.symbol = feed.symbol "+\
-        "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-        "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+        if user_portf:
+            sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
+            "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
+            "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+            "JOIN feed ON instruments.symbol = feed.symbol "+\
+            "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+            "AND symbol_list.disabled=0 AND instruments.owner = "+ str( get_user_numeric_id() ) +" ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+        else:
+            sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
+            "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
+            "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+            "JOIN feed ON instruments.symbol = feed.symbol "+\
+            "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+            "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -38,27 +49,19 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             unit = row[10]; symbol = row[11]
             globalrank  = row[12]
             portf_owner = row[13]
-
             volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
-
             if y1 >= 0: class_y1 = "text text-success"
             else: class_y1 = "text text-danger"
-
             if m6 >= 0: class_m6 = "text text-success"
             else: class_m6 = "text text-danger"
-
             if m3 >= 0: class_m3 = "text text-success"
             else: class_m3 = "text text-danger"
-
             if m1 >= 0: class_m1 = "text text-success"
             else: class_m1 = "text text-danger"
-
             if w1 >= 0: class_w1 = "text text-success"
             else: class_w1 = "text text-danger"
-
             if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
             else: class_forecast = "bg bg-danger text-white"
-
 
             if unit == 'pips':
                 y1 = str(round( y1 ,0)) + ' pips'
@@ -79,9 +82,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3) +'</td>'
             column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1) +'</td>'
             column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1) +'</td>'
-
             target_url = burl + 'p/?uid=' + str(uid)
-
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
@@ -96,6 +97,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x):
             '    </tr>'
         cr.close()
         connection.close()
+
     except Exception as e: print(e)
     return r
 
@@ -206,7 +208,9 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         if what == 'instr':
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
         if what == 'portf':
-            r = draw_portf_table(burl,mode,what,step,portf,maxrow,x)
+            if user_is_login() == 0:
+                r = draw_portf_table(burl,mode,what,step,portf,maxrow,x,True)
+            r = r + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
 
     except Exception as e: print(e)
     return r
