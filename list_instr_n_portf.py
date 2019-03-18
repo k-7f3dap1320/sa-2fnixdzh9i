@@ -64,6 +64,11 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
             else: class_forecast = "bg bg-danger text-white"
 
+            if user_portf:
+                class_row_style = "bg bg-secondary"
+            else:
+                class_row_style = ""
+
             if unit == 'pips':
                 y1 = str(round( y1 ,0)) + ' pips'
                 m6 = str(round( m6 ,0)) + ' pips'
@@ -77,24 +82,24 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 m1 = str(round( m1 * 100 ,2)) + '%'
                 w1 = str(round( w1 * 100 ,2)) + '%'
 
-            column_globalrank = '<td scope="row"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+            column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
             l_btn_delete = 'delete'
             if user_portf == False:
-                column_fullname = '<td>'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
             else:
-                column_fullname = '<td>'+ '<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
 
-            column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1) +'</td>'
-            column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6) +'</td>'
-            column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3) +'</td>'
-            column_m1 = '      <td class="'+ class_m1 +'">'+ str(m1) +'</td>'
-            column_w1 = '      <td class="'+ class_w1 +'">'+ str(w1) +'</td>'
+            column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
+            column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
+            column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'">'+ str(m3) +'</td>'
+            column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'">'+ str(m1) +'</td>'
+            column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w1) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
             column_fullname +\
-            '      <td>'+ str(volatility_risk_st) +'</td>'+\
+            '      <td class="'+ class_row_style +'">'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
             column_m3 +\
