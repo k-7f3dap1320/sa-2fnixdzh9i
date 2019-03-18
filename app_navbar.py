@@ -18,7 +18,7 @@ def navbar(burl):
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,20)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'Dashboard'+'</a>'+\
-        '        <a class="dropdown-item" href="'+ burl + '?ls/w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+'Portfolio(s)'+'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+'Portfolio(s)'+'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+'Settings'+'</a>'+\
         '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ 'logout' +'</a>'+\
