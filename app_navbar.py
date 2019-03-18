@@ -28,7 +28,8 @@ def get_market_menu_selection(burl):
         for row in rs:
             asset_class_id = row[0]
             asset_class_name = row[1]
-            asset_class_selection = asset_class_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
+            if asset_class_id != 'MA:' and asset_class_id != 'PF:':
+                asset_class_selection = asset_class_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
 
         sql = "SELECT market_id, market_label FROM Markets"
         cr.execute(sql)
@@ -43,6 +44,7 @@ def get_market_menu_selection(burl):
         '      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ l_select_market +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item" href="'+ burl + '?x=">'+ l_all_market_selection +'</a>'+\
+        '        <div class="dropdown-divider"></div>'+\
         asset_class_selection +\
         '        <div class="dropdown-divider"></div>'+\
         markets_selection +\
