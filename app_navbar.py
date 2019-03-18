@@ -5,6 +5,53 @@
 from search import *
 from sa_func import *
 from app_login import *
+from sa_db import *
+access_obj = sa_db_access()
+import pymysql.cursors
+
+db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+def get_market_menu_selection(burl):
+    r = ''
+    try:
+        l_select_market = 'Select Market'
+        l_all_market_selection = 'Show all markets'
+        asset_class_selection = ''
+        markets_selection = ''
+        markets_caption = '{market} Market'
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT asset_class_id, asset_class_name FROM Asset_class ORDER BY asset_class_name"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            asset_class_id = row[0]
+            asset_class_name = row[1]
+            asset_class_selection = asset_class_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
+
+        sql = "SELECT market_id, market_label FROM Markets"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            market_id = row[0]
+            market_label = row[1]
+            markets_selection = markets_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(market_id) +'">'+ str(markets_caption.replace('{market}',market_label) ) +'</a>'
+
+        r = '' +\
+        '    <li class="nav-item dropdown">'+\
+        '      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ l_select_market +'</a>'+\
+        '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
+        '        <a class="dropdown-item" href="'+ burl + '?x=">'+ l_all_market_selection +'</a>'+\
+        asset_class_selection +\
+        '        <div class="dropdown-divider"></div>'+\
+        markets_selection +\
+        '      </div>'+\
+        '    </li>'
+
+
+    except Exception as e: print(e)
+    return r
 
 def navbar(burl):
 
@@ -41,17 +88,7 @@ def navbar(burl):
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
-    '    <li class="nav-item dropdown">'+\
-    '      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Market</a>'+\
-    '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-    '        <a class="dropdown-item" href="'+ burl + '?x=">Top of everything</a>'+\
-    '        <a class="dropdown-item" href="'+ burl + '?x=EQ:">All Stocks</a>'+\
-    '        <a class="dropdown-item" href="'+ burl + '?x=FX:">Forex</a>'+\
-    '        <a class="dropdown-item" href="'+ burl + '?x=CR:">Cryptocurrency</a>'+\
-    '        <div class="dropdown-divider"></div>'+\
-    '        <a class="dropdown-item" href="'+ burl + '?x=US>">U.S. Market</a>'+\
-    '      </div>'+\
-    '    </li>'+\
+    get_market_menu_selection(burl) +\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
