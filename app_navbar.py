@@ -17,13 +17,14 @@ def navbar(burl):
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,20)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'My profile'+'</a>'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + '?ls/w=myportf"><i class="fas fa-chart-pie"></i>&nbsp;'+'My portfolio(s)'+'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'Dashboard'+'</a>'+\
+        '        <a class="dropdown-item disabled" href="'+ burl + '?ls/w=myportf"><i class="fas fa-chart-pie"></i>&nbsp;'+'My Portfolio(s)'+'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbps;'+'Settings'+'</a>'+\
+        '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+'Settings'+'</a>'+\
         '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ 'logout' +'</a>'+\
         '      </div>'+\
-        '    </li>'
+        '    </li>' +\
+        '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-primary btn-block form-signin-btn"><i class="fas fa-edit"></i>&nbsp;'+ 'New portfolio' +'</a>'
     else:
         rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 

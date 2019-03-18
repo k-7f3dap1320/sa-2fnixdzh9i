@@ -241,6 +241,8 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             c_1_week_column = ""
             l_performance_note = ""
             small_font_class = ""
+            l_instr_portf = '<th scope="col">Instrument</th>'
+            l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
         else:
             if what == "instr":
                 signal_column = '<th scope="col">Signal</th>'
