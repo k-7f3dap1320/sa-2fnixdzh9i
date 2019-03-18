@@ -24,7 +24,7 @@ def navbar(burl):
         '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ 'logout' +'</a>'+\
         '      </div>'+\
         '    </li>' +\
-        '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-primary form-signin-btn"><i class="fas fa-edit"></i></a>'
+        '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="left" title="" data-original-title="Create a New Portfolio"><i class="fas fa-edit"></i></a>'
     else:
         rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 
