@@ -318,8 +318,8 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '</script>'
 
 
-        l_placeholder = "Type to find for an instrument..."
-        l_caption_to_more_assets = 'Unable to find your instrument or symbol? More list: '
+        l_placeholder = "Type to find from the list..."
+        l_caption_to_more_assets = 'Unable to find what you are looking for? More list: '
         l_link_to_more_assets = ''
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
