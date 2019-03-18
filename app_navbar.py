@@ -15,7 +15,7 @@ def navbar(burl):
     if user_is_login() == 1:
         rightsidemenu = '' +\
         '    <li class="nav-item dropdown">'+\
-        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,20)+'&nbsp;'+ get_nickname() +'</a>'+\
+        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,18)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'Dashboard'+'</a>'+\
         '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+'Portfolio(s)'+'</a>'+\
