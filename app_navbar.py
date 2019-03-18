@@ -18,13 +18,13 @@ def navbar(burl):
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,20)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'Dashboard'+'</a>'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + '?ls/w=myportf"><i class="fas fa-chart-pie"></i>&nbsp;'+'My Portfolio(s)'+'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + '?ls/w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+'Portfolio(s)'+'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+'Settings'+'</a>'+\
         '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ 'logout' +'</a>'+\
         '      </div>'+\
         '    </li>' +\
-        '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="left" title="" data-original-title="Create a New Portfolio"><i class="fas fa-edit"></i></a>'
+        '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a New Portfolio"><i class="fas fa-edit"></i></a>'
     else:
         rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 
