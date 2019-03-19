@@ -60,17 +60,21 @@ def navbar(burl):
     search_placeholder = 'Enter function, ticker or search. Hit <enter> to go.'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
+    l_dashboard = 'Dashboard'
+    l_myportfolio = 'My Portfolio(s)'
+    l_settings = 'Settings'
+    l_logout = 'Logout'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,18)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+'Dashboard'+'</a>'+\
-        '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+'Portfolio(s)'+'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + '"><i class="fas fa-user"></i>&nbsp;'+ l_dashboard +'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+'Settings'+'</a>'+\
-        '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ 'logout' +'</a>'+\
+        '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>' +\
         '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a New Portfolio"><i class="fas fa-edit"></i></a>'
