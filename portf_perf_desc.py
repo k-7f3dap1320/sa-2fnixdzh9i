@@ -66,16 +66,13 @@ def get_desc_box(uid):
         if alloc_order_type.lower() == 'buy' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'long'):
             portf_recomm = portf_recomm  + str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
             added_order = True
-        else:
-            portf_recomm = portf_recomm  + str(i)+') ' + l_wait + ' ' + alloc_fullname + '<br />'
-            added_order = True
 
         if alloc_order_type.lower() == 'sell' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'short'):
             portf_recomm = portf_recomm + str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
-        else:
-            if added_order == False:
-                portf_recomm = portf_recomm + str(i)+') ' + l_wait + ' ' + alloc_fullname + '<br />'
+            added_order = True
 
+        if added_order == False:
+            portf_recomm = portf_recomm + str(i)+') ' + l_wait + ' ' + alloc_fullname + '<br />'
         i += 1
 
         portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
