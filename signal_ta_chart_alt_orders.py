@@ -277,7 +277,17 @@ def get_ads():
     r = ''
 
     try:
-        r = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1605085568476447" data-ad-slot="4165991783"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>'
+        r = '' +\
+        '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
+        '<!-- sa-signal -->'+\
+        '<ins class="adsbygoogle"'+\
+        '     style="display:inline-block;width:300px;height:250px"'+\
+        '     data-ad-client="ca-pub-1605085568476447"'+\
+        '     data-ad-slot="4165991783"></ins>'+\
+        '<script>'+\
+        '(adsbygoogle = window.adsbygoogle || []).push({});'+\
+        '</script>'
+
     except Exception as e: print(e)
 
     return r
