@@ -327,6 +327,10 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         l_placeholder = "Type to find from the list..."
         l_caption_to_more_assets = 'Unable to find what you are looking for? More list: '
         l_link_to_more_assets = ''
+        l_top_ranked = 'Top Ranked'
+
+        if mode != 'portf_select':
+            l_link_to_more_assets = '<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -341,8 +345,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
             else:
                 l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
 
-        if mode != 'portf_select':
-            l_link_to_more_assets = l_link_to_more_assets + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ 'Top ranked' +'</a>'
 
 
         box_content = box_content + '<div class="box">' +\
