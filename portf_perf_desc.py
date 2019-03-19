@@ -28,7 +28,7 @@ def get_desc_box(uid):
         portf_symbol = row[4]
 
     slang = get_selected_lang()
-    l_wait = 'Wait'
+    l_wait = 'wait'
     sql = "SELECT portf_descr, portf_recomm_buy, portf_recomm_sell FROM recommendations WHERE lang ='"+ slang +"' "
     cr.execute(sql)
     rs = cr.fetchall()
