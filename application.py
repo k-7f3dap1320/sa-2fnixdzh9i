@@ -56,6 +56,8 @@ def go():
         mode = request.values.get('mode')
         portf = request.values.get('portf')
         pop = request.values.get('pop')
+        if ins != '' or ins != None:
+            if x == '' or x == None : x = get_user_default_profile()
         if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
         if ins == '2': c = save_portf_select(appname,burl,step,mode,x,portf,uid)
         if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
