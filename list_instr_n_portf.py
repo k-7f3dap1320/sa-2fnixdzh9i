@@ -330,7 +330,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         l_top_ranked = 'Top Ranked'
 
         if mode != 'portf_select':
-            l_link_to_more_assets = '<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
+            l_link_to_more_assets = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
