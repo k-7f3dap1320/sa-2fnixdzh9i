@@ -65,7 +65,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             else: class_forecast = "bg bg-danger text-white"
 
             if user_portf:
-                class_row_style = "bg bg-warning"
+                class_row_style = "bg bg-light"
             else:
                 class_row_style = ""
 
