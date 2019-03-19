@@ -341,6 +341,12 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
             else:
                 l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
 
+        if mode == 'portf_select':
+            l_link_to_more_assets = l_link_to_more_assets + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'p/?ins=1&step='+ str(step) + '&x=">'+ 'Even more...' +'</a>'
+        else:
+            l_link_to_more_assets = l_link_to_more_assets + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ 'Top ranked' +'</a>'
+
+
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
