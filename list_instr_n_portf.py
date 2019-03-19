@@ -216,7 +216,6 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     r = ''
     try:
 
-        #if x is None: x = get_user_default_profile()
         if what == 'instr':
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
         if what == 'portf':
