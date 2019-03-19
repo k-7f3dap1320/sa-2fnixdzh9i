@@ -40,7 +40,6 @@ def go():
     ref = request.args.get('ref')
     lang = request.args.get('lang')
     x = request.args.get('x');
-    #if x == '' or x == None : x = get_user_default_profile()
 
 
     err = request.args.get('err')
@@ -100,6 +99,7 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     else:
+        if x == '' or x == None : x = get_user_default_profile()
         c = gen_main_page(x,appname,burl);
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
