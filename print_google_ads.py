@@ -56,7 +56,7 @@ def print_google_ads(format,align):
             '</script>'
 
 
-        r = '<div style="margin: 5px; float: '+ align +';">' + r + '</div>'
+        r = '<div style="margin: 0px; float: '+ align +';">' + r + '</div>'
 
     except Exception as e: print(e)
     return r

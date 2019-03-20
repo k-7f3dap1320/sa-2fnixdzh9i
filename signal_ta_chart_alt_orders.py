@@ -282,11 +282,11 @@ def get_sign_ta_chart_alt_orders(uid):
         signal_box_title = 'Alternative Orders'
         signal_box = '' +\
         '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="rounded sa-signal-alt-ord-prf">'+\
+        '            <div class="box-part rounded sa-signal-alt-ord-prf">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
-        '            <div class="box-part rounded sa-signal-alt-ord-prf  sa-signal-ads">'+\
+        '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads">'+\
         print_google_ads('rectangle','left') +\
         '            </div>'+\
         '        </div>'
