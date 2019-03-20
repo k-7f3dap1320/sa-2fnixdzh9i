@@ -23,7 +23,7 @@ def get_card(x,t,burl):
         if t == 9:
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=9 ORDER BY ranking DESC LIMIT 11"
+                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND globalrank<>0 AND type=9 ORDER BY globalrank ASC LIMIT 11"
             else:
                 sql = "SELECT * FROM (SELECT feed.short_title, feed.short_description, feed.content, feed.url, feed.ranking, feed.badge, feed.symbol FROM feed JOIN instruments "+\
                 "ON feed.symbol = instruments.symbol WHERE instruments.owner = "+ str(get_user_numeric_id() ) +" AND feed.type=9 ORDER BY feed.globalRank) AS Q1 "+\
