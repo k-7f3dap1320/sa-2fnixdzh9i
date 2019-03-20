@@ -31,7 +31,7 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
         '        </div>'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
-        '           <a class="btn btn-danger" href="'+ burl +'ls/?delete='+ str(portf_id) +'">'+ l_delete_button +'</a>'+\
+        '           <a class="btn btn-danger" href="'+ burl +'p/?delete='+ str(portf_id) +'">'+ l_delete_button +'</a>'+\
         '        </div>'+\
         '       </div>'+\
         '     </div>'+\
