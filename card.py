@@ -61,9 +61,9 @@ def get_card(x,t,burl):
         '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
         '   <div class="box-part text-center rounded">'+\
         print_google_ads('rectangle','center') +\
-        '   <div/>'+\
+        '   </div>'+\
         '</div>'
-    
+
         for row in rs:
             short_title = row[0]
             short_description = row[1]
