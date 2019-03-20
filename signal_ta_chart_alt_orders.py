@@ -6,6 +6,7 @@ from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from tradingview_chart import *
+from print_google_ads import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -272,26 +273,6 @@ def get_rsi_chart(uid):
 
     return r
 
-def get_ads():
-
-    r = ''
-
-    try:
-        r = '' +\
-        '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
-        '<!-- sa-signal -->'+\
-        '<ins class="adsbygoogle"'+\
-        '     style="display:inline-block;width:300px;height:250px"'+\
-        '     data-ad-client="ca-pub-1605085568476447"'+\
-        '     data-ad-slot="4165991783"></ins>'+\
-        '<script>'+\
-        '(adsbygoogle = window.adsbygoogle || []).push({});'+\
-        '</script>'
-
-    except Exception as e: print(e)
-
-    return r
-
 def get_sign_ta_chart_alt_orders(uid):
 
     try:
@@ -301,12 +282,12 @@ def get_sign_ta_chart_alt_orders(uid):
         signal_box_title = 'Alternative Orders'
         signal_box = '' +\
         '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part rounded sa-signal-alt-ord-prf">'+\
+        '            <div class="rounded sa-signal-alt-ord-prf">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
         '            <div class="box-part rounded sa-signal-alt-ord-prf  sa-signal-ads">'+\
-        get_ads() +\
+        print_google_ads('rectangle','left') +\
         '            </div>'+\
         '        </div>'
 
