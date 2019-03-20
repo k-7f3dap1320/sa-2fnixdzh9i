@@ -110,7 +110,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
 
             column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
 
-            set_modal_delete_popup(fullname,uid,burl)
+            r = r + set_modal_delete_popup(fullname,uid,burl)
             l_btn_delete = 'delete'
 
             if user_portf == False:
