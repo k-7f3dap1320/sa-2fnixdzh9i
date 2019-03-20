@@ -46,7 +46,7 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
         '        </div>'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
-        '           <a class="btn btn-danger" href="'+ burl +'p/?uid='+ str(portf_id) +'">'+ l_view_button +'</a>'+\
+        '           <a class="btn btn-info" href="'+ burl +'p/?uid='+ str(portf_id) +'">'+ l_view_button +'</a>'+\
         '        </div>'+\
         '       </div>'+\
         '     </div>'+\
@@ -137,7 +137,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
                 data_href = 'data-href="'+ target_url +'"'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm btn-block active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
                 data_href = 'data-href="#"'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
