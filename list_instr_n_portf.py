@@ -248,7 +248,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         if what == 'instr':
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
         if what == 'portf':
-            if user_is_login() == 1: r = draw_portf_table(burl,mode,what,step,portf,maxrow,'',True)
+            if user_is_login() == 1: r = draw_portf_table(burl,mode,what,step,portf,maxrow,None,True)
             r = r + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
 
     except Exception as e: print(e)
