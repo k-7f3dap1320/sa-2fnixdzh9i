@@ -15,13 +15,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_card(x,t,burl):
 
-    r = ''+\
-    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
-    '   <div class="box-part text-center rounded">'+\
-    print_google_ads('rectangle','center') +\
-    '   <div/>'+\
-    '</div>'
-
+    r = ''
     try:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
@@ -63,7 +57,13 @@ def get_card(x,t,burl):
         if t == 9: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><div class="row">'
         if t == 1: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><div class="row">'
 
-
+        r = r + '' +\
+        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
+        '   <div class="box-part text-center rounded">'+\
+        print_google_ads('rectangle','center') +\
+        '   <div/>'+\
+        '</div>'
+    
         for row in rs:
             short_title = row[0]
             short_description = row[1]
