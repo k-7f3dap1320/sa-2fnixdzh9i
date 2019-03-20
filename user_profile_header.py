@@ -35,7 +35,7 @@ def get_box_user_profile_header(burl):
             '   <div class="row sa-uhead-box">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded sa-center-content sa-uhead-box">'+\
-            '               <table style="color:white;">'+\
+            '               <table style="color:white; width: 100%">'+\
             '                   <tr><td>'+ avatar_img +'</td><td><span style="font-weight: bold; font-size: x-large;">Hello '+ name.title() + '</span><br><span style="font-size: small;">' + 'aka ' + ' '+ nickname +'</span><td>'+\
             '<td>'+ print_google_ads('small_leaderboard','right') +'</td>'+\
             '                   </tr>'+\
