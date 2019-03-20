@@ -59,7 +59,7 @@ def get_card(x,t,burl):
 
         r = r + '' +\
         '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
-        '   <div class="box-part text-center rounded">'+\
+        '   <div class="text-center rounded" style="margin-left: 5px;margin-top: 50px;">'+\
         print_google_ads('rectangle','center') +\
         '   </div>'+\
         '</div>'
