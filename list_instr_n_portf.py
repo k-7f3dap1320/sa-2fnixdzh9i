@@ -112,10 +112,6 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
 
             r = r + set_modal_delete_popup(fullname,uid,burl)
             l_btn_delete = 'delete'
-            if user_portf == False:
-                data_href = 'data-href="'+ target_url +'"'
-            else:
-                data_href = 'data-href="'+ target_url +'"'
 
             if user_portf == False:
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
