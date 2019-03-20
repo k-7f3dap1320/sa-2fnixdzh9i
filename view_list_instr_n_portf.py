@@ -19,7 +19,9 @@ from font_awesome import *
 from app_cookie import *
 from sa_func import *
 from googleanalytics import *
+from googleadsense import *
 from list_instr_n_portf import *
+from print_google_ads import *
 
 
 def get_top_instr_n_portf_list():
@@ -32,7 +34,8 @@ def get_top_instr_n_portf_list():
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        '<br /><br />'+\
+        print_google_ads('leaderboard')
+        '<br />'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -52,7 +55,7 @@ def gen_view_list_instr_n_portf(appname,burl,what,x):
             numrow = 5000
         else:
             numrow = 200
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + get_metatags(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_top_instr_n_portf_list() + get_box_list_instr_n_portf(burl,'view',what,1,None,numrow,x) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)

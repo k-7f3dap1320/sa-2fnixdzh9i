@@ -302,12 +302,10 @@ def get_portf_perf(s):
                     strategy_order_type_c = row[5]
                     if strategy_order_type_c == 'long/short':
                         portf_pnl = portf_pnl + (pnl_c * quantity_c * pip_c)
-                    if strategy_order_type_c == 'long':
+                    if strategy_order_type_c == 'long' and pnl_long_c != 999:
                         portf_pnl = portf_pnl + (pnl_long_c * quantity_c * pip_c)
-                        if pnl_long_c == 999: portf_pnl = 0
-                    if strategy_order_type_c == 'short':
+                    if strategy_order_type_c == 'short' and pnl_short_c != 999:
                         portf_pnl = portf_pnl + (pnl_short_c * quantity_c * pip_c)
-                        if pnl_short_c == 999: portf_pnl = 0
                 portf_nav = round( portf_nav + portf_pnl, 2)
 
                 if i > 0:

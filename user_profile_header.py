@@ -7,6 +7,7 @@ access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
 from sa_func import *
+from print_google_ads import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -35,7 +36,9 @@ def get_box_user_profile_header(burl):
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded sa-center-content sa-uhead-box">'+\
             '               <table style="color:white;">'+\
-            '                   <tr><td>'+ avatar_img +'</td><td><span style="font-weight: bold; font-size: x-large;">Hello '+ name.title() + '</span><br><span style="font-size: small;">' + 'aka ' + ' '+ nickname +'</span><td></tr>'+\
+            '                   <tr><td>'+ avatar_img +'</td><td><span style="font-weight: bold; font-size: x-large;">Hello '+ name.title() + '</span><br><span style="font-size: small;">' + 'aka ' + ' '+ nickname +'</span><td>'+\
+            '<td>'+ print_google_ads('small_leaderboard') +'</td>'+\
+            '                   </tr>'+\
             '               </table>'+\
             '            </div>'+\
             '        </div>'+\
