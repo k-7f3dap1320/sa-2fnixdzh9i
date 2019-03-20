@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-def print_google_ads(format):
+def print_google_ads(format,align):
     r = ''
     try:
 
@@ -30,6 +30,9 @@ def print_google_ads(format):
             '<script>'+\
             '(adsbygoogle = window.adsbygoogle || []).push({});'+\
             '</script>'
+
+
+        r = '<div style="margin: 5px; float: '+ align +';">' + r + '</div>'
 
     except Exception as e: print(e)
     return r
