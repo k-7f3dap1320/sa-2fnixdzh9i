@@ -129,7 +129,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w1) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
             r = r +\
-            '    <tr class="sa-table-click-row" '+ data_href +'>'+\
+            '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_globalrank +\
             column_fullname +\
             '      <td class="'+ class_row_style +'">'+ str(volatility_risk_st) +'</td>'+\
