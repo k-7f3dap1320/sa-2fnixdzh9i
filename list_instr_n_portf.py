@@ -118,8 +118,8 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
                 data_href = 'data-href="'+ target_url +'"'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | ' + str(fullname)+ '</td>'
-                data_href = 'data-href="#popup_delete_'+ str(uid) +'"'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-target="'+ target_url +'">' + str(fullname)+ '</button></td>'
+                data_href = 'data-href="#"'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
             column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
