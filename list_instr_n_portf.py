@@ -12,19 +12,22 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def set_modal_delete_popup(portf_name,portf_id,burl):
+def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
     r = ''
     try:
-        l_message_caption = 'Are you sure you want to delete this portfolio? ' + '<strong>'+ portf_name + '</strong>'
+        l_delete_message_caption = 'Are you sure you want to delete this portfolio? ' + '<br /><strong>'+ portf_name + '</strong>'
         l_cancel_button = 'Cancel'
         l_delete_button = 'Delete'
+
+        l_view_message_caption = 'View or edit your portfolio:' + '<br /><strong>'+ portf_name + '</strong>'
+        l_view_button = 'Take me to my portfolio'
 
         r = '' +\
         '  <div class="modal" id="popup_delete_'+ str(portf_id) +'">'+\
         '    <div class="modal-dialog modal-dialog-centered">'+\
         '      <div class="modal-content">'+\
         '        <div class="modal-body">'+\
-        l_message_caption +\
+        l_delete_message_caption +\
         '        </div>'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
@@ -33,6 +36,22 @@ def set_modal_delete_popup(portf_name,portf_id,burl):
         '       </div>'+\
         '     </div>'+\
         '   </div>'
+
+        r = '' +\
+        '  <div class="modal" id="popup_view_'+ str(portf_id) +'">'+\
+        '    <div class="modal-dialog modal-dialog-centered">'+\
+        '      <div class="modal-content">'+\
+        '        <div class="modal-body">'+\
+        l_view_message_caption +\
+        '        </div>'+\
+        '        <div class="modal-footer">'+\
+        '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
+        '           <a class="btn btn-danger" href="'+ burl +'p/?uid='+ str(portf_id) +'">'+ l_view_button +'</a>'+\
+        '        </div>'+\
+        '       </div>'+\
+        '     </div>'+\
+        '   </div>'
+
 
     except Exception as e: print(e)
     return r
@@ -111,14 +130,14 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
 
-            r = r + set_modal_delete_popup(fullname,uid,burl)
+            r = r + set_modal_delete_n_view_popup(fullname,uid,burl)
             l_btn_delete = 'delete'
 
             if user_portf == False:
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
                 data_href = 'data-href="'+ target_url +'"'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-target="'+ target_url +'">' + str(fullname)+ '</button></td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm btn-block active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
                 data_href = 'data-href="#"'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
