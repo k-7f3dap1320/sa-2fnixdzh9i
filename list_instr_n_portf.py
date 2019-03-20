@@ -37,7 +37,7 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
         '     </div>'+\
         '   </div>'
 
-        r = '' +\
+        r = r  +\
         '  <div class="modal" id="popup_view_'+ str(portf_id) +'">'+\
         '    <div class="modal-dialog modal-dialog-centered">'+\
         '      <div class="modal-content">'+\
