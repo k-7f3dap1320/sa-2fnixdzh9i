@@ -109,6 +109,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 w1 = str(round( w1 * 100 ,2)) + '%'
 
             column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+            target_url = burl + 'p/?uid=' + str(uid)
 
             r = r + set_modal_delete_popup(fullname,uid,burl)
             l_btn_delete = 'delete'
@@ -125,7 +126,6 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'">'+ str(m3) +'</td>'
             column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'">'+ str(m1) +'</td>'
             column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w1) +'</td>'
-            target_url = burl + 'p/?uid=' + str(uid)
             r = r +\
             '    <tr class="sa-table-click-row" '+data_href+'>'+\
             column_globalrank +\
