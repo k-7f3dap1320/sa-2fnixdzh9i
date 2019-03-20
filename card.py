@@ -6,6 +6,7 @@ from sa_db import *
 from sa_func import *
 from card_chart import *
 from app_cookie import *
+from print_google_ads import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
@@ -14,16 +15,21 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_card(x,t,burl):
 
-    r = ''
+    r = ''+\
+    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
+    '   <div class="box-part text-center rounded">'+\
+    print_google_ads('rectangle','center') +\
+    '   <div/>'+\
+    '</div>'
 
     try:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=1 ORDER BY ranking DESC LIMIT 20"
+            "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=1 ORDER BY ranking DESC LIMIT 19"
         if t == 9:
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=9 ORDER BY ranking DESC LIMIT 12"
+                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=9 ORDER BY ranking DESC LIMIT 11"
             else:
                 sql = "SELECT * FROM (SELECT feed.short_title, feed.short_description, feed.content, feed.url, feed.ranking, feed.badge, feed.symbol FROM feed JOIN instruments "+\
                 "ON feed.symbol = instruments.symbol WHERE instruments.owner = "+ str(get_user_numeric_id() ) +" AND feed.type=9 ORDER BY feed.globalRank) AS Q1 "+\
@@ -56,6 +62,7 @@ def get_card(x,t,burl):
 
         if t == 9: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ title_portf +'</span><div class="row">'
         if t == 1: r = '<div class="box"><span class="sectiont"><i class="fas fa-chart-line"></i>&nbsp;'+ title_signals +'</span><div class="row">'
+
 
         for row in rs:
             short_title = row[0]
