@@ -116,7 +116,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             if user_portf == False:
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | ' + str(fullname)+ '</td>'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
             column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
