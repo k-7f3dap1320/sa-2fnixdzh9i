@@ -9,6 +9,7 @@ from search import *
 from app_main import *; from portf_main import *; from signal_main import *
 from createuser_main import *; from select_avatar import *; from select_market import *
 from createportf_main import *
+from portf_delete import *
 from app_head import *; from app_body import *; from app_page import *
 from app_cookie import *
 from sa_func import *
@@ -56,6 +57,7 @@ def go():
         mode = request.values.get('mode')
         portf = request.values.get('portf')
         pop = request.values.get('pop')
+        delete = request.values.get('delete')
         if ins != '' or ins != None:
             if x == '' or x == None : x = get_user_default_profile()
         if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
@@ -64,6 +66,7 @@ def go():
         if ins == '4': c = portf_save_conviction(burl,mode,x)
         if ins == '5': c = portf_save(appname,burl)
         if ins is None: c = gen_portf_page(uid,appname,burl,pop)
+        if delete != None: c = del_portf(delete,burl,x)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

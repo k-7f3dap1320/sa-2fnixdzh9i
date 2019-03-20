@@ -34,7 +34,7 @@ def get_top_instr_n_portf_list():
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        print_google_ads('billboard','center') +\
+        print_google_ads('leaderboard','center') +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
