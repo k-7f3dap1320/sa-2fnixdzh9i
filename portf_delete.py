@@ -32,7 +32,9 @@ def del_portf(this,burl,x):
 
             sql = "DELETE FROM portfolios WHERE portf_symbol = '"+ portf_symbol +"'"; cr.execute(sql)
             sql = "DELETE FROM instruments WHERE symbol = '"+ portf_symbol +"'"; cr.execute(sql)
-            sql ="SELECT * FROM symbol_list WHERE symbol = '"+ portf_symbol +"'"; cr.execute(sql)
+            sql = "DELETE FROM symbol_list WHERE symbol = '"+ portf_symbol +"'"; cr.execute(sql)
+            sql = "DELETE FROM feed WHERE symbol = '"+ portf_symbol +"'"; cr.execute(sql)
+            sql = "DELETE FROM chart_data WHERE symbol = '"+ portf_symbol +"'"; cr.execute(sql)
             connection.commit()
             cr.close()
             connection.close()
