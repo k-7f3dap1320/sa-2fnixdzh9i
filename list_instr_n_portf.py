@@ -114,33 +114,31 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             l_btn_delete = 'delete'
             if user_portf == False:
                 data_href = 'data-href="'+ target_url +'"'
-                data_href_td = ''
             else:
                 data_href = ''
-                data_href_td = 'data-href="'+ target_url +'"'
 
             if user_portf == False:
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <a href="'+ target_url +'">' + str(fullname)+ '</a></td>'
 
-            column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'" '+ data_href_td +'>'+ str(y1) +'</td>'
-            column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'" '+ data_href_td +'>'+ str(m6) +'</td>'
-            column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'" '+ data_href_td +'>'+ str(m3) +'</td>'
-            column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'" '+ data_href_td +'>'+ str(m1) +'</td>'
-            column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'" '+ data_href_td +'>'+ str(w1) +'</td>'
+            column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
+            column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
+            column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'">'+ str(m3) +'</td>'
+            column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'">'+ str(m1) +'</td>'
+            column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w1) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
             r = r +\
             '    <tr class="sa-table-click-row" '+ data_href +'>'+\
             column_globalrank +\
             column_fullname +\
-            '      <td class="'+ class_row_style +'" '+ data_href_td +'>'+ str(volatility_risk_st) +'</td>'+\
+            '      <td class="'+ class_row_style +'">'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
             column_m3 +\
             column_m1 +\
             column_w1 +\
-            '      <td class="'+ class_forecast +'" '+ data_href_td +'>'+ str(w_forecast_display_info) +'</td>'+\
+            '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
             '    </tr>'
         cr.close()
         connection.close()
@@ -254,7 +252,7 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         if what == 'instr':
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
         if what == 'portf':
-            if user_is_login() == 1: r = draw_portf_table(burl,mode,what,step,portf,maxrow,x,True)
+            if user_is_login() == 1: r = draw_portf_table(burl,mode,what,step,portf,maxrow,'',True)
             r = r + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
 
     except Exception as e: print(e)
