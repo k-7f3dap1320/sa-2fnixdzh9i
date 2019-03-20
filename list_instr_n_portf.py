@@ -11,6 +11,32 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+
+def set_modal_delete_popup(portf_name,portf_id,burl):
+    r = ''
+    try:
+        l_message_caption = 'Are you sure you want to delete this portfolio? ' + '<strong>'+ portf_name + '</strong>'
+        l_cancel_button = 'Cancel'
+        l_delete_button = 'Delete'
+
+        r = '' +\
+        '  <div class="modal" id="popup_delete_'+ str(portf_id) +'">'+\
+        '    <div class="modal-dialog modal-dialog-centered">'+\
+        '      <div class="modal-content">'+\
+        '        <div class="modal-body">'+\
+        l_message_caption +\
+        '        </div>'+\
+        '        <div class="modal-footer">'+\
+        '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
+        '           <a class="btn btn-danger" href="'+ burl +'ls/?delete='+ str(portf_id) +'">'+ l_delete_button +'</a>'+\
+        '        </div>'+\
+        '       </div>'+\
+        '     </div>'+\
+        '   </div>'
+
+    except Exception as e: print(e)
+    return r
+
 def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
     try:
         r = '<script>$(document).ready(function($) {'+\
@@ -83,11 +109,14 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 w1 = str(round( w1 * 100 ,2)) + '%'
 
             column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+
+            set_modal_delete_popup(fullname,uid,burl)
             l_btn_delete = 'delete'
+
             if user_portf == False:
                 column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</a>' + ' | ' + str(fullname)+ '</td>'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
             column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
