@@ -154,7 +154,7 @@ def get_trades_tbl(uid,w):
                     r = r +\
                     '    <tr>'+\
                     '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                    '      <td><a href="'+ burl + 's/?uid='+ str(alloc_uid) +'">'+ str(fullname) +'</a></td>'+\
+                    '      <td>'+ str(fullname) +'</td>'+\
                     '      <td>'+ str(entry_date) +'</td>'+\
                     '      <td>'+ str(entry_price) +'</td>'
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
