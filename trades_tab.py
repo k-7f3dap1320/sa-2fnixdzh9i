@@ -72,7 +72,8 @@ def get_trades_tbl(uid,w):
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
                 "instruments.unit, "+\
-                "portfolios.strategy_order_type "
+                "portfolios.strategy_order_type, "
+                "trades.uid "
             sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
         else:
             sql = "SELECT trades.order_type, "+\
@@ -83,7 +84,9 @@ def get_trades_tbl(uid,w):
                 "trades.expiration_date, "+\
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
-                "instruments.unit "
+                "instruments.unit, "+\
+                "trades.status, "+\
+                "trades.uid "
             sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
@@ -130,6 +133,7 @@ def get_trades_tbl(uid,w):
             pnl_pct = row[6]
             url = row[7]
             unit = row[8]
+            alloc_uid = row[10]
             if selected_is_portf: strategy_order_type = row[9]
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">today</span>'
@@ -150,7 +154,7 @@ def get_trades_tbl(uid,w):
                     r = r +\
                     '    <tr>'+\
                     '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                    '      <td>'+ str(fullname) +'</td>'+\
+                    '      <td><a href="'+ burl + 's/?uid='+ str(alloc_uid) +'">'+ str(fullname) +'</a></td>'+\
                     '      <td>'+ str(entry_date) +'</td>'+\
                     '      <td>'+ str(entry_price) +'</td>'
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
@@ -163,7 +167,7 @@ def get_trades_tbl(uid,w):
                     r = r +\
                     '    <tr>'+\
                     '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                    '      <td>'+ str(fullname) +'</td>'+\
+                    '      <td><a href="'+ burl + 's/?uid='+ str(alloc_uid) +'">'+ str(fullname) +'</a></td>'+\
                     '      <td>'+ str(entry_date) +'</td>'+\
                     '      <td>'+ str(entry_price) +'</td>'
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
