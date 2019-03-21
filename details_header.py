@@ -43,9 +43,9 @@ def get_details_header(uid,burl):
         p_header = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded">'+\
-        '                <span class="title"><font style="font-size: 1.5rem;">'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="right" title="'+ badge_tooltip +'" >'+badge+'</span></font></span><br />'+\
-        '                <span class="text"><span class="desc">'+ content + ' | ' + asset_class + market + symbol + isin +'</span></span>'+\
         print_google_ads('small_leaderboard','right') +\
+        '                <span class="title"><font style="font-size: x-large;">'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="right" title="'+ badge_tooltip +'" >'+badge+'</span></font></span><br />'+\
+        '                <span class="text"><span class="desc">'+ content + ' | ' + asset_class + market + symbol + isin +'</span></span>'+\
         '            </div>'+\
         '        </div>'
 
