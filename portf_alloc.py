@@ -17,7 +17,7 @@ def get_portf_alloc(uid,burl):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname, portfolios.strategy_order_type, symbol_list.uid FROM portfolios "+\
+        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname, portfolios.strategy_order_type FROM portfolios "+\
         "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
         cr.execute(sql)
         rs = cr.fetchall()
@@ -31,7 +31,12 @@ def get_portf_alloc(uid,burl):
             exp_date_str = trade_expiration.strftime("%d-%b-%Y")
             symbol_fullname = row[5]
             strategy_order_type = row[6]
-            symbol_uid = row[7]
+
+            cr_s = connection.cursor(pymysql.cursors.SSCursor)
+            sql_s = "SELECT uid FROM symbol_list WHERE symbol = '"+ symbol +"'"
+            cr_s.execute(sql_s)
+            rs_s = cr_s.fetchall()
+            for row in rs_s: symbol_uid = row[0]
 
             if order_type == 'buy':
                 badge = 'badge-success'
@@ -51,6 +56,7 @@ def get_portf_alloc(uid,burl):
             '                          <td>'+ str(entry_price) +'</td>'+\
             '                          <td>'+ exp_date_str +'</td>'+\
             '                       </tr>'
+        cr_s.close()
         cr.close()
         connection.close()
 
