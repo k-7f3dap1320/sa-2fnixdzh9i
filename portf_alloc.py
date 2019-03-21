@@ -9,7 +9,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def get_portf_alloc(uid):
+def get_portf_alloc(uid,burl):
 
     signal_box = ''; pie_chart = ''
 
@@ -17,7 +17,7 @@ def get_portf_alloc(uid):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname, portfolios.strategy_order_type FROM portfolios "+\
+        sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname, portfolios.strategy_order_type, symbol_list.uid FROM portfolios "+\
         "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
         cr.execute(sql)
         rs = cr.fetchall()
@@ -31,6 +31,7 @@ def get_portf_alloc(uid):
             exp_date_str = trade_expiration.strftime("%d-%b-%Y")
             symbol_fullname = row[5]
             strategy_order_type = row[6]
+            symbol_uid = row[7]
 
             if order_type == 'buy':
                 badge = 'badge-success'
@@ -46,7 +47,7 @@ def get_portf_alloc(uid):
             '                       <tr>'+\
             '                          <th scope="row"><span class="badge '+ badge +'">'+ order_type +'</span></th>'+\
             '                          <td>'+ str(quantity)  +'</td>'+\
-            '                          <td>'+ symbol_fullname +'</td>'+\
+            '                          <td><a href="'+ burl +'s/?uid='+ str(symbol_uid) +'">'+ symbol_fullname +'</a></td>'+\
             '                          <td>'+ str(entry_price) +'</td>'+\
             '                          <td>'+ exp_date_str +'</td>'+\
             '                       </tr>'
