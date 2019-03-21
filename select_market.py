@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_page import *
 from app_head import *
-fromm app_ogp import *
+from app_ogp import *
 from app_metatags import *
 from app_title import *
 from app_body import *
