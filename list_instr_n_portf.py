@@ -176,7 +176,7 @@ def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
         "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
         "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "WHERE symbol_list.symbol NOT LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-        "AND symbol_list.disabled=0 ORDER BY RAND() LIMIT "+ str(maxrow)
+        "AND symbol_list.disabled=0 ORDER BY instruments.y1_signal DESC LIMIT "+ str(maxrow)
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
