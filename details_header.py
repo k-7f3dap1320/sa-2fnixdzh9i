@@ -5,6 +5,7 @@
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
+from print_google_ads import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -45,6 +46,7 @@ def get_details_header(uid,burl):
         '                <div class="title"><h4>'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="right" title="'+ badge_tooltip +'" >'+badge+'</span></h4></div>'+\
         '                <div class="text"><span class="desc">'+ content + ' | ' + asset_class + market + symbol + isin +'</span></div>'+\
         '            </div>'+\
+        print_google_ads('small_leaderboard','right') +\
         '        </div>'
 
         cr_s.close()
