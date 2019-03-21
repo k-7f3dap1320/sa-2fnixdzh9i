@@ -13,7 +13,7 @@ def set_ogp(burl,type):
         '<meta property="og:url" content="http://smartalphatrade.com">'+\
         '<meta property="og:description" content="SmartAlpha will help you to turn any trading portfolio into a profitable one.">'+\
         '<meta property="og:type" content="article">'+\
-        '<meta property="og:image" content="'+ burl +'static/ogp.png?'+ get_random_num(9) +'">'
+        '<meta property="og:image" content="'+ burl +'static/ogp.png?'+ str(get_random_num(9) ) +'">'
 
     except Exception as e: print(e)
     return r
