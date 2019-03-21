@@ -12,7 +12,7 @@ from datetime import timedelta
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_trades_tbl(uid,w):
+def get_trades_tbl(uid,w,burl):
 
     r = ''
     try:
@@ -154,7 +154,7 @@ def get_trades_tbl(uid,w):
                     r = r +\
                     '    <tr>'+\
                     '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                    '      <td>'+ str(fullname) +'</td>'+\
+                    '      <td><a href="'+ burl + 's/?uid='+ str(alloc_uid) +'">'+ str(fullname) +'</a></td>'+\
                     '      <td>'+ str(entry_date) +'</td>'+\
                     '      <td>'+ str(entry_price) +'</td>'
                     if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
@@ -214,8 +214,8 @@ def get_trades_box(uid,burl):
             '                   </li>'+\
             '               </ul>'+\
             '               <div class="tab-content">'+\
-            '                   <div id="'+ tab_active_id +'" class="tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active') +'</div>'+\
-            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired') +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
+            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
             '               </div>'+\
             '            </div>'+\
             '        </div>'
