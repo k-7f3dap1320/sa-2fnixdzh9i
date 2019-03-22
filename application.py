@@ -30,6 +30,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
+@application.route('/error/', endpoint='error', methods=["POST","GET"])
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
@@ -100,6 +101,11 @@ def go():
 
     elif request.endpoint == 'signin':
         c = get_signin_page(appname,burl,err)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
+
+    elif request.endpoint == 'error':
+        c = get_error_page(appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

@@ -24,6 +24,7 @@ from portf_risk_trail_returns import *
 from trades_tab import *
 from font_awesome import *
 from googleanalytics import *
+from error_page import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -52,6 +53,8 @@ def gen_portf_page(uid,appname,burl,pop):
 
         cr.close()
         connection.close()
-    except Exception as e: print(e)
+    except Exception as e:
+        print(e)
+        get_error_page(appname,burl)
 
     return r
