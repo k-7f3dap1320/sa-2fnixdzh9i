@@ -93,7 +93,7 @@ def navbar(burl):
     if allowed_multiple_portf() == True:
         portfolio_button = '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
     else:
-        portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'" data-toggle="modal" data-target="#portf_call_action"><i class="fas fa-edit"></i></button>'
+        portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'" data-toggle="modal" data-target="#portf_call_action"><i class="fas fa-edit"></i></button>'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
