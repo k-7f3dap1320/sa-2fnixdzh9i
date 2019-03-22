@@ -43,7 +43,7 @@ def get_error_page_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded">'+\
-        popup_login(err,burl) +\
+        popup_error_msg(burl) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\

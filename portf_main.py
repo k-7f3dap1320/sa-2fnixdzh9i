@@ -37,10 +37,10 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def allowed_multiple_portf():
     r = False
     try:
-
         user_id = get_user_numeric_id()
         portf_owner = 0
         has_portf = False
+        allowed_creation = False
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -50,8 +50,10 @@ def allowed_multiple_portf():
         for row in rs: portf_owner = row[0]
         if portf_owner != 0: has_portf = True
 
-        r = False
+        if is_subscribed_user() == 1: allowed_creation = True
+        if has_portf == False: allowed_creation = True
 
+        r = allowed_creation
     except Exception as e: print(e)
     return r
 

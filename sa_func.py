@@ -32,6 +32,21 @@ def get_avatar(burl,height):
     except Exception as e: print(e)
     return r
 
+def is_subscribed_user():
+    r = 0
+    try:
+        uid = user_get_uid()
+        is_subscribed = 0
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT is_subscribed FROM users WHERE uid = '"+ str(uid) +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: is_subscribed = row[0]
+        r = is_subscribed
+    except Exception as e: print(e)
+    return r
+
 def get_user_numeric_id():
     r = ''
     try:

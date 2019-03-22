@@ -64,6 +64,12 @@ def navbar(burl):
     l_myportfolio = 'My Portfolio(s)'
     l_settings = 'Settings'
     l_logout = 'Logout'
+    l_create_portfolio = 'Create a new portfolio'
+
+    if allowed_multiple_portf() == True:
+        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
+    else:
+        portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></button>'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
@@ -77,7 +83,7 @@ def navbar(burl):
         '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>' +\
-        '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a New Portfolio"><i class="fas fa-edit"></i></a>'
+        portfolio_button
     else:
         rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 
