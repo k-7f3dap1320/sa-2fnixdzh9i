@@ -17,12 +17,13 @@ def popup_error_msg(burl):
     l_descr = 'Try to use the search bar to type a function or search for a particular information,  '+\
     '<div>&nbsp;</div>' +\
     '<div><a href="'+ burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
+
     l_class = 'alert alert-warning'
 
     try:
 
         l_title = l_error_title
-        l_descr = l_error_descr
+        l_descr = l_descr + ' '+ l_error_descr
         l_class = l_error_class
 
         r = ''+\
