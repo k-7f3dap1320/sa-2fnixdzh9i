@@ -65,11 +65,35 @@ def navbar(burl):
     l_settings = 'Settings'
     l_logout = 'Logout'
     l_create_portfolio = 'Create a new portfolio'
+    l_portf_call_action_header = 'We are working on it...'
+    l_portf_call_action_body = 'Oh! Sorry for now as we are still under development, SmartAlpha is limited to one portfolio per member. '+\
+    'If you want to create a new portfolio you must [delete] your current one first.'
+    l_portf_call_action_button_list = 'View my list of portfolio'
+
+    modal_portf_call_action = '' +\
+    '  <div class="modal" id="portf_call_action">'+\
+    '    <div class="modal-dialog">'+\
+    '      <div class="modal-content">'+\
+    '        <div class="modal-header">'+\
+    '          <h4 class="modal-title">'+ l_portf_call_action_header +'</h4>'+\
+    '          <button type="button" class="close" data-dismiss="modal">&times;</button>'+\
+    '        </div>'+\
+    '        <div class="modal-body">'+\
+    '          Modal body..'+\
+    '        </div>'+\
+    '        <!-- Modal footer -->'+\
+    '        <div class="modal-footer">'+\
+    '          <button type="button" class="btn btn-info" data-target="'+ burl + 'ls/?w=portf' +'">'+ l_portf_call_action_button_list +'</button>'+\
+    '        </div>'+\
+    '      </div>'+\
+    '    </div>'+\
+    '  </div>'
+
 
     if allowed_multiple_portf() == True:
         portfolio_button = '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
     else:
-        portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></button>'
+        portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'" data-toggle="modal" data-target="#portf_call_action"><i class="fas fa-edit"></i></button>'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
