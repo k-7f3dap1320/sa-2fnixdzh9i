@@ -12,7 +12,7 @@ from googleanalytics import *; from tablesorter import *
 def popup_error_msg(burl):
     r = ''
     l_error_title = '<i class="fas fa-exclamation-circle"></i>&nbsp;The page or content cannot be found.'
-    l_error_descr = 'The page might not be available anymore. <div><a href="'+ burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
+    l_error_descr = 'The page might not be available anymore. <div>&nbsp;</div><div><a href="'+ burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
     l_error_class = 'alert alert-danger'
 
     l_class = 'alert alert-warning'
