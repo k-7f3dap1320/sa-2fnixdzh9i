@@ -20,10 +20,10 @@ def popup_error_msg(burl):
     l_class = 'alert alert-warning'
 
     try:
-        if err == '1':
-            l_title = l_error_title
-            l_descr = l_error_descr
-            l_class = l_error_class
+
+        l_title = l_error_title
+        l_descr = l_error_descr
+        l_class = l_error_class
 
         r = ''+\
         '<div class="'+ l_class +'" role="alert">' +\
