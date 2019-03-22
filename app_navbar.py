@@ -67,7 +67,7 @@ def navbar(burl):
     l_create_portfolio = 'Create a new portfolio'
     l_portf_call_action_header = 'We are working on it...'
     l_portf_call_action_body = 'Oh! Sorry for now as we are still under development, SmartAlpha is limited to one portfolio per member. '+\
-    'If you want to create a new portfolio you must [delete] your current one first.'
+    'If you want to create a new portfolio you must [delete] your current one first. You can just go to your list of portfolio to proceed.'
     l_portf_call_action_button_list = 'View my list of portfolio'
 
     modal_portf_call_action = '' +\
@@ -83,7 +83,7 @@ def navbar(burl):
     '        </div>'+\
     '        <!-- Modal footer -->'+\
     '        <div class="modal-footer">'+\
-    '          <button type="button" class="btn btn-info" data-target="'+ burl + 'ls/?w=portf' +'">'+ l_portf_call_action_button_list +'</button>'+\
+    '          <a href="'+ burl + 'ls/?w=portf' +'" type="button" class="btn btn-info">'+ l_portf_call_action_button_list +'</a>'+\
     '        </div>'+\
     '      </div>'+\
     '    </div>'+\
