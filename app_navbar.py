@@ -11,6 +11,15 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def get_top_trader_menu(burl):
+    r = ''
+    try:
+        l_top_trader = 'Top Traders'
+        link = burl + 'ls/?w=portf&x='
+        r = '<a href="'+ link +'">'+ l_top_trader +'</a>'
+    except Exception as e: print(e)
+    return r
+
 def get_market_menu_selection(burl):
     r = ''
     try:
@@ -18,7 +27,7 @@ def get_market_menu_selection(burl):
         l_all_market_selection = 'Show all markets'
         asset_class_selection = ''
         markets_selection = ''
-        markets_caption = '{market} Market'
+        l_markets_caption = '{market} Market'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -37,7 +46,7 @@ def get_market_menu_selection(burl):
         for row in rs:
             market_id = row[0]
             market_label = row[1]
-            markets_selection = markets_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(market_id) +'">'+ str(markets_caption.replace('{market}',market_label) ) +'</a>'
+            markets_selection = markets_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(market_id) +'">'+ str(l_markets_caption.replace('{market}',market_label) ) +'</a>'
 
         r = '' +\
         '    <li class="nav-item dropdown">'+\
@@ -125,6 +134,7 @@ def navbar(burl):
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
     get_market_menu_selection(burl) +\
+    get_top_trader_menu() +\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
