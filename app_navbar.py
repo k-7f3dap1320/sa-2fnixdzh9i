@@ -16,7 +16,8 @@ def get_top_trader_menu(burl):
     try:
         l_top_trader = 'Top Traders'
         link = burl + 'ls/?w=portf&x='
-        r = '<a href="'+ link +'">'+ l_top_trader +'</a>'
+        r = '<li class="nav-item active"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'</a></li>'
+
     except Exception as e: print(e)
     return r
 
