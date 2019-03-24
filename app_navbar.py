@@ -134,7 +134,7 @@ def navbar(burl):
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
     get_market_menu_selection(burl) +\
-    get_top_trader_menu() +\
+    get_top_trader_menu(burl) +\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
