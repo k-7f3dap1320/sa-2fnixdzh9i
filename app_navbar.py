@@ -17,10 +17,13 @@ def get_top_trader_menu(burl):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.w1 FROM instruments JOIN feed ON feed.symbol = instruments.symbol WHERE instruments.symbol LIKE '%"+ get_portf_suffix() +"%' AND instruments.w1 > 0 AND feed.globalrank <=200"
-        num_trader = cr.execute(sql)
+        cr.execute(sql)
+        rs = cr.fetchall()
+        i = 0
+        for row in rs: i += 1
         l_top_trader = 'Top Traders'
         link = burl + 'ls/?w=portf&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'&nbsp;<span class="badge badge-pill badge-danger">'+ str(num_trader) +'</span></a></li>'
+        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'&nbsp;<span class="badge badge-pill badge-danger">'+ str(i) +'</span></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
