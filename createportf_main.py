@@ -89,8 +89,8 @@ def get_selectportf_box(burl,step,mode,x):
         l_back_button = 'back'
         l_skip_process_button = 'Skip this process'
 
-        button_back = '<button type="button" class="btn btn-md btn-secondary" onClick="javascript:history.back();">'+ l_back_button +'</button>'
-        button_process_skip = '<a href="'+ burl +'" class="btn btn-md btn-secondary">'+ l_skip_process_button +'</a>'
+        button_back = '<button type="button" style="font-size: medium;" class="btn btn-lg btn-success" onClick="javascript:history.back();">'+ l_back_button +'</button>'
+        button_process_skip = '<a href="'+ burl +'" style="font-size: medium;" class="btn btn-lg btn-primary">'+ l_skip_process_button +'</a>'
 
         portf_selection = '<h5>'
         for i in range(5):
