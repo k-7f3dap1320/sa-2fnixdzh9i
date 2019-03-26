@@ -97,6 +97,7 @@ def get_dashboard_menu(burl):
     r = ''
     try:
         l_dashboard = 'Dashboard'
+        i = 0
         l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1">'+ l_dashboard +'<!--<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup>--></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
