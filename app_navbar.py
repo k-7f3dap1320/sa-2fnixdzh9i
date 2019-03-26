@@ -160,7 +160,6 @@ def navbar(burl):
     '      </li>'+\
     '  </ul>'+\
     '</div>'+\
-    '</nav>'+\
-    modal_portf_call_action
-
+    '</nav>'
+    
     return r
