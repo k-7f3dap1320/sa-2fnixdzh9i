@@ -23,7 +23,7 @@ def get_top_signals_menu(burl):
         for row in rs: i += 1
         l_top_signal = 'Top Signals'
         link = burl + 'ls/?w=instr&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_signal +'&nbsp;<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
@@ -41,7 +41,7 @@ def get_top_trader_menu(burl):
         for row in rs: i += 1
         l_top_trader = 'Top Traders'
         link = burl + 'ls/?w=portf&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'&nbsp;<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
