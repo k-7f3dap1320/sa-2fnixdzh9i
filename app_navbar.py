@@ -152,7 +152,7 @@ def navbar(burl):
 
 
     if user_is_login() == 1:
-        rightsidemenu = +\
+        rightsidemenu = '' +\
         get_dashboard_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,18)+'&nbsp;'+ get_nickname() +'</a>'+\
