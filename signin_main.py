@@ -14,6 +14,8 @@ def get_login_form(burl,theme):
     r = ''
     try:
 
+        l_register_link = 'Register'
+        l_forgot_password = 'Forgot password'
         if theme == 'dark':
             sign_in_class = 'form-signin-text-dark'
             logo = 'logo.png'
@@ -29,7 +31,7 @@ def get_login_form(burl,theme):
         '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
         '<div>&nbsp;</div>'+\
-        '<div><span style="float: left;"><a href="'+ burl +'n/?uid=0" class="text-info">Register for free</a></span><span style="float: right;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank" class="text-info">Forgot password</a></span></div>'+\
+        '<div><span style="float: left;"><a href="'+ burl +'n/?uid=0" class="text-info">'+ l_register_link +'</a></span><span style="float: right;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank" class="text-info">'+ l_forgot_password +'</a></span></div>'+\
         '    </form>'
     except Exception as e: print(e)
     return r
