@@ -166,6 +166,8 @@ def navbar(burl):
     '&nbsp;'+\
     get_top_trader_menu(burl) +\
     '&nbsp;'+\
+    get_top_signals_menu(burl) +\
+    '&nbsp;'+\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
