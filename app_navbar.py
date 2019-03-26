@@ -11,6 +11,24 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def get_top_signals_menu(burl):
+    r = ''
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT * FROM instruments  WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND w1_signal > 0"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        i = 0
+        for row in rs: i += 1
+        l_top_signal = 'Top Signals'
+        link = burl + 'ls/?w=instr&x='
+        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'&nbsp;<span class="badge badge-pill badge-danger">'+ str(i) +'</span></a></li>'
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+    return r
+
 def get_top_trader_menu(burl):
     r = ''
     try:
@@ -145,7 +163,9 @@ def navbar(burl):
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
     get_market_menu_selection(burl) +\
+    '&nbsp;'+\
     get_top_trader_menu(burl) +\
+    '&nbsp;'+\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
