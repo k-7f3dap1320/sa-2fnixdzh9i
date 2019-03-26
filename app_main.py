@@ -26,7 +26,7 @@ from googleadsense import *
 
 def gen_main_page(x,appname,burl,is_dashboard):
 
-    if is_dashboard == 1:
+    if is_dashboard == str(1):
         dashboard_content = '<div class="row">' + get_trades_box(0,burl) + '</div>'
     else:
         dashboard_content = ''
