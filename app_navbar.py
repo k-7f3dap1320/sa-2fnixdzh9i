@@ -152,7 +152,8 @@ def navbar(burl):
 
 
     if user_is_login() == 1:
-        rightsidemenu = get_dashboard_menu(burl) +\
+        rightsidemenu = +\
+        get_dashboard_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ get_avatar(burl,18)+'&nbsp;'+ get_nickname() +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
@@ -180,11 +181,8 @@ def navbar(burl):
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
     get_market_menu_selection(burl) +\
-    '&nbsp;'+\
     get_top_trader_menu(burl) +\
-    '&nbsp;'+\
     get_top_signals_menu(burl) +\
-    '&nbsp;'+\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
     '      <li class="nav-item">'+\
