@@ -107,10 +107,7 @@ def get_portfolio_button(burl):
     r = ''
     try:
         l_create_portfolio = 'Create a new portfolio'
-        if allowed_multiple_portf() == True:
-            portfolio_button = '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
-        else:
-            portfolio_button = '<button type="button" class="btn btn-lg btn-primary" style="font-size:x-large;" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'" data-toggle="modal" data-target="#portf_call_action"><i class="fas fa-edit"></i></button>'
+        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
         r = portfolio_button
     except Exception as e: print(e)
     return r
@@ -123,33 +120,6 @@ def navbar(burl):
     l_myportfolio = 'My Portfolio(s)'
     l_settings = 'Settings'
     l_logout = 'Logout'
-
-
-    l_portf_call_action_header = 'We are working on it...'
-    l_portf_call_action_body = 'Oh! Sorry for now as we are still under development, SmartAlpha is limited to one portfolio per member. '+\
-    'If you want to create a new portfolio you must [delete] your current one first. You can just go to your list of portfolio to proceed.'
-    l_portf_call_action_button_list = 'View my list of portfolio'
-
-    modal_portf_call_action = '' +\
-    '  <div class="modal" id="portf_call_action">'+\
-    '    <div class="modal-dialog">'+\
-    '      <div class="modal-content">'+\
-    '        <div class="modal-header">'+\
-    '          <h4 class="modal-title">'+ l_portf_call_action_header +'</h4>'+\
-    '          <button type="button" class="close" data-dismiss="modal">&times;</button>'+\
-    '        </div>'+\
-    '        <div class="modal-body">'+\
-    l_portf_call_action_body +\
-    '        </div>'+\
-    '        <!-- Modal footer -->'+\
-    '        <div class="modal-footer">'+\
-    '          <a href="'+ burl + 'ls/?w=portf' +'" type="button" class="btn btn-info">'+ l_portf_call_action_button_list +'</a>'+\
-    '        </div>'+\
-    '      </div>'+\
-    '    </div>'+\
-    '  </div>'
-
-
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
