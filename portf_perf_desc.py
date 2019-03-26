@@ -162,9 +162,7 @@ def get_perf_chart(uid):
 
 def get_chart_box(uid):
     chart_1y_perf = get_perf_chart(uid)
-
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
-    tab_2_label = 'Portfolio vs Benchmark'; tab_2_link = '#bench'; tab_2_id = tab_2_link.replace('#','')
 
     r = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
@@ -173,13 +171,9 @@ def get_chart_box(uid):
     '                    <li class="nav-item">'+\
     '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\
-    '                    <li class="nav-item">'+\
-    '                      <a class="nav-link" data-toggle="pill" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
-    '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
     '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ chart_1y_perf +'</div>'+\
-    '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br />'+ 'This module is not yet available.' +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'
