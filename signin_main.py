@@ -28,6 +28,8 @@ def get_login_form(burl,theme):
         '      <label for="password" class="sr-only">Password</label>'+\
         '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
+        '<div>&nbsp;</div>'+\
+        '<div><span style="float: left;"><a href="'+ burl +'n/?uid=0">Register for free</a></span><span style="float: right;"><a href="'+ burl +'#">Forgot password</a></span></div>'+\
         '    </form>'
     except Exception as e: print(e)
     return r

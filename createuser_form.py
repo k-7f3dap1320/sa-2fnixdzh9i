@@ -29,6 +29,8 @@ def get_user_creation_form(burl):
 
     try:
 
+        l_enter_name = "Enter Name"
+        l_enter_email = "Enter Email"
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -46,7 +48,7 @@ def get_user_creation_form(burl):
         '                 <div class="input-group-prepend">'+\
         '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                 </div>'+\
-        '                 <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your name" required autofocus>'+\
+        '                 <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_enter_name +'" required autofocus>'+\
         '               </div>'+\
         '            </div>'+\
         '        </div>'+\
@@ -56,7 +58,7 @@ def get_user_creation_form(burl):
         '                 <div class="input-group-prepend">'+\
         '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
         '                 </div>'+\
-        '                 <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Your email: you@example.com" required autofocus>'+\
+        '                 <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_enter_email +'" required autofocus>'+\
         '               </div>'+\
         '            </div>'+\
         '        </div>'+\
