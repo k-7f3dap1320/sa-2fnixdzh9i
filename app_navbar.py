@@ -23,7 +23,7 @@ def get_top_signals_menu(burl):
         for row in rs: i += 1
         l_top_signal = 'Top Signals'
         link = burl + 'ls/?w=instr&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'&nbsp;<span class="badge badge-pill badge-danger">'+ str(i) +'</span></a></li>'
+        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_signal +'&nbsp;<span class="badge badge-pill badge-danger">'+ str(i) +'</span></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
