@@ -34,19 +34,13 @@ def get_trades_tbl(uid,w,burl):
         i = 0
         if is_user_prf:
             list_limit = 500
-            sql = "SELECT DISTINCT portfolios.symbol, strategy_order_type, trades.order_type FROM instruments "+\
-            "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
-            "JOIN trades ON trades.symbol = portfolios.symbol "+\
-            "WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
+            sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs:
-                order_type = row[2]
-                strategy_order_type = row[1]
-                if (order_type == 'buy' and strategy_order_type == 'long') or (order_type == 'sell' and strategy_order_type == 'short') or (strategy_order_type == 'long/short'):
-                    if i == 0: user_symbol_selection = user_symbol_selection + " AND (trades.symbol = '"+ str(row[0]) +"' "
-                    else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
-                    i += 1
+                if i == 0: user_symbol_selection = user_symbol_selection + " AND (trades.symbol = '"+ str(row[0]) +"' "
+                else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
+                i += 1
             user_symbol_selection = user_symbol_selection +') '
 
         portf_symbol_selection = ''
@@ -91,7 +85,7 @@ def get_trades_tbl(uid,w,burl):
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
                 "instruments.unit, "+\
-                "trades.status, "+\
+                "trades.strategy_order_type, "+\
                 "trades.uid "
             sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
 
