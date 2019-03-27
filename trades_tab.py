@@ -91,8 +91,8 @@ def get_trades_tbl(uid,w,burl):
                 "trades.uid "+\
                 "FROM instruments "+\
                 "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
-                "JOIN instruments as a_alloc ON a_alloc.symbol =  trades.symbol " +\
                 "JOIN trades ON trades.symbol = portfolios.symbol WHERE instruments.owner = " + str(get_user_numeric_id()) + " "+\
+                "JOIN instruments as a_alloc ON a_alloc.symbol =  trades.symbol " +\
                 "AND ((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
                 "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
                 "OR (portfolios.strategy_order_type = 'long/short') ) AND trades.entry_date <=" + dnstr + " AND "
