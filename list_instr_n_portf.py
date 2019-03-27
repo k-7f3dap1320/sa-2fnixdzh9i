@@ -398,7 +398,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
         list_title = ''
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
-        search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div>'
+        search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;</div>'
         footer_note = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>'
         if mode == 'dashboard':
             list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
@@ -412,7 +412,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '            <div class="box-part rounded '+ list_class +'">'+\
         search_box +\
         list_title +\
-        '            <div>&nbsp;</div>'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
