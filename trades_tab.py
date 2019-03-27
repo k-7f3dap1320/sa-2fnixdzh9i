@@ -205,7 +205,7 @@ def get_trades_box(uid,burl,is_dashboard):
             tab_style_overflow = ''
             if is_dashboard == str(1):
                 div_placement = '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'
-                tab_style_overflow ='overflow-y: scroll; height: 500px;'
+                tab_style_overflow ='overflow-y: scroll; height: 600px;'
 
             box_content = '' +\
             div_placement +\
