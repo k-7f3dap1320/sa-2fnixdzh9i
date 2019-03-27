@@ -378,6 +378,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         l_caption_to_more_assets = 'Unable to find what you are looking for? More list: '
         l_link_to_more_assets = ''
         l_top_ranked = 'Top Ranked'
+        l_your_portfolios = 'Your Portfolio(s)'
 
         if mode != 'portf_select':
             l_link_to_more_assets = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
@@ -395,16 +396,22 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
             else:
                 l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
 
+        list_title = ''
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div>'
         footer_note = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>'
-        if mode == 'dashboard': search_box = ''; list_class = ''; footer_note = ''
+        if mode == 'dashboard':
+            list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
+            search_box = ''
+            list_class = ''
+            footer_note = ''
 
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded '+ list_class +'">'+\
         search_box +\
+        list_title +\
         '            <div>&nbsp;</div>'+\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
