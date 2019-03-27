@@ -163,7 +163,7 @@ def get_trades_tbl(uid,w,burl):
                     '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                     '    </tr>'
                     i += 1
-            elif is_user_prf:
+            else:
                 r = r +\
                 '    <tr>'+\
                 '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
@@ -176,19 +176,6 @@ def get_trades_tbl(uid,w,burl):
                 '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
                 '    </tr>'
                 i += 1
-            else:
-                    r = r +\
-                    '    <tr>'+\
-                    '      <td><span class="'+ badge_class +'">'+ str(order_type) +'</span>'+ badge_today +'</td>'+\
-                    '      <td><a href="'+ burl + 's/?uid='+ str(alloc_uid) +'">'+ str(fullname) +'</a></td>'+\
-                    '      <td>'+ str(entry_date) +'</td>'+\
-                    '      <td>'+ str(entry_price) +'</td>'
-                    if w == 'expired': r = r + '<td>'+ str(close_price) +'</td>'
-                    r = r +\
-                    '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
-                    '    </tr>'
-                    i += 1
             if i == list_limit: break
 
         r = r +\
