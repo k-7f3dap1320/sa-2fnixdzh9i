@@ -32,6 +32,7 @@ def get_trades_tbl(uid,w,burl):
 
         user_symbol_selection = ''
         i = 0
+        """
         if is_user_prf:
             list_limit = 500
             sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
@@ -42,6 +43,7 @@ def get_trades_tbl(uid,w,burl):
                 else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
                 i += 1
             user_symbol_selection = user_symbol_selection +') '
+        """
 
         portf_symbol_selection = ''
         i = 0
@@ -75,6 +77,24 @@ def get_trades_tbl(uid,w,burl):
                 "portfolios.strategy_order_type, "+\
                 "trades.uid "
             sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
+        elif is_user_prf:
+            sql = "SELECT trades.order_type,"+\
+                "trades.fullname,"+\
+                "trades.entry_price,"+\
+                "trades.entry_date,"+\
+                "trades.close_price,"+\
+                "trades.expiration_date,"+\
+                "trades.pnl_pct,"+\
+                "trades.url,"+\
+                "instruments.unit,"+\
+                "trades.status,"+\
+                "trades.uid"+\
+                "FROM instruments "+\
+                "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
+                "JOIN trades ON trades.symbol = portfolios.symbol WHERE instruments.owner = " + str(get_user_numeric_id()) + " "+\
+                "AND ((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
+                "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
+                "OR (portfolios.strategy_order_type = 'long/short') )" + " AND "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
@@ -93,7 +113,7 @@ def get_trades_tbl(uid,w,burl):
         else: sql = sql + " trades.status = 'expired' "
 
         sql = sql + single_selection
-        sql = sql + user_symbol_selection
+        #sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
         sql = sql + ' order by trades.entry_date DESC'
         cr.execute(sql)
