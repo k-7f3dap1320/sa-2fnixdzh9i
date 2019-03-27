@@ -80,8 +80,8 @@ def get_trades_tbl(uid,w,burl):
         elif is_user_prf:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
-                "trades.entry_price, "+\
                 "trades.entry_date, "+\
+                "trades.entry_price, "+\
                 "trades.close_price, "+\
                 "trades.expiration_date, "+\
                 "trades.pnl_pct, "+\
@@ -116,7 +116,6 @@ def get_trades_tbl(uid,w,burl):
         #sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
         sql = sql + ' order by trades.entry_date DESC'
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
 
