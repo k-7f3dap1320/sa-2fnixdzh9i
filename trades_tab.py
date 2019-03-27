@@ -189,7 +189,7 @@ def get_trades_tbl(uid,w,burl):
 
 
 
-def get_trades_box(uid,burl):
+def get_trades_box(uid,burl,is_dashboard):
 
     box_content = ''
 
@@ -201,9 +201,15 @@ def get_trades_box(uid,burl):
             l_box_user_profile_title = ''
             if uid == 0 : l_box_user_profile_title = '<i class="fas fa-piggy-bank"></i>&nbsp;Your tradebook'
 
+            div_placement = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'
+            div_box_sizing = '<div class="box-part rounded">'
+            if is_dashboard == str(1):
+                div_placement = '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'
+                div_box_sizing = '<div class="box-part rounded" style="height: 500px">'
+
             box_content = '' +\
-            '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part rounded">'+\
+            div_placement +\
+            div_box_sizing +\
             '               <span class="sectiont">'+ l_box_user_profile_title +'</span>'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
