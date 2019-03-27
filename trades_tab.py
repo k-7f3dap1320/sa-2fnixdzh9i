@@ -202,14 +202,14 @@ def get_trades_box(uid,burl,is_dashboard):
             if uid == 0 : l_box_user_profile_title = '<i class="fas fa-piggy-bank"></i>&nbsp;Your tradebook'
 
             div_placement = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'
-            div_box_sizing = '<div class="box-part rounded">'
+            tab_style_overflow = ''
             if is_dashboard == str(1):
                 div_placement = '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'
-                div_box_sizing = '<div class="box-part rounded" style="height: 500px">'
+                tab_style_overflow ='overflow: scroll; height: 500px;'
 
             box_content = '' +\
             div_placement +\
-            div_box_sizing +\
+            '<div class="box-part rounded">' +\
             '               <span class="sectiont">'+ l_box_user_profile_title +'</span>'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
             '                   <li class="nav-item">'+\
@@ -220,8 +220,8 @@ def get_trades_box(uid,burl,is_dashboard):
             '                   </li>'+\
             '               </ul>'+\
             '               <div class="tab-content">'+\
-            '                   <div id="'+ tab_active_id +'" class="tab-pane active"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
-            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
+            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
             '               </div>'+\
             '            </div>'+\
             '        </div>'
