@@ -191,7 +191,7 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf,button):
     except Exception as e: print(e)
     return r
 
-def custom_save_portf_page(appname,burl,mode,x):
+def custom_save_portf_page(appname,burl,mode,x,button):
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,x,button) + get_box_portf_save(burl) )
