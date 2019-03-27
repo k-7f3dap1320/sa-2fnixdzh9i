@@ -94,7 +94,7 @@ def get_trades_tbl(uid,w,burl):
                 "JOIN trades ON trades.symbol = portfolios.symbol WHERE instruments.owner = " + str(get_user_numeric_id()) + " "+\
                 "AND ((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
                 "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
-                "OR (portfolios.strategy_order_type = 'long/short') )" + " AND "
+                "OR (portfolios.strategy_order_type = 'long/short') ) AND trades.entry_date <=" + dnstr + " AND "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
