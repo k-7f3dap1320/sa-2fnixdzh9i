@@ -85,7 +85,7 @@ def get_trades_tbl(uid,w,burl):
                 "trades.pnl_pct,  "+\
                 "trades.url,  "+\
                 "instruments.unit, "+\
-                "trades.strategy_order_type, "+\
+                "trades.status, "+\
                 "trades.uid "
             sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
 
