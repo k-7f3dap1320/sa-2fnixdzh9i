@@ -50,7 +50,7 @@ def get_trades_tbl(uid,w,burl):
         single_selection = ''
         if not selected_is_portf and not is_user_prf: single_selection = 'AND trades.uid = ' + str(uid)
 
-        dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d"); dn = dn.strftime("%d-%b-%Y")
+        dn = datetime.datetime.now(); dndf = dn; dnstr = dn.strftime("%Y%m%d"); dn = dn.strftime("%d-%b-%Y")
 
         if selected_is_portf:
             sql = "SELECT trades.order_type, "+\
@@ -140,6 +140,7 @@ def get_trades_tbl(uid,w,burl):
             entry_price = row[3]
             close_price = row[4]
             expiration_date = row[5].strftime("%d-%b-%Y")
+            expiration_date_df = row[5]
             pnl_pct = row[6]
             url = row[7]
             unit = row[8]
@@ -148,7 +149,7 @@ def get_trades_tbl(uid,w,burl):
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-primary">open today</span>'
             elif dn == expiration_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">close today</span>'
-            elif dn > expiration_date and w == 'active': badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @marketOpen</span>'
+            elif dndf > expiration_date_df and w == 'active': badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @marketOpen</span>'
             else: badge_today = ''
             if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
