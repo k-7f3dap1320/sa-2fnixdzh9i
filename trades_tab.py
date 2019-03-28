@@ -239,7 +239,7 @@ def get_trades_box(uid,burl,is_dashboard):
             '               </ul>'+\
             '               <div class="tab-content">'+\
             tab_today_orders_content +\
-            '                   <div id="'+ tab_active_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="tab-pane '+ tab_active_trade +'" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
             '                   <div id="'+ tab_expired_id +'" class="tab-pane fade" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
             '               </div>'+\
             '            </div>'+\
