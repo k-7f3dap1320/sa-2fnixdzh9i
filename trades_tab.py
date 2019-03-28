@@ -206,7 +206,7 @@ def get_trades_box(uid,burl,is_dashboard):
     try:
 
         if not uid == 0 or len(get_user()) > 1:
-            l_tab_today_title = 'Today`s order(s)'; tab_today_id = 'today_orders'
+            l_tab_today_title = 'Today`s order execution'; tab_today_id = 'today_orders'
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             l_box_user_profile_title = ''
