@@ -24,7 +24,7 @@ def get_aggregate_perf():
             symbol = row[0]
         '''
 
-        l_title_aggregate_perf = 'Your Aggregate Signals Performance'
+        l_title_aggregate_perf = '1-year Aggregated Performance'
 
         box_content = '' +\
         '            <div class="box-part rounded">'+\
@@ -75,7 +75,7 @@ def get_control_center(burl):
 def get_control_center_aggregate_perf(burl):
     r = ''
     try:
-        r = '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        r = '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
         get_control_center(burl)+\
         get_aggregate_perf()+\
         '</div>'
