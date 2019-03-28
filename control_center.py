@@ -26,16 +26,13 @@ def get_control_center(burl):
 
         l_title_control_center = 'Control Center'
 
-        box_content = '<div class="box">' +\
-        '   <div class="row">'+\
+        box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
         '               <span class="sectiont"><i class="fas fa-tasks"></i>&nbsp;'+ l_title_control_center +'</span>'+\
         '            </div>'+\
-        '        </div>'+\
-        '   </div>'+\
-        '</div>'
-
+        '        </div>'
+        
         '''
         cr.close()
         connection.close()
