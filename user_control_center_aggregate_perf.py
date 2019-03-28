@@ -24,7 +24,7 @@ def get_aggregate_perf():
             symbol = row[0]
         '''
 
-        l_title_aggregate_perf = 'Performance'
+        l_title_aggregate_perf = 'Your Performance'
 
         box_content = '' +\
         '            <div class="box-part rounded" style="height: 465px;">'+\
