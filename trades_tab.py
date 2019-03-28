@@ -100,7 +100,7 @@ def get_trades_tbl(uid,w,burl):
             sql = sql + "FROM trades JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
 
         if w == 'active': sql = sql + " trades.status = 'active' "
-        else: sql = sql + " trades.status = 'expired' "
+        if w == 'expired': sql = sql + " trades.status = 'expired' "
 
         sql = sql + single_selection
         sql = sql + portf_symbol_selection
