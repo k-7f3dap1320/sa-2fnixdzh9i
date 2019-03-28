@@ -27,7 +27,7 @@ def get_aggregate_perf():
         l_title_aggregate_perf = '1-year Aggregated Performance'
 
         box_content = '' +\
-        '            <div class="box-part rounded" style="height: 415px;">'+\
+        '            <div class="box-part rounded" style="height: 465px;">'+\
         '               <span class="sectiont"><i class="fas fa-chart-area"></i>&nbsp;'+ l_title_aggregate_perf +'</span>'+\
         '            </div>'
 
@@ -58,7 +58,7 @@ def get_control_center(burl):
         l_title_control_center = 'Control Center'
 
         box_content = '' +\
-        '            <div class="box-part rounded" style="height: 300px;">'+\
+        '            <div class="box-part rounded" style="height: 250px;">'+\
         '               <span class="sectiont"><i class="fas fa-tasks"></i>&nbsp;'+ l_title_control_center +'</span>'+\
         '            </div>'
 
