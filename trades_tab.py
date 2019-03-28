@@ -85,6 +85,28 @@ def get_trades_tbl(uid,w,burl):
                 "AND ((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
                 "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
                 "OR (portfolios.strategy_order_type = 'long/short') ) AND trades.entry_date <=" + dnstr + " AND "
+
+        elif w == 'today':
+                "SELECT "+\
+                "trades.order_type, "+\
+                "trades.fullname, "+\
+                "trades.entry_date, "+\
+                "trades.entry_price, "+\
+                "trades.close_price, "+\
+                "trades.expiration_date, "+\
+                "trades.pnl_pct, "+\
+                "trades.url, "+\
+                "a_alloc.unit, "+\
+                "trades.status, "+\
+                "trades.uid "+\
+                "FROM trades "+\
+                "JOIN portfolios ON portfolios.symbol = trades.symbol "+\
+                "JOIN instruments ON instruments.symbol = portfolios.portf_symbol "+\
+                "JOIN instruments as a_alloc ON a_alloc.symbol = portfolios.symbol "+\
+                "WHERE "+\
+                "(trades.expiration_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'expired') OR "+\
+                "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active') OR "+\
+                "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active') "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
@@ -224,7 +246,7 @@ def get_trades_box(uid,burl,is_dashboard):
                 tab_style_overflow ='overflow-y: scroll; max-height: 600px; min-height: 600px;'
                 tab_active_trade = ''
                 tab_today_orders = '<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#'+ tab_today_id +'">'+ l_tab_today_title +'</a></li>'
-                tab_today_orders_content = '<div id="'+ tab_today_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ '' +'</div>'
+                tab_today_orders_content = '<div id="'+ tab_today_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'today',burl) +'</div>'
 
             box_content = '' +\
             div_placement +\
