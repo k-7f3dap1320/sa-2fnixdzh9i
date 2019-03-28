@@ -206,6 +206,7 @@ def get_trades_box(uid,burl,is_dashboard):
     try:
 
         if not uid == 0 or len(get_user()) > 1:
+            l_tab_today_title = 'Today`s order(s)'; tab_today_id = 'today_orders'
             l_tab_active_title = 'Active trade(s)'; tab_active_id = 'active_trades'
             l_tab_expired_title = 'Closed trade(s)'; tab_expired_id = 'expired_trades'
             l_box_user_profile_title = ''
@@ -213,23 +214,31 @@ def get_trades_box(uid,burl,is_dashboard):
 
             div_placement = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'
             tab_style_overflow = ''
+            tab_active_trade = 'active'
+            tab_today_orders = ''
+            tab_today_orders_content = ''
             if is_dashboard == str(1):
                 div_placement = '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'
                 tab_style_overflow ='overflow-y: scroll; max-height: 600px;'
+                tab_active = ''
+                tab_today_orders = '<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#'+ tab_today_id +'">'+ l_tab_today_title +'</a></li>'
+                tab_today_orders_content = '<div id="'+ tab_today_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ '' +'</div>'
 
             box_content = '' +\
             div_placement +\
             '<div class="box-part rounded">' +\
             '               <span class="sectiont">'+ l_box_user_profile_title +'</span>'+\
             '               <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
+            tab_today_orders +\
             '                   <li class="nav-item">'+\
-            '                       <a class="nav-link active" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
+            '                       <a class="nav-link '+ tab_active_trade +'" data-toggle="pill" href="#'+ tab_active_id +'">'+ l_tab_active_title +'</a>'+\
             '                   </li>'+\
             '                   <li class="nav-item">'+\
             '                       <a class="nav-link" data-toggle="pill" href="#'+ tab_expired_id +'">'+ l_tab_expired_title +'</a>'+\
             '                   </li>'+\
             '               </ul>'+\
             '               <div class="tab-content">'+\
+            tab_today_orders_content +\
             '                   <div id="'+ tab_active_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
             '                   <div id="'+ tab_expired_id +'" class="tab-pane fade" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
             '               </div>'+\
