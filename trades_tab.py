@@ -32,18 +32,6 @@ def get_trades_tbl(uid,w,burl):
 
         user_symbol_selection = ''
         i = 0
-        """
-        if is_user_prf:
-            list_limit = 500
-            sql = "SELECT DISTINCT portfolios.symbol FROM instruments JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = "+ str(get_user_numeric_id()) +" "
-            cr.execute(sql)
-            rs = cr.fetchall()
-            for row in rs:
-                if i == 0: user_symbol_selection = user_symbol_selection + " AND (trades.symbol = '"+ str(row[0]) +"' "
-                else: user_symbol_selection = user_symbol_selection + " OR trades.symbol = '"+ str(row[0]) +"' "
-                i += 1
-            user_symbol_selection = user_symbol_selection +') '
-        """
 
         portf_symbol_selection = ''
         i = 0
@@ -115,7 +103,6 @@ def get_trades_tbl(uid,w,burl):
         else: sql = sql + " trades.status = 'expired' "
 
         sql = sql + single_selection
-        #sql = sql + user_symbol_selection
         sql = sql + portf_symbol_selection
         sql = sql + ' order by trades.entry_date DESC'
         print(sql)
