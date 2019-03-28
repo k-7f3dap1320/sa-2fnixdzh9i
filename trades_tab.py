@@ -103,9 +103,12 @@ def get_trades_tbl(uid,w,burl):
                 "JOIN instruments ON instruments.symbol = portfolios.portf_symbol "+\
                 "JOIN instruments as a_alloc ON a_alloc.symbol = portfolios.symbol "+\
                 "WHERE "+\
-                "(trades.entry_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active') OR "+\
+                "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
+                "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
+                "OR (portfolios.strategy_order_type = 'long/short') ) AND "+\
+                "((trades.entry_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active') OR "+\
                 "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active') OR "+\
-                "(trades.expiration_date = " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'expired') "
+                "(trades.expiration_date = " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'expired')) "
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
