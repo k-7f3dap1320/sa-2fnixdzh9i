@@ -66,6 +66,7 @@ def get_trades_tbl(uid,w,burl):
                 "trades.uid "
             sql = sql + "FROM trades JOIN portfolios ON portfolios.symbol = trades.symbol JOIN instruments ON trades.symbol = instruments.symbol WHERE trades.entry_date <=" + dnstr + " AND "
         elif is_user_prf and w != 'today':
+            print("########################################################################################")
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
                 "trades.entry_date, "+\
