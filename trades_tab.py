@@ -140,7 +140,7 @@ def get_trades_tbl(uid,w,burl):
             entry_price = row[3]
             close_price = row[4]
             expiration_date = row[5].strftime("%d-%b-%Y")
-            expiration_date_str = str(row[5].strftime("%d%b%Y"))
+            expiration_date_str = str(row[5].strftime("%d%m%Y"))
             pnl_pct = row[6]
             url = row[7]
             unit = row[8]
