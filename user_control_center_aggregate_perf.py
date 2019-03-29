@@ -110,24 +110,42 @@ def get_control_center(burl):
         l_control_center_close_trade = 'You have to close {#} trade(s) at the best available price.'
         l_control_center_pending_trade = 'You have {#} trade(s) that you have to get ready to close at market open.'
 
-        l_control_center_open_trade = l_control_center_open_trade.replace('{#}', str(get_num_orders('open')) )
-        l_control_center_close_trade = l_control_center_close_trade.replace('{#}', str(get_num_orders('close')) )
-        l_control_center_pending_trade = l_control_center_pending_trade.replace('{#}', str(get_num_orders('pending')) )
+        num_open_trades = get_num_orders('open'))
+        num_close_trades = str(get_num_orders('close'))
+        num_pending_trades =str(get_num_orders('pending'))
+
+        l_control_center_open_trade = l_control_center_open_trade.replace('{#}', str(num_open_trades) )
+        l_control_center_close_trade = l_control_center_close_trade.replace('{#}', str(num_close_trades) )
+        l_control_center_pending_trade = l_control_center_pending_trade.replace('{#}', str(num_close_trades) )
+
+        num_open_trades = ''
+        num_close_trades = ''
+        num_pending_trades = ''
+
+        if num_open_trades > 0:
+            open_trades = ' '+\
+            '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
+            '<span style="font-size: small;">' + l_control_center_open_trade +'</span>'+\
+            '    <span class="badge badge-primary badge-pill">'+ str(num_open_trades) +'</span>'+\
+            '  </li>'
+        if num_close_trades > 0:
+            close_trades = ' '+\
+            '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
+            '<span style="font-size: small;">' + l_control_center_close_trade +'</span>' +\
+            '    <span class="badge badge-warning badge-pill">'+ str( num_close_trades ) +'</span>'+\
+            '  </li>'
+        if num_pending_trades > 0:
+            pending_trades = ' '+\
+            '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
+            '<span style="font-size: small;">' + l_control_center_pending_trade +'</span>' +\
+            '    <span class="badge badge-secondary badge-pill">'+ str( num_pending_trades ) +'</span>'+\
+            '  </li>'
 
         control_center_content = ' '+\
         '<ul class="list-group">'+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small;">' + l_control_center_open_trade +'</span>'+\
-        '    <span class="badge badge-primary badge-pill">'+ str(get_num_orders('open')) +'</span>'+\
-        '  </li>'+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small;">' + l_control_center_close_trade +'</span>' +\
-        '    <span class="badge badge-warning badge-pill">'+ str( get_num_orders('close') ) +'</span>'+\
-        '  </li>'+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small;">' + l_control_center_pending_trade +'</span>' +\
-        '    <span class="badge badge-secondary badge-pill">'+ str( get_num_orders('pending') ) +'</span>'+\
-        '  </li>'+\
+        num_open_trades +\
+        num_close_trades +\
+        num_pending_trades +\
         '</ul>'
 
         l_title_control_center = 'Control Center'
