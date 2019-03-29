@@ -77,25 +77,20 @@ def get_card(x,t,burl):
             color = "black"
             portf_content_by = 'Portfolio by '
 
-            if badge.find('-') == -1:
+            if badge.find('-0') == -1 or badge.find('-1') == -1 or
+            badge.find('-2') == -1 or badge.find('-3') == -1 or
+            badge.find('-4') == -1 or badge.find('-5') == -1 or
+            badge.find('-6') == -1 or badge.find('-7') == -1 or
+            badge.find('-8') == -1 or badge.find('-9') == -1 :
                 badge_class = 'badge badge-success'
                 expl_label = "*Potential returns in the next 7 days"
                 if t == 1:
                     color = "green"
-                badge = badge.replace('down','<i class="fas fa-caret-down"></i>')
-                badge = str(badge)
-                badgestr = badge.replace("down","dddd")
-                print("#################### (1XX) : " + badgestr )
             else:
                 badge_class = 'badge badge-danger'
                 expl_label = "*Potential risk in the next 7 days"
                 if t == 1:
                     color = "red"
-                badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
-                badge = str(badge)
-                badgestr = badge.replace("up","u")
-                print("#################### (2XX) : " + badgestr )
-
 
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
