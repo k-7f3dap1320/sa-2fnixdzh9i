@@ -13,26 +13,74 @@ from user_dashboard_count import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def gen_aggregate_perf_graph():
+    r = ''
+    try:
+
+        l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
+
+        portf_owner = get_user_numeric_id()
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = ' '+\
+        'SELECT DISTINCT chart_data.date, s.nav '+\
+        'FROM chart_data '+\
+        'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
+        'JOIN (SELECT sum(chart_data.price_close) as nav, chart_data.date FROM chart_data '+\
+        'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
+        'WHERE instruments.owner = '+ str(portf_owner) +' GROUP BY chart_data.date) AS s ON s.date = chart_data.date '+\
+        'WHERE instruments.owner = '+ str(portf_owner) +' ORDER BY chart_data.date'
+        cr.execute(sql)
+        rs = cr.fetchall()
+        i = 0
+        chart_rows = ''
+        for row in rs:
+            date = row[0].strftime("%d-%m-%Y")
+            nav = row[1]
+            if i == 0:
+                chart_rows = "['"+ str(date) +"',  "+ str(nav) +"]"
+            else:
+                chart_rows = ",['"+ str(date) +"',  "+ str(nav) +"]"
+
+            i += 1
+        r = "<script>"+\
+        "google.charts.load('current', {'packages':['corechart']}); "+\
+        "google.charts.setOnLoadCallback(drawChart); "+\
+        "function drawChart() { "+\
+        "  var data = google.visualization.arrayToDataTable([ "+\
+        "    ['text', '"+ l_aggregate_perf_series_name +"'], "+\
+        chart_rows +\
+        "  ]); "+\
+        "  var options = { "+\
+        "    title: '"+ l_aggregate_perf_series_name +"', "+\
+        "    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}, "+\
+        "    vAxis: {minValue: 600} "+\
+        "  }; "+\
+        "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
+        "  chart.draw(data, options); "+\
+        "} "+\
+        "</script>"+\
+        "<div id='aggr_perf_chart_div'></div>"
+
+        cr.close()
+        connection.close()
+
+    except Exception as e: print(e)
+    return r
+
 def get_aggregate_perf():
 
     box_content = ''
 
     try:
-        '''
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT "
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            symbol = row[0]
-        '''
 
         l_title_aggregate_perf = 'Your Performance'
 
         box_content = '' +\
         '            <div class="box-part rounded" style="height: 465px;">'+\
         '               <span class="sectiont"><i class="fas fa-chart-area"></i>&nbsp;'+ l_title_aggregate_perf +'</span>'+\
+        gen_aggregate_perf_graph() +\
         '            </div>'
 
         '''
