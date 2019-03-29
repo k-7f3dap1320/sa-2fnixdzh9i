@@ -53,19 +53,19 @@ def get_num_orders(t):
 
         if t == 'open':
             query_condition = " "+\
-            "trades.entry_date = "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'active' AND "+\
+            "trades.entry_date = "+ str(dnstr) +" AND instruments.owner = '"+ str(get_user_numeric_id() ) +"' AND status = 'active' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') ) "
         if t == 'pending':
             query_condition = " "+\
-            "trades.expiration_date <= "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'active' AND "+\
+            "trades.expiration_date <= "+ str(dnstr) +" AND instruments.owner = '"+ str(get_user_numeric_id() ) +"' AND status = 'active' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') ) "
         if t == 'close':
             query_condition = " "+\
-            "trades.expiration_date = "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'expired' AND "+\
+            "trades.expiration_date = "+ str(dnstr) +" AND instruments.owner = '"+ str(get_user_numeric_id() ) +"' AND status = 'expired' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') )"
