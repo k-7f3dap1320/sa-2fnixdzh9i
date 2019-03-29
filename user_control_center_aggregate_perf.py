@@ -53,7 +53,7 @@ def gen_aggregate_perf_graph():
         chart_rows +\
         "  ]); "+\
         "  var options = { "+\
-        "    title: '"+ l_aggregate_perf_series_name +"', "+\
+        "    title: '', "+\
         "    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}, "+\
         "    chartArea:{width:'80%',height:'80%'}, "+\
         "    vAxis: {minValue: 600} "+\
@@ -62,7 +62,7 @@ def gen_aggregate_perf_graph():
         "  chart.draw(data, options); "+\
         "} "+\
         "</script>"+\
-        "<div id='aggr_perf_chart_div' style='height:450px;'></div>"
+        "<div id='aggr_perf_chart_div' style='height:400px;'></div>"
 
         cr.close()
         connection.close()
