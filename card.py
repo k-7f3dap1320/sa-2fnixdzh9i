@@ -83,6 +83,7 @@ def get_card(x,t,burl):
                 if t == 1:
                     color = "green"
                 badge = badge.replace('down','<i class="fas fa-caret-down"></i>')
+                badge = str(badge)
                 badgestr = badge.replace("down","dddd")
                 print("#################### (1XX) : " + badgestr )
             else:
@@ -91,12 +92,10 @@ def get_card(x,t,burl):
                 if t == 1:
                     color = "red"
                 badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
+                badge = str(badge)
                 badgestr = badge.replace("up","u")
                 print("#################### (2XX) : " + badgestr )
 
-            test ="up -10%"
-            test_2 = test.replace("up","dd")
-            print("######################## (XXXXX) : " + test_2)
 
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
