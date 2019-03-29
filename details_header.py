@@ -33,7 +33,11 @@ def get_details_header(uid,burl):
             else:
                 isin = ''
 
-        if badge.find('-') == -1:
+        if (badge.find('-0') == -1 and badge.find('-1') == -1 and
+        badge.find('-2') == -1 and badge.find('-3') == -1 and
+        badge.find('-4') == -1 and badge.find('-5') == -1 and
+        badge.find('-6') == -1 and badge.find('-7') == -1 and
+        badge.find('-8') == -1 and badge.find('-9') == -1) :
             badge_class = 'badge badge-success'
         else:
             badge_class = 'badge badge-danger'
