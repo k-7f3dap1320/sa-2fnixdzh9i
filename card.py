@@ -90,6 +90,8 @@ def get_card(x,t,burl):
                     color = "red"
                 badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
 
+            print("#################### : " + badge )
+
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
 
