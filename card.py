@@ -83,7 +83,7 @@ def get_card(x,t,burl):
                 if t == 1:
                     color = "green"
                 badge = badge.replace('down','<i class="fas fa-caret-down"></i>')
-                badgestr = badge.replace('down','<i class="fas fa-caret-down"></i>')
+                badgestr = badge.replace('down','d')
                 print("#################### (1) : " + badgestr )
             else:
                 badge_class = 'badge badge-danger'
@@ -91,7 +91,7 @@ def get_card(x,t,burl):
                 if t == 1:
                     color = "red"
                 badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
-                badgestr = badge.replace('up','<i class="fas fa-caret-up"></i>')
+                badgestr = badge.replace('up','u')
                 print("#################### (2) : " + badgestr )
 
 
