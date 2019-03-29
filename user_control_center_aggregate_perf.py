@@ -122,11 +122,11 @@ def get_control_center(burl):
         '  </li>'+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
         l_control_center_close_trade +\
-        '    <span class="badge badge-primary badge-pill">'+ str( get_num_orders('close') ) +'</span>'+\
+        '    <span class="badge badge-warning badge-pill">'+ str( get_num_orders('close') ) +'</span>'+\
         '  </li>'+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
         l_control_center_pending_trade +\
-        '    <span class="badge badge-primary badge-pill">'+ str( get_num_orders('pending') ) +'</span>'+\
+        '    <span class="badge badge-secondary badge-pill">'+ str( get_num_orders('pending') ) +'</span>'+\
         '  </li>'+\
         '</ul>'
 
