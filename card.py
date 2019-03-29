@@ -84,7 +84,7 @@ def get_card(x,t,burl):
                     color = "green"
                 badge = badge.replace('down','<i class="fas fa-caret-down"></i>')
                 badgestr = badge.replace('down','d')
-                print("#################### (1) : " + badgestr )
+                print("#################### (1XX) : " + badgestr )
             else:
                 badge_class = 'badge badge-danger'
                 expl_label = "*Potential risk in the next 7 days"
@@ -92,7 +92,7 @@ def get_card(x,t,burl):
                     color = "red"
                 badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
                 badgestr = badge.replace('up','u')
-                print("#################### (2) : " + badgestr )
+                print("#################### (2XX) : " + badgestr )
 
 
             if t == 9:
