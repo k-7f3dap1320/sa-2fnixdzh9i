@@ -54,7 +54,8 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}, "+\
+        "    hAxis: {title: '',  titleTextStyle: {color: '#333'}}, "+\
+        "    legend: {position: 'none'}, "+\
         "    chartArea:{width:'80%',height:'80%'}, "+\
         "    vAxis: {minValue: 600} "+\
         "  }; "+\
