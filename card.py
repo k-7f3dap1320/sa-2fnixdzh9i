@@ -82,13 +82,13 @@ def get_card(x,t,burl):
                 expl_label = "*Potential returns in the next 7 days"
                 if t == 1:
                     color = "green"
-                badge.replace('down','<i class="fas fa-caret-down"></i>')
+                badge = badge.replace('down','<i class="fas fa-caret-down"></i>')
             else:
                 badge_class = 'badge badge-danger'
                 expl_label = "*Potential risk in the next 7 days"
                 if t == 1:
                     color = "red"
-                badge.replace('up','<i class="fas fa-caret-up"></i>')
+                badge = badge.replace('up','<i class="fas fa-caret-up"></i>')
 
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
