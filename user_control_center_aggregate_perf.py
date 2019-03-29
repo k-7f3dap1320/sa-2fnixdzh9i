@@ -43,7 +43,7 @@ def gen_aggregate_perf_graph():
             else:
                 chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
             i += 1
-            
+
         r = "<script>"+\
         "google.charts.load('current', {'packages':['corechart']}); "+\
         "google.charts.setOnLoadCallback(drawChart); "+\
@@ -55,6 +55,7 @@ def gen_aggregate_perf_graph():
         "  var options = { "+\
         "    title: '"+ l_aggregate_perf_series_name +"', "+\
         "    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}}, "+\
+        "    chartArea:{width:'80%',height:'80%'}, "+\
         "    vAxis: {minValue: 600} "+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
