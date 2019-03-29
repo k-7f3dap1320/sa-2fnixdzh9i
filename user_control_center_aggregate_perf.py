@@ -122,19 +122,19 @@ def get_control_center(burl):
         num_close_trades = ''
         num_pending_trades = ''
 
-        if num_open_trades != '0':
+        if num_open_trades != 0:
             open_trades = ' '+\
             '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
             '<span style="font-size: small;">' + l_control_center_open_trade +'</span>'+\
             '    <span class="badge badge-primary badge-pill">'+ str(num_open_trades) +'</span>'+\
             '  </li>'
-        if num_close_trades != '0':
+        if num_close_trades != 0:
             close_trades = ' '+\
             '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
             '<span style="font-size: small;">' + l_control_center_close_trade +'</span>' +\
             '    <span class="badge badge-warning badge-pill">'+ str( num_close_trades ) +'</span>'+\
             '  </li>'
-        if num_pending_trades != '0':
+        if num_pending_trades != 0:
             pending_trades = ' '+\
             '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
             '<span style="font-size: small;">' + l_control_center_pending_trade +'</span>' +\
@@ -143,9 +143,9 @@ def get_control_center(burl):
 
         control_center_content = ' '+\
         '<ul class="list-group">'+\
-        num_open_trades +\
-        num_close_trades +\
-        num_pending_trades +\
+        open_trades +\
+        close_trades +\
+        pending_trades +\
         '</ul>'
 
         l_title_control_center = 'Control Center'
