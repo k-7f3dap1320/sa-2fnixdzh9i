@@ -172,8 +172,8 @@ def get_trades_tbl(uid,w,burl):
             if selected_is_portf: strategy_order_type = row[9]
 
             if dn == entry_date: badge_today = '&nbsp;&nbsp;<span class="badge badge-primary">open today</span>'
-            elif dn == expiration_date and w == 'expired': badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">closed today</span>'
-            elif int(dnstr) >= int(expiration_date_str) and w == 'active': badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @marketOpen</span>'
+            elif dn == expiration_date and (w == 'expired' or w == 'today'): badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">closed today</span>'
+            elif int(dnstr) >= int(expiration_date_str) and (w == 'active' or w == 'today'): badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @marketOpen</span>'
             else: badge_today = ''
             if order_type == 'buy': badge_class = 'badge badge-success'
             else: badge_class = 'badge badge-danger'
