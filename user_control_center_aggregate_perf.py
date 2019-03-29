@@ -118,9 +118,9 @@ def get_control_center(burl):
         l_control_center_close_trade = l_control_center_close_trade.replace('{#}', str(num_close_trades) )
         l_control_center_pending_trade = l_control_center_pending_trade.replace('{#}', str(num_close_trades) )
 
-        num_open_trades = ''
-        num_close_trades = ''
-        num_pending_trades = ''
+        open_trades = ''
+        close_trades = ''
+        pending_trades = ''
 
         if num_open_trades != 0:
             open_trades = ' '+\
