@@ -117,15 +117,15 @@ def get_control_center(burl):
         control_center_content = ' '+\
         '<ul class="list-group">'+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        l_control_center_open_trade +\
+        '<span style="font-size: small;">' + l_control_center_open_trade +'</span>'+\
         '    <span class="badge badge-primary badge-pill">'+ str(get_num_orders('open')) +'</span>'+\
         '  </li>'+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        l_control_center_close_trade +\
+        '<span style="font-size: small;">' + l_control_center_close_trade +'</span>' +\
         '    <span class="badge badge-warning badge-pill">'+ str( get_num_orders('close') ) +'</span>'+\
         '  </li>'+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        l_control_center_pending_trade +\
+        '<span style="font-size: small;">' + l_control_center_pending_trade +'</span>' +\
         '    <span class="badge badge-secondary badge-pill">'+ str( get_num_orders('pending') ) +'</span>'+\
         '  </li>'+\
         '</ul>'
