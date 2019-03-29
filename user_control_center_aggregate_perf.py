@@ -54,9 +54,9 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: '',  titleTextStyle: {color: '#333'}}, "+\
+        "    hAxis: {title: '',  titleTextStyle: {color: '#333'}, textPosition: 'none'}, "+\
         "    legend: {position: 'none'}, "+\
-        "    chartArea:{width:'80%',height:'80%'}, "+\
+        "    chartArea:{width:'90%',height:'80%'}, "+\
         "    vAxis: {minValue: 600} "+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
