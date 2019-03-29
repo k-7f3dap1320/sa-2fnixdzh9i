@@ -94,6 +94,9 @@ def get_card(x,t,burl):
                 badgestr = badge.replace("up","u")
                 print("#################### (2XX) : " + badgestr )
 
+            test ="up -10%"
+            test_2 = test.replace("up","dd")
+            print("######################## (XXXXX) : " + test_2)
 
             if t == 9:
                 expl_label = "*Potential returns in the next 7 days"
