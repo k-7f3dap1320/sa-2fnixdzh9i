@@ -6,6 +6,7 @@ from search import *
 from sa_func import *
 from app_login import *
 from sa_db import *
+from user_dashboard_count import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
@@ -98,7 +99,8 @@ def get_dashboard_menu(burl):
     try:
         l_dashboard = 'Dashboard'
         i = 0
-        l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1">'+ l_dashboard +'<!--<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup>--></a></li>'
+        num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
+        l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1">'+ l_dashboard +'<sup><span class="badge badge-pill badge-info">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
     return r
