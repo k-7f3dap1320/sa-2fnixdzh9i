@@ -62,7 +62,7 @@ def gen_aggregate_perf_graph():
         "  chart.draw(data, options); "+\
         "} "+\
         "</script>"+\
-        "<div id='aggr_perf_chart_div'></div>"
+        "<div id='aggr_perf_chart_div' style='height:450px;'></div>"
 
         cr.close()
         connection.close()
