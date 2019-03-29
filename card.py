@@ -77,11 +77,11 @@ def get_card(x,t,burl):
             color = "black"
             portf_content_by = 'Portfolio by '
 
-            if (badge.find('-0') == -1 or badge.find('-1') == -1 or
-            badge.find('-2') == -1 or badge.find('-3') == -1 or
-            badge.find('-4') == -1 or badge.find('-5') == -1 or
-            badge.find('-6') == -1 or badge.find('-7') == -1 or
-            badge.find('-8') == -1 or badge.find('-9') == -1) :
+            if (badge.find('-0') == -1 and badge.find('-1') == -1 and
+            badge.find('-2') == -1 and badge.find('-3') == -1 and
+            badge.find('-4') == -1 and badge.find('-5') == -1 and
+            badge.find('-6') == -1 and badge.find('-7') == -1 and
+            badge.find('-8') == -1 and badge.find('-9') == -1) :
                 badge_class = 'badge badge-success'
                 expl_label = "*Potential returns in the next 7 days"
                 if t == 1:
