@@ -110,9 +110,9 @@ def get_control_center(burl):
         l_control_center_close_trade = 'You have to close {#} trade(s) at the best available price.'
         l_control_center_pending_trade = 'You have {#} trade(s) that you have to get ready to close at market open.'
 
-        num_open_trades = get_num_orders('open'))
-        num_close_trades = str(get_num_orders('close'))
-        num_pending_trades =str(get_num_orders('pending'))
+        num_open_trades = get_num_orders('open')
+        num_close_trades = str(get_num_orders('close')
+        num_pending_trades =str(get_num_orders('pending')
 
         l_control_center_open_trade = l_control_center_open_trade.replace('{#}', str(num_open_trades) )
         l_control_center_close_trade = l_control_center_close_trade.replace('{#}', str(num_close_trades) )
