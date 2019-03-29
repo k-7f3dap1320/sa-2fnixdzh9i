@@ -41,9 +41,9 @@ def gen_aggregate_perf_graph():
             if i == 0:
                 chart_rows = "['"+ str(date) +"',  "+ str(nav) +"]"
             else:
-                chart_rows = ",['"+ str(date) +"',  "+ str(nav) +"]"
-
+                chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
             i += 1
+            
         r = "<script>"+\
         "google.charts.load('current', {'packages':['corechart']}); "+\
         "google.charts.setOnLoadCallback(drawChart); "+\
