@@ -3,8 +3,11 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 from sa_db import *
+from sa_func import *
 access_obj = sa_db_access()
 import pymysql.cursors
+import datetime
+import time
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -45,23 +48,24 @@ def get_num_orders(t):
     try:
 
         query_condition = ''
+        dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
         i = 0
 
         if t == 'open':
             query_condition = " "+\
-            "trades.entry_date = @date_today AND instruments.owner = @portf_owner AND status = 'active' AND "+\
+            "trades.entry_date = "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'active' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') ) "
         if t == 'pending':
             query_condition = " "+\
-            "trades.expiration_date <= @date_today AND instruments.owner = @portf_owner AND status = 'active' AND "+\
+            "trades.expiration_date <= "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'active' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') ) "
         if t == 'close':
             query_condition = " "+\
-            "trades.expiration_date = @date_today AND instruments.owner = @portf_owner AND status = 'expired' AND "+\
+            "trades.expiration_date = "+ str(dnstr) +" AND instruments.owner = '"+ get_user_numeric_id() +"' AND status = 'expired' AND "+\
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') )"
