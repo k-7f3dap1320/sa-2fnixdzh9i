@@ -60,7 +60,7 @@ def gen_aggregate_perf_graph():
         "    vAxis: {minValue: 600}, "+\
         "    lineWidth: 3, "+\
         "    areaOpacity: 0.2, "+\
-        "    series: {color: '#343a40'}"+\
+        "    colors: ['#343a40']"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
