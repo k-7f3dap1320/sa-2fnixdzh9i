@@ -58,7 +58,7 @@ def gen_aggregate_perf_graph():
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '0', width:'90%',height:'80%'}, "+\
         "    vAxis: {minValue: 600}, "+\
-        "    lineWidth: 1 "+\
+        "    lineWidth: 1, "+\
         "annotations: { "+\
         "    boxStyle: { "+\
         "      // Color of the box outline. "+\
