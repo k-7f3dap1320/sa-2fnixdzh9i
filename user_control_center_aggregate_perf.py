@@ -59,6 +59,36 @@ def gen_aggregate_perf_graph():
         "    chartArea:{right: '0', width:'90%',height:'80%'}, "+\
         "    vAxis: {minValue: 600}, "+\
         "    lineWidth: 1 "+\
+        "annotations: { "+\
+        "    boxStyle: { "+\
+        "      // Color of the box outline. "+\
+        "      stroke: '#888', "+\
+        "      // Thickness of the box outline. "+\
+        "      strokeWidth: 1, "+\
+        "      // x-radius of the corner curvature. "+\
+        "      rx: 10, "+\
+        "      // y-radius of the corner curvature. "+\
+        "      ry: 10, "+\
+        "      // Attributes for linear gradient fill. "+\
+        "      gradient: { "+\
+        "        // Start color for gradient. "+\
+        "        color1: '#fbf6a7', "+\
+        "        // Finish color for gradient. "+\
+        "        color2: '#33b679', "+\
+        "        // Where on the boundary to start and "+\
+        "        // end the color1/color2 gradient, "+\
+        "        // relative to the upper left corner "+\
+        "        // of the boundary. "+\
+        "        x1: '0%', y1: '0%', "+\
+        "        x2: '100%', y2: '100%', "+\
+        "        // If true, the boundary for x1, "+\
+        "        // y1, x2, and y2 is the box. If "+\
+        "        // false, it's the entire chart. "+\
+        "        useObjectBoundingBoxUnits: true "+\
+        "      } "+\
+        "    } "+\
+        " } "+\
+        "//END HERE"+\   
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
