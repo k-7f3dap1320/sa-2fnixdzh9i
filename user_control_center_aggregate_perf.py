@@ -59,7 +59,7 @@ def gen_aggregate_perf_graph():
         "    chartArea:{right: '0', width:'90%',height:'80%'}, "+\
         "    vAxis: {minValue: 600}, "+\
         "    lineWidth: 1, "+\
-        "    opacity: 0.5"+\
+        "    areaOpacity: 0.5"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
