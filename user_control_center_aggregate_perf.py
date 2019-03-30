@@ -88,7 +88,7 @@ def gen_aggregate_perf_graph():
         "      } "+\
         "    } "+\
         " } "+\
-        "//END HERE"+\   
+        "//END HERE"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
