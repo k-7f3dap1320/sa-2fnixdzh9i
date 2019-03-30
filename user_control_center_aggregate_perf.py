@@ -56,7 +56,7 @@ def gen_aggregate_perf_graph():
         "    title: '', "+\
         "    hAxis: {title: '',  titleTextStyle: {color: '#333'}, textPosition: 'none'}, "+\
         "    legend: {position: 'none'}, "+\
-        "    chartArea:{width:'80%',height:'80%'}, "+\
+        "    chartArea:{right: 0px, width:'80%',height:'80%'}, "+\
         "    vAxis: {minValue: 600}, "+\
         "    lineWidth: 1 "+\
         "  }; "+\
