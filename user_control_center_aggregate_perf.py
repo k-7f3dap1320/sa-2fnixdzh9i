@@ -54,12 +54,12 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: '',  titleTextStyle: {color: '#333'}, textPosition: 'none'}, "+\
+        "    hAxis: {title: '',  titleTextStyle: {color: '#343a40'}, textPosition: 'none'}, "+\
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '0', width:'90%',height:'80%'}, "+\
         "    vAxis: {minValue: 600}, "+\
-        "    lineWidth: 5, "+\
-        "    areaOpacity: 0.2"+\
+        "    lineWidth: 3, "+\
+        "    areaOpacity: 0.1"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
