@@ -16,7 +16,7 @@ def get_current_user_total_account_size(w):
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd, min(sum(instruments.account_reference)) as min_balance "+\
+        sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd "+\
         "FROM instruments JOIN markets ON markets.market_id = instruments.market "+\
         "WHERE instruments.owner = "+ str( get_user_numeric_id() )
         print(sql)
