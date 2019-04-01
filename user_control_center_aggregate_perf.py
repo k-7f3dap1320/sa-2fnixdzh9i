@@ -11,16 +11,37 @@ import time
 from user_dashboard_count import *
 
 
-def get_current_user_total_account_size():
+def get_current_user_total_account_size(w):
     r = 0
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT sum(instruments.account_reference) as total_account FROM instruments WHERE owner = "+ str( get_user_numeric_id() )
+        sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd "+\
+        "FROM instruments JOIN markets ON markets.market_id = instruments.market "+\
+        'WHERE owner = "+ str( get_user_numeric_id() )'
         cr.execute(sql)
         rs = cr.fetchall()
-        for row in rs: total_account = row[0]
-        r = total_account
+        total_account = 0
+        for row in rs:
+            total_account = row[0]
+            if prev_unit == '':
+                prev_unit = row[1]
+            else:
+                if prev_unit != row[1]:
+                    unit_diff = True
+            conv_to_usd = row[2]
+            total_account = total_account * conv_to_usd
+
+        if unit_diff:
+            prev_unit = 'USD'
+
+        if w == 'total':
+            r = total_account
+        if w == 'unit'
+            r = prev_unit
+
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
 
@@ -32,8 +53,9 @@ def gen_aggregate_perf_graph():
     try:
 
         l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
-        l_aggregate_portf_Xaxis_total = 'Aggregate Performance based on a portfolio of {#total_account_size}'
-        l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total.replace('{#total_account_size}', str(get_current_user_total_account_size()) )
+        l_aggregate_portf_Xaxis_total = 'Aggregate Performance based on a portfolio of {total_account_size}'
+        l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total.replace('{total_account_size}', str(get_current_user_total_account_size('total')) )
+        l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total + '&nbsp;' + str( get_current_user_total_account_size('unit') )
 
         portf_owner = get_user_numeric_id()
 
