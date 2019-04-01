@@ -55,7 +55,7 @@ def gen_aggregate_perf_graph():
         l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
         l_aggregate_portf_Xaxis_total = 'Aggregate Performance based on a portfolio of {total_account_size}'
         l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total.replace('{total_account_size}', str(get_current_user_total_account_size('total')) )
-        l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total + '&nbsp;' + str( get_current_user_total_account_size('unit') )
+        l_aggregate_portf_Xaxis_total = l_aggregate_portf_Xaxis_total + ' ' + str( get_current_user_total_account_size('unit') )
 
         portf_owner = get_user_numeric_id()
 
