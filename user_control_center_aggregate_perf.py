@@ -100,7 +100,7 @@ def gen_aggregate_perf_graph():
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
-        "    viewWindow:{min:"+ str( get_current_user_total_account_size('total') ) +", viewWindowMode: 'explicit'} } "+\
+        "    viewWindow:{min:"+ str( get_current_user_total_account_size('total') ) +", viewWindowMode: 'explicit'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
         "    colors: ['#17a2b8']"+\
