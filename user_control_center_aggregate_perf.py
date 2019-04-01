@@ -72,7 +72,6 @@ def gen_aggregate_perf_graph():
         'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
         'WHERE instruments.owner = '+ str(portf_owner) +' GROUP BY chart_data.date) AS s ON s.date = chart_data.date '+\
         'WHERE instruments.owner = '+ str(portf_owner) +' ORDER BY chart_data.date'
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         i = 0
