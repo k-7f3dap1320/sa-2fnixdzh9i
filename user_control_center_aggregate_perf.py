@@ -69,7 +69,7 @@ def gen_aggregate_perf_graph():
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close, MIN(chart_data.price_close, MIN(s.nav) '+\
+        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close, MIN(s.nav) '+\
         'FROM chart_data '+\
         'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
         'JOIN (SELECT sum(chart_data.price_close) as nav, chart_data.date FROM chart_data '+\
