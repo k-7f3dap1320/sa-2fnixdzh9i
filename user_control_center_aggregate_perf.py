@@ -45,7 +45,7 @@ def get_current_user_total_account_size(w):
                 r = prev_unit
 
         if w == 'min':
-            min_balance
+            min_balance = 0
             sql = "SELECT MIN(chart_data.price_close) FROM chart_data "+\
             "JOIN instruments ON instruments.symbol = chart_data.symbol WHERE instruments.owner = " + str( get_user_numeric_id() )
             print(sql)
