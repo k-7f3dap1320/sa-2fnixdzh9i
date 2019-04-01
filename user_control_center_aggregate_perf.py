@@ -24,6 +24,7 @@ def get_current_user_total_account_size(w):
         rs = cr.fetchall()
         total_account = 0
         prev_unit = ''
+        unit_diff = False
         for row in rs:
             total_account = row[0]
             if prev_unit == '':
