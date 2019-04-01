@@ -16,10 +16,10 @@ def get_current_user_total_account_size():
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT sum(instruments.account_reference) as total_account FROM instruments WHERE owner = '"+ get_user_numeric_id() +"'"
+        sql = "SELECT account_reference as total_account FROM instruments WHERE owner = '"+ get_user_numeric_id() +"'"
         cr.execute(sql)
         rs = cr.fetchall()
-        for row in rs: total_account = row[0]
+        for row in rs: total_account = total_account + row[0]
         r = total_account
     except Exception as e: print(e)
     return r
