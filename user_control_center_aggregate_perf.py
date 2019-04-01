@@ -69,7 +69,7 @@ def gen_aggregate_perf_graph():
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close '+\
+        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close, MIN(chart_data.price_close, MIN(s.nav) '+\
         'FROM chart_data '+\
         'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
         'JOIN (SELECT sum(chart_data.price_close) as nav, chart_data.date FROM chart_data '+\
@@ -80,6 +80,7 @@ def gen_aggregate_perf_graph():
         rs = cr.fetchall()
         i = 0
         chart_rows = ''
+        min_nav = 0
         for row in rs:
             date = row[0].strftime("%d-%m-%Y")
             nav = row[1]
@@ -89,6 +90,7 @@ def gen_aggregate_perf_graph():
             else:
                 chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
             i += 1
+            min_nav = row[3]
 
         r = "<script>"+\
         "google.charts.load('current', {'packages':['corechart']}); "+\
@@ -104,7 +106,7 @@ def gen_aggregate_perf_graph():
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
-        "    viewWindow:{min:"+ str( get_current_user_total_account_size('min') ) +", viewWindowMode: 'explicit'} }, "+\
+        "    viewWindow:{min:"+ str( min_nav ) +", viewWindowMode: 'explicit'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
         "    colors: ['#17a2b8']"+\
