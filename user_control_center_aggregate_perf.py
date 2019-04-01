@@ -16,7 +16,7 @@ def get_current_user_total_account_size(w):
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd "+\
+        sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd, min(sum(instruments.account_reference)) as min_balance "+\
         "FROM instruments JOIN markets ON markets.market_id = instruments.market "+\
         "WHERE instruments.owner = "+ str( get_user_numeric_id() )
         print(sql)
@@ -25,6 +25,7 @@ def get_current_user_total_account_size(w):
         total_account = 0
         prev_unit = ''
         unit_diff = False
+        min_balance = 0
         for row in rs:
             total_account = row[0]
             if prev_unit == '':
@@ -34,6 +35,7 @@ def get_current_user_total_account_size(w):
                     unit_diff = True
             conv_to_usd = row[2]
             total_account = total_account * conv_to_usd
+        min_balance = row[3]
 
         if unit_diff:
             prev_unit = 'USD'
@@ -42,6 +44,8 @@ def get_current_user_total_account_size(w):
             r = total_account
         if w == 'unit':
             r = prev_unit
+        if w == 'min':
+            r = min_balance
 
         cr.close()
         connection.close()
@@ -100,7 +104,7 @@ def gen_aggregate_perf_graph():
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
-        "    viewWindow:{min:"+ str( get_current_user_total_account_size('total') ) +", viewWindowMode: 'explicit'} }, "+\
+        "    viewWindow:{min:"+ str( get_current_user_total_account_size('min') ) +", viewWindowMode: 'explicit'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
         "    colors: ['#17a2b8']"+\
