@@ -99,7 +99,7 @@ def gen_aggregate_perf_graph():
         "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '#343a40'}, textPosition: 'none'}, "+\
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
-        "    vAxis: {minValue: 600}, "+\
+        "    vAxis: {minValue: 0}, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
         "    colors: ['#17a2b8']"+\
