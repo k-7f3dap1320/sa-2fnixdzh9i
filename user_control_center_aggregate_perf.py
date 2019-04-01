@@ -37,7 +37,7 @@ def get_current_user_total_account_size(w):
 
         if w == 'total':
             r = total_account
-        if w == 'unit'
+        if w == 'unit':
             r = prev_unit
 
         cr.close()
