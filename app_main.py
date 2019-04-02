@@ -5,6 +5,7 @@
 from app_page import *
 from app_head import *
 from app_ogp import *
+from app_cookie import *
 from app_footer import *
 from app_metatags import *
 from app_title import *
@@ -29,7 +30,7 @@ from user_control_center_aggregate_perf import *
 def gen_main_page(x,appname,burl,is_dashboard):
 
     dashboard_content = ''
-    if is_dashboard == str(1):
+    if is_dashboard == str(1) and user_is_login() == 1:
         dashboard_content = get_box_list_instr_n_portf(burl,'dashboard','portf',0,0,500,None)
         dashboard_content = dashboard_content + '<div class="row">' + get_trades_box(0,burl,is_dashboard) + get_control_center_aggregate_perf(burl) + '</div>'
     else:
