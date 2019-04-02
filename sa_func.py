@@ -47,6 +47,16 @@ def is_subscribed_user():
     except Exception as e: print(e)
     return r
 
+def redirect_if_not_logged_in(burl):
+    r = ''
+    try:
+        if user_is_login() != 1:
+            r = '<meta http-equiv="refresh" content="8; url='+burl+'signin">'
+        else:
+            r = ''
+    except Exception as e: print(e)
+    return r
+
 def get_user_numeric_id():
     r = ''
     try:
