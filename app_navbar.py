@@ -53,6 +53,8 @@ def get_market_menu_selection(burl):
     try:
         l_select_market = 'Select Market'
         l_all_market_selection = 'Show all markets'
+        l_equity_label_replace_by_stocks = 'Stocks'
+        l_equity_label = 'Equity'
         asset_class_selection = ''
         markets_selection = ''
         l_markets_caption = '{market} Market'
@@ -65,6 +67,7 @@ def get_market_menu_selection(burl):
         for row in rs:
             asset_class_id = row[0]
             asset_class_name = row[1]
+            asset_class_name = asset_class_name.replace(l_equity_label,l_equity_label_replace_by_stocks)
             if asset_class_id != 'MA:' and asset_class_id != 'PF:':
                 asset_class_selection = asset_class_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
 

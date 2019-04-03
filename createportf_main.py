@@ -37,6 +37,7 @@ def get_selectportf_box(burl,step,mode,x,button):
 
     box_content = ''
     min_sel = '5'
+    l_equity_label = 'Equity'
     try:
         portf_category = ''
         progress_value = '0'
@@ -55,7 +56,7 @@ def get_selectportf_box(burl,step,mode,x,button):
             sql = "SELECT market_label FROM markets WHERE market_id='"+ str(x) +"'"
             cr.execute(sql)
             rs = cr.fetchall()
-            for row in rs: portf_category = row[0] + ' Equity'
+            for row in rs: portf_category = row[0] + ' ' + l_equity_label
         cr.close()
         connection.close()
 
