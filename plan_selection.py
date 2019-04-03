@@ -32,50 +32,50 @@ def get_box_plan_selection(burl):
         '    <tr>'+\
         '      <td scope="row">No Ads</td>'+\
         '      <td>&nbsp;</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Last 3-day signals with open orders and closed trades</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Create portfolios, backtest and simulate performance</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">All trading signals with instant email notifications</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Concrete and precise trading instruction report</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Daily personalized trading intelligence report</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Dedicated account manager to support your trading desk</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row">Get paid if ranked in the top 50 traders of the month</td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
-        '      <td><i class="fas fa-check-circle"></i></td>'+\
+        '      <td scope="row">Get paid monthly if ranked in the top 50 traders of the month</td>'+\
         '      <td>&nbsp;</td>'+\
+        '      <td>&nbsp;</td>'+\
+        '      <td><h1 class="text-success"><i class="fas fa-check-circle"></i></h1></td>'+\
         '    </tr>'+\
         '  </tbody>'+\
         '</table>'+\
