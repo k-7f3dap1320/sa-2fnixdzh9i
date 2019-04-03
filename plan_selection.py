@@ -7,7 +7,7 @@ from app_footer import *
 from app_ogp import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
-from googleanalytics import *
+from googleanalytics import *; from tablesorter import
 
 def get_box_plan_selection(burl):
 
