@@ -412,13 +412,13 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        more_assets_note +\
         '            <div class="box-part rounded '+ list_class +'">'+\
         search_box +\
         list_title +\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
+        more_assets_note +\
         '   </div>'+\
         '</div>'
 
