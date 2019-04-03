@@ -15,6 +15,7 @@ from app_cookie import *
 from sa_func import *
 from signin_main import *
 from view_list_instr_n_portf import *
+from plan_selection import *
 from error_page import *
 
 application = Flask(__name__)
@@ -31,6 +32,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
+@application.route('/plan/', endpoint='error', methods=["POST","GET"])
 @application.route('/error/', endpoint='error', methods=["POST","GET"])
 def go():
 
@@ -103,6 +105,11 @@ def go():
 
     elif request.endpoint == 'signin':
         c = get_signin_page(appname,burl,err)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
+
+    elif request.endpoint == 'plan':
+        c = get_plan_selection_page(appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
