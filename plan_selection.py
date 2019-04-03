@@ -22,7 +22,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>Choose a plan</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        '<table class="table table-hover table-sm sa-table-sm">'+\
+        '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">Features</th>'+\
@@ -46,7 +46,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Create portfolios, backtest and simulate performance</td>'+\
-        '      <td>&nbsp;</td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
