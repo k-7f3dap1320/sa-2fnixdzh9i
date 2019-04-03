@@ -26,9 +26,15 @@ def get_box_plan_selection(burl):
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col">Features</th>'+\
-        '      <th scope="col"><h6>SmartAlpha Basic</h6><h2>Free</h2></th>'+\
-        '      <th scope="col"><h6>SmartAlpha Premium</h6><h2>USD 5.00<sup>/month</sup></h2></th>'+\
-        '      <th scope="col"><h6>SmartAlpha Professional</h6><h2>USD 20.00<sup>/month</sup></h2></th>'+\
+        '      <th scope="col"><h6>SmartAlpha Basic</h6></th>'+\
+        '      <th scope="col"><h6>SmartAlpha Premium</h6></th>'+\
+        '      <th scope="col"><h6>SmartAlpha Professional</h6></th>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <th scope="col">Features</th>'+\
+        '      <th scope="col"><h2>Free</h2></th>'+\
+        '      <th scope="col"><h2>USD 5.00<sup>/month</sup></h2></th>'+\
+        '      <th scope="col"><h2>USD 20.00<sup>/month</sup></h2></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
