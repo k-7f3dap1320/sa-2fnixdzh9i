@@ -25,7 +25,7 @@ def get_box_plan_selection(burl):
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '      <th scope="col">Features</th>'+\
+        '      <th scope="col">&nbsp;</th>'+\
         '      <th scope="col"><h6>SmartAlpha Basic</h6></th>'+\
         '      <th scope="col"><h6>SmartAlpha Premium</h6></th>'+\
         '      <th scope="col"><h6>SmartAlpha Professional</h6></th>'+\
