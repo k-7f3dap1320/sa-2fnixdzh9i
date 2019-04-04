@@ -17,7 +17,7 @@ def get_box_plan_selection(burl):
 
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
         l_title_join_now = 'Join thousands of professional and beginner traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
-        l_then_recurring_monthly = 'Then recurring monthly USD 28.00'
+        l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
