@@ -89,6 +89,22 @@ def get_box_plan_selection(burl):
         '      <td scope="row">Transparent historical orders and performance.</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row">Daily personalized trading intelligence report delivered to your inbox. (coming soon)</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row">Dedicated account manager to support your trading desk.</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row">Concrete and precise trading instruction report. (coming soon)</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row">Get paid monthly if ranked in the top 50 traders of the month. (coming soon)</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
         '  </tbody>'+\
         '</table>'+\
         '            </div>'+\
