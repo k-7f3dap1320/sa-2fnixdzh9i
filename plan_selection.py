@@ -31,7 +31,7 @@ def get_box_plan_selection(burl):
         '<input type="hidden" name="hosted_button_id" value="Q9YFDS96WNT76">'+\
         '<button type="submit" class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder;">'+ l_button_trial +'</button>'+\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
-        '</form>'+\        
+        '</form>'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
