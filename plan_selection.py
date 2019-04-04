@@ -15,15 +15,18 @@ def get_box_plan_selection(burl):
 
     try:
 
+        l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
+        l_title_join_now = 'Join Now! Thousands of beginners and professional traders makes money with SmartAlpha. Don`t miss this unique opportunity.'
+
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
-        '<div style="text-align: center;"><h1>Join Now! Thousands of beginners and professional traders makes money with SmartAlpha. Don`t miss this unique opportunity.</h1></div>'+\
+        '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:xx-large;">Get 1-month trial now for only USD 5.00</button>'+\
+        '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:xx-large;">'+ l_button_trial +'</button>'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
