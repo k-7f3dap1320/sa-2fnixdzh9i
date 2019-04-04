@@ -9,7 +9,7 @@ from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 
-def get_paypal_payment_button(lang):
+def get_paypal_payment_button(burl,lang):
     r = ''
     try:
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
@@ -46,7 +46,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button('en') +\
+        get_paypal_payment_button(burl,'en') +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
@@ -128,7 +128,7 @@ def get_box_plan_selection(burl):
         '  </tbody>'+\
         '</table>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button('en') +\
+        get_paypal_payment_button(burl,'en') +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
