@@ -90,11 +90,11 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row">Daily personalized trading intelligence report delivered to your inbox. (coming soon)</td>'+\
+        '      <td scope="row">Dedicated account manager to support your trading desk.</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row">Dedicated account manager to support your trading desk.</td>'+\
+        '      <td scope="row">Daily personalized trading intelligence report delivered to your inbox. (coming soon)</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
