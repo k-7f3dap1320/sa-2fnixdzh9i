@@ -17,7 +17,8 @@ def get_box_plan_selection(burl):
 
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
         l_title_join_now = 'Join thousands of professional and beginner traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
-
+        l_then_recurring_monthly = 'Then recurring monthly USD 28.00'
+        l_secure_payment_with_paypal = 'Secure payment with PayPal'
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -32,6 +33,8 @@ def get_box_plan_selection(burl):
         '<button type="submit" class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder;">'+ l_button_trial +'</button>'+\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
+        '<div>&nbsp;</div>'+\
+        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i>('+ l_secure_payment_with_paypal +')</div>'
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
