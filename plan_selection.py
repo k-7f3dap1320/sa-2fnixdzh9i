@@ -16,7 +16,7 @@ def get_box_plan_selection(burl):
     try:
 
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
-        l_title_join_now = 'Join Now! Thousands of beginners and professional traders that makes money with SmartAlpha. Don`t miss this unique opportunity.'
+        l_title_join_now = 'Join Now! Thousands of beginners and professional traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
