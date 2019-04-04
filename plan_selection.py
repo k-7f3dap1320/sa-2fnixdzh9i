@@ -37,7 +37,7 @@ def get_box_plan_selection(burl):
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'+\
         '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +')</div>'+\
         '<div>&nbsp;</div>'+\
-        '<img src="'+ burl +'static/ccico.png" height:"20px" />'+\
+        '<img src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
