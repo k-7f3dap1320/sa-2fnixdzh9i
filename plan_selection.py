@@ -34,7 +34,7 @@ def get_box_plan_selection(burl):
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
         '<div>&nbsp;</div>'+\
-        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i>('+ l_secure_payment_with_paypal +')</div>'
+        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i>('+ l_secure_payment_with_paypal +')</div>'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
