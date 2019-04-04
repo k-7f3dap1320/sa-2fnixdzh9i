@@ -44,7 +44,7 @@ def popup_login(err,burl):
     l_title = '<i class="fas fa-lock"></i>&nbsp;Restricted access to members only'
     l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  '+\
     '<div>&nbsp;</div>' +\
-    '<div><a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for a free account</a></div>'
+    '<div><a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for an account</a></div>'
     l_class = 'alert alert-warning'
 
     try:
