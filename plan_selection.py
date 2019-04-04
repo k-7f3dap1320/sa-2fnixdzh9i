@@ -25,12 +25,12 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:xx-large;">Get 1-month trial now for only 5<sup>USD</sup></button>'+\
         '<div>&nbsp;</div>'+\
-        '<div>&nbsp;</div>'+\        
+        '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">&nbsp;</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h6>SmartAlpha Professional</h6></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h6>SmartAlpha Pro</h6></th>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
