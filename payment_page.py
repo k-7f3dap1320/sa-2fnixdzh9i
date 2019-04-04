@@ -57,7 +57,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h2>*USD 28.00<sup>/month</sup></h2></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
@@ -129,6 +129,8 @@ def get_box_plan_selection(burl):
         '</table>'+\
         '<div>&nbsp;</div>'+\
         get_paypal_payment_button(burl,'en') +\
+        '<div>&nbsp;</div>'+\
+        '<div>&nbsp;</div>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
