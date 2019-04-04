@@ -20,7 +20,9 @@ def get_box_plan_selection(burl):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
-        '<div style="text-align: center;"><h1>Join Now!</h1></div>'+\
+        '<div style="text-align: center;"><h1>Join Now! Thousands of beginners and professional traders makes money with SmartAlpha. Don`t miss this unique opportunity.</h1></div>'+\
+        '<div>&nbsp;</div>'+\
+        '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit">Try for a month for only 5<sup>USD</sup></button>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\

@@ -16,7 +16,7 @@ def get_signin_box(burl):
 
             l_app_header_title = 'Artificial Intelligence Trading Signal Insights'
             l_app_header_desc = 'Access 1,000+ Tradable Financial Instruments Including Stocks, Foreign Exchange Pairs (Forex), Commodities, Exchange Traded Funds (ETFs), Cryptocurrencies (Cryptos), Bonds, Binary Options; optimized using AI. Join Now to Create Your Trading Portfolio Signals by Just a Few Clicks.'
-            l_app_call_to_action_link = 'Join now for free'
+            l_app_call_to_action_link = 'Join now.'
 
             box_content = '<div class="box-sign"><div class="row">' +\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
