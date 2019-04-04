@@ -26,7 +26,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:xx-large;">'+ l_button_trial +'</button>'+\
+        '<button class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder;">'+ l_button_trial +'</button>'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
