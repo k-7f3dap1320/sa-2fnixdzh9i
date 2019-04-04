@@ -27,13 +27,17 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
+        '<!-- ------------------------------------------------------------------------------------------------------------------- -->'+\
         '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">'+\
         '<input type="hidden" name="cmd" value="_s-xclick">'+\
         '<input type="hidden" name="hosted_button_id" value="Q9YFDS96WNT76">'+\
         '<button type="submit" class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder;">'+ l_button_trial +'</button>'+\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
-        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i>('+ l_secure_payment_with_paypal +')</div>'+\
+        '<!-- ------------------------------------------------------------------------------------------------------------------- -->'+\
+        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +')</div>'+\
+        '<div>&nbsp;</div>'+\
+        '<img src="'+ burl +'static/ccico.png" height:"20px" />'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
