@@ -37,7 +37,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h2>*USD 28.00<sup>/month</sup></h2>*if paid annually</th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
