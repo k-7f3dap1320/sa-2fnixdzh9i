@@ -33,7 +33,6 @@ def get_box_plan_selection(burl):
         '<button type="submit" class="btn btn-lg btn-primary btn-block form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder;">'+ l_button_trial +'</button>'+\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
-        '<div>&nbsp;</div>'+\
         '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i>('+ l_secure_payment_with_paypal +')</div>'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
