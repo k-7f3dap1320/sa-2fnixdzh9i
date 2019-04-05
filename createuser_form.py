@@ -32,7 +32,7 @@ def get_user_creation_form(burl):
         l_enter_name = "Enter Name"
         l_enter_email = "Enter Email"
         l_received_payment_subscription_thank_you = "We have received your payment thank you."
-        l_note_user_creation_after_payment = "You are just 2 steps away from the awesomeness, let`s create your account. If you have any issue, please do not hesitate to contact us anytime. <a href='mailto:info@taatu.co'>info@taatu.co</a>."
+        l_note_user_creation_after_payment = "You are just 2 steps away from the awesomeness, let`s create your account. If you have any inquiry, please do not hesitate to contact us anytime. <a href='mailto:info@taatu.co'>info@taatu.co</a>."
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
