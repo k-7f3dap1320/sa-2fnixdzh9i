@@ -66,7 +66,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2><span style="font-size:x-small;">'+ l_less_than_price_coffee_day +'</span></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
