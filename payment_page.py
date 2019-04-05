@@ -37,8 +37,8 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         button_paypal +\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
-        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +')</div>'+\
-        '<div>'+ l_subscribe_payment_notice +'</div>'+\
+        '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +') '+ l_subscribe_payment_notice +'</div>'+\
+        '<div>'+ '' +'</div>'+\
         '<div>&nbsp;</div>'+\
         '<img src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'
