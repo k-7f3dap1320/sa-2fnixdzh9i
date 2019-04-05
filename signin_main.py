@@ -16,7 +16,6 @@ def get_login_form(burl,theme):
 
         l_register_link = 'Register'
         l_forgot_password = 'Forgot password'
-        l_join_now_button = 'Join now'
         if theme == 'dark':
             sign_in_class = 'form-signin-text-dark'
             logo = 'logo.png'
@@ -44,6 +43,7 @@ def popup_login(err,burl):
     l_error_class = 'alert alert-danger'
     l_title = '<i class="fas fa-lock"></i>&nbsp;Restricted access to members only'
     l_descr = 'Provide your email and password to access to content. Signup below if you do not have an account.  '+\
+    l_join_now_button = 'Join now'
     '<div>&nbsp;</div>' +\
     '<div><a href="'+ burl +'pricing" class="btn btn-sm btn-info form-signin-btn">'+ l_join_now_button +'</a></div>'
     l_class = 'alert alert-warning'
