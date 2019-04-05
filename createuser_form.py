@@ -76,7 +76,7 @@ def get_user_creation_form(burl):
         '            <div>'+\
         '                <div>&nbsp;</div>'+\
         get_user_ip_input() +\
-        '                <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn"><i class="fa fa-user-plus"></i> Sign up</button>'+\
+        '                <button type="submit" class="btn btn-info btn-lg btn-block form-signin-btn">' + 'Next' + '&nbsp;<i class="fas fa-arrow-right"></i></button>'+\
         '            </div>'+\
         '        </div>'+\
         '<div class="expl" style="text-align: center;">*We respect your privacy and will never share your email address with any person or organization.</div>'+\
