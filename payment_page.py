@@ -17,7 +17,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
-        button_soldout '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
+        button_soldout = '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
 
         if is_soldout:
             button_paypal = button_soldout
