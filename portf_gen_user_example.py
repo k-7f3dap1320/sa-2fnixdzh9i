@@ -26,7 +26,7 @@ def gen_portf_user_example(burl,acm):
         if user_is_login() == 1:
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"' ORDER BY RAND() LIMIT 5"
+            sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
             print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
@@ -34,9 +34,6 @@ def gen_portf_user_example(burl,acm):
             for row in rs:
                 resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                 i += 1
-            portf_symbol = portf_insert_data()
-            generate_portfolio(portf_symbol)
-
     except Exception as e: print(e)
     return resp
 
