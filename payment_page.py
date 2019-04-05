@@ -13,7 +13,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
     try:
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
-        l_button_soldout = 'Sold out!'
+        l_button_soldout = 'SOLD OUT!'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
@@ -55,7 +55,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', False) +\
+        get_paypal_payment_button(burl,'en', True) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
@@ -137,7 +137,7 @@ def get_box_plan_selection(burl):
         '  </tbody>'+\
         '</table>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', False) +\
+        get_paypal_payment_button(burl,'en', True) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '            </div>'+\

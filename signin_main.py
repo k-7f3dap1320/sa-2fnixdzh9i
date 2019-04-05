@@ -31,7 +31,7 @@ def get_login_form(burl,theme):
         '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
         '<div>&nbsp;</div>'+\
-        '<div><span style="float: left;"><a href="'+ burl +'n/?uid=0" class="text-info">'+ l_register_link +'</a></span><span style="float: right;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank" class="text-info">'+ l_forgot_password +'</a></span></div>'+\
+        '<div><span style="float: left;"><a href="'+ burl +'pricing" class="text-info">'+ l_register_link +'</a></span><span style="float: right;"><a href="'+ burl +'static/taatu/index.html#contact" target="_blank" class="text-info">'+ l_forgot_password +'</a></span></div>'+\
         '    </form>'
     except Exception as e: print(e)
     return r
@@ -42,9 +42,9 @@ def popup_login(err,burl):
     l_error_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
     l_error_class = 'alert alert-danger'
     l_title = '<i class="fas fa-lock"></i>&nbsp;Restricted access to members only'
-    l_descr = 'Provide your email and password to access to content. If you do not have an account yet,  '+\
+    l_descr = 'Provide your email and password to access to content. Signup below if you do not have an account.  '+\
     '<div>&nbsp;</div>' +\
-    '<div><a href="'+ burl +'n/?uid=0" class="btn btn-sm btn-info form-signin-btn">Signup for an account</a></div>'
+    '<div><a href="'+ burl +'pricing" class="btn btn-sm btn-info form-signin-btn">Signup for an account</a></div>'
     l_class = 'alert alert-warning'
 
     try:

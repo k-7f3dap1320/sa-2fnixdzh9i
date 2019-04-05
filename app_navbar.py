@@ -140,7 +140,7 @@ def navbar(burl):
         '    </li>' +\
         get_portfolio_button(burl)
     else:
-        rightsidemenu = '<a href="'+burl+'n/?uid=0" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
+        rightsidemenu = '<a href="'+burl+'pricing" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a>'
 
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
