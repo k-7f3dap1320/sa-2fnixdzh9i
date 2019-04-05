@@ -16,7 +16,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         l_button_soldout = '1-month trial. USD 5.00 (SOLD OUT!)'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
-        l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
+        l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. <strong>You can cancel anytime</strong>. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
         button_soldout = '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
         paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
