@@ -16,12 +16,13 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def gen_portf_user_example(burl,acm):
+
+    resp = make_response( redirect(burl+'?dashboard=1&pop=1') )
     try:
         if acm == 'MA:':
             asset_class = '%%'
         else:
             asset_class = acm
-        resp = make_response( redirect(burl+'?dashboard=1&pop=1'+ str(next_step) ) )
         if user_is_login() == 1:
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
