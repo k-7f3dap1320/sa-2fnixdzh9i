@@ -15,7 +15,8 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
         l_button_soldout = 'SOLD OUT!'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
-        l_secure_payment_with_paypal = 'Secure payment with PayPal. Subscribe with confidence with PayPal Buyer Protection. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
+        l_secure_payment_with_paypal = 'Secure payment with PayPal)'
+        l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
         button_soldout = '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
         paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
@@ -37,6 +38,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
         '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +')</div>'+\
+        '<div>'+ l_subscribe_payment_notice +'</div>'+\
         '<div>&nbsp;</div>'+\
         '<img src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'
