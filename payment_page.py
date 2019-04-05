@@ -15,7 +15,6 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
         l_button_soldout = 'Sold out!'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
-        l_less_than_price_coffee_day = '*For less than the price of a coffee per day.'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
         button_soldout = '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
@@ -47,6 +46,7 @@ def get_box_plan_selection(burl):
     try:
 
         l_title_join_now = 'Join thousands of professional and beginner traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
+        l_less_than_price_coffee_day = '*For less than the price of a coffee per day.'
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -66,7 +66,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2>'+ l_less_than_price_coffee_day +'</th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h2>USD 28.00<sup>/month</sup></h2><span style="font-size:x-small;">'+ l_less_than_price_coffee_day +'</span></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
