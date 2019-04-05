@@ -13,7 +13,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
     try:
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
-        l_button_soldout = '1-month trial. USD 5.00 (SOLD OUT!)'
+        l_button_soldout = '1-month trial. USD 5.00<br />(SOLD OUT!)'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
