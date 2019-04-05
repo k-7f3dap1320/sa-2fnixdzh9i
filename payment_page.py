@@ -77,6 +77,14 @@ def get_box_plan_selection(burl):
         '  </thead>'+\
         '  <tbody>'+\
         '    <tr>'+\
+        '      <td scope="row"><strong>Turn any trading portfolio into a profitable one with SmartAlpha proprietary system.</strong></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row"><strong>Stop wasting time researching, SmartAlpha does it for you and provide you clear trading instructions.</strong></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
         '      <td scope="row">User friendly dashboard with all your trading information.</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
@@ -137,7 +145,7 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row">Get paid monthly if ranked in the top 50 traders of the month. (coming soon)</td>'+\
+        '      <td scope="row"><strong>Get paid monthly if ranked in the top 50 traders of the month.</strong> (coming soon)</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '  </tbody>'+\
