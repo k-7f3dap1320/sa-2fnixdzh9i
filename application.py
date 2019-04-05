@@ -117,7 +117,9 @@ def go():
 
     elif request.endpoint == 'genportf':
         acm = request.args.get('acm')
-        c = gen_portf_user_example(burl,acm)
+        step = request.args.get('step')
+        if step == '1': c = gen_portf_user_example(burl,acm)
+        if step == '2': c = gen_portf_validate_content(burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

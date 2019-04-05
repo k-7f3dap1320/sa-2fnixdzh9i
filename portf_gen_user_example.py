@@ -17,7 +17,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def gen_portf_user_example(burl,acm):
 
-    resp = make_response( redirect(burl+'?dashboard=1&pop=1') )
+    resp = make_response( redirect(burl+'genportf?step=2') )
     try:
         if acm == 'MA:':
             asset_class = '%%'
@@ -37,5 +37,14 @@ def gen_portf_user_example(burl,acm):
             portf_symbol = portf_insert_data()
             generate_portfolio(portf_symbol)
 
+    except Exception as e: print(e)
+    return resp
+
+def gen_portf_validate_content(burl):
+
+    resp = make_response( redirect(burl+'?dashboard=1&pop=1') )
+    try:
+        portf_symbol = portf_insert_data()
+        generate_portfolio(portf_symbol)
     except Exception as e: print(e)
     return resp
