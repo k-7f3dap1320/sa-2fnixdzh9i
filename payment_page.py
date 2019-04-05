@@ -9,19 +9,27 @@ from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 
-def get_paypal_payment_button(burl,lang):
+def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
     try:
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
+        l_button_soldout = 'Sold out!'
         l_then_recurring_monthly = 'Then USD 28.00 for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
+        button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
+        button_soldout '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
+
+        if is_soldout:
+            button_paypal = button_soldout
+        else:
+            button_paypal = button_checkout
 
         r = ' '+\
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'+\
         '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">'+\
         '<input type="hidden" name="cmd" value="_s-xclick">'+\
         '<input type="hidden" name="hosted_button_id" value="Q9YFDS96WNT76">'+\
-        '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" type="submit" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'+\
+        button_paypal +\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
         '<div>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +')</div>'+\
@@ -46,7 +54,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en') +\
+        get_paypal_payment_button(burl,'en', False) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
@@ -128,7 +136,7 @@ def get_box_plan_selection(burl):
         '  </tbody>'+\
         '</table>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en') +\
+        get_paypal_payment_button(burl,'en', False) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '            </div>'+\
