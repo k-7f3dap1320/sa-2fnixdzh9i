@@ -91,19 +91,27 @@ def gen_aggregate_perf_graph():
         rs = cr.fetchall()
         i = 0
         chart_rows = ''
+        num_portf = 0
+        cr_n = connection.cursor(pymysql.cursors.SSCursor)
+        sql_n = "SELECT instruments.symbol FROM instruments WHERE instruments.owner = " + str(portf_owner)
+        cr_n.execute(sql_n)
+        rs_n = cr_n.fetchall()
+        for row in rs: num_portf += 1
+
         for row in rs:
             date = row[0].strftime("%d-%m-%Y")
             nav = row[1]
             price_close = row[2]
             portf_symbol = row[3]
-            portf_has_data_pts = False
             cr_c = connection.cursor(pymysql.cursors.SSCursor)
-            sql_c = "SELECT chart_data.date, chart_data.price_close FROM chart_data "+\
-            "WHERE chart_data.symbol = '"+ str(portf_symbol) +"' AND chart_data.date = " + str( row[0].strftime("%Y%m%d") )
+            sql_c = "SELECT chart_data.date, chart_data.price_close, chart_data.symbol FROM chart_data JOIN instruments ON instruments.symbol = chart_data.symbol "+\
+                    "WHERE instruments.owner = '"+ str(portf_owner) +"' AND chart_data.date = " + str( row[0].strftime("%Y%m%d") )
             cr_c.execute(sql_c)
             rs_c = cr_c.fetchall()
-            for row in rs_c: portf_has_data_pts = True
-            if portf_has_data_pts:
+            count_portf = 0
+            for row in rs_c: count_portf += 1
+
+            if count_portf == num_portf:
                 if i == 0:
                     chart_rows = "['"+ str(date) +"',  "+ str(nav) +"]"
                 else:
