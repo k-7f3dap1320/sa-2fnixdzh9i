@@ -19,7 +19,7 @@ def gen_portf_user_example(burl,acm):
 
     resp = make_response( redirect(burl+'genportf?step=2') )
     try:
-        if acm == 'MA:':
+        if acm == None:
             asset_class = '%%'
         else:
             asset_class = acm
