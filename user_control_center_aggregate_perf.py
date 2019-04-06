@@ -96,7 +96,7 @@ def gen_aggregate_perf_graph():
         sql_n = "SELECT instruments.symbol FROM instruments WHERE instruments.owner = " + str(portf_owner)
         cr_n.execute(sql_n)
         rs_n = cr_n.fetchall()
-        for row in rs: num_portf += 1
+        for row in rs_n: num_portf += 1
 
         for row in rs:
             date = row[0].strftime("%d-%m-%Y")
@@ -145,6 +145,7 @@ def gen_aggregate_perf_graph():
 
         cr.close()
         cr_c.close()
+        cr_n.close()
         connection.close()
 
     except Exception as e: print(e)
