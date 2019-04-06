@@ -99,7 +99,7 @@ def gen_aggregate_perf_graph():
             portf_has_data_pts = False
             cr_c = connection.cursor(pymysql.cursors.SSCursor)
             sql_c = "SELECT chart_data.date, chart_data.price_close FROM chart_data "+\
-            "WHERE chart_data.symbol = '"+ str(portf_symbol) +"' AND chart_data.date = " + row[0].strftime("Y%m%d")
+            "WHERE chart_data.symbol = '"+ str(portf_symbol) +"' AND chart_data.date = " + str( row[0].strftime("%Y%m%d") )
             cr_c.execute(sql_c)
             rs_c = cr_c.fetchall()
             for row in rs_c: portf_has_data_pts = True
