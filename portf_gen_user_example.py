@@ -33,8 +33,8 @@ def gen_portf_user_example(burl,acm):
             i = 1
             for row in rs:
                 resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-                resp.set_cookie('portf_s_'+str(i)+'_conv', str('neutral'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-                resp.set_cookie('portf_s_'+str(i)+'_type', str('long/short'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+                resp.set_cookie('portf_s_'+str(i)+'_conv', str('weak'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+                resp.set_cookie('portf_s_'+str(i)+'_type', str('long'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
                 i += 1
     except Exception as e: print(e)
