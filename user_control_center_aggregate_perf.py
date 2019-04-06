@@ -80,7 +80,7 @@ def gen_aggregate_perf_graph():
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close '+\
+        'SELECT DISTINCT chart_data.date, s.nav, chart_data.price_close, chart_data.symbol '+\
         'FROM chart_data '+\
         'JOIN instruments ON instruments.symbol = chart_data.symbol '+\
         'JOIN (SELECT sum(chart_data.price_close) as nav, chart_data.date FROM chart_data '+\
@@ -95,11 +95,20 @@ def gen_aggregate_perf_graph():
             date = row[0].strftime("%d-%m-%Y")
             nav = row[1]
             price_close = row[2]
-            if i == 0:
-                chart_rows = "['"+ str(date) +"',  "+ str(nav) +"]"
-            else:
-                chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
-            i += 1
+            portf_symbol = row[3]
+            portf_has_data_pts = False
+            cr_c = connection.cursor(pymysql.cursors.SSCursor)
+            sql_c = "SELECT chart_data.date, chart_data.price_close FROM chart_data "+\
+            "WHERE chart_data.symbol = '"+ str(portf_symbol) +"' AND chart_data.date = " + row[0].strftime("%d%m%Y")
+            cr_c.execute(sql_c)
+            rs_c = cr_c.fetchall()
+            for row in rs_c: portf_has_data_pts = True
+            if portf_has_data_pts:
+                if i == 0:
+                    chart_rows = "['"+ str(date) +"',  "+ str(nav) +"]"
+                else:
+                    chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
+                i += 1
 
         r = "<script>"+\
         "google.charts.load('current', {'packages':['corechart']}); "+\
@@ -127,6 +136,7 @@ def gen_aggregate_perf_graph():
         "<div id='aggr_perf_chart_div' style='height:350px;'></div>"
 
         cr.close()
+        cr_c.close()
         connection.close()
 
     except Exception as e: print(e)
