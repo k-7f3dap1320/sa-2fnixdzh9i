@@ -64,6 +64,7 @@ def go():
         portf = request.values.get('portf')
         pop = request.values.get('pop')
         delete = request.values.get('delete')
+        dashboard = request.values.get('dashboard')
         button = request.values.get('button')
         if ins != '' or ins != None:
             if x == '' or x == None : x = get_user_default_profile()
@@ -73,7 +74,7 @@ def go():
         if ins == '4': c = portf_save_conviction(burl,mode,x)
         if ins == '5': c = portf_save(appname,burl)
         if ins is None: c = gen_portf_page(uid,appname,burl,pop)
-        if delete != None: c = del_portf(delete,burl,x)
+        if delete != None: c = del_portf(delete,burl,x,dashboard)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

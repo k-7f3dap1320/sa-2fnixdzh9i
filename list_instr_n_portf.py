@@ -12,12 +12,19 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
+def set_modal_delete_n_view_popup(portf_name,portf_id,burl,user_portf):
     r = ''
     try:
         l_delete_message_caption = 'Are you sure you want to delete this portfolio? ' + '<br /><strong>'+ portf_name + '</strong>'
         l_cancel_button = 'Cancel'
         l_delete_button = 'Delete'
+        delete_url_redirect_list = burl +'p/?delete='+ str(portf_id)
+        delete_url_redirect_dash = burl +'p/?delete='+ str(portf_id) + '&dashboard=1'
+
+        if user_portf:
+            delete_url = delete_url_redirect_dash
+        else:
+            delete_url = delete_url_redirect_list
 
         l_view_message_caption = 'View or edit your portfolio:' + '<br /><strong>'+ portf_name + '</strong>'
         l_view_button = 'Take me to my portfolio'
@@ -31,7 +38,7 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl):
         '        </div>'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
-        '           <a class="btn btn-danger" href="'+ burl +'p/?delete='+ str(portf_id) +'">'+ l_delete_button +'</a>'+\
+        '           <a class="btn btn-danger" href="'+ delete_url +'">'+ l_delete_button +'</a>'+\
         '        </div>'+\
         '       </div>'+\
         '     </div>'+\
@@ -130,7 +137,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
 
-            r = r + set_modal_delete_n_view_popup(fullname,uid,burl)
+            r = r + set_modal_delete_n_view_popup(fullname,uid,burl,user_portf)
             l_btn_delete = 'delete'
 
             if user_portf == False:
