@@ -379,7 +379,7 @@ class portf_data:
 
     def get_quantity(self, alloc_s, alloc_coef):
 
-        portf_reduce_risk_by = 4
+        portf_reduce_risk_by = 8
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.pip, price_instruments_data.price_close "+\
