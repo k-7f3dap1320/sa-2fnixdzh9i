@@ -45,13 +45,13 @@ def get_selectportf_box(burl,step,mode,x):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_name FROM asset_class WHERE asset_class_id ='"+ str(x) +"'"
+        sql = "SELECT asset_class_name FROM asset_class WHERE asset_class_id  LIKE '%"+ str(x) +"%'"
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs: portf_category = row[0]
 
         if portf_category == '':
-            sql = "SELECT market_label FROM markets WHERE market_id='"+ str(x) +"'"
+            sql = "SELECT market_label FROM markets WHERE market_id LIKE '%"+ str(x) +"%'"
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs: portf_category = row[0] + ' ' + l_equity_label
@@ -183,7 +183,7 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,'') )
         r = set_page(r)
         if step == '1': r = ini_portf_select(r)
     except Exception as e: print(e)
