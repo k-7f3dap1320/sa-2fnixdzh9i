@@ -43,6 +43,7 @@ def gen_portf_user_example(burl,acm):
                 print("(2) ##################" + sql)
                 cr.execute(sql)
                 rs = cr.fetchall()
+                i = 1
                 for row in rs:
                     resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     resp.set_cookie('portf_s_'+str(i)+'_conv', str('neutral'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
