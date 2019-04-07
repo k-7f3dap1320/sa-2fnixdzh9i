@@ -38,7 +38,7 @@ def gen_portf_user_example(burl,acm):
                 i += 1
             if i < 5:
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
-                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.m3_signal > 0 OR instruments.m6_signal > 0) AND "+\
+                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0) AND "+\
                 "(instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
                 print(sql)
                 cr.execute(sql)
