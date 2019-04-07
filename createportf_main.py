@@ -20,6 +20,7 @@ from app_cookie import *
 from sa_func import *
 from googleanalytics import *
 from list_instr_n_portf import *
+from gen_portf_user_example import *
 from portf_save import *
 import datetime
 import time
@@ -33,7 +34,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def get_selectportf_box(burl,step,mode,x,button):
+def get_selectportf_box(burl,step,mode,x):
 
     box_content = ''
     min_sel = '5'
@@ -88,11 +89,10 @@ def get_selectportf_box(burl,step,mode,x,button):
             l_desc_part_2 = ""
 
         l_back_button = 'back'
-        l_skip_process_button = 'Skip this process'
+        l_skip_process_button = 'Let SmartAlpha choose'
 
-        button_process_skip = ''
         button_back = '<span style="float:left;"><button type="button" style="font-size: medium;" class="btn btn-lg btn-secondary" onClick="javascript:history.back();"><i class="fas fa-caret-left"></i>&nbsp;'+ l_back_button +'</button></span>'
-        if button != str(1): button_process_skip = '<span style="float:right;"><a href="'+ burl +'" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
+        button_process_skip = '<span style="float:right;"><a href="'+ burl +'genportf/?acm='+ str(x) +'&step=1" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
 
         portf_selection = '<h5>'
         for i in range(5):
@@ -182,20 +182,20 @@ def ini_portf_select(r):
         print(e)
     return resp
 
-def gen_selectportf_page(appname,burl,step,mode,x,portf,button):
+def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,x,button) + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,x) )
         r = set_page(r)
         if step == '1': r = ini_portf_select(r)
     except Exception as e: print(e)
     return r
 
-def custom_save_portf_page(appname,burl,mode,x,button):
+def custom_save_portf_page(appname,burl,mode,x):
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,x,'1') + get_box_portf_save(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,'') + get_box_portf_save(burl) )
         r = set_page(r)
 
     except Exception as e:

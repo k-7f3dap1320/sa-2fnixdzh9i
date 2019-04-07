@@ -59,7 +59,7 @@ def get_market_list(burl,mode):
             if asset_class_id == 'BD:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
             if asset_class_id == 'PF:': label = 'x'
-            if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ asset_class_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
+            if not label == 'x': r = r + ' <a href="'+ burl +'genportf/?acm='+ asset_class_id +'&step=1" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         sql = "SELECT market_id, market_label FROM markets order by market_label"
         cr.execute(sql)
@@ -69,7 +69,7 @@ def get_market_list(burl,mode):
             label = market_label + ' Market'
             #Handle particularities
             if market_id == 'GO>': label = 'x'
-            if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ market_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
+            if not label == 'x': r = r + ' <a href="'+ burl +'genportf/?acm='+ market_id +'&step=1" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         r = r + '</div>'
 
