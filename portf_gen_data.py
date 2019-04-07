@@ -397,7 +397,7 @@ class portf_data:
         cr.close()
         connection.close()
 
-        portf_reduce_risk_by = round(volatility_risk_st * 100,0)
+        portf_reduce_risk_by = round(volatility_risk_st * 200,0)
         if portf_reduce_risk_by < 1: portf_reduce_risk_by = 4
 
         q = round( (( (self.portf_big_alloc_price / salloc) * self.portf_multip ) / portf_reduce_risk_by )*alloc_coef , 2)
