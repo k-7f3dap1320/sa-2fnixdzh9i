@@ -379,10 +379,10 @@ class portf_data:
 
     def get_quantity(self, alloc_s, alloc_coef):
 
-        portf_reduce_risk_by = 8
+        portf_reduce_risk_by = 4
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT instruments.pip, price_instruments_data.price_close "+\
+        sql = "SELECT instruments.pip, price_instruments_data.price_close, instruments.volatility_risk_st "+\
         "FROM instruments JOIN price_instruments_data ON instruments.symbol = price_instruments_data.symbol "+\
         "WHERE price_instruments_data.symbol='"+ alloc_s +"' "+\
         "ORDER BY price_instruments_data.date DESC LIMIT 1"
@@ -392,9 +392,13 @@ class portf_data:
         for row in rs:
             pip_s = row[0]
             price_s = row[1]
+            volatility_risk_st = row[2]
             salloc = ( pip_s * price_s )
         cr.close()
         connection.close()
+
+        portf_reduce_risk_by = round(volatility_risk_st * 100,0)
+        if portf_reduce_risk_by < 1: portf_reduce_risk_by = 4
 
         q = round( (( (self.portf_big_alloc_price / salloc) * self.portf_multip ) / portf_reduce_risk_by )*alloc_coef , 2)
         if q < 0.01:
