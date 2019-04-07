@@ -20,7 +20,7 @@ from app_cookie import *
 from sa_func import *
 from googleanalytics import *
 from list_instr_n_portf import *
-from gen_portf_user_example import *
+from portf_gen_user_example import *
 from portf_save import *
 import datetime
 import time
