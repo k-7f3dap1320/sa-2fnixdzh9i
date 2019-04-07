@@ -27,7 +27,7 @@ def gen_portf_user_example(burl,acm):
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
             sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0 AND instruments.m6_signal > 0 AND instruments.m3_signal > 0 ) AND (instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
-            print(sql)
+            print("(1) ##################" + sql)
             cr.execute(sql)
             rs = cr.fetchall()
             i = 1
@@ -40,7 +40,7 @@ def gen_portf_user_example(burl,acm):
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
                 "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0) AND "+\
                 "(instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
-                print(sql)
+                print("(2) ##################" + sql)
                 cr.execute(sql)
                 rs = cr.fetchall()
                 for row in rs:
@@ -53,7 +53,7 @@ def gen_portf_user_example(burl,acm):
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
                 "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0 AND instruments.m6_signal > 0 AND instruments.m3_signal > 0 ) AND "+\
                 "(instruments.asset_class LIKE '"+ add_additional_asset +"') ORDER BY RAND() LIMIT 5"
-                print(sql)
+                print("(3) ##################" + sql)
                 cr.execute(sql)
                 rs = cr.fetchall()
                 for row in rs:
