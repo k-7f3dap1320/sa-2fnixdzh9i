@@ -92,7 +92,7 @@ def get_selectportf_box(burl,step,mode,x):
         l_skip_process_button = 'Let SmartAlpha choose'
 
         button_back = '<span style="float:left;"><button type="button" style="font-size: medium;" class="btn btn-lg btn-secondary" onClick="javascript:history.back();"><i class="fas fa-caret-left"></i>&nbsp;'+ l_back_button +'</button></span>'
-        button_process_skip = '<span style="float:right;"><a href="'+ burl +'genportf/?acm='+ str(x) +'&step=1" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
+        button_process_skip = '<span style="float:right;"><a href="'+ burl +'genportf/?acm='+ str( get_user_default_profile() ) +'&step=1" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
 
         portf_selection = '<h5>'
         for i in range(5):
