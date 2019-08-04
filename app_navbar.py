@@ -101,7 +101,7 @@ def get_how_menu(burl):
     r = ''
     try:
         l_howitworks = 'How it works?'
-        l_how_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'/h">'+ l_howitworks +'</a></li>'
+        l_how_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'h">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
     return r
@@ -112,7 +112,7 @@ def get_dashboard_menu(burl):
         l_dashboard = 'Dashboard'
         i = 0
         num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
-        l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1">'+ l_dashboard +'<sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
+        l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1"><strong>'+ l_dashboard +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
     return r
