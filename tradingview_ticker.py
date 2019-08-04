@@ -54,7 +54,6 @@ def get_tradingview_ticker(uid):
         '  "largeChartUrl": "http://smartalphatrade.com/s/",'+\
         '  "displayMode": "adaptive",'+\
         '  "locale": "en"'+\
-        '  "referral_id": "'+ referral_id +'"'+\
         '}'+\
         '  </script>'+\
         '</div>'+\
