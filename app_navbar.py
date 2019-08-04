@@ -130,8 +130,8 @@ def navbar(burl):
         rightsidemenu = '' +\
         get_dashboard_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
-        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle"></i>' +'</a>'+\
-        '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
+        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: larger;">'+ '<i class="fas fa-user-circle"></i>' +'</a>'+\
+        '      <div class="dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
