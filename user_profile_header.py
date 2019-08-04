@@ -21,7 +21,7 @@ def get_box_user_profile_header(burl):
             uid = user_get_uid()
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT nickname, name from users WHERE uid='"+ str(uid) +"'"
+            sql = "SELECT nickname, name FROM users WHERE uid='"+ str(uid) +"'"
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs:
