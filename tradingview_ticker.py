@@ -32,7 +32,7 @@ def get_tradingview_ticker(uid):
         i = 1
         for row in rs:
             if i > 1: ltvs = ltvs + ','
-            ltvs = ltvs +'{"description": "". "proName": "'+ str(tradingview_symbol = row[0]) +'"}'
+            ltvs = ltvs +'{"description": "". "proName": "'+ str(row[0]) +'"}'
             i += 1
 
         r = ' '+\
