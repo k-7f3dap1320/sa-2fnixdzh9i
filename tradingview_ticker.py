@@ -21,6 +21,7 @@ def get_tradingview_ticker(uid):
         "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
         "JOIN symbol_list ON portfolios.symbol = symbol_list.symbol "+\
         "WHERE owner='"+ str(uid) +"' "+\
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         i = 1
