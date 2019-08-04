@@ -12,9 +12,10 @@ from googleanalytics import *; from tablesorter import *
 def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
     try:
+        l_price = 'USD 29.00'
         l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
         l_button_soldout = '1-month trial. USD 5.00<br />(SOLD OUT!)'
-        l_then_recurring_monthly = 'Then USD 29.00 for each month'
+        l_then_recurring_monthly = 'Then '+ l_price +' for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
         l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. Fintech company based in London.'
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
@@ -72,7 +73,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h2>USD 70.00<sup>/month</sup></h2><span style="font-size:small;" class="text-danger">'+ l_less_than_price_coffee_day +'</span></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h2>'+ l_price +'<sup>/month</sup></h2><span style="font-size:small;" class="text-danger">'+ l_less_than_price_coffee_day +'</span></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
@@ -142,10 +143,6 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row">Concrete and precise trading instruction report. (coming soon)</td>'+\
-        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
-        '    </tr>'+\
-        '    <tr>'+\
-        '      <td scope="row"><strong>Get paid monthly if ranked in the top 50 traders of the month.</strong> (coming soon)</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '  </tbody>'+\
