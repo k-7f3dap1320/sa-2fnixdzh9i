@@ -51,7 +51,7 @@ def get_box_plan_selection(burl):
     box_content = ''
 
     try:
-
+        l_price = 'USD 29.00'
         l_title_join_now = 'Join thousands of professional and beginner traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
         l_less_than_price_coffee_day = '*For less than the price of a cup of coffee per day.'
         box_content = '<div class="box-top">' +\
