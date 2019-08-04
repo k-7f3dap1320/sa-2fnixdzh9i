@@ -42,6 +42,7 @@ def get_tradingview_ticker():
         '  "locale": "en"'+\
         '}'+\
         '  </script>'+\
+        '</div>'+\
         '</div>'        
     except Exception as e: print(e)
     return r
