@@ -53,7 +53,8 @@ def go():
 
     ############################################################################
     if request.endpoint == 's':
-        c = gen_sign_page(uid,appname,burl)
+        tvws = request.args.get('tvwidgetsymbol')
+        c = gen_sign_page(uid,tvws,appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
