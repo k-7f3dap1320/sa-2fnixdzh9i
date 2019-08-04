@@ -23,7 +23,7 @@ def get_tradingview_ticker(uid):
         for row in rs: id = row[0]
 
         sql ="SELECT DISTINCT "+\
-        "symbol_list.tradingview "+\
+        "symbol_list.tradingview, symbol_list.symbol "+\
         "FROM instruments "+\
         "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
         "JOIN symbol_list ON portfolios.symbol = symbol_list.symbol "+\
@@ -38,7 +38,7 @@ def get_tradingview_ticker(uid):
             else:
                 sep = ','
 
-            ltvs = ltvs + sep + '{"description": "", "proName": "'+ str(row[0]) +'"}'
+            ltvs = ltvs + sep + '{"description": "'+ str(row[1]) +'", "proName": "'+ str(row[0]) +'"}'
             i += 1
         r = ' '+\
         '<div class="tradingview-widget-container">'+\
