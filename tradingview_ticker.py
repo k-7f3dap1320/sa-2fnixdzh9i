@@ -30,9 +30,14 @@ def get_tradingview_ticker(uid):
         cr.execute(sql)
         rs = cr.fetchall()
         i = 1
+        sep = ''
         for row in rs:
-            if i > 1: ltvs = ltvs + ','
-            ltvs = ltvs +'{"description": "". "proName": "'+ str(row[0]) +'"}'
+            if i == 1:
+                sep = ''
+            else:
+                sep = ','
+
+            ltvs = sep + '{"description": "". "proName": "'+ str(row[0]) +'"}'
             i += 1
 
         r = ' '+\
