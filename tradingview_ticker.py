@@ -8,9 +8,27 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_ticker():
+def get_tradingview_ticker(uid):
     r = ''
+    ltvs = ''
     try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+
+        sql ="SELECT DISTINCT "+\
+        "symbol_list.tradingview "+\
+        "FROM instruments "+\
+        "JOIN portfolios ON instruments.symbol = portfolios.portf_symbol "+\
+        "JOIN symbol_list ON portfolios.symbol = symbol_list.symbol "+\
+        "WHERE owner='"+ str(uid) +"' "+\
+        cr.execute(sql)
+        rs = cr.fetchall()
+        i = 1
+        for row in rs:
+            if i > 1: ltvs = ltvs + ','
+            ltvs = ltvs +'{"description": "". "proName": "'+ str(tradingview_symbol = row[0]) +'"}'
+            i += 1
+
         r = ' '+\
         '<div class="tradingview-widget-container">'+\
         ' <div class="tradingview-widget-container__widget"></div>'+\
@@ -18,22 +36,7 @@ def get_tradingview_ticker():
         '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>'+\
         '  {'+\
         '  "symbols": ['+\
-        '  {'+\
-        '      "description": "",'+\
-        '      "proName": "BTCUSD"'+\
-        '    },'+\
-        '    {'+\
-        '      "description": "",'+\
-        '      "proName": "EURUSD"'+\
-        '    },'+\
-        '    {'+\
-        '      "description": "",'+\
-        '      "proName": "GBPUSD"'+\
-        '    },'+\
-        '    {'+\
-        '      "description": "",'+\
-        '      "proName": "USDJPY"'+\
-        '    }'+\
+        ltvs +\
         '  ],'+\
         '  "colorTheme": "dark",'+\
         '  "isTransparent": true,'+\
@@ -43,6 +46,8 @@ def get_tradingview_ticker():
         '}'+\
         '  </script>'+\
         '</div>'+\
-        '</div>'        
+        '</div>'
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
