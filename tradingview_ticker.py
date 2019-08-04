@@ -39,7 +39,6 @@ def get_tradingview_ticker(uid):
 
             ltvs = ltvs + sep + '{"description": "", "proName": "'+ str(row[0]) +'"}'
             i += 1
-        print(ltvs)
         r = ' '+\
         '<div class="tradingview-widget-container">'+\
         ' <div class="tradingview-widget-container__widget"></div>'+\
