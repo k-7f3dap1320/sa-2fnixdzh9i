@@ -7,7 +7,7 @@ access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
 from sa_func import *
-from print_google_ads import *
+from tradingview_ticker import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -35,6 +35,7 @@ def get_box_user_profile_header(burl):
             '   <div class="row sa-uhead-box">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
             '            <div class="box-part rounded sa-center-content sa-uhead-box">'+\
+            get_tradingview_ticker() +\
             '            </div>'+\
             '        </div>'+\
             '   </div>'+\
