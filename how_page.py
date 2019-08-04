@@ -19,7 +19,7 @@ def get_help_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">'+\
+        '<div id="carouselExampleIndicators" class="carousel slide">'+\
         '  <ol class="carousel-indicators">'+\
         '    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'+\
         '    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>'+\
