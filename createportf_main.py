@@ -41,8 +41,6 @@ def get_selectportf_box(burl,step,mode,x):
     try:
         progress_value = '0'
 
-        if not portf_category == '': portf_category = portf_category + ' '
-
         if step == '1':
             l_desc_part_1 = "Let's Create your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
