@@ -138,9 +138,9 @@ def get_trailing_returns(uid):
     "       fontSize: "+ str( fontSize ) + "," +\
     "      	legend: 'top'," +\
     "        title: ''," +\
-    "        chartArea: {width: '100%'}," +\
+    "        chartArea: {width: '50%'}," +\
     "        annotations: {" +\
-    "          alwaysOutside: true," +\
+    "          alwaysOutside: false," +\
     "          textStyle: {" +\
     "            auraColor: 'none'," +\
     "            color: '#555'" +\
