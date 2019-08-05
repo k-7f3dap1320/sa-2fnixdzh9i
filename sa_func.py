@@ -106,6 +106,23 @@ def get_uid(s):
 
     return uid
 
+def get_uid_from_tvws(tvws):
+    uid = 0
+    try:
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT uid FROM symbol_list WHERE tradingview = '"+ str(tvws) +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        uid = 0
+        for row in rs:
+            uid = row[0]
+        cr.close()
+        connection.close()
+    except Exception as e: print(e)
+
+    return uid
+
 def get_user_default_profile():
     r = ''
     try:

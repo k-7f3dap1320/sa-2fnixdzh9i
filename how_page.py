@@ -13,6 +13,42 @@ def get_help_content(burl):
 
     box_content = ''
 
+    imgsrc = burl + 'static/help/'
+    sactive = ''
+
+    numslide = 10
+
+    s01 = imgsrc + '01.png'
+    s01title = 'Slide 1 title'
+    s01descr = 'Slide 1 detailed Description'
+    s02 = imgsrc + '02.png'
+    s02title = 'Slide 2 title'
+    s02descr = 'Slide 2 detailed Description'
+    s03 = imgsrc + '03.png'
+    s03title = 'Slide 3 title'
+    s03descr = 'Slide 3 detailed Description'
+    s04 = imgsrc + '04.png'
+    s04title = 'Slide 4 title'
+    s04descr = 'Slide 4 detailed Description'
+    s05 = imgsrc + '05.png'
+    s05title = 'Slide 5 title'
+    s05descr = 'Slide 5 detailed Description'
+    s06 = imgsrc + '06.png'
+    s06title = 'Slide 6 title'
+    s06descr = 'Slide 6 detailed Description'
+    s07 = imgsrc + '07.png'
+    s07title = 'Slide 7 title'
+    s07descr = 'Slide 7 detailed Description'
+    s08 = imgsrc + '08.png'
+    s08title = 'Slide 8 title'
+    s08descr = 'Slide 8 detailed Description'
+    s09 = imgsrc + '09.png'
+    s09title = 'Slide 9 title'
+    s09descr = 'Slide 9 detailed Description'
+    s10 = imgsrc + '10.png'
+    s10title = 'Slide 10 title'
+    s10descr = 'Slide 10 detailed Description'
+
     try:
 
         box_content = '<div class="box-top">' +\
@@ -26,27 +62,15 @@ def get_help_content(burl):
         '    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>'+\
         '  </ol>'+\
         '  <div class="carousel-inner">'+\
-        '    <div class="carousel-item active">'+\
-        '      <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">'+\
+
+        '    <div class="carousel-item '+ sactive +'">'+\
+        '      <img class="d-block w-100" src="'+ s01 +'" alt="First slide">'+\
         '      <div class="carousel-caption d-none d-md-block">'+\
         '       <h5>Title slide 1</h5>'+\
         '       <p>Description for slide 1</p>'+\
         '      </div>'+\
         '    </div>'+\
-        '    <div class="carousel-item">'+\
-        '      <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">'+\
-        '      <div class="carousel-caption d-none d-md-block">'+\
-        '       <h5>Title slide 2</h5>'+\
-        '       <p>Description for slide 2</p>'+\
-        '      </div>'+\
-        '    </div>'+\
-        '    <div class="carousel-item">'+\
-        '      <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">'+\
-        '      <div class="carousel-caption d-none d-md-block">'+\
-        '       <h5>Title slide 3</h5>'+\
-        '       <p>Description slide 3</p>'+\
-        '      </div>'+\
-        '    </div>'+\
+
         '  </div>'+\
         '  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'+\
         '    <span class="carousel-control-prev-icon" aria-hidden="true"></span>'+\
