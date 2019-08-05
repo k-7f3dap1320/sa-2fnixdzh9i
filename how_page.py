@@ -69,7 +69,6 @@ def get_help_content(burl):
         '       <p>Description for slide 1</p>'+\
         '      </div>'+\
         '    </div>'+\
-
         '  </div>'+\
         '  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'+\
         '    <span class="carousel-control-prev-icon" aria-hidden="true"></span>'+\
