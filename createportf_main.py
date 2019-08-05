@@ -38,34 +38,17 @@ def get_selectportf_box(burl,step,mode,x):
 
     box_content = ''
     min_sel = '5'
-    l_equity_label = 'Equity'
     try:
-        portf_category = ''
         progress_value = '0'
-
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_name FROM asset_class WHERE asset_class_id  LIKE '%"+ str(x) +"%'"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs: portf_category = row[0]
-
-        if portf_category == '':
-            sql = "SELECT market_label FROM markets WHERE market_id LIKE '%"+ str(x) +"%'"
-            cr.execute(sql)
-            rs = cr.fetchall()
-            for row in rs: portf_category = row[0] + ' ' + l_equity_label
-        cr.close()
-        connection.close()
 
         if not portf_category == '': portf_category = portf_category + ' '
 
         if step == '1':
-            l_desc_part_1 = "Let's Create your "+ str(portf_category)  +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Let's Create your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
             l_desc_part_2 = "Find and pick an item from the list below"
         if step == '2':
-            l_desc_part_1 = "Pick another item to add to your "+ str(portf_category) +"portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Pick another item to add to your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '40'
             l_desc_part_2 = "Find and pick an item from the list below"
         if step == '3':
