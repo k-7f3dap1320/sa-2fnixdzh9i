@@ -140,7 +140,7 @@ def get_trailing_returns(uid):
     "        title: ''," +\
     "        chartArea: {width: '50%'}," +\
     "        annotations: {" +\
-    "          alwaysOutside: false," +\
+    "          alwaysOutside: true," +\
     "          textStyle: {" +\
     "            auraColor: 'none'," +\
     "            color: '#555'" +\
@@ -157,7 +157,7 @@ def get_trailing_returns(uid):
     "          }" +\
     "        }," +\
     "        series: {0:{color:'#497f8c'}, 1:{color: '#c9d6ea'} }," +\
-    "        chartArea: {width:'80%',height:'80%'}," +\
+    "        chartArea: {width:'100%',height:'100%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "' " +\
     "        }," +\
