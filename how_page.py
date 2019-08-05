@@ -62,7 +62,6 @@ def get_help_content(burl):
         '    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>'+\
         '  </ol>'+\
         '  <div class="carousel-inner">'+\
-
         '    <div class="carousel-item '+ sactive +'">'+\
         '      <img class="d-block w-100" src="'+ s01 +'" alt="First slide">'+\
         '      <div class="carousel-caption d-none d-md-block">'+\
