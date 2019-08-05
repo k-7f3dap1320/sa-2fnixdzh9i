@@ -54,8 +54,7 @@ def get_chart_data(uid,p):
     if p == 'w1':
         if not w1 == 0:
             data = str(w1) + ',"' + str(w1) +' '+ str(unit)  + '"'
-    print(data)
-    
+
     return data
 
 def get_trailing_returns(uid):
@@ -174,5 +173,5 @@ def get_trailing_returns(uid):
 
     cr.close()
     connection.close()
-
+    print(chart_content)
     return chart_content
