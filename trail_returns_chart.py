@@ -26,6 +26,7 @@ def get_minmax(uid,w):
         w1 = row[4]
 
     list = [y1,m6,m3,m1,w1]
+    print(list)
     if w == 'min': data = min(list)
     if w == 'max': data = max(list)
 
