@@ -51,6 +51,31 @@ def get_help_content(burl):
 
     try:
 
+        i = 1
+        simg = ''; stitle = ''; sdescr = ''
+        slideblock = ''
+        while i <= numslide:
+            if i == 1: sactive = 'Active'; simg = s01; stitle = s01title; sdescr = s01descr
+            if i == 2: sactive = ''; simg = s02; stitle = s02title; sdescr = s02descr
+            if i == 3: sactive = ''; simg = s03; stitle = s03title; sdescr = s03descr
+            if i == 3: sactive = ''; simg = s04; stitle = s04title; sdescr = s04descr
+            if i == 3: sactive = ''; simg = s05; stitle = s05title; sdescr = s05descr
+            if i == 3: sactive = ''; simg = s06; stitle = s06title; sdescr = s06descr
+            if i == 3: sactive = ''; simg = s07; stitle = s07title; sdescr = s07descr
+            if i == 3: sactive = ''; simg = s08; stitle = s08title; sdescr = s08descr
+            if i == 3: sactive = ''; simg = s09; stitle = s09title; sdescr = s09descr
+            if i == 10: sactive = ''; simg = s10; stitle = s10title; sdescr = s10descr
+
+            slideblock = slideblock +\
+             '    <div class="carousel-item '+ sactive +'">'+\
+             '      <img class="d-block w-100" src="'+ simg +'" alt="'+ stitle  +'">'+\
+             '      <div class="carousel-caption d-none d-md-block">'+\
+             '       <h5>'+ stitle+'</h5>'+\
+             '       <p>'+ sdescr +'</p>'+\
+             '      </div>'+\
+             '    </div>'
+
+
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -62,13 +87,7 @@ def get_help_content(burl):
         '    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>'+\
         '  </ol>'+\
         '  <div class="carousel-inner">'+\
-        '    <div class="carousel-item '+ sactive +'">'+\
-        '      <img class="d-block w-100" src="'+ s01 +'" alt="First slide">'+\
-        '      <div class="carousel-caption d-none d-md-block">'+\
-        '       <h5>Title slide 1</h5>'+\
-        '       <p>Description for slide 1</p>'+\
-        '      </div>'+\
-        '    </div>'+\
+        slideblock +\
         '  </div>'+\
         '  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'+\
         '    <span class="carousel-control-prev-icon" aria-hidden="true"></span>'+\

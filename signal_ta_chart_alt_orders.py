@@ -292,8 +292,10 @@ def get_sign_ta_chart_alt_orders(uid):
         '        </div>'
 
         tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
+        tab_2_label = 'Indicators analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
         tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
-
+        tab_4_label = 'Fundamental data'; tab_4_link = '#fd'; tab_4_id = 'fd'
+        tab_5_label = 'Profile'; tab_5_link = '#pr'; tab_5_id = 'pr'
 
         tech_chart = '' +\
         '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
@@ -303,12 +305,24 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
         '                    </li>'+\
         '                    <li class="nav-item">'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
+        '                    </li>'+\
+        '                    <li class="nav-item">'+\
         '                      <a class="nav-link" data-toggle="pill" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+        '                    </li>'+\
+        '                    <li class="nav-item">'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_4_link +'">'+ tab_4_label +'</a>'+\
+        '                    </li>'+\
+        '                    <li class="nav-item">'+\
+        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_5_link +'">'+ tab_5_label +'</a>'+\
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
         '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
+        '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br />'+ '' + '</div>'+\
         '                      <div id="'+ tab_3_id +'" class="tab-pane fade"><br /><div style="height: 85%">'+ get_tradingview_chart(uid) +'</div></div>'+\
+        '                      <div id="'+ tab_4_id +'" class="tab-pane fade"><br />'+ '' + '</div>'+\
+        '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br />'+ '' + '</div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'
