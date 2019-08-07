@@ -9,6 +9,30 @@ from sa_func import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def get_minmax(uid,w):
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+
+    sql = "SELECT instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1 "+\
+    "FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
+    cr.execute(sql)
+    rs = cr.fetchall()
+
+    for row in rs:
+        y1 = row[1]
+        m6 = row[2]
+        m3 = row[3]
+        m1 = row[4]
+        w1 = row[5]
+
+    list = [y1,m6,m3,m1,w1]
+    if w == 'min': data = min(list)
+    if w == 'max': data = max(list)
+
+    cr.close()
+    connection.close()
+    return data
+
 def get_chart_data(uid,p):
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -93,6 +117,8 @@ def get_trailing_returns(uid):
     l_m3 = '3-month'
     l_m1 = '1-month'
     l_w1 = '1-week'
+    minb = 0; min = 0
+    maxb = 0; max = 0
 
     benchmark_header = ''; benchmark_data_y1 = ''; benchmark_data_m6 = ''; benchmark_data_m3 = ''; benchmark_data_m1 = ''; benchmark_data_w1 = ''
 
@@ -112,8 +138,8 @@ def get_trailing_returns(uid):
             benchmark_data_m3 = ','+ get_chart_data(benchmark_uid,'m3')
             benchmark_data_m1 = ','+ get_chart_data(benchmark_uid,'m1')
             benchmark_data_w1 = ','+ get_chart_data(benchmark_uid,'w1')
-
-
+            minb = get_minmax(benchmark_uid,'min')
+            maxb = get_minmax(benchmark_uid,'max')
 
     data = ''+\
     '["'+ l_y1 + '",' + get_chart_data(uid,'y1') + benchmark_data_y1 +']' + ',' +\
@@ -121,6 +147,12 @@ def get_trailing_returns(uid):
     '["'+ l_m3 + '",' + get_chart_data(uid,'m3') + benchmark_data_m3 + ']' + ',' +\
     '["'+ l_m1 + '",' + get_chart_data(uid,'m1') + benchmark_data_m1 + ']' + ',' +\
     '["'+ l_w1 + '",' + get_chart_data(uid,'w1') + benchmark_data_w1 + ']'
+
+    min = get_minmax(uid,'min')
+    max = get_minmax(uid,'max')
+
+    if minb < min: min = minb
+    if maxb < max: max = maxb
 
     header = "    ['x', ' " + fullname + " ', {type: 'string', role: 'annotation'}"+ benchmark_header +"  ],"
 
@@ -159,7 +191,7 @@ def get_trailing_returns(uid):
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
-    "          viewWindow:{min:-2000,max:2000}" +\
+    "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}" +\
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
