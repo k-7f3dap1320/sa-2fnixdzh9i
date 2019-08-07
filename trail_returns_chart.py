@@ -137,7 +137,7 @@ def get_trailing_returns(uid):
     "       fontSize: "+ str( fontSize ) + "," +\
     "      	legend: 'top'," +\
     "        title: ''," +\
-    "        chartArea: {width: '80%'}," +\
+    "        chartArea: {width: '50%'}," +\
     "        annotations: {" +\
     "          alwaysOutside: true," +\
     "          textStyle: {" +\
@@ -159,7 +159,7 @@ def get_trailing_returns(uid):
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
-    "          range: {min: 500}"+\
+    "           viewWindowMode:'explicit'"
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
