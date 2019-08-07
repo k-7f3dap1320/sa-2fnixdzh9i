@@ -26,7 +26,7 @@ def get_minmax(uid,w):
         w1 = row[4]
         unit = row[5]
 
-    if unit.lower() =! 'pips':
+    if unit.lower() != 'pips':
         y1 = y1*100
         m6 = m6*100
         m3 = m3*100
