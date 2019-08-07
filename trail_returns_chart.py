@@ -123,10 +123,6 @@ def get_trailing_returns(uid):
     '["'+ l_w1 + '",' + get_chart_data(uid,'w1') + benchmark_data_w1 + ']'
 
     header = "    ['x', ' " + fullname + " ', {type: 'string', role: 'annotation'}"+ benchmark_header +"  ],"
-    chartwidth = '80%'
-
-    if 'pip' in get_chart_data(uid,'y1'): chartwidth = '80%'
-
 
     chart_content = "" +\
     "<script>" +\
@@ -160,9 +156,10 @@ def get_trailing_returns(uid):
     "          }" +\
     "        }," +\
     "        series: {0:{color:'#497f8c'}, 1:{color: '#c9d6ea'} }," +\
-    "        chartArea: {width:'"+ chartwidth +"',height:'80%'}," +\
+    "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
-    "          title: '" + l_as_date + "' " +\
+    "          title: '" + l_as_date + "', " +\
+    "          min: '500'"
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
