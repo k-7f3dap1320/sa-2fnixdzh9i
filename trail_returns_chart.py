@@ -19,11 +19,11 @@ def get_minmax(uid,w):
     rs = cr.fetchall()
 
     for row in rs:
-        y1 = row[1]
-        m6 = row[2]
-        m3 = row[3]
-        m1 = row[4]
-        w1 = row[5]
+        y1 = row[0]
+        m6 = row[1]
+        m3 = row[2]
+        m1 = row[3]
+        w1 = row[4]
 
     list = [y1,m6,m3,m1,w1]
     if w == 'min': data = min(list)
