@@ -125,7 +125,7 @@ def get_trailing_returns(uid):
     header = "    ['x', ' " + fullname + " ', {type: 'string', role: 'annotation'}"+ benchmark_header +"  ],"
     chartwidth = '80%'
 
-    if 'pip' in get_chart_data(uid,'y1'): chartwidth = '50%'
+    if 'pip' in get_chart_data(uid,'y1'): chartwidth = '80%'
 
 
     chart_content = "" +\
