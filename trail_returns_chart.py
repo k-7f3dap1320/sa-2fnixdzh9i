@@ -153,7 +153,7 @@ def get_trailing_returns(uid):
     max = get_minmax(uid,'max')
 
     if minb < min: min = minb
-    if maxb < max: max = maxb
+    if maxb > max: max = maxb
 
     header = "    ['x', ' " + fullname + " ', {type: 'string', role: 'annotation'}"+ benchmark_header +"  ],"
 
