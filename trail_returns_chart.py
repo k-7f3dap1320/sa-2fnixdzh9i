@@ -13,7 +13,7 @@ def get_minmax(uid,w):
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
-    sql = "SELECT instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1 "+\
+    sql = "SELECT instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, instruments.unit "+\
     "FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql)
     rs = cr.fetchall()
@@ -24,6 +24,14 @@ def get_minmax(uid,w):
         m3 = row[2]
         m1 = row[3]
         w1 = row[4]
+        unit = row[5]
+
+    if unit.lower() =! 'pips':
+        y1 = y1*100
+        m6 = m6*100
+        m3 = m3*100
+        m1 = m1*100
+        w1 = w1*100
 
     list = [y1,m6,m3,m1,w1]
     print(list)
