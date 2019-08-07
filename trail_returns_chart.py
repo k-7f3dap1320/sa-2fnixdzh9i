@@ -159,7 +159,7 @@ def get_trailing_returns(uid):
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
-    "          viewWindow:{min:-500}" +\
+    "          viewWindow:{min:-2000,max:2000}" +\
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
