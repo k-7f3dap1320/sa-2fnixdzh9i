@@ -34,7 +34,6 @@ def get_minmax(uid,w):
         w1 = w1*100
 
     list = [y1,m6,m3,m1,w1]
-    print(list)
     if w == 'min': data = min(list)
     if w == 'max': data = max(list)
 
@@ -214,5 +213,4 @@ def get_trailing_returns(uid):
 
     cr.close()
     connection.close()
-    print(chart_content)
     return chart_content
