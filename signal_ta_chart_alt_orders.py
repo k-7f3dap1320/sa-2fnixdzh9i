@@ -332,9 +332,8 @@ def get_sign_ta_chart_alt_orders(uid):
         ' $(document).ready('+\
         ' function() {'+\
         ' setInterval(function() {'+\
-        ' var someval = Math.floor(Math.random() * 100);'+\
-        '  $("fd").text("Test" + someval);'+\
-        ' }, 5000);  //Delay here = 5 seconds '+\
+        '  $("#fd").load("index.htm")'+\
+        ' }, 1000);  //Delay here = 1 seconds '+\
         '});'+\
         '</script>'
         #To disable tab: remove the data-toggle="pill"
