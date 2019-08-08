@@ -36,7 +36,7 @@ def get_tradingview_indicators(suid):
             '  "locale": "en",'+\
             '  "symbol": "'+ symbol +'",'+\
             '  "interval": "1h",'+\
-            '  "height": "700",'+\
+            '  "height": "100%",'+\
             '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
             '  </script>'+\
