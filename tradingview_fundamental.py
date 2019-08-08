@@ -10,6 +10,10 @@ from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 
 
+def get_tradingview_fundamental_widget(uid):
+    r = '<iframe src="fd/?uid='+ str(uid) +'" frameborder="0" width="100%" height="100%">'
+    return r
+
 def get_tradingview_fundamental(uid):
     r = ''
     url = 'http://smartalphatrade.com/s/'
