@@ -36,7 +36,7 @@ def get_tradingview_indicators(suid):
             '  "locale": "en",'+\
             '  "symbol": "NASDAQ:AAPL",'+\
             '  "interval": "1h",'+\
-            '  "height": "100%",'+\
+            '  "height": "80%",'+\
             '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
             '  </script>'+\
