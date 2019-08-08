@@ -35,8 +35,8 @@ def get_tradingview_fundamental(suid):
             '  "isTransparent": true,'+\
             '  "largeChartUrl": "'+ url +'",'+\
             '  "displayMode": "compact",'+\
-            '  "width": "480",'+\
-            '  "height": "830",'+\
+            '  "width": "100%",'+\
+            '  "height": "510",'+\
             '  "locale": "en"'+\
             '}'+\
             '  </script>'+\
