@@ -8,6 +8,7 @@ import pymysql.cursors
 from tradingview_chart import *
 from print_google_ads import *
 from tradingview_indicators import *
+from tradingview_fundamental import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -293,7 +294,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '        </div>'
 
         tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
-        tab_2_label = 'Indicators signals'; tab_2_link = '#ia'; tab_2_id = 'ia'
+        tab_2_label = 'Indicators analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
         tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
         tab_4_label = 'Fundamental data'; tab_4_link = '#fd'; tab_4_id = 'fd'
         tab_5_label = 'Profile'; tab_5_link = '#pr'; tab_5_id = 'pr'
@@ -322,8 +323,8 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br /><div style="height: 85%; width:99%">'+ get_tradingview_indicators(uid) + '</div></div>'+\
         '                      <div id="'+ tab_3_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_chart(uid) +'</div></div>'+\
-        '                      <div id="'+ tab_4_id +'" class="tab-pane fade"><br />'+ '' + '</div>'+\
-        '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br />'+ '' + '</div>'+\
+        '                      <div id="'+ tab_4_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_fundamental(uid) + '</div></div>'+\
+        '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ '' + '</div></div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'
