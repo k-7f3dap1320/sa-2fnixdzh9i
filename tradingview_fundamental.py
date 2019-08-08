@@ -44,7 +44,7 @@ def get_tradingview_fundamental(uid):
 
 def get_redirect_to_tradingview_fd(uid):
     #r = '<meta http-equiv="refresh" content="5; url='+ get_tradingview_fundamental(uid) +'">'
-    r = '<body onfocus="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"></body>'
+    r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"></body>'
     return r
 
 
