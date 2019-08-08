@@ -30,13 +30,13 @@ def get_tradingview_indicators(suid):
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>'+\
             '  {'+\
             '  "showIntervalTabs": true,'+\
-            '  "width": "90%",'+\
+            '  "width": 95%",'+\
             '  "colorTheme": "light",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
-            '  "symbol": "NASDAQ:AAPL",'+\
+            '  "symbol": "'+ symbol +'",'+\
             '  "interval": "1h",'+\
-            '  "height": "90%",'+\
+            '  "height": "100%",'+\
             '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
             '  </script>'+\
