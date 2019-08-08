@@ -27,7 +27,6 @@ def get_tradingview_indicators(suid):
             r = '' +\
             '<div class="tradingview-widget-container">'+\
             '  <div class="tradingview-widget-container__widget"></div>'+\
-            '  <div class="tradingview-widget-copyright">'+\
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>'+\
             '  {'+\
             '  "showIntervalTabs": true,'+\
