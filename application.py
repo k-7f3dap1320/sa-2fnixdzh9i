@@ -19,6 +19,7 @@ from payment_page import *
 from error_page import *
 from portf_gen_user_example import *
 from how_page import *
+from tradingview_fundamental import *
 
 application = Flask(__name__)
 
@@ -32,6 +33,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/ls/', endpoint='ls', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
+@application.route('/fd/', endpoint='fd', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
@@ -101,6 +103,9 @@ def go():
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
+
+    elif request.endpoint == 'fd':
+        c = get_tradingview_fundamental_page(uid)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
