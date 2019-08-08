@@ -34,13 +34,13 @@ def get_tradingview_fundamental(suid):
             '  "colorTheme": "light",'+\
             '  "isTransparent": true,'+\
             '  "largeChartUrl": "'+ url +'",'+\
-            '  "displayMode": "regular",'+\
+            '  "displayMode": "compact",'+\
             '  "width": "100%",'+\
             '  "height": "100%",'+\
             '  "locale": "en"'+\
             '}'+\
             '  </script>'+\
-            '</div>'            
+            '</div>'
         else:
             r = label_not_available
 
