@@ -7,7 +7,7 @@ access_obj = sa_db_access()
 import pymysql.cursors
 from tradingview_chart import *
 from print_google_ads import *
-from get_tradingview_indicators import *
+from tradingview_indicators import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
