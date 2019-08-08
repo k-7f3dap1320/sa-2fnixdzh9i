@@ -13,6 +13,7 @@ def get_tradingview_ticker(uid):
     ltvs = ''
     id = 0
     referral_id = 'smartalpha'
+    url = 'http://smartalphatrade.com/s/'
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -51,7 +52,7 @@ def get_tradingview_ticker(uid):
         '  ],'+\
         '  "colorTheme": "dark",'+\
         '  "isTransparent": true,'+\
-        '  "largeChartUrl": "http://smartalphatrade.com/s/",'+\
+        '  "largeChartUrl": "'+ url +'",'+\
         '  "displayMode": "adaptive",'+\
         '  "locale": "en",'+\
         '  "referral_id": "'+ referral_id +'"'+\
