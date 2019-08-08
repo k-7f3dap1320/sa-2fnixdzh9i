@@ -43,15 +43,16 @@ def get_tradingview_fundamental(uid):
     return r
 
 def get_redirect_to_tradingview_fd(uid):
-    r = '<meta http-equiv="refresh" content="5; url='+ get_tradingview_fundamental(uid) +'">'
+    #r = '<meta http-equiv="refresh" content="5; url='+ get_tradingview_fundamental(uid) +'">'
+    r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"></body>'
     return r
 
 
 def get_tradingview_fundamental_page(uid):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_redirect_to_tradingview_fd(uid) )
-        r = r + get_body( '' )
+        r = get_head( get_loading_head() )
+        r = r + get_redirect_to_tradingview_fd(uid)
         r = set_page(r)
     except Exception as e: print(e)
 
