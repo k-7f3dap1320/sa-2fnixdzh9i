@@ -293,8 +293,8 @@ def get_sign_ta_chart_alt_orders(uid):
         '            </div>'+\
         '        </div>'
 
-        tab_1_label = 'Technical analysis'; tab_1_link = '#ta'; tab_1_id = 'ta'
-        tab_2_label = 'Indicators analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
+        tab_1_label = 'Technical Levels'; tab_1_link = '#ta'; tab_1_id = 'ta'
+        tab_2_label = 'Technical analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
         tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
         tab_4_label = 'Fundamental data'; tab_4_link = '#fd'; tab_4_id = 'fd'
         tab_5_label = 'Profile'; tab_5_link = '#pr'; tab_5_id = 'pr'
