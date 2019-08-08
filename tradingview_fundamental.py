@@ -43,7 +43,7 @@ def get_tradingview_fundamental(uid):
     return r
 
 def get_redirect_to_tradingview_fd(uid):
-    l = 'Fundamental data is loading. Mmhh, if it does not load, <a href="'+ get_tradingview_fundamental(uid) +'">click here</a>...'
+    l = '<br /><br /><br /><br /><br /><br /><span style="text-align: center;">'+'Fundamental data is loading. Mmhh, if it does not load, <a href="'+ get_tradingview_fundamental(uid) +'">click here</a>...</span>'
     #r = '<meta http-equiv="refresh" content="5; url='+ get_tradingview_fundamental(uid) +'">'
     r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'">'+ l +'</body>'
     return r
