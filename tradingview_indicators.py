@@ -45,4 +45,5 @@ def get_tradingview_indicators(suid):
             r = label_not_available
 
     except Exception as e: print(e)
+    print(r)
     return r
