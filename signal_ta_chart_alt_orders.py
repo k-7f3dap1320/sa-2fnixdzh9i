@@ -319,7 +319,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <a class="nav-link" data-toggle="pill" href="'+ tab_5_link +'">'+ tab_5_label +'</a>'+\
         '                    </li>'+\
         '                  </ul>'+\
-        '                  <div class="tab-content" style="height: 1000;">'+\
+        '                  <div class="tab-content">'+\
         '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br /><div style="height: 85%; width:99%">'+ get_tradingview_indicators(uid) + '</div></div>'+\
         '                      <div id="'+ tab_3_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_chart(uid) +'</div></div>'+\
@@ -327,7 +327,16 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ '' + '</div></div>'+\
         '                  </div>'+\
         '            </div>'+\
-        '        </div>'
+        '        </div>'+\
+        '<script>'+\
+        ' $(document).ready('+\
+        ' function() {'+\
+        ' setInterval(function() {'+\
+        ' var someval = Math.floor(Math.random() * 100);'+\
+        '  $("#fd").text("Test" + someval);'+\
+        ' }, 5000);  //Delay here = 5 seconds '+\
+        '});'+\
+        '</script>'
         #To disable tab: remove the data-toggle="pill"
     except Exception as e: print(e)
 
