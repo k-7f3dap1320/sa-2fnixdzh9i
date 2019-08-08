@@ -24,9 +24,6 @@ def get_tradingview_fundamental(suid):
         for row in rs: symbol = row[0]
 
         if symbol != '':
-            widget = 'https://s.tradingview.com/embed-widget/financials/?locale=en#%7B%22symbol%22:%22'+ symbol +'%22%2C%22colorTheme%22%3A%22light%22%2C%22isTransparent%22%3Atrue%2C%22largeChartUrl%22%3A%22http%3A%2F%2Fsmartalphatrade.com%2Fs%2F%22%2C%22displayMode%22%3A%22regular%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22utm_source%22%3A%22%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22financials%22%7D'
-            r = '<iframe src="'+ widget +'" frameborder="0" width="100%" height="100%"></iframe>'
-            """
             r = '' +\
             '<div class="tradingview-widget-container">'+\
             '  <div class="tradingview-widget-container__widget"></div>'+\
@@ -43,8 +40,7 @@ def get_tradingview_fundamental(suid):
             '  "locale": "en"'+\
             '}'+\
             '  </script>'+\
-            '</div>'
-            """
+            '</div>'            
         else:
             r = label_not_available
 
