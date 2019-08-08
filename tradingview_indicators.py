@@ -30,7 +30,7 @@ def get_tradingview_indicators(suid):
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>'+\
             '  {'+\
             '  "showIntervalTabs": true,'+\
-            '  "width": "100%",'+\
+            '  "width": "90%",'+\
             '  "colorTheme": "light",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
