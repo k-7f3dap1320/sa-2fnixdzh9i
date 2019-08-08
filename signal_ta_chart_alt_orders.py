@@ -333,7 +333,7 @@ def get_sign_ta_chart_alt_orders(uid):
         ' function() {'+\
         ' setInterval(function() {'+\
         ' var someval = Math.floor(Math.random() * 100);'+\
-        '  $("#fd").text("Test" + someval);'+\
+        '  $("fd").text("Test" + someval);'+\
         ' }, 5000);  //Delay here = 5 seconds '+\
         '});'+\
         '</script>'
