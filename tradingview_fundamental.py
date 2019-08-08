@@ -43,7 +43,7 @@ def get_redirect_to_tradingview_fd(uid):
     return r
 
 
-def get_tradingview_fundamental_page(appname,burl,uid):
+def get_tradingview_fundamental_page(uid):
     r = ''
     try:
         r = get_head( get_loading_head() + get_redirect_to_tradingview_fd(uid) )
