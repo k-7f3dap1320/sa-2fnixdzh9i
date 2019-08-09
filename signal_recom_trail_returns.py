@@ -21,7 +21,7 @@ def get_recomm(uid):
     for row in rs:
         recommendation = row[0]
 
-    l_title = 'Technical analysis & recommendation'
+    l_title = 'Technical Recommendation'
 
     recomm_box = '' +\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
