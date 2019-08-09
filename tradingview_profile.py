@@ -9,7 +9,7 @@ from app_stylesheet import *
 from sa_func import *
 
 def get_tradingview_profile_widget(uid):
-    r = '<iframe src="../fd/?uid='+ str(uid) +'" frameborder="0" width="100%" height="100%"></iframe>'
+    r = '<iframe src="../ip/?uid='+ str(uid) +'" frameborder="0" width="100%" height="100%"></iframe>'
     return r
 
 def get_tradingview_profile(uid):
