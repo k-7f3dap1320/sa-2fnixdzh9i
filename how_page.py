@@ -91,7 +91,7 @@ def get_help_content(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div id="carouselExampleIndicators" class="carousel slide">'+\
         '  <ol class="carousel-indicators">'+\
-        lineClass +\
+        lineblock +\
         '  </ol>'+\
         '  <div class="carousel-inner">'+\
         slideblock +\
