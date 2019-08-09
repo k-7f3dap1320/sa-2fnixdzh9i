@@ -49,7 +49,7 @@ def get_redirect_to_tradingview_fd(uid):
 def get_tradingview_fundamental_page(uid,burl):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_metatags(burl) + get_bootstrap() + get_stylesheet(burl))
+        r = get_head( get_metatags(burl) + get_bootstrap() + get_stylesheet(burl))
         r = r + get_redirect_to_tradingview_fd(uid)
         r = set_page(r)
     except Exception as e: print(e)
