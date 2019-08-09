@@ -74,7 +74,7 @@ def get_help_content(burl):
              '       <p>'+ sdescr +'</p>'+\
              '      </div>'+\
              '    </div>'
-             i += 1
+            i += 1
 
 
         box_content = '<div class="box-top">' +\
