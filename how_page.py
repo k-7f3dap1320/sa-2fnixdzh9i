@@ -59,12 +59,12 @@ def get_help_content(burl):
             if i == 1: sactive = 'active'; simg = s01; stitle = s01title; sdescr = s01descr
             if i == 2: sactive = ''; simg = s02; stitle = s02title; sdescr = s02descr
             if i == 3: sactive = ''; simg = s03; stitle = s03title; sdescr = s03descr
-            if i == 3: sactive = ''; simg = s04; stitle = s04title; sdescr = s04descr
-            if i == 3: sactive = ''; simg = s05; stitle = s05title; sdescr = s05descr
-            if i == 3: sactive = ''; simg = s06; stitle = s06title; sdescr = s06descr
-            if i == 3: sactive = ''; simg = s07; stitle = s07title; sdescr = s07descr
-            if i == 3: sactive = ''; simg = s08; stitle = s08title; sdescr = s08descr
-            if i == 3: sactive = ''; simg = s09; stitle = s09title; sdescr = s09descr
+            if i == 4: sactive = ''; simg = s04; stitle = s04title; sdescr = s04descr
+            if i == 5: sactive = ''; simg = s05; stitle = s05title; sdescr = s05descr
+            if i == 6: sactive = ''; simg = s06; stitle = s06title; sdescr = s06descr
+            if i == 7: sactive = ''; simg = s07; stitle = s07title; sdescr = s07descr
+            if i == 8: sactive = ''; simg = s08; stitle = s08title; sdescr = s08descr
+            if i == 9: sactive = ''; simg = s09; stitle = s09title; sdescr = s09descr
             if i == 10: sactive = ''; simg = s10; stitle = s10title; sdescr = s10descr
 
             slideblock = slideblock +\
