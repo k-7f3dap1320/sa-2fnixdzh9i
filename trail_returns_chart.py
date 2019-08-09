@@ -26,16 +26,20 @@ def get_minmax(uid,w):
         w1 = row[4]
         unit = row[5]
 
+    margin = 0
     if unit.lower() != 'pips':
         y1 = y1*100
         m6 = m6*100
         m3 = m3*100
         m1 = m1*100
         w1 = w1*100
+        margin = 20
+    else:
+        margin = 0.05
 
     list = [y1,m6,m3,m1,w1]
-    if w == 'min': data = min(list)
-    if w == 'max': data = max(list)
+    if w == 'min': data = min(list) -margin
+    if w == 'max': data = max(list) +margin
 
     cr.close()
     connection.close()
