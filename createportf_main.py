@@ -42,7 +42,7 @@ def get_selectportf_box(burl,step,mode,x):
         progress_value = '0'
 
         if step == '1':
-            l_desc_part_1 = "Let's Create your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
             l_desc_part_2 = "Find and pick an item from the list below"
         if step == '2':
