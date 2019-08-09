@@ -325,7 +325,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br /><div style="height: 85%; width:99%">'+ get_tradingview_indicators(uid) + '</div></div>'+\
         '                      <div id="'+ tab_3_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_chart(uid) +'</div></div>'+\
         '                      <div id="'+ tab_4_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_fundamental_widget(uid) + '</div></div>'+\
-        '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_profile(uid) + '</div></div>'+\
+        '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_profile_widget(uid) + '</div></div>'+\
         '                  </div>'+\
         '            </div>'+\
         '        </div>'+\
