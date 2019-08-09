@@ -52,7 +52,7 @@ def get_redirect_to_tradingview_fd(uid):
 def get_tradingview_fundamental_page(uid,burl):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_metatags(burl) + redirect_if_not_logged_in(burl) + set_ogp(burl,2,page_title,page_desc) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl))
+        r = get_head( get_loading_head() + get_googleanalytics() + get_metatags(burl) + redirect_if_not_logged_in(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl))
         r = r + get_redirect_to_tradingview_fd(uid)
         r = set_page(r)
     except Exception as e: print(e)
