@@ -56,7 +56,7 @@ def get_help_content(burl):
         slideblock = ''
         lineblock = ''
         while i <= numslide:
-            if i == 1: sactive = 'Active'; simg = s01; stitle = s01title; sdescr = s01descr
+            if i == 1: sactive = 'active'; simg = s01; stitle = s01title; sdescr = s01descr
             if i == 2: sactive = ''; simg = s02; stitle = s02title; sdescr = s02descr
             if i == 3: sactive = ''; simg = s03; stitle = s03title; sdescr = s03descr
             if i == 3: sactive = ''; simg = s04; stitle = s04title; sdescr = s04descr
