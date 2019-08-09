@@ -74,6 +74,13 @@ def get_help_content(burl):
              '       <p>'+ sdescr +'</p>'+\
              '      </div>'+\
              '    </div>'
+
+            if i == 1:
+                lineClass = 'class="active"'
+            else:
+                lineClass = ''
+            lineblock = lineblock +\
+            '    <li data-target="#carouselExampleIndicators" data-slide-to="'+ str(i-1) +'" '+ lineClass +'></li>'
             i += 1
 
 
@@ -83,9 +90,7 @@ def get_help_content(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div id="carouselExampleIndicators" class="carousel slide">'+\
         '  <ol class="carousel-indicators">'+\
-        '    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'+\
-        '    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>'+\
-        '    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>'+\
+        lineClass +\
         '  </ol>'+\
         '  <div class="carousel-inner">'+\
         slideblock +\
