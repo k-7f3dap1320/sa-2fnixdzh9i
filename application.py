@@ -105,7 +105,7 @@ def go():
         c = get_help_page(appname,burl)
 
     elif request.endpoint == 'fd':
-        c = get_tradingview_fundamental_page(uid)
+        c = get_tradingview_fundamental_page(uid,burl)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
