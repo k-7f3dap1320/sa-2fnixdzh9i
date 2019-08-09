@@ -15,6 +15,7 @@ def get_tradingview_indicators(suid):
         symbol = ''
         referral_id = 'smartalpha'
         label_not_available = 'Indicators are not available for this instrument'
+        theme = 'light'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -31,7 +32,7 @@ def get_tradingview_indicators(suid):
             '  {'+\
             '  "showIntervalTabs": true,'+\
             '  "width": "100%",'+\
-            '  "colorTheme": "light",'+\
+            '  "colorTheme": "'+ theme +'",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
             '  "symbol": "'+ symbol +'",'+\

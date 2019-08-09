@@ -8,12 +8,13 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_chart(suid):
+def get_tradingview_single_ticker(suid):
     r = ''
+    url = 'http://smartalphatrade.com/s/'
     try:
         symbol = ''
         referral_id = 'smartalpha'
-        label_not_available = 'Live chart is not available for this instrument'
+        label_not_available = 'Indicators are not available for this instrument'
         theme = 'light'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -26,26 +27,17 @@ def get_tradingview_chart(suid):
         if symbol != '':
             r = '' +\
             '<div class="tradingview-widget-container">'+\
-            ' <div id="tradingview_713ab"></div>'+\
-            '<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>'+\
-            '<script type="text/javascript">'+\
-            'new TradingView.widget('+\
-            '{'+\
-            '"autosize": true,'+\
-            '"symbol": "'+ symbol +'",'+\
-            '"interval": "D",'+\
-            '"timezone": "Etc/UTC",'+\
-            '"theme": "'+ theme +'",'+\
-            '"style": "1",'+\
-            '"locale": "en",'+\
-            '"toolbar_bg": "#f1f3f6",'+\
-            '"enable_publishing": false,'+\
-            '"save_image": false,'+\
-            '"referral_id": "'+ referral_id +'",'+\
-            '"container_id": "tradingview_713ab"'+\
+            '  <div class="tradingview-widget-container__widget"></div>'+\
+            '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>'+\
+            '  {'+\
+            '  "symbol": "'+ symbol +'",'+\
+            '  "width": "350",'+\
+            '  "colorTheme": "'+ theme +'",'+\
+            '  "isTransparent": true,'+\
+            '  "locale": "en",'+\
+            '  "largeChartUrl": "http://smartalphatrade.com/s"'+\
             '}'+\
-            '  );'+\
-            ' </script>'+\
+            '  </script>'+\
             '</div>'
         else:
             r = label_not_available

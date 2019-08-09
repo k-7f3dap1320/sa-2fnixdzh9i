@@ -3,9 +3,11 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 from sa_db import *
+from sa_func import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from print_google_ads import *
+from tradingview_single_ticker import *
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -41,13 +43,19 @@ def get_details_header(uid,burl):
             badge_class = 'badge badge-success'
         else:
             badge_class = 'badge badge-danger'
-
         badge_tooltip = 'Expected returns in the next 7 days'
+
+        header_float_right = ''
+        if symbol.find(get_portf_suffix()) == -1:
+            header_float_right = '<div style="margin: 0px; float: right;">' + get_tradingview_single_ticker(suid) + '</div>'
+        else:
+            header_float_right = print_google_ads('small_leaderboard','right')
+
 
         p_header = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded">'+\
-        print_google_ads('small_leaderboard','right') +\
+        header_float_right +\
         '                <span class="title"><font style="font-size: x-large;">'+ instr_name +'&nbsp;<span class="'+badge_class+'" data-toggle="tooltip" data-placement="right" title="'+ badge_tooltip +'" >'+badge+'</span></font></span><br />'+\
         '                <span class="text"><span class="desc">'+ content + ' | ' + asset_class + market + symbol + isin +'</span></span>'+\
         '            </div>'+\
