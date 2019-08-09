@@ -33,9 +33,9 @@ def get_minmax(uid,w):
         m3 = m3*100
         m1 = m1*100
         w1 = w1*100
-        margin = 20
-    else:
         margin = 0.05
+    else:
+        margin = 20
 
     list = [y1,m6,m3,m1,w1]
     if w == 'min': data = min(list) -margin
