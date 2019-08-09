@@ -4,10 +4,8 @@
 # LICENSE file in the root directory of this source tree.
 from app_head import *; from app_body import *; from app_page import *; from app_loading import *
 from app_footer import *
-from app_ogp import *
 from app_title import *; from app_metatags import *; from bootstrap import *
-from awesomplete import *; from font_awesome import *; from app_navbar import *
-from googleanalytics import *; from tablesorter import *
+from app_stylesheet import *
 
 
 def get_tradingview_fundamental_widget(uid):
@@ -52,7 +50,7 @@ def get_redirect_to_tradingview_fd(uid):
 def get_tradingview_fundamental_page(uid,burl):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_metatags(burl) + redirect_if_not_logged_in(burl) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl))
+        r = get_head( get_loading_head() + get_metatags(burl) + redirect_if_not_logged_in(burl) + get_bootstrap() + get_stylesheet(burl))
         r = r + get_redirect_to_tradingview_fd(uid)
         r = set_page(r)
     except Exception as e: print(e)
