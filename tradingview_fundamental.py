@@ -6,7 +6,7 @@ from app_head import *; from app_body import *; from app_page import *; from app
 from app_footer import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from app_stylesheet import *
-
+from sa_func import *
 
 def get_tradingview_fundamental_widget(uid):
     r = '<iframe src="../fd/?uid='+ str(uid) +'" frameborder="0" width="100%" height="100%"></iframe>'
@@ -14,7 +14,7 @@ def get_tradingview_fundamental_widget(uid):
 
 def get_tradingview_fundamental(uid):
     r = ''
-    url = 'http://smartalphatrade.com/s/'
+    url = 'http://smartalphatrade.com/s'
     try:
         symbol = ''
         referral_id = 'smartalpha'
@@ -40,8 +40,9 @@ def get_tradingview_fundamental(uid):
     except Exception as e: print(e)
     return r
 
-def get_redirect_to_tradingview_fd(uid):
-    l = '<center>'+'Fundamental data is loading. Mmhh, if it does not load, <a href="'+ get_tradingview_fundamental(uid) +'">click here</a>...</center>'
+def get_redirect_to_tradingview_fd(uid,burl):
+    img = '<img src="'+ burl + 'static/loader.gif' +'?'+ get_random_str(9)+'"/>&nbsp;'
+    l = img + 'Loading Fundamental data. Mmmhh...if not, <a href="'+ get_tradingview_fundamental(uid) +'">click here</a>.'
     r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"><div style="width: 100%; height:100%; position:fixed;"><div style="width:88%; height:88; position:absolute; left:50%; top:50%; transform: translate(-50%, -50%);">'+ l +'</div></div></body>'
     return r
 
@@ -50,7 +51,7 @@ def get_tradingview_fundamental_page(uid,burl):
     r = ''
     try:
         r = get_head( get_metatags(burl) + get_bootstrap() + get_stylesheet(burl))
-        r = r + get_redirect_to_tradingview_fd(uid)
+        r = r + get_redirect_to_tradingview_fd(uid,burl)
         r = set_page(r)
     except Exception as e: print(e)
 
