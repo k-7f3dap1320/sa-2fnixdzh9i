@@ -47,7 +47,7 @@ def get_details_header(uid,burl):
 
         header_float_right = ''
         if symbol.find(get_portf_suffix()) == -1:
-            header_float_right = '<div style="margin: 0px; float: right;">' + get_tradingview_single_ticker(uid) + '</div>'
+            header_float_right = '<div style="margin: 0px; float: right; height: 90px; overflow: hidden;">' + get_tradingview_single_ticker(uid) + '</div>'
         else:
             header_float_right = print_google_ads('small_leaderboard','right')
 
