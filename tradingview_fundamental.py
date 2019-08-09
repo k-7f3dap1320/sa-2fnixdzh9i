@@ -43,7 +43,7 @@ def get_tradingview_fundamental(uid):
 def get_redirect_to_tradingview_fd(uid,burl):
     img = '<img src="'+ burl + 'static/loader.gif' +'?'+ get_random_str(9)+'" width="50"/>&nbsp;'
     l = img + 'Loading Fundamental data. Mmmhh...if not, <a href="'+ get_tradingview_fundamental(uid) +'">click here</a>.'
-    r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"><div style="width: 100%; height:100%; position:fixed; background-color:rgba(242, 241, 246, 1);"><div style="width:88%; height:88; position:absolute; left:50%; top:50%; transform: translate(-50%, -50%); font-size:small;">'+ l +'</div></div></body>'
+    r = '<body onmouseover="document.location.href=\''+ get_tradingview_fundamental(uid) +'\'"><div style="width: 100%; height:100%; position:fixed; background-color:rgba(242, 241, 246, 1);"><div style="width:88%; height:88; position:absolute; left:50%; top:50%; transform: translate(-50%, -50%); font-size:small; text-align:center;">'+ l +'</div></div></body>'
     return r
 
 
