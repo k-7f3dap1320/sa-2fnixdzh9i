@@ -35,6 +35,7 @@ def get_tradingview_symbol_info(suid):
 '  "locale": "en",'+\
 '  "colorTheme": "'+ theme +'",'+\
 '  "isTransparent": true'+\
+'  "largeChartUrl": "'+ url +'"'+\
 '}'+\
 '</div>'+\
 '  </script>'
