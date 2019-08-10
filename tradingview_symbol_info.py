@@ -37,8 +37,8 @@ def get_tradingview_symbol_info(suid):
             '  "isTransparent": true,'+\
             '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
-            '</div>'+\
-            '  </script>'
+            '  </script>'+\
+            '</div>'
         else:
             r = label_not_available
 
