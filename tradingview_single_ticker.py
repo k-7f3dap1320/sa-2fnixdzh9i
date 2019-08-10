@@ -35,7 +35,7 @@ def get_tradingview_single_ticker(suid):
             '  "colorTheme": "'+ theme +'",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
-            '  "largeChartUrl": "http://smartalphatrade.com/s"'+\
+            '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
             '  </script>'+\
             '</div>'
