@@ -48,7 +48,7 @@ def get_details_header(uid,burl):
         header_float_right = ''
         header_portfolio_info = ''
         if symbol.find(get_portf_suffix()) == -1:
-            header_float_right = '<div style="margin: 0px; float: left; height: 100%; overflow: hidden;">' + get_tradingview_symbol_info(uid) + '</div>'
+            header_float_right = '<div style="margin: 0px; height: 100%; overflow: hidden;">' + get_tradingview_symbol_info(uid) + '</div>'
         else:
             header_float_right = print_google_ads('small_leaderboard','right')
             header_portfolio_info = ''+\
