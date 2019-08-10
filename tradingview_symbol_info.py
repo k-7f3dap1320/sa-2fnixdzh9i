@@ -8,7 +8,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_single_ticker(suid):
+def get_tradingview_symbol_info(suid):
     r = ''
     url = 'http://smartalphatrade.com/s/'
     try:
@@ -26,19 +26,18 @@ def get_tradingview_single_ticker(suid):
 
         if symbol != '':
             r = '' +\
-            '<div class="tradingview-widget-container">'+\
-            '  <div class="tradingview-widget-container__widget"></div>'+\
-            '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>'+\
-            '  {'+\
-            '  "symbol": "'+ symbol +'",'+\
-            '  "width": "100%",'+\
-            '  "colorTheme": "'+ theme +'",'+\
-            '  "isTransparent": true,'+\
-            '  "locale": "en",'+\
-            '  "largeChartUrl": "http://smartalphatrade.com/s"'+\
-            '}'+\
-            '  </script>'+\
-            '</div>'
+'<div class="tradingview-widget-container">]'+\
+'  <div class="tradingview-widget-container__widget"></div>'+\
+'  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>'+\
+'  {'+\
+'  "symbol": "'+ symbol +'",'+\
+'  "width": "100%",'+\
+'  "locale": "en",'+\
+'  "colorTheme": "'+ theme +'",'+\
+'  "isTransparent": true'+\
+'}'+\
+'</div>'+\
+'  </script>'
         else:
             r = label_not_available
 
