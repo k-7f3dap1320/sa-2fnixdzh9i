@@ -26,19 +26,19 @@ def get_tradingview_symbol_info(suid):
 
         if symbol != '':
             r = '' +\
-'<div class="tradingview-widget-container">]'+\
-'  <div class="tradingview-widget-container__widget"></div>'+\
-'  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>'+\
-'  {'+\
-'  "symbol": "'+ symbol +'",'+\
-'  "width": "100%",'+\
-'  "locale": "en",'+\
-'  "colorTheme": "'+ theme +'",'+\
-'  "isTransparent": true'+\
-'  "largeChartUrl": "'+ url +'"'+\
-'}'+\
-'</div>'+\
-'  </script>'
+            '<div class="tradingview-widget-container">]'+\
+            '  <div class="tradingview-widget-container__widget"></div>'+\
+            '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>'+\
+            '  {'+\
+            '  "symbol": "'+ symbol +'",'+\
+            '  "width": "100%",'+\
+            '  "locale": "en",'+\
+            '  "colorTheme": "'+ theme +'",'+\
+            '  "isTransparent": true,'+\
+            '  "largeChartUrl": "'+ url +'"'+\
+            '}'+\
+            '</div>'+\
+            '  </script>'
         else:
             r = label_not_available
 
