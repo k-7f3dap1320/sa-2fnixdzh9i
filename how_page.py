@@ -70,6 +70,7 @@ def get_help_content(burl):
         simg = ''; stitle = ''; sdescr = ''
         slideblock = ''
         lineblock = ''
+        slideInterval = 5000
         while i <= numslide:
             if i == 1: sactive = 'active'; simg = s01; stitle = s01title; sdescr = s01descr
             if i == 2: sactive = ''; simg = s02; stitle = s02title; sdescr = s02descr
@@ -109,7 +110,7 @@ def get_help_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        '<div id="carouselIndicators" class="carousel slide" style="margin-left:auto; margin-right:auto; width:80%">'+\
+        '<div id="carouselIndicators" class="carousel slide" data-interval="'+ str(slideInterval) +'" style="margin-left:auto; margin-right:auto; width:80%">'+\
         '  <ol class="carousel-indicators">'+\
         lineblock +\
         '  </ol>'+\
