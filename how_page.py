@@ -60,8 +60,8 @@ def get_help_content(burl):
     s14 = imgsrc + '14.png'
     s14title = 'Precise entry on lower timeframe based on technical analysis'
     s14descr = 'Slide 14 detailed Description'
-    s15 = imgsrc + 'Current active trade(s) and closed trades'
-    s15title = 'Slide 15 title'
+    s15 = imgsrc + '15.png'
+    s15title = 'Current active trade(s) and closed trades'
     s15descr = 'Slide 15 detailed Description'
 
     try:
