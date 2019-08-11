@@ -90,9 +90,9 @@ def get_help_content(burl):
             slideblock = slideblock +\
              '    <div class="carousel-item '+ sactive +'">'+\
              '      <img class="d-block w-100" src="'+ simg +'" alt="'+ stitle  +'">'+\
-             '      <div class="carousel-caption d-none d-md-block" style="background-color: white;">'+\
-             '       <h5 style="color: black;">'+ stitle+'</h5>'+\
-             '       <p style="color: black;">'+ sdescr +'</p>'+\
+             '      <div class="carousel-caption d-none d-md-block" style="background-color: black; transparent:80%">'+\
+             '       <h5 style="color: white;">'+ stitle+'</h5>'+\
+             '       <p style="color: white;">'+ sdescr +'</p>'+\
              '      </div>'+\
              '    </div>'
 
