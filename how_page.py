@@ -70,7 +70,7 @@ def get_help_content(burl):
         simg = ''; stitle = ''; sdescr = ''
         slideblock = ''
         lineblock = ''
-        slideInterval = 5000
+        slideInterval = 9000
         while i <= numslide:
             if i == 1: sactive = 'active'; simg = s01; stitle = s01title; sdescr = s01descr
             if i == 2: sactive = ''; simg = s02; stitle = s02title; sdescr = s02descr
