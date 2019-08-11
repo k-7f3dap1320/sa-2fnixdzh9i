@@ -96,7 +96,7 @@ def get_help_content(burl):
             else:
                 lineClass = ''
             lineblock = lineblock +\
-            '    <li data-target="#carouselExampleIndicators" data-slide-to="'+ str(i-1) +'" '+ lineClass +'></li>'
+            '    <li data-target="#carouselIndicators" data-slide-to="'+ str(i-1) +'" '+ lineClass +'></li>'
             i += 1
 
 
@@ -111,11 +111,11 @@ def get_help_content(burl):
         '  <div class="carousel-inner">'+\
         slideblock +\
         '  </div>'+\
-        '  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'+\
+        '  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">'+\
         '    <span class="carousel-control-prev-icon" aria-hidden="true"></span>'+\
         '    <span class="sr-only">Previous</span>'+\
         '  </a>'+\
-        '  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">'+\
+        '  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">'+\
         '    <span class="carousel-control-next-icon" aria-hidden="true"></span>'+\
         '    <span class="sr-only">Next</span>'+\
         '  </a>'+\
