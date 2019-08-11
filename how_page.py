@@ -54,7 +54,7 @@ def get_help_content(burl):
     s12 = imgsrc + '12.png'
     s12title = 'Slide 12 title'
     s12descr = 'Slide 12 detailed Description'
-    s13 = imgsrc + '13png'
+    s13 = imgsrc + '13.png'
     s13title = 'Slide 13 title'
     s13descr = 'Slide 13 detailed Description'
     s14 = imgsrc + '14.png'
@@ -104,7 +104,7 @@ def get_help_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        '<div id="carouselExampleIndicators" class="carousel slide">'+\
+        '<div id="carouselIndicators" class="carousel slide" style="margin-left:auto; margin-right:auto; width:80%">'+\
         '  <ol class="carousel-indicators">'+\
         lineblock +\
         '  </ol>'+\
