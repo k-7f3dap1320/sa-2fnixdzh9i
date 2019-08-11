@@ -16,7 +16,7 @@ def get_help_content(burl):
     imgsrc = burl + 'static/help/'
     sactive = ''
 
-    numslide = 10
+    numslide = 15
 
     s01 = imgsrc + '01.png'
     s01title = 'Slide 1 title'
@@ -48,6 +48,21 @@ def get_help_content(burl):
     s10 = imgsrc + '10.png'
     s10title = 'Slide 10 title'
     s10descr = 'Slide 10 detailed Description'
+    s11 = imgsrc + '11.png'
+    s11title = 'Slide 11 title'
+    s11descr = 'Slide 11 detailed Description'
+    s12 = imgsrc + '12.png'
+    s12title = 'Slide 12 title'
+    s12descr = 'Slide 12 detailed Description'
+    s13 = imgsrc + '13png'
+    s13title = 'Slide 13 title'
+    s13descr = 'Slide 13 detailed Description'
+    s14 = imgsrc + '14.png'
+    s14title = 'Slide 14 title'
+    s14descr = 'Slide 14 detailed Description'
+    s15 = imgsrc + '15.png'
+    s15title = 'Slide 15 title'
+    s15descr = 'Slide 15 detailed Description'
 
     try:
 
