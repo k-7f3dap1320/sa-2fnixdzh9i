@@ -81,11 +81,11 @@ def get_help_content(burl):
             if i == 8: sactive = ''; simg = s08; stitle = s08title; sdescr = s08descr
             if i == 9: sactive = ''; simg = s09; stitle = s09title; sdescr = s09descr
             if i == 10: sactive = ''; simg = s10; stitle = s10title; sdescr = s10descr
-            if i == 11: sactive = ''; simg = s11; stitle = s11title; sdescr = s10descr
-            if i == 12: sactive = ''; simg = s12; stitle = s12title; sdescr = s10descr
-            if i == 13: sactive = ''; simg = s13; stitle = s13title; sdescr = s10descr
-            if i == 14: sactive = ''; simg = s14; stitle = s14title; sdescr = s10descr
-            if i == 15: sactive = ''; simg = s15; stitle = s15title; sdescr = s10descr
+            if i == 11: sactive = ''; simg = s11; stitle = s11title; sdescr = s11descr
+            if i == 12: sactive = ''; simg = s12; stitle = s12title; sdescr = s12descr
+            if i == 13: sactive = ''; simg = s13; stitle = s13title; sdescr = s13descr
+            if i == 14: sactive = ''; simg = s14; stitle = s14title; sdescr = s14descr
+            if i == 15: sactive = ''; simg = s15; stitle = s15title; sdescr = s15descr
 
             slideblock = slideblock +\
              '    <div class="carousel-item '+ sactive +'">'+\
