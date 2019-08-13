@@ -148,7 +148,8 @@ def go():
     else:
         if x == '' or x == None : x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
-        c = gen_main_page(x,appname,burl,dashboard)
+        tour = request.args.get('tour')
+        c = gen_main_page(x,appname,burl,dashboard,tour)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
     ############################################################################

@@ -7,7 +7,7 @@ from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
-def gen_portf_popup(tour):
+def gen_tour_popup(tour):
     r = ''
     try:
         label_header = 'Welcome to SmartAlpha'
