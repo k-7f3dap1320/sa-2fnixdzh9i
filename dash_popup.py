@@ -7,7 +7,7 @@ from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
-def gen_tour_popup(tour):
+def gen_tour_popup(tour,burl):
     r = ''
     try:
         label_header = 'Welcome to SmartAlpha'
@@ -34,7 +34,7 @@ def gen_tour_popup(tour):
             '        </div>'+\
             '        <!-- Modal footer -->'+\
             '        <div class="modal-footer">'+\
-            '          <button type="button" class="btn btn-info form-signin-btn" data-dismiss="modal">'+ label_button +'</button>'+\
+            '          <button type="button" class="btn btn-info form-signin-btn" onClick="window.location.href=\''+ burl +'/h\'">'+ label_button +'</button>'+\
             '        </div>'+\
             '      </div>'+\
             '    </div>'+\
