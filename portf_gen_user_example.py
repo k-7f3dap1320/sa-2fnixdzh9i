@@ -66,7 +66,7 @@ def gen_portf_user_example(burl,acm):
 
 def gen_portf_validate_content(burl):
 
-    resp = make_response( redirect(burl+'?dashboard=1&pop=1') )
+    resp = make_response( redirect(burl+'?dashboard=1&tour=1') )
     try:
         portf_symbol = portf_insert_data()
         generate_portfolio(portf_symbol)

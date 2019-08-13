@@ -34,7 +34,7 @@ def gen_tour_popup(tour,burl):
             '        </div>'+\
             '        <!-- Modal footer -->'+\
             '        <div class="modal-footer">'+\
-            '          <button type="button" class="btn btn-info form-signin-btn" onClick="window.location.href=\''+ burl +'/h\'">'+ label_button +'</button>'+\
+            '          <button type="button" class="btn btn-info form-signin-btn" onClick="window.location.href=\''+ burl +'h\'">'+ label_button +'</button>'+\
             '        </div>'+\
             '      </div>'+\
             '    </div>'+\
