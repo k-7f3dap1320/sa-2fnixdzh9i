@@ -149,7 +149,7 @@ def get_box_plan_selection(burl):
         '  </tbody>'+\
         '</table>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', True) +\
+        get_paypal_payment_button(burl,'en', False) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '            </div>'+\
