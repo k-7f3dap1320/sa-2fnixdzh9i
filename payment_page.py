@@ -21,6 +21,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         button_checkout = '<button type="submit" class="btn btn-lg btn-primary form-signin-btn" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_trial +'</button>'
         button_soldout = '<button class="btn btn-lg btn-primary form-signin-btn disabled" style="font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;">'+ l_button_soldout + '</button>'
         paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
+        paypal_button_id = 'HS42U57YF4HKL'
         soldout_form_action = '#'
 
         if is_soldout:
@@ -34,7 +35,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'+\
         '<form action="'+ form_action +'" method="post" target="_top">'+\
         '<input type="hidden" name="cmd" value="_s-xclick">'+\
-        '<input type="hidden" name="hosted_button_id" value="Q9YFDS96WNT76">'+\
+        '<input type="hidden" name="hosted_button_id" value="'+ paypal_button_id +'">'+\
         button_paypal +\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
@@ -62,7 +63,7 @@ def get_box_plan_selection(burl):
         '<div>&nbsp;</div>'+\
         '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', True) +\
+        get_paypal_payment_button(burl,'en', False) +\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
