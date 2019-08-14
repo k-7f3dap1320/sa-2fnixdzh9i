@@ -18,12 +18,14 @@ def get_intel_content(burl):
     try:
 
         box_content = ''+\
-        '<div class="box-top">' +\
+        '<div>' +\
         '<div class="row">' +\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '       <div class="box-part rounded sa-center-content">'+\
+        '           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">1</div>'+\
+        '           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">2</div>'+\
+        '           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">3</div>'+\
+        '       </div>'+\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
 
@@ -36,7 +38,7 @@ def get_intel_page(appname,burl):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_intel_content(burl) + get_page_footer(burl) )
+        r = r + get_body( get_loading_body(),  get_intel_content(burl) )
         r = set_page(r)
     except Exception as e: print(e)
 
