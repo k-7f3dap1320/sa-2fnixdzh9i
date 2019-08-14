@@ -9,6 +9,7 @@ from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 from app_cookie import *
+from app_stylesheet import *
 
 def get_intel_content(burl):
 
