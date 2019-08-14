@@ -20,11 +20,11 @@ def get_intel_content(burl):
         box_content = ''+\
         '<div class="box-top">' +\
         '<div class="row">' +\
-        '    <div class="col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-sm-6 col-md-3"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-sm-6 col-md-3"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-md-6"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
 
     except Exception as e: print(e)
