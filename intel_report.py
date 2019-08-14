@@ -19,14 +19,16 @@ def get_intel_content(burl):
 
         box_content = ''+\
         '<div class="box-top">' +\
+        '<div class"row">' +\
+        '    <div class="col-xs-12"><div class="box-part rounded"></div></div>'+\
+        '</div>' +\
         '<div class="row">'+\
-        '    <div class="col-xs-12"></div>'+\
-        '    <div class="col-sm-6 col-md-3"></div>'+\
-        '    <div class="col-sm-6 col-md-3"></div>'+\
-        '    <div class="col-md-6"></div>'+\
+        '    <div class="col-sm-6 col-md-3"><div class="box-part rounded"></div></div>'+\
+        '    <div class="col-sm-6 col-md-3"><div class="box-part rounded"></div></div>'+\
+        '    <div class="col-md-6"><div class="box-part rounded"></div></div>'+\
         '</div>'+\
         '<div class="row">'+\
-        '    <div class="col-xs-12"></div>'+\
+        '    <div class="col-xs-12"><div class="box-part rounded"></div></div>'+\
         '</div>'+\
         '</div>'
 
