@@ -2,6 +2,13 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from sa_db import *
+access_obj = sa_db_access()
+import pymysql.cursors
+from sa_func import *
+import datetime
+import time
+from datetime import timedelta
 from app_head import *; from app_body import *; from app_page import *; from app_loading import *
 from app_footer import *
 from app_ogp import *
@@ -13,6 +20,8 @@ from app_stylesheet import *
 from signal_details import *
 from tradingview_indicators import *
 from signal_recom_trail_returns import *
+
+db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_intel_content(burl):
 
@@ -35,10 +44,31 @@ def get_intel_content(burl):
 def get_signals_lines(burl):
     content = ''
     try:
-        content = '' +\
-        '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(1) + '<span style="font-size: small">'+ get_recomm(1)  +'</span></div></div>'+\
-        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
+        dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql ="SELECT "+\
+            "trades.uid "+\
+            "FROM trades "+\
+            "JOIN portfolios ON portfolios.symbol = trades.symbol "+\
+            "JOIN instruments ON instruments.symbol = portfolios.portf_symbol "+\
+            "JOIN instruments as a_alloc ON a_alloc.symbol = portfolios.symbol "+\
+            "WHERE "+\
+            "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
+            "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
+            "OR (portfolios.strategy_order_type = 'long/short') ) AND "+\
+            "((trades.entry_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active') OR "+\
+            "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active')"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            uid = row[0]
+            content = content +\
+            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+            '    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(1)  +'</span></div></div>'+\
+            '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
+        cr.close()
+        connection.close()
 
     except Exception as e: print(e)
     return content
