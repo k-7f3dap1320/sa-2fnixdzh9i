@@ -44,8 +44,12 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
             '}'+\
             '  </script>'+\
             '</div>'
+            print(r)
         else:
             r = label_not_available
+
+        cr.close()
+        connection.close()
 
     except Exception as e: print(e)
     return r
