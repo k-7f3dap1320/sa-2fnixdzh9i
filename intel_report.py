@@ -90,7 +90,7 @@ def get_signals_lines(burl):
         for row in rs:
             uid = row[0]
             content = content +\
-            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_mini_chart(uid,'400','300','false') +'</div></div>'+\
+            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_mini_chart(uid,'100%','250','false') +'</div></div>'+\
             '    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
         cr.close()
