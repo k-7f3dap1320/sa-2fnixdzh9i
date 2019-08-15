@@ -87,7 +87,7 @@ def get_signals_lines(burl):
         cr.execute(sql)
         rs = cr.fetchall()
 
-        content = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
+        content = '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
 
         for row in rs:
             uid = row[0]
