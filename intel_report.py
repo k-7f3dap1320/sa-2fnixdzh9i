@@ -12,7 +12,7 @@ from app_cookie import *
 from app_stylesheet import *
 from signal_details import *
 from tradingview_indicators import *
-from signal_recom_trail_return import *
+from signal_recom_trail_returns import *
 
 def get_intel_content(burl):
 
