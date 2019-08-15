@@ -24,6 +24,15 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
         rs = cr.fetchall()
         for row in rs: symbol = row[0]
 
+        trendLineColor = '#37a6ef'
+        underLineColor = '#e3f2fd'
+        if get_signal(uid)=='b':
+            trendLineColor = 'rgba(106, 168, 79, 1)'
+            underLineColor = 'rgba(217, 234, 211, 1)'
+        else:
+            trendLineColor = 'rgba(255, 0, 0, 1)'
+            underLineColor = 'rgba(244, 204, 204, 1)'
+
         if symbol != '':
             r = '' +\
             '<div class="tradingview-widget-container">'+\
