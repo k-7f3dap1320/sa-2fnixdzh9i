@@ -27,7 +27,7 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
 
         trendLineColor = '#37a6ef'
         underLineColor = '#e3f2fd'
-        if get_signal(uid)=='b':
+        if get_signal(suid)=='b':
             trendLineColor = 'rgba(106, 168, 79, 1)'
             underLineColor = 'rgba(217, 234, 211, 1)'
         else:
