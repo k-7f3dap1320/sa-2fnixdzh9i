@@ -53,7 +53,6 @@ def get_intel_content(burl):
     try:
 
         box_content = ''+\
-        '<div>' +\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title() +'</div></div>'+\
