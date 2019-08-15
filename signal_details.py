@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_sign_header(uid):
+def get_signal_details(uid):
 
     descr_box = ''
 
@@ -69,8 +69,6 @@ def get_sign_header(uid):
 
 
         descr_box = '' +\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded">'+\
         '               <table class="table table-sm sa-table-sm">'+\
         '                   <tbody>'+\
         '                       <tr>'+\
@@ -85,10 +83,7 @@ def get_sign_header(uid):
         '                           <td><h6>'+ c_sl +'</h6></td>'+\
         '                       </tr>'+\
         '                   </tbody>'+\
-        '               </table>'+\
-        '            </div>'+\
-        '        </div>'
-
+        '               </table>'
 
         cr.close()
         connection.close()

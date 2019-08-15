@@ -17,7 +17,7 @@ from awesomplete import *
 from tablesorter import *
 from app_navbar import *
 from details_header import *
-from signal_header import *
+from signal_details import *
 from signal_ta_chart_alt_orders import *
 from signal_recom_trail_returns import *
 from trades_tab import *
@@ -44,6 +44,16 @@ def get_uid_from_tvs(tvws):
         connection.close()
     except Exception as e: print(e)
     return r
+
+def get_sign_header(uid):
+    try:
+        content = ''+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded">'+\
+        get_signal_details(uid) +\
+        '            </div>'+\
+        '        </div>'
+    except Exception as e: print(e)
 
 def gen_sign_page(uid,tvws,appname,burl):
 
