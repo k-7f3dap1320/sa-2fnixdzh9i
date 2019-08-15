@@ -8,7 +8,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_indicators(suid):
+def get_tradingview_indicators(suid,width,height):
     r = ''
     url = 'http://smartalphatrade.com/s/'
     try:
@@ -31,13 +31,13 @@ def get_tradingview_indicators(suid):
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>'+\
             '  {'+\
             '  "showIntervalTabs": true,'+\
-            '  "width": "100%",'+\
+            '  "width": "'+ width +'",'+\
             '  "colorTheme": "'+ theme +'",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
             '  "symbol": "'+ symbol +'",'+\
             '  "interval": "1h",'+\
-            '  "height": "100%",'+\
+            '  "height": "'+ height +'",'+\
             '  "largeChartUrl": "'+ url +'"'+\
             '}'+\
             '  </script>'+\

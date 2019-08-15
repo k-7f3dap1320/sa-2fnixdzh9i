@@ -36,7 +36,7 @@ def get_signals_lines(burl):
     try:
         content = '' +\
         '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_indicators(1) +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_indicators(1,'300','400') +'</div></div>'+\
         '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(1) +'</div></div>'+\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
 
