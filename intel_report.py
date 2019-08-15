@@ -29,7 +29,7 @@ def get_report_title():
     try:
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
         l_title = 'Daily Intelligence Briefing: ' + dnstr
-        l_generated_for = 'Report generated for: '
+        l_generated_for = 'Report generated for '
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -41,7 +41,7 @@ def get_report_title():
 
         content = content +\
         '<h2>'+ l_title +'</h2>' +\
-        l_generated_for + name.capitalize() +\
+        l_generated_for + '<strong>'+ name.capitalize() '</strong>'+\
         '<hr />'
     except Exception as e: print(e)
     return content
