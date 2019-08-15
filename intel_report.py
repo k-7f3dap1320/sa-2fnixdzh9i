@@ -86,8 +86,9 @@ def get_signals_lines(burl):
             "(trades.entry_date >= " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active')"
         cr.execute(sql)
         rs = cr.fetchall()
-
-        content = '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
+        content = '<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'
+        content = content + '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
+        content = content + '<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'
 
         for row in rs:
             uid = row[0]
