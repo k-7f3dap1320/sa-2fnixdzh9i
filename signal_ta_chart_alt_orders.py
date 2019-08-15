@@ -328,15 +328,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                      <div id="'+ tab_5_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_profile_widget(uid) + '</div></div>'+\
         '                  </div>'+\
         '            </div>'+\
-        '        </div>'+\
-        '<script>'+\
-        ' $(document).ready('+\
-        ' function() {'+\
-        ' setInterval(function() {'+\
-        '  $("#fd").load("index.htm")'+\
-        ' }, 1000);  //Delay here = 1 seconds '+\
-        '});'+\
-        '</script>'
+        '        </div>'
         #To disable tab: remove the data-toggle="pill"
     except Exception as e: print(e)
 
