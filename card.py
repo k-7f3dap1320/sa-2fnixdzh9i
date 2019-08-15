@@ -105,7 +105,7 @@ def get_card(x,t,burl):
                 r = r + '' +\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
-                get_tradingview_mini_chart(uid,'90%','80%','true') +\
+                get_tradingview_mini_chart(uid,'90%','150','true') +\
                 '                <div class="title"><h6>'+short_title+'&nbsp;<a href="' + url + '" class="'+badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+ expl_label +'" >'+badge+'</a></h6></div>'+\
                 '                <div class="text"><span class="desc">'+content+': '+short_description+'</span></div>'+\
                 '                <a href="' + url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+link_label+'</a>'+\
