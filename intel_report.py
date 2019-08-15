@@ -47,7 +47,7 @@ def get_signals_lines(burl):
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql ="SELECT "+\
+        sql ="SELECT DISTINCT "+\
             "trades.uid "+\
             "FROM trades "+\
             "JOIN portfolios ON portfolios.symbol = trades.symbol "+\
