@@ -26,11 +26,21 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_report_title():
     content = ''
     try:
-        l_title = 'Intelligence Daily Briefing'
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
+        l_title = 'Daily Intelligence Briefing: ' + dnstr
+        l_generated_for = 'Report generated for: '
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT name FROM users WHERE uid= "+ str( get_user_numeric_id() )
+        cr.execute(sql)
+        rs = cr.fetchall()
+        name = ''
+        for row in rs: name = row[0]
+
         content = content +\
         '<h2>'+ l_title +'</h2>' +\
-        dnstr +\
+        l_generated_for + name +\
         '<hr />'
     except Exception as e: print(e)
     return content
