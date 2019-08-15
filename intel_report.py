@@ -22,9 +22,7 @@ def get_intel_content(burl):
         '<div>' +\
         '<div class="row">' +\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(1) +'</div></div>'+\
+        get_signals_lines(burl) +\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
 
@@ -32,6 +30,17 @@ def get_intel_content(burl):
 
     return box_content
 
+def get_signals_lines(burl):
+    content = ''
+    try:
+        content = '' +\
+        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(1) +'</div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
+
+    except Exception as e: print(e)
+    return content
 
 def get_intel_page(appname,burl):
     r = ''

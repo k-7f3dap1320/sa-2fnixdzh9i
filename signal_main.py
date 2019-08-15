@@ -46,6 +46,7 @@ def get_uid_from_tvs(tvws):
     return r
 
 def get_sign_header(uid):
+    content = ''
     try:
         content = ''+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -53,8 +54,8 @@ def get_sign_header(uid):
         get_signal_details(uid) +\
         '            </div>'+\
         '        </div>'
-        return content
     except Exception as e: print(e)
+    return content
 
 def gen_sign_page(uid,tvws,appname,burl):
 
