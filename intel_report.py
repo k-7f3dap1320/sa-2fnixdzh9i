@@ -41,7 +41,7 @@ def get_report_title():
 
         content = content +\
         '<h2>'+ l_title +'</h2>' +\
-        l_generated_for + '<strong>'+ name.capitalize() '</strong>'+\
+        l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
         '<hr />'
     except Exception as e: print(e)
     return content
