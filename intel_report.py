@@ -57,14 +57,14 @@ def get_signals_lines(burl):
             "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
             "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
             "OR (portfolios.strategy_order_type = 'long/short') ) AND "+\
-            "((trades.entry_date >= " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active')"
+            "(trades.entry_date >= " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active')"
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
             uid = row[0]
             content = content +\
             '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-            '    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(1)  +'</span></div></div>'+\
+            '    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><hr /></div></div>'
         cr.close()
         connection.close()
