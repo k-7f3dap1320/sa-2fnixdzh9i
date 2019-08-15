@@ -21,20 +21,26 @@ def get_recomm(uid):
     for row in rs:
         recommendation = row[0]
 
-    l_title = 'Technical Recommendation'
-
-    recomm_box = '' +\
-    '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-signal-recomm-trail-ret">'+\
-    '               <div><h6>'+ l_title +'</h6></div>'+\
-    '               <div>'+ recommendation +'</div>'+\
-    '            </div>'+\
-    '        </div>'
+    recomm_box = recommendation
 
     cr.close()
     connection.close()
 
     return recomm_box
+
+def get_recomm_layout(uid):
+    content = ''
+    try:
+        l_title = 'Technical Recommendation'
+        content = '' +\
+        '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded sa-signal-recomm-trail-ret">'+\
+        '               <div><h6>'+ l_title +'</h6></div>'+\
+        '               <div>'+ get_recomm(uid) +'</div>'+\
+        '            </div>'+\
+        '        </div>'
+    except Exception as e: print(e)
+    return content
 
 def get_chart_box(uid):
 
@@ -68,7 +74,7 @@ def get_sign_recommend_trail_returns(uid):
 
     try:
 
-        r = get_recomm(uid) + get_chart_box(uid)
+        r = get_recomm_layout(uid) + get_chart_box(uid)
 
     except Exception as e: print(e)
 
