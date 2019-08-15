@@ -45,8 +45,8 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
             '  "locale": "en",'+\
             '  "dateRange": "1m",'+\
             '  "colorTheme": "'+ theme +'",'+\
-            '  "trendLineColor": "#37a6ef",'+\
-            '  "underLineColor": "#e3f2fd",'+\
+            '  "trendLineColor": "'+ trendLineColor +'",'+\
+            '  "underLineColor": "'+ underLineColor +'",'+\
             '  "isTransparent": true,'+\
             '  "autosize": '+ autosize +','+\
             '  "largeChartUrl": "'+ url +'"'+\
