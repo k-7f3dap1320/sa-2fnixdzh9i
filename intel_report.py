@@ -28,8 +28,8 @@ def get_report_title():
     try:
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
         content = content +\
-        '<h1>Intelligence Report</h1>' +\
-        'Report: ' + dnstr
+        '<h2>Intelligence Daily Briefing</h2>' +\
+        dnstr
     except Exception as e: print(e)
     return content
 
