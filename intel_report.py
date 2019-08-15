@@ -10,6 +10,7 @@ from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 from app_cookie import *
 from app_stylesheet import *
+from signal_details import *
 
 def get_intel_content(burl):
 
@@ -23,7 +24,7 @@ def get_intel_content(burl):
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(1) +'</div></div>'+\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
 
