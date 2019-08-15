@@ -24,11 +24,6 @@ def get_intel_content(burl):
         '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <hr />'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
-        '    <hr />'+\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
 
