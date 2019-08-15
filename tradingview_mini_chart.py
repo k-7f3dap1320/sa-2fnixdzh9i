@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_mini_chart(suid,width,height,autosize):
+def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
     r = ''
     url = 'http://smartalphatrade.com/s/'
     try:
@@ -44,7 +44,7 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
             '  "width": "'+ width +'",'+\
             '  "height": "'+ height +'",'+\
             '  "locale": "en",'+\
-            '  "dateRange": "1m",'+\
+            '  "dateRange": "'+dateRange+'",'+\
             '  "colorTheme": "'+ theme +'",'+\
             '  "trendLineColor": "'+ trendLineColor +'",'+\
             '  "underLineColor": "'+ underLineColor +'",'+\
