@@ -72,7 +72,7 @@ def get_intel_content(burl):
 def get_signals_lines(burl):
     content = ''
     try:
-        l_title = 'Today\'s Trade(s) Opportunities'
+        l_title = 'Opportunities'
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
