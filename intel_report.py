@@ -102,7 +102,6 @@ def get_signals_lines(burl):
             '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m') +'</div></div>'+\
             '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-            '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><hr /></div>'+\
             '</div>'
         cr.close()
         connection.close()
