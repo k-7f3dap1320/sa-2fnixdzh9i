@@ -44,9 +44,9 @@ def get_intel_content(burl):
         box_content = ''+\
         '<div>' +\
         '<div class="row">' +\
-        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_report_title() +'</div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title() +'</div></div>'+\
         get_signals_lines(burl) +\
-        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'+\
         '</div>'
 
     except Exception as e: print(e)
@@ -74,7 +74,7 @@ def get_signals_lines(burl):
         cr.execute(sql)
         rs = cr.fetchall()
 
-        content = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><h4>'+ l_title  +'</h4></div></div>'
+        content = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
 
         for row in rs:
             uid = row[0]
