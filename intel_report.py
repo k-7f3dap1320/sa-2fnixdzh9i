@@ -57,13 +57,11 @@ def get_intel_content(burl):
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title() +'</div></div>'+\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'+\
         get_signals_lines(burl) +\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'+\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
 
     except Exception as e: print(e)
@@ -94,7 +92,6 @@ def get_signals_lines(burl):
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h4>'+ l_title  +'</h4></div></div>'
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
 
         for row in rs:
@@ -105,9 +102,7 @@ def get_signals_lines(burl):
             '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m') +'</div></div>'+\
             '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><hr /></div>'+\
-            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '</div>'
         cr.close()
         connection.close()
