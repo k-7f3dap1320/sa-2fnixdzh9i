@@ -26,9 +26,10 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_report_title():
     content = ''
     try:
+        l_title = 'Intelligence Daily Briefing'
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
         content = content +\
-        '<h2>Intelligence Daily Briefing</h2>' +\
+        '<h2>'+ l_title +'</h2>' +\
         dnstr +\
         '<hr />'
     except Exception as e: print(e)
@@ -55,6 +56,7 @@ def get_intel_content(burl):
 def get_signals_lines(burl):
     content = ''
     try:
+        l_title = 'Today\'s Trade(s) Opportunities'
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -71,6 +73,9 @@ def get_signals_lines(burl):
             "(trades.entry_date >= " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active')"
         cr.execute(sql)
         rs = cr.fetchall()
+
+        content = '<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"><h3>'+ l_title  +'</h3></div></div>'
+
         for row in rs:
             uid = row[0]
             content = content +\
