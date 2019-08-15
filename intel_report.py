@@ -23,6 +23,16 @@ from signal_recom_trail_returns import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
+def get_report_title():
+    content = ''
+    try:
+        dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
+        content = content +\
+        '<h1>Intelligence Report</h1>' +\
+        'Report: ' + dnstr
+    except Exception as e: print(e)
+    return content
+
 def get_intel_content(burl):
 
     box_content = ''
@@ -32,7 +42,7 @@ def get_intel_content(burl):
         box_content = ''+\
         '<div>' +\
         '<div class="row">' +\
-        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
+        '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_report_title() +'</div></div>'+\
         get_signals_lines(burl) +\
         '    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content"></div></div>'+\
         '</div>'
