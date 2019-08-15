@@ -115,7 +115,7 @@ def get_card(x,t,burl):
 
             ### Portfolios ###
             if t == 9:
-                r = r + get_card_chart(uid,color) +\
+                r = r + get_tradingview_mini_chart(uid,'90%','80%','true') +\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
