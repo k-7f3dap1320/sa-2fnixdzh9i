@@ -10,6 +10,8 @@ from print_google_ads import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
+from tradingview_mini_chart import *
+
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
@@ -98,11 +100,9 @@ def get_card(x,t,burl):
             link_label = "Click here for details"
 
 
-            r = r + get_card_chart(uid,color)
-
             ### Trading Instruments ###
             if t == 1:
-                r = r + ''+\
+                r = r + get_card_chart(uid,color) +\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( uid )+'"></div>'+\
@@ -115,7 +115,7 @@ def get_card(x,t,burl):
 
             ### Portfolios ###
             if t == 9:
-                r = r + ''+\
+                r = r + get_card_chart(uid,color) +\
                 '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
                 '            <div class="box-part text-center rounded">'+\
                 '                <div id="chart_div_'+str( get_uid(symbol) )+'"></div>'+\
