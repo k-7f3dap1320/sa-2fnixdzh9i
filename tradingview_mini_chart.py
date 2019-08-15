@@ -31,8 +31,8 @@ def get_tradingview_mini_chart(suid,width,height,autosize):
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>'+\
             '  {'+\
             '  "symbol": "'+ symbol +'",'+\
-            '  "width": '+ width +','+\
-            '  "height": '+ height +','+\
+            '  "width": "'+ width +'",'+\
+            '  "height": "'+ height +'",'+\
             '  "locale": "en",'+\
             '  "dateRange": "1m",'+\
             '  "colorTheme": "'+ theme +'",'+\
