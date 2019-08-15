@@ -53,6 +53,7 @@ def get_sign_header(uid):
         get_signal_details(uid) +\
         '            </div>'+\
         '        </div>'
+        return content
     except Exception as e: print(e)
 
 def gen_sign_page(uid,tvws,appname,burl):
