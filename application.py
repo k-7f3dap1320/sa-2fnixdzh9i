@@ -37,7 +37,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
 @application.route('/fd/', endpoint='fd', methods=["POST","GET"])
 @application.route('/ip/', endpoint='ip', methods=["POST","GET"])
-@application.route('/i/', endpoint='i', methods=["POST","GET"])
+@application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
@@ -114,7 +114,7 @@ def go():
     elif request.endpoint == 'ip':
         c = get_tradingview_profile_page(uid,burl)
 
-    elif request.endpoint == 'i':
+    elif request.endpoint == 'intelligence':
         c = get_intel_page(appname,burl)
 
     elif request.endpoint == 'login':
