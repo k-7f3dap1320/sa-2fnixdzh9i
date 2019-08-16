@@ -95,7 +95,7 @@ def get_expired_signals(burl):
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment +'</div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_trades_tbl(get_user_numeric_id(),'today',burl,'expired') + '</div></div>'+\
+        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_trades_tbl(0,'today',burl,'expired') + '</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
     except Exception as e: print(e)
