@@ -68,7 +68,7 @@ def get_intel_content(burl):
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
         '</div>'+\
         get_signals_lines(burl) +\
-        get_expired_signals() +\
+        get_expired_signals(burl) +\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'+\
@@ -79,7 +79,7 @@ def get_intel_content(burl):
 
     return box_content
 
-def get_expired_signals():
+def get_expired_signals(burl):
     content = ''
     try:
         l_title = 'Expired Signals'
