@@ -82,7 +82,7 @@ def get_expired_signals():
     content = ''
     try:
         l_title = 'Expired Signals'
-        dn = datetime.datetime.now()-7; dnstr = dn.strftime("%A %d %B, %Y");
+        dn = datetime.datetime.now() - ( timedelta(days=7) ); dnstr = dn.strftime("%A %d %B, %Y");
         l_comment = 'Signals with orders entered on ' + dnstr + ' and before are now expired and may be close or managed at your own discretion.'
         content = ''+\
         '<div class="row">' +\
