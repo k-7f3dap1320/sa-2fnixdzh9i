@@ -88,13 +88,14 @@ def get_expired_signals(burl):
         content = ''+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
+        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'+\
         '<div class="row">' +\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ l_comment +'</div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_trades_tbl(get_user_numeric_id(),'today',burl,'expired') + '</div></div>'+\
+        '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment +'</div></div>'+\
+        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_trades_tbl(get_user_numeric_id(),'today',burl,'expired') + '</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
     except Exception as e: print(e)
@@ -131,8 +132,8 @@ def get_signals_lines(burl):
             content = content +\
             '<div class="row">' +\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m') +'</div></div>'+\
-            '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
+            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m') +'</div></div>'+\
+            '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '</div>'
         cr.close()
