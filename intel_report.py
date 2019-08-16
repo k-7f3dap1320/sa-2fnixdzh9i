@@ -24,25 +24,33 @@ from tradingview_mini_chart import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_report_title():
+def get_report_title(burl):
     content = ''
     try:
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
         l_title = 'Daily Intelligence Briefing: ' + dnstr
         l_generated_for = 'Report generated for '
 
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT name FROM users WHERE id= "+ str( get_user_numeric_id() )
-        cr.execute(sql)
-        rs = cr.fetchall()
-        name = ''
-        for row in rs: name = row[0]
 
-        content = content +\
-        '<h2>'+ l_title +'</h2>' +\
-        l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
-        '<hr />'
+        if user_is_login():
+            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+            cr = connection.cursor(pymysql.cursors.SSCursor)
+            sql = "SELECT name FROM users WHERE id= "+ str( get_user_numeric_id() )
+            cr.execute(sql)
+            rs = cr.fetchall()
+            name = ''
+            for row in rs: name = row[0]
+
+            content = content +\
+            '<h2>'+ l_title +'</h2>' +\
+            l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
+            '<hr />'
+        else:
+            content = content +\
+            '<h2>'+ l_title +'</h2>' +\
+            'This report is only accessible to members only. '+\
+            '<a href="'+ burl +'signin/?redirect='+ burl +'intelligence">Sign In</a>'
+
     except Exception as e: print(e)
     return content
 
@@ -56,7 +64,7 @@ def get_intel_content(burl):
         '<div class="box-top">'+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title() +'</div></div>'+\
+        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
         '</div>'+\
         get_signals_lines(burl) +\
         '<div class="row">' +\
