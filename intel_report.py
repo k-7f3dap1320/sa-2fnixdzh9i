@@ -83,7 +83,7 @@ def get_expired_signals():
     try:
         l_title = 'Expired Signals'
         dn = datetime.datetime.now() - ( timedelta(days=7) ); dnstr = dn.strftime("%A %d %B, %Y");
-        l_comment = 'Signals with orders entered on ' + dnstr + ' and before are now expired and may be close or managed at your own discretion.'
+        l_comment = 'Signals with orders entered on <strong>' + dnstr + '</strong> and before are now expired and may be closed or managed at your own discretion.'
         content = ''+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
@@ -91,7 +91,7 @@ def get_expired_signals():
         '</div>'+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_comment  +'</h2></div></div>'+\
+        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment  +'</div></div>'+\
         '</div>'
 
     except Exception as e: print(e)
