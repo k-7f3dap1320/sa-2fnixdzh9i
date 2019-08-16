@@ -120,7 +120,8 @@ def go():
     elif request.endpoint == 'login':
         user = request.values.get('user')
         password = request.values.get('password')
-        c = user_login(user,password, burl )
+        redirect = request.values.get('redirect')
+        c = user_login(user,password, burl, redirect)
 
     elif request.endpoint == 'logout':
         c = user_logout(burl)
@@ -128,7 +129,8 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'signin':
-        c = get_signin_page(appname,burl,err)
+        redirect = request.values.get('redirect')
+        c = get_signin_page(appname,burl,err,redirect)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

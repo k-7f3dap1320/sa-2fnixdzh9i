@@ -21,9 +21,10 @@ def user_logout(burl):
 
     return resp
 
-def user_login(usr,pwd,burl):
+def user_login(usr,pwd,burl,redirect):
 
     c = ''
+    redirectUrl = burl + '?dashboard=1'
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -38,8 +39,11 @@ def user_login(usr,pwd,burl):
         cr.close()
         connection.close()
 
+        if redirect != '':
+            redirectUrl = redirect
+
         if not uid == '':
-            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '?dashboard=1" />') + get_body('','') ) )
+            c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + redirectUrl + '" />') + get_body('','') ) )
         else:
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'signin/?err=1" />') + get_body('','') )
 

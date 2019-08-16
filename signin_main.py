@@ -9,7 +9,7 @@ from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 
-def get_login_form(burl,theme):
+def get_login_form(burl,theme,redirect):
 
     r = ''
     try:
@@ -24,7 +24,7 @@ def get_login_form(burl,theme):
             logo = 'logo_light.png'
         r = '' +\
         '<div class="'+ sign_in_class +'"><img src="'+ burl +'static/'+ logo +'" height="30">&nbsp;Sign In</div>'+\
-        '    <form class="form-signin" method="POST" action="'+ burl+'login/' +'">'+\
+        '    <form class="form-signin" method="POST" action="'+ burl+'login/?redirect='+ redirect +'">'+\
         '      <label for="user" class="sr-only">Email address</label>'+\
         '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\
         '      <label for="password" class="sr-only">Password</label>'+\
@@ -63,7 +63,7 @@ def popup_login(err,burl):
     print('This is err==' + r )
     return r
 
-def get_signin_content(burl,theme,err):
+def get_signin_content(burl,theme,err,redirect):
 
     box_content = ''
 
@@ -74,7 +74,7 @@ def get_signin_content(burl,theme,err):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded">'+\
         popup_login(err,burl) +\
-        get_login_form(burl,theme) +\
+        get_login_form(burl,theme,redirect) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -85,11 +85,11 @@ def get_signin_content(burl,theme,err):
     return box_content
 
 
-def get_signin_page(appname,burl,err):
+def get_signin_page(appname,burl,err,redirect):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl,'light',err) + get_page_footer(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl) + get_signin_content(burl,'light',err,redirect) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
 
