@@ -67,6 +67,7 @@ def get_intel_content(burl):
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
         '</div>'+\
         get_signals_lines(burl) +\
+        get_expired_signals() +\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"></div></div>'+\
@@ -76,6 +77,25 @@ def get_intel_content(burl):
     except Exception as e: print(e)
 
     return box_content
+
+def get_expired_signals():
+    content = ''
+    try:
+        l_title = 'Expired Signals'
+        dn = datetime.datetime.now()-7; dnstr = dn.strftime("%A %d %B, %Y");
+        l_comment = 'Signals with orders entered on ' + dnstr + ' and before are now expired and may be close or managed at your own discretion.'
+        content = ''+\
+        '<div class="row">' +\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
+        '</div>'+\
+        '<div class="row">' +\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_comment  +'</h2></div></div>'+\
+        '</div>'
+
+    except Exception as e: print(e)
+    return content
 
 def get_signals_lines(burl):
     content = ''
