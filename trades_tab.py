@@ -12,7 +12,7 @@ from datetime import timedelta
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_trades_tbl(uid,w,burl):
+def get_trades_tbl(uid,w,burl,type):
 
     r = ''
     try:
@@ -86,6 +86,14 @@ def get_trades_tbl(uid,w,burl):
                 "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
                 "OR (portfolios.strategy_order_type = 'long/short') ) AND trades.entry_date <=" + dnstr + " AND "
         elif w == 'today':
+            type_status_filter = "" +\
+            "((trades.entry_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active') OR "+\
+            "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active') OR "+\
+            "(trades.expiration_date = " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'expired')) "
+
+            if type =='expired':
+                type_status_filter = "(trades.expiration_date = " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'expired')) "
+
             sql ="SELECT "+\
                 "trades.order_type, "+\
                 "trades.fullname, "+\
@@ -106,9 +114,7 @@ def get_trades_tbl(uid,w,burl):
                 "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
                 "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
                 "OR (portfolios.strategy_order_type = 'long/short') ) AND "+\
-                "((trades.entry_date = " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active') OR "+\
-                "(trades.expiration_date <= " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'active') OR "+\
-                "(trades.expiration_date = " + dnstr + " AND instruments.owner = "+ str(get_user_numeric_id()) +" AND status = 'expired')) "
+                type_status_filter
         else:
             sql = "SELECT trades.order_type, "+\
                 "trades.fullname, "+\
@@ -248,7 +254,7 @@ def get_trades_box(uid,burl,is_dashboard):
                 tab_style_overflow ='overflow-y: scroll; max-height: 600px; min-height: 600px;'
                 tab_active_trade = ''
                 tab_today_orders = '<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#'+ tab_today_id +'">'+ l_tab_today_title +'</a></li>'
-                tab_today_orders_content = '<div id="'+ tab_today_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'today',burl) +'</div>'
+                tab_today_orders_content = '<div id="'+ tab_today_id +'" class="tab-pane active" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'today',burl,'') +'</div>'
 
             box_content = '' +\
             div_placement +\
@@ -265,8 +271,8 @@ def get_trades_box(uid,burl,is_dashboard):
             '               </ul>'+\
             '               <div class="tab-content">'+\
             tab_today_orders_content +\
-            '                   <div id="'+ tab_active_id +'" class="tab-pane '+ tab_active_trade +'" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl) +'</div>'+\
-            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl) +'</div>'+\
+            '                   <div id="'+ tab_active_id +'" class="tab-pane '+ tab_active_trade +'" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'active',burl,'') +'</div>'+\
+            '                   <div id="'+ tab_expired_id +'" class="tab-pane fade" style="'+ tab_style_overflow +'"><div>&nbsp;</div>'+ get_trades_tbl(uid,'expired',burl,'') +'</div>'+\
             '               </div>'+\
             '            </div>'+\
             '        </div>'
