@@ -21,6 +21,7 @@ from signal_details import *
 from tradingview_indicators import *
 from signal_recom_trail_returns import *
 from tradingview_mini_chart import *
+from trades_tab import *
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
@@ -90,10 +91,12 @@ def get_expired_signals():
         '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
         '</div>'+\
         '<div class="row">' +\
+        '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment  +'</div></div>'+\
+        '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ l_comment +'</div></div>'+\
+        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded sa-center-content">'+ get_trades_tbl(uid,'today',burl,'expired') + '</div></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
-
     except Exception as e: print(e)
     return content
 
