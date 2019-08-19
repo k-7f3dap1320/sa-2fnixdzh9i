@@ -53,8 +53,8 @@ def get_box_plan_selection(burl):
 
     try:
         l_price = 'USD 29.00'
-        l_title_join_now = 'Join thousands of professional and beginner traders that make money with SmartAlpha. Don`t miss this unique opportunity.'
-        l_less_than_price_coffee_day = '*For less than the price of a cup of coffee per day.'
+        l_title_join_now = 'Join thousands of traders that make money with SmartAlpha. Don\'t miss this unique opportunity.'
+        l_less_than_price_coffee_day = '*For less than $1 a day.'
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
