@@ -148,7 +148,7 @@ def get_perf_chart(uid):
     '                            legend: "none",'+\
     '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: { gridlines: { count: 4 } }, '+\
-    '                            series:{0: {areaOpacity: 0.1, color: "black", lineWidth: 1} },'+\
+    '                            series:{0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
     '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
