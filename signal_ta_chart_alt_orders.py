@@ -185,7 +185,7 @@ def get_ta_chart(uid):
     '          vAxis: { viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '          hAxis: { gridlines: { count: 4 } }, '+\
     '          series:{'+\
-    '                   0: {areaOpacity: 0.1, color: "black", lineWidth: 1},'+\
+    '                   0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1},'+\
     '                   1: {areaOpacity: 0.2, color: "#ff9800", lineWidth: 3},'+\
     '                   2: {areaOpacity: 0, color: "#47808d", lineWidth: 2},'+\
     '                   3: {areaOpacity: 0, color: "#47808d", lineWidth: 2},'+\
