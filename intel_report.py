@@ -82,21 +82,22 @@ def get_intel_content(burl):
 def get_expired_signals(burl):
     content = ''
     try:
-        l_title = 'Expired Signals'
-        dn = datetime.datetime.now() - ( timedelta(days=7) ); dnstr = dn.strftime("%A %d %B, %Y");
-        l_comment = 'Signals with orders entered on <strong>' + dnstr + '</strong> and before are now expired and may be closed or managed at your own discretion.'
-        content = ''+\
-        '<div class="row">' +\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '</div>'+\
-        '<div class="row">' +\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment +'</div></div>'+\
-        '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_trades_tbl(0,'today',burl,'expired') + '</div></div>'+\
-        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-        '</div>'
+        if user_is_login():
+            l_title = 'Expired Signals'
+            dn = datetime.datetime.now() - ( timedelta(days=7) ); dnstr = dn.strftime("%A %d %B, %Y");
+            l_comment = 'Signals with orders entered on <strong>' + dnstr + '</strong> and before are now expired and may be closed or managed at your own discretion.'
+            content = ''+\
+            '<div class="row">' +\
+            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+            '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
+            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+            '</div>'+\
+            '<div class="row">' +\
+            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ l_comment +'</div></div>'+\
+            '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_trades_tbl(0,'today',burl,'expired') + '</div></div>'+\
+            '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+            '</div>'
     except Exception as e: print(e)
     return content
 
