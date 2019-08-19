@@ -70,7 +70,7 @@ def get_box_plan_selection(burl):
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">&nbsp;</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h4>SmartAlpha Pro</h4></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h4>SmartAlpha Trading Intelligence</h4></th>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top;">Features</th>'+\
