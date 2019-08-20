@@ -55,6 +55,46 @@ def get_report_title(burl):
     except Exception as e: print(e)
     return content
 
+def get_market_snapshot_n_brief_text(w):
+    r = ''
+    try:
+        language = 'en'
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT market_snapshot, in_brief FROM reports WHERE lang='"+ language +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        market_snapshot = ''
+        in_brief = ''
+        for row in rs:
+            market_snapshot = row[0]
+            in_brief = row[1]
+
+        if w == 'market_snapshot':
+            r = market_snapshot
+        if w == 'in_brief':
+            r = in_brief
+
+    except Exception as e: print(e)
+    return r
+
+def get_market_snapshot_section():
+    content = ''
+    try:
+        l_title = 'Market Snapshot'
+        content = ''+\
+        '<div class="row">' +\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_market_snapshot_n_brief_text('market_snapshot')  +'</div></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '</div>'
+
+    except Exception as e: print(e)
+    return content
+
 def get_intel_content(burl):
 
     box_content = ''
@@ -67,6 +107,7 @@ def get_intel_content(burl):
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
         '</div>'+\
+        get_market_snapshot_section() +\
         get_signals_lines(burl) +\
         get_expired_signals(burl) +\
         '<div class="row">' +\
