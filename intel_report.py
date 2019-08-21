@@ -99,12 +99,12 @@ def get_market_snapshot_section():
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_worldstocks,'100%','160','false','1y') +'</div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_eem,'100%','160','false','1y') +'</div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_gold,'100%','160','false','1y') +'</div></div>'+\
-        '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_btc,'100%','160','false','1y') +'</div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_jpy,'100%','160','false','1y') +'</div></div>'+\
         '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_tlt,'100%','160','false','1y') +'</div></div>'+\
-        '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_market_snapshot_n_brief_text('market_snapshot')  +'</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
