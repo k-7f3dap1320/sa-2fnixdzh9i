@@ -82,11 +82,29 @@ def get_market_snapshot_section():
     content = ''
     try:
         l_title = 'Market Snapshot'
+
+        uid_worldstocks = 544
+        uid_eem = 540
+        uid_gold = 39
+        uid_btc = 7
+        uid_jpy = 575
+        uid_tlt = 163
+
         content = ''+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_worldstocks,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_eem,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_gold,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_btc,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_jpy,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_tlt,'100%','100','false','1y') +'</div></div>'+\
+        '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_market_snapshot_n_brief_text('market_snapshot')  +'</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
