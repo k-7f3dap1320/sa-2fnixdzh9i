@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_func import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -16,7 +17,7 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
         symbol = ''
         referral_id = 'smartalpha'
         label_not_available = 'Symbol is not available'
-        theme = 'light'
+        theme = get_sa_theme()
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)

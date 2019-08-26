@@ -16,7 +16,7 @@ def get_tradingview_profile_widget(uid):
 def get_tradingview_profile(uid):
     r = ''
     url = 'http://smartalphatrade.com/s'
-    theme = 'light'
+    theme = get_sa_theme()
     try:
         symbol = ''
         referral_id = 'smartalpha'
