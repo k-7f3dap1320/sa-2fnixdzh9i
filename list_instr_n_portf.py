@@ -318,9 +318,14 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             c_1_week_column = '<th scope="col">1-week</th>'
             small_font_class = "sa-table-sm"
 
-        r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
+        if mode == 'portf_select' or 'instr':
+            tablesorter_script = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>'
+        else:
+            tablesorter_script = ''
+            
+        r = tablesorter_script +\
         l_performance_note +\
-        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' tablesorter">'+\
+        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' ">'+\
         '  <thead>'+\
         '    <tr>'+\
         signal_column +\
