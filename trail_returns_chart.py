@@ -204,7 +204,8 @@ def get_trailing_returns(uid):
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
-    "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}" +\
+    "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}," +\
+    "          gridlines: { color: 'transparent' }"+\
     "        }," +\
     "        vAxis: {" +\
     "          title: '' " +\
