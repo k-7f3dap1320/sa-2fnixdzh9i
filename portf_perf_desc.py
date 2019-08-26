@@ -146,6 +146,7 @@ def get_perf_chart(uid):
     '                            title: "'+ chart_title +'", '+\
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
     '                            legend: "none",'+\
+    '                            backgroundColor: "transparent",'+\
     '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: { gridlines: { count: 4 } }, '+\
     '                            series:{0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1} },'+\
