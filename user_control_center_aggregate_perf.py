@@ -134,7 +134,7 @@ def gen_aggregate_perf_graph():
         "    vAxis: { "+\
         "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
         "    lineWidth: 2, "+\
-        "    areaOpacity: 0.15, "+\
+        "    areaOpacity: 0.3, "+\
         "    colors: ['#17a2b8'],"+\
         "    backgroundColor: 'transparent'"+\
         "  }; "+\
