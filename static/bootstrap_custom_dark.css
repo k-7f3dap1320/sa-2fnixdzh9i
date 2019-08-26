@@ -1683,6 +1683,8 @@ pre code {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  background-color: #46170f;
+  color: white;
 }
 
 .table tbody + tbody {
@@ -5309,7 +5311,7 @@ a.badge-primary:focus, a.badge-primary.focus {
 
 .badge-secondary {
   color: #fff;
-  background-color: #4E5D6C;
+  background-color: #37a6ef;
 }
 
 a.badge-secondary:hover, a.badge-secondary:focus {
