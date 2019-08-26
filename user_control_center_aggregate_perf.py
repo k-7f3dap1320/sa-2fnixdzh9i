@@ -132,7 +132,7 @@ def gen_aggregate_perf_graph():
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
-        "    viewWindow:{viewWindowMode: 'explicit'} }, "+\
+        "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
         "    colors: ['#17a2b8'],"+\
