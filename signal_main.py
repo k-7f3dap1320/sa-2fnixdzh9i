@@ -9,6 +9,7 @@ from app_ogp import *
 from app_metatags import *
 from app_title import *
 from app_body import *
+from app_cookie import *
 from bootstrap import *
 from google_chart import *
 from app_loading import *
@@ -73,7 +74,7 @@ def gen_sign_page(uid,tvws,appname,burl):
 
         page_title = 'This is how we decide to trade ' + instfullname
         page_desc = 'Access to thousands of financial instruments, stocks, forex, commodities & cryptos analysis and recommendations.'
-        r = get_head(  get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,2,page_title,page_desc) + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+        r = get_head(  get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,2,page_title,page_desc) + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_sign_header(uid) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' + get_page_footer(burl))
         r = set_page(r)
 

@@ -7,6 +7,7 @@ from app_footer import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from app_stylesheet import *
 from sa_func import *
+from app_cookie import *
 
 def get_tradingview_profile_widget(uid):
     r = '<iframe src="../ip/?uid='+ str(uid) +'" frameborder="0" width="100%" height="100%" allowtransparency="true"></iframe>'
@@ -52,7 +53,7 @@ def get_redirect_to_tradingview_ip(uid,burl):
 def get_tradingview_profile_page(uid,burl):
     r = ''
     try:
-        r = get_head( get_metatags(burl) + get_bootstrap() + get_stylesheet(burl))
+        r = get_head( get_metatags(burl) + get_bootstrap( get_sa_theme(),burl ) + get_stylesheet(burl))
         r = r + get_redirect_to_tradingview_ip(uid,burl)
         r = set_page(r)
     except Exception as e: print(e)

@@ -26,6 +26,7 @@ from font_awesome import *
 from googleanalytics import *
 from error_page import *
 from sa_func import *
+from app_cookie import *
 
 from sa_db import *
 access_obj = sa_db_access()
@@ -48,7 +49,7 @@ def gen_portf_page(uid,appname,burl,pop):
         for row in rs:
             instfullname = row[0]
 
-        r = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+        r = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
         r = r + get_body(  get_loading_body(), gen_portf_popup(uid,pop) + navbar(burl) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
         r = set_page(r)
 

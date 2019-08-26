@@ -32,7 +32,7 @@ def get_sa_theme():
     try:
         selected_theme = request.cookies.get('theme')
     except Exception as e: print(e)
-    return refer_by_code
+    return selected_theme
 
 def set_sa_ref_code(ref,c):
     try:
