@@ -135,7 +135,8 @@ def gen_aggregate_perf_graph():
         "    viewWindow:{viewWindowMode: 'explicit'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
-        "    colors: ['#17a2b8']"+\
+        "    colors: ['#17a2b8'],"+\
+        "    backgroundColor: 'transparent'"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\
