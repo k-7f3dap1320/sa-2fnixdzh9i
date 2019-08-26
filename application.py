@@ -3,7 +3,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from flask import Flask, request, redirect
+from flask import Flask, request
 from flask_compress import Compress
 from search import *
 from app_main import *; from portf_main import *; from signal_main import *
@@ -128,8 +128,12 @@ def go():
                 switch_to = 'light'
             else:
                 switch_to = 'dark'
+            if x == '' or x == None : x = get_user_default_profile()
+            dashboard = request.args.get('dashboard')
+            tour = request.args.get('tour')
+            c = gen_main_page(x,appname,burl,dashboard,tour)
             c = set_sa_theme(switch_to, c )
-            redirect(burl)          
+
         except Exception as e: print(e)
 
     elif request.endpoint == 'login':
