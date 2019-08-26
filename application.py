@@ -22,6 +22,7 @@ from how_page import *
 from tradingview_fundamental import *
 from tradingview_profile import *
 from intel_report import *
+from set_theme import *
 
 application = Flask(__name__)
 
@@ -126,11 +127,8 @@ def go():
                 switch_to = 'light'
             else:
                 switch_to = 'dark'
-            if x == '' or x == None : x = get_user_default_profile()
-            dashboard = request.args.get('dashboard')
-            tour = request.args.get('tour')
+            c = theme_redirect(burl)
             c = set_sa_theme(switch_to, c )
-            c = gen_main_page(x,appname,burl,dashboard,tour)
 
         except Exception as e: print(e)
 
