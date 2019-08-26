@@ -77,7 +77,7 @@ def get_market_menu_selection(burl):
         for row in rs:
             market_id = row[0]
             market_label = row[1]
-            markets_selection = markets_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(market_id) +'">'+ str(l_markets_caption.replace('{market}',market_label) ) +'</a>'
+            markets_selection = markets_selection + '<a class="dropdown-item sa-navbar-text" href="'+ burl + '?x='+ str(market_id) +'">'+ str(l_markets_caption.replace('{market}',market_label) ) +'</a>'
 
         r = '' +\
         '    <li class="nav-item dropdown">'+\
