@@ -20,7 +20,7 @@ def set_sa_lang(lang,c):
 
 def set_sa_theme(theme,c):
     try:
-        default_theme = 'light'
+        default_theme = 'dark'
         resp = make_response( c )
         if theme is None: theme = default_theme
         resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
