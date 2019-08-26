@@ -101,6 +101,7 @@ def get_stylesheet(burl):
     sa_signal_ads +\
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
+    sa_navbar_text +\
     loading +\
     form_signin +\
     form_signin_text_dark +\
