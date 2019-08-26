@@ -263,7 +263,7 @@ def get_rsi_chart(uid):
     '          vAxis: { gridlines: { color: "transparent" } },'+\
     '          hAxis: { gridlines: { count: 4 } }, '+\
     '          series:{'+\
-    '                   0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1},'+\
+    '                   0: {areaOpacity: 0.3, color: "#17a2b8", lineWidth: 1},'+\
     '                   1: {areaOpacity: 0, color: "red", lineWidth: 1},'+\
     '                   2: {areaOpacity: 0.05, color: "green", lineWidth: 1}'+\
     '                  },'+\
