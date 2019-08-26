@@ -64,7 +64,7 @@ def get_stylesheet(burl):
     'height:100%;'+\
     'position:fixed;'+\
     'z-index:1000;'+\
-    'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center}'
+    'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center; rgba(52, 58, 64, 1);}'
 
     r = '<style>'+\
     body +\
