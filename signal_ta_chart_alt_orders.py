@@ -183,9 +183,9 @@ def get_ta_chart(uid):
     '          fontSize: '+ str(chart_font_size)+','+\
     '          legend: "top",'+\
     '          vAxis: { viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
-    '          hAxis: { gridlines: { count: 4 } }, '+\
+    '          hAxis: { gridlines: { count: 4, color: "transparent" } }, '+\
     '          series:{'+\
-    '                   0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1},'+\
+    '                   0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 4},'+\
     '                   1: {areaOpacity: 0.2, color: "#ff9800", lineWidth: 3},'+\
     '                   2: {areaOpacity: 0, color: "gray", lineWidth: 2},'+\
     '                   3: {areaOpacity: 0, color: "gray", lineWidth: 2},'+\
