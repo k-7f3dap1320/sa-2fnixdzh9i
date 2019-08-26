@@ -24,7 +24,7 @@ def get_top_signals_menu(burl):
         for row in rs: i += 1
         l_top_signal = 'Top Signals'
         link = burl + 'ls/?w=instr&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+        r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
@@ -42,7 +42,7 @@ def get_top_trader_menu(burl):
         for row in rs: i += 1
         l_top_trader = 'Top Traders'
         link = burl + 'ls/?w=portf&x='
-        r = '<li class="nav-item"><a class="nav-link" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+        r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
         cr.close()
         connection.close()
     except Exception as e: print(e)
@@ -81,9 +81,9 @@ def get_market_menu_selection(burl):
 
         r = '' +\
         '    <li class="nav-item dropdown">'+\
-        '      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ l_select_market +'</a>'+\
+        '      <a class="nav-link dropdown-toggle sa-navbar-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ l_select_market +'</a>'+\
         '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item" href="'+ burl + '?x=">'+ l_all_market_selection +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + '?x=">'+ l_all_market_selection +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         asset_class_selection +\
         '        <div class="dropdown-divider"></div>'+\
@@ -101,7 +101,7 @@ def get_how_menu(burl):
     r = ''
     try:
         l_howitworks = 'How it works?'
-        l_how_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'h">'+ l_howitworks +'</a></li>'
+        l_how_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'h">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
     return r
@@ -112,7 +112,7 @@ def get_dashboard_menu(burl):
         l_dashboard = 'Dashboard'
         i = 0
         num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
-        l_dashboard_menu = '<li class="nav-item"><a class="nav-link" href="'+ burl +'?dashboard=1"><strong>'+ l_dashboard +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
+        l_dashboard_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1"><strong>'+ l_dashboard +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
     return r

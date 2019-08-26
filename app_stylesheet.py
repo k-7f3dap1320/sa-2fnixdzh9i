@@ -55,6 +55,7 @@ def get_stylesheet(burl):
     sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
     sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; overflow: auto; font-size: 12px;}'
     sa_center_content = '.sa-center-content{text-align:center;}'
+    sa_navbar_text = '.sa-navbar-text{font-size: small;}'
 
     #Page loading gif display
     loading = ''+\
