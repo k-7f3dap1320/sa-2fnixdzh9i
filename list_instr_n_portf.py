@@ -320,7 +320,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
 
         r = '<script>$(function() { $("#table_instr_n_portf").tablesorter();}); $(function() {$("#table_instr_n_portf").tablesorter({ sortList: [[0,0], [1,0]] });});</script>' +\
         l_performance_note +\
-        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' tablesorter`">'+\
+        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +'">'+\
         '  <thead>'+\
         '    <tr>'+\
         signal_column +\
