@@ -57,13 +57,6 @@ def get_stylesheet(burl):
     sa_center_content = '.sa-center-content{text-align:center;}'
     sa_navbar_text = '.sa-navbar-text{font-size: small;}'
 
-    #TableSorter Customization
-    sa_table_sorter_custom = '' +\
-    '.tablesorter-default {'+\
-    '    color: #9db2bd !important;'+\
-    '    background-color: #000000 !important;'+\
-    '}'
-
     #Page loading gif display
     loading = ''+\
     '#load{'+\
@@ -109,7 +102,6 @@ def get_stylesheet(burl):
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
     sa_navbar_text +\
-    sa_table_sorter_custom +\
     loading +\
     form_signin +\
     form_signin_text_dark +\
