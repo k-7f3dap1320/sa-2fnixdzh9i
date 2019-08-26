@@ -66,7 +66,7 @@ def go():
         tvws = request.args.get('tvwidgetsymbol')
         c = gen_sign_page(uid,tvws,appname,burl)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'p':
@@ -88,7 +88,7 @@ def go():
         if ins is None: c = gen_portf_page(uid,appname,burl,pop)
         if delete != None: c = del_portf(delete,burl,x,dashboard)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'ls':
@@ -131,7 +131,7 @@ def go():
             if x == '' or x == None : x = get_user_default_profile()
             dashboard = request.args.get('dashboard')
             tour = request.args.get('tour')
-            c = gen_main_page(x,appname,burl,dashboard,tour)            
+            c = gen_main_page(x,appname,burl,dashboard,tour)
             c = set_sa_theme(switch_to, c )
 
         except Exception as e: print(e)
@@ -145,20 +145,20 @@ def go():
     elif request.endpoint == 'logout':
         c = user_logout(burl)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'signin':
         redirect = request.values.get('redirect')
         c = get_signin_page(appname,burl,err,redirect)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'pricing':
         c = get_plan_selection_page(appname,burl)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'genportf':
@@ -167,13 +167,13 @@ def go():
         if step == '1': c = gen_portf_user_example(burl,acm)
         if step == '2': c = gen_portf_validate_content(burl)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'error':
         c = get_error_page(appname,burl)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
 
     else:
@@ -182,7 +182,7 @@ def go():
         tour = request.args.get('tour')
         c = gen_main_page(x,appname,burl,dashboard,tour)
         c = set_sa_lang(lang,c)
-        c = set_sa_theme(theme,c)
+        c = set_sa_theme(get_sa_theme(),c)
         c = set_sa_ref_code(ref,c)
     ############################################################################
 
