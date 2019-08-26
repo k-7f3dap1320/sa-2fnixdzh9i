@@ -193,7 +193,8 @@ def get_ta_chart(uid):
     '                   5: {areaOpacity: 0.05, color: "#ff3399", lineWidth: 2, lineDashStyle:[10,2] },'+\
     '                   6: {areaOpacity: 0.05, color: "red", lineWidth: 1}'+\
     '                  },'+\
-    '          chartArea:{width:"90%",height:"80%"}'+\
+    '          chartArea:{width:"90%",height:"80%"},'+\
+    '          backgroundColor: "transparent"'+\
     '        };'+\
     '        var chart = new google.visualization.AreaChart(document.getElementById("ta_chart"));'+\
     '        chart.draw(data, options);'+\
