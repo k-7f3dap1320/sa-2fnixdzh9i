@@ -175,6 +175,7 @@ def get_portf_alloc(uid,burl):
         '                           title: "'+ pie_chart_title +'",'+\
         '                           pieHole: 0.2,'+\
         '                           legend: "none",'+\
+        '                           backgroundColor: "transparent",'+\        
         '                           pieSliceText: "percentage",'+\
         '                           slices: {' + pie_chart_option  + '},'+\
         '                           legend: {position:"labeled", textStyle: {fontSize: '+ str(pie_chart_font_size) +'} },'+\
