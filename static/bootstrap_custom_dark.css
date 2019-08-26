@@ -2713,8 +2713,8 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #5bc0de;
+  background-color: #4e5d6c;
+  border-color: #4e5d6c;
 }
 
 .btn-info:hover {
@@ -5524,12 +5524,12 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert-warning {
   color: #7d5a29;
-  background-color: #fcefdc;
+  background-color: #df691a;
   border-color: #fbe8cd;
 }
 
 .alert-warning hr {
-  border-top-color: #df691a;
+  border-top-color: #f9ddb5;
 }
 
 .alert-warning .alert-link {
@@ -10566,7 +10566,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-info {
-  background-color: #4e5d6c;
+  background-color: #5bc0de;
 }
 
 .btn-warning {
