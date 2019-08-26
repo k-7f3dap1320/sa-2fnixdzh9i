@@ -18,6 +18,21 @@ def set_sa_lang(lang,c):
     except Exception as e: print(e)
     return resp
 
+def set_sa_theme(theme,c):
+    try:
+        default_theme = 'dark'
+        resp = make_response( c )
+        if theme is None: default_theme
+        resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
+    except Exception as e: print(e)
+
+def get_sa_theme():
+    selected_theme = ''
+    try:
+        selected_theme = request.cookies.get('theme')
+    except Exception as e: print(e)
+    return refer_by_code
+
 def set_sa_ref_code(ref,c):
     try:
         resp = make_response( c )
@@ -40,21 +55,17 @@ def user_get_uid():
     return request.cookies.get('user')
 
 def user_is_login():
-
     user_id = '0'
     r = 0
     try:
         user_id = request.cookies.get('user')
         if len(user_id) > 1 : r = 1
     except Exception as e: print(e)
-
     return r
 
 def get_refer_by_code():
-
     refer_by_code = ''
     try:
         refer_by_code = request.cookies.get('ref_by')
     except Exception as e: print(e)
-
     return refer_by_code
