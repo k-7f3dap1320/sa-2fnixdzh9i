@@ -38,6 +38,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/fd/', endpoint='fd', methods=["POST","GET"])
 @application.route('/ip/', endpoint='ip', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
+@application.route('/theme/', endpoint='theme', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
@@ -119,6 +120,16 @@ def go():
 
     elif request.endpoint == 'intelligence':
         c = get_intel_page(appname,burl)
+
+    elif request.endpoint == 'theme':
+        try:
+            switch_to = ''
+            if get_sa_theme() == 'dark':
+                switch_to = 'light'
+            else:
+                switch_to = 'dark'
+            c = set_sa_theme(switch_to, c )
+        except Exception as e: print(e)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')

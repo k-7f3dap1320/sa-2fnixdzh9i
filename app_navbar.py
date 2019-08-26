@@ -132,6 +132,7 @@ def navbar(burl):
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
     l_myportfolio = 'My Portfolio(s)'
+    l_themeSwitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
 
@@ -144,6 +145,7 @@ def navbar(burl):
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme"><i class="fas fa-cog"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
