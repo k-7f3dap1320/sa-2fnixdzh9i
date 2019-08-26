@@ -22,7 +22,7 @@ def set_sa_theme(theme,c):
     try:
         default_theme = 'dark'
         resp = make_response( c )
-        if theme is None: default_theme
+        if theme is None: theme = default_theme
         resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
     except Exception as e: print(e)
     return resp
