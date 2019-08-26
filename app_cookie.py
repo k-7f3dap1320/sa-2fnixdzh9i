@@ -25,6 +25,7 @@ def set_sa_theme(theme,c):
         if theme is None: default_theme
         resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
     except Exception as e: print(e)
+    return resp
 
 def get_sa_theme():
     selected_theme = ''
