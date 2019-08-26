@@ -268,7 +268,7 @@ def get_rsi_chart(uid):
     '                   2: {areaOpacity: 0.05, color: "green", lineWidth: 1}'+\
     '                  },'+\
     '          chartArea:{width:"90%",height:"80%"},'+\
-    '          backgroundColor: "transparent"'+\    
+    '          backgroundColor: "transparent"'+\
     '        };'+\
     '        var chart = new google.visualization.AreaChart(document.getElementById("rsi_chart"));'+\
     '        chart.draw(data, options);'+\
