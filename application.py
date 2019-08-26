@@ -129,8 +129,8 @@ def go():
             if x == '' or x == None : x = get_user_default_profile()
             dashboard = request.args.get('dashboard')
             tour = request.args.get('tour')
-            c = gen_main_page(x,appname,burl,dashboard,tour)
             c = set_sa_theme(switch_to, c )
+            c = gen_main_page(x,appname,burl,dashboard,tour)
 
         except Exception as e: print(e)
 
