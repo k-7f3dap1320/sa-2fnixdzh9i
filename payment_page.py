@@ -8,6 +8,7 @@ from app_ogp import *
 from app_title import *; from app_metatags import *; from bootstrap import *
 from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
+from app_cookie import *
 
 def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
@@ -165,7 +166,7 @@ def get_box_plan_selection(burl):
 def get_plan_selection_page(appname,burl):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap() + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl) + get_box_plan_selection(burl) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)

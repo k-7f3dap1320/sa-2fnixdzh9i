@@ -14,8 +14,8 @@ def get_stylesheet(burl):
     box = '.box{padding:0px 0px;}'
     boxtop = '.box-top{padding-top:60px;}'
     boxsign = '.box-sign{padding-top:45px;}'
-    boxuhead = '.box-uhead{padding-top:45px; background:#343a40;}'
-    boxpart = '.box-part{background:#FFF; border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
+    boxuhead = '.box-uhead{padding-top:45px;}'
+    boxpart = '.box-part{border-radius:0; padding:10px 10px; margin:10px 0px; overflow-x: auto;}'
     signpart = '.sign-part{background:#151517; border-radius:0; margin:10px 0px;}'
     signrow = '.sign-row{background-color: #151517;}'
     text = '.text{margin:10px 0px;}'
@@ -41,7 +41,7 @@ def get_stylesheet(burl):
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
     sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
     sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
-    sa_user_header = '.sa-uhead-box{background:#343a40; color: white; text-align: left;}'
+    sa_user_header = '.sa-uhead-box{color: white; text-align: left;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: 13px;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 83%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 400px;}'
@@ -55,6 +55,7 @@ def get_stylesheet(burl):
     sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
     sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; overflow: auto; font-size: 12px;}'
     sa_center_content = '.sa-center-content{text-align:center;}'
+    sa_navbar_text = '.sa-navbar-text{font-size: small;}'
 
     #Page loading gif display
     loading = ''+\
@@ -63,7 +64,7 @@ def get_stylesheet(burl):
     'height:100%;'+\
     'position:fixed;'+\
     'z-index:1000;'+\
-    'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(242,241,246,1)}'
+    'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(52, 58, 64, 1)}'
 
     r = '<style>'+\
     body +\
@@ -100,6 +101,7 @@ def get_stylesheet(burl):
     sa_signal_ads +\
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
+    sa_navbar_text +\
     loading +\
     form_signin +\
     form_signin_text_dark +\

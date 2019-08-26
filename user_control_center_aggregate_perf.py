@@ -128,14 +128,15 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '#343a40'}, textPosition: 'none'}, "+\
+        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '#343a40'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
-        "    viewWindow:{viewWindowMode: 'explicit'} }, "+\
+        "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.15, "+\
-        "    colors: ['#17a2b8']"+\
+        "    colors: ['#17a2b8'],"+\
+        "    backgroundColor: 'transparent'"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
         "  chart.draw(data, options); "+\

@@ -22,6 +22,7 @@ from how_page import *
 from tradingview_fundamental import *
 from tradingview_profile import *
 from intel_report import *
+from set_theme import *
 
 application = Flask(__name__)
 
@@ -38,6 +39,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/fd/', endpoint='fd', methods=["POST","GET"])
 @application.route('/ip/', endpoint='ip', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
+@application.route('/theme/', endpoint='theme', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
@@ -54,6 +56,7 @@ def go():
     uid = request.args.get('uid')
     ref = request.args.get('ref')
     lang = request.args.get('lang')
+    theme = request.args.get('theme')
     x = request.args.get('x');
 
 
@@ -116,6 +119,18 @@ def go():
 
     elif request.endpoint == 'intelligence':
         c = get_intel_page(appname,burl)
+
+    elif request.endpoint == 'theme':
+        try:
+            switch_to = ''
+            if get_sa_theme() == 'dark':
+                switch_to = 'light'
+            else:
+                switch_to = 'dark'
+            c = theme_redirect(burl)
+            c = set_sa_theme(switch_to, c )
+
+        except Exception as e: print(e)
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
