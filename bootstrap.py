@@ -2,12 +2,13 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from sa_func import *
 
 def get_bootstrap(theme,burl):
 
     bootcss_url = 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
     bootcss_integrity = 'sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
-    bootcss_dark_url =burl + 'static/bootstrap_custom_dark.css'
+    bootcss_dark_url =burl + 'static/bootstrap_custom_dark.css?' + get_random_str(10)
     selected_bootcss = ''
 
     if theme == 'dark':
