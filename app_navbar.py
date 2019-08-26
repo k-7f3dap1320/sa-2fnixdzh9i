@@ -69,7 +69,7 @@ def get_market_menu_selection(burl):
             asset_class_name = row[1]
             asset_class_name = asset_class_name.replace(l_equity_label,l_equity_label_replace_by_stocks)
             if asset_class_id != 'MA:' and asset_class_id != 'PF:':
-                asset_class_selection = asset_class_selection + '<a class="dropdown-item" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
+                asset_class_selection = asset_class_selection + '<a class="dropdown-item sa-navbar-text" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
 
         sql = "SELECT market_id, market_label FROM Markets"
         cr.execute(sql)
@@ -142,10 +142,10 @@ def navbar(burl):
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
-        '        <a class="dropdown-item disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
-        '        <a class="dropdown-item" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text disabled" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>' +\
         get_portfolio_button(burl)
