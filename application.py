@@ -128,7 +128,12 @@ def go():
                 switch_to = 'light'
             else:
                 switch_to = 'dark'
+            if x == '' or x == None : x = get_user_default_profile()
+            dashboard = request.args.get('dashboard')
+            tour = request.args.get('tour')
+            c = gen_main_page(x,appname,burl,dashboard,tour)            
             c = set_sa_theme(switch_to, c )
+
         except Exception as e: print(e)
 
     elif request.endpoint == 'login':
