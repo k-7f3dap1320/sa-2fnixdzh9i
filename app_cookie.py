@@ -34,6 +34,16 @@ def get_sa_theme():
     except Exception as e: print(e)
     return selected_theme
 
+def theme_return_this(for_light,for_dark):
+    r = ''
+    try:
+        if get_sa_theme() == 'light':
+            r = for_light
+        else:
+            r = for_dark
+    except Exception as e: print(e)
+    return r
+
 def set_sa_ref_code(ref,c):
     try:
         resp = make_response( c )
