@@ -129,10 +129,11 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '#343a40'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
+        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '"+ theme_return_this("#343a40","#ffffff") +"'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
+        "    textStyle: { color:'"+ theme_return_this("#343a40","#ffffff") +"' },"+\
         "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.3, "+\
