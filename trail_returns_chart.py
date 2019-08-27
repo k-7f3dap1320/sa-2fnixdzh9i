@@ -180,7 +180,7 @@ def get_trailing_returns(uid):
     "  ]);" +\
     "      var options = {" +\
     "       fontSize: "+ str( fontSize ) + "," +\
-    "      	legend: 'top'," +\
+    "      	legend: {position:'top', textStyle: {color:"+ theme_return_this("'black'","'white'")  +"} }," +\
     "        title: ''," +\
     "        backgroundColor: 'transparent',"+\
     "        chartArea: {width: '50%'}," +\
@@ -206,10 +206,12 @@ def get_trailing_returns(uid):
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
     "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}," +\
-    "          gridlines: { color: 'transparent' }"+\
+    "          gridlines: { color: 'transparent' },"+\
+    "          textStyle: { color: "+ theme_return_this("'black'","'white'") +" } "+\
     "        }," +\
     "        vAxis: {" +\
-    "          title: '' " +\
+    "          title: '', " +\
+    "          textStyle: { color: "+ theme_return_this("'black'","'white'") +" } "+\
     "        }" +\
     "      };" +\
     "      var chart = new google.visualization.BarChart(document.getElementById('trail_chart'));" +\
