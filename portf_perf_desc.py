@@ -145,12 +145,13 @@ def get_perf_chart(uid):
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
     '                            title: "'+ chart_title +'", '+\
+    '                            titleTextStyle: {color: '+ theme_return_this('"black"','"white"') +'},'+\
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
-    '                            legend: "none",'+\
+    '                            legend: {position: "none", textStyle: {color: '+ theme_return_this('"black"','"white"') +'} },'+\
     '                            backgroundColor: "transparent",'+\
     '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
     '                            hAxis: { gridlines: { count: 4, color: "transparent" } }, '+\
-    '                            series:{0: {areaOpacity: 0.1, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 1} },'+\
+    '                            series:{0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
     '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
