@@ -261,8 +261,8 @@ def get_rsi_chart(uid):
     '          title: "'+ chart_title +'", '+\
     '          fontSize: '+ str(chart_font_size)+','+\
     '          legend: "top",'+\
-    '          vAxis: { gridlines: { color: "transparent" } '+ theme_return_this('',',textstyle: {color: "white"}') + '},'+\
-    '          hAxis: { gridlines: { count: 4 }' + theme_return_this('',',textstyle: {color: "white"}') + ' }, '+\
+    '          vAxis: { gridlines: { color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') + '},'+\
+    '          hAxis: { gridlines: { count: 4 }' + theme_return_this('',', textStyle: {color: "white"}') + ' }, '+\
     '          series:{'+\
     '                   0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#00fbff"') +', lineWidth: 1},'+\
     '                   1: {areaOpacity: 0, color: "red", lineWidth: 1},'+\
