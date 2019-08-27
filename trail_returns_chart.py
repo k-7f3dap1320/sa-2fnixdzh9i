@@ -201,7 +201,7 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color: "+ theme_return_this("'blue'","'orange'") +", 1:{color: '#c9d6ea'} }," +\
+    "        series: {0:{color: "+ theme_return_this("'blue'","'orange'") +"}, 1:{color: '#c9d6ea'} }," +\
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
