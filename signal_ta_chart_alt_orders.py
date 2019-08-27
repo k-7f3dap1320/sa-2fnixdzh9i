@@ -181,6 +181,7 @@ def get_ta_chart(uid):
     "        data.addRows(["+data+"]);"+\
     '        var options = {'+\
     '          title: "'+ chart_title +'", '+\
+    '          titleTextStyle: {color: '+  theme_return_this('"black"','"white"') +' },'+\
     '          fontSize: '+ str(chart_font_size)+','+\
     '          legend: {position:"top" '+ theme_return_this('',', textStyle: {color: "white"}') +'},'+\
     '          vAxis: { viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +' },'+\
