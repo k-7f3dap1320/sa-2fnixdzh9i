@@ -29,10 +29,10 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
         trendLineColor = '#37a6ef'
         underLineColor = '#e3f2fd'
         if get_signal(suid)=='b':
-            trendLineColor = 'rgba(106, 168, 79, 1)'
+            trendLineColor = theme_return_this('rgba(106, 168, 79, 1)', 'rgba(255,255,255,255)')
             underLineColor = theme_return_this('rgba(217, 234, 211, 1)','rgba(106, 168, 79, 1)')
         else:
-            trendLineColor = 'rgba(255, 0, 0, 1)'
+            trendLineColor = theme_return_this('rgba(255, 0, 0, 1)','rgba(255,255,255,255)')
             underLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(255, 0, 0, 1)')
 
         if symbol != '':
