@@ -162,7 +162,7 @@ def get_aggregate_perf():
         l_title_aggregate_perf = 'Your Performance'
 
         box_content = '' +\
-        '            <div class="box-part rounded" style="height: 465px;">'+\
+        '            <div class="box-part rounded" style="height: 465px; '+ theme_return_this('',', background-color: #20124d;') +'">'+\
         '               <span class="sectiont"><i class="fas fa-chart-area"></i>&nbsp;'+ l_title_aggregate_perf +'</span>'+\
         gen_aggregate_perf_graph() +\
         '            </div>'
