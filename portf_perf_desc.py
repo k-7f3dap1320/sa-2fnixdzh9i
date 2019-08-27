@@ -149,8 +149,8 @@ def get_perf_chart(uid):
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
     '                            legend: {position: "none", textStyle: {color: '+ theme_return_this('"black"','"white"') +'} },'+\
     '                            backgroundColor: "transparent",'+\
-    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
-    '                            hAxis: { gridlines: { count: 4, color: "transparent" } }, '+\
+    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+ theme_return_this('',', textStyle: {color: "white"}') +' },'+\
+    '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +' }, '+\
     '                            series:{0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
