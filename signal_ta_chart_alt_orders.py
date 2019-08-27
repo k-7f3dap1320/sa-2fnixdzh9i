@@ -183,8 +183,8 @@ def get_ta_chart(uid):
     '          title: "'+ chart_title +'", '+\
     '          fontSize: '+ str(chart_font_size)+','+\
     '          legend: "top",'+\
-    '          vAxis: { viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
-    '          hAxis: { gridlines: { count: 4, color: "transparent" } }, '+\
+    '          vAxis: { viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +' },'+\
+    '          hAxis: { gridlines: { count: 4, color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +'}, '+\
     '          series:{'+\
     '                   0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 2},'+\
     '                   1: {areaOpacity: 0.3, color: "#ff9800", lineWidth: 3},'+\
