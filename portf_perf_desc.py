@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
 from sa_func import *
@@ -148,8 +149,8 @@ def get_perf_chart(uid):
     '                            legend: "none",'+\
     '                            backgroundColor: "transparent",'+\
     '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
-    '                            hAxis: { gridlines: { count: 4 } }, '+\
-    '                            series:{0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1} },'+\
+    '                            hAxis: { gridlines: { count: 4, color: "transparent" } }, '+\
+    '                            series:{0: {areaOpacity: 0.1, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
     '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
