@@ -188,8 +188,8 @@ def get_ta_chart(uid):
     '          series:{'+\
     '                   0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 2},'+\
     '                   1: {areaOpacity: 0.3, color: "#ff9800", lineWidth: 3},'+\
-    '                   2: {areaOpacity: 0, color: '+ theme_return_this('"gray"','"#ff00fb"') +', lineWidth: 2},'+\
-    '                   3: {areaOpacity: 0, color: '+ theme_return_this('"gray"','"#ff00fb"') +', lineWidth: 2},'+\
+    '                   2: {areaOpacity: 0, color: '+ theme_return_this('"gray"','"white"') +', lineWidth: 1},'+\
+    '                   3: {areaOpacity: 0, color: '+ theme_return_this('"gray"','"white"') +', lineWidth: 1},'+\
     '                   4: {areaOpacity: 0.05, color: '+ theme_return_this('"#ff3399"','"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
     '                   5: {areaOpacity: 0.1, color: '+ theme_return_this('"#ff3399"','"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
     '                   6: {areaOpacity: 0.05, color: '+ theme_return_this('"red"','"#00f2ff"') +', lineWidth: 1}'+\
@@ -324,7 +324,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '                    </li>'+\
         '                  </ul>'+\
         '                  <div class="tab-content">'+\
-        '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #131722;') +'"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
+        '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
         '                      <div id="'+ tab_2_id +'" class="tab-pane fade"><br /><div style="height: 85%; width:99%">'+ get_tradingview_indicators(uid,'100%','100%') + '</div></div>'+\
         '                      <div id="'+ tab_3_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_chart(uid) +'</div></div>'+\
         '                      <div id="'+ tab_4_id +'" class="tab-pane fade"><br /><div style="height: 85%; width: 99%">'+ get_tradingview_fundamental_widget(uid) + '</div></div>'+\
