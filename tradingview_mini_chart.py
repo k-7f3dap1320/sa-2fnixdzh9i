@@ -30,7 +30,7 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
         underLineColor = '#e3f2fd'
         if get_signal(suid)=='b':
             trendLineColor = theme_return_this('rgba(106, 168, 79, 1)', 'rgba(147, 147, 147, 1)')
-            underLineColor = theme_return_this('rgba(217, 234, 211, 1)','rgba(254, 255, 254, 1)')
+            underLineColor = theme_return_this('rgba(217, 234, 211, 1)','rgba(92, 184, 92, 1)')
         else:
             trendLineColor = theme_return_this('rgba(255, 0, 0, 1)','rgba(147, 147, 147, 1)')
             underLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217, 83, 79, 1)')
