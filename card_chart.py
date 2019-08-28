@@ -35,7 +35,7 @@ def write_func(uid,data,color,minval):
     "      vAxis: {"+\
     "        viewWindow:{min:"+ str(minval) +", viewWindowMode: 'explicit'}, "+\
     "        title: '',"+\
-    "        textStyle: { color:"+ theme_return_this("#343a40","#ffffff") +" },"+\
+    "        textStyle: { color:'"+ theme_return_this("#343a40","#ffffff") +"'},"+\
     "        gridlines: {"+\
     "            color: 'transparent'"+\
     "        }"+\
