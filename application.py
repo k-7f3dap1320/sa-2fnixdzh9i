@@ -23,6 +23,7 @@ from tradingview_fundamental import *
 from tradingview_profile import *
 from intel_report import *
 from set_theme import *
+from app_settings import *
 
 application = Flask(__name__)
 
@@ -45,6 +46,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/signin/', endpoint='signin', methods=["POST", "GET"])
 @application.route('/genportf/', endpoint='genportf', methods=["POST","GET"])
 @application.route('/pricing/', endpoint='pricing', methods=["POST","GET"])
+@application.route('/settings/', endpoint='settings', methods=["POST","GET"])
 @application.route('/error/', endpoint='error', methods=["POST","GET"])
 def go():
 
@@ -151,6 +153,11 @@ def go():
 
     elif request.endpoint == 'pricing':
         c = get_plan_selection_page(appname,burl)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
+
+    elif request.endpoint == 'settings':
+        c = get_settings_page(appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

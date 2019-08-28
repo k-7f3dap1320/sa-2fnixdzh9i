@@ -11,7 +11,7 @@ from googleanalytics import *; from tablesorter import *
 from app_stylesheet import *
 from app_cookie import *
 
-def get_xxx_content(burl):
+def get_settings_content(burl):
 
     box_content = ''
 
@@ -32,7 +32,7 @@ def get_xxx_content(burl):
     return box_content
 
 
-def get_xxx_page(appname,burl):
+def get_settings_page(appname,burl):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
