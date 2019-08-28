@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 from sa_func import *
 access_obj = sa_db_access()
@@ -57,7 +58,7 @@ def get_details_header(uid,burl):
 
         p_header = '' +\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded">'+\
+        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         header_float_right +\
         header_portfolio_info +\
         '            </div>'+\
