@@ -136,7 +136,6 @@ def navbar(burl):
     search_placeholder = 'Enter function, ticker or search. Hit <enter> to go.'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
-    l_profileTooltip = 'Your Profile, Settings and more...'
     l_myportfolio = 'My Portfolio(s)'
     l_themeSwitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
@@ -147,7 +146,7 @@ def navbar(burl):
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
-        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_profileTooltip +'">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
+        '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
