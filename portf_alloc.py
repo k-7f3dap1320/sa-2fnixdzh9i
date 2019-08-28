@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -62,7 +63,7 @@ def get_portf_alloc(uid,burl):
 
         signal_box = '' +\
         '        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part rounded sa-portf-alloc">'+\
+        '            <div class="box-part rounded sa-portf-alloc" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <table class="table table-hover table-sm sa-table-sm">'+\
         '                   <thead>'+\
         '                       <tr>'+\
@@ -161,7 +162,7 @@ def get_portf_alloc(uid,burl):
         pie_chart_font_size = 10
         pie_chart = '' +\
         '        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">'+\
-        '           <div class="box-part rounded sa-portf-alloc">'+\
+        '           <div class="box-part rounded sa-portf-alloc" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <script type="text/javascript">'+\
         '                   google.charts.load("current", {packages:["corechart"]});'+\
         '                   google.charts.setOnLoadCallback(drawChart);'+\
