@@ -153,7 +153,7 @@ def get_box_risk_content(uid):
 
         box_content = '' +\
         '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded sa-signal-recomm-trail-ret">'+\
+        '            <div class="box-part rounded sa-signal-recomm-trail-ret" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <div><h6>'+ l_title +'</h6></div>'+\
         '                   <div>'+ text_content +'</div>'+\
         '<div>'+ get_risk_table(uid) +'</div>'+\
