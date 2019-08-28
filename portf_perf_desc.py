@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
 from sa_func import *
@@ -144,12 +145,13 @@ def get_perf_chart(uid):
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
     '                            title: "'+ chart_title +'", '+\
+    '                            titleTextStyle: {color: '+ theme_return_this('"black"','"white"') +'},'+\
     '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
-    '                            legend: "none",'+\
+    '                            legend: {position: "none", textStyle: {color: '+ theme_return_this('"black"','"white"') +'} },'+\
     '                            backgroundColor: "transparent",'+\
-    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } },'+\
-    '                            hAxis: { gridlines: { count: 4 } }, '+\
-    '                            series:{0: {areaOpacity: 0.1, color: "#17a2b8", lineWidth: 1} },'+\
+    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+ theme_return_this('',', textStyle: {color: "white"}') +' },'+\
+    '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +' }, '+\
+    '                            series:{0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 1} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
     '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
@@ -174,7 +176,7 @@ def get_chart_box(uid):
     '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
-    '                      <div id="'+ tab_1_id +'" class="tab-pane active"><br />'+ chart_1y_perf +'</div>'+\
+    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'

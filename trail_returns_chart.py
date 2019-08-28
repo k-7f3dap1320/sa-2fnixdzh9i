@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -179,7 +180,7 @@ def get_trailing_returns(uid):
     "  ]);" +\
     "      var options = {" +\
     "       fontSize: "+ str( fontSize ) + "," +\
-    "      	legend: 'top'," +\
+    "      	legend: {position:'top', textStyle: {color:"+ theme_return_this("'black'","'white'")  +"} }," +\
     "        title: ''," +\
     "        backgroundColor: 'transparent',"+\
     "        chartArea: {width: '50%'}," +\
@@ -200,15 +201,17 @@ def get_trailing_returns(uid):
     "            }" +\
     "          }" +\
     "        }," +\
-    "        series: {0:{color:'blue'}, 1:{color: '#c9d6ea'} }," +\
+    "        series: {0:{color: "+ theme_return_this("'blue'","'orange'") +"}, 1:{color: '#c9d6ea'} }," +\
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
     "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}," +\
-    "          gridlines: { color: 'transparent' }"+\
+    "          gridlines: { color: 'transparent' },"+\
+    "          textStyle: { color: "+ theme_return_this("'black'","'white'") +" } "+\
     "        }," +\
     "        vAxis: {" +\
-    "          title: '' " +\
+    "          title: '', " +\
+    "          textStyle: { color: "+ theme_return_this("'black'","'white'") +" } "+\
     "        }" +\
     "      };" +\
     "      var chart = new google.visualization.BarChart(document.getElementById('trail_chart'));" +\

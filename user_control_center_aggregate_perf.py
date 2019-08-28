@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 from sa_func import *
 access_obj = sa_db_access()
@@ -128,14 +129,15 @@ def gen_aggregate_perf_graph():
         "  ]); "+\
         "  var options = { "+\
         "    title: '', "+\
-        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '#343a40'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
+        "    hAxis: {title: '"+ l_aggregate_portf_Xaxis_total +"',  titleTextStyle: {color: '"+ theme_return_this("#343a40","#ffffff") +"'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
         "    legend: {position: 'none'}, "+\
         "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
         "    vAxis: { "+\
+        "    textStyle: { color:'"+ theme_return_this("#343a40","#ffffff") +"' },"+\
         "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
         "    lineWidth: 2, "+\
         "    areaOpacity: 0.3, "+\
-        "    colors: ['#17a2b8'],"+\
+        "    colors: ['"+ theme_return_this("#17a2b8","#ffffff") + "'],"+\
         "    backgroundColor: 'transparent'"+\
         "  }; "+\
         "  var chart = new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
