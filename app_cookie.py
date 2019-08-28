@@ -20,17 +20,18 @@ def set_sa_lang(lang,c):
 
 def set_sa_theme(theme,c):
     try:
-        default_theme = 'dark'
         resp = make_response( c )
-        if theme is None or theme == '': theme = default_theme
+        if theme is None: theme = default_theme
         resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
     except Exception as e: print(e)
     return resp
 
 def get_sa_theme():
+    default_theme = 'dark'
     selected_theme = ''
     try:
         selected_theme = request.cookies.get('theme')
+        if selected_theme is None or selected_theme =='': selected_theme = default_theme
     except Exception as e: print(e)
     return selected_theme
 
