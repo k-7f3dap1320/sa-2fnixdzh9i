@@ -101,7 +101,7 @@ def get_how_menu(burl):
     r = ''
     try:
         if user_is_login() == 1:
-            l_howitworks = '<font style="font-size: x-large;"><i class="far fa-question-circle"></i></font>'
+            l_howitworks = '<font style="font-size: x-large;"><i class="far fa-question-circle" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_howitworks +'"></i></font>'
         else:
             l_howitworks = 'How it works?'
 
