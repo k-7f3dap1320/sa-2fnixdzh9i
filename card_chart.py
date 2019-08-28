@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -34,6 +35,7 @@ def write_func(uid,data,color,minval):
     "      vAxis: {"+\
     "        viewWindow:{min:"+ str(minval) +", viewWindowMode: 'explicit'}, "+\
     "        title: '',"+\
+    "        textStyle: { color:"+ theme_return_this("#343a40","#ffffff") +" },"+\
     "        gridlines: {"+\
     "            color: 'transparent'"+\
     "        }"+\
