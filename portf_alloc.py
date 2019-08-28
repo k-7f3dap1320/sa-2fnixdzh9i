@@ -174,12 +174,13 @@ def get_portf_alloc(uid,burl):
         '                       ]);'+\
         '                       var options = {'+\
         '                           title: "'+ pie_chart_title +'",'+\
+        '                           titleTextStyle:{color:'+ theme_return_this('"black"','"white"') +'},'+\
         '                           pieHole: 0.2,'+\
-        '                           legend: "none",'+\
+        '                           legend: {position:"none", textStyle:{color:'+ theme_return_this('"black"','"white"') +'} },'+\
         '                           backgroundColor: "transparent",'+\
         '                           pieSliceText: "percentage",'+\
         '                           slices: {' + pie_chart_option  + '},'+\
-        '                           legend: {position:"labeled", textStyle: {fontSize: '+ str(pie_chart_font_size) +'} },'+\
+        '                           legend: {position:"labeled", textStyle: {fontSize: '+ str(pie_chart_font_size) +', color:'+ theme_return_this('"black"','"white"') +'} },'+\
         '                           chartArea:{width:"90%",height:"80%"}'+\
         '                       };'+\
         '                       var chart = new google.visualization.PieChart(document.getElementById("portf_alloc_pie_chart"));'+\
