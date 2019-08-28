@@ -163,7 +163,7 @@ def get_aggregate_perf():
         l_title_aggregate_perf = 'Your Performance'
 
         box_content = '' +\
-        '            <div class="box-part rounded" style="height: 465px;" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '            <div class="box-part rounded" style="height: 465px;'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'" >'+\
         '               <span class="sectiont"><i class="fas fa-chart-area"></i>&nbsp;'+ l_title_aggregate_perf +'</span>'+\
         gen_aggregate_perf_graph() +\
         '            </div>'
@@ -223,7 +223,7 @@ def get_control_center(burl):
         l_title_control_center = 'Control Center'
 
         box_content = '' +\
-        '            <div class="box-part rounded" style="height: 250px;" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '            <div class="box-part rounded" style="height: 250px; '+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'" >'+\
         '               <span class="sectiont"><i class="fas fa-tasks"></i>&nbsp;'+ l_title_control_center +'</span>'+\
         control_center_content+\
         '            </div>'
