@@ -76,7 +76,7 @@ def get_card(x,t,burl):
             symbol = row[6]
             uid = get_uid(symbol)
 
-            color = theme_return_this("#17a2b8","#ffffff")
+            color = theme_return_this("#17a2b8","orange")
             portf_content_by = 'Portfolio by '
 
             if (badge.find('-0') == -1 and badge.find('-1') == -1 and
