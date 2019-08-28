@@ -289,7 +289,7 @@ def get_sign_ta_chart_alt_orders(uid):
         signal_box_title = 'Alternative Orders'
         signal_box = '' +\
         '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part rounded sa-signal-alt-ord-prf" style+"'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '            <div class="box-part rounded sa-signal-alt-ord-prf" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
