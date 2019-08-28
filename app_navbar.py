@@ -99,13 +99,14 @@ def get_market_menu_selection(burl):
 
 def get_how_menu(burl):
     r = ''
+    l_helpTooltip = 'Quick Help over there...'
     try:
         if user_is_login() == 1:
             l_howitworks = '<font style="font-size: x-large;"><i class="far fa-question-circle"></i></font>'
         else:
             l_howitworks = 'How it works?'
 
-        l_how_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'h" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_howitworks +'">'+ l_howitworks +'</a></li>'
+        l_how_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'h" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
     return r
