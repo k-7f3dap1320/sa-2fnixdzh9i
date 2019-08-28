@@ -100,7 +100,11 @@ def get_market_menu_selection(burl):
 def get_how_menu(burl):
     r = ''
     try:
-        l_howitworks = 'How it works?'
+        if user_is_login() == 1:
+            l_howitworks = '<i class="fas fa-question-circle"></i>'
+        else:
+            l_howitworks = 'How it works?'
+
         l_how_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'h">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
@@ -138,7 +142,6 @@ def navbar(burl):
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
-        get_how_menu(burl) +\
         get_dashboard_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
@@ -150,6 +153,7 @@ def navbar(burl):
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>' +\
+        get_how_menu(burl) +\
         get_portfolio_button(burl)
     else:
         rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
