@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+from app_cookie import *
 from sa_db import *
 from sa_func import *
 from app_cookie import *
@@ -391,6 +392,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         l_link_to_more_assets = ''
         l_top_ranked = 'Top Ranked'
         l_your_portfolios = 'Your Portfolio(s)'
+        portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
         l_equity_label_replace_stocks = 'Stocks'
         l_equity_label = 'Equity'
 
@@ -424,7 +426,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded '+ list_class +'">'+\
+        '            <div class="box-part rounded '+ list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
         search_box +\
         list_title +\
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
