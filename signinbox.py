@@ -15,7 +15,7 @@ def get_signin_box(burl):
         if user_is_login() == 0:
 
             l_app_header_title = 'Artificial Intelligence Trading Signal Insights'
-            l_app_header_desc = 'Access 1,000+ Tradable Financial Instruments Including Stocks, Foreign Exchange Pairs (Forex), Commodities, Exchange Traded Funds (ETFs), Cryptocurrencies (Cryptos), Bonds, Binary Options; optimized using AI. Join Now to Create Your Trading Portfolio Signals by Just a Few Clicks.'
+            l_app_header_desc = 'Access 1,000+ Tradable Financial Instruments Including Stocks, Foreign Exchange Pairs (Forex), Commodities, Exchange Traded Funds (ETFs), Cryptocurrencies (Cryptos), Bonds; optimized using AI. Join Now to Create Your Trading Portfolio Signals by Just a Few Clicks.'
             l_app_call_to_action_link = 'Join now.'
 
             box_content = '<div class="box-sign"><div class="row">' +\
