@@ -87,7 +87,7 @@ def get_desc_box(uid):
 
     portf_desc_box = '' +\
     '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-portf-perf-portf-chart">'+\
+    '            <div class="box-part rounded sa-portf-perf-portf-chart" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     '               <div><h6>'+ desc_box_title +'</h6></div>'+\
     '               <div class="sa-descr-box-sm">'+ portf_summary + ' ' + portf_descr +'</div>'+\
     '            </div>'+\
