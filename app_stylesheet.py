@@ -49,7 +49,7 @@ def get_stylesheet(burl):
     sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 100px;}'
     sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
-    sa_tab_sm = '#sa-tab-sm{font-size: small;}'
+    sa_tab_sm = '#sa-tab-sm{font-size: x-small;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 580px; overflow: auto;}'
     sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto; font-size: small;}'
     sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
