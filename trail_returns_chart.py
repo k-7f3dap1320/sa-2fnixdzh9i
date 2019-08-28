@@ -205,7 +205,7 @@ def get_trailing_returns(uid):
     "        chartArea: {width:'80%',height:'80%'}," +\
     "        hAxis: {" +\
     "          title: '" + l_as_date + "', " +\
-    "          titleStyle:'"+ theme_return_this("'black'","'white'") +"',"+\
+    "          titleStyle:'{color:"+ theme_return_this("'black'","'white'") +"'},"+\
     "          viewWindow:{min:"+ str(min) +",max:"+ str(max) +"}," +\
     "          gridlines: { color: 'transparent' },"+\
     "          textStyle: { color: "+ theme_return_this("'black'","'white'") +" } "+\
