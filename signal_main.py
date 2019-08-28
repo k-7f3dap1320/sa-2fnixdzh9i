@@ -51,7 +51,7 @@ def get_sign_header(uid):
     try:
         content = ''+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded">'+\
+        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         get_signal_details(uid) +\
         '            </div>'+\
         '        </div>'
