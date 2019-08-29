@@ -20,11 +20,12 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '      var view = new google.visualization.DataView(data);'+\
         '      var options = {'+\
         '        title: "'+ str(title) +'",'+\
+        '        titleTextStyle: {color:"'+ theme_return_this('black','white') +'"},'+\
         '        backgroundColor: "transparent",'+\
         '        bar: {groupWidth: "90%"},'+\
         '        legend: { position: "'+ str(legend_position) +'" },'+\
-        '        vAxis: { gridlines: {color: "transparent"}},'+\
-        '        hAxis: { gridlines: {color: "transparent"}},'+\
+        '        vAxis: { gridlines: {color: "transparent"}, color:"'+ theme_return_this('black','white') +'"},'+\
+        '        hAxis: { gridlines: {color: "transparent"}, color:"'+ theme_return_this('black','white') +'"},'+\
         '      };'+\
         '      var chart = new google.visualization.ColumnChart(document.getElementById("'+ str(chart_id) +'"));'+\
         '      chart.draw(view, options);'+\

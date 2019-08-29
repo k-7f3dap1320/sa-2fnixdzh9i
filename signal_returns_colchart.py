@@ -15,7 +15,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_signal_return_colchart(uid):
     r = ''
     chart_id = 'chart_signal_returns_col'
-    title = ''
+    title = 'Signal Performance'
     legend_position = 'none'
     width = '90%'
     height = '100'
