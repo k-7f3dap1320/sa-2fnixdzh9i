@@ -51,7 +51,7 @@ def get_sign_header(uid):
     content = ''
     try:
         content = ' '+\
-        '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         get_signal_details(uid) +\
         '            </div>'+\
@@ -59,13 +59,7 @@ def get_sign_header(uid):
         '        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         get_signal_return_colchart(uid) +\
-        '            </div>'+\
-        '        </div>'+\
-        '        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        ' XXXXX' +\
-        '            </div>'+\
-        '        </div>'
+        '            </div>'
 
     except Exception as e: print(e)
     return content
