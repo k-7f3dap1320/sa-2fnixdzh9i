@@ -25,10 +25,8 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '        bar: {groupWidth: "90%"},'+\
         '        legend: { position: "'+ str(legend_position) +'" },'+\
         '        vAxis: {'+\
-        '           gridlines: {color: "transparent"}'+\
         '        }'+\
         '        hAxis: {'+\
-        '           gridlines: {color: "transparent"}'+\
         '        }'+\
         '      };'+\
         '      var chart = new google.visualization.ColumnChart(document.getElementById("'+ str(chart_id) +'"));'+\
