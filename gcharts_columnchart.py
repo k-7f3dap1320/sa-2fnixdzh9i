@@ -7,7 +7,12 @@ from sa_func import *
 
 def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height):
     r = ''
+    max = 0
+    min = 0
     try:
+        max = max(data)
+        min = min(data)
+
         r = ' '+\
         '<script type="text/javascript">'+\
         '    google.charts.load("current", {packages:["corechart"]});'+\
@@ -27,6 +32,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '        vAxis: {'+\
         '           gridlines: {color: "transparent"},'+\
         '           textStyle: {color: "'+ theme_return_this('black','white') +'"},'+\
+        '           viewWindow:{min:'+ str(min) +',max:'+ str(max) +'},' +\
         '        },'+\
         '        hAxis: {'+\
         '           gridlines: {color: "transparent"},'+\
