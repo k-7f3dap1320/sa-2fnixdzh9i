@@ -19,7 +19,7 @@ def get_signal_return_colchart(uid):
     legend_position = 'none'
     width = '90%'
     height = '100'
-    color_neg = theme_return_this('red','red')
+    color_neg = theme_return_this('red','#d9534f')
     color_pos = theme_return_this('green','lime')
     data = []
     data_label = []
@@ -31,6 +31,7 @@ def get_signal_return_colchart(uid):
     l_m1 = '1-month'
     l_w1 = '1-week'
     factor = 1
+    sep = ''
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -44,8 +45,10 @@ def get_signal_return_colchart(uid):
 
         if unit == '%':
             factor = 100
+            sep = ''
         else:
             factor = 1
+            sep = ' '
 
         data.append(round(y1*factor,1))
         data_label.append(l_y1)
@@ -53,7 +56,7 @@ def get_signal_return_colchart(uid):
             data_color.append(color_neg)
         else:
             data_color.append(color_pos)
-        data_annotation.append( str(round(y1*factor,1)) + unit )
+        data_annotation.append( str(round(y1*factor,1)) + sep + unit )
 
         data.append(round(m6*factor,1))
         data_label.append(l_m6)
@@ -61,7 +64,7 @@ def get_signal_return_colchart(uid):
             data_color.append(color_neg)
         else:
             data_color.append(color_pos)
-        data_annotation.append( str(round(m6*factor,1)) + unit )
+        data_annotation.append( str(round(m6*factor,1)) + sep + unit )
 
         data.append(round(m3*factor,1))
         data_label.append(l_m3)
@@ -69,7 +72,7 @@ def get_signal_return_colchart(uid):
             data_color.append(color_neg)
         else:
             data_color.append(color_pos)
-        data_annotation.append( str(round(m3*factor,1)) + unit )
+        data_annotation.append( str(round(m3*factor,1)) + sep + unit )
 
         data.append(round(m1*factor,1))
         data_label.append(l_m1)
@@ -77,7 +80,7 @@ def get_signal_return_colchart(uid):
             data_color.append(color_neg)
         else:
             data_color.append(color_pos)
-        data_annotation.append( str(round(m1*factor,1)) + unit )
+        data_annotation.append( str(round(m1*factor,1)) + sep + unit )
 
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
         cr.close()
