@@ -15,7 +15,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
             maxval = maxval + (maxval/10)
         else:
             maxval = 0
-            
+
         minval = min(data)
         if minval < 0:
             minval = minval + (minval/10)
@@ -53,8 +53,6 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '  }'+\
         '</script>'+\
         '<div id="'+ str(chart_id) +'" style="width: '+ str(width) +'; height: '+ str(height) +';"></div>'
-
-        print(r)
 
     except Exception as e: print(e)
     return r
