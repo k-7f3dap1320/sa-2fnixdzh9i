@@ -52,6 +52,50 @@ def get_signal_return_colchart(uid):
         else:
             data_annotation.append( str(y1) +' '+ unit )
 
+        data.append(m6)
+        data_label.append(l_m6)
+        if m6 < 0:
+            data_color.append(color_neg)
+        else:
+            data_color.append(color_pos)
+        if unit == '%':
+            data_annotation.append( str(m6*100) + unit )
+        else:
+            data_annotation.append( str(m6) +' '+ unit )
+
+        data.append(m3)
+        data_label.append(l_m3)
+        if m3 < 0:
+            data_color.append(color_neg)
+        else:
+            data_color.append(color_pos)
+        if unit == '%':
+            data_annotation.append( str(m3*100) + unit )
+        else:
+            data_annotation.append( str(m3) +' '+ unit )
+
+        data.append(m1)
+        data_label.append(l_m1)
+        if m1 < 0:
+            data_color.append(color_neg)
+        else:
+            data_color.append(color_pos)
+        if unit == '%':
+            data_annotation.append( str(m1*100) + unit )
+        else:
+            data_annotation.append( str(m1) +' '+ unit )
+
+        data.append(w1)
+        data_label.append(l_w1)
+        if w1 < 0:
+            data_color.append(color_neg)
+        else:
+            data_color.append(color_pos)
+        if unit == '%':
+            data_annotation.append( str(w1*100) + unit )
+        else:
+            data_annotation.append( str(w1) +' '+ unit )
+                        
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
 
         cr.close()
