@@ -95,9 +95,9 @@ def get_signal_return_colchart(uid):
             data_annotation.append( str(w1*100) + unit )
         else:
             data_annotation.append( str(w1) +' '+ unit )
-                        
-        r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
 
+        r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
+        print(r)
         cr.close()
         connection.close()
 
