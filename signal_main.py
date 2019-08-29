@@ -63,7 +63,7 @@ def get_sign_header(uid):
         '        </div>'+\
         '        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        ' ' +\
+        ' XXXXX' +\
         '            </div>'+\
         '        </div>'
 
