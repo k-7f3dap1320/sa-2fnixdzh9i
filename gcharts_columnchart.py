@@ -20,6 +20,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '      var view = new google.visualization.DataView(data);'+\
         '      var options = {'+\
         '        title: "'+ str(title) +'",'+\
+        '        backgroundColor: "transparent",'+\
         '        bar: {groupWidth: "90%"},'+\
         '        legend: { position: "'+ str(legend_position) +'" },'+\
         '      };'+\

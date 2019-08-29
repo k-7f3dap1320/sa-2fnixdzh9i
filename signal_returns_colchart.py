@@ -18,7 +18,7 @@ def get_signal_return_colchart(uid):
     title = ''
     legend_position = 'none'
     width = '100%'
-    height = '150'
+    height = '100'
     color_neg = theme_return_this('red','red')
     color_pos = theme_return_this('green','lime')
     data = []
@@ -51,6 +51,9 @@ def get_signal_return_colchart(uid):
             data_annotation.append( str(y1*100) + unit )
         else:
             data_annotation.append( str(y1) +' '+ unit )
+
+        seperator = ', '
+        print(seperator.join(data))
 
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
 
