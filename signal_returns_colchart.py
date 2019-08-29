@@ -52,9 +52,6 @@ def get_signal_return_colchart(uid):
         else:
             data_annotation.append( str(y1) +' '+ unit )
 
-        seperator = ', '
-        print(seperator.join(data))
-
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
 
         cr.close()
