@@ -18,7 +18,7 @@ def get_signal_return_colchart(uid):
     title = ''
     legend_position = 'none'
     width = '100%'
-    height = '100'
+    height = '200'
     color_neg = theme_return_this('red','red')
     color_pos = theme_return_this('green','lime')
     data = []
