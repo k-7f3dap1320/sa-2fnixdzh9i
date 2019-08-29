@@ -9,7 +9,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
     r = ''
     try:
         r = ' '+\
-        '<script type="text/javascript">'
+        '<script type="text/javascript">'+\
         '    google.charts.load("current", {packages:["corechart"]});'+\
         '    google.charts.setOnLoadCallback(drawChart);'+\
         '    function drawChart() {'+\
