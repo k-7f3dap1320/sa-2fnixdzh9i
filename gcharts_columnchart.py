@@ -27,7 +27,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         '        vAxis: {'+\
         '           gridlines: {color: "transparent"},'+\
         '           textStyle: {color: "'+ theme_return_this('black','white') +'"},'+\
-        '        }'+\
+        '        },'+\
         '        hAxis: {'+\
         '           gridlines: {color: "transparent"},'+\
         '           textStyle: {color: "'+ theme_return_this('black','white') +'"},'+\
