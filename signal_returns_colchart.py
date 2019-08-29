@@ -25,11 +25,11 @@ def get_signal_return_colchart(uid):
     data_label = []
     data_color = []
     data_annotation = []
-    l_1y = '1-year'
-    l_6m = '6-month'
-    l_3m = '3-month'
-    l_1m = '1-month'
-    l_1w = '1-week'
+    l_y1 = '1-year'
+    l_m6 = '6-month'
+    l_m3 = '3-month'
+    l_m1 = '1-month'
+    l_w1 = '1-week'
 
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -42,7 +42,7 @@ def get_signal_return_colchart(uid):
         for row in rs: y1 = row[0]; m6 = row[1]; m3 = row[2]; m1 = row[3]; w1 = row[4]; unit = row[5]
 
         data.append(y1)
-        data_label.append(l_1y)
+        data_label.append(l_y1)
         if y1 < 0:
             data_color.append(color_neg)
         else:
@@ -53,7 +53,7 @@ def get_signal_return_colchart(uid):
             data_annotation.append( str(y1) +' '+ unit )
 
         data.append(m6)
-        data_label.append(l_6m)
+        data_label.append(l_m6)
         if m6 < 0:
             data_color.append(color_neg)
         else:
