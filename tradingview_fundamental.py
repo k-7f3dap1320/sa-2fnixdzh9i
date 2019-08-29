@@ -41,6 +41,9 @@ def get_tradingview_fundamental(uid):
         else:
             r = label_not_available
 
+        cr.close()
+        connection.close()
+
     except Exception as e: print(e)
     return r
 

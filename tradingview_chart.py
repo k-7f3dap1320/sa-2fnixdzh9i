@@ -51,5 +51,8 @@ def get_tradingview_chart(suid):
         else:
             r = label_not_available
 
+        cr.close()
+        connection.close()
+
     except Exception as e: print(e)
     return r

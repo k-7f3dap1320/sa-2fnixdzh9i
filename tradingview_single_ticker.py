@@ -43,5 +43,8 @@ def get_tradingview_single_ticker(suid):
         else:
             r = label_not_available
 
+        cr.close()
+        connection.close()
+
     except Exception as e: print(e)
     return r

@@ -27,6 +27,7 @@ from googleanalytics import *
 from googleadsense import *
 from sa_db import *
 from sa_func import *
+from signal_returns_colchart import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
@@ -50,11 +51,26 @@ def get_sign_header(uid):
     content = ''
     try:
         content = ''+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         get_signal_details(uid) +\
         '            </div>'+\
         '        </div>'
+
+        content = content +\
+        '        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        get_signal_return_colchart(uid) +\
+        '            </div>'+\
+        '        </div>'
+
+        content = content +\
+        '        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '' +\
+        '            </div>'+\
+        '        </div>'
+
     except Exception as e: print(e)
     return content
 

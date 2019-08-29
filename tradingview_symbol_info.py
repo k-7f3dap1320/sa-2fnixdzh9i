@@ -43,5 +43,8 @@ def get_tradingview_symbol_info(suid):
         else:
             r = label_not_available
 
+        cr.close()
+        connection.close()
+
     except Exception as e: print(e)
     return r
