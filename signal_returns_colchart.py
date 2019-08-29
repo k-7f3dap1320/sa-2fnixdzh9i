@@ -53,7 +53,7 @@ def get_signal_return_colchart(uid):
             data_annotation.append( str(y1) +' '+ unit )
 
         data.append(m6)
-        data_label.append(l_m6)
+        data_label.append(l_6m)
         if m6 < 0:
             data_color.append(color_neg)
         else:
@@ -97,7 +97,6 @@ def get_signal_return_colchart(uid):
             data_annotation.append( str(w1) +' '+ unit )
 
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
-        print(r)
         cr.close()
         connection.close()
 
