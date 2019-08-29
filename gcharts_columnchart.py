@@ -13,7 +13,10 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
         maxval = max(data)
         if maxval != 0: maxval = maxval + (maxval/10)
         minval = min(data)
-        if minval != 0: minval = minval - (minval/10)
+        if minval < 0:
+            minval = minval + (minval/10)
+        else:
+            minval = 0
 
         r = ' '+\
         '<script type="text/javascript">'+\
