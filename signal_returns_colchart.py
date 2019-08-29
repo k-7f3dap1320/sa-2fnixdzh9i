@@ -18,7 +18,7 @@ def get_signal_return_colchart(uid):
     title = ''
     legend_position = 'none'
     width = '100%'
-    height = '200'
+    height = '150'
     color_neg = theme_return_this('red','red')
     color_pos = theme_return_this('green','lime')
     data = []
@@ -48,7 +48,7 @@ def get_signal_return_colchart(uid):
         else:
             data_color.append(color_pos)
         if unit == '%':
-            data_annotation.append( str(y1*100) + unit )
+            data_annotation.append( str(round(y1*100,1)) + unit )
         else:
             data_annotation.append( str(y1) +' '+ unit )
 
@@ -59,7 +59,7 @@ def get_signal_return_colchart(uid):
         else:
             data_color.append(color_pos)
         if unit == '%':
-            data_annotation.append( str(m6*100) + unit )
+            data_annotation.append( str(round(m6*100,1)) + unit )
         else:
             data_annotation.append( str(m6) +' '+ unit )
 
@@ -70,7 +70,7 @@ def get_signal_return_colchart(uid):
         else:
             data_color.append(color_pos)
         if unit == '%':
-            data_annotation.append( str(m3*100) + unit )
+            data_annotation.append( str(round(m3*100,1)) + unit )
         else:
             data_annotation.append( str(m3) +' '+ unit )
 
@@ -81,20 +81,9 @@ def get_signal_return_colchart(uid):
         else:
             data_color.append(color_pos)
         if unit == '%':
-            data_annotation.append( str(m1*100) + unit )
+            data_annotation.append( str(round(m1*100,1)) + unit )
         else:
             data_annotation.append( str(m1) +' '+ unit )
-
-        data.append(w1)
-        data_label.append(l_w1)
-        if w1 < 0:
-            data_color.append(color_neg)
-        else:
-            data_color.append(color_pos)
-        if unit == '%':
-            data_annotation.append( str(w1*100) + unit )
-        else:
-            data_annotation.append( str(w1) +' '+ unit )
 
         r = get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height)
         cr.close()
