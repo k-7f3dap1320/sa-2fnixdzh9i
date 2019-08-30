@@ -15,9 +15,9 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def gen_portf_user_example(burl,acm):
+def gen_portf_user_example(burl,acm,notstart):
 
-    resp = make_response( redirect(burl+'genportf?step=2') )
+    resp = make_response( redirect(burl+'genportf?step=2&notstart='+str(notstart)) )
     try:
         if acm == None:
             asset_class = '%%'
@@ -64,9 +64,10 @@ def gen_portf_user_example(burl,acm):
     except Exception as e: print(e)
     return resp
 
-def gen_portf_validate_content(burl):
-
-    resp = make_response( redirect(burl+'?dashboard=1&tour=1') )
+def gen_portf_validate_content(burl,notstart):
+    tour = '1'
+    if str(notstart) == '1': tour = ''
+    resp = make_response( redirect(burl+'?dashboard=1&tour='+str(tour) ) )
     try:
         portf_symbol = portf_insert_data()
         generate_portfolio(portf_symbol)

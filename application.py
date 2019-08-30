@@ -169,8 +169,9 @@ def go():
     elif request.endpoint == 'genportf':
         acm = request.args.get('acm')
         step = request.args.get('step')
-        if step == '1': c = gen_portf_user_example(burl,acm)
-        if step == '2': c = gen_portf_validate_content(burl)
+        notstart = request.args.get('notstart')
+        if step == '1': c = gen_portf_user_example(burl,acm,notstart)
+        if step == '2': c = gen_portf_validate_content(burl,notstart)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
