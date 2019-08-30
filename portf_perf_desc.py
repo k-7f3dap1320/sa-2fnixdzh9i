@@ -170,12 +170,12 @@ def get_chart_box(uid):
     r = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-portf-perf-portf-chart">'+\
-    '                  <ul id="sa-tab-sm-portf" class="nav nav-tabs" role="tablist">'+\
+    '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
     '                    <li class="nav-item">'+\
     '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
-    '                  <div class="tab-content">'+\
+    '                  <div class="tab-content" style="height: 336px">'+\
     '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
