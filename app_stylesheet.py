@@ -7,7 +7,7 @@ from sa_func import *
 def get_stylesheet(burl):
 
     #Page main components
-    body = 'body{}'
+    body = 'body{font-family:"monospace","sans-serif","arial";}'
     footer = '.footer{}'
     desc = '.desc{font-size:small;}'
     expl = '.expl{font-size:x-small;}'
