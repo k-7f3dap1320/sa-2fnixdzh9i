@@ -168,7 +168,7 @@ def navbar(burl):
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
     '    <input id="sa-search-input" class="form-control mr-lg-4 btn-outline-info awesomplete"' +\
-    '       type="search" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" id="navBarSearchForm" data-list="'+ get_search_suggestions() +'" >'+\
+    '       type="search" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" data-list="'+ get_search_suggestions() +'" >'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
     '  </form>'+\
     '  <ul class="navbar-nav mr-auto">'+\
@@ -177,9 +177,9 @@ def navbar(burl):
     get_top_signals_menu(burl) +\
     '  </ul>'+\
     '  <ul class="navbar-nav ml-auto">'+\
-    '      <li class="nav-item">'+\
+    ' '+\
     rightsidemenu +\
-    '      </li>'+\
+    ' '+\
     '  </ul>'+\
     '</div>'+\
     '</nav>'
