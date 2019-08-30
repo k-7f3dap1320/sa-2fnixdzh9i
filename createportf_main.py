@@ -44,27 +44,21 @@ def get_selectportf_box(burl,step,mode,x):
         if step == '1':
             l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
-            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '2':
             l_desc_part_1 = "Pick another item to add to your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '40'
-            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '3':
             l_desc_part_1 = "Almost there, pick another one (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '60'
-            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '4':
             l_desc_part_1 = "You selected 3 items for your portfolio, choose another one, we need 5 of them (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '80'
-            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '5':
             l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '95'
-            l_desc_part_2 = "Find and pick an item from the list below"
         if step == '6':
             l_desc_part_1 = "Save portfolio"
             progress_value = '100'
-            l_desc_part_2 = ""
 
         l_back_button = 'back'
         l_skip_process_button = 'Let SmartAlpha choose'
@@ -92,7 +86,7 @@ def get_selectportf_box(burl,step,mode,x):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part sa-center-content rounded">'+\
         '                   <div class="alert" role="alert">' +\
-        '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ button_back + '&nbsp;&nbsp;' + l_desc_part_2 + '&nbsp;&nbsp;' + button_process_skip +\
+        '                       <h5><i class="fas fa-list-ol"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ button_back + '&nbsp;&nbsp;&nbsp;&nbsp;' + button_process_skip +\
         '                          <div>&nbsp;</div> '+\
         '                          <div class="progress">'+\
         '                               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+ str(progress_value) +'%" aria-valuenow="'+ str(progress_value) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
