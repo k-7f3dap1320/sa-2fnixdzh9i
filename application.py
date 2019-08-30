@@ -5,7 +5,6 @@
 
 from flask import Flask, request
 from flask_compress import Compress
-from search import *
 from app_main import *; from portf_main import *; from signal_main import *
 from createuser_main import *; from select_avatar import *; from select_market import *
 from createportf_main import *

@@ -2,7 +2,6 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from search import *
 from sa_func import *
 from app_login import *
 from sa_db import *
@@ -145,7 +144,7 @@ def navbar(burl,disable_search):
     if disable_search != 1:
         search_box =  ' '+\
         '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
-        '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" data-list="'+ get_search_suggestions() +'" >'
+        '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" >'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
