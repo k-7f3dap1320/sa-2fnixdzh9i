@@ -133,7 +133,7 @@ def get_portfolio_button(burl):
 
 def navbar(burl):
 
-    search_placeholder = 'Enter function, ticker or search. Hit <enter> to go.'
+    search_placeholder = '<search> function, ticker...'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
     l_myportfolio = 'My Portfolio(s)'
