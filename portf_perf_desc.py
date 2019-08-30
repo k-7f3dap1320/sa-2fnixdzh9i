@@ -176,7 +176,7 @@ def get_chart_box(uid):
     '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
-    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="height: 336px; '+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
+    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="height: 325px; '+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'
