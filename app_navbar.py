@@ -180,7 +180,7 @@ def navbar(burl):
     rightsidemenu +\
     ' '+\
     '  </ul>'+\
-    get_portfolio_button(burl)+\    
+    get_portfolio_button(burl)+\
     '</div>'+\
     '</nav>'
 
