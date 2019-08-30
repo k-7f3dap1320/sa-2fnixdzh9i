@@ -39,5 +39,8 @@ def get_tradingview_fundamental_widget(uid,height,width):
         '}'+\
         '  </script>'+\
         '</div>'
+        print(r)
+        cr.close()
+        connection.close()
     except Exception as e: print(e)
     return r
