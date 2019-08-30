@@ -235,7 +235,7 @@ def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
                     order_type = '<span class="badge badge-success">buy</span>'
                 else:
                     order_type = '<span class="badge badge-danger">sell</span>'
-                column_order_type = '<td scope="row">'+ order_type +'</td>'
+                column_order_type = '<td style="text-align: left" scope="row">'+ order_type +'</td>'
                 column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
                 column_m6 = '      <td class="'+ class_m6 +'">'+ str(m6_signal) +'</td>'
                 column_m3 = '      <td class="'+ class_m3 +'">'+ str(m3_signal) +'</td>'
@@ -298,7 +298,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             c_1_week_column = ""
             l_performance_note = ""
             small_font_class = ""
-            l_instr_portf = '<th scope="col">Instrument</th>'
+            l_instr_portf = '<th scope="col" style="text-align: left">Instrument</th>'
             l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
         else:
             if what == "instr":
