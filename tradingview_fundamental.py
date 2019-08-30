@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_fundamental_widget(uid,height,width):
+def get_tradingview_fundamental_widget(suid,height,width):
     r = ''
     try:
         theme = get_sa_theme()
