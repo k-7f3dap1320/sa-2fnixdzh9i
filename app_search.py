@@ -105,16 +105,8 @@ def get_box_search(burl):
         '</script>'
 
         box_content = box_content +\
-        '<div class="box">' +\
-        '   <div class="row">'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block">'+\
-        '            <div class="box-part rounded '+ list_class +'" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         search_box +\
-        gen_search_table(burl) +\
-        '            </div>'+\
-        '        </div>'+\
-        '   </div>'+\
-        '</div>'
+        gen_search_table(burl)
 
     except Exception as e: print(e)
     return box_content
