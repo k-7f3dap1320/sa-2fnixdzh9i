@@ -389,6 +389,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
         l_placeholder = "Type to find from the list..."
         l_your_portfolios = 'Your Portfolio(s)'
+        box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
         portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
         list_title = ''
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
@@ -397,11 +398,12 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
             list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
             search_box = ''
             list_class = ''
+            box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block'
 
         box_content = box_content +\
         '<div class="box">' +\
         '   <div class="row">'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '        <div class="'+ box_div_class +'">'+\
         '            <div class="box-part rounded '+ list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
         search_box +\
         list_title +\
