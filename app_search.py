@@ -82,7 +82,7 @@ def get_box_search(burl):
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = ' '+\
-        '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
+        '  <form class="" action="'+ burl +'" method="get" >'+\
         '       <div class="input-group input-group-lg">'+\
         '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
         '       </div>'+\
