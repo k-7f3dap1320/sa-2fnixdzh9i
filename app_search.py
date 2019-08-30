@@ -58,9 +58,9 @@ def gen_search_table(burl):
         '<table id="table_search" class="table table-hover">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '       <th scope="col" style="text-align: left">Instruments / Functions</th>'
-        '       <th scope="col" style="text-align: left">Details</th>'
-        '       <th scope="col" style="text-align: left">Scope</th>'
+        '       <th scope="col" style="text-align: left">Instruments / Functions</th>'+\
+        '       <th scope="col" style="text-align: left">Details</th>'+\
+        '       <th scope="col" style="text-align: left">Scope</th>'+\
         '    </tr>'+\
         ' </thead>'+\
         '  <tbody>'+\
@@ -121,7 +121,7 @@ def get_search_page_content(burl):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        'Test' +\
+        get_box_search(burl) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
