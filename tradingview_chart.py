@@ -46,7 +46,7 @@ def get_tradingview_chart(suid,width,height):
             '"save_image": false,'+\
             '"referral_id": "'+ referral_id +'",'+\
             '"container_id": "tradingview_713ab",'+\
-            '"hide_side_toolbar": false,'
+            '"hide_side_toolbar": false,'+\
             '}'+\
             '  );'+\
             ' </script>'+\
