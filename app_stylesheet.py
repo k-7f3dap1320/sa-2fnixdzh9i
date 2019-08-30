@@ -43,7 +43,7 @@ def get_stylesheet(burl):
     sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
     sa_user_header = '.sa-uhead-box{color: white; text-align: left;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: small;}'
-    sa_chart_hw_90 = '.sa-chart-hw-90{height: 83%;}'
+    sa_chart_hw_90 = '.sa-chart-hw-90{height: 500px;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 400px;}'
     sa_chart_hw_300 = '.sa-chart-hw-290{height: 300px;}'
     sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 100px;}'
