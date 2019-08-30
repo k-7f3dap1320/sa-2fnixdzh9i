@@ -164,7 +164,9 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'search':
-        pass
+        c = get_search_page(appname,burl)
+        c = set_sa_lang(lang,c)
+        c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'genportf':
         acm = request.args.get('acm')

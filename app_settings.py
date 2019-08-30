@@ -12,9 +12,7 @@ from app_stylesheet import *
 from app_cookie import *
 
 def get_settings_content(burl):
-
     box_content = ''
-
     try:
 
         box_content = ' '+\
@@ -29,7 +27,6 @@ def get_settings_content(burl):
         '</div>'
 
     except Exception as e: print(e)
-
     return box_content
 
 
