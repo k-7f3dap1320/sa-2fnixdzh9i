@@ -29,7 +29,7 @@ def get_portf_content(user_id):
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs: nickname = row[0]; avatar_id = row[1]
-        r = '<img src="{burl}static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: 30px;">&nbsp;<strong>'+nickname+'</strong>'
+        r = '<img alt="" src="{burl}static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: 30px;">&nbsp;<strong>'+nickname+'</strong>'
         cr.close()
         connection.close()
     except Exception as e: print(e)

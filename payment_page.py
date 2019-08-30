@@ -43,7 +43,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
         '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +') '+ l_subscribe_payment_notice +'</strong></div>'+\
         '<div>'+ '' +'</div>'+\
         '<div>&nbsp;</div>'+\
-        '<img src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
+        '<img alt="" src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'
     except Exception as e: print(e)
     return r

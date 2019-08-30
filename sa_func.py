@@ -26,7 +26,7 @@ def get_avatar(burl,height):
         rs = cr.fetchall()
         for row in rs: avatar_id = row[0]
         if avatar_id != 0:
-            r = '<img src="'+burl+'static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: '+ str(height) +'px;">'
+            r = '<img alt="" src="'+burl+'static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: '+ str(height) +'px;">'
         cr.close()
         connection.close()
     except Exception as e: print(e)

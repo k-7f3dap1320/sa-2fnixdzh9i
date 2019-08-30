@@ -24,7 +24,7 @@ def get_login_form(burl,theme,redirect):
             sign_in_class = 'form-signin-text-light'
             logo = 'logo_light.png'
         r = '' +\
-        '<div class="'+ sign_in_class +'"><img src="'+ burl +'static/'+ logo +'" height="30">&nbsp;Sign In</div>'+\
+        '<div class="'+ sign_in_class +'"><img alt="" src="'+ burl +'static/'+ logo +'" height="30">&nbsp;Sign In</div>'+\
         '    <form class="form-signin" method="POST" action="'+ burl+'login/?redirect='+ redirect +'">'+\
         '      <label for="user" class="sr-only">Email address</label>'+\
         '      <input type="email" id="user" name="user" class="form-control btn-outline-info" placeholder="Email address" required autofocus>'+\

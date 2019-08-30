@@ -80,7 +80,7 @@ def get_select_avatar(burl,err):
         '                   <div class="'+ alert_class +'" role="alert">' +\
         '                       <h5><i class="fas fa-comment"></i>&nbsp;'+ l_desc_part_1 +'</h5>'+ l_desc_part_2 +\
         '                   </div><div>&nbsp;</div>'+\
-        '                   <div><img src="'+ str(avatar)+'" height="150"></div>'+\
+        '                   <div><img alt="" src="'+ str(avatar)+'" height="150"></div>'+\
         '                       <form method="POST" action="'+ burl +'n/?step=b" style="width: 100%; max-width: 300px; padding: 2%; margin: auto;">'+\
         '                           <div><input type="text" name="nickname" class="form-control btn-outline-info" id="nickname" placeholder="Your name" value="'+ str(nickname) +'" required autofocus></div>'+\
         '                           <br>'+\
