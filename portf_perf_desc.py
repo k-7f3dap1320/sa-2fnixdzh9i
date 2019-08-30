@@ -175,8 +175,8 @@ def get_chart_box(uid):
     '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
-    '                  <div class="tab-content" style="height: 336px">'+\
-    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
+    '                  <div class="tab-content">'+\
+    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="height: 336px; '+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'
