@@ -293,7 +293,7 @@ def get_sign_ta_chart_alt_orders(uid):
         '               <div><h6>'+ signal_box_title +'</h6></div>'+\
         get_alt_orders(uid) +\
         '            </div>'+\
-        '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads">'+\
+        '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads" style="height: 300px;">'+\
         print_google_ads('rectangle','left') +\
         '            </div>'+\
         '        </div>'

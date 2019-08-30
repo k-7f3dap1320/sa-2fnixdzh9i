@@ -14,13 +14,12 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 
-def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
+def gen_search_table(burl):
 
     r = ''
     try:
         r =  ' ' +\
-        l_performance_note +\
-        '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' ">'+\
+        '<table id="table_search" class="table table-hover">'+\
         '  <thead>'+\
         '    <tr>'+\
         '       <th scope="col" style="text-align: left"></th>'
@@ -35,20 +34,12 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
         print(e)
     return r
 
-def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
-    # mode = 'view', mode = 'portf_select', mode = 'dashboard'
-    # what = 'instr', what = 'portf'
-    # portf = portf uid
-    # maxrow = numeric number of row ie. 1000
-    #  step = step of portfolio selection
+def get_box_search(burl):
 
     box_content = ''
 
     try:
-        if mode == 'portf_select':
-            col_id = 0
-        else:
-            col_id = 1
+        col_id = 0
 
         box_content = '' +\
         '<script>'+\
@@ -56,7 +47,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '  var input, filter, table, tr, td, i, txtValue;'+\
         '  input = document.getElementById("filterInput");'+\
         '  filter = input.value.toUpperCase();'+\
-        '  table = document.getElementById("table_instr_n_portf");'+\
+        '  table = document.getElementById("table_search");'+\
         '  tr = table.getElementsByTagName("tr");'+\
         '  for (i = 0; i < tr.length; i++) {'+\
         '    td = tr[i].getElementsByTagName("td")['+ str(col_id) +'];'+\
@@ -83,7 +74,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block">'+\
         '            <div class="box-part rounded '+ list_class +'" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         search_box +\
-        gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
+        gen_search_table(burl) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
