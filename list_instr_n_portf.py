@@ -135,17 +135,17 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
                 m1 = str(round( m1 * 100 ,2)) + '%'
                 w1 = str(round( w1 * 100 ,2)) + '%'
 
-            column_globalrank = '<td scope="row" class="'+ class_row_style +'"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+            column_globalrank = '<td scope="row" class="'+ class_row_style +'" style="text-align: left"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
             target_url = burl + 'p/?uid=' + str(uid)
 
             r = r + set_modal_delete_n_view_popup(fullname,uid,burl,user_portf)
             l_btn_delete = 'delete'
 
             if user_portf == False:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
+                column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
                 data_href = 'data-href="'+ target_url +'"'
             else:
-                column_fullname = '<td  class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
+                column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i>&nbsp;'+ l_btn_delete +'</button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
                 data_href = 'data-href="#"'
 
             column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
@@ -302,14 +302,14 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
         else:
             if what == "instr":
-                signal_column = '<th scope="col">Signal</th>'
+                signal_column = '<th scope="col" style="text-align: left">Signal</th>'
                 l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
-                l_instr_portf = '<th scope="col">Instrument</th>'
+                l_instr_portf = '<th scope="col" style="text-align: left">Instrument</th>'
                 l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
             else:
-                signal_column = '<th scope="col">Rank</th>'
+                signal_column = '<th scope="col" style="text-align: left">Rank</th>'
                 l_performance_note = ''
-                l_instr_portf = '<th scope="col">portfolio</th>'
+                l_instr_portf = '<th scope="col" style="text-align: left">portfolio</th>'
                 l_forc_expect_return = '<th scope="col">1-week Expected return</th>'
 
             c_1_year_column = '<th scope="col">1-Year</th>'
@@ -388,42 +388,18 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find from the list..."
-        l_caption_to_more_assets = 'Unable to find what you are looking for? More list: '
-        l_link_to_more_assets = ''
-        l_top_ranked = 'Top Ranked'
         l_your_portfolios = 'Your Portfolio(s)'
         portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
-        l_equity_label_replace_stocks = 'Stocks'
-        l_equity_label = 'Equity'
-
-        if mode != 'portf_select':
-            l_link_to_more_assets = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
-
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_id, asset_class_name FROM asset_class WHERE asset_class_id <> 'PF:' and asset_class_id <>'MA:' ORDER BY asset_class_name"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            asset_class_id = row[0]
-            asset_class_name = row[1]
-            asset_class_name = asset_class_name.replace(l_equity_label,l_equity_label_replace_stocks)
-            if mode == 'portf_select':
-                l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'p/?ins=1&step='+ str(step) + '&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
-            else:
-                l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
-
         list_title = ''
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;</div>'
-        more_assets_note = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>'
         if mode == 'dashboard':
             list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
             search_box = ''
             list_class = ''
-            more_assets_note = ''
 
-        box_content = box_content + '<div class="box">' +\
+        box_content = box_content +\
+        '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded '+ list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
@@ -432,7 +408,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
-        more_assets_note +\
         '   </div>'+\
         '</div>'
 
