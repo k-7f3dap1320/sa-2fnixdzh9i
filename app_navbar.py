@@ -126,7 +126,7 @@ def get_portfolio_button(burl):
     r = ''
     try:
         l_create_portfolio = 'Create a new portfolio'
-        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary" style="font-size:x-large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
+        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary" style="font-size:medium;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
         r = portfolio_button
     except Exception as e: print(e)
     return r
