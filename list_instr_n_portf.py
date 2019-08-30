@@ -388,40 +388,15 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find from the list..."
-        l_caption_to_more_assets = 'Unable to find what you are looking for? More list: '
-        l_link_to_more_assets = ''
-        l_top_ranked = 'Top Ranked'
         l_your_portfolios = 'Your Portfolio(s)'
         portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
-        l_equity_label_replace_stocks = 'Stocks'
-        l_equity_label = 'Equity'
-
-        if mode != 'portf_select':
-            l_link_to_more_assets = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x=">'+ l_top_ranked +'</a>'
-
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_id, asset_class_name FROM asset_class WHERE asset_class_id <> 'PF:' and asset_class_id <>'MA:' ORDER BY asset_class_name"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            asset_class_id = row[0]
-            asset_class_name = row[1]
-            asset_class_name = asset_class_name.replace(l_equity_label,l_equity_label_replace_stocks)
-            if mode == 'portf_select':
-                l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'p/?ins=1&step='+ str(step) + '&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
-            else:
-                l_link_to_more_assets = l_link_to_more_assets +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+ burl+'ls/?w='+ str(what) +'&x='+ asset_class_id +'">'+ asset_class_name +'</a>'
-
         list_title = ''
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;</div>'
-        more_assets_note = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+ l_caption_to_more_assets + l_link_to_more_assets +'<br /><br /></div>'
         if mode == 'dashboard':
             list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
             search_box = ''
             list_class = ''
-            more_assets_note = ''
 
         box_content = box_content + '<div class="box">' +\
         '   <div class="row">'+\
@@ -432,7 +407,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
         '            </div>'+\
         '        </div>'+\
-        more_assets_note +\
         '   </div>'+\
         '</div>'
 
