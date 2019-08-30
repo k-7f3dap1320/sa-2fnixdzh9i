@@ -342,7 +342,7 @@ def get_portf_table_rows(burl):
 
             r = r + ''+\
             '    <tr>'+\
-            '      <th scope="row">'+\
+            '      <th style="text-align: left" scope="row">'+\
             '       <div class="dropdown">'+\
             '           <button class="btn '+ class_order_type +' dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             strategy_order_type +\
@@ -354,7 +354,7 @@ def get_portf_table_rows(burl):
             '           </div>'+\
             '       </div>'+\
             '       </th>'+\
-            '       <td>'+\
+            '       <td style="text-align: left">'+\
             '       <div class="dropdown">'+\
             '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
             strategy_conviction +\
@@ -366,7 +366,7 @@ def get_portf_table_rows(burl):
             '           </div>'+\
             '       </div>'+\
             '      </td>'+\
-            '      <td width="100%">'+ instr_selection +'</td>'+\
+            '      <td style="text-align: left" width="100%">'+ instr_selection +'</td>'+\
             '    </tr>'
     except Exception as e:
         print(e)
@@ -381,7 +381,7 @@ def get_list_portf_alloc(burl):
         '<table class="table table-hover">'+\
         '  <thead>'+\
         '    <tr>'+\
-        '      <th scope="col" colspan="3">'+ l_conviction +'</th>'+\
+        '      <th style="text-align: left" scope="col" colspan="3">'+ l_conviction +'</th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
