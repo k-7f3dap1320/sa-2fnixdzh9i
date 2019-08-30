@@ -55,12 +55,12 @@ def gen_search_table(burl):
     r = ''
     try:
         r =  ' ' +\
-        '<table id="table_search" class="table table-hover">'+\
+        '<table id="table_search" class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
         '       <th scope="col" style="text-align: left">Instruments / Functions</th>'+\
-        '       <th scope="col" style="text-align: left">Details</th>'+\
-        '       <th scope="col" style="text-align: left">Scope</th>'+\
+        '       <th scope="col" style="text-align: left"></th>'+\
+        '       <th scope="col" style="text-align: left"></th>'+\
         '    </tr>'+\
         ' </thead>'+\
         '  <tbody>'+\
