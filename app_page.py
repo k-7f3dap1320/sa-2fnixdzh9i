@@ -4,5 +4,5 @@
 # LICENSE file in the root directory of this source tree.
 
 def set_page(c):
-    r = '<html>'+c+'</html>'
+    r = '<!DOCTYPE html>'+c+'</html>'
     return r
