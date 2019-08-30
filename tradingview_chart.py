@@ -9,7 +9,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_chart(suid):
+def get_tradingview_chart(suid,width,height):
     r = ''
     try:
         symbol = ''
@@ -33,6 +33,8 @@ def get_tradingview_chart(suid):
             'new TradingView.widget('+\
             '{'+\
             '"autosize": true,'+\
+            '"width": '+ str(width) +\
+            '"height": '+ str(height) +\
             '"symbol": "'+ symbol +'",'+\
             '"interval": "D",'+\
             '"timezone": "Etc/UTC",'+\
