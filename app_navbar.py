@@ -155,7 +155,7 @@ def navbar(burl):
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
-        '    <li>'+\
+        '    <li class="nav-item">'+\
         get_portfolio_button(burl)+\
         '    </li>'
     else:
