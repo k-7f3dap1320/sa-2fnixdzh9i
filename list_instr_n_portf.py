@@ -308,7 +308,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
                 signal_column = '<th scope="col" style="text-align: left">Rank</th>'
                 l_performance_note = ''
                 l_instr_portf = '<th scope="col" style="text-align: left">portfolio</th>'
-                l_forc_expect_return = '<th scope="col">1-week Expected return</th>'
+                l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
 
             c_1_year_column = '<th scope="col">1-Year</th>'
             c_6_month_column = '<th scope="col">6-month</th>'
@@ -329,7 +329,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
         '    <tr>'+\
         signal_column +\
         l_instr_portf +\
-        '      <th scope="col">Volatility risk (%)</th>'+\
+        '      <th scope="col">Vol. risk (%)</th>'+\
         c_1_year_column +\
         c_6_month_column +\
         c_3_month_column +\
