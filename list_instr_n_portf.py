@@ -256,7 +256,7 @@ def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
             r = r +\
             '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
             column_order_type +\
-            '      <td>'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+            '      <td style="text-align: left">'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
             '      <td>'+ str(volatility_risk_st) +'</td>'+\
             column_y1 +\
             column_m6 +\
