@@ -11,34 +11,33 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_tradingview_fundamental_widget(uid,height,width):
     r = ''
-try:
-    theme = get_sa_theme()
-    symbol = ''
-    url = 'http://smartalphatrade.com/s/'
+    try:
+        theme = get_sa_theme()
+        symbol = ''
+        url = 'http://smartalphatrade.com/s/'
 
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT tradingview FROM symbol_list WHERE uid ='"+ str(suid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: symbol = row[0]
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = "SELECT tradingview FROM symbol_list WHERE uid ='"+ str(suid) +"'"
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs: symbol = row[0]
 
-    r = ' ' +\
-    '<div class="tradingview-widget-container">'+\
-    '  <div class="tradingview-widget-container__widget"></div>'+\
-    '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>'+\
-    '  {'+\
-    '  "symbol": "'+ symbol +'",'+\
-    '  "colorTheme": "'+ theme +'",'+\
-    '  "isTransparent": true,'+\
-    '  "largeChartUrl": "'+ url +'",'+\
-    '  "displayMode": "compact",'+\
-    '  "width": '+ str(width) +','+\
-    '  "height": '+ str(height) +','+\
-    '  "locale": "en"'+\
-    '}'+\
-    '  </script>'+\
-    '</div>'
-
-except Exception as e: print(e)
-return r
+        r = ' ' +\
+        '<div class="tradingview-widget-container">'+\
+        '  <div class="tradingview-widget-container__widget"></div>'+\
+        '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>'+\
+        '  {'+\
+        '  "symbol": "'+ symbol +'",'+\
+        '  "colorTheme": "'+ theme +'",'+\
+        '  "isTransparent": true,'+\
+        '  "largeChartUrl": "'+ url +'",'+\
+        '  "displayMode": "compact",'+\
+        '  "width": '+ str(width) +','+\
+        '  "height": '+ str(height) +','+\
+        '  "locale": "en"'+\
+        '}'+\
+        '  </script>'+\
+        '</div>'
+    except Exception as e: print(e)
+    return r
