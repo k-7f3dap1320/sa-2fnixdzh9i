@@ -9,7 +9,8 @@ def get_page_footer(burl):
 
     try:
 
-        box_content = '<div class="box">' +\
+        box_content = ' '+\
+        '<div class="box">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
@@ -43,6 +44,7 @@ def get_page_footer(burl):
         '               <br /><br /></strong>'+\
         '            </div>'+\
         '        </div>'+\
+        '   </div>'+\
         '   <div class="row">'+\
         '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
         '            <div class="sa-center-content footer">'+\
