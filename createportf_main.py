@@ -158,7 +158,7 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,'') )
+        r = r + get_body( get_loading_body(), navbar(burl,0) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,'') )
         r = set_page(r)
         if step == '1': r = ini_portf_select(r)
     except Exception as e: print(e)
@@ -167,7 +167,7 @@ def gen_selectportf_page(appname,burl,step,mode,x,portf):
 def custom_save_portf_page(appname,burl,mode,x):
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_awesomplete() + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl) + get_selectportf_box(burl,'6',mode,'') + get_box_portf_save(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl,0) + get_selectportf_box(burl,'6',mode,'') + get_box_portf_save(burl) )
         r = set_page(r)
 
     except Exception as e:

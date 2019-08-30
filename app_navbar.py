@@ -131,7 +131,7 @@ def get_portfolio_button(burl):
     except Exception as e: print(e)
     return r
 
-def navbar(burl):
+def navbar(burl,disable_search):
 
     search_placeholder = '<search> function, ticker...'
     sid = get_random_str(9)
@@ -140,6 +140,12 @@ def navbar(burl):
     l_themeSwitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
+
+    search_box = ''
+    if disable_search != 1:
+        search_box =  ' '+\
+        '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
+        '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" data-list="'+ get_search_suggestions() +'" >'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
@@ -168,11 +174,7 @@ def navbar(burl):
     '  <span class="navbar-toggler-icon"></span>'+\
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
-    '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
-    '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
-    '       type="search" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" data-list="'+ get_search_suggestions() +'" >'+\
-    '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
-    '  </form>'+\
+    search_box +\
     '  <ul class="navbar-nav mr-auto">'+\
     get_market_menu_selection(burl) +\
     get_top_trader_menu(burl) +\
