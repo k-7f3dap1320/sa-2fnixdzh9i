@@ -33,8 +33,8 @@ def get_tradingview_chart(suid,width,height):
             'new TradingView.widget('+\
             '{'+\
             '"autosize": true,'+\
-            '"width": '+ str(width) +\
-            '"height": '+ str(height) +\
+            '"width": '+ str(width) +','+\
+            '"height": '+ str(height) +','+\
             '"symbol": "'+ symbol +'",'+\
             '"interval": "D",'+\
             '"timezone": "Etc/UTC",'+\
