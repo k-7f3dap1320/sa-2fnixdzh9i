@@ -40,7 +40,7 @@ def get_search_table_content(burl):
             url = row[3].replace('{burl}',burl)
             r = r +\
             '<tr class="sa-table-click-row" data-href="'+ str(url) +'">'+\
-            '    <td style="text-align: left" scope="row">'+ str(search_text) +'</td>'+\
+            '    <td style="text-align: left" scope="row"><strong>'+ str(search_text) +'</strong></td>'+\
             '    <td style="text-align: left">'+ str(content_details) +'</td>'+\
             '    <td style="text-align: left">'+ str(scope_text) +'</td>'+\
             '</tr>'
@@ -78,9 +78,16 @@ def get_box_search(burl):
 
     try:
         col_id = 0
+        sid = get_random_str(9)
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
-        search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;</div>'
+        search_box = ' '+\
+        '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
+        '       <div class="input-group input-group-lg">'+\
+        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
+        '       </div>'+\
+        '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
+        '  </form>'
 
         box_content = '' +\
         '<script>'+\
