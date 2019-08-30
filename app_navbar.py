@@ -169,7 +169,7 @@ def navbar(burl):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     '  <form class="form-inline my-2 my-lg-0" action="'+ burl +'" method="get" >'+\
-    '    <input id="sa-search-input" class="form-control mr-lg-4 btn-outline-info awesomplete"' +\
+    '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
     '       type="search" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" data-list="'+ get_search_suggestions() +'" >'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
     '  </form>'+\
