@@ -18,7 +18,7 @@ def get_widget_content(burl,nonavbar,funcname):
 
     box_content = ''
     box_class = 'box'
-    box_vh = '100vh'
+    box_vh = '97vh'
 
     try:
         if nonavbar is None:
