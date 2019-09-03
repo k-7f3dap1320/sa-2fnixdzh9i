@@ -163,6 +163,7 @@ def get_search_page_content(burl):
 def get_search_page(appname,burl,nonavbar):
     r = ''
     try:
+        navbar = ''
         if str(nonavbar) == '1':
             navbar = ''
         else:
