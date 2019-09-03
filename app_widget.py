@@ -10,8 +10,11 @@ from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 from app_stylesheet import *
 from app_cookie import *
+#-------------------------------------------------------------------------------
+from tradingview_chart import *
+#-------------------------------------------------------------------------------
 
-def get_widget_content(burl,nonavbar):
+def get_widget_content(burl,nonavbar,funcname):
 
     box_content = ''
     box_class = 'box'
@@ -23,7 +26,7 @@ def get_widget_content(burl,nonavbar):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
-        'Content goes here...'+\
+        eval(funcname)
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -34,7 +37,7 @@ def get_widget_content(burl,nonavbar):
     return box_content
 
 
-def get_widget_page(appname,burl,nonavbar):
+def get_widget_page(appname,burl,nonavbar,funcname):
     r = ''
     navbarcontent = ''
     footercontent  = ''
@@ -45,7 +48,7 @@ def get_widget_page(appname,burl,nonavbar):
 
 
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar) + footercontent )
+        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname) + footercontent )
         r = set_page(r)
     except Exception as e: print(e)
 

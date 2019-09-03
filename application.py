@@ -118,7 +118,8 @@ def go():
 
     elif request.endpoint == 'w':
         nonavbar = request.values.get('nonavbar')
-        c = get_widget_page(appname,burl,nonavbar)        
+        funcname = request.values.get('funcname')
+        c = get_widget_page(appname,burl,nonavbar,funcname)        
 
     elif request.endpoint == 'fd':
         c = get_tradingview_fundamental_page(uid,burl)
