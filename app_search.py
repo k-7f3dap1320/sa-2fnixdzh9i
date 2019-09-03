@@ -80,12 +80,19 @@ def get_box_search(burl):
         col_id = 0
         sid = get_random_str(9)
 
+        focus_input = ' ' +\
+        '<script type="text/javascript">'+\
+        '$(document).ready(function(){'+\
+        'document.searchFor.filterInput.focus();'+\
+        '});'+\
+        '</script>'
+
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = ' '+\
-        '  <form class="" action="'+ burl +'" method="get" >'+\
+        '  <form class="" action="'+ burl +'" method="get" id="searchForm" >'+\
         '       <div class="input-group input-group-lg">'+\
-        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" tabindex="0" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
+        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
         '       </div>'+\
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
         '  </form>'
@@ -113,6 +120,7 @@ def get_box_search(burl):
         '</script>'
 
         box_content = box_content +\
+        focus_input +\
         search_box +\
         gen_search_table(burl)
 
