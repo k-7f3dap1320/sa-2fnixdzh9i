@@ -25,7 +25,7 @@ def get_widget_content(burl,nonavbar,funcname):
         box_content = '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 100vh;">'+\
-        '            <div class="box-part rounded sa-center-content">'+\
+        '            <div class="box-part rounded sa-center-content" style="height: 100%">'+\
         eval(funcname)+\
         '            </div>'+\
         '        </div>'+\
