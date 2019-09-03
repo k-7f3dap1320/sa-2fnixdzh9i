@@ -14,15 +14,15 @@ from app_cookie import *
 def get_widget_content(burl,nonavbar):
 
     box_content = ''
-    box_class = 'box-top'
+    box_class = 'box'
 
     try:
-        if nonavbar is None: box_class ='box'
+        if nonavbar is None: box_class ='box-top'
 
         box_content = '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '            <div class="box-part rounded sa-center-content">'+\
         'Content goes here...'+\
         '            </div>'+\
         '        </div>'+\
@@ -37,12 +37,15 @@ def get_widget_content(burl,nonavbar):
 def get_widget_page(appname,burl,nonavbar):
     r = ''
     navbarcontent = ''
+    footercontent  = ''
     try:
-        if nonavbar is None: navbarcontent = navbar(burl,0)
+        if nonavbar is None:
+            navbarcontent = navbar(burl,0)
+            footercontent = get_page_footer(burl)
 
 
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar) + get_page_footer(burl) )
+        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar) + footercontent )
         r = set_page(r)
     except Exception as e: print(e)
 
