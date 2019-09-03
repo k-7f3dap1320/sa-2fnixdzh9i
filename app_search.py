@@ -164,9 +164,7 @@ def get_search_page(appname,burl,nonavbar):
     r = ''
     try:
         navbar = ''
-        if str(nonavbar) == '1':
-            navbar = ''
-        else:
+        if nonavbar is None or nonavbar == 0:
             navbar = navbar(burl,1)
 
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
