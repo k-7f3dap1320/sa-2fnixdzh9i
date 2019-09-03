@@ -24,6 +24,9 @@ def get_tradingview_chart(suid,width,height):
         rs = cr.fetchall()
         for row in rs: symbol = row[0]
 
+        if str(width) == '0': width = '"100%"'
+        if str(height) == '0': height = '"100%"'
+
         if symbol != '':
             r = '' +\
             '<div class="tradingview-widget-container">'+\
