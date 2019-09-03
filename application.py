@@ -6,6 +6,7 @@
 from flask import Flask, request
 from flask_compress import Compress
 from app_main import *; from portf_main import *; from signal_main import *
+from app_widget import *
 from createuser_main import *; from select_avatar import *; from select_market import *
 from createportf_main import *
 from portf_delete import *
@@ -37,6 +38,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/ls/', endpoint='ls', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
+@application.route('/w/', endpoint='w', methods=["POST","GET"])
 @application.route('/fd/', endpoint='fd', methods=["POST","GET"])
 @application.route('/ip/', endpoint='ip', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
@@ -113,6 +115,10 @@ def go():
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
+
+    elif request.endpoint == 'w':
+        nonavbar = request.values.get('nonavbar')
+        c = get_widget_page(appname,burl,nonavbar)        
 
     elif request.endpoint == 'fd':
         c = get_tradingview_fundamental_page(uid,burl)
