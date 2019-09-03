@@ -80,13 +80,6 @@ def get_box_search(burl):
         col_id = 0
         sid = get_random_str(9)
 
-        focus_input = ' ' +\
-        '<script type="text/javascript">'+\
-        '$(document).ready(function(){'+\
-        'document.searchForm.filterInput.focus();'+\
-        '});'+\
-        '</script>'
-
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = ' '+\
@@ -120,7 +113,6 @@ def get_box_search(burl):
         '</script>'
 
         box_content = box_content +\
-        focus_input +\
         search_box +\
         gen_search_table(burl)
 
