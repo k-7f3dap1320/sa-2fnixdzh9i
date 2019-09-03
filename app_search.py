@@ -83,7 +83,7 @@ def get_box_search(burl):
         focus_input = ' ' +\
         '<script type="text/javascript">'+\
         '$(window).bind("load", function() {'+\
-        '   document.getElementById("filterInput").focus();'+\
+        '   $("#filterInput").focus();'+\
         '});'+\
         '</script>'
 
