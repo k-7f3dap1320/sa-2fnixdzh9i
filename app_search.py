@@ -40,6 +40,7 @@ def get_search_table_content(burl):
             feed_type = row[3]
             url = row[3].replace('{burl}',burl)
 
+            textcolor = ''
             if feed_type == 2: textcolor = get_sa_theme('blue','#00ffff');
 
             r = r +\
