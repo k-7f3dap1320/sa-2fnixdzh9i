@@ -98,7 +98,7 @@ def go():
 
     elif request.endpoint == 'ls':
         what = request.values.get('w')
-        c = gen_view_list_instr_n_portf(appname,burl,what,x)
+        c = gen_view_list_instr_n_portf(appname,burl,what,x,nonavbar)
 
     elif request.endpoint == 'n':
         name = request.values.get('name')
