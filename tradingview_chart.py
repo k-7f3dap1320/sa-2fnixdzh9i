@@ -49,10 +49,10 @@ def get_tradingview_chart(suid,width,height):
             '"toolbar_bg": "#f1f3f6",'+\
             '"enable_publishing": false,'+\
             '"save_image": false,'+\
+            '"allow_symbol_change": '+ allow_symbol_change +','+\
             '"referral_id": "'+ referral_id +'",'+\
             '"container_id": "tradingview_713ab",'+\
             '"hide_side_toolbar": false,'+\
-            '"allow_symbol_change": '+ allow_symbol_change +','+\
             '}'+\
             '  );'+\
             ' </script>'+\
