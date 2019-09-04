@@ -37,11 +37,10 @@ def get_search_table_content(burl):
             search_text = row[0]
             content_details = row[1]
             scope_text = row[2]
-            feed_type = row[3]
             url = row[3].replace('{burl}',burl)
+            feed_type = row[4]
 
             textcolor = ''
-            print(str(feed_type)+ ' - '+ search_text)
             if feed_type == 2: textcolor = get_sa_theme('blue','#00ffff');
 
             r = r +\
