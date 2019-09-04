@@ -16,6 +16,7 @@ def get_tradingview_chart(suid,width,height):
         referral_id = 'smartalpha'
         label_not_available = 'Live chart is not available for this instrument'
         theme = get_sa_theme()
+        allow_symbol_change = 'false'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -26,6 +27,7 @@ def get_tradingview_chart(suid,width,height):
 
         if str(width) == '0': width = '"100%"'
         if str(height) == '0': height = '"100%"'
+        if str(width) == '0' and str(height) == '0': allow_symbol_change = 'true'
 
         if symbol != '':
             r = '' +\
@@ -50,6 +52,7 @@ def get_tradingview_chart(suid,width,height):
             '"referral_id": "'+ referral_id +'",'+\
             '"container_id": "tradingview_713ab",'+\
             '"hide_side_toolbar": false,'+\
+            '"allow_symbol_change": '+ allow_symbol_change +','+\
             '}'+\
             '  );'+\
             ' </script>'+\
