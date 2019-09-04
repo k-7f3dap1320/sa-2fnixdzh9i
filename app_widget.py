@@ -12,6 +12,7 @@ from app_stylesheet import *
 from app_cookie import *
 #-------------------------------------------------------------------------------
 from tradingview_chart import *
+from trades_tab import *
 #-------------------------------------------------------------------------------
 
 def get_widget_content(burl,nonavbar,funcname):
