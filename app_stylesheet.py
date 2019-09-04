@@ -9,6 +9,18 @@ def get_stylesheet(burl):
     #Page main components
     body = 'body{font-family:monospace,sans-serif;}'
     footer = '.footer{}'
+    scrollbar = '::-webkit-scrollbar {'+\
+                'width: 10px;'+\
+                '}'+\
+                '::-webkit-scrollbar-track {'+\
+                '  background: #f1f1f1; '+\
+                '}'+\
+                '::-webkit-scrollbar-thumb {'+\
+                '  background: #888;'+\
+                '}'+\
+                '::-webkit-scrollbar-thumb:hover {'+\
+                '  background: #555;'+\
+                '}'
     desc = '.desc{font-size:small;}'
     expl = '.expl{font-size:x-small;}'
     box = '.box{padding:0px 0px;}'
@@ -69,6 +81,7 @@ def get_stylesheet(burl):
     r = '<style>'+\
     body +\
     footer +\
+    scrollbar +\
     desc +\
     expl +\
     box +\
