@@ -41,7 +41,7 @@ def get_search_table_content(burl):
             feed_type = row[4]
 
             textcolor = ''
-            if feed_type == 2: textcolor = get_sa_theme('blue','#00ffff');
+            if feed_type == 2: textcolor = theme_return_this('blue','#00ffff');
 
             r = r +\
             '<tr class="sa-table-click-row" data-href="'+ str(url) +'">'+\
