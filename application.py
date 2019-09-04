@@ -62,6 +62,7 @@ def go():
     ref = request.args.get('ref')
     lang = request.args.get('lang')
     theme = request.args.get('theme')
+    nonavbar = request.values.get('nonavbar')
     x = request.args.get('x');
 
 
@@ -117,9 +118,8 @@ def go():
         c = get_help_page(appname,burl)
 
     elif request.endpoint == 'w':
-        nonavbar = request.values.get('nonavbar')
         funcname = request.values.get('funcname')
-        c = get_widget_page(appname,burl,nonavbar,funcname)        
+        c = get_widget_page(appname,burl,nonavbar,funcname)
 
     elif request.endpoint == 'fd':
         c = get_tradingview_fundamental_page(uid,burl)
@@ -193,7 +193,7 @@ def go():
         if x == '' or x == None : x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
         tour = request.args.get('tour')
-        c = gen_main_page(x,appname,burl,dashboard,tour)
+        c = gen_main_page(x,appname,burl,dashboard,tour,nonavbar)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
     ############################################################################
