@@ -29,7 +29,7 @@ def get_report_title(burl):
     content = ''
     try:
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
-        l_title = 'Daily Intelligence Briefing: ' + dnstr
+        l_title = 'Daily Intelligence Briefing: <br />' + dnstr
         l_generated_for = 'Report generated for '
 
 
