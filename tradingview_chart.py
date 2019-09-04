@@ -27,7 +27,6 @@ def get_tradingview_chart(suid,width,height):
 
         if str(width) == '0': width = '"100%"'
         if str(height) == '0': height = '"100%"'
-        if str(width) == '"100%"' and str(height) == '"100%"': allow_symbol_change = 'true'
 
         if symbol != '':
             r = '' +\
