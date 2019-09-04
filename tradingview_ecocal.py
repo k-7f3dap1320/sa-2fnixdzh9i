@@ -7,32 +7,26 @@ from app_cookie import *
 def get_tradingview_ecocal(width,height):
     r = ''
     try:
-        symbol = ''
         referral_id = 'smartalpha'
-        label_not_available = 'Content is not available'
         theme = get_sa_theme()
-
 
         if str(width) == '0': width = '"100%"'
         if str(height) == '0': height = '"100%"'
 
-        if symbol != '':
-            r = '' +\
-            '<div class="tradingview-widget-container">'+\
-            '  <div class="tradingview-widget-container__widget"></div>'+\
-            '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>'+\
-            '  {'+\
-            '  "colorTheme": "'+ theme +'",'+\
-            '  "isTransparent": true,'+\
-            '  "width": '+ width +','+\
-            '  "height": '+ height +','+\
-            '  "locale": "en",'+\
-            '  "importanceFilter": "-1,0,1"'+\
-            '}'+\
-            '  </script>'+\
-            '</div>'
-        else:
-            r = label_not_available
+        r = '' +\
+        '<div class="tradingview-widget-container">'+\
+        '  <div class="tradingview-widget-container__widget"></div>'+\
+        '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>'+\
+        '  {'+\
+        '  "colorTheme": "'+ theme +'",'+\
+        '  "isTransparent": true,'+\
+        '  "width": '+ width +','+\
+        '  "height": '+ height +','+\
+        '  "locale": "en",'+\
+        '  "importanceFilter": "-1,0,1"'+\
+        '}'+\
+        '  </script>'+\
+        '</div>'
 
     except Exception as e: print(e)
     return r
