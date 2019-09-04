@@ -30,19 +30,23 @@ def get_search_table_content(burl):
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'SELECT feed.search, feed.content, markets.market_label, feed.url FROM feed LEFT JOIN markets ON markets.market_id = feed.market WHERE feed.type<>9 ORDER BY feed.search'
+        sql = 'SELECT feed.search, feed.content, markets.market_label, feed.url, feed.type FROM feed LEFT JOIN markets ON markets.market_id = feed.market WHERE feed.type<>9 ORDER BY feed.symbol'
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
             search_text = row[0]
             content_details = row[1]
             scope_text = row[2]
+            feed_type = row[3]
             url = row[3].replace('{burl}',burl)
+
+            if feed_type == 2: textcolor = get_sa_theme('blue','#00ffff');
+
             r = r +\
             '<tr class="sa-table-click-row" data-href="'+ str(url) +'">'+\
-            '    <td style="text-align: left" scope="row"><strong>'+ str(search_text) +'</strong></td>'+\
-            '    <td style="text-align: left">'+ str(content_details) +'</td>'+\
-            '    <td style="text-align: left">'+ str(scope_text) +'</td>'+\
+            '    <td style="text-align: left; color:' + textcolor + ';" scope="row"><strong>'+ str(search_text) +'</strong></td>'+\
+            '    <td style="text-align: left; color:' + textcolor + ';">'+ str(content_details) +'</td>'+\
+            '    <td style="text-align: left; color:' + textcolor + ';">'+ str(scope_text) +'</td>'+\
             '</tr>'
         cr.close()
         connection.close()
