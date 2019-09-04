@@ -36,7 +36,7 @@ def get_signal_details(uid):
             decimal_places = row[9]
 
         sql = "SELECT badge FROM feed JOIN symbol_list ON symbol_list.symbol = feed.symbol "+\
-        "WHERE symbol_list.uid=" + str(uid)
+        "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:

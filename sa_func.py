@@ -163,7 +163,7 @@ def get_signal(uid):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT badge FROM feed JOIN symbol_list ON symbol_list.symbol = feed.symbol "+\
-        "WHERE symbol_list.uid=" + str(uid)
+        "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
