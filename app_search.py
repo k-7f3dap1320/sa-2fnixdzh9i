@@ -18,9 +18,12 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_search_table_content(burl):
+def get_search_table_content(burl,nonavbar):
     r = ''
+    nonavbarparam = '&nonavbar=1'
     try:
+        if nonavbar is None: nonavbarparam = ''
+
         r = ' '+\
         '<script>$(document).ready(function($) {'+\
         '$(".sa-table-click-row").click(function() {'+\
@@ -37,7 +40,7 @@ def get_search_table_content(burl):
             search_text = row[0]
             content_details = row[1]
             scope_text = row[2]
-            url = row[3].replace('{burl}',burl)
+            url = row[3].replace('{burl}',burl) + nonavbarparam
             feed_type = row[4]
 
             textcolor = ''
@@ -55,7 +58,7 @@ def get_search_table_content(burl):
     except Exception as e: print(e)
     return r
 
-def gen_search_table(burl):
+def gen_search_table(burl,nonavbar):
 
     r = ''
     try:
@@ -69,7 +72,7 @@ def gen_search_table(burl):
         '    </tr>'+\
         ' </thead>'+\
         '  <tbody>'+\
-        get_search_table_content(burl) +\
+        get_search_table_content(burl,nonavbar) +\
         '  </tbody>'+\
         '</table>'
 
@@ -77,7 +80,7 @@ def gen_search_table(burl):
         print(e)
     return r
 
-def get_box_search(burl):
+def get_box_search(burl,nonavbar):
 
     box_content = ''
 
@@ -119,7 +122,7 @@ def get_box_search(burl):
 
         box_content = box_content +\
         search_box +\
-        gen_search_table(burl)
+        gen_search_table(burl,nonavbar)
 
     except Exception as e: print(e)
     return box_content
@@ -159,7 +162,7 @@ def get_search_page_content(burl,nonavbar):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        get_box_search(burl) +\
+        get_box_search(burl,nonavbar) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
