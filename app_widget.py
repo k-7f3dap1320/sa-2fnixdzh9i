@@ -25,7 +25,7 @@ def get_widget_content(burl,nonavbar,funcname):
     try:
         if nonavbar is None:
             box_class ='box-top'
-            box_vh = '90vh'
+            box_vh = '89vh'
 
         box_content = '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
