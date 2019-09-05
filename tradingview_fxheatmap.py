@@ -20,7 +20,7 @@ def get_tradingview_fxheatmap(width,height):
 '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>'+\
 '  {'+\
 '  "width": '+ str(width) +','+\
-'  "height": "'+ str(height) +'",'+\
+'  "height": '+ str(height) +','+\
 '  "currencies": ['+\
 '    "EUR",'+\
 '    "USD",'+\
