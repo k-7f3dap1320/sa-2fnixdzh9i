@@ -27,7 +27,7 @@ def get_tradingview_single_ticker(suid):
 
         if symbol != '':
             r = '' +\
-            '<div class="tradingview-widget-container">'+\
+            '<div class="tradingview-widget-container" style="height:50px;">'+\
             '  <div class="tradingview-widget-container__widget"></div>'+\
             '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>'+\
             '  {'+\
