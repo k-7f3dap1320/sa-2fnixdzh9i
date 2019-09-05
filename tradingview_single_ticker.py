@@ -33,7 +33,6 @@ def get_tradingview_single_ticker(suid):
             '  {'+\
             '  "symbol": "'+ symbol +'",'+\
             '  "width": "100%",'+\
-            '  "height": 50,'+\
             '  "colorTheme": "'+ theme +'",'+\
             '  "isTransparent": true,'+\
             '  "locale": "en",'+\
