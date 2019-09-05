@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_cookie import *
 
-def get_tradingview_fxcross(width,height):
+def get_tradingview_fxheatmap(width,height):
     r = ''
     try:
         referral_id = 'smartalpha'
