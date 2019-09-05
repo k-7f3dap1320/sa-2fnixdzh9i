@@ -53,7 +53,7 @@ def get_stylesheet(burl):
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
     sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
     sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
-    sa_user_header = '.sa-uhead-box{color: white; text-align: left; height: 70px;}'
+    sa_user_header = '.sa-uhead-box{color: white; text-align: left;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: small;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 83%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 400px;}'
