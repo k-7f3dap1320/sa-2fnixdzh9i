@@ -34,7 +34,7 @@ def get_box_user_profile_header(burl):
             box_content = '<div class="box-uhead sa-uhead-box">' +\
             '   <div class="row sa-uhead-box bg-dark">'+\
             '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part rounded sa-center-content sa-uhead-box">'+\
+            '            <div class="box-part rounded sa-center-content sa-uhead-box" style="height: 70px;">'+\
             get_tradingview_ticker(uid) +\
             '            </div>'+\
             '        </div>'+\
