@@ -45,15 +45,12 @@ def get_widget_content(burl,nonavbar,funcname):
 def get_widget_page(appname,burl,nonavbar,funcname):
     r = ''
     navbarcontent = ''
-    footercontent  = ''
     try:
-        if nonavbar is None:
-            navbarcontent = navbar(burl,0)
-            footercontent = get_page_footer(burl)
+        if nonavbar is None: navbarcontent = navbar(burl,0)
 
 
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname) + footercontent )
+        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname)  )
         r = set_page(r)
     except Exception as e: print(e)
 
