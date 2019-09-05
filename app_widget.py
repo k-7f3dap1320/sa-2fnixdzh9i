@@ -14,6 +14,7 @@ from app_cookie import *
 from tradingview_chart import *
 from tradingview_ecocal import *
 from tradingview_fxcross import *
+from tradingview_fxheatmap import *
 from trades_tab import *
 #-------------------------------------------------------------------------------
 
