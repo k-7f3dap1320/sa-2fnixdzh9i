@@ -119,7 +119,8 @@ def go():
 
     elif request.endpoint == 'w':
         funcname = request.values.get('funcname')
-        c = get_widget_page(appname,burl,nonavbar,funcname)
+        refreshw = request.values.get('refreshw')
+        c = get_widget_page(appname,burl,nonavbar,funcname,refreshw)
 
     elif request.endpoint == 'fd':
         c = get_tradingview_fundamental_page(uid,burl)

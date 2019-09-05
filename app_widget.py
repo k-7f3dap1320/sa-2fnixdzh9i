@@ -42,14 +42,17 @@ def get_widget_content(burl,nonavbar,funcname):
     return box_content
 
 
-def get_widget_page(appname,burl,nonavbar,funcname):
+def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second):
     r = ''
     navbarcontent = ''
+    metarefresh = ''
     try:
         if nonavbar is None: navbarcontent = navbar(burl,0)
 
+        if refresh_in_second is not None:
+            metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
 
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname)  )
         r = set_page(r)
     except Exception as e: print(e)
