@@ -43,7 +43,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
     else:
         if user_is_login() == 0:
             dashboard_content = get_card(x,9,burl)
-        dashboard_content = dashboard + get_card(x,1,burl)
+        dashboard_content = dashboard_content + get_card(x,1,burl)
 
     r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
     r = r + get_body( get_loading_body(), navbarcontent + gen_tour_popup(tour,burl) + get_signin_box(burl) + get_box_user_profile_header(burl) + dashboard_content + footercontent )
