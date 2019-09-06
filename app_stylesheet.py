@@ -10,7 +10,7 @@ def get_stylesheet(burl):
     body = 'body{font-family:monospace,sans-serif;}'
     footer = '.footer{}'
     scrollbar = '::-webkit-scrollbar {'+\
-                'width: 10px;'+\
+                'width: 5px;'+\
                 '}'+\
                 '::-webkit-scrollbar-track {'+\
                 '  background: #f1f1f1; '+\

@@ -20,7 +20,8 @@ def get_widget_content(burl,nonavbar,funcname):
 
     box_content = ''
     box_class = 'box'
-    box_vh = '97vh'
+    box_vh = '100vh'
+    box_vw = '100vw'
 
     try:
         if nonavbar is None:
@@ -29,11 +30,8 @@ def get_widget_content(burl,nonavbar,funcname):
 
         box_content = '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: '+ box_vh +';">'+\
-        '            <div class="box-part rounded" style="height: 100%">'+\
+        '        <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
         eval(funcname)+\
-        '            </div>'+\
-        '        </div>'+\
         '   </div>'+\
         '</div>'
 
