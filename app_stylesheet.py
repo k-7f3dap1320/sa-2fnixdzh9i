@@ -48,7 +48,7 @@ def get_stylesheet(burl):
     form_signin_btn = '.form-signin-btn {font-size: medium;}'
 
     #Specific settings
-    sa_search_input = '#sa-search-input{width: 320px; font-size: small;background: transparent; border-top: none; border-left: none; border-right: none; border-bottom: solid; border-color: #00ffff;}'
+    sa_search_input = '#sa-search-input{width: 250px; font-size: small;background: transparent; border-top: none; border-left: none; border-right: none; border-bottom: solid; border-color: #00ffff;}'
     sa_table_sm = '.sa-table-sm{font-size: small;}'
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
     sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
