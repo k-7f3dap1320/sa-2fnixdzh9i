@@ -50,7 +50,7 @@ def get_top_trader_menu(burl):
 def get_market_menu_selection(burl):
     r = ''
     try:
-        l_select_market = 'Select Market'
+        l_select_market = 'Market'
         l_all_market_selection = 'Show all markets'
         l_equity_label_replace_by_stocks = 'Stocks'
         l_equity_label = 'Equity'
