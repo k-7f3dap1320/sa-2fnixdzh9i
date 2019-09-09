@@ -116,7 +116,7 @@ def get_dashboard_menu(burl):
         l_dashboard = 'Dashboard'
         i = 0
         num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
-        l_dashboard_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1"><strong>'+ l_dashboard +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
+        l_dashboard_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_dashboard +'" ><strong>'+ '<i class="fas fa-tachometer-alt"></i>' +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
     return r
