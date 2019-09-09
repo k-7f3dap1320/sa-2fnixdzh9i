@@ -66,12 +66,12 @@ def get_selectportf_box(burl,step,mode,x):
         button_back = '<span style="float:left;"><button type="button" style="font-size: medium;" class="btn btn-lg btn-secondary" onClick="javascript:history.back();"><i class="fas fa-caret-left"></i>&nbsp;'+ l_back_button +'</button></span>'
         button_process_skip = '<span style="float:right;"><a href="'+ burl +'genportf/?acm='+ str( get_user_default_profile() ) +'&step=1&notstart=1" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
 
-        portf_selection = '<h5>'
+        portf_selection = '<h6>'
         for i in range(5):
             select_instr = get_portf_select(i+1)
             if not select_instr == '':
                 portf_selection = portf_selection + '<span class="badge badge-info"><i class="fas fa-chart-pie">&nbsp;</i>'+ select_instr +'</span>&nbsp;&nbsp;'
-        portf_selection = portf_selection + '</h5>'
+        portf_selection = portf_selection + '</h6>'
 
         try:
             if int(step) > 1 and int(step) < 6:
