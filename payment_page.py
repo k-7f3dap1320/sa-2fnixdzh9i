@@ -14,7 +14,7 @@ def get_paypal_payment_button(burl,lang,is_soldout):
     r = ''
     try:
         l_price = 'USD 29.00'
-        l_button_trial = 'Get 1-month trial now<br />for only USD 5.00'
+        l_button_trial = 'Try 1-month for free<br />'
         l_button_soldout = '1-month trial. USD 5.00<br />(SOLD OUT!)'
         l_then_recurring_monthly = 'Then '+ l_price +' for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
