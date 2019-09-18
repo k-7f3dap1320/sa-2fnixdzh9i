@@ -26,8 +26,13 @@ def get_newsfeed(x,suid,numline,show_chart):
         theme = get_sa_theme()
         l_view_article = 'View original article'
         lang = 'en'
-        bsclass = 'col-lg-10 col-md-12'
-        if show_chart == 1: bsclass = 'col-lg-5 col-md-6'
+        bsclass_left = 'col-lg-10 col-md-12'
+        bsclass_right = 'col-lg-10 col-md-12'
+
+        if show_chart == 1:
+            bsclass_left = 'col-lg-6 col-md-7'
+            bsclass_right = 'col-lg-4 col-md-5'
+
 
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -53,7 +58,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             contextstyle = ''
-            if news_ranking<=-0.7: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
+            if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>=0.9: contextstyle = theme_return_this('color: green;', 'color: white;')
 
             news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
@@ -63,11 +68,11 @@ def get_newsfeed(x,suid,numline,show_chart):
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
-            '    <div class="'+ bsclass +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
+            '    <div class="'+ bsclass_left +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; ">'+\
+            '    <div class="'+ bsclass_right +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; ">'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '</div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
