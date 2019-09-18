@@ -25,7 +25,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT short_title, short_description, url, badge, date FROM feed '+\
+        'SELECT short_title, short_description, url, badge, ranking FROM feed '+\
         'WHERE '+\
         'type=3 '+\
         'AND '+\
@@ -43,11 +43,17 @@ def get_newsfeed(x,suid,numline,show_chart):
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
             news_title = str(row[0]) +' '+ str(row[3])
             news_content = str(row[1]) +' </ br></ br>'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ l_view_article +'</a>'
+            news_ranking = row[4]
+
+            rowbgcolor = ''
+            if news_ranking >=0.9: rowbgcolor = theme_return_this('#00ff0045','darkblue')
+            if news_ranking<=0.9: rowbgcolor = theme_return_this('#df691a73', 'darkred')
+
 
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '    <div class="'+ bsclass +' col-sm-12 col-xs-12" style="border-top:0.5px; border-left:0.5px; border-right:0.5px; border-top-style: dotted;"> '+\
+            '    <div class="'+ bsclass +' col-sm-12 col-xs-12" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'"> '+\
             '       <strong>'+'<i class="fas fa-rss-square"></i>'+'</strong>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
