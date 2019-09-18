@@ -34,7 +34,6 @@ def get_newsfeed(x,suid,numline,show_chart):
         'asset_class LIKE "%%" '+\
         'AND '+\
         'lang LIKE "%'+ str(lang) +'%" '+\
-        'AND  ABS(ranking) >=0.6 '+\
         'ORDER BY date DESC LIMIT '+ str(numline)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -51,9 +50,9 @@ def get_newsfeed(x,suid,numline,show_chart):
 
 
             newsrow = newsrow +\
-            '<div class="row">'+\
+            '<div class="row" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '    <div class="'+ bsclass +' col-sm-12 col-xs-12" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'"> '+\
+            '    <div class="'+ bsclass +' col-sm-12 col-xs-12"> '+\
             '       <strong>'+'<i class="fas fa-rss-square"></i>'+'</strong>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
