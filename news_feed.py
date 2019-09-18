@@ -36,10 +36,7 @@ def get_newsfeed(x,suid,numline,show_chart):
                 bsclass_left = 'col-lg-9 col-md-9 col-sm-9'
                 bsclass_right = 'col-lg-2 col-md-3 col-sm-3'
 
-
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = ' '+\
+        query = ' '+\
         'SELECT short_title, short_description, url, badge, ranking, date FROM feed '+\
         'WHERE '+\
         'type=3 '+\
@@ -51,6 +48,17 @@ def get_newsfeed(x,suid,numline,show_chart):
         'lang LIKE "%'+ str(lang) +'%" '+\
         'AND ranking <0.9 '+\
         'ORDER BY date DESC LIMIT '+ str(numline)
+
+        if x == 0:
+            query = 'SELECT short_title, short_description, url, badge, ranking, date FROM feed '+\
+            'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
+            'AND ranking <0.9 '+\
+            'ORDER BY date DESC LIMIT '+ str(numline)
+
+
+        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = query
         cr.execute(sql)
         rs = cr.fetchall()
         newsrow = ''
