@@ -56,7 +56,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             if news_ranking<=-0.7: contextstyle = theme_return_this('color: white; background-color: red;', 'darkred')
             if news_ranking>=0.7: contextstyle = theme_return_this('color: green;', 'color: black; background-color: lime;')
 
-            news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" style="'+ contextstyle +'">'+ l_view_article +'</a>'
+            news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
 
 
 
@@ -64,7 +64,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
-            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
+            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; ">'+\
