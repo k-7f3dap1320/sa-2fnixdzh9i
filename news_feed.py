@@ -26,11 +26,11 @@ def get_newsfeed(x,suid,numline,show_chart):
         theme = get_sa_theme()
         l_view_article = 'View original article'
         lang = 'en'
-        bsclass_left = 'col-lg-10 col-md-12'
-        bsclass_right = 'col-lg-10 col-md-12'
+        bsclass_left = 'col-lg-11 col-md-12'
+        bsclass_right = 'col-lg-11 col-md-12'
 
         if show_chart == 1:
-            bsclass_left = 'col-lg-6 col-md-7'
+            bsclass_left = 'col-lg-7 col-md-7'
             bsclass_right = 'col-lg-4 col-md-5'
 
 
@@ -74,8 +74,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-sm-6 col-xs-1 d-none d-sm-block" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
-            '</div>'+\
-            '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
+            '    </div>'+\
             '</div>'
             i += 1
 
