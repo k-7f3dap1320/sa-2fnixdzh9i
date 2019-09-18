@@ -32,7 +32,9 @@ def get_newsfeed(x,suid,numline,show_chart):
         if show_chart == 1:
             bsclass_left = 'col-lg-7 col-md-7'
             bsclass_right = 'col-lg-4 col-md-5'
-
+            if x == 0:
+                bsclass_left = 'col-lg-9 col-md-9'
+                bsclass_right = 'col-lg-2 col-md-3'
 
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
