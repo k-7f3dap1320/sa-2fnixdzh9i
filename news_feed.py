@@ -55,6 +55,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         i = 1
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
+            news_url = row[2]
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             contextstyle = ''
@@ -72,6 +73,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass_left +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
+            '       <a href="'+ str(news_url) +'" target="_parent" ><i class="fas fa-external-link-alt"></i></a>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>&nbsp;'+\
             sentiment_badge +\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
