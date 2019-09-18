@@ -62,12 +62,12 @@ def get_newsfeed(x,suid,numline,show_chart):
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'"> '+\
-            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>&nbsp;'+\
-            get_sentiment_progressbar(news_ranking) +\
+            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'">'+\
-            '    </div>'+\
+            draw_feed_chart(x,show_chart,news_ranking) +\
+            '</div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '</div>'
             i += 1
@@ -77,6 +77,14 @@ def get_newsfeed(x,suid,numline,show_chart):
 
         r = newsrow
 
+    except Exception as e: print(e)
+    return r
+
+def draw_feed_chart(x,show_chart,score):
+    r = ''
+    try:
+        if show_chart == 1:
+            if x == 0: r = get_sentiment_progressbar(score)
     except Exception as e: print(e)
     return r
 
@@ -94,7 +102,7 @@ def get_sentiment_progressbar(score):
         pos = pos *100; neg = neg *100
 
         content = ' '+\
-        '<div class="progress" style="width: 200px;">'+\
+        '<div class="progress" style="width: 100px;">'+\
         '  <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: '+ str(pos) +'%" aria-valuenow="'+ str(pos) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: '+ str(neg) +'%" aria-valuenow="'+ str(neg) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '</div>'
