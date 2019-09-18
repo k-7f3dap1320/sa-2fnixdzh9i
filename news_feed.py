@@ -25,7 +25,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT short_title, short_description, url, badge FROM feed '+\
+        'SELECT short_title, short_description, url, badge, date FROM feed '+\
         'WHERE '+\
         'type=3 '+\
         'AND '+\
@@ -41,12 +41,14 @@ def get_newsfeed(x,suid,numline,show_chart):
         i = 1
         for row in rs:
             news_title = str(row[0]) +' '+ str(row[3])
-            news_content = str(row[1]) +' </ br></ br>'+ '<a href+"'+ str(row[2]) +'" target="_blank">'+ str(row[2]) +'</a>'
+            news_content = str(row[1]) +' </ br></ br>'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ str(row[2]) +'</a>'
+            news_date = str(row[4])
 
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
             '    <div class="'+ bsclass +' col-sm-12 col-xs-12"> '+\
+            '       <strong>'+ str(news_date) +'</strong>&nbsp;'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+str(i) +'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr)+str(i) +'">'+ news_content +'</div>'+\
             '    </div>'+\
