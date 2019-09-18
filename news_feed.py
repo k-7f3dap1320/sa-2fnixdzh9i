@@ -67,12 +67,17 @@ def get_newsfeed(x,suid,numline,show_chart):
 
             news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
 
+            sentiment_badge = ''
+            if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
+            if news_ranking>0: sentiment_badge = '<span class="badge badge-success">'+'pos: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
+
+
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
-            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +'">'+ str(news_date) +'</span>&nbsp;<span style="display: inline-block;">'+ news_title +'</span></a></strong>&nbsp;'+\
+            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + '<span style="display: inline-block;">'news_title + '&nbsp;' + sentiment_badge + '</span></a></strong>&nbsp;'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" >'+\
