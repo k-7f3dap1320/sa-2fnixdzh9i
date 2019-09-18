@@ -12,6 +12,14 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_newsfeed(x,suid,numline,show_chart):
+    ### ------------------------------------------------------------------------
+    # x == 0 : world top news
+    # x == 1 : news based on users default market, asset_class selection
+    # x == 2 : news based on users portfolio selection
+    # suid == []: news from selected uid of the symbol
+    # numline == []: number of line of news to return
+    #show_chart == 1: show relevant chart or sentiment bar if x == 0
+    ### ------------------------------------------------------------------------
     r = ''
     try:
         #theme_return_this(for_light,for_dark)
@@ -57,7 +65,9 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'"></div>'+\
+            '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'">'+\
+            draw_feed_chart(x,show_chart,news_ranking) +\
+            '</div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '</div>'
             i += 1
@@ -66,6 +76,38 @@ def get_newsfeed(x,suid,numline,show_chart):
         connection.close()
 
         r = newsrow
+
+    except Exception as e: print(e)
+    return r
+
+def draw_feed_chart(x,show_chart,score):
+    r = ''
+    try:
+        if show_chart == 1:
+            if x == 0: r = get_sentiment_progressbar(score)
+    except Exception as e: print(e)
+    return r
+
+def get_sentiment_progressbar(score):
+    r = ''
+    try:
+        t = 1
+        pos = 0; neg = 0
+        if score < 0:
+            pos = 1+score
+            neg = abs(score)
+        if score > 0:
+            pos = score
+            neg = 1-score
+        pos = pos *100; neg = neg *100
+
+        content = ' '+\
+        '<div class="progress">'+\
+        '  <div class="progress-bar bg-success" role="progressbar" style="width: '+ str(pos) +'%" aria-valuenow="'+ str(pos) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
+        '  <div class="progress-bar bg-danger" role="progressbar" style="width: '+ str(neg) +'%" aria-valuenow="'+ str(neg) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
+        '</div>'
+
+        r = content
 
     except Exception as e: print(e)
     return r
