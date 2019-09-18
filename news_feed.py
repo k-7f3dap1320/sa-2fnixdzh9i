@@ -49,7 +49,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         'asset_class LIKE "%%" '+\
         'AND '+\
         'lang LIKE "%'+ str(lang) +'%" '+\
-        'AND ABS(ranking)>=0.4 AND ranking <0.9 '+\
+        'AND ranking <0.9 '+\
         'ORDER BY date DESC LIMIT '+ str(numline)
         cr.execute(sql)
         rs = cr.fetchall()
