@@ -7,7 +7,7 @@ from sa_func import *
 def get_stylesheet(burl):
 
     #Page main components
-    body = 'body{font-family:monospace,sans-serif;}'
+    body = 'body{font-family:monospace,sans-serif; overflow-x:hidden;}'
     footer = '.footer{}'
     scrollbar = '::-webkit-scrollbar {'+\
                 'width: 5px;'+\
