@@ -26,8 +26,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         theme = get_sa_theme()
         l_view_article = 'View original article'
         lang = 'en'
-        bsclass_left = 'col-lg-11 col-md-12 col-sm-6'
-        bsclass_right = 'col-lg-11 col-md-12 col-sm-6'
+        bsclass_left = 'col-lg-11 col-md-12 col-sm-12'
+        bsclass_right = 'col-lg-11 col-md-12 col-sm-12'
 
         if show_chart == 1:
             bsclass_left = 'col-lg-7 col-md-7 col-sm-6'
