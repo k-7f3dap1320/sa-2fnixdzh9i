@@ -40,7 +40,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = ' '+\
-        'SELECT short_title, short_description, url, badge, ranking FROM feed '+\
+        'SELECT short_title, short_description, url, badge, ranking, date FROM feed '+\
         'WHERE '+\
         'type=3 '+\
         'AND '+\
@@ -60,6 +60,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_url = row[2]
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
+            news_date = row[5]
             contextstyle = ''
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
@@ -78,6 +79,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>&nbsp;'+\
             sentiment_badge +\
+            '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +'">'+ str(news_date) +'</span>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" >'+\
