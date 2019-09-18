@@ -34,7 +34,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         'asset_class LIKE "%%" '+\
         'AND '+\
         'lang LIKE "%'+ str(lang) +'%" '+\
-        'AND  ABS(ranking) >=0.8 '+\
+        'AND  ABS(ranking) >=0.6 '+\
         'ORDER BY date DESC LIMIT '+ str(numline)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -47,8 +47,8 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_ranking = row[4]
 
             rowbgcolor = ''
-            if news_ranking >=0.90: rowbgcolor = theme_return_this('#00ff0045','darkblue')
-            if news_ranking<=-0.90: rowbgcolor = theme_return_this('yellow', 'darkred')
+            if news_ranking >=0.8: rowbgcolor = theme_return_this('#00ff0045','darkblue')
+            if news_ranking<=-0.8: rowbgcolor = theme_return_this('yellow', 'darkred')
 
 
             newsrow = newsrow +\
