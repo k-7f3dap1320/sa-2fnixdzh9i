@@ -76,9 +76,11 @@ def get_newsfeed(x,suid,numline,show_chart):
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
+            '<span style="white-space: nowrap;">'+\
             '       <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
-            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="white-space: nowrap; '+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + '<span style="white-space: nowrap;">' + news_title  + '</span></a></strong>&nbsp;'+\
+            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
+            '</span>'+\
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
