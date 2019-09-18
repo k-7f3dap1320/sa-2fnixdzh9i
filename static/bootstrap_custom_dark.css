@@ -162,13 +162,13 @@ sup {
 }
 
 a {
-  color: #DF691A;
+  color: orange;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #9a4912;
+  color: yellow;
   text-decoration: underline;
 }
 
