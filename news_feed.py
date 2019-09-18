@@ -47,7 +47,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '    <div class="'+ bsclass +' col-sm-12 col-xs-12" style="border:solid; border-width: 1px;"> '+\
+            '    <div class="'+ bsclass +' col-sm-12 col-xs-12" style="border-top:solid; border-width: 0.5px; border-style: dotted;"> '+\
             '       <strong>'+ str(i) +')'+'</strong>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
