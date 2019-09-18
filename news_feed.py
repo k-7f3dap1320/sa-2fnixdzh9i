@@ -51,21 +51,23 @@ def get_newsfeed(x,suid,numline,show_chart):
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
             news_title = str(row[0]) +' '+ str(row[3])
-            news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ l_view_article +'</a>'
             news_ranking = row[4]
+            contextstyle = ''
+            if news_ranking<=-0.7: contextstyle = theme_return_this('color: white; background-color: red;', 'darkred')
+            if news_ranking>=0.7: contextstyle = theme_return_this('color: green;', 'color: black; background-color: lime;')
 
-            rowbgcolor = ''
-            if news_ranking<=-0.7: rowbgcolor = theme_return_this('yellow', 'darkred')
+            news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" style="'+ contextstyle +'">'+ l_view_article +'</a>'
+
 
 
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
-            '    <div class="'+ bsclass +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'"> '+\
+            '    <div class="'+ bsclass +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; background-color:'+ rowbgcolor +'">'+\
+            '    <div class="'+ bsclass +' col-sm-6 col-xs-1 d-sm-block" style="border-top:0.5px; border-top-style: dotted; ">'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '</div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
