@@ -16,7 +16,6 @@ def get_newsfeed(x,suid,numline,show_chart):
     try:
         #theme_return_this(for_light,for_dark)
         theme = get_sa_theme()
-        unistr = get_random_str(5)
         lang = 'en'
         bsclass = 'col-lg-10 col-md-12'
         if show_chart == 1: bsclass = 'col-lg-5 col-md-6'
@@ -38,26 +37,23 @@ def get_newsfeed(x,suid,numline,show_chart):
         cr.execute(sql)
         rs = cr.fetchall()
         newsrow = ''
-        i = 1
         for row in rs:
+            unistr = get_random_str(20)
             news_title = str(row[0]) +' '+ str(row[3])
             news_content = str(row[1]) +' </ br></ br>'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ str(row[2]) +'</a>'
 
             newsrow = newsrow +\
-            '</ hr>' +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
             '    <div class="'+ bsclass +' col-sm-12 col-xs-12"> '+\
             '       <strong><i class="fas fa-newspaper"></i></strong>&nbsp;'+\
-            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+str(i) +'">'+ news_title +'</a></strong>'+\
+            '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr)+str(i) +'">'+ news_content +'</div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass +' col-sm-1 col-xs-1 d-sm-block"></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '</div>'+\
-            '</ hr>'
+            '</div>'
 
-            i += 1
         cr.close()
         connection.close()
 
