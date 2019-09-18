@@ -26,15 +26,15 @@ def get_newsfeed(x,suid,numline,show_chart):
         theme = get_sa_theme()
         l_view_article = 'View original article'
         lang = 'en'
-        bsclass_left = 'col-lg-11 col-md-12'
-        bsclass_right = 'col-lg-11 col-md-12'
+        bsclass_left = 'col-lg-11 col-md-12 col-sm-6'
+        bsclass_right = 'col-lg-11 col-md-12 col-sm-6'
 
         if show_chart == 1:
-            bsclass_left = 'col-lg-7 col-md-7'
-            bsclass_right = 'col-lg-4 col-md-5'
+            bsclass_left = 'col-lg-7 col-md-7 col-sm-6'
+            bsclass_right = 'col-lg-4 col-md-5 col-sm-6'
             if x == 0:
-                bsclass_left = 'col-lg-9 col-md-9'
-                bsclass_right = 'col-lg-2 col-md-3'
+                bsclass_left = 'col-lg-9 col-md-9 col-sm-9'
+                bsclass_right = 'col-lg-2 col-md-3 col-sm-3'
 
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -67,20 +67,20 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
 
             sentiment_badge = ''
-            if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'sentiment: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
-            if news_ranking>0: sentiment_badge = '<span class="badge badge-success">'+'sentiment: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
+            if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
+            if news_ranking>0: sentiment_badge = '<span class="badge badge-success">'+'pos: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
 
 
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
-            '    <div class="'+ bsclass_left +' col-sm-6 col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
+            '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <a href="'+ str(news_url) +'" target="_blank" ><i class="fas fa-external-link-alt"></i></a>'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>&nbsp;'+\
             sentiment_badge +\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass_right +' col-sm-6 col-xs-1 d-none d-sm-block" >'+\
+            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '    </div>'+\
             '</div>'
