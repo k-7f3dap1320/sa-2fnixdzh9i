@@ -72,7 +72,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass_right +' col-sm-6 col-xs-1 d-sm-block" >'+\
+            '    <div class="'+ bsclass_right +' col-sm-6 col-xs-1 d-none d-sm-block" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '</div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
