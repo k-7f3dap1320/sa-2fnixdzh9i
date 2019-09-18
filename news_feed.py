@@ -54,7 +54,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '    </div>'+\
             '    <div class="'+ bsclass +' col-sm-1 col-xs-1 d-sm-block"></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '</div>'+\
+            '</div>'
             i += 1
 
         cr.close()
