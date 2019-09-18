@@ -42,19 +42,20 @@ def get_newsfeed(x,suid,numline,show_chart):
         for row in rs:
             news_title = str(row[0]) +' '+ str(row[3])
             news_content = str(row[1]) +' </ br></ br>'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ str(row[2]) +'</a>'
-            news_date = str(row[4])
 
             newsrow = newsrow +\
+            '</ hr>' +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
             '    <div class="'+ bsclass +' col-sm-12 col-xs-12"> '+\
-            '       <strong>'+ str(news_date) +'</strong>&nbsp;'+\
+            '       <strong><i class="fas fa-newspaper"></i></strong>&nbsp;'+\
             '       <strong><a data-toggle="collapse" href="#'+ str(unistr)+str(i) +'">'+ news_title +'</a></strong>'+\
             '       <div class="collapse" id="'+ str(unistr)+str(i) +'">'+ news_content +'</div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass +' col-sm-1 col-xs-1 d-sm-block"></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '</div>'
+            '</div>'+\
+            '</ hr>'
 
             i += 1
         cr.close()
