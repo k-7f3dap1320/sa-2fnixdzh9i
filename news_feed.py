@@ -47,7 +47,7 @@ def get_newsfeed(x,suid,numline,show_chart):
 
             rowbgcolor = ''
             if news_ranking >=0.95: rowbgcolor = theme_return_this('#00ff0045','darkblue')
-            if news_ranking<=0.95: rowbgcolor = theme_return_this('yellow', 'darkred')
+            if news_ranking<=-0.95: rowbgcolor = theme_return_this('yellow', 'darkred')
 
 
             newsrow = newsrow +\
