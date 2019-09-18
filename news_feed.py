@@ -16,6 +16,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         #theme_return_this(for_light,for_dark)
         theme = get_sa_theme()
         lang = 'en'
+        bsclass = 'col-lg-10 col-md-12'
+        if show_chart == 1: bsclass = 'col-lg-5 col-md-6'
 
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -41,8 +43,8 @@ def get_newsfeed(x,suid,numline,show_chart):
             newsrow = newsrow +\
             '<div class="row">'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
-            '    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">'+ news_title +'</div>'+\
-            '    <div class="col-lg-5 col-md-6 col-sm-1 col-xs-1 d-sm-block"></div>'+\
+            '    <div class="'+ bsclass +' col-sm-12 col-xs-12">'+ news_title +'</div>'+\
+            '    <div class="'+ bsclass +' col-sm-1 col-xs-1 d-sm-block"></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-md-block"></div>'+\
             '</div>'
         cr.close()
