@@ -53,8 +53,8 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             contextstyle = ''
-            if news_ranking<=-0.7: contextstyle = theme_return_this('color: white; background-color: red;', 'darkred')
-            if news_ranking>=0.7: contextstyle = theme_return_this('color: green;', 'color: black; background-color: lime;')
+            if news_ranking<=-0.7: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
+            if news_ranking>=0.9: contextstyle = theme_return_this('color: green;', 'color: white;')
 
             news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
 
