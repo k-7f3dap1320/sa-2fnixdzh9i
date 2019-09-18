@@ -16,6 +16,7 @@ from tradingview_ecocal import *
 from tradingview_fxcross import *
 from tradingview_fxheatmap import *
 from trades_tab import *
+from news_feed import *
 #-------------------------------------------------------------------------------
 
 def get_widget_content(burl,nonavbar,funcname):
