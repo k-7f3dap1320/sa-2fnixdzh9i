@@ -40,7 +40,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         newsrow = ''
         i = 1
         for row in rs:
-            unistr = get_random_num(10)
+            unistr = get_random_num(1000)
             news_title = str(row[0]) +' '+ str(row[3])
             news_content = str(row[1]) +' </ br></ br>'+ '<a href="'+ str(row[2]) +'" target="_blank">'+ l_view_article +'</a>'
 
