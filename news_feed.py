@@ -30,11 +30,11 @@ def get_newsfeed(x,suid,numline,show_chart):
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
 
         if show_chart == 1:
-            bsclass_left = 'col-lg-9 col-md-7 col-sm-6'
-            bsclass_right = 'col-lg-3 col-md-5 col-sm-6'
+            bsclass_left = 'col-lg-8 col-md-7 col-sm-6'
+            bsclass_right = 'col-lg-4 col-md-5 col-sm-6'
             if x == 0:
-                bsclass_left = 'col-lg-9 col-md-9 col-sm-9'
-                bsclass_right = 'col-lg-3 col-md-3 col-sm-3'
+                bsclass_left = 'col-lg-11 col-md-10 col-sm-10'
+                bsclass_right = 'col-lg-1 col-md-2 col-sm-2'
 
         query = ' '+\
         'SELECT short_title, '+\
