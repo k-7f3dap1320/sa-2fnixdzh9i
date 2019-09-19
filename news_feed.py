@@ -105,7 +105,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       </div>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="float: right; '+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
+            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '    </div>'
             i += 1
@@ -140,7 +140,7 @@ def get_sentiment_progressbar(score):
         pos = pos *100; neg = neg *100
 
         content = ' '+\
-        '<div class="progress" style="width: 100px;">'+\
+        '<div class="progress" style="width: 80%;">'+\
         '  <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: '+ str(pos) +'%" aria-valuenow="'+ str(pos) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: '+ str(neg) +'%" aria-valuenow="'+ str(neg) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '</div>'
