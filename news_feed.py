@@ -75,6 +75,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         rs = cr.fetchall()
         newsrow ='<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'
         i = 1
+        newsrow = newsrow + '<div class="row">'
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
             news_url = row[2]
@@ -93,7 +94,6 @@ def get_newsfeed(x,suid,numline,show_chart):
 
 
             newsrow = newsrow +\
-            '<div class="row">'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" style="white-space: nowrap;">'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
@@ -108,9 +108,8 @@ def get_newsfeed(x,suid,numline,show_chart):
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '    </div>'+\
-            '</div>'
             i += 1
-
+        newsrow = newsrow + '</div>'
         cr.close()
         connection.close()
 

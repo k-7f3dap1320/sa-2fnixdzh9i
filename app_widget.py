@@ -33,10 +33,11 @@ def get_widget_content(burl,nonavbar,funcname):
 
         box_content = ' '+\
         '<div class="'+ box_class +'">' +\
-        '</div>'+\
         '        <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
         eval(funcname)+\
-        '        </div>'
+        '        </div>'+\
+        '</div>'
+
     except Exception as e: print(e)
 
     return box_content
