@@ -23,26 +23,25 @@ def get_widget_content(burl,nonavbar,funcname):
 
     box_content = ''
     box_class = 'box'
-    box_vh = '100vh'
-    box_vw = '100vw'
-
+    box_vh = 'height:100vh;'
     try:
         if nonavbar is None:
             box_class ='box-top'
-            box_vh = '89vh'
+            box_vh = 'height:89vh;'
+        if noflexheight is not None: box_vh = ''
 
         box_content = ' '+\
         '<div class="'+ box_class +'"></div>' +\
-        '        <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
+        '        <div style="'+ box_vh +'">'+\
         eval(funcname)+\
         '        </div>'
-        
+
     except Exception as e: print(e)
 
     return box_content
 
 
-def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second):
+def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second,noflexheight):
     r = ''
     navbarcontent = ''
     metarefresh = ''
