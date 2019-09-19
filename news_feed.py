@@ -140,7 +140,7 @@ def get_sentiment_progressbar(score):
         pos = pos *100; neg = neg *100
 
         content = ' '+\
-        '<div class="progress" style="width: 80%;">'+\
+        '<div class="progress" style="width: 100%;">'+\
         '  <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: '+ str(pos) +'%" aria-valuenow="'+ str(pos) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: '+ str(neg) +'%" aria-valuenow="'+ str(neg) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
         '</div>'
