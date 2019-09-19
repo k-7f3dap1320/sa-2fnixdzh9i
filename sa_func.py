@@ -180,7 +180,7 @@ def get_signal(uid):
     except Exception as e: print(e)
     return signal
 
-def get_elapsed_time(vminutes)
+def get_elapsed_time(vminutes):
     r = ''
     try:
         if vminutes < 60: r = str(vminutes) + 'm ago'
