@@ -31,9 +31,9 @@ def get_widget_content(burl,nonavbar,funcname):
             box_class ='box-top'
             box_vh = '89vh'
 
-        box_content = '<div class="'+ box_class +'">' +\
-        '   <div class="row">'+\
-        '        <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
+        box_content = ' '+\
+        '<div class="'+ box_class +'">' +\
+        '   <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
         eval(funcname)+\
         '   </div>'+\
         '</div>'
