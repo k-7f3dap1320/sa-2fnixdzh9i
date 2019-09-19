@@ -25,20 +25,18 @@ def get_widget_content(burl,nonavbar,funcname):
     box_class = 'box'
     box_vh = '100vh'
     box_vw = '100vw'
-    box_margin = '-15px'
 
     try:
         if nonavbar is None:
             box_class ='box-top'
-            box_vh = '95vh'
+            box_vh = '89vh'
 
         box_content = ' '+\
         '<div class="'+ box_class +'">' +\
-        '        <div style="height: '+ box_vh +'; width: '+ box_vw +'; margin:'+ box_margin +';">'+\
+        '</div>'+\        
+        '        <div style="height: '+ box_vh +'; width: '+ box_vw +';">'+\
         eval(funcname)+\
-        '        </div>'+\
-        '</div>'
-
+        '        </div>'
     except Exception as e: print(e)
 
     return box_content
