@@ -25,6 +25,7 @@ def get_widget_content(burl,nonavbar,funcname):
     box_class = 'box'
     box_vh = '100vh'
     box_vw = '100vw'
+    box_margin = '-15px'
 
     try:
         if nonavbar is None:
@@ -33,7 +34,7 @@ def get_widget_content(burl,nonavbar,funcname):
 
         box_content = ' '+\
         '<div class="'+ box_class +'">' +\
-        '        <div style="height: '+ box_vh +'; width: '+ box_vw +'; margin=-15px;">'+\
+        '        <div style="height: '+ box_vh +'; width: '+ box_vw +'; margin:'+ box_margin +';">'+\
         eval(funcname)+\
         '        </div>'+\
         '</div>'
