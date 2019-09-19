@@ -37,7 +37,12 @@ def get_newsfeed(x,suid,numline,show_chart):
                 bsclass_right = 'col-lg-2 col-md-3 col-sm-3'
 
         query = ' '+\
-        'SELECT short_title, short_description, url, badge, ranking, date FROM feed '+\
+        'SELECT short_title, '+\
+        'short_description, '+\
+        'url, badge, '+\
+        'ranking, '+\
+        '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS date '+\
+        'FROM feed '+\
         'WHERE '+\
         'type=3 '+\
         'AND '+\
@@ -50,7 +55,9 @@ def get_newsfeed(x,suid,numline,show_chart):
         'ORDER BY date DESC LIMIT '+ str(numline)
 
         if x == 0:
-            query = 'SELECT short_title, short_description, url, badge, ranking, date FROM feed '+\
+            query = 'SELECT short_title, short_description, url, badge, ranking, '+\
+            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS date '+\
+            'FROM feed '+\
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 '+\
             'ORDER BY date DESC LIMIT '+ str(numline)
@@ -68,7 +75,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_url = row[2]
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
-            news_date = row[5]
+            news_date = get_elapsed_time( row[5] )
             contextstyle = ''
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')

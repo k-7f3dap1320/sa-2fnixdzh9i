@@ -179,3 +179,13 @@ def get_signal(uid):
             signal = 's'
     except Exception as e: print(e)
     return signal
+
+def get_elapsed_time(vminutes)
+    r = ''
+    try:
+        if vminutes < 60: r = str(vminutes) + 'm ago'
+        if vminutes >= 60 and vminutes < 1440: r = str( round(vminutes/60,0) ) + 'h ago'
+        if vminutes >= 1440: r = str( round(vminutes/1440,0) ) + 'd ago'
+
+    except Exception as e: print(e)
+    return r
