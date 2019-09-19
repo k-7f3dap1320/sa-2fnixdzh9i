@@ -73,7 +73,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         sql = query
         cr.execute(sql)
         rs = cr.fetchall()
-        newsrow = ''
+        newsrow ='<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'
         i = 1
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
@@ -93,7 +93,6 @@ def get_newsfeed(x,suid,numline,show_chart):
 
 
             newsrow = newsrow +\
-            '<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'+\
             '<div class="row">'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" style="white-space: nowrap;">'+\
