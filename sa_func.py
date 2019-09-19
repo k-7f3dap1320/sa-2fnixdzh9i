@@ -183,7 +183,8 @@ def get_signal(uid):
 def get_elapsed_time(vminutes):
     r = ''
     try:
-        if vminutes < 60: r = str(vminutes) + 'm ago'
+        r = 'now'
+        if vminutes >0 and < 60: r = str(vminutes) + 'm ago'
         if vminutes >= 60 and vminutes < 1440: r = str( round(vminutes/60,0) ) + 'h ago'
         if vminutes >= 1440: r = str( round(vminutes/1440,0) ) + 'd ago'
 
