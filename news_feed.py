@@ -41,7 +41,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         'short_description, '+\
         'url, badge, '+\
         'ranking, '+\
-        '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS date '+\
+        '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
         'FROM feed '+\
         'WHERE '+\
         'type=3 '+\
@@ -56,7 +56,7 @@ def get_newsfeed(x,suid,numline,show_chart):
 
         if x == 0:
             query = 'SELECT short_title, short_description, url, badge, ranking, '+\
-            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS date '+\
+            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
             'FROM feed '+\
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 '+\
