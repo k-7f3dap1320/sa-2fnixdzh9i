@@ -25,9 +25,14 @@ def get_newsfeed(x,suid,numline,show_chart):
         #theme_return_this(for_light,for_dark)
         theme = get_sa_theme()
         l_view_article = 'View original article'
+        l_newsfeed_title = 'Newsfeed'
         lang = 'en'
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
+
+        if x == 0 and suid == 0: l_newsfeed_title = 'World News'
+        if x == 1 and suid == 0: l_newsfeed_title = 'Featured Stories'
+        if x == 2 and suid == 0: l_newsfeed_title = 'News Top Selection'
 
         if show_chart == 1:
             bsclass_left = 'col-lg-8 col-md-7 col-sm-6'
@@ -88,6 +93,7 @@ def get_newsfeed(x,suid,numline,show_chart):
 
 
             newsrow = newsrow +\
+            '<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'+\
             '<div class="row">'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" style="white-space: nowrap;">'+\
