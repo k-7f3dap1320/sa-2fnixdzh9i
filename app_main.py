@@ -45,7 +45,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         else:
             refresh_in_second = 900
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
-            dashboard = dashboard + get_newsfeed(0,0,15,1)
+            dashboard_content = dashboard_content + get_newsfeed(0,0,15,1)
         dashboard_content = dashboard_content + get_card(x,1,burl)
 
     r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
