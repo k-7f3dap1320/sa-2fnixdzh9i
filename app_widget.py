@@ -23,7 +23,7 @@ def get_widget_content(burl,nonavbar,funcname,noflexheight):
 
     box_content = ''
     box_class = 'box'
-    box_vh = 'height:100vh;width:100vw;'
+    box_vh = 'height:100vh;width:100vw;margin:-15px;'
     try:
         if nonavbar is None:
             box_class ='box-top'
