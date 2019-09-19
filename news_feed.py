@@ -105,7 +105,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       </div>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
+            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="float: right; '+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
             '    </div>'
             i += 1
