@@ -107,7 +107,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
             draw_feed_chart(x,show_chart,news_ranking) +\
-            '    </div>'+\
+            '    </div>'
             i += 1
         newsrow = newsrow + '</div>'
         cr.close()
