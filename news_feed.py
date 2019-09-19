@@ -26,15 +26,15 @@ def get_newsfeed(x,suid,numline,show_chart):
         theme = get_sa_theme()
         l_view_article = 'View original article'
         lang = 'en'
-        bsclass_left = 'col-lg-11 col-md-12 col-sm-12'
-        bsclass_right = 'col-lg-11 col-md-12 col-sm-12'
+        bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
+        bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
 
         if show_chart == 1:
-            bsclass_left = 'col-lg-7 col-md-7 col-sm-6'
+            bsclass_left = 'col-lg-8 col-md-7 col-sm-6'
             bsclass_right = 'col-lg-4 col-md-5 col-sm-6'
             if x == 0:
                 bsclass_left = 'col-lg-9 col-md-9 col-sm-9'
-                bsclass_right = 'col-lg-2 col-md-3 col-sm-3'
+                bsclass_right = 'col-lg-3 col-md-3 col-sm-3'
 
         query = ' '+\
         'SELECT short_title, '+\
@@ -89,7 +89,6 @@ def get_newsfeed(x,suid,numline,show_chart):
 
             newsrow = newsrow +\
             '<div class="row">'+\
-            '    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 d-none d-lg-block"></div>'+\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" style="white-space: nowrap;">'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
