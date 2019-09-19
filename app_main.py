@@ -31,7 +31,8 @@ from purechat import *
 from news_feed import *
 
 def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
-
+    metarefresh = ''
+    refresh_in_second = 900
     navbarcontent = ''
     if nonavbar is None: navbarcontent = navbar(burl,0)
 
@@ -41,8 +42,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         dashboard_content = dashboard_content + '<div class="row">' + get_trades_box(0,burl,is_dashboard) + get_control_center_aggregate_perf(burl) + '</div>'
     else:
         dashboard_content = get_card(x,9,burl)
-        refresh_in_second = 900
-        metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
+        if user_is_login() == 1: metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(0,0,15,1) + '<br />'
         dashboard_content = dashboard_content + get_card(x,1,burl)
 
