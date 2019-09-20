@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_cookie import *
 from sa_func import *
-from tradingview_mini_chart import *
+from tradingview_single_ticker import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
