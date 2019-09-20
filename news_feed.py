@@ -72,13 +72,11 @@ def get_newsfeed(x,suid,numline,show_chart):
         if x == 2:
             query = ' '+\
             'SET @userID = (SELECT users.id FROM users WHERE uid = "'+ str( get_user() ) +'"); '+\
-            'CREATE TEMPORARY TABLE temp_table_symbol (symbol varchar(100)); '+\
-            'INSERT INTO temp_table_symbol(SELECT DISTINCT portfolios.symbol FROM instruments '+\
-            'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = @userID); '+\
             'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
             '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
             'FROM feed '+\
-            'WHERE symbol IN(SELECT * FROM temp_table_symbol) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
+            'WHERE symbol IN(SELECT DISTINCT portfolios.symbol FROM instruments '+\
+            'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = @userID) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
             'ORDER BY date DESC LIMIT '+ str(numline) +';'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
