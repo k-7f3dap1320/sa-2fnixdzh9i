@@ -83,7 +83,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE symbol <>"" AND (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
-            wrapstyle = 'style="font-size: larger;" '
+            wrapstyle = 'style="font-size: 20px;" '
             rightcol_line_sep = 'border-top:0.5px; border-top-style: dotted; '
 
         if x == 2:
