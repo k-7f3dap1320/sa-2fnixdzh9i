@@ -41,6 +41,9 @@ def get_newsfeed(x,suid,numline,show_chart):
             if x == 0:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
+            if x == 2:
+                bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
+                bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
 
         query = ' '+\
         'SELECT DISTINCT short_title, '+\
