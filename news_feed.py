@@ -65,7 +65,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
             'FROM feed '+\
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
-            'AND ranking <0.9 AND type='+ str(feed_type) +\
+            'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
 
 
