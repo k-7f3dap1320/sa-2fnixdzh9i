@@ -96,14 +96,14 @@ def get_market_snapshot_section():
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 d-none d-md-block"></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_worldstocks,'100%','160','false','6m') +'</div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_eem,'100%','160','false','6m') +'</div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_gold,'100%','160','false','6m') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_worldstocks,'100%','160','false','6m',0) +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_eem,'100%','160','false','6m',0) +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_gold,'100%','160','false','6m',0) +'</div></div>'+\
         '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 d-none d-md-block"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 d-none d-md-block"></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_btc,'100%','160','false','6m') +'</div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_jpy,'100%','160','false','6m') +'</div></div>'+\
-        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_tlt,'100%','160','false','6m') +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_btc,'100%','160','false','6m',0) +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_jpy,'100%','160','false','6m',0) +'</div></div>'+\
+        '    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 d-none d-md-block"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid_tlt,'100%','160','false','6m',0) +'</div></div>'+\
         '    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 d-none d-md-block"></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_market_snapshot_n_brief_text('market_snapshot')  +'</div></div>'+\
@@ -191,7 +191,7 @@ def get_signals_lines(burl):
             content = content +\
             '<div class="row">' +\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
-            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m') +'</div></div>'+\
+            '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m',1) +'</div></div>'+\
             '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_signal_details(uid) + '<span style="font-size: small">'+ get_recomm(uid)  +'</span></div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '</div>'

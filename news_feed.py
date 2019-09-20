@@ -24,14 +24,14 @@ def get_newsfeed(x,suid,numline,show_chart):
     try:
         #theme_return_this(for_light,for_dark)
         theme = get_sa_theme()
-        l_view_article = 'View original article'
+        l_view_article = 'more >'
         l_newsfeed_title = 'Newsfeed'
         lang = 'en'
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
 
-        if x == 0 and suid == 0: l_newsfeed_title = 'World News'
-        if x == 1 and suid == 0: l_newsfeed_title = 'Featured Stories'
+        if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
+        if x == 1 and suid == 0: l_newsfeed_title = 'Featured Articles'
         if x == 2 and suid == 0: l_newsfeed_title = 'News Top Selection'
 
         if show_chart == 1:

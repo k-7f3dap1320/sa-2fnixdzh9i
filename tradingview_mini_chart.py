@@ -10,7 +10,7 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
+def get_tradingview_mini_chart(suid,width,height,autosize,dateRange,area_chart):
     r = ''
     url = 'http://smartalphatrade.com/s/'
     try:
@@ -30,10 +30,10 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange):
         underLineColor = '#e3f2fd'
         if get_signal(suid)=='b':
             trendLineColor = theme_return_this('rgba(106, 168, 79, 1)', 'rgba(255,255,255,0.4)')
-            underLineColor = theme_return_this('rgba(217, 234, 211, 1)','rgba(102,255,51,1)')
+            underLineColor = theme_return_this('rgba(217, 234, 211, 1)','rgba(102,255,51,'+ str(transparent_area) +')')
         else:
             trendLineColor = theme_return_this('rgba(255, 0, 0, 1)','rgba(255,255,255,0.4)')
-            underLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217,83,79,1)')
+            underLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217,83,79,'+ str(transparent_area) +')')
 
         if symbol != '':
             r = '' +\
