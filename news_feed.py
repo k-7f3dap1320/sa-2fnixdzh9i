@@ -41,8 +41,8 @@ def get_newsfeed(x,suid,numline,show_chart):
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
             if x == 1:
-                bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
-                bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
+                bsclass_left = 'col-lg-10 col-md-7 col-sm-6'
+                bsclass_right = 'col-lg-2 col-md-5 col-sm-6'
             if x == 2:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
@@ -147,7 +147,8 @@ def draw_feed_chart(x,show_chart,score,symbol):
     try:
         if show_chart == 1:
             if x == 0: r = get_sentiment_progressbar(score)
-            if x == 1: r = get_tradingview_mini_chart(get_uid(str(symbol)),'200','200','false','1d',0)
+            if x == 1:
+                if symbol != '': r = get_tradingview_mini_chart(get_uid(str(symbol)),'200','200','false','1d',0)
             if x == 2: r = get_sentiment_progressbar(score)
     except Exception as e: print(e)
     return r
