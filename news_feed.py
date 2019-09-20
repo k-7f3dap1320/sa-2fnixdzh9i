@@ -147,7 +147,8 @@ def draw_feed_chart(x,show_chart,score,symbol):
     try:
         if show_chart == 1:
             if x == 0: r = get_sentiment_progressbar(score)
-            if x == 1: r = get_tradingview_mini_chart(get_uid(str(symbol)),'200','200','true','1d',0)
+            if x == 1:
+                if symbol is not Null or symbol <>'': r = get_tradingview_mini_chart(get_uid(str(symbol)),'100%','200','true','1d',0)
             if x == 2: r = get_sentiment_progressbar(score)
     except Exception as e: print(e)
     return r
