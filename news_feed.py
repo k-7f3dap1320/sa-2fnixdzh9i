@@ -32,6 +32,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
         wrapstyle = 'style="white-space: nowrap;"'
+        rightcol_line_sep = ''
 
 
         if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
@@ -74,7 +75,6 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
-            wrapstyle = 'style="white-space: nowrap;"'
 
         if x == 1:
             query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
@@ -84,6 +84,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
             wrapstyle = 'style="" '
+            rightcol_line_sep = 'border-top:0.5px; border-top-style: dotted; '
 
         if x == 2:
             query = ' '+\
@@ -93,7 +94,6 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE symbol IN(SELECT DISTINCT portfolios.symbol FROM instruments '+\
             'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = (SELECT users.id FROM users WHERE uid = "'+ str( get_user() ) +'") ) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
             'ORDER BY date DESC LIMIT '+ str(numline) +';'
-            wrapstyle = 'style="white-space: nowrap;"'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -135,7 +135,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       </div>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
-            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
+            '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') + ' ' + rightcol_line_sep +'" >'+\
             draw_feed_chart(x,show_chart,news_ranking, symbol) +\
             '    </div>'
             i += 1
