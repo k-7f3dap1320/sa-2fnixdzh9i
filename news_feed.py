@@ -80,7 +80,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
             '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
             'FROM feed '+\
-            'WHERE (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
+            'WHERE symbol <>"" AND (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
             wrapstyle = 'style="" '
@@ -152,12 +152,9 @@ def draw_feed_chart(x,show_chart,score,symbol):
     r = ''
     try:
         if show_chart == 1:
-            if x == 0:
-                r = get_sentiment_progressbar(score)
-            if x == 1:
-                if symbol != '': r = get_tradingview_single_ticker( get_uid(str(symbol)) )
-            if x == 2:
-                r = get_sentiment_progressbar(score)
+            if x == 0: r = get_sentiment_progressbar(score)
+            if x == 1: r = get_tradingview_single_ticker( get_uid(str(symbol)) )
+            if x == 2: r = get_sentiment_progressbar(score)
     except Exception as e: print(e)
     return r
 
