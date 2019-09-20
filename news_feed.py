@@ -27,6 +27,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         l_view_article = 'more >'
         l_newsfeed_title = 'Newsfeed'
         lang = 'en'
+        feed_type = 3
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
 
@@ -42,7 +43,7 @@ def get_newsfeed(x,suid,numline,show_chart):
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
 
         query = ' '+\
-        'SELECT short_title, '+\
+        'SELECT DISTINCT short_title, '+\
         'short_description, '+\
         'url, badge, '+\
         'ranking, '+\
@@ -60,11 +61,11 @@ def get_newsfeed(x,suid,numline,show_chart):
         'ORDER BY date DESC LIMIT '+ str(numline)
 
         if x == 0:
-            query = 'SELECT short_title, short_description, url, badge, ranking, '+\
+            query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
             '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
             'FROM feed '+\
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
-            'AND ranking <0.9 '+\
+            'AND ranking <0.9 AND type='+ str(feed_type) +\
             'ORDER BY date DESC LIMIT '+ str(numline)
 
 
