@@ -31,6 +31,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         feed_type = 3
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
+        wrapstyle = 'style="white-space: nowrap;"'
+
 
         if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
         if x == 1 and suid == 0: l_newsfeed_title = 'Featured Articles'
@@ -41,8 +43,8 @@ def get_newsfeed(x,suid,numline,show_chart):
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
             if x == 1:
-                bsclass_left = 'col-lg-10 col-md-7 col-sm-6'
-                bsclass_right = 'col-lg-2 col-md-5 col-sm-6'
+                bsclass_left = 'col-lg-8 col-md-7 col-sm-7'
+                bsclass_right = 'col-lg-4 col-md-5 col-sm-5'
             if x == 2:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
@@ -72,6 +74,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
+            wrapstyle = 'style="white-space: nowrap;"'
 
         if x == 1:
             query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
@@ -80,6 +83,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
+            wrapstyle = 'style="" '
 
         if x == 2:
             query = ' '+\
@@ -89,6 +93,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'WHERE symbol IN(SELECT DISTINCT portfolios.symbol FROM instruments '+\
             'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = (SELECT users.id FROM users WHERE uid = "'+ str( get_user() ) +'") ) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
             'ORDER BY date DESC LIMIT '+ str(numline) +';'
+            wrapstyle = 'style="white-space: nowrap;"'
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -107,6 +112,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_date = get_elapsed_time( row[5] )
             symbol = str(row[6])
             contextstyle = ''
+
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
@@ -119,11 +125,11 @@ def get_newsfeed(x,suid,numline,show_chart):
 
             newsrow = newsrow +\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
-            '       <div class="d-none d-sm-block" style="white-space: nowrap;">'+\
+            '       <div class="d-none d-sm-block" '+ wrapstyle +'>'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
-            '       <div class="d-sm-none">'+\
+            '       <div class="d-sm-none" '+ wrapstyle +'>'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
