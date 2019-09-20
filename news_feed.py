@@ -32,7 +32,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
         wrapstyle = 'style="white-space: nowrap;"'
-        rightcol_line_sep = ''
+        filter_no_symbol =
+        rightcol_line_sep = 'symbol <>"" AND'
 
 
         if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
@@ -49,6 +50,12 @@ def get_newsfeed(x,suid,numline,show_chart):
             if x == 2:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
+
+        if show_chart == 0:
+            if x == 1:
+                bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
+                bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
+                filter_no_symbol = ''
 
         query = ' '+\
         'SELECT DISTINCT short_title, '+\
@@ -80,7 +87,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
             '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
             'FROM feed '+\
-            'WHERE symbol <>"" AND (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
+            'WHERE '+ str(filter_no_symbol) +' (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
             wrapstyle = 'style="font-size: 20px;" '
@@ -155,6 +162,9 @@ def draw_feed_chart(x,show_chart,score,symbol):
             if x == 0: r = get_sentiment_progressbar(score)
             if x == 1: r = get_tradingview_single_ticker( get_uid(str(symbol)) )
             if x == 2: r = get_sentiment_progressbar(score)
+        if show_chart == 0:
+            if x == 1: r = get_sentiment_progressbar(score)
+
     except Exception as e: print(e)
     return r
 
