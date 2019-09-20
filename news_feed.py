@@ -129,7 +129,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
-            '       <div class="d-sm-none" '+ wrapstyle +'>'+\
+            '       <div class="d-sm-none" >'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
