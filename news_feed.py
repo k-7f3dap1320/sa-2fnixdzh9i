@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 from app_cookie import *
 from sa_func import *
+from tradingview_mini_chart import *
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -36,11 +37,12 @@ def get_newsfeed(x,suid,numline,show_chart):
         if x == 2 and suid == 0: l_newsfeed_title = 'News Top Selection'
 
         if show_chart == 1:
-            bsclass_left = 'col-lg-8 col-md-7 col-sm-6'
-            bsclass_right = 'col-lg-4 col-md-5 col-sm-6'
             if x == 0:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
+            if x == 1:
+                bsclass_left = 'col-lg-8 col-md-7 col-sm-6'
+                bsclass_right = 'col-lg-4 col-md-5 col-sm-6'
             if x == 2:
                 bsclass_left = 'col-lg-10 col-md-10 col-sm-10'
                 bsclass_right = 'col-lg-2 col-md-2 col-sm-2'
@@ -50,7 +52,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         'short_description, '+\
         'url, badge, '+\
         'ranking, '+\
-        '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
+        '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
         'FROM feed '+\
         'WHERE '+\
         'type=3 '+\
@@ -65,17 +67,24 @@ def get_newsfeed(x,suid,numline,show_chart):
 
         if x == 0:
             query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
-            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
+            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
             'FROM feed '+\
             'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
 
+        if x == 1:
+            query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
+            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
+            'FROM feed '+\
+            'WHERE (asset_class LIKE "%'+ str( get_user_default_profile() ) +'%" OR market LIKE "%'+ str( get_user_default_profile() ) +'%") AND lang LIKE "%'+ str(lang) +'%" '+\
+            'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
+            'ORDER BY date DESC LIMIT '+ str(numline)
 
         if x == 2:
             query = ' '+\
             'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
-            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
+            '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
             'FROM feed '+\
             'WHERE symbol IN(SELECT DISTINCT portfolios.symbol FROM instruments '+\
             'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = (SELECT users.id FROM users WHERE uid = "'+ str( get_user() ) +'") ) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
@@ -96,6 +105,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             news_date = get_elapsed_time( row[5] )
+            symbol = str(row[6])
             contextstyle = ''
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
@@ -120,7 +130,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
             '    <div class="'+ bsclass_right +' col-xs-1 d-none d-sm-block" style="'+ theme_return_this('background-color:white;','background-color:black;') +'" >'+\
-            draw_feed_chart(x,show_chart,news_ranking) +\
+            draw_feed_chart(x,show_chart,news_ranking, symbol) +\
             '    </div>'
             i += 1
         newsrow = newsrow + '</div>'
@@ -132,11 +142,12 @@ def get_newsfeed(x,suid,numline,show_chart):
     except Exception as e: print(e)
     return r
 
-def draw_feed_chart(x,show_chart,score):
+def draw_feed_chart(x,show_chart,score,symbol):
     r = ''
     try:
         if show_chart == 1:
             if x == 0: r = get_sentiment_progressbar(score)
+            if x == 1: r = get_tradingview_mini_chart(get_uid(str(symbol)),'200','200','true','1d',0)
             if x == 2: r = get_sentiment_progressbar(score)
     except Exception as e: print(e)
     return r

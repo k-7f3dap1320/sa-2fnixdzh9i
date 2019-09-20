@@ -90,7 +90,6 @@ def get_portf_suffix():
     return 'PRF:'
 
 def get_uid(s):
-
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -103,7 +102,6 @@ def get_uid(s):
         cr.close()
         connection.close()
     except Exception as e: print(e)
-
     return uid
 
 def get_uid_from_tvws(tvws):
