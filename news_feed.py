@@ -80,10 +80,11 @@ def get_newsfeed(x,suid,numline,show_chart):
             'FROM feed '+\
             'WHERE symbol IN(SELECT * FROM temp_table_symbol) AND ranking <0.9 AND type='+ str(feed_type) + ' '+\
             'ORDER BY date DESC LIMIT '+ str(numline) +';'
-            print(query)
+
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = query
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         newsrow ='<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'
