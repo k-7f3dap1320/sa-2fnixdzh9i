@@ -38,6 +38,7 @@ def get_newsfeed(x,suid,numline,show_chart):
 
         if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
         if x == 1 and suid == 0: l_newsfeed_title = 'Featured Articles'
+        if x == 1 and suid == 0 and show_chart == 0: l_newsfeed_title = 'Latest Articles and Analysis'
         if x == 2 and suid == 0: l_newsfeed_title = 'News Top Selection'
 
         if show_chart == 1:
