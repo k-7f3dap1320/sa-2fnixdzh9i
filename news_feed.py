@@ -32,8 +32,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         bsclass_left = 'col-lg-12 col-md-12 col-sm-12'
         bsclass_right = 'col-lg-12 col-md-12 col-sm-12'
         wrapstyle = 'style="white-space: nowrap;"'
-        filter_no_symbol =
-        rightcol_line_sep = 'symbol <>"" AND'
+        filter_no_symbol = 'symbol <>"" AND'
+        rightcol_line_sep = ''
 
 
         if x == 0 and suid == 0: l_newsfeed_title = 'World News and Top Stories'
