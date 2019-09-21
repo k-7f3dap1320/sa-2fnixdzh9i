@@ -25,7 +25,7 @@ def get_signin_box(burl):
             '                <div class="col-lg-6 col-md-6 col-sm-23 col-xs-12 sa-signin-box">'+\
             '                   <div>&nbsp;</div>'+\
             '                   <h1 style="text-align: left; font-size:x-large; font-weight:bolder;">'+ l_app_header_title +'</h1>   '+\
-            '                   <div>'+ l_app_header_desc +'&nbsp;<a href="'+ burl +'pricing" class="text-info">'+ l_app_call_to_action_link +'</a></div>'+\
+            '                   <div>'+ l_app_header_desc +'&nbsp;<a href="'+ burl +'pricing/" class="text-info">'+ l_app_call_to_action_link +'</a></div>'+\
             '                </div>'+\
             '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 50px;">'+\
             get_login_form(burl,'dark','') +\

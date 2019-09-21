@@ -12,7 +12,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_tradingview_mini_chart(suid,width,height,autosize,dateRange,area_chart):
     r = ''
-    url = 'http://smartalphatrade.com/s/'
+    url = 'https://app.smartalphatrade.com/s/'
     try:
         symbol = ''
         referral_id = 'smartalpha'
@@ -38,7 +38,7 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange,area_chart):
             if area_chart == 1:
                 trendLineColor = theme_return_this('rgba(255, 0, 0, 1)','rgba(255,255,255,0.4)')
             else:
-                trendLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217,83,79, 1)')                
+                trendLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217,83,79, 1)')
             underLineColor = theme_return_this('rgba(244, 204, 204, 1)','rgba(217,83,79,'+ str(area_chart) +')')
 
         if symbol != '':

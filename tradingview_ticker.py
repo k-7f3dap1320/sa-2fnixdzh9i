@@ -13,7 +13,7 @@ def get_tradingview_ticker(uid):
     ltvs = ''
     id = 0
     referral_id = 'smartalpha'
-    url = 'http://smartalphatrade.com/s/'
+    url = 'https://app.smartalphatrade.com/s/'
     theme = 'dark'
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)

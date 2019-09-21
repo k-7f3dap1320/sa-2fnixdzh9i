@@ -9,7 +9,7 @@ def get_tradingview_fxcross(width,height):
     try:
         referral_id = 'smartalpha'
         theme = get_sa_theme()
-        url = 'http://smartalphatrade.com/s'
+        url = 'https://app.smartalphatrade.com/s'
 
         if str(width) == '0': width = '"100%"'
         if str(height) == '0': height = '"100%"'

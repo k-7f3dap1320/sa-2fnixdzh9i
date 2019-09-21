@@ -15,7 +15,7 @@ def get_tradingview_profile_widget(uid):
 
 def get_tradingview_profile(uid):
     r = ''
-    url = 'http://smartalphatrade.com/s'
+    url = 'https://app.smartalphatrade.com/s'
     theme = get_sa_theme()
     try:
         symbol = ''

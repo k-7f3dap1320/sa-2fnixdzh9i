@@ -11,7 +11,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 def get_tradingview_indicators(suid,width,height):
     r = ''
-    url = 'http://smartalphatrade.com/s/'
+    url = 'https://app.smartalphatrade.com/s/'
     try:
         symbol = ''
         referral_id = 'smartalpha'
