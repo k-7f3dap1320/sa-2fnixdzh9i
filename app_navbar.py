@@ -97,9 +97,9 @@ def navbar(burl,disable_search):
     search_box = ''
     if disable_search != 1:
         search_box =  ' '+\
-        '<img alt="" src="'+ burl+'static/cursor.gif'+'" height="15">'+\
+        '<img alt="" src="'+ burl+'static/cursor.gif'+'" height="15" class="d-none d-sm-block">'+\
         '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
-        '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" >'
+        '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" class="d-none d-sm-block" >'
 
     if user_is_login() == 1:
         rightsidemenu = '' +\
