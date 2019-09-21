@@ -25,8 +25,14 @@ git archive --verbose --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_packag
 @ECHO Once the application creation is completed by the script, upload and deploy >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO the generated zip file from the folder _aws_app_package on your desktop >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO Make sure of the following settings: >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
-@ECHO Ensure that the corresponding EC2 has the permission to get inbound MySQL traffic. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
-@ECHO To add permission for inbound, go to security group and add allow MySQL TCP inbound. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO.
+@ECHO 1.0 Ensure that the corresponding EC2 has the permission to get inbound MySQL traffic. TCP 3306 >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 1.1 To add permission for inbound, go to security group and add allow MySQL TCP inbound. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 2.0 Enable https by going to EC2 / Load Balancer: Select the corresponding one. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 2.1 Then under "Listerners" Choose HTTPS 443. Add a Listener with forwarding to the Beanstalk App. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 2.2 Forward to: awseb-XXXX which is corresponding to the deployed app.  >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 2.3 Attach or request for an SSL certificate. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO 2.4 Make sure the security group linked to that listener allow the traffic thru port 443. >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO Restart the application instance if the application return any errors >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 
 START "" notepad "%USERPROFILE%\Desktop\_aws_app_package\notes.txt"

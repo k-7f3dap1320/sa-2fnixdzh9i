@@ -54,7 +54,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
-    dev_mode = True
+    dev_mode = False
     c = ''; burl = request.url_root;
     if not dev_mode: burl = burl.replace('http://','https://')
 
