@@ -50,55 +50,6 @@ def get_top_trader_menu(burl):
     except Exception as e: print(e)
     return r
 
-def get_market_menu_selection(burl):
-    r = ''
-    try:
-        l_select_market = 'Market'
-        l_all_market_selection = 'Show all markets'
-        l_equity_label_replace_by_stocks = 'Stocks'
-        l_equity_label = 'Equity'
-        asset_class_selection = ''
-        markets_selection = ''
-        l_markets_caption = '{market} Market'
-
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT asset_class_id, asset_class_name FROM Asset_class ORDER BY asset_class_name"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            asset_class_id = row[0]
-            asset_class_name = row[1]
-            asset_class_name = asset_class_name.replace(l_equity_label,l_equity_label_replace_by_stocks)
-            if asset_class_id != 'MA:' and asset_class_id != 'PF:':
-                asset_class_selection = asset_class_selection + '<a class="dropdown-item sa-navbar-text" href="'+ burl + '?x='+ str(asset_class_id) +'">'+ str(asset_class_name) +'</a>'
-
-        sql = "SELECT market_id, market_label FROM Markets"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            market_id = row[0]
-            market_label = row[1]
-            markets_selection = markets_selection + '<a class="dropdown-item sa-navbar-text" href="'+ burl + '?x='+ str(market_id) +'">'+ str(l_markets_caption.replace('{market}',market_label) ) +'</a>'
-
-        r = '' +\
-        '    <li class="nav-item dropdown">'+\
-        '      <a class="nav-link dropdown-toggle sa-navbar-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ l_select_market +'</a>'+\
-        '      <div class="dropdown-menu" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + '?x=">'+ l_all_market_selection +'</a>'+\
-        '        <div class="dropdown-divider"></div>'+\
-        asset_class_selection +\
-        '        <div class="dropdown-divider"></div>'+\
-        markets_selection +\
-        '      </div>'+\
-        '    </li>'
-
-        cr.close()
-        connection.close()
-
-    except Exception as e: print(e)
-    return r
-
 def get_how_menu(burl):
     r = ''
     l_helpTooltip = 'Quick Help over there...'
@@ -179,7 +130,6 @@ def navbar(burl,disable_search):
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
     '  <ul class="navbar-nav mr-auto">'+\
-    get_market_menu_selection(burl) +\
     get_top_trader_menu(burl) +\
     get_top_signals_menu(burl) +\
     '  </ul>'+\
