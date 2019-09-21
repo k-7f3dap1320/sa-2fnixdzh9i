@@ -12,6 +12,7 @@ SET _ACTIVATE="%APP_DIR%\flask-prod\Scripts\activate.bat"
 SET _VIRTUALENV="%LOCALAPPDATA%\Programs\Python\%PY_VER%\Scripts\virtualenv.exe"
 
 %_PY_EXE% -m pip install virtualenv
+RMDIR /S /Q "%APP_DIR%\flask-prod"
 %_PY_EXE% -m venv "%APP_DIR%\flask-prod"
 cd %APP_DIR%
 git add .

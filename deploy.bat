@@ -13,8 +13,8 @@ SET _PIP_EXE_V="%APP_DIR%\flask-prod\Scripts\pip.exe"
 
 %_PY_EXE% -m pip install -r requirements.txt
 
-mkdir %USERPROFILE%\Desktop\_aws_app_package
-cd  "%USERPROFILE%\Desktop\_aws_app_package\app"
+mkdir %USERPROFILE%\Desktop\_aws_app_package"
+cd  "%USERPROFILE%\Desktop\_aws_app_package"
 git archive --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_package\app_ver_X_X_X.zip"
 
 @ECHO Go to aws.amazon.com, AWS Beanstalk Application > %USERPROFILE%\Desktop\_aws_app_package\notes.txt
