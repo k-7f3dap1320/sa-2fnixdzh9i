@@ -59,7 +59,7 @@ def get_how_menu(burl):
         else:
             l_howitworks = 'How it works?'
 
-        l_how_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'h" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
+        l_how_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'h/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
     return r
@@ -98,7 +98,7 @@ def navbar(burl,disable_search):
     if disable_search != 1:
         search_box =  ' '+\
         '<img alt="" src="'+ burl+'static/cursor.gif'+'" height="15" class="d-none d-sm-block">'+\
-        '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search' +'\';"' +\
+        '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search/' +'\';"' +\
         '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" class="d-none d-sm-block" >'
 
     if user_is_login() == 1:
@@ -110,9 +110,9 @@ def navbar(burl,disable_search):
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
         '<li class="nav-item">'+\
