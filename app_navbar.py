@@ -55,11 +55,11 @@ def get_how_menu(burl):
     l_helpTooltip = 'Quick Help over there...'
     try:
         if user_is_login() == 1:
-            l_howitworks = '<i class="far fa-question-circle hidden-xs hidden-sm" style="font-size: x-large;"></i>'
+            l_howitworks = '<i class="far fa-question-circle" style="font-size: x-large;"></i>'
         else:
             l_howitworks = 'How it works?'
 
-        l_how_menu = '<li class="nav-item hidden-xs hidden-sm"><a class="nav-link sa-navbar-text" href="'+ burl +'h" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
+        l_how_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'h" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
         r = l_how_menu
     except Exception as e: print(e)
     return r
@@ -70,7 +70,7 @@ def get_dashboard_menu(burl):
         l_dashboard = 'Dashboard'
         i = 0
         num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
-        l_dashboard_menu = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_dashboard +'" ><strong>'+ '<i class="fas fa-tachometer-alt" style="font-size: x-large;"></i>' +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
+        l_dashboard_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_dashboard +'" ><strong>'+ '<i class="fas fa-tachometer-alt" style="font-size: x-large;"></i>' +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
         r = l_dashboard_menu
     except Exception as e: print(e)
     return r
@@ -79,7 +79,7 @@ def get_portfolio_button(burl):
     r = ''
     try:
         l_create_portfolio = 'Create a new portfolio'
-        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary d-block d-md-inline-block" style="font-size:large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
+        portfolio_button = '<a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary d-block d-md-inline-block d-none d-sm-block" style="font-size:large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a>'
         r = portfolio_button
     except Exception as e: print(e)
     return r
@@ -108,10 +108,10 @@ def navbar(burl,disable_search):
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'settings"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
