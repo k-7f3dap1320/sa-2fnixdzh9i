@@ -55,7 +55,7 @@ def get_how_menu(burl):
     l_helpTooltip = 'Quick Help over there...'
     try:
         if user_is_login() == 1:
-            l_howitworks = '<i class="far fa-question-circle" style="font-size: x-large;"></i>'
+            l_howitworks = '<i class="far fa-question-circle hidden-xs hidden-sm" style="font-size: x-large;"></i>'
         else:
             l_howitworks = 'How it works?'
 
