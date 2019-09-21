@@ -214,8 +214,8 @@ def go():
                 burl = burl.replace('https://www.','https://app.')
             else:
                 burl = burl.replace('https://','https://app.')
-        if burl.find('http://app.') > -1;
-                burl = burl.replace('http://app.','https://www.')        
+        if burl.find('http://app.') > -1:
+                burl = burl.replace('http://app.','https://www.')
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
 
     return c
