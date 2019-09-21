@@ -118,9 +118,26 @@ def get_newsfeed(x,suid,numline,show_chart):
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             news_date = get_elapsed_time( row[5] )
+            news_minutes = int(row[5])
             symbol = str(row[6])
             contextstyle = ''
+            newnewsclass = ''
+            newnewscss = ''+\
+            '<style>'+\
+            '.blinkin {'+\
+            ' -webkit-animation: inrow 1s infinite; /* Safari 4+ */'+\
+            '  -moz-animation:   inrow 1s infinite; /* Fx 5+ */'+\
+            '  -o-animation:     inrow 1s infinite; /* Opera 12+ */'+\
+            '  animation:        inrow 1s infinite; /* IE 10+, Fx 29+ */'+\
+            '}'+\
+            '@-webkit-keyframes inrow {'+\
+            '  0%, 49% {'+\
+            '      background-color: lightgray;'+\
+            '  }'+\
+            '}'+\
+            '</style>'
 
+            if news_minutes<=10: newnewsclass = 'inrow'
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
@@ -135,11 +152,11 @@ def get_newsfeed(x,suid,numline,show_chart):
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" '+ wrapstyle +'>'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
-            '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
+            '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" class="'+ newnewsclass +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
             '       <div class="d-sm-none" >'+\
             '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
-            '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
+            '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" class="'+ newnewsclass +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\
             '    </div>'+\
