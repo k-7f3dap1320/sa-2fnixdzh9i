@@ -221,4 +221,4 @@ def go():
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
     #For AWS Beanstalk --> application.run()
-    application.run(host='0.0.0.0', port=80, threaded=True)
+    application.run()

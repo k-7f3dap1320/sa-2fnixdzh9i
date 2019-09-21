@@ -15,6 +15,7 @@ git archive --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_package\app_ver_
 
 @ECHO Go to aws.amazon.com, AWS Beanstalk Application > %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO Update the generated zip file (Desktop\_aws_app_package\app_ver_X_X_X.zip) with the database configuration, file "sa_db.py" >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
+@ECHO Make sure that in the application.py file the line to run the app is application.run()
 @ECHO Once the application creation is completed by the script, upload and deploy >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO the generated zip file from the folder _aws_app_package on your desktop >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO Make sure of the following settings: >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt

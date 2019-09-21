@@ -14,7 +14,8 @@ git add .
 git commit -m "d-%date%-%time%"
 
 %_VIRTUALENV% flask-prod
-
+%_PIP_EXE% install Flask
+%_PIP_EXE% install awsebcli
 @ECHO ###########################
 @ECHO Type "deploy" to deploy to AWS Elastic Beanstalk
 @ECHO ###########################
