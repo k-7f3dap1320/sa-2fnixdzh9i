@@ -110,8 +110,24 @@ def get_newsfeed(x,suid,numline,show_chart):
         cr.execute(sql)
         rs = cr.fetchall()
         newsrow ='<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'
+
+        newnewscss = ''+\
+        '<style>'+\
+        '.blinkin {'+\
+        ' -webkit-animation: inrow 1s infinite; /* Safari 4+ */'+\
+        '  -moz-animation:   inrow 1s infinite; /* Fx 5+ */'+\
+        '  -o-animation:     inrow 1s infinite; /* Opera 12+ */'+\
+        '  animation:        inrow 1s infinite; /* IE 10+, Fx 29+ */'+\
+        '}'+\
+        '@-webkit-keyframes inrow {'+\
+        '  0%, 49% {'+\
+        '      background-color: lightgray;'+\
+        '  }'+\
+        '}'+\
+        '</style>'
+
         i = 1
-        newsrow = newsrow + '<div class="row">'
+        newsrow = newnewscss + newsrow + '<div class="row">'
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
             news_url = row[2]
@@ -122,27 +138,11 @@ def get_newsfeed(x,suid,numline,show_chart):
             symbol = str(row[6])
             contextstyle = ''
             newnewsclass = ''
-            newnewscss = ''+\
-            '<style>'+\
-            '.blinkin {'+\
-            ' -webkit-animation: inrow 1s infinite; /* Safari 4+ */'+\
-            '  -moz-animation:   inrow 1s infinite; /* Fx 5+ */'+\
-            '  -o-animation:     inrow 1s infinite; /* Opera 12+ */'+\
-            '  animation:        inrow 1s infinite; /* IE 10+, Fx 29+ */'+\
-            '}'+\
-            '@-webkit-keyframes inrow {'+\
-            '  0%, 49% {'+\
-            '      background-color: lightgray;'+\
-            '  }'+\
-            '}'+\
-            '</style>'
-
             if news_minutes<=10: newnewsclass = 'inrow'
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
             news_content = str(row[1]) +' <br /><br />'+ '<a href="'+ str(row[2]) +'" target="_blank" >'+ l_view_article +'</a>'
-            news_content = news_content + newnewscss
 
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
