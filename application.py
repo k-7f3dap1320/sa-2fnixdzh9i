@@ -212,12 +212,12 @@ def go():
         if burl.find('https://app.') == -1:
             if burl.find('https://www.') > -1:
                 burl = burl.replace('https://www.','https://app.')
+            elif: burl.find('http://app.') > -1:
+                burl = burl.replace('http://app.','https://www.')
             else:
                 burl = burl.replace('https://','https://app.')
-        if burl.find('http://app.') > -1:
-                burl = burl.replace('http://app.','https://www.')
+                
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
-
     return c
 
 if __name__ == '__main__':
