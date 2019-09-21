@@ -6,10 +6,10 @@ REM ############################################################################
 @ECHO invoking python.exe (python -m pip install requests) for instance
 
 SET APP_DIR=%~dp0
-SET _PY_EXE="%APP_DIR%flask-prod\Scripts\python.exe"
-SET _PIP_EXE="%LOCALAPPDATA%Programs\Python\%PY_VER%\Scripts\pip.exe"
-SET _ACTIVATE="%APP_DIR%flask-prod\Scripts\activate.bat"
-SET _VIRTUALENV="%LOCALAPPDATA%Programs\Python\%PY_VER%\Scripts\virtualenv.exe"
+SET _PY_EXE="%APP_DIR%\flask-prod\Scripts\python.exe"
+SET _PIP_EXE="%LOCALAPPDATA%\Programs\Python\%PY_VER%\Scripts\pip.exe"
+SET _ACTIVATE="%APP_DIR%\flask-prod\Scripts\activate.bat"
+SET _VIRTUALENV="%LOCALAPPDATA%\Programs\Python\%PY_VER%\Scripts\virtualenv.exe"
 
 %_PY_EXE% -m pip install virtualenv
 cd %APP_DIR%
