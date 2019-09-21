@@ -8,7 +8,7 @@ def get_bootstrap(theme,burl):
 
     bootcss_url = 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
     bootcss_integrity = 'sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
-    bootcss_dark_url =burl + 'static/bootstrap_custom_dark.css?' + get_random_str(10)
+    bootcss_dark_url = burl + 'static/bootstrap_custom_dark.css?' + get_random_str(10)
     selected_bootcss = ''
 
     if theme == 'light':
