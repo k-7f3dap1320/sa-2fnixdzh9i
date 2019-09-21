@@ -23,8 +23,6 @@ SET _VIRTUALENV="%LOCALAPPDATA%\Programs\Python\%PY_VER%\Scripts\virtualenv.exe"
 RMDIR /Q /S "%APP_DIR%\flask-prod"
 %_PY_EXE% -m venv "%APP_DIR%\flask-prod"
 cd %APP_DIR%
-git add .
-git commit -m "d-%date%-%time%"
 
 %_VIRTUALENV% flask-prod
 @ECHO --------------------------------------------------------------------------

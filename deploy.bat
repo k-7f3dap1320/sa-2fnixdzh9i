@@ -13,8 +13,11 @@ SET _PIP_EXE_V="%APP_DIR%\flask-prod\Scripts\pip.exe"
 
 %_PY_EXE% -m pip install -r requirements.txt
 
+git add .
+git commit -m "d-%date%-%time%"
+
 mkdir %USERPROFILE%\Desktop\_aws_app_package"
-git archive --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_package\app_ver_X_X_X.zip"
+git archive --verbose --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_package\app_ver_X_X_X.zip"
 
 @ECHO Go to aws.amazon.com, AWS Beanstalk Application > %USERPROFILE%\Desktop\_aws_app_package\notes.txt
 @ECHO Update the generated zip file (Desktop\_aws_app_package\app_ver_X_X_X.zip) with the database configuration, file "sa_db.py" >> %USERPROFILE%\Desktop\_aws_app_package\notes.txt
