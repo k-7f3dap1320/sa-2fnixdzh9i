@@ -92,7 +92,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             'AND ranking <0.9 AND type='+ str(feed_type) + ' ' +\
             'ORDER BY date DESC LIMIT '+ str(numline)
             wrapstyle = 'style="font-size: 20px;" '
-            rightcol_line_sep = 'border-top:0.5px; border-top-style: dotted; '
+            if show_chart == 1: rightcol_line_sep = 'border-top:0.5px; border-top-style: dotted; '
 
         if x == 2:
             query = ' '+\
