@@ -56,7 +56,7 @@ def go():
     appname = 'SmartAlpha | Trading Intelligence'
     dev_mode = False
     c = ''; burl = request.url_root;
-    #if not dev_mode: burl = burl.replace('http://','https://')
+    if not dev_mode: burl = burl.replace('http://','https://')
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
@@ -212,11 +212,8 @@ def go():
         if burl.find('https://app.') == -1:
             if burl.find('https://www.') > -1:
                 burl = burl.replace('https://www.','https://app.')
-            elif burl.find('http://app.') > -1:
-                burl = burl.replace('http://app.','https://www.')
             else:
                 burl = burl.replace('https://','https://app.')
-
             c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
     return c
 
