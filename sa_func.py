@@ -202,7 +202,7 @@ def go_to_url(q,return_what,uniqid):
         if return_what == 'form':
             content = '<form id="'+ str(uniqid) +'"><input type="hidden" value="'+ str(q) +'"></form>'
         if return_what == 'link':
-            content = 'href="javascript:{}" on click="document.getElementById(\''+ str(uniqid) +'\').submit(); return false;"'
+            content = 'href="javascript:{}" onclick="document.getElementById(\''+ str(uniqid) +'\').submit(); return false;"'
         r = content
     except Exception as e: print(e)
     return r
