@@ -131,7 +131,10 @@ def get_newsfeed(x,suid,numline,show_chart):
         newsrow = newnewscss + newsrow + '<div class="row">'
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
-            news_url = go_to_url( str(row[2]) )
+
+            url_href = go_to_url( str(row[2]),'link',unistr )
+            url_form = go_to_url( str(row[2]),'form',unistr )
+
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             news_date = get_elapsed_time( row[5] )
@@ -143,21 +146,21 @@ def get_newsfeed(x,suid,numline,show_chart):
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
-            news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a href="'+ str(news_url) +'" target="_blank" >'+ l_view_article +'</a>'
+            news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a '+ url_href  +' target="_blank" >'+ l_view_article +'</a>'
 
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
             if news_ranking>0: sentiment_badge = '<span class="badge badge-success">'+'pos: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
 
 
-            newsrow = newsrow +\
+            newsrow = newsrow + url_form +\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" '+ wrapstyle +'>'+\
-            '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
+            '           <a '+ url_href +' +' target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" class="'+ newnewsclass +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
             '       <div class="d-sm-none" >'+\
-            '           <a href="'+ str(news_url) +'" target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
+            '           <a '+ url_href +' target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" class="'+ newnewsclass +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
             '       <div class="collapse" id="'+ str(unistr) +'">'+ news_content +'<br /><br /></div>'+\

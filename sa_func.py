@@ -189,9 +189,20 @@ def get_elapsed_time(vminutes):
     except Exception as e: print(e)
     return r
 
-def go_to_url(q):
+def go_to_url(q,return_what,uniqid):
+    #---------------------------------
+    # return_what = 'form' = '<form id="form_id_xxx"><input type="hidden" value="'+ str(q) +'" id="q"></form>'
+    # return_what = link = 'href="javascript:{}" onclick="document.getElementById('form_id_xxx').submit(); return false;"'
+    #---------------------------------
     r = ''
     try:
-        r = 'url/?q=' + str(q.replace('?','&#63;'))
+        r = 'url/?q=' + str(q)
+
+        content = ''
+        if return_what == 'form':
+            content = '<form id="'+ str(uniqid) +'"><input type="hidden" value="'+ str(q) +'"></form>'
+        if return_what == 'link':
+            content = 'href="javascript:{}" on click="document.getElementById(\''+ str(uniqid) +'\').submit(); return false;"'
+        r = content
     except Exception as e: print(e)
     return r
