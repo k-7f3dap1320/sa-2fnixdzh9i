@@ -25,7 +25,7 @@ def get_card(x,t,burl):
         if t == 9:
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND globalrank<>0 AND type=9 ORDER BY globalrank ASC LIMIT 11"
+                "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND globalrank<>0 AND type=9 ORDER BY globalrank ASC LIMIT 7"
     except:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
@@ -33,7 +33,7 @@ def get_card(x,t,burl):
         if t == 9:
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
-                "WHERE type=9 ORDER BY ranking DESC LIMIT 12"
+                "WHERE type=9 ORDER BY ranking DESC LIMIT 7"
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
