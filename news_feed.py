@@ -143,7 +143,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
-            news_content = str(row[1]).replace('http://','https://') +' <br /><br />'+ '<a href="'+ str(news_url)) +'" target="_blank" >'+ l_view_article +'</a>'
+            news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a href="'+ str(news_url)) +'" target="_blank" >'+ l_view_article +'</a>'
 
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
