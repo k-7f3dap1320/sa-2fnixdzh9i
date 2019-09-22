@@ -196,10 +196,8 @@ def go():
 
     elif request.endpoint == 'url':
         url_q = request.args.get('q')
-        #c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','') )
-        c = make_response( redirect(url_q) )
-        c.set_cookie('newsclick', url_q)
-
+        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','') )
+        print(c)
     else:
         if x == '' or x == None : x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
