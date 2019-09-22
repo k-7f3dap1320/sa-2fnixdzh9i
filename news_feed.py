@@ -156,7 +156,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             newsrow = newsrow + url_form +\
             '    <div class="'+ bsclass_left +' col-xs-12" style="border-top:0.5px; border-top-style: dotted; "> '+\
             '       <div class="d-none d-sm-block" '+ wrapstyle +'>'+\
-            '           <a '+ url_href +' +' target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
+            '           <a '+ url_href +' target="_blank" style="'+ theme_return_this('color:black;','color:white;') +'" ><i class="fas fa-external-link-alt"></i></a>'+\
             '           <strong><a data-toggle="collapse" href="#'+ str(unistr)+'"  style="'+ contextstyle +'" class="'+ newnewsclass +'" >'+ '&nbsp;<span style="'+ theme_return_this('color:black;','color:#00ffff;') +' ">'+ str(news_date) +'</span>&nbsp;' + news_title  + '</a></strong>&nbsp;'+\
             '       </div>'+\
             '       <div class="d-sm-none" >'+\
