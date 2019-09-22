@@ -200,7 +200,7 @@ def go_to_url(q,return_what,uniqid):
 
         content = ''
         if return_what == 'form':
-            content = '<form id="'+ str(uniqid) +'"><input type="hidden" value="'+ str(q) +'"></form>'
+            content = '<form id="'+ str(uniqid) +'"><input type="hidden" value="'+ str(q) +'" action="'+ 'url/' +'" method="post" ></form>'
         if return_what == 'link':
             content = 'href="javascript:{}" onclick="document.getElementById(\''+ str(uniqid) +'\').submit(); return false;"'
         r = content
