@@ -42,7 +42,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         dashboard_content = dashboard_content + '<div class="row">' + get_trades_box(0,burl,is_dashboard) + get_control_center_aggregate_perf(burl) + '</div>'
     else:
         if user_is_login() == 1: metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
-        if user_is_login() == 0: dashboard_content = dashboard_content + get_newsfeed(0,0,10,0) + '<br />'+ get_newsfeed(1,0,5,1) + '<br />'
+        if user_is_login() == 0: dashboard_content = dashboard_content + get_newsfeed(0,0,10,1) + '<br />'+ get_newsfeed(1,0,5,1) + '<br />'
         dashboard_content = dashboard_content + get_card(x,9,burl)
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(0,0,15,1) + '<br />'
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(1,0,5,0) + '<br />'+ get_newsfeed(1,0,5,1) + '<br />'
