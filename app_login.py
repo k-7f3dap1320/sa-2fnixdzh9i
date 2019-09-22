@@ -41,7 +41,7 @@ def user_login(usr,pwd,burl,redirect):
 
         if redirect != '':
             redirectUrl = redirect
-        else: redirectUrl = burl +'#'+
+        else: redirectUrl = burl +'#'
 
         if not uid == '':
             c = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + redirectUrl + '" />') + get_body('','') ) )
