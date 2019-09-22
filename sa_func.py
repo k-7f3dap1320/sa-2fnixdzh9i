@@ -188,3 +188,10 @@ def get_elapsed_time(vminutes):
 
     except Exception as e: print(e)
     return r
+
+def go_to_url(q):
+    r = ''
+    try:
+        r = 'url/?q=' + str(q)
+    except Exception as e: print(e)
+    return r

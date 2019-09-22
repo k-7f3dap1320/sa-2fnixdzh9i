@@ -51,6 +51,9 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/settings/', endpoint='settings', methods=["POST","GET"])
 @application.route('/search/', endpoint='search', methods=["POST","GET"])
 @application.route('/error/', endpoint='error', methods=["POST","GET"])
+@application.route('/url/', endpoint='url', methods=["POST","GET"])
+@application.route('/w/url/', endpoint='url', methods=["POST","GET"])
+
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
@@ -190,6 +193,9 @@ def go():
         c = get_error_page(appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
+    elif request.endpoint == 'url':
+        url_q = request.args.get('q')
+        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','') ) )
 
     else:
         if x == '' or x == None : x = get_user_default_profile()

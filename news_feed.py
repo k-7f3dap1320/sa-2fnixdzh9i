@@ -131,7 +131,7 @@ def get_newsfeed(x,suid,numline,show_chart):
         newsrow = newnewscss + newsrow + '<div class="row">'
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
-            news_url = row[2]
+            news_url = go_to_url( str(row[2]) )
             news_title = str(row[0]) +' '+ str(row[3])
             news_ranking = row[4]
             news_date = get_elapsed_time( row[5] )
