@@ -192,6 +192,6 @@ def get_elapsed_time(vminutes):
 def go_to_url(q):
     r = ''
     try:
-        r = 'url/?q=' + str(q)
+        r = 'url/?q=' + str(q.replace('?','&#63;'))
     except Exception as e: print(e)
     return r
