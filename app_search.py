@@ -93,7 +93,7 @@ def get_box_search(burl,nonavbar):
         search_box = ' '+\
         '  <form class="" action="'+ burl +'" method="get" id="searchForm" >'+\
         '       <div class="input-group input-group-lg">'+\
-        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="search" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
+        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="search" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
         '       </div>'+\
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
         '  </form>'
