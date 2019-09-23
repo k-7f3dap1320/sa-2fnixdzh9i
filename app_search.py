@@ -91,12 +91,15 @@ def get_box_search(burl,nonavbar):
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = ' '+\
-        '  <form class="" action="'+ burl +'" method="get" id="searchForm" >'+\
+        '  <form class="" action="'+ burl +'" method="get" id="searchForm" name="searhcForm" >'+\
         '       <div class="input-group input-group-lg">'+\
         '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="search" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
         '       </div>'+\
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
-        '  </form>'
+        '  </form>'+\
+        '  <script>'+\
+        '       document.searchForm.'+ str(sid) +'.focus();'+\
+        '  </script>'
 
         box_content = '' +\
         '<script>'+\
