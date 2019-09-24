@@ -18,14 +18,14 @@ def get_top_signals_menu(burl):
         if user_is_login() == 0:
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT * FROM instruments  WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND w1_signal > 0"
+            sql = "SELECT COUNT(*) FROM instruments  WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND w1_signal > 0"
             cr.execute(sql)
             rs = cr.fetchall()
-            i = 0
-            for row in rs: i += 1
+            countTop = 0
+            for row in rs: countTop = row[0]
             l_top_signal = 'Top Signals'
             link = burl + 'ls/?w=instr&x='
-            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(countTop) +'</span></sup></a></li>'
             cr.close()
             connection.close()
     except Exception as e: print(e)
@@ -37,14 +37,14 @@ def get_top_trader_menu(burl):
         if user_is_login() == 0:
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT instruments.w1 FROM instruments JOIN feed ON feed.symbol = instruments.symbol WHERE instruments.symbol LIKE '%"+ get_portf_suffix() +"%' AND instruments.w1 > 0 AND feed.globalrank <=200"
+            sql = "SELECT COUNT(*) FROM instruments JOIN feed ON feed.symbol = instruments.symbol WHERE feed.type = 9 AND instruments.w1 > 0 AND feed.globalrank <=200"
             cr.execute(sql)
             rs = cr.fetchall()
-            i = 0
-            for row in rs: i += 1
+            countTop = 0
+            for row in rs: countTop = row[0]
             l_top_trader = 'Top Traders'
             link = burl + 'ls/?w=portf&x='
-            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(i) +'</span></sup></a></li>'
+            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(countTop) +'</span></sup></a></li>'
             cr.close()
             connection.close()
     except Exception as e: print(e)
