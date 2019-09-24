@@ -25,6 +25,7 @@ from intel_report import *
 from set_theme import *
 from app_settings import *
 from app_search import *
+from reset_password import *
 
 application = Flask(__name__)
 
@@ -49,6 +50,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/genportf/', endpoint='genportf', methods=["POST","GET"])
 @application.route('/pricing/', endpoint='pricing', methods=["POST","GET"])
 @application.route('/settings/', endpoint='settings', methods=["POST","GET"])
+@application.route('/reset/', endpoint='reset', methods=["POST","GET"])
 @application.route('/search/', endpoint='search', methods=["POST","GET"])
 @application.route('/error/', endpoint='error', methods=["POST","GET"])
 @application.route('/url/', endpoint='url', methods=["POST","GET"])
@@ -173,6 +175,11 @@ def go():
         c = get_settings_page(appname,burl)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
+
+    elif request.endpoint == 'reset':
+        step = request.args.get('step')
+        data = request.values.get('data')
+        c = get_resetpassword_page(appname,burl,step,data)
 
     elif request.endpoint == 'search':
         nonavbar = request.args.get('nonavbar')
