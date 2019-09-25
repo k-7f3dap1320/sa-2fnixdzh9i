@@ -63,7 +63,7 @@ def change_password_form(burl,data):
 
         validation_script = ' '+\
         '<script>'+\
-        'checkPassword() {'+\
+        'function checkPassword() {'+\
         '  if (document.getElementById("data").value =='+\
         '    document.getElementById("repassword").value) {'+\
         '    document.getElementById("message").innerHTML = "";'+\
