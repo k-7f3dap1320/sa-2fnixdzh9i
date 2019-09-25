@@ -69,7 +69,7 @@ def change_password_form(burl,data):
         '    document.getElementById("message").innerHTML = "";'+\
         '    document.getElementById("submitBtn").innerHTML = "'+ '<button type=\'submit\' class=\'btn btn-info btn-lg btn-block form-resetpassword-btn\'>' + l_btn_label + '&nbsp;<i class=\'fas fa-arrow-right\'></i></button>' +'";'+\
         '  } else {'+\
-        '    document.getElementById("message").innerHTML = "'+ l_password_not_match +'";'+\
+        '    document.getElementById("message").innerHTML = "<div class=\'alert alert-danger\' role=\'alert\'>'+ l_password_not_match +'</div>";'+\
         '  }'+\
         '}'+\
         'function validateForm() {'+\

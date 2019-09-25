@@ -2,6 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
+DEV_MODE = False
 
 from flask import Flask, request
 from flask_compress import Compress
@@ -31,9 +32,6 @@ application = Flask(__name__)
 
 COMPRESS_MIMETYPES = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
 COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
-
-DEV_MODE = False
-
 
 @application.route('/')
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
