@@ -57,7 +57,7 @@ def change_password_form(burl,data):
         l_enterpassword_placeholder = 'Enter your new password'
         l_confirmpassword_placeholder = 'Re-enter your new password'
         l_password_not_match = 'Password do not match.'
-        l_password_contains_inval_char = 'Password should not contain special characters, such as ponctuation.'
+        l_password_minimun_not_met = 'Password must be minimum 8 characters.'
         l_btn_label = 'Submit'
         user_uid = str(data)
 
@@ -88,10 +88,8 @@ def change_password_form(burl,data):
             '    alert("'+ l_password_not_match +'");'+\
             '    return false;'+\
             '  }'+\
-            '  if ( password.indexOf(",") > -1 ) {'+\
-            '    alert("'+ l_password_contains_inval_char +'");'+\
-            '    return false;'+\
-            '  }'+\
+            '  if (password.length < 8) {'+\
+            '   alert("'+ l_password_minimun_not_met +'");'+\
             '}'+\
             '</script>'
 
