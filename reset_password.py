@@ -120,6 +120,9 @@ def validate_email_input(burl,data):
         sql = 'SELECT username, name, uid FROM users WHERE username ="'+ str(data) +'"'
         cr.execute(sql)
         rs = cr.fetchall()
+        username = ''
+        name = ''
+        uid = ''
         for row in rs:
             username = row[0]
             name = row[1]
