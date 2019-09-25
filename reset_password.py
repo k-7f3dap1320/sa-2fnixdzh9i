@@ -90,6 +90,7 @@ def change_password_form(burl,data):
             '  }'+\
             '  if (password.length < 8) {'+\
             '   alert("'+ l_password_minimun_not_met +'");'+\
+            '   return false;'+\
             '}'+\
             '</script>'
 
