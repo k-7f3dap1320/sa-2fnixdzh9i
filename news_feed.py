@@ -128,6 +128,8 @@ def get_newsfeed(x,suid,numline,show_chart):
         '</style>'
 
         i = 1
+        new_news_count = 0
+        new_news_max = 3
         newsrow = newnewscss + newsrow + '<div class="row">'
         for row in rs:
             unistr = 'x'+ str( get_random_str(10) ) + 'x'
@@ -142,7 +144,10 @@ def get_newsfeed(x,suid,numline,show_chart):
             symbol = str(row[6])
             contextstyle = ''
             newnewsclass = ''
-            if news_minutes<=10: newnewsclass = 'blinkin'
+            if news_minutes<=10:
+                new_news_count += 1
+                if new_news_count <= new_news_max: newnewsclass = 'blinkin'
+                
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 

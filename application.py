@@ -179,7 +179,8 @@ def go():
     elif request.endpoint == 'reset':
         step = request.args.get('step')
         data = request.values.get('data')
-        c = get_resetpassword_page(appname,burl,step,data)
+        data2 = request.values.get('data2')
+        c = get_resetpassword_page(appname,burl,step,data,data2)
 
     elif request.endpoint == 'search':
         nonavbar = request.args.get('nonavbar')

@@ -14,17 +14,103 @@ import pymysql.cursors
 from sa_db import *
 from sa_func import *
 
-# to generate new user uid
-#get_random_str(99)
-
 access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+def set_new_password(burl,data,data2):
+    box_content = ''
+    try:
+        message_content = 'Your password has been changed. '+\
+        '<a class="btn btn-primary" href="'+ burl +'" role="button">OK</a>'
+
+        new_password = str(data)
+        user_uid = str(data2)
+        user_new_uid = str( get_random_str(99) )
+
+        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'UPDATE Users SET password = "'+ new_password +'" WHERE uid="'+ str(user_uid) +'"; ' +\
+        'UPDATE Users SET uid ="'+ str(user_new_uid) +'" WHERE uid="'+ str(user_uid) +'";'
+        cr.execute(sql)
+        connection.commit()
+
+        cr.close()
+        connection.close()
+
+        box_content = ' '+\
+        '<div class="box-top">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '               <span class="sectiont">'+ message_content +'</span>'+\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'
+    except Exception as e: print(e)
+    return box_content
+
+def change_password_form(burl,data):
+    box_content = ''
+    try:
+        l_section_title = 'Change your password'
+        l_enterpassword_placeholder = 'Enter your new password'
+        l_confirmpassword_placeholder = 'Re-enter your new password'
+        l_password_not_match = 'Password do not match.'
+        l_password_contains_inval_char = 'Password should not contains special characters, such as ponctuation.'
+        l_btn_label = 'Submit'
+        user_uid = str(data)
+
+        validation_script = ' '+\
+        '<script>'+\
+        'checkPassword() {'+\
+        '  if (document.getElementById("data").value =='+\
+        '    document.getElementById("repassword").value) {'+\
+        '    document.getElementById("message").innerHTML = "";'+\
+        '    document.getElementById("submitBtn").innerHTML = "'+ '<button type="submit" class="btn btn-info btn-lg btn-block form-resetpassword-btn">' + l_btn_label + '&nbsp;<i class="fas fa-arrow-right"></i></button>' +'";'+\
+        '  } else {'+\
+        '    document.getElementById("message").innerHTML = "'+ l_password_not_match +'";'+\
+        '  }'+\
+        '}'+\
+        'function validateForm() {'+\
+        '  var password = document.forms["passwordForm"]["data"].value;'+\
+        '  var repassword = document.forms["passwordForm"]["repassword"].value;'+\
+        '  if (password != repassword) {'+\
+        '    alert("'+ l_password_not_match +'");'+\
+        '    return false;'+\
+        '  }'+\
+        '  if ( password.indexOf(",") > -1 ) {'+\
+        '    alert("'+ l_password_contains_inval_char +'");'+\
+        '    return false;'+\
+        '  }'+\
+        '}'+\
+        '</script>'
+
+        box_content = validation_script +\
+        '<div class="box-top">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '               <span class="sectiont">'+ l_section_title +'</span>'+\
+        '               <form name="passwordForm" id="passwordForm"  action="'+ burl+'reset/?step=4" method="post" onsubmit="return validateForm();" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
+        '                   <input type="hidden" id="data2" name="data2" value="'+ user_uid +'">'+\
+        '                   <input type="password" id="data" name="data" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_enterpassword_placeholder +'" required>'+\
+        '                   <input type="password" id="repassword" name="repassword" onkeyup="checkPassword();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_confirmpassword_placeholder +'" required>'+\
+        '                   <span id="message"></span>'+\
+        '                   <span id="submitBtn"></span>'+\
+        '               </form>'+\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'
+    except Exception as e: print(e)
+    return box_content
 
 def validate_email_input(burl,data):
     box_content = ''
     try:
         l_email_subject = 'Reset your password'
-        l_email_content = 'Hi {name_of_user}, go to the following link to change your password: {link_to_reset_password}'
+        l_email_content = 'Hi {name_of_user},\n go to the following link to change your password: {link_to_reset_password}'
         l_email_not_found = 'Unable to find email: '+ str(data) +' in the system. Please contact us for assistance.'
         l_email_sent_notif = 'An email has been sent to your inbox with a link to reset your password. '+\
         'It might takes up to 5 minutes to receive it. Please check as well your spam folder in case it lands there :( '
@@ -39,31 +125,23 @@ def validate_email_input(burl,data):
             name = row[1]
             uid = row[2]
 
+        message_content = l_email_not_found
         if data.lower() == username.lower():
             link = burl +'reset/?step=3&uid='+ str(uid)
             l_email_content = l_email_content.replace('{name_of_user}', name.title() ).replace('{link_to_reset_password}', link)
             send_email_to_queue(data,l_email_subject,l_email_content)
-            box_content = ' '+\
-            '<div class="box-top">' +\
-            '   <div class="row">'+\
-            '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-            '               <span class="sectiont">'+ l_email_sent_notif +'</span>'+\
-            '            </div>'+\
-            '        </div>'+\
-            '   </div>'+\
-            '</div>'
-        else:
-            box_content = ' '+\
-            '<div class="box-top">' +\
-            '   <div class="row">'+\
-            '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-            '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-            '               <span class="sectiont">'+ l_email_not_found +'</span>'+\
-            '            </div>'+\
-            '        </div>'+\
-            '   </div>'+\
-            '</div>'
+            message_content = l_email_sent_notif
+
+        box_content = ' '+\
+        '<div class="box-top">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '               <span class="sectiont">'+ message_content +'</span>'+\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'
 
         cr.close()
         connection.close()
@@ -76,6 +154,7 @@ def get_resetpassword_email_input(burl):
     try:
         l_reset_password = 'Reset your password'
         l_email_placeholder = 'Enter your email'
+        l_btn_label = 'Reset Password'
 
         box_content = ' '+\
         '<div class="box-top">' +\
@@ -84,8 +163,8 @@ def get_resetpassword_email_input(burl):
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <span class="sectiont">'+ l_reset_password +'</span>'+\
         '               <form action="'+ burl+'reset/?step=2" method="post" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
-        '                   <input type="text" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email_placeholder +'" required>'+\
-        '                   <button type="submit" class="btn btn-info btn-lg btn-block form-resetpassword-btn">' + 'Reset password' + '&nbsp;<i class="fas fa-arrow-right"></i></button>'+\
+        '                   <input type="text" id="data" name="data" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email_placeholder +'" required>'+\
+        '                   <button type="submit" class="btn btn-info btn-lg btn-block form-resetpassword-btn">' + l_btn_label + '&nbsp;<i class="fas fa-arrow-right"></i></button>'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
@@ -95,12 +174,16 @@ def get_resetpassword_email_input(burl):
     except Exception as e: print(e)
     return box_content
 
-def get_resetpassword_page(appname,burl,step,data):
+def get_resetpassword_page(appname,burl,step,data,data2):
     r = ''
     try:
         page_content = ''
         if step == str(2):
             page_content = validate_email_input(burl,data)
+        elif step == str(3):
+            page_content = change_password_form(burl,data)
+        elif step == str(4):
+            page_content = set_new_password(burl,data)
         else:
             page_content = get_resetpassword_email_input(burl)
 
@@ -108,5 +191,4 @@ def get_resetpassword_page(appname,burl,step,data):
         r = r + get_body( get_loading_body(), navbar(burl,0) + page_content + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
-
     return r
