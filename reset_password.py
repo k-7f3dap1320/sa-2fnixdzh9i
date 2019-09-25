@@ -20,9 +20,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def set_new_password(burl,data,data2):
     box_content = ''
     try:
-        message_content = 'Your password has been changed. '+\
-        '<a class="btn btn-primary" href="'+ burl +'" role="button">OK</a>'
-
+        message_content = '<a href="'+ burl +'">Your password has been changed.</a>'
         new_password = str(data)
         user_uid = str(data2)
         user_new_uid = str( get_random_str(99) )
