@@ -32,6 +32,8 @@ application = Flask(__name__)
 COMPRESS_MIMETYPES = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
 COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 
+DEV_MODE = False
+
 
 @application.route('/')
 @application.route('/s/', endpoint='s', methods=["POST", "GET"])
@@ -59,9 +61,8 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 def go():
 
     appname = 'SmartAlpha | Trading Intelligence'
-    dev_mode = False
     c = ''; burl = request.url_root;
-    if not dev_mode: burl = burl.replace('http://','https://')
+    if not DEV_MODE: burl = burl.replace('http://','https://')
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
@@ -234,4 +235,7 @@ def go():
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
     #For AWS Beanstalk --> application.run()
-    application.run()
+    if not DEV_MODE:
+        application.run()
+    else:
+        application.run(host='0.0.0.0', port=80, threaded=True)
