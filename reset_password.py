@@ -29,7 +29,7 @@ def set_new_password(burl,data,data2):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'UPDATE Users SET password = "'+ new_password +'" WHERE uid="'+ str(user_uid) +'" '
         cr.execute(sql)
-        'UPDATE Users SET uid ="'+ str(user_new_uid) +'" WHERE uid="'+ str(user_uid) +'" '
+        sql = 'UPDATE Users SET uid ="'+ str(user_new_uid) +'" WHERE uid="'+ str(user_uid) +'" '
         cr.execute(sql)
         connection.commit()
 
