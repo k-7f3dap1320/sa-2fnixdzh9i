@@ -223,7 +223,7 @@ def go():
     except Exception as e: print(e)
 
 
-    if not dev_mode:
+    if not DEV_MODE:
         if burl.find('https://app.') == -1:
             if burl.find('https://www.') > -1:
                 burl = burl.replace('https://www.','https://app.')
