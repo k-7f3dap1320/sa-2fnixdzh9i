@@ -29,8 +29,9 @@ def set_new_password(burl,data,data2):
 
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'UPDATE Users SET password = "'+ new_password +'" WHERE uid="'+ str(user_uid) +'"; ' +\
-        'UPDATE Users SET uid ="'+ str(user_new_uid) +'" WHERE uid="'+ str(user_uid) +'";'
+        sql = 'UPDATE Users SET password = "'+ new_password +'" WHERE uid="'+ str(user_uid) +'" '
+        cr.execute(sql)
+        'UPDATE Users SET uid ="'+ str(user_new_uid) +'" WHERE uid="'+ str(user_uid) +'" '
         cr.execute(sql)
         connection.commit()
 
@@ -53,6 +54,7 @@ def set_new_password(burl,data,data2):
 def change_password_form(burl,data):
     box_content = ''
     try:
+        l_invalid_link_content = 'Olala invalid link :O '
         l_section_title = 'Change your password'
         l_enterpassword_placeholder = 'Enter your new password'
         l_confirmpassword_placeholder = 'Re-enter your new password'
@@ -61,48 +63,69 @@ def change_password_form(burl,data):
         l_btn_label = 'Submit'
         user_uid = str(data)
 
-        validation_script = ' '+\
-        '<script>'+\
-        'function checkPassword() {'+\
-        '  if (document.getElementById("data").value =='+\
-        '    document.getElementById("repassword").value) {'+\
-        '    document.getElementById("message").innerHTML = "";'+\
-        '    document.getElementById("submitBtn").innerHTML = "'+ '<button type=\'submit\' class=\'btn btn-info btn-lg btn-block form-resetpassword-btn\'>' + l_btn_label + '&nbsp;<i class=\'fas fa-arrow-right\'></i></button>' +'";'+\
-        '  } else {'+\
-        '    document.getElementById("message").innerHTML = "<div class=\'alert alert-warning\' role=\'alert\'>'+ l_password_not_match +'</div>";'+\
-        '  }'+\
-        '}'+\
-        'function validateForm() {'+\
-        '  var password = document.forms["passwordForm"]["data"].value;'+\
-        '  var repassword = document.forms["passwordForm"]["repassword"].value;'+\
-        '  if (password != repassword) {'+\
-        '    alert("'+ l_password_not_match +'");'+\
-        '    return false;'+\
-        '  }'+\
-        '  if ( password.indexOf(",") > -1 ) {'+\
-        '    alert("'+ l_password_contains_inval_char +'");'+\
-        '    return false;'+\
-        '  }'+\
-        '}'+\
-        '</script>'
+        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT uid FROM users WHERE uid="'+ str(user_uid) +'"'
+        cr.execute(sql)
+        rs.fetchall()
+        select_uid = ''
+        for row in rs: select_uid = row[0]
 
-        box_content = validation_script +\
-        '<div class="box-top">' +\
-        '   <div class="row">'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        '               <span class="sectiont">'+ l_section_title +'</span>'+\
-        '               <form name="passwordForm" id="passwordForm"  action="'+ burl+'reset/?step=4" method="post" onsubmit="return validateForm();" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
-        '                   <input type="hidden" id="data2" name="data2" value="'+ user_uid +'">'+\
-        '                   <input type="password" id="data" name="data" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_enterpassword_placeholder +'" required>'+\
-        '                   <input type="password" id="repassword" name="repassword" onkeyup="checkPassword();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_confirmpassword_placeholder +'" required>'+\
-        '                   <span id="message"></span>'+\
-        '                   <span id="submitBtn"></span>'+\
-        '               </form>'+\
-        '            </div>'+\
-        '        </div>'+\
-        '   </div>'+\
-        '</div>'
+        if select_uid == user_uid:
+            validation_script = ' '+\
+            '<script>'+\
+            'function checkPassword() {'+\
+            '  if (document.getElementById("data").value =='+\
+            '    document.getElementById("repassword").value) {'+\
+            '    document.getElementById("message").innerHTML = "";'+\
+            '    document.getElementById("submitBtn").innerHTML = "'+ '<button type=\'submit\' class=\'btn btn-info btn-lg btn-block form-resetpassword-btn\'>' + l_btn_label + '&nbsp;<i class=\'fas fa-arrow-right\'></i></button>' +'";'+\
+            '  } else {'+\
+            '    document.getElementById("message").innerHTML = "<div class=\'alert alert-warning\' role=\'alert\'>'+ l_password_not_match +'</div>";'+\
+            '  }'+\
+            '}'+\
+            'function validateForm() {'+\
+            '  var password = document.forms["passwordForm"]["data"].value;'+\
+            '  var repassword = document.forms["passwordForm"]["repassword"].value;'+\
+            '  if (password != repassword) {'+\
+            '    alert("'+ l_password_not_match +'");'+\
+            '    return false;'+\
+            '  }'+\
+            '  if ( password.indexOf(",") > -1 ) {'+\
+            '    alert("'+ l_password_contains_inval_char +'");'+\
+            '    return false;'+\
+            '  }'+\
+            '}'+\
+            '</script>'
+
+            box_content = validation_script +\
+            '<div class="box-top">' +\
+            '   <div class="row">'+\
+            '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+            '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+            '               <span class="sectiont">'+ l_section_title +'</span>'+\
+            '               <form name="passwordForm" id="passwordForm"  action="'+ burl+'reset/?step=4" method="post" onsubmit="return validateForm();" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
+            '                   <input type="hidden" id="data2" name="data2" value="'+ user_uid +'">'+\
+            '                   <input type="password" id="data" name="data" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_enterpassword_placeholder +'" required>'+\
+            '                   <input type="password" id="repassword" name="repassword" onkeyup="checkPassword();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_confirmpassword_placeholder +'" required>'+\
+            '                   <span id="message"></span>'+\
+            '                   <span id="submitBtn"></span>'+\
+            '               </form>'+\
+            '            </div>'+\
+            '        </div>'+\
+            '   </div>'+\
+            '</div>'
+        else:
+            box_content = '' +\
+            '<div class="box-top">' +\
+            '   <div class="row">'+\
+            '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+            '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+            '               <div class="alert alert-danger" role="alert">'+ l_invalid_link_content +'</div>'+\
+            '            </div>'+\
+            '        </div>'+\
+            '   </div>'+\
+            '</div>'
+
     except Exception as e: print(e)
     return box_content
 
