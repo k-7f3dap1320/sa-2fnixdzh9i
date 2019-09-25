@@ -113,7 +113,7 @@ def validate_email_input(burl,data):
         l_email_content = 'Hi {name_of_user},\n go to the following link to change your password: {link_to_reset_password}'
         l_email_not_found = 'Unable to find email: '+ str(data) +' in the system. Please contact us for assistance.'
         l_email_sent_notif = 'An email has been sent to your inbox with a link to reset your password. '+\
-        'It might takes up to 5 minutes to receive it. Please check as well your spam folder in case it lands there :( '
+        'It might take up to 5 minutes to receive it. Please check as well your spam folder in case it lands there :( '
 
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
