@@ -33,7 +33,7 @@ def get_login_form(burl,theme,redirect):
         '      <input type="password" id="password" name="password" class="form-control btn-outline-info" placeholder="Password" required>'+\
         '      <button class="btn btn-lg btn-info btn-block form-signin-btn" type="submit">Login</button>'+\
         '<div>&nbsp;</div>'+\
-        '<div><span style="float: left;"><a href="'+ burl +'pricing/" class="text-info">'+ l_register_link +'</a></span><span style="float: right;"><a href="'+ burl +'reset" target="_blank" class="text-info">'+ l_forgot_password +'</a></span></div>'+\
+        '<div><span style="float: left;"><a href="'+ burl +'pricing/" class="text-info">'+ l_register_link +'</a></span><span style="float: right;"><a href="'+ burl +'reset" class="text-info">'+ l_forgot_password +'</a></span></div>'+\
         '    </form>'
     except Exception as e: print(e)
     return r
