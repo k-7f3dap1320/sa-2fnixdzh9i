@@ -114,10 +114,10 @@ def get_newsfeed(x,suid,numline,show_chart):
         newnewscss = ''+\
         '<style>'+\
         '.blinkin {'+\
-        ' -webkit-animation: inrow 2s 8s; /* Safari 4+ */'+\
-        '  -moz-animation:   inrow 2s 8s; /* Fx 5+ */'+\
-        '  -o-animation:     inrow 2s 8s; /* Opera 12+ */'+\
-        '  animation:        inrow 2s 8s; /* IE 10+, Fx 29+ */'+\
+        ' -webkit-animation: inrow 2s 10; /* Safari 4+ */'+\
+        '  -moz-animation:   inrow 2s 10; /* Fx 5+ */'+\
+        '  -o-animation:     inrow 2s 10; /* Opera 12+ */'+\
+        '  animation:        inrow 2s 10; /* IE 10+, Fx 29+ */'+\
         '}'+\
         '@-webkit-keyframes inrow {'+\
         '  0%, 49% {'+\
