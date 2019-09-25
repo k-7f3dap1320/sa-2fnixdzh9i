@@ -153,7 +153,7 @@ def validate_email_input(burl,data):
 
         message_content = l_email_not_found
         if data.lower() == username.lower():
-            link = burl +'reset/?step=3&uid='+ str(uid)
+            link = burl +'reset/?step=3&data='+ str(uid)
             l_email_content = l_email_content.replace('{name_of_user}', name.title() ).replace('{link_to_reset_password}', link)
             send_email_to_queue(data,l_email_subject,l_email_content)
             message_content = l_email_sent_notif
