@@ -67,7 +67,7 @@ def change_password_form(burl,data):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'SELECT uid FROM users WHERE uid="'+ str(user_uid) +'"'
         cr.execute(sql)
-        rs.fetchall()
+        rs = cr.fetchall()
         select_uid = ''
         for row in rs: select_uid = row[0]
 
