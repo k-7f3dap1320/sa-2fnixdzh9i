@@ -57,7 +57,7 @@ def change_password_form(burl,data):
         l_enterpassword_placeholder = 'Enter your new password'
         l_confirmpassword_placeholder = 'Re-enter your new password'
         l_password_not_match = 'Password do not match.'
-        l_password_contains_inval_char = 'Password should not contains special characters, such as ponctuation.'
+        l_password_contains_inval_char = 'Password should not contain special characters, such as ponctuation.'
         l_btn_label = 'Submit'
         user_uid = str(data)
 
@@ -69,7 +69,7 @@ def change_password_form(burl,data):
         '    document.getElementById("message").innerHTML = "";'+\
         '    document.getElementById("submitBtn").innerHTML = "'+ '<button type=\'submit\' class=\'btn btn-info btn-lg btn-block form-resetpassword-btn\'>' + l_btn_label + '&nbsp;<i class=\'fas fa-arrow-right\'></i></button>' +'";'+\
         '  } else {'+\
-        '    document.getElementById("message").innerHTML = "<div class=\'alert alert-danger\' role=\'alert\'>'+ l_password_not_match +'</div>";'+\
+        '    document.getElementById("message").innerHTML = "<div class=\'alert alert-warning\' role=\'alert\'>'+ l_password_not_match +'</div>";'+\
         '  }'+\
         '}'+\
         'function validateForm() {'+\
@@ -186,7 +186,7 @@ def get_resetpassword_page(appname,burl,step,data,data2):
         elif step == str(3):
             page_content = change_password_form(burl,data)
         elif step == str(4):
-            page_content = set_new_password(burl,data)
+            page_content = set_new_password(burl,data,data2)
         else:
             page_content = get_resetpassword_email_input(burl)
 
