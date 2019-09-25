@@ -114,10 +114,10 @@ def get_newsfeed(x,suid,numline,show_chart):
         newnewscss = ''+\
         '<style>'+\
         '.blinkin {'+\
-        ' -webkit-animation: inrow 2s infinite; /* Safari 4+ */'+\
-        '  -moz-animation:   inrow 2s infinite; /* Fx 5+ */'+\
-        '  -o-animation:     inrow 2s infinite; /* Opera 12+ */'+\
-        '  animation:        inrow 2s infinite; /* IE 10+, Fx 29+ */'+\
+        ' -webkit-animation: inrow 2s 8s; /* Safari 4+ */'+\
+        '  -moz-animation:   inrow 2s 8s; /* Fx 5+ */'+\
+        '  -o-animation:     inrow 2s 8s; /* Opera 12+ */'+\
+        '  animation:        inrow 2s 8s; /* IE 10+, Fx 29+ */'+\
         '}'+\
         '@-webkit-keyframes inrow {'+\
         '  0%, 49% {'+\
@@ -147,7 +147,7 @@ def get_newsfeed(x,suid,numline,show_chart):
             if news_minutes<=10:
                 new_news_count += 1
                 if new_news_count <= new_news_max: newnewsclass = 'blinkin'
-                
+
             if news_ranking<=-0.8: contextstyle = theme_return_this('color: white; background-color: red;', 'color: white; background-color: red;')
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
