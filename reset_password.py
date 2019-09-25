@@ -42,7 +42,7 @@ def set_new_password(burl,data,data2):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        '               <span class="sectiont">'+ message_content +'</span>'+\
+        '               <span class="sectiont"><div class="alert alert-info" role="alert">'+ message_content +'</div></span>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
@@ -67,7 +67,7 @@ def change_password_form(burl,data):
         '  if (document.getElementById("data").value =='+\
         '    document.getElementById("repassword").value) {'+\
         '    document.getElementById("message").innerHTML = "";'+\
-        '    document.getElementById("submitBtn").innerHTML = "'+ '<button type="submit" class="btn btn-info btn-lg btn-block form-resetpassword-btn">' + l_btn_label + '&nbsp;<i class="fas fa-arrow-right"></i></button>' +'";'+\
+        '    document.getElementById("submitBtn").innerHTML = "'+ '<button type=\'submit\' class=\'btn btn-info btn-lg btn-block form-resetpassword-btn\'>' + l_btn_label + '&nbsp;<i class=\'fas fa-arrow-right\'></i></button>' +'";'+\
         '  } else {'+\
         '    document.getElementById("message").innerHTML = "'+ l_password_not_match +'";'+\
         '  }'+\
@@ -140,7 +140,7 @@ def validate_email_input(burl,data):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        '               <span class="sectiont">'+ message_content +'</span>'+\
+        '               <span class="sectiont"><div class="alert alert-info" role="alert">'+ message_content +'</div></span>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
