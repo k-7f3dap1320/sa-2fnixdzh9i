@@ -59,8 +59,8 @@ def get_settings_content(burl):
         '                   </div>'+\
         '                   <div style="height: 30px;"></div>'+\
         '                   <!---------------- Trader: Market ---------------->'+\
-        '                   <div class="input-group">'+\
-        '                       <span>'+ l_market_ac +'</span>'+\
+        '                   <div>'+\
+        '                       <span>'+ l_market_ac +'</span><div style="height: 30px;"></div>'+\
         get_radio_button_Trader_prf() +\
         '                   </div>'+\
         '               </form>'+\
