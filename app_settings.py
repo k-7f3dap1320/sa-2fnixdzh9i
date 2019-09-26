@@ -60,7 +60,7 @@ def get_settings_content(burl):
         '                   <div style="height: 30px;"></div>'+\
         '                   <!---------------- Trader: Market ---------------->'+\
         '                   <div>'+\
-        '                       <span class="text-primary">'+ l_market_ac +'</span><div style="height: 30px;"></div>'+\
+        '                       <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf() +\
         '                   </div>'+\
         '               </form>'+\
