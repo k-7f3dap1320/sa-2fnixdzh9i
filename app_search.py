@@ -24,12 +24,7 @@ def get_search_table_content(burl,nonavbar):
     try:
         if nonavbar is None: nonavbarparam = ''
 
-        r = ' '+\
-        '<script>$(document).ready(function($) {'+\
-        '$(".sa-table-click-row").click(function() {'+\
-        'window.document.location = $(this).data("href");'+\
-        '});'+\
-        '});</script>'
+        r = ' '
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -80,12 +75,13 @@ def gen_search_table(burl,nonavbar):
         print(e)
     return r
 
-def get_box_search(burl,nonavbar,sid):
+def get_box_search(burl,nonavbar):
 
     box_content = ''
 
     try:
         col_id = 0
+        sid = get_random_str(9)
 
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
@@ -97,7 +93,9 @@ def get_box_search(burl,nonavbar,sid):
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
         '  </form>'+\
         '  <script>'+\
-        '       document.searchForm.'+ str(sid) +'.focus();'+\
+        '   window.onload = function() {'+\
+        '      var input = document.searchForm.'+ str(sid) +'.focus();'+\
+        '   }'+\
         '  </script>'
 
         box_content = '' +\
@@ -161,19 +159,12 @@ def get_search_page_content(burl,nonavbar):
         if nonavbar is None:
             box_class = 'box-top'
 
-        inputbox_focus_script = ' '+\
-        '<script>'+\
-        'window.onload = function() {'+\
-        '  var input = document.getElementById("'+ str(sid) +'").focus();'+\
-        '}'+\
-        '</script>'
-
-        box_content = inputbox_focus_script +\
+        box_content = ' ' +\
         '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        get_box_search(burl,nonavbar,sid) +\
+        get_box_search(burl,nonavbar) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
