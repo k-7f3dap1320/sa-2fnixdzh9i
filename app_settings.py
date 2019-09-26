@@ -32,7 +32,7 @@ def get_settings_content(burl):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <form name="settingsForm" id="settingsForm" method="post" action="'+ burl +'settings/?step=2" >'+\
-        '                   <span class="sectiont">'+ l_profile_section +'</span>'+\
+        '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_profile_section +'</span>'+\
         '                   <!--------------------- Name --------------------->'+\
         '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span style="width:200px;">'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
@@ -57,6 +57,7 @@ def get_settings_content(burl):
         '                       </div>'+\
         '                           <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
+        '                   <span style="height: 20px;"></span>'+\
         '                   <!---------------- Trader: Market ---------------->'+\
         '                   <div class="input-group">'+\
         '                       <span>'+ l_market_ac +'</span>'+\
