@@ -94,7 +94,7 @@ def get_box_search(burl,nonavbar):
         '  </form>'+\
         '  <script>'+\
         '   window.onload = function() {'+\
-        '      var input = document.searchForm.'+ str(sid) +'.focus();'+\
+        '       document.getElementById("'+ str(sid) +'").focus();'+\
         '   }'+\
         '  </script>'
 
