@@ -17,7 +17,7 @@ from sa_func import *
 access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_settings_content(burl):
+def get_settings_content(burl,step):
     box_content = ''
     try:
         l_profile_section = 'Profile Settings'
@@ -68,7 +68,8 @@ def get_settings_content(burl):
         '                       <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf() +\
         '                   </div>'+\
-        '               <span class="text-info" style="width:200px;"><a href="'+ burl +'">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
+        '               <div style="height: 30px;"></div>'+\
+        '               <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
         '               <input type="submit" class="btn btn-primary btn-md active" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
@@ -120,11 +121,11 @@ def get_radio_button_Trader_prf():
     except Exception as e: print(e)
     return r
 
-def get_settings_page(appname,burl):
+def get_settings_page(appname,burl,step):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl,0) + get_settings_content(burl) + get_page_footer(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl,0) + get_settings_content(burl,step) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
 

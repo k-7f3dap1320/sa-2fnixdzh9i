@@ -171,7 +171,8 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'settings':
-        c = get_settings_page(appname,burl)
+        step = request.args.get('step')
+        c = get_settings_page(appname,burl,step)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
