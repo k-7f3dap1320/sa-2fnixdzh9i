@@ -24,6 +24,7 @@ def get_settings_content(burl):
         l_fullname = 'Fullname'
         l_nickname = 'Displayed Nickname'
         l_email = 'Email address'
+        l_password = 'Password and Security'
         l_market_ac = 'Default asset class / market to show in your newsfeed'
 
         box_content = ' '+\
@@ -67,7 +68,15 @@ def get_settings_content(burl):
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
+        '</div>'+\
+        '<div class="box">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '           <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
+        '        </div>'+\
+        '   </div>'+\
         '</div>'
+
     except Exception as e: print(e)
     return box_content
 
@@ -88,7 +97,7 @@ def get_radio_button_Trader_prf():
             label = row[1]
             r = r + '<input type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'">&nbsp;'+ str(label) +'&nbsp;'+ l_market +'<br>'
         print(sql)
-        sql = 'SELECT asset_class_id, asset_class_name FROM asset_class  WHERE asset_class_id<>"'+ get_portf_suffix() +'" ORDER BY asset_class_name'
+        sql = 'SELECT asset_class_id, asset_class_name FROM asset_class  WHERE asset_class_id<>"'+ get_portf_suffix() +'" AND asset_class_id<>"MA:" ORDER BY asset_class_name'
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
