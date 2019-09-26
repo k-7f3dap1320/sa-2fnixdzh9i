@@ -70,7 +70,7 @@ def get_settings_content(burl,step):
         '                   </div>'+\
         '               <div style="height: 30px;"></div>'+\
         '               <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
-        '               <input type="submit" class="btn btn-info btn-lg active" style="max-width:200px; width: 800px" value="'+ l_save_btn +'">'+\
+        '               <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
