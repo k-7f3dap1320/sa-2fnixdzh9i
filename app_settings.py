@@ -70,7 +70,7 @@ def get_settings_content(burl,step):
         '                   </div>'+\
         '               <div style="height: 30px;"></div>'+\
         '               <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
-        '               <input type="submit" class="btn btn-primary btn-lg active" style="max-width:200px;" value="'+ l_save_btn +'">'+\
+        '               <input type="submit" class="btn btn-info btn-lg active" style="max-width:200px; width: 800px" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
@@ -82,7 +82,7 @@ def get_settings_content(burl,step):
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
         '               <span class="text-primary" style="width:200px;">'+ l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
-        '               <a href="'+ burl +'reset/?password" class="btn btn-info btn-md active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
+        '               <a href="'+ burl +'reset/?password" class="btn btn-primary btn-md active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
