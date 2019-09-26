@@ -94,6 +94,7 @@ def get_box_search(burl,nonavbar):
         '  </form>'+\
         '  <script>'+\
         '   window.onload = function() {'+\
+        '       alert("trigger");'+\
         '       document.getElementById("filterInput").focus();'+\
         '   }'+\
         '  </script>'
