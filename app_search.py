@@ -99,29 +99,7 @@ def get_box_search(burl,nonavbar):
         '   }'+\
         '  </script>'
 
-        box_content = '' +\
-        '<script>'+\
-        'function filterTable() {'+\
-        '  var input, filter, table, tr, td, i, txtValue;'+\
-        '  input = document.getElementById("filterInput");'+\
-        '  filter = input.value.toUpperCase();'+\
-        '  table = document.getElementById("table_search");'+\
-        '  tr = table.getElementsByTagName("tr");'+\
-        '  for (i = 0; i < tr.length; i++) {'+\
-        '    td = tr[i].getElementsByTagName("td")['+ str(col_id) +'];'+\
-        '    if (td) {'+\
-        '      txtValue = td.textContent || td.innerText;'+\
-        '      if (txtValue.toUpperCase().indexOf(filter) > -1) {'+\
-        '        tr[i].style.display = "";'+\
-        '      } else {'+\
-        '        tr[i].style.display = "none";'+\
-        '      }'+\
-        '    }'+\
-        '  }'+\
-        '}'+\
-        '</script>'
-
-        box_content = box_content +\
+        box_content = ' ' +\
         search_box +\
         gen_search_table(burl,nonavbar)
 
