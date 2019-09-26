@@ -28,6 +28,8 @@ def get_settings_content(burl):
         l_market_ac = 'Default asset class / market to show in your newsfeed'
         l_password_label = 'Password'
         l_password_btn = 'Change Password'
+        l_save_btn = 'Save changes'
+        l_cancel_link = 'Cancel'
 
         box_content = ' '+\
         '<div class="box-top">' +\
@@ -66,6 +68,8 @@ def get_settings_content(burl):
         '                       <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf() +\
         '                   </div>'+\
+        '               <span class="text-info" style="width:200px;"><a href="'+ burl +'">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
+        '               <input type="submit" class="btn btn-primary btn-md active" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
@@ -77,7 +81,7 @@ def get_settings_content(burl):
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
         '               <span class="text-primary" style="width:200px;">'+ l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
-        '               <a href="'+ burl +'reset/?password" class="btn btn-primary btn-md active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
+        '               <a href="'+ burl +'reset/?password" class="btn btn-info btn-md active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
