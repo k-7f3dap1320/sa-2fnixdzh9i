@@ -26,6 +26,8 @@ def get_settings_content(burl):
         l_email = 'Email address'
         l_password = 'Password and Security'
         l_market_ac = 'Default asset class / market to show in your newsfeed'
+        l_password_label = 'Password'
+        l_password_btn = 'Change Password'
 
         box_content = ' '+\
         '<div class="box-top">' +\
@@ -74,6 +76,8 @@ def get_settings_content(burl):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
+        '               <span class="text-primary" style="width:200px;">'+ l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
+        '               <a href="'+ burl +'/reset/?password" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
