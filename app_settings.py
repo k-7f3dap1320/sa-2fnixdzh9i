@@ -30,37 +30,37 @@ def get_settings_content(burl):
         '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <form name="settingsForm" id="settingsForm" method="post" action="'+ burl +'settings/?step=2" >'+\
         '                   <span class="sectiont">'+ l_profile_section +'</span>'+\
         '                   <!--------------------- Name --------------------->'+\
-        '                   <div class="input-group input-group-lg">'+\
-        '                       <span>'+ l_fullname +'</span>'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span>'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
         '                           <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_fullname +'" required autofocus>'+\
         '                   </div>'+\
         '                   <!--------------------- Nickname ----------------->'+\
-        '                   <div class="input-group input-group-lg">'+\
-        '                       <span>'+ l_nickname +'</span>'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span>'+ l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
         '                           <input type="text" id="name" name="name" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_nickname +'" required autofocus>'+\
         '                   </div>'+\
         '                   <!--------------------- Email -------------------->'+\
-        '                   <div class="input-group input-group-lg">'+\
-        '                       <span>'+ l_email +'</span>'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span>'+ l_email +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
         '                           <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
         '                   <!---------------- Trader: Market ---------------->'+\
-        '                   <div class="input-group input-group-lg">'+\
+        '                   <div class="input-group">'+\
         '                       <span>'+ l_market_ac +'</span>'+\
-        get_radio_button_Trader_prf()+\
+        get_radio_button_Trader_prf() +\
         '                   </div>'+\
         '               </form>'+\
         '            </div>'+\
@@ -78,7 +78,7 @@ def get_radio_button_Trader_prf():
         value =''; label =''
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'SELECT market_id, market_label FROM market ORDER market_label'
+        sql = 'SELECT market_id, market_label FROM markets ORDER market_label'
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
