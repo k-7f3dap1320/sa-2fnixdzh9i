@@ -35,7 +35,7 @@ def get_settings_content(burl):
         '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_profile_section +'</span><div style="height: 30px;"></div>'+\
         '                   <!--------------------- Name --------------------->'+\
         '                   <div class="input-group" style="max-width:888px">'+\
-        '                       <span style="width:200px;">'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <span class="text-primary" style="width:200px;">'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
@@ -43,7 +43,7 @@ def get_settings_content(burl):
         '                   </div>'+\
         '                   <!--------------------- Nickname ----------------->'+\
         '                   <div class="input-group" style="max-width:888px">'+\
-        '                       <span style="width:200px;">'+ l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <span class="text-primary" style="width:200px;">'+ l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
@@ -51,7 +51,7 @@ def get_settings_content(burl):
         '                   </div>'+\
         '                   <!--------------------- Email -------------------->'+\
         '                   <div class="input-group" style="max-width:888px">'+\
-        '                       <span style="width:200px;">'+ l_email +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <span class="text-primary" style="width:200px;">'+ l_email +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
@@ -86,7 +86,7 @@ def get_radio_button_Trader_prf():
         for row in rs:
             value = row[0]
             label = row[1]
-            r = r + '<input type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'">&nbsp;'+ str(label) +'&nbsp;'+ l_market +'<br>'
+            r = r + '<input class="text-primary" type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'">&nbsp;'+ str(label) +'&nbsp;'+ l_market +'<br>'
         print(sql)
         sql = 'SELECT asset_class_id, asset_class_name FROM asset_class ORDER BY asset_class_name'
         cr.execute(sql)
@@ -94,7 +94,7 @@ def get_radio_button_Trader_prf():
         for row in rs:
             value = row[0]
             label = row[1]
-            r = r + '<input type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'">&nbsp;'+ str(label)+'<br>'
+            r = r + '<input class="text-primary" type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'">&nbsp;'+ str(label)+'<br>'
         cr.close()
         connection.close()
 
