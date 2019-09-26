@@ -80,20 +80,19 @@ def gen_search_table(burl,nonavbar):
         print(e)
     return r
 
-def get_box_search(burl,nonavbar):
+def get_box_search(burl,nonavbar,sid):
 
     box_content = ''
 
     try:
         col_id = 0
-        sid = get_random_str(9)
 
         l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
         list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
         search_box = ' '+\
         '  <form class="" action="'+ burl +'" method="get" id="searchForm" name="searhcForm" >'+\
         '       <div class="input-group input-group-lg">'+\
-        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="search" id="filterInput" name="'+ str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
+        '       <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="search" id="filterInput" id="'+ str(sid) +'" name="'+ str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;'+\
         '       </div>'+\
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
         '  </form>'+\
@@ -156,16 +155,25 @@ def get_search_result(q):
 def get_search_page_content(burl,nonavbar):
     box_content = ''
     try:
+        sid = get_random_str(9)
+
         box_class = 'box'
         if nonavbar is None:
             box_class = 'box-top'
 
-        box_content = ' '+\
+        inputbox_focus_script = ' '+\
+        '<script>'+\
+        'window.onload = function() {'+\
+        '  var input = document.getElementById("'+ str(sid) +'").focus();'+\
+        '}'+\
+        '</script>'
+
+        box_content = inputbox_focus_script +\
         '<div class="'+ box_class +'">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        get_box_search(burl,nonavbar) +\
+        get_box_search(burl,nonavbar,sid) +\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
