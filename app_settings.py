@@ -32,7 +32,7 @@ def get_settings_content(burl):
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <form name="settingsForm" id="settingsForm" method="post" action="'+ burl +'settings/?step=2" >'+\
-        '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_profile_section +'</span>'+\
+        '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_profile_section +'</span><div style="height: 30px;"></div>'+\
         '                   <!--------------------- Name --------------------->'+\
         '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span style="width:200px;">'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
@@ -57,7 +57,7 @@ def get_settings_content(burl):
         '                       </div>'+\
         '                           <input type="email" id="email" name="email" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
-        '                   <span style="height: 20px;"></span>'+\
+        '                   <div style="height: 30px;"></div>'+\
         '                   <!---------------- Trader: Market ---------------->'+\
         '                   <div class="input-group">'+\
         '                       <span>'+ l_market_ac +'</span>'+\
@@ -79,7 +79,7 @@ def get_radio_button_Trader_prf():
         value =''; label =''
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'SELECT market_id, market_label FROM markets ORDER market_label'
+        sql = 'SELECT market_id, market_label FROM markets ORDER BY market_label'
         print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
