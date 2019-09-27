@@ -84,23 +84,25 @@ def get_settings_content(burl,step):
         '                           <input type="email" id="email" name="email" value="'+ str(username_email) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
         '                   <div style="height: 30px;"></div>'+\
-        '                   <!---------------- Trader: Market ---------------->'+\
-        '                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '                      <div>'+\
-        '                           <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
+        '                   <div class="row">'+\
+        '                     <!---------------- Trader: Market ---------------->'+\
+        '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '                          <div>'+\
+        '                               <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf(default_profile) +\
-        '                      </div>'+\
-        '                   </div>'+\
-        '                   <!-------------- Email Subscription -------------->'+\
-        '                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-        '                      <div>'+\
-        '                           <span class="text-primary">'+ l_email_subscr +'</span><div style="height: 15px;"></div>'+\
+        '                          </div>'+\
+        '                       </div>'+\
+        '                       <!-------------- Email Subscription -------------->'+\
+        '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '                           <div>'+\
+        '                               <span class="text-primary">'+ l_email_subscr +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_email_subs(email_subscription) +\
-        '                      </div>'+\
+        '                           </div>'+\
+        '                       </div>'+\
         '                   </div>'+\
-    '                       <div style="height: 30px;"></div>'+\
-    '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
-    '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
+        '                       <div style="height: 30px;"></div>'+\
+        '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
+        '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
