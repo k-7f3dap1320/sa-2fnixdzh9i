@@ -108,7 +108,7 @@ def get_user_creation_form(burl,broker):
         l_received_payment_subscription_thank_you = "We have received your payment thank you."
         l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
 
-        payment_completed_header = ''
+        payment_completed_header = broker
         if broker == '':
             payment_completed_header = ' '+\
             '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
