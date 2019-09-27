@@ -22,7 +22,7 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
     try:
         user_uid = user_get_uid()
         l_error_message_settings = 'Invalid data: '
-        l_error_message_nickname_exists = 'This nickname is already taken. Try another one.'
+        l_error_message_nickname_exists = 'Nickname "{nickname}" is already taken. Try another one.'
 
         if name == '': r= l_error_message_settings + ' ' + 'name'
         if nickname == '': r= r + ' '+ 'nickname'
@@ -35,7 +35,7 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
         checknickname = ''
         for row in rs: checknickname = row[0]
         if checknickname.lower() == nickname.lower():
-            r = r + ' '+ l_error_message_nickname_exists
+            r = r + ' '+ l_error_message_nickname_exists.replace('{nickname}',nickname)
 
         if r == '':
             sql = 'UPDATE users SET name="'+ str(name) +'", nickname="'+ str(nickname) +'", '+\
