@@ -21,7 +21,7 @@ def set_new_password(burl,data,data2):
     box_content = ''
     try:
         message_content = '<a href="'+ burl +'logout/?resetpassword">Your password has been changed.</a>'
-        new_password = str(data)
+        new_password =  get_hash_string( str(data) )
         user_uid = str(data2)
         user_new_uid = str( get_random_str(99) )
 

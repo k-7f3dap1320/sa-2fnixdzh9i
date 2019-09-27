@@ -8,8 +8,18 @@ import pymysql.cursors
 import string
 import random
 from app_cookie import *
+import hashlib, base64
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+
+def get_hash_string(str):
+    r = ''
+    try:
+        d = hashlib.md5(str).digest(); d=base64.b64encode(d);
+        r = d
+    except Exception as e: print(e)
+    return r
 
 def get_user():
     return user_get_uid()

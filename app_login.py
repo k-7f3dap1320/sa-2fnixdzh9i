@@ -32,6 +32,7 @@ def user_login(usr,pwd,burl,redirect):
     try:
         d = datetime.datetime.now()
         dstr = d.strftime("%Y%m%d")
+        pwd = get_hash_string(pwd)
 
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)

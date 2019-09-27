@@ -71,6 +71,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip):
             referred_by_code = get_refer_by_code()
             avatar_id = get_random_num(19)
             email_subscription = 'ALL'
+            password = get_hash_string(password)
             sql = "INSERT INTO users(uid, name, nickname, username, password, created_on, referred_by_code, avatar_id, from_ip,lang,email_subscription) "+\
             "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+ str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL' )"
             cr.execute(sql)
