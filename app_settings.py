@@ -91,16 +91,16 @@ def get_settings_content(burl,step):
         '                               <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf(default_profile) +\
         '                          </div>'+\
+        '                          <div style="height: 30px;"></div>'+\
         '                       </div>'+\
-        '                   <div style="height: 30px;"></div>'+\
         '                       <!-------------- Email Subscription -------------->'+\
         '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '                           <div>'+\
         '                               <span class="text-primary">'+ l_email_subscr +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_email_subs(email_subscription) +\
         '                           </div>'+\
+        '                           <div style="height: 30px;"></div>'+\
         '                       </div>'+\
-        '                   <div style="height: 30px;"></div>'+\
         '                   </div>'+\
         '                       <div style="height: 30px;"></div>'+\
         '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
