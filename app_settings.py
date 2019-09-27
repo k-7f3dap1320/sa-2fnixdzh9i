@@ -75,7 +75,7 @@ def get_settings_content(burl,step):
         '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span class="text-primary" style="width:200px;">'+ l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
-        '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-ninja" style="font-size: large;"></i></span>'+\
+        '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-ninja" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
         '                           <input type="text" id="nickname" name="nickname" value="'+ str(nickname) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_nickname +'" required autofocus>'+\
         '                   </div>'+\
