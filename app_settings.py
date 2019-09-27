@@ -84,7 +84,7 @@ def get_settings_content(burl,step):
         '                           <input type="email" id="email" name="email" value="'+ str(username_email) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
         '                   <div style="height: 30px;"></div>'+\
-        '                   <div class="row">'+\
+        '                   <div class="row" style="margin:0px">'+\
         '                     <!---------------- Trader: Market ---------------->'+\
         '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '                          <div>'+\
