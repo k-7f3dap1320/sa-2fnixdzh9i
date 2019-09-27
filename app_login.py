@@ -8,6 +8,9 @@ from sa_func import *
 access_obj = sa_db_access()
 import pymysql.cursors
 from app_cookie import *
+import datetime
+import time
+from datetime import timedelta
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
@@ -27,6 +30,9 @@ def user_login(usr,pwd,burl,redirect):
     redirectUrl = burl
 
     try:
+        d = datetime.datetime.now()
+        dstr = d.strftime("%Y%m%d")
+
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         usr = usr.lower()
@@ -36,6 +42,9 @@ def user_login(usr,pwd,burl,redirect):
         rs = cr.fetchall()
         uid = ''
         for row in rs: uid = row[0]
+        sql = 'UPDATE users SET last_logon = '+ dstr + ' WHERE uid ="'+ str(uid) +'"'
+        cr.execute(sql)
+        connection.commit()
         cr.close()
         connection.close()
 
