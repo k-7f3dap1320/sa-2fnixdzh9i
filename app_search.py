@@ -24,8 +24,13 @@ def get_search_table_content(burl,nonavbar):
     try:
         if nonavbar is None: nonavbarparam = ''
 
-        r = ' '
-
+        r = ' '+\
+        '<script>$(document).ready(function($) {'+\
+        '$(".sa-table-click-row").click(function() {'+\
+        'window.document.location = $(this).data("href");'+\
+        '});'+\
+        '});</script>'
+        
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'SELECT feed.search, feed.content, markets.market_label, feed.url, feed.type FROM feed LEFT JOIN markets ON markets.market_id = feed.market WHERE (feed.type<>9 AND feed.type<>3) ORDER BY feed.symbol'
@@ -92,7 +97,7 @@ def get_box_search(burl,nonavbar):
         '       </div>'+\
         '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
         '  </form>'
-        
+
         box_content = '' +\
         '<script>'+\
         'function filterTable() {'+\
