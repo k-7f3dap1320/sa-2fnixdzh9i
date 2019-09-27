@@ -53,7 +53,7 @@ def get_settings_content(burl,step):
         cr.close()
         connection.close()
 
-        if step == 2: popup_message = popup_after_submit('Saved changes.',1)
+        if step == str(2): popup_message = popup_after_submit('Saved changes.',1)
 
         box_content = ' '+\
         '<div class="box-top">' +\
