@@ -16,10 +16,8 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_hash_string(str):
     r = ''
     try:
-        d = hashlib.md5(str).digest()
-        d=base64.b64encode(d)
-        r = d
-        print(r)
+        d = hashlib.md5(str.encode() )
+        r = d.hexdigest()        
     except Exception as e: print(e)
     return r
 
