@@ -38,6 +38,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/p/', endpoint='p', methods=["POST", "GET"])
 @application.route('/ls/', endpoint='ls', methods=["POST", "GET"])
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
+@application.route('/join/', endpoint='join', methods=["POST", "GET"])
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
 @application.route('/w/', endpoint='w', methods=["POST","GET"])
 @application.route('/fd/', endpoint='fd', methods=["POST","GET"])
@@ -118,6 +119,10 @@ def go():
         elif step == 'c': c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': c= save_selectmarket(burl,mode,x)
         else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker)
+
+    elif request.endpoint == 'join':
+        broker = request.args.get('broker')
+        c = gen_createuser_page(0,appname,burl,'','','','',broker)
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
