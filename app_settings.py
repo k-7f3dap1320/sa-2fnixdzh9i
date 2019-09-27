@@ -31,6 +31,7 @@ def get_settings_content(burl,step):
         l_password_btn = 'Change Password'
         l_save_btn = 'Save changes'
         l_cancel_link = 'Cancel'
+        popup_message = ''
 
         user_uid = user_get_uid()
 
@@ -52,8 +53,11 @@ def get_settings_content(burl,step):
         cr.close()
         connection.close()
 
+        if step == 2: popup_message = popup_after_submit('Saved changes.',1)
+
         box_content = ' '+\
         '<div class="box-top">' +\
+        popup_message +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
@@ -186,6 +190,28 @@ def get_radio_button_Trader_prf(default_profile):
             r = r + '<input type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'" '+ checkedRadio +'>&nbsp;'+ str(label)+'<br>'
         cr.close()
         connection.close()
+
+    except Exception as e: print(e)
+    return r
+
+def popup_after_submit(message,result):
+    #if result == 1: success else: error
+    r = ''
+    l_content = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+ str(message)
+    l_class = ''
+    l_class_error = 'alert alert-danger'
+    l_class_success = 'alert alert-success'
+
+    try:
+        if result == 1:
+            l_class = l_class_success
+        else:
+            l_class = l_class_error
+
+        r = ''+\
+        '<div class="'+ l_class +'" role="alert">' +\
+        '  <strong>'+ l_content +'</strong><br>'+\
+        '</div><div>&nbsp;</div>'
 
     except Exception as e: print(e)
     return r
