@@ -97,13 +97,13 @@ def get_settings_content(burl,step,message):
         box_content = ' '+\
         '<div class="box-top">' +\
         popup_message +\
-        '   <div class="row">'+\
+        '   <div class="row d-none d-sm-block">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
         '               <form name="settingsForm" id="settingsForm" method="post" action="'+ burl +'settings/?step=2" >'+\
         '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_profile_section +'</span><div style="height: 30px;"></div>'+\
         '                   <!--------------------- Name --------------------->'+\
-        '                   <div class="input-group d-none d-sm-block" style="max-width:888px">'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span class="text-primary" style="width:200px;">'+ l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
@@ -111,7 +111,7 @@ def get_settings_content(burl,step,message):
         '                           <input type="text" id="name" name="name" value="'+ str(name) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_fullname +'" required autofocus>'+\
         '                   </div>'+\
         '                   <!--------------------- Nickname ----------------->'+\
-        '                   <div class="input-group d-none d-sm-block" style="max-width:888px">'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span class="text-primary" style="width:200px;">'+ l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user-ninja" style="font-size: 20px;"></i></span>'+\
@@ -119,7 +119,7 @@ def get_settings_content(burl,step,message):
         '                           <input type="text" id="nickname" name="nickname" value="'+ str(nickname) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_nickname +'" required autofocus>'+\
         '                   </div>'+\
         '                   <!--------------------- Email -------------------->'+\
-        '                   <div class="input-group d-none d-sm-block" style="max-width:888px">'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
         '                       <span class="text-primary" style="width:200px;">'+ l_email +'</span><span>&nbsp;&nbsp;</span>'+\
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
