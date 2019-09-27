@@ -111,7 +111,7 @@ def navbar(burl,disable_search):
         '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
