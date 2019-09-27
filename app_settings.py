@@ -92,6 +92,7 @@ def get_settings_content(burl,step):
         get_radio_button_Trader_prf(default_profile) +\
         '                          </div>'+\
         '                       </div>'+\
+        '                   <div style="height: 30px;"></div>'+\
         '                       <!-------------- Email Subscription -------------->'+\
         '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         '                           <div>'+\
@@ -99,6 +100,7 @@ def get_settings_content(burl,step):
         get_radio_button_email_subs(email_subscription) +\
         '                           </div>'+\
         '                       </div>'+\
+        '                   <div style="height: 30px;"></div>'+\
         '                   </div>'+\
         '                       <div style="height: 30px;"></div>'+\
         '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
@@ -112,7 +114,7 @@ def get_settings_content(burl,step):
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        '               <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
+        '               <span class="sectiont"><i class="fas fa-key"></i>&nbsp;'+ l_password +'</span><div style="height: 30px;"></div>'+\
         '               <span class="text-primary" style="width:200px;">'+ l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
         '               <a href="'+ burl +'reset/?password" class="btn btn-primary btn-md active" role="button" aria-pressed="true">'+ l_password_btn +'</a>'+\
         '            </div>'+\
