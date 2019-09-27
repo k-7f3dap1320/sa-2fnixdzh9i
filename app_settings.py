@@ -17,7 +17,40 @@ from sa_func import *
 access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_settings_content(burl,step):
+def save_settings(name,nickname,username,default_profile,email_subscription):
+    r = ''
+    try:
+        l_error_message_settings = 'Invalid data: '
+        l_error_message_nickname_exists = 'This nickname is already taken. Try another one.'
+
+        if name == '': r= l_error_message_settings + ' ' + 'name'
+        if nickname == '': r= r + ' '+ 'nickname'
+
+        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT nickname FROM users WHERE nickname="'+ str(nickname) +'"'
+        cr.execute(sql)
+        rs = cr.fetchall()
+        checknickname = ''
+        for row in rs: checknickname = row[0]
+        if checknickname.lower() == nickname.lower():
+            r = r + ' '+ l_error_message_nickname_exists
+
+        if r == '':
+            user_uid = user_get_uid()
+            sql = 'UPDATE users SET name="'+ str(name) +'", nickname="'+ str(nickname) +'", '+\
+            'username="'+ str(username) +'", default_profile="'+ str(default_profile) +'", '+\
+            'email_subscription="'+ str(email_subscription) +'" WHERE uid="'+ str(user_uid) +'"'
+            cr.execute(sql)
+            connection.commit()
+
+        cr.close()
+        connection.close()
+
+    except Exception as e: print(e)
+    return r
+
+def get_settings_content(burl,step,message):
     box_content = ''
     try:
         l_profile_section = 'Profile Settings'
@@ -30,6 +63,7 @@ def get_settings_content(burl,step):
         l_password_label = 'Password'
         l_password_btn = 'Change Password'
         l_save_btn = 'Save changes'
+        l_saved_changes = 'Saved changes.'
         l_cancel_link = 'Cancel'
         popup_message = ''
 
@@ -53,7 +87,9 @@ def get_settings_content(burl,step):
         cr.close()
         connection.close()
 
-        if step == str(2): popup_message = popup_after_submit('Saved changes.',1)
+        if step == str(2):
+            if message == '': message = l_saved_changes
+            popup_message = popup_after_submit(message,1)
 
         box_content = ' '+\
         '<div class="box-top">' +\
@@ -85,7 +121,7 @@ def get_settings_content(burl,step):
         '                       <div class="input-group-prepend">'+\
         '                           <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-at" style="font-size: large;"></i></span>'+\
         '                       </div>'+\
-        '                           <input type="email" id="email" name="email" value="'+ str(username_email) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
+        '                           <input type="email" id="username" name="username" value="'+ str(username_email) +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_email +'" required autofocus>'+\
         '                   </div>'+\
         '                   <div style="height: 30px;"></div>'+\
         '                   <div class="row" style="margin:0px">'+\
@@ -216,11 +252,11 @@ def popup_after_submit(message,result):
     except Exception as e: print(e)
     return r
 
-def get_settings_page(appname,burl,step):
+def get_settings_page(appname,burl,step,message):
     r = ''
     try:
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl,0) + get_settings_content(burl,step) + get_page_footer(burl) )
+        r = r + get_body( get_loading_body(), navbar(burl,0) + get_settings_content(burl,step,message) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
 

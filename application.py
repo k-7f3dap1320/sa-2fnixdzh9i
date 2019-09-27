@@ -172,7 +172,13 @@ def go():
 
     elif request.endpoint == 'settings':
         step = request.args.get('step')
-        c = get_settings_page(appname,burl,step)
+        name = request.values.get('name')
+        nickname = request.values.get('nickname')
+        username = request.values.get('username')
+        default_profile = request.values.get('default_profile')
+        email_subscription = request.values.get('email_subscription')
+        message = save_settings(name,nickname,username,default_profile,email_subscription)
+        c = get_settings_page(appname,burl,step,message)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
