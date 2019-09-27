@@ -100,9 +100,6 @@ def get_settings_content(burl,step):
         '                           <span class="text-primary">'+ l_email_subscr +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_email_subs(email_subscription) +\
         '                      </div>'+\
-        '                       <div style="height: 30px;"></div>'+\
-        '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
-        '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '                   </div>'+\
         '               </form>'+\
         '            </div>'+\
@@ -145,10 +142,10 @@ def get_radio_button_email_subs(selected):
         if selected == 'PRT': checkedRadio_prt ='checked'
 
         r = ' '+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="ALL" '+ checkedRadio_ALL +'>&nbsp;'+ str(l_label_all_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_NO +'>&nbsp;'+ str(l_label_NO_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_DIR +'>&nbsp;'+ str(l_label_DIR_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_PRT +'>&nbsp;'+ str(l_label_PRT_email)+'<br>'
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="ALL" '+ checkedRadio_all +'>&nbsp;'+ str(l_label_all_email)+'<br>'+\
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_no +'>&nbsp;'+ str(l_label_NO_email)+'<br>'+\
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_dir +'>&nbsp;'+ str(l_label_DIR_email)+'<br>'+\
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_prt +'>&nbsp;'+ str(l_label_PRT_email)+'<br>'
 
     except Exception as e: print(e)
     return r
