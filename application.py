@@ -111,12 +111,13 @@ def go():
         from_ip = request.values.get('from_ip')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
+        broker = request.args.get('broker')
         mode = request.values.get('mode')
         if step == 'a': c = gen_createuser_avatar(appname,burl,err)
         elif step == 'b': c = save_avatar(burl,nickname)
         elif step == 'c': c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': c= save_selectmarket(burl,mode,x)
-        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip)
+        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker)
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
