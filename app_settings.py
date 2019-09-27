@@ -20,6 +20,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def save_settings(name,nickname,username,default_profile,email_subscription):
     r = ''
     try:
+        user_uid = user_get_uid()
         l_error_message_settings = 'Invalid data: '
         l_error_message_nickname_exists = 'This nickname is already taken. Try another one.'
 
@@ -28,7 +29,7 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
 
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'SELECT nickname FROM users WHERE nickname="'+ str(nickname) +'"'
+        sql = 'SELECT nickname FROM users WHERE nickname="'+ str(nickname) +'" AND uid<>"'+ str(user_uid) +'"'
         cr.execute(sql)
         rs = cr.fetchall()
         checknickname = ''
@@ -37,7 +38,6 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
             r = r + ' '+ l_error_message_nickname_exists
 
         if r == '':
-            user_uid = user_get_uid()
             sql = 'UPDATE users SET name="'+ str(name) +'", nickname="'+ str(nickname) +'", '+\
             'username="'+ str(username) +'", default_profile="'+ str(default_profile) +'", '+\
             'email_subscription="'+ str(email_subscription) +'" WHERE uid="'+ str(user_uid) +'"'
@@ -88,8 +88,11 @@ def get_settings_content(burl,step,message):
         connection.close()
 
         if step == str(2):
-            if message == '': message = l_saved_changes
-            popup_message = popup_after_submit(message,1)
+            success = 0
+            if message == '':
+                message = l_saved_changes
+                success = 1
+            popup_message = popup_after_submit(message,success)
 
         box_content = ' '+\
         '<div class="box-top">' +\
