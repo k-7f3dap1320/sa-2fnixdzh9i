@@ -103,11 +103,17 @@ def get_user_creation_form(burl,broker):
     box_content = ''
 
     try:
-
         l_enter_name = "Enter Name"
         l_enter_email = "Enter Email"
         l_received_payment_subscription_thank_you = "We have received your payment thank you."
         l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
+
+        payment_completed_header = ''
+        if broker == '':
+            payment_completed_header = ' '+\
+            '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
+            '<div style="text-align: center;">'+ l_note_user_creation_after_payment +'</div>'
+
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
@@ -115,8 +121,7 @@ def get_user_creation_form(burl,broker):
         '     <form method="POST" action="'+ burl +'n/?uid='+ get_random_str(99)  +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
         '         <div>'+\
         '            <div>'+\
-        '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
-        '<div style="text-align: center;">'+ l_note_user_creation_after_payment +'</div>'+\
+        payment_completed_header+\
         '                <hr>'+\
         '            </div>'+\
         '        </div>'+\

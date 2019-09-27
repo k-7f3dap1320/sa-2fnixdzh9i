@@ -112,7 +112,7 @@ def go():
         from_ip = request.values.get('from_ip')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
-        broker = request.args.get('broker')
+        broker = ''
         mode = request.values.get('mode')
         if step == 'a': c = gen_createuser_avatar(appname,burl,err)
         elif step == 'b': c = save_avatar(burl,nickname)
@@ -122,7 +122,7 @@ def go():
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
-        c = gen_createuser_page(0,appname,burl,'','','','',broker)
+        c = gen_createuser_page('0',appname,burl,'','','','',broker)
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
