@@ -90,9 +90,6 @@ def get_settings_content(burl,step):
         '                           <span class="text-primary">'+ l_market_ac +'</span><div style="height: 15px;"></div>'+\
         get_radio_button_Trader_prf(default_profile) +\
         '                      </div>'+\
-        '                       <div style="height: 30px;"></div>'+\
-        '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
-        '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '                   </div>'+\
         '                   <!-------------- Email Subscription -------------->'+\
         '                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
@@ -101,6 +98,9 @@ def get_settings_content(burl,step):
         get_radio_button_email_subs(email_subscription) +\
         '                      </div>'+\
         '                   </div>'+\
+    '                       <div style="height: 30px;"></div>'+\
+    '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
+    '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\
@@ -143,9 +143,9 @@ def get_radio_button_email_subs(selected):
 
         r = ' '+\
         '<input type="radio" name="'+ l_radioBtn_name +'" value="ALL" '+ checkedRadio_all +'>&nbsp;'+ str(l_label_all_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_no +'>&nbsp;'+ str(l_label_NO_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_dir +'>&nbsp;'+ str(l_label_DIR_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_prt +'>&nbsp;'+ str(l_label_PRT_email)+'<br>'
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_no +'>&nbsp;'+ str(l_label_no_email)+'<br>'+\
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_dir +'>&nbsp;'+ str(l_label_dir_email)+'<br>'+\
+        '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_prt +'>&nbsp;'+ str(l_label_prt_email)+'<br>'
 
     except Exception as e: print(e)
     return r
