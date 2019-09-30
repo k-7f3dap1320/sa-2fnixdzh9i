@@ -64,7 +64,6 @@ def get_settings_content(burl,step,message):
         l_password_btn = 'Change Password'
         l_save_btn = 'Save changes'
         l_saved_changes = 'Saved changes.'
-        l_cancel_link = 'Cancel'
         popup_message = ''
 
         user_uid = user_get_uid()
@@ -146,7 +145,6 @@ def get_settings_content(burl,step,message):
         '                       </div>'+\
         '                   </div>'+\
         '                       <div style="height: 30px;"></div>'+\
-        '                       <span class="text-info" style="width:200px;"><a href="'+ burl +'?cancel">'+ l_cancel_link +'</a></span><span>&nbsp;&nbsp;</span>'+\
         '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
