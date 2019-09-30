@@ -130,7 +130,7 @@ def get_broker_signin_spec_form(broker):
                 r = ' '+\
                 '<script>'+\
                 'window.location.replace("/");'+\
-                '</script>'                
+                '</script>'
 
     except Exception as e: print(e)
     return r
