@@ -71,8 +71,12 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,b
             avatar_id = get_random_num(19)
             email_subscription = 'ALL'
             password = get_hash_string(password)
-            sql = "INSERT INTO users(uid, name, nickname, username, password, created_on, referred_by_code, avatar_id, from_ip,lang,email_subscription) "+\
-            "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+ str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL' )"
+            broker = str(broker)
+            username_broker = str(username_broker)
+            sql = "INSERT INTO users(uid, name, nickname, username, password, created_on, referred_by_code, avatar_id, from_ip,lang,email_subscription,broker,username_broker) "+\
+            "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+\
+            str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL','"+\
+            str(broker)+", "+ str(username_broker) +" )"
             cr.execute(sql)
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a" />') + get_body('','') ) )
@@ -102,7 +106,6 @@ def get_broker_signin_spec_form(broker):
     r = ''
     try:
         if broker is not None:
-
             connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
             sql = 'SELECT COUNT(*) FROM brokers WHERE broker_id = "'+ str(broker) +'"'
@@ -123,6 +126,7 @@ def get_broker_signin_spec_form(broker):
                 '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-tie"></i></span>'+\
                 '                 </div>'+\
                 '                 <input type="text" id="username_broker" name="username_broker" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_username_placeholder +'" required autofocus>'+\
+                '                 <input type="hidden" id="broker" name="broker" value="'+ str(broker) +'">'+\
                 '               </div>'+\
                 '            </div>'+\
                 '        </div>'
@@ -131,6 +135,10 @@ def get_broker_signin_spec_form(broker):
                 '<script>'+\
                 'window.location.replace("/");'+\
                 '</script>'
+        else:
+            r = ' '+\
+            '<input type="hidden" id="username_broker" name="username_broker" value="">'+\
+            '<input type="hidden" id="broker" name="broker" value="'+ str(broker) +'">'
 
     except Exception as e: print(e)
     return r
