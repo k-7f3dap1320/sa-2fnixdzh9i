@@ -77,10 +77,11 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,b
             "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+\
             str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL','"+\
             str(broker)+"', "+ str(username_broker) +" )"
+            print(sql)
             cr.execute(sql)
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') ) )
-            send_email_to_queue('','A new user has been created ['+ str(broker) +']',str(name)+'; '+str(username),9)
+            send_email_to_queue('','New User ['+ str(broker) +']','A new user has been created ['+ str(broker) +']',str(name)+'; '+str(username),9)
         else:
             r = 'user already exists :P !'
         cr.close()
