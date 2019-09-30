@@ -217,14 +217,14 @@ def go_to_url(q,return_what,uniqid):
     except Exception as e: print(e)
     return r
 
-def send_email_to_queue(send_to,email_subject,email_content):
+def send_email_to_queue(send_to,email_subject,email_content,priority):
     try:
         from_email_displayname = 'SmartAlpha Intelligence'
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'INSERT INTO email_queue '+\
-        '(from_email, from_email_displayname, send_to_email_bcc, email_subject, email_content) '+\
-        'VALUES ("", "", "'+ str(send_to) +'", "'+ str(email_subject) +'", "'+ str(email_content) +'")'
+        '(from_email, from_email_displayname, send_to_email_bcc, email_subject, email_content, priority) '+\
+        'VALUES ("", "", "'+ str(send_to) +'", "'+ str(email_subject) +'", "'+ str(email_content) +'",'+ str(priority) +')'
         print(sql)
         cr.execute(sql)
         connection.commit()
