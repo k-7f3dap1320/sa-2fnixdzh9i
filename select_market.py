@@ -55,10 +55,9 @@ def get_market_list(burl,mode):
             label = asset_class_name
             #handle particularities
             if asset_class_id == 'EQ:': label = 'All stocks'
-            if asset_class_id == 'MA:': label = '<strong>I don`t know, choose for me...</strong>'; asset_class_id = ''
             if asset_class_id == 'BD:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
-            if asset_class_id == 'PF:': label = 'x'
+            if asset_class_id == 'PRF:': label = 'x'
             if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ asset_class_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         sql = "SELECT market_id, market_label FROM markets order by market_label"
@@ -67,8 +66,6 @@ def get_market_list(burl,mode):
         for row in rs:
             market_id = row[0]; market_label = row[1]
             label = market_label + ' Market'
-            #Handle particularities
-            if market_id == 'GO>': label = 'x'
             if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ market_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
 
         r = r + '</div>'
