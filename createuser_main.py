@@ -76,7 +76,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,b
             sql = "INSERT INTO users(uid, name, nickname, username, password, created_on, referred_by_code, avatar_id, from_ip,lang,email_subscription,broker,username_broker) "+\
             "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+\
             str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL','"+\
-            str(broker)+"', "+ str(username_broker) +" )"
+            str(broker)+"', '"+ str(username_broker) +"' )"
             print(sql)
             cr.execute(sql)
             connection.commit()
