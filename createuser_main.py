@@ -101,7 +101,7 @@ def get_user_ip_input():
 def get_broker_signin_spec_form(broker):
     r = ''
     try:
-        if broker != '' and broker is not None:
+        if broker is not None:
             l_username_placeholder = 'enter your '+ str(broker) + ' username'
             broker_input_name_id = 'username_' + str(broker).lower()
             r = ' '+\
@@ -131,7 +131,7 @@ def get_user_creation_form(burl,broker):
         l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
 
         payment_completed_header = broker
-        if broker == '' or broker is None:
+        if broker is None:
             payment_completed_header = ' '+\
             '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
             '<div style="text-align: center;">'+ l_note_user_creation_after_payment +'</div>'
