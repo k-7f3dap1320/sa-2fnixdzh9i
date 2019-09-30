@@ -19,7 +19,7 @@ def gen_portf_user_example(burl,acm,notstart):
 
     resp = make_response( redirect(burl+'genportf?step=2&notstart='+str(notstart)) )
     try:
-        if acm == None:
+        if acm is None:
             asset_class = '%%'
         else:
             asset_class = acm
