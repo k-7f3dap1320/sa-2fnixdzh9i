@@ -123,7 +123,7 @@ def go():
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
-        c = gen_createuser_page('0',appname,burl,'','','','',broker)
+        c = gen_createuser_page('0',appname,burl,'','','','',broker,'')
 
     elif request.endpoint == 'h':
         c = get_help_page(appname,burl)
