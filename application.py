@@ -112,7 +112,7 @@ def go():
         from_ip = request.values.get('from_ip')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
-        broker = request.values.get('broker')
+        broker = request.args.get('broker')
         broker_username = request.values.get('broker_username')
         mode = request.values.get('mode')
         if step == 'a': c = gen_createuser_avatar(appname,burl,err)
