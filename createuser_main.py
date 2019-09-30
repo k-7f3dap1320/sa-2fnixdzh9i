@@ -49,7 +49,7 @@ def set_nickname():
     return r
 
 
-def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker):
+def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username):
     r = ''
     if uid == '0':
         r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )

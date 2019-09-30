@@ -145,7 +145,7 @@ def get_settings_content(burl,step,message):
         '                       </div>'+\
         '                   </div>'+\
         '                       <div style="height: 30px;"></div>'+\
-        '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:800px; width: 100%" value="'+ l_save_btn +'">'+\
+        '                       <input type="submit" class="btn btn-info btn-lg active" style="max-width:888px; width: 100%" value="'+ l_save_btn +'">'+\
         '               </form>'+\
         '            </div>'+\
         '        </div>'+\

@@ -112,13 +112,14 @@ def go():
         from_ip = request.values.get('from_ip')
         nickname = request.values.get('nickname')
         step = request.args.get('step')
-        broker = ''
+        broker = request.values.get('broker')
+        broker_username = request.values.get('broker_username')
         mode = request.values.get('mode')
         if step == 'a': c = gen_createuser_avatar(appname,burl,err)
         elif step == 'b': c = save_avatar(burl,nickname)
         elif step == 'c': c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': c= save_selectmarket(burl,mode,x)
-        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker)
+        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
