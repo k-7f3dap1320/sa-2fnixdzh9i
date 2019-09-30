@@ -175,7 +175,7 @@ def get_user_creation_form(burl,broker):
         l_affiliate_submit_form = go_to_url( get_broker_affiliate_link(broker) ,'form',uniqid)
 
         l_create_broker_account_btn = l_affiliate_submit_form +\
-        '<a '+ l_affiliate_href +' +' target="_blank" class="btn btn-success" role="button">'+ l_create_broker_account_btn_label +'</a>'
+        '<a '+ l_affiliate_href + ' target="_blank" class="btn btn-success" role="button">'+ l_create_broker_account_btn_label +'</a>'
 
         user_creation_header = ''
         if broker is None:
