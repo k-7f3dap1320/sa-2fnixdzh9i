@@ -153,12 +153,16 @@ def get_user_creation_form(burl,broker):
         l_enter_email = "Enter Email"
         l_received_payment_subscription_thank_you = "We have received your payment thank you."
         l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
+        l_create_broker_account = "If you do not have a trading account at "+ str(broker) + ", create one with our affilate link: "
+        l_create_broker_account_btn = ''
 
-        payment_completed_header = broker
+        user_creation_header = ''
         if broker is None:
-            payment_completed_header = ' '+\
+            user_creation_header = ' '+\
             '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
             '<div style="text-align: center;">'+ l_note_user_creation_after_payment +'</div>'
+        else:
+            user_creation_header = '<div style="text-align: center;">'+ l_create_broker_account + ' '+ l_create_broker_account_btn +'</div>'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -167,7 +171,7 @@ def get_user_creation_form(burl,broker):
         '     <form method="POST" action="'+ burl +'n/?uid='+ get_random_str(99)  +'" style="width: 100%; max-width: 600px; padding: 2%; margin: auto;">'+\
         '         <div>'+\
         '            <div>'+\
-        payment_completed_header+\
+        user_creation_header+\
         '                <hr>'+\
         '            </div>'+\
         '        </div>'+\
