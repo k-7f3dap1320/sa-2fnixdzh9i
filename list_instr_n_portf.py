@@ -89,6 +89,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
             "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+ str(maxrow)
 
+        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
