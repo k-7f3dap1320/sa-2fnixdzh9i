@@ -102,19 +102,35 @@ def get_broker_signin_spec_form(broker):
     r = ''
     try:
         if broker is not None:
-            l_username_placeholder = 'enter your '+ str(broker) + ' username'
-            broker_input_name_id = 'username_' + str(broker).lower()
-            r = ' '+\
-            '        <div>'+\
-            '            <div>'+\
-            '               <div class="input-group input-group-lg">'+\
-            '                 <div class="input-group-prepend">'+\
-            '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-tie"></i></span>'+\
-            '                 </div>'+\
-            '                 <input type="text" id="'+ broker_input_name_id +'" name="'+ broker_input_name_id +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_username_placeholder +'" required autofocus>'+\
-            '               </div>'+\
-            '            </div>'+\
-            '        </div>'
+
+            connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+            cr = connection.cursor(pymysql.cursors.SSCursor)
+            sql = 'SELECT COUNT(*) FROM brokers WHERE broker_id = "'+ str(broker) +'"'
+            cr.execute(sql)
+            rs = cr.fetchall()
+            broker_count = 0
+            for row in rs: broker_count = row[0]
+            cr.close()
+            connection.close()
+
+            if str(broker_count) == '1':
+                l_username_placeholder = 'enter your '+ str(broker) + ' username or id'
+                r = ' '+\
+                '        <div>'+\
+                '            <div>'+\
+                '               <div class="input-group input-group-lg">'+\
+                '                 <div class="input-group-prepend">'+\
+                '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-tie"></i></span>'+\
+                '                 </div>'+\
+                '                 <input type="text" id="username_broker" name="username_broker" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_username_placeholder +'" required autofocus>'+\
+                '               </div>'+\
+                '            </div>'+\
+                '        </div>'
+            else:
+                r = ' '+\
+                '<script>'+\
+                'window.location.replace("/");'+\
+                '</script>'                
 
     except Exception as e: print(e)
     return r
