@@ -98,6 +98,28 @@ def get_user_ip_input():
     return r
 
 
+def get_broker_signin_spec_form(broker):
+    r = ''
+    try:
+        if broker != '' or broker is not None:
+            l_username_placeholder = 'enter your '+ str(broker) + ' username'
+            broker_input_name_id = 'username_' + str(broker).lower()
+            r = ' '+\
+            '        <div>'+\
+            '            <div>'+\
+            '               <div class="input-group input-group-lg">'+\
+            '                 <div class="input-group-prepend">'+\
+            '                   <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-tie"></i></span>'+\
+            '                 </div>'+\
+            '                 <input type="text" id="'+ broker_input_name_id +'" name="'+ broker_input_name_id +'" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_username_placeholder +'" required autofocus>'+\
+            '               </div>'+\
+            '            </div>'+\
+            '        </div>'
+
+    except Exception as e: print(e)
+    return r
+
+
 def get_user_creation_form(burl,broker):
 
     box_content = ''
@@ -113,6 +135,8 @@ def get_user_creation_form(burl,broker):
             payment_completed_header = ' '+\
             '<div style="text-align: center;"><span class="text-success"><h2>'+ l_received_payment_subscription_thank_you +'</h2></span></div>'+\
             '<div style="text-align: center;">'+ l_note_user_creation_after_payment +'</div>'
+        else:
+
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -125,6 +149,7 @@ def get_user_creation_form(burl,broker):
         '                <hr>'+\
         '            </div>'+\
         '        </div>'+\
+        get_broker_signin_spec_form(broker) +\
         '        <div>'+\
         '            <div>'+\
         '               <div class="input-group input-group-lg">'+\
