@@ -168,11 +168,13 @@ def get_user_creation_form(burl,broker):
         l_enter_email = "Enter Email"
         l_received_payment_subscription_thank_you = "We have received your payment thank you."
         l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
-        l_create_broker_account = "If you do not have a trading account at "+ str(broker) + ", create one with our affilate link: "
-        l_create_broker_account_btn_label = 'Create' + ' ' + str(broker) + ' ' +'account'
-        uniqid = broker + '_affiliate_link'
-        l_affiliate_href = go_to_url( get_broker_affiliate_link(broker) ,'link',uniqid)
-        l_affiliate_submit_form = go_to_url( get_broker_affiliate_link(broker) ,'form',uniqid)
+
+        if broker is not None:
+            l_create_broker_account = "If you do not have a trading account at "+ str(broker) + ", create one with our affilate link: "
+            l_create_broker_account_btn_label = 'Create' + ' ' + str(broker) + ' ' +'account'
+            uniqid = broker + '_affiliate_link'
+            l_affiliate_href = go_to_url( get_broker_affiliate_link(broker) ,'link',uniqid)
+            l_affiliate_submit_form = go_to_url( get_broker_affiliate_link(broker) ,'form',uniqid)
 
         l_create_broker_account_btn = l_affiliate_submit_form +\
         '<a '+ l_affiliate_href + ' target="_blank" class="btn btn-success" role="button">'+ l_create_broker_account_btn_label +'</a>'
