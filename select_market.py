@@ -56,6 +56,7 @@ def get_market_list(burl,mode):
             #handle particularities
             if asset_class_id == 'EQ:': label = 'All stocks'
             if asset_class_id == 'BD:': label = 'x'
+            if asset_class_id == 'MA:': label = 'x'
             if asset_class_id == 'CO:': label = 'x'
             if asset_class_id == 'PRF:': label = 'x'
             if not label == 'x': r = r + ' <a href="'+ burl +'n/?step=d&x='+ asset_class_id +'" class="list-group-item list-group-item-action">'+ label +'</a>'
