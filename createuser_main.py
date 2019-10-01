@@ -176,7 +176,7 @@ def get_broker_signin_spec_form(broker):
         else:
             r = ' '+\
             '<input type="hidden" id="username_broker" name="username_broker" value="">'+\
-            '<input type="hidden" id="broker" name="broker" value="'+ str(broker) +'">'
+            '<input type="hidden" id="broker" name="broker" value="">'
 
     except Exception as e: print(e)
     return r
