@@ -45,16 +45,16 @@ def get_selectportf_box(burl,step,mode,x):
             l_desc_part_1 = "Select (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
         if step == '2':
-            l_desc_part_1 = "Pick item (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
             progress_value = '40'
         if step == '3':
-            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
             progress_value = '60'
         if step == '4':
-            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
             progress_value = '80'
         if step == '5':
-            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
             progress_value = '95'
         if step == '6':
             l_desc_part_1 = "Save strategy"
