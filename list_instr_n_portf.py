@@ -66,6 +66,7 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl,user_portf):
 
 def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
     try:
+        if x is None: x = ''
         r = '<script>$(document).ready(function($) {'+\
         '$(".sa-table-click-row").click(function() {'+\
         'window.document.location = $(this).data("href");'+\
