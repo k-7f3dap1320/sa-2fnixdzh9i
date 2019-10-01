@@ -16,13 +16,6 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 import pymysql.cursors
 
-connection = pymysql.connect(host=db_srv,
-                             user=db_usr,
-                             password=db_pwd,
-                             db=db_name,
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
-
 def get_pct_change(ini_val,new_val):
 
     if not new_val == 0:
@@ -41,12 +34,14 @@ def get_stdev(sql):
     r = 0
     try:
         #sql with just one numerical value to compute standard deviation
+        connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         cr.execute(sql)
         a = list( cr.fetchall() )
         r = np.std(a)
         print('stdev='+str(r) )
         cr.close()
+        connection.close()
     except Exception as e: print(e)
 
     return r
@@ -57,6 +52,7 @@ def get_volatility_risk(sql,is_portf,s):
 
     try:
         #sql with one numerical column to compute volatility risk
+        connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
 
         if is_portf:
@@ -75,6 +71,7 @@ def get_volatility_risk(sql,is_portf,s):
         rp = lp - stdev
         r = abs( get_pct_change(lp,rp)  )
     except Exception as e: print(e)
+    connection.close()
 
     return r
 
@@ -84,6 +81,7 @@ def get_mdd(sql):
     r = 0
     try:
         #sql with just one numerical value to compute maximum drawdown
+        connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -114,15 +112,16 @@ def get_mdd(sql):
         r = pct_dd
         print('mdd='+ str(r) )
     except Exception as e: print(e)
+    connection.close()
 
     return r
 
 def get_romad(sql):
-
     r = 0
     try:
         #sql with one column as numerical value to compute return on maximum drawdown
         #ordered by date ASC
+        connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         cr.execute(sql)
         rs = cr.fetchall()
@@ -144,5 +143,5 @@ def get_romad(sql):
         r = rt / dd
         print('romad='+ str(r) )
     except Exception as e: print(e)
-
+    connection.close()
     return r

@@ -323,6 +323,7 @@ def get_portf_perf(s):
             cr_i.execute(sql_i)
             connection.commit()
             cr_i.close()
+            connection.close()
         except Exception as e: print(e)
         get_portf_perf_summ(portf_symbol, portf_uid)
 
