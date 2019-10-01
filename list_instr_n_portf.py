@@ -278,7 +278,8 @@ def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
             r = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
         if what == 'portf':
             if user_is_login() == 1: r = draw_portf_table(burl,mode,what,step,portf,maxrow,x,True)
-            r = r + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
+            if mode != 'dashboard':
+                r = r + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
 
     except Exception as e: print(e)
     return r
