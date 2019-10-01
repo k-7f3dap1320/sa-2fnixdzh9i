@@ -14,6 +14,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def del_portf(this,burl,x,dashboard):
     #Only owner of the portfolio can delete it. to delete URL: /p/?delete={portf_id}
     try:
+        if x is None: x = ''
         return_url_list = burl + 'ls/?w=portf&x='+ str(x)
         return_url_dash = burl + '?dashboard=1'
 
