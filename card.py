@@ -39,8 +39,8 @@ def get_card(x,t,burl):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         cr.execute(sql)
         rs = cr.fetchall()
-        title_portf = "Top Portfolios by Members"
-        button_portf = "More Portfolios"
+        title_portf = "Top strategies by Members"
+        button_portf = "More strategy Portfolios"
         button_portf_link = burl + 'ls/?w=portf&x='+ str(x)
         title_signals = "Top Trading Signals"
         button_signals = "More Trading Signals"
@@ -67,7 +67,7 @@ def get_card(x,t,burl):
             uid = get_uid(symbol)
 
             color = theme_return_this("#17a2b8","orange")
-            portf_content_by = 'Portfolio by '
+            portf_content_by = 'Strategy by '
 
             if (badge.find('-0') == -1 and badge.find('-1') == -1 and
             badge.find('-2') == -1 and badge.find('-3') == -1 and

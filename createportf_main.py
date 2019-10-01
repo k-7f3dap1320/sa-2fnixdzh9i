@@ -42,22 +42,22 @@ def get_selectportf_box(burl,step,mode,x):
         progress_value = '0'
 
         if step == '1':
-            l_desc_part_1 = "Let's Create a portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Select (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '20'
         if step == '2':
-            l_desc_part_1 = "Pick another item to add to your portfolio (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Pick item (Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '40'
         if step == '3':
-            l_desc_part_1 = "Almost there, pick another one (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '60'
         if step == '4':
-            l_desc_part_1 = "You selected 3 items for your portfolio, choose another one, we need 5 of them (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '80'
         if step == '5':
-            l_desc_part_1 = "One more and your are done :) (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "(Step "+ str(step) +" of "+ str(min_sel) +")"
             progress_value = '95'
         if step == '6':
-            l_desc_part_1 = "Save portfolio"
+            l_desc_part_1 = "Save strategy"
             progress_value = '100'
 
         l_back_button = 'back'

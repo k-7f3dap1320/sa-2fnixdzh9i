@@ -78,7 +78,7 @@ def get_dashboard_menu(burl):
 def get_portfolio_button(burl):
     r = ''
     try:
-        l_create_portfolio = 'Create a new portfolio'
+        l_create_portfolio = 'Create a new trading strategy'
         portfolio_button = '<div class="d-none d-sm-block"><a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary d-block d-md-inline-block" style="font-size:large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a></div>'
         r = portfolio_button
     except Exception as e: print(e)
@@ -89,7 +89,7 @@ def navbar(burl,disable_search):
     search_placeholder = '<search> function, ticker...'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
-    l_myportfolio = 'My Portfolio(s)'
+    l_myportfolio = 'My Portfolio'
     l_themeSwitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'

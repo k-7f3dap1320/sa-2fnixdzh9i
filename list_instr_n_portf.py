@@ -16,7 +16,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def set_modal_delete_n_view_popup(portf_name,portf_id,burl,user_portf):
     r = ''
     try:
-        l_delete_message_caption = 'Are you sure you want to delete this portfolio? ' + '<br /><strong>'+ portf_name + '</strong>'
+        l_delete_message_caption = 'Are you sure you want to delete this strategy? ' + '<br /><strong>'+ portf_name + '</strong>'
         l_cancel_button = 'Cancel'
         l_delete_button = 'Delete'
         delete_url_redirect_list = burl +'p/?delete='+ str(portf_id)
@@ -27,8 +27,8 @@ def set_modal_delete_n_view_popup(portf_name,portf_id,burl,user_portf):
         else:
             delete_url = delete_url_redirect_list
 
-        l_view_message_caption = 'View or edit your portfolio:' + '<br /><strong>'+ portf_name + '</strong>'
-        l_view_button = 'Take me to my portfolio'
+        l_view_message_caption = 'View or edit your strategy:' + '<br /><strong>'+ portf_name + '</strong>'
+        l_view_button = 'Take me to my trading strategy'
 
         r = '' +\
         '  <div class="modal" id="popup_delete_'+ str(portf_id) +'">'+\
@@ -310,7 +310,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
             else:
                 signal_column = '<th scope="col" style="text-align: left">Rank</th>'
                 l_performance_note = ''
-                l_instr_portf = '<th scope="col" style="text-align: left">portfolio</th>'
+                l_instr_portf = '<th scope="col" style="text-align: left">strategy</th>'
                 l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
 
             c_1_year_column = '<th scope="col">1-Year</th>'
@@ -389,7 +389,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
 
 
         l_placeholder = "Type to find from the list..."
-        l_your_portfolios = 'Your Portfolio(s)'
+        l_your_portfolios = 'Your Portfolio'
         box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
         portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
         list_title = ''
