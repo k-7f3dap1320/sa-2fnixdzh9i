@@ -101,8 +101,8 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,u
             print(sql)
             cr.execute(sql)
             connection.commit()
-            r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a" />') + get_body('','') ) )
-            send_email_notification(broker,name,username)
+            r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') ) )
+            #send_email_notification(broker,name,username)
         else:
             r = 'user already exists :P !'
         cr.close()
