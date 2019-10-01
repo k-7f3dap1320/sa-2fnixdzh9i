@@ -61,7 +61,7 @@ def get_market_snapshot_n_brief_text(w):
         language = 'en'
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT market_snapshot, in_brief FROM reports WHERE lang='"+ language +"'"
+        sql = "SELECT market_snapshot FROM reports WHERE lang='"+ language +"'"
         cr.execute(sql)
         rs = cr.fetchall()
         market_snapshot = ''
