@@ -48,6 +48,27 @@ def set_nickname():
     except Exception as e: print(e)
     return r
 
+def send_email_notification(broker,name,username):
+    try:
+        lang = 'en'
+        new_user_welcome_subject = ''
+        new_user_welcome_content = ''
+
+        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+        cr = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT new_user_welcome_subject, new_user_welcome_content FROM email_templates WHERE lang="'+ str(lang) +'"'
+        cr.execute(sql)
+        rs = cr.fetchall()
+        for row in rs:
+            new_user_welcome_subject = row[0].replace('{fullname}', name.title() )
+            new_user_welcome_content = row[1].replace('{fullname}', name.title() ).replace('{email}', username.lower() )
+        cr.close()
+        connection.close()
+
+        send_email_to_queue(username,new_user_welcome_subject,new_user_welcome_content,2)
+        send_email_to_queue('','A new user has been created ['+ str(broker) +']',str(name)+'; '+str(username),9)
+
+    except Exception as e: print(e)
 
 def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,username_broker):
     r = ''
@@ -81,7 +102,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,u
             cr.execute(sql)
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') ) )
-            send_email_to_queue('','A new user has been created ['+ str(broker) +']',str(name)+'; '+str(username),9)
+            send_email_notification(broker,name,username)
         else:
             r = 'user already exists :P !'
         cr.close()
