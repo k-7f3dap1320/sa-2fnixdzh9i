@@ -328,7 +328,6 @@ def get_portf_perf(s):
         get_portf_perf_summ(portf_symbol, portf_uid)
 
     cr.close()
-    connection.close()
 
 
 
@@ -570,7 +569,9 @@ def get_portf_alloc(s):
 
 def generate_portfolio(s):
     try:
+        print('****** Start Creating portf, strategy, feed, symbol_list ******')
         get_portf_alloc(s)
         get_portf_perf(s)
         set_portf_feed(s)
+        print('****************** End of creation of records *****************')
     except Exception as e: print(e)
