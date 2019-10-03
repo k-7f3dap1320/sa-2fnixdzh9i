@@ -65,15 +65,10 @@ def get_market_snapshot_n_brief_text(w):
         cr.execute(sql)
         rs = cr.fetchall()
         market_snapshot = ''
-        in_brief = ''
-        for row in rs:
-            market_snapshot = row[0]
-            in_brief = row[1]
+        for row in rs: market_snapshot = row[0]
 
         if w == 'market_snapshot':
             r = market_snapshot
-        if w == 'in_brief':
-            r = in_brief
 
     except Exception as e: print(e)
     return r
