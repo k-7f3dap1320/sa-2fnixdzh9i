@@ -27,6 +27,7 @@ from set_theme import *
 from app_settings import *
 from app_search import *
 from reset_password import *
+from app_loading import *
 
 application = Flask(__name__)
 
@@ -244,7 +245,9 @@ def go():
                 burl = burl.replace('https://www.','https://app.')
             else:
                 burl = burl.replace('https://','https://app.')
-            c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
+            #c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + '" />') + get_body('','') )
+            c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() ,'') )
+
     return c
 
 if __name__ == '__main__':
