@@ -245,7 +245,7 @@ def go():
                 burl = burl.replace('https://www.','https://app.')
             else:
                 burl = burl.replace('https://','https://app.')
-            c = set_page( get_head(get_loading_head() ) + get_body( get_loading_body() , '<script>window.location = "'+ burl +'";</script>' ) )
+            c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' ) )
 
     return c
 
