@@ -73,8 +73,8 @@ def navbar(burl,disable_search):
         '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" class="d-none d-sm-block" >'
 
     if user_is_login() == 1:
-        leftsidemenu = '' +\
-        rightsidemenu = '' +\
+        leftsidemenu = ' ' +\
+        rightsidemenu = ' ' +\
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
@@ -91,7 +91,7 @@ def navbar(burl,disable_search):
         get_portfolio_button(burl)+\
         '</li>'
     else:
-        leftsidemenu = ''+\
+        leftsidemenu = ' '+\
         get_pricing_menu(burl)+\
         rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
