@@ -55,7 +55,6 @@ def get_box_plan_selection(burl):
 
     try:
         l_price = 'USD 29.00'
-        l_title_join_now = 'Join thousands of traders that make money with SmartAlpha. Don\'t miss this unique opportunity.'
         l_less_than_price_coffee_day = '*For less than $1 a day.'
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -63,7 +62,6 @@ def get_box_plan_selection(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
-        '<div style="text-align: center;"><h1>'+ l_title_join_now +'</h1></div>'+\
         '<div>&nbsp;</div>'+\
         get_paypal_payment_button(burl,'en', False) +\
         '<div>&nbsp;</div>'+\
