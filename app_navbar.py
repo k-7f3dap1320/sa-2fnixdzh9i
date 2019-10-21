@@ -46,10 +46,14 @@ def get_portfolio_button(burl):
     except Exception as e: print(e)
     return r
 
-def get_pricing_menu():
+def get_pricing_menu(burl):
+    r = ''
     try:
-
+        link = burl + 'pricing'
+        l_title = 'Pricing'
+        r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_title +'</a></li>'
     except Exception as e: print(e)
+    return r
 
 def navbar(burl,disable_search):
 
@@ -70,7 +74,6 @@ def navbar(burl,disable_search):
 
     if user_is_login() == 1:
         leftsidemenu = '' +\
-
         rightsidemenu = '' +\
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
@@ -88,7 +91,8 @@ def navbar(burl,disable_search):
         get_portfolio_button(burl)+\
         '</li>'
     else:
-        leftsidemenu = ''
+        leftsidemenu = ''+\
+        get_pricing_menu(burl)+\
         rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
     r = ''+\
