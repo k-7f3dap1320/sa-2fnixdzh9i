@@ -55,6 +55,15 @@ def get_pricing_menu(burl):
     except Exception as e: print(e)
     return r
 
+def get_about_menu(burl):
+    r = ''
+    try:
+        link = burl + 'h'
+        l_title = 'What is SmartAlpha?'
+        r = '<li>&nbsp;&nbsp;</li><li class="nav-item"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
+    except Exception as e: print(e)
+    return r
+
 def navbar(burl,disable_search):
 
     search_placeholder = '<search> function, ticker...'
@@ -93,7 +102,8 @@ def navbar(burl,disable_search):
         '</li>'
     else:
         leftsidemenu =''+\
-        get_pricing_menu(burl)
+        get_pricing_menu(burl)+\
+        get_about_menu(burl)
 
         rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
