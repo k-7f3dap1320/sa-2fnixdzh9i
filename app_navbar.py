@@ -81,9 +81,7 @@ def navbar(burl,disable_search):
         get_portfolio_button(burl)+\
         '</li>'
     else:
-        rightsidemenu = ' '+\
-        '<strong>'+ get_how_menu(burl) + '</strong>' +\
-        '<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
+        rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
@@ -93,6 +91,8 @@ def navbar(burl,disable_search):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
+    '  <ul class="navbar-nav ml-auto">'+\
+    ' '+\
     rightsidemenu +\
     ' '+\
     '  </ul>'+\
