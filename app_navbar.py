@@ -51,7 +51,7 @@ def get_pricing_menu(burl):
     try:
         link = burl + 'pricing'
         l_title = 'Pricing'
-        r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_title +'</a></li>'
+        r = '<li>&nbsp;</li><li class="nav-item"><a class="btn btn-lg btn-outline-primary" href="'+ link +'">'+ l_title +'</a></li>'
     except Exception as e: print(e)
     return r
 
