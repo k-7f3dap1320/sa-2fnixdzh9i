@@ -61,10 +61,6 @@ def get_box_plan_selection(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
-        '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', False) +\
-        '<div>&nbsp;</div>'+\
-        '<div>&nbsp;</div>'+\
         '<table class="table table-hover table-sm">'+\
         '  <thead>'+\
         '    <tr>'+\
