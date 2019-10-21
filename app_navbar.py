@@ -12,44 +12,6 @@ import pymysql.cursors
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-def get_top_signals_menu(burl):
-    r = ''
-    try:
-        if user_is_login() == 0:
-            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-            cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT COUNT(*) FROM instruments  WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND w1_signal > 0"
-            cr.execute(sql)
-            rs = cr.fetchall()
-            countTop = 0
-            for row in rs: countTop = row[0]
-            l_top_signal = 'Top Signals'
-            link = burl + 'ls/?w=instr&x='
-            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_signal +'<sup><span class="badge badge-pill badge-info">'+ str(countTop) +'</span></sup></a></li>'
-            cr.close()
-            connection.close()
-    except Exception as e: print(e)
-    return r
-
-def get_top_trader_menu(burl):
-    r = ''
-    try:
-        if user_is_login() == 0:
-            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-            cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT COUNT(*) FROM instruments JOIN feed ON feed.symbol = instruments.symbol WHERE feed.type = 9 AND instruments.w1 > 0 AND feed.globalrank <=200"
-            cr.execute(sql)
-            rs = cr.fetchall()
-            countTop = 0
-            for row in rs: countTop = row[0]
-            l_top_trader = 'Top Traders'
-            link = burl + 'ls/?w=portf&x='
-            r = '<li class="nav-item"><a class="nav-link sa-navbar-text" href="'+ link +'">'+ l_top_trader +'<sup><span class="badge badge-pill badge-info">'+ str(countTop) +'</span></sup></a></li>'
-            cr.close()
-            connection.close()
-    except Exception as e: print(e)
-    return r
-
 def get_how_menu(burl):
     r = ''
     l_helpTooltip = 'Quick Help over there...'
@@ -119,7 +81,9 @@ def navbar(burl,disable_search):
         get_portfolio_button(burl)+\
         '</li>'
     else:
-        rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
+        rightsidemenu = ' '+\
+        '<strong>'+ get_how_menu(burl) + '</strong>' +\
+        '<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
     r = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
@@ -129,12 +93,6 @@ def navbar(burl,disable_search):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
-    '  <ul class="navbar-nav mr-auto">'+\
-    get_top_trader_menu(burl) +\
-    get_top_signals_menu(burl) +\
-    '  </ul>'+\
-    '  <ul class="navbar-nav ml-auto">'+\
-    ' '+\
     rightsidemenu +\
     ' '+\
     '  </ul>'+\
