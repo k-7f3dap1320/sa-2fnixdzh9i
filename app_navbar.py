@@ -19,7 +19,7 @@ def get_how_menu(burl):
         if user_is_login() == 1:
             l_howitworks = '<i class="far fa-question-circle" style="font-size: x-large;"></i>'
         else:
-            l_howitworks = 'How it works?'
+            l_howitworks = ''
 
         l_how_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'h/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_helpTooltip +'">'+ l_howitworks +'</a></li>'
         r = l_how_menu
@@ -46,6 +46,11 @@ def get_portfolio_button(burl):
     except Exception as e: print(e)
     return r
 
+def get_pricing_menu():
+    try:
+
+    except Exception as e: print(e)
+
 def navbar(burl,disable_search):
 
     search_placeholder = '<search> function, ticker...'
@@ -64,6 +69,8 @@ def navbar(burl,disable_search):
         '       type="text" name="'+ str(sid) +'" placeholder="'+ search_placeholder +'" aria-label="Search" class="d-none d-sm-block" >'
 
     if user_is_login() == 1:
+        leftsidemenu = '' +\
+
         rightsidemenu = '' +\
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
@@ -81,6 +88,7 @@ def navbar(burl,disable_search):
         get_portfolio_button(burl)+\
         '</li>'
     else:
+        leftsidemenu = ''
         rightsidemenu = '<strong>'+ get_how_menu(burl) + '</strong>' +'<li class="nav-item"><a href="'+burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;'+ l_join_now_btn +'</a></li>'
 
     r = ''+\
@@ -92,6 +100,7 @@ def navbar(burl,disable_search):
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
     '  <ul class="navbar-nav ml-auto">'+\
+    leftsidemenu +\
     ' '+\
     rightsidemenu +\
     ' '+\
