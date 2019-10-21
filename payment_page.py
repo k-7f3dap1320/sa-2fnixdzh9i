@@ -52,7 +52,6 @@ def get_paypal_payment_button(burl,lang,is_soldout):
 def get_box_plan_selection(burl):
 
     box_content = ''
-
     try:
         l_price = 'USD 29.00'
         l_less_than_price_coffee_day = '*For less than $1 a day.'
