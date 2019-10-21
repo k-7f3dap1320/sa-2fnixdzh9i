@@ -74,7 +74,7 @@ def navbar(burl,disable_search):
 
     if user_is_login() == 1:
         leftsidemenu = ''
-        
+
         rightsidemenu = '' +\
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
@@ -105,9 +105,11 @@ def navbar(burl,disable_search):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
-    '  <ul class="navbar-nav ml-auto">'+\
+    '  <ul class="navbar-nav mr-auto">'+\
     leftsidemenu +\
+    '  </ul>'+\
     ' '+\
+    '  <ul class="navbar-nav ml-auto">'+\
     rightsidemenu +\
     ' '+\
     '  </ul>'+\
