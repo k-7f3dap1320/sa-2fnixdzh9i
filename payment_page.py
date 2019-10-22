@@ -83,10 +83,13 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
     except Exception as e: print(e)
     return r
 
-def get_broker_url(broker,uid):
+def get_broker_url(broker,what,uid):
     r = ''
     try:
-        r = go_to_url(get_broker_affiliate_link(broker),'form',uid) + '<a '+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
+        if what == 'link':
+            r = '<a '+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
+        if what == 'form':
+            r = go_to_url(get_broker_affiliate_link(broker),'form',uid)
     except Exception as e: print(e)
     return r
 
@@ -97,6 +100,7 @@ def get_box_plan_selection(burl):
         broker = 'eToro'
 
         l_price = get_package_price()
+        broker_link_form = get_broker_url(broker,'form',1)
         l_feature_01 = '<strong>Create and track your financial portfolio’s performance.</strong><br />Create unlimited trading strategies.'
         l_feature_02 = '<strong>Get clear trading instructions with entries and exits</strong><br />(Take profit, Stop loss) on stocks, forex, commodities, ETF and crypto.'
         l_feature_03 = '<strong>Trade the news with our in-build sentiment analysis.</strong><br />Gauge the impact of ongoing news, and apply this information in your trading for high probability trading setup.'
@@ -104,11 +108,12 @@ def get_box_plan_selection(burl):
         l_feature_05 = '<strong>Market Intelligence</strong><br />Get a “straight to the point” snapshot of what’s happening in the global financial market.'
         l_feature_06 = '<strong>1000+ trading instruments</strong><br />U.S. Stocks / U.K. Stocks / Germany Stocks / World Indices / Major,cross Forex pairs / Commodities / Major Cryptocurrencies, Cross Cryptocurrencies /  Commodities / Bonds... '+\
                         '<a href="'+ burl +'ls/?w=instr" target="_blank">(List of available instruments)</a>'
-        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with '+ get_broker_url(broker,1) +' directly from SmartAlpha with just one click.'
-        l_feature_08 = '<strong>Auto-Trade on '+ get_broker_url(broker,2) +' with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on '+ get_broker_url(broker,3) +' and profit without the hassle.'
-        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for '+ get_broker_url(broker,4) +' users</strong><br />Terms & Conditions: Signup to '+ get_broker_url(broker,5) +' from SmartAlpha or copy our Portfolio on '+ get_broker_url(broker,6) +' if you are already a client at '+ get_broker_url(broker,7) +'.'
+        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with '+ get_broker_url(broker,'link',1) +' directly from SmartAlpha with just one click.'
+        l_feature_08 = '<strong>Auto-Trade on '+ get_broker_url(broker,'link',1) +' with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on '+ get_broker_url(broker,'link',1) +' and profit without the hassle.'
+        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for '+ get_broker_url(broker,'link',1) +' users</strong><br />Terms & Conditions: Signup to '+ get_broker_url(broker,'link',1) +' from SmartAlpha or copy our Portfolio on '+ get_broker_url(broker,'link',1) +' if you are already a client at '+ get_broker_url(broker,'link',1) +'.'
 
-        box_content = '<div class="box-top">' +\
+        box_content = broker_link_form +\
+        '<div class="box-top">' +\
         '   <div class="row">'+\
         '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded sa-center-content">'+\
