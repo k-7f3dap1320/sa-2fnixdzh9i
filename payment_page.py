@@ -127,7 +127,7 @@ def get_box_plan_selection(burl):
         '      <th scope="col" style="vertical-align: top;"><strong>SmartAlpha Trading Intelligence</strong></th>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <th scope="col" style="vertical-align: top; text-align: left;"><div class="d-none d-sm-block">Features</div></th>'+\
+        '      <th scope="col" style="vertical-align: top; text-align: left;"><div class="d-none d-sm-block">&nbsp;</div></th>'+\
         '      <th scope="col" style="vertical-align: top;"><h3>FREE</h3></th>'+\
         '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div>'+ l_price +'</div></th>'+\
         '    </tr>'+\
