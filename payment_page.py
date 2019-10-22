@@ -33,7 +33,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
     r = ''
     try:
         l_price = get_package_price()
-        l_button_trial = 'Try 1-month for free<br />'
+        l_button_trial = '1-month Free Trial<br />'
         l_button_soldout = '1-month trial<br />(SOLD OUT!)'
         l_then_recurring_monthly = 'Then '+ l_price +' for each month'
         l_secure_payment_with_paypal = 'Secure payment with PayPal'
@@ -134,6 +134,11 @@ def get_box_plan_selection(burl):
         '  </thead>'+\
         '  <tbody>'+\
         '    <tr>'+\
+        '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
+        '      <td>'+ get_broker_signup_button(burl,'en',broker) +'</td>'+\
+        '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_01 +'</div></td>'+\
         '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
@@ -179,9 +184,9 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><div class="d-none d-sm-block">&nbsp;</h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
-        '      <td>'+ get_broker_signup_button(burl,'en',broker) +'</td>'+\
-        '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">&nbsp;</div></td>'+\
+        '      <td><div class="d-none d-sm-block">'+ get_broker_signup_button(burl,'en',broker) +'</div></td>'+\
+        '      <td><div class="d-none d-sm-block">'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</div></td>'+\
         '    </tr>'+\
         '  </tbody>'+\
         '</table>'+\
