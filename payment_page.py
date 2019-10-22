@@ -21,8 +21,8 @@ def get_package_price():
 def get_broker_signup_button(burl,lang,broker):
     r = ''
     try:
-        l_button = 'Signup with eToro'
-        button_signup = '<a href="'+burl+'join/?broker=eToro" class="btn btn-success" style="font-size:medium;">'+ l_button +'</a>'
+        l_button = 'Signup with '+ str(broker)
+        button_signup = '<a href="'+burl+'join/?broker='+ str(broker) +'" class="btn btn-success" style="font-size:medium;">'+ l_button +'</a>'
         r = button_signup
     except Exception as e: print(e)
     return r
@@ -110,7 +110,7 @@ def get_box_plan_selection(burl):
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">Features</th>'+\
         '      <th scope="col" style="vertical-align: top;"><h3>FREE</h3></th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div style="font-size:small;">'+ l_price +'</div></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div>'+ l_price +'</div></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
@@ -146,7 +146,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
-        '      <td>'+ get_broker_signup_button(burl,'en','etoro') +'</td>'+\
+        '      <td>'+ get_broker_signup_button(burl,'en','eToro') +'</td>'+\
         '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
         '    </tr>'+\
         '  </tbody>'+\
