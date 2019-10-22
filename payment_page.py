@@ -21,8 +21,8 @@ def get_package_price():
 def get_broker_signup_button(burl,lang,broker):
     r = ''
     try:
-        l_button = 'Signup. Forever FREE.'
-        button_signup = '<a href="'+burl+'join/?broker=eToro" class="btn btn-sm btn-success" style="font-size:small;">'+ l_button +'</a>'
+        l_button = 'Signup with eToro'
+        button_signup = '<a href="'+burl+'join/?broker=eToro" class="btn btn-success" style="font-size:medium;">'+ l_button +'</a>'
         r = button_signup
     except Exception as e: print(e)
     return r
@@ -43,8 +43,8 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         class_btn = ''; style_btn = ''; paypal_notice = ''
         class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
         style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
-        class_sm_btn = 'btn btn-sm btn-primary'
-        style_sm_btn = 'font-size:small;'
+        class_sm_btn = 'btn btn-primary'
+        style_sm_btn = 'font-size:medium;'
 
         if size == 'lg':
             class_btn = class_lg_btn
@@ -86,7 +86,6 @@ def get_box_plan_selection(burl):
     box_content = ''
     try:
         l_price = get_package_price()
-        l_less_than_price_coffee_day = '*For less than $1 a day.'
         l_feature_01 = '<strong>Create and track your financial portfolio’s performance.</strong><br />Create unlimited trading strategies.'
         l_feature_02 = '<strong>Get clear trading instructions with entries and exits</strong><br />(Take profit, Stop loss) on stocks, forex, commodities, ETF and crypto.'
         l_feature_03 = '<strong>Trade the news with our in-build sentiment analysis.</strong><br />Gauge the impact of ongoing news, and apply this information in your trading for high probability trading setup.'
@@ -111,7 +110,7 @@ def get_box_plan_selection(burl):
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">Features</th>'+\
         '      <th scope="col" style="vertical-align: top;"><h3>FREE</h3></th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div>'+ l_price +'</div></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div style="font-size:small;">'+ l_price +'</div></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
