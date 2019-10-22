@@ -51,7 +51,7 @@ def get_pricing_menu(burl):
     try:
         link = burl + 'pricing'
         l_title = 'Pricing'
-        r = '<li>&nbsp;&nbsp;</li><li class="nav-item"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
+        r = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
     except Exception as e: print(e)
     return r
 
@@ -60,7 +60,7 @@ def get_about_menu(burl):
     try:
         link = burl + 'h'
         l_title = 'What is SmartAlpha?'
-        r = '<li>&nbsp;&nbsp;</li><li class="nav-item"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
+        r = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
     except Exception as e: print(e)
     return r
 
@@ -115,7 +115,7 @@ def navbar(burl,disable_search):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
-    '  <ul class="navbar-nav mr-auto d-none d-sm-block">'+\
+    '  <ul class="navbar-nav mr-auto">'+\
     leftsidemenu +\
     '  </ul>'+\
     ' '+\

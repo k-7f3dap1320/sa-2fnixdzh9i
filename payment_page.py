@@ -133,12 +133,12 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_01 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_02 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
@@ -148,7 +148,7 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_04 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
@@ -158,7 +158,7 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_06 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
@@ -168,12 +168,12 @@ def get_box_plan_selection(burl):
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
         '    </tr>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_08 +'</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
         '    </tr>'+\
-        '    <tr class="d-none d-sm-block">'+\
+        '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_09 +'</td>'+\
         '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
