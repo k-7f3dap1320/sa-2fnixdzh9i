@@ -119,7 +119,7 @@ def get_box_plan_selection(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
-        '<table class="table table-hover table-sm" style="font-size: smaller;">'+\
+        '<table class="table-hover table-sm" style="font-size: smaller;">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">&nbsp;</th>'+\
@@ -135,8 +135,8 @@ def get_box_plan_selection(burl):
         '  <tbody>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
-        '      <td>'+ get_broker_signup_button(burl,'en',broker) +'</td>'+\
-        '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
+        '      <td style="vertical-align: top;">'+ get_broker_signup_button(burl,'en',broker) +'</td>'+\
+        '      <td style="vertical-align: top;">'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_01 +'</div></td>'+\
@@ -185,8 +185,8 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">&nbsp;</div></td>'+\
-        '      <td><div class="d-none d-sm-block">'+ get_broker_signup_button(burl,'en',broker) +'</div></td>'+\
-        '      <td><div class="d-none d-sm-block">'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</div></td>'+\
+        '      <td><div class="d-none d-sm-block" style="vertical-align: top;">'+ get_broker_signup_button(burl,'en',broker) +'</div></td>'+\
+        '      <td><div class="d-none d-sm-block" style="vertical-align: top;">'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</div></td>'+\
         '    </tr>'+\
         '  </tbody>'+\
         '</table>'+\
