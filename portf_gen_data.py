@@ -571,7 +571,9 @@ def generate_portfolio(s):
     try:
         print('****** Start Creating portf, strategy, feed, symbol_list ******')
         get_portf_alloc(s)
+        print('******************* 1: porf_gen_data.py ***********************')
         get_portf_perf(s)
+        print('******************* 2: porf_gen_data.py ***********************')
         set_portf_feed(s)
         print('****************** End of creation of records *****************')
     except Exception as e: print(e)
