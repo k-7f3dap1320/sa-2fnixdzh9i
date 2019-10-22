@@ -31,7 +31,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         paypal_button_id = 'HS42U57YF4HKL'
         soldout_form_action = '#'
 
-        class_btn = ''; style_btn = ''
+        class_btn = ''; style_btn = ''; paypal_notice = ''
         class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
         style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
         class_sm_btn = 'btn btn-sm btn-primary'
@@ -40,9 +40,14 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         if size == 'lg':
             class_btn = class_lg_btn
             style_btn = style_lg_btn
+            paypal_notice = '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +') '+ l_subscribe_payment_notice +'</strong></div>'+\
+                    '<div>'+ '' +'</div>'+\
+                    '<div>&nbsp;</div>'+\
+                    '<img alt="" src="'+ burl +'static/ccico.png" style="height: 30px;" />'
         if size == 'sm':
             class_btn = class_sm_btn
             style_btn = style_sm_btn
+            paypal_notice = '&nbsp;'
 
         button_checkout = '<button type="submit" class="'+ class_btn +'" style="'+ style_btn +'">'+ l_button_trial +'</button>'
         button_soldout = '<button class="'+ class_btn +' disabled" style="'+ style_btn +'">'+ l_button_soldout + '</button>'
@@ -62,10 +67,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         button_paypal +\
         '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">'+\
         '</form>'+\
-        '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+ l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+ l_secure_payment_with_paypal +') '+ l_subscribe_payment_notice +'</strong></div>'+\
-        '<div>'+ '' +'</div>'+\
-        '<div>&nbsp;</div>'+\
-        '<img alt="" src="'+ burl +'static/ccico.png" style="height: 30px;" />'+\
+        paypal_notice +\
         '<!-- ------------------------------------------------------------------------------------------------------------------- -->'
     except Exception as e: print(e)
     return r
@@ -90,7 +92,7 @@ def get_box_plan_selection(burl):
         '            <div class="box-part rounded sa-center-content">'+\
         '<div>&nbsp;</div>'+\
         '<div>&nbsp;</div>'+\
-        '<table class="table table-hover table-sm">'+\
+        '<table class="table table-hover table-sm" style="font-size: smaller;">'+\
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">&nbsp;</th>'+\
@@ -98,7 +100,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top; text-align: left;"><h3>Monthly</h3><div>'+ l_price +'</div></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h3>Monthly</h3><div>'+ l_price +'</div></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
@@ -126,12 +128,12 @@ def get_box_plan_selection(burl):
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_06 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
+        '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
+        '    </tr>'+\
         '  </tbody>'+\
         '</table>'+\
-        '<div>&nbsp;</div>'+\
-        get_paypal_payment_button(burl,'en', False, 'lg') +\
-        '<div>&nbsp;</div>'+\
-        '<div>&nbsp;</div>'+\
         '            </div>'+\
         '        </div>'+\
         '   </div>'+\
