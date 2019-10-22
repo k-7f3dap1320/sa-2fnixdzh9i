@@ -42,30 +42,29 @@ def get_selectportf_box(burl,step,mode,x):
         progress_value = '0'
 
         if step == '1':
-            l_desc_part_1 = "Select (Step "+ str(step) +" of "+ str(min_sel) +")"
+            l_desc_part_1 = "Select from list."
             progress_value = '20'
         if step == '2':
-            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
+            l_desc_part_1 = str(step) +" of "+ str(min_sel)
             progress_value = '40'
         if step == '3':
-            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
+            l_desc_part_1 = str(step) +" of "+ str(min_sel)
             progress_value = '60'
         if step == '4':
-            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
+            l_desc_part_1 = str(step) +" of "+ str(min_sel)
             progress_value = '80'
         if step == '5':
-            l_desc_part_1 = "Step "+ str(step) +" of "+ str(min_sel)
+            l_desc_part_1 = str(step) +" of "+ str(min_sel)
             progress_value = '95'
         if step == '6':
             l_desc_part_1 = "Save strategy"
             progress_value = '100'
 
         l_back_button = 'back'
-        #l_skip_process_button = 'Let SmartAlpha choose'
+        l_skip_process_button = 'done'
 
         button_back = '<span style="float:left;"><button type="button" style="font-size: medium;" class="btn btn-lg btn-secondary" onClick="javascript:history.back();"><i class="fas fa-caret-left"></i>&nbsp;'+ l_back_button +'</button></span>'
-        #button_process_skip = '<span style="float:right;"><a href="'+ burl +'genportf/?acm='+ str( get_user_default_profile() ) +'&step=1&notstart=1" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
-        button_process_skip = ''
+        button_process_skip = '<span style="float:right;"><a href="#" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
 
         portf_selection = '<h6>'
         for i in range(5):
@@ -76,7 +75,7 @@ def get_selectportf_box(burl,step,mode,x):
 
         try:
             if int(step) > 1 and int(step) < 6:
-                portf_selection = 'your portfolio selection: ' + portf_selection
+                portf_selection = 'your strategy selection: ' + portf_selection
             else:
                 portf_selection = ''
         except:
