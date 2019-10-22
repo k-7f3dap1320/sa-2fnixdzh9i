@@ -324,7 +324,8 @@ def get_portf_table_rows(burl):
             strategy_conviction = request.cookies.get('portf_s_' + str(i+1) + '_conv' )
             instr_selection = ''
             uid = request.cookies.get('portf_s_' + str(i+1) )
-
+            symbol = ''
+            fullname = ''
             if not uid is None or uid == '':
                 connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
                 cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -332,42 +333,45 @@ def get_portf_table_rows(burl):
                 "WHERE symbol_list.uid=" + str(uid)
                 cr.execute(sql)
                 rs = cr.fetchall()
-                for row in rs: instr_selection = '<strong>' + row[0] + '</strong>&nbsp;('+ row[1] +')'
+                for row in rs:
+                    fullname = row[0]
+                    symbol = row[1]
+                    instr_selection = '<strong>' + fullname + '</strong>&nbsp;('+ symbol +')'
                 cr.close()
 
             if strategy_order_type == 'long/short': class_order_type = 'btn-secondary'
             if strategy_order_type == 'long': class_order_type = 'btn-success'
             if strategy_order_type == 'short': class_order_type = 'btn-danger'
 
-
-            r = r + ''+\
-            '    <tr>'+\
-            '      <th style="text-align: left" scope="row">'+\
-            '       <div class="dropdown">'+\
-            '           <button class="btn '+ class_order_type +' dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
-            strategy_order_type +\
-            '           </button>'+\
-            '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long/short'+'">Buy and Sell (long/short)</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long'+'">Buy Only (long)</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=short'+'">Sell Only (short)</a>'+\
-            '           </div>'+\
-            '       </div>'+\
-            '       </th>'+\
-            '       <td style="text-align: left">'+\
-            '       <div class="dropdown">'+\
-            '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
-            strategy_conviction +\
-            '           </button>'+\
-            '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=weak'+'">weak</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=strong'+'">strong</a>'+\
-            '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=neutral'+'">neutral</a>'+\
-            '           </div>'+\
-            '       </div>'+\
-            '      </td>'+\
-            '      <td style="text-align: left" width="100%">'+ instr_selection +'</td>'+\
-            '    </tr>'
+            if symbol != '':
+                r = r + ''+\
+                '    <tr>'+\
+                '      <th style="text-align: left" scope="row">'+\
+                '       <div class="dropdown">'+\
+                '           <button class="btn '+ class_order_type +' dropdown-toggle" type="button" id="strategy_order_type_'+ str(i+1) +'" name="strategy_order_type_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+                strategy_order_type +\
+                '           </button>'+\
+                '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long/short'+'">Buy and Sell (long/short)</a>'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=long'+'">Buy Only (long)</a>'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=type'+str(i+1)+'&x=short'+'">Sell Only (short)</a>'+\
+                '           </div>'+\
+                '       </div>'+\
+                '       </th>'+\
+                '       <td style="text-align: left">'+\
+                '       <div class="dropdown">'+\
+                '           <button class="btn btn-secondary dropdown-toggle" type="button" id="strategy_conviction_'+ str(i+1) +'" name="strategy_conviction_'+ str(i+1) +'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
+                strategy_conviction +\
+                '           </button>'+\
+                '           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=weak'+'">weak</a>'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=strong'+'">strong</a>'+\
+                '               <a class="dropdown-item" href="'+ burl + 'p/?ins=4&mode=conv'+str(i+1)+'&x=neutral'+'">neutral</a>'+\
+                '           </div>'+\
+                '       </div>'+\
+                '      </td>'+\
+                '      <td style="text-align: left" width="100%">'+ instr_selection +'</td>'+\
+                '    </tr>'
     except Exception as e:
         print(e)
     return r
