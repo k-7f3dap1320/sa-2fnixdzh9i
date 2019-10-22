@@ -244,14 +244,15 @@ def portf_add_allocation(portf_symbol):
             portf_type = request.cookies.get('portf_s_' + str(i+1) + '_type' )
             portf_conv = request.cookies.get('portf_s_' + str(i+1) + '_conv')
 
-            sql = "SELECT instruments.symbol, instruments.fullname FROM instruments "+\
-            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid = " + str(portf_suid)
-            cr.execute(sql)
-            rs = cr.fetchall()
-            for row in rs: portf_s = row[0]; portf_fullname = row[1]
+            if str(portf_suid) != '' and str(portf_suid) != '0':
+                sql = "SELECT instruments.symbol, instruments.fullname FROM instruments "+\
+                "JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid = " + str(portf_suid)
+                cr.execute(sql)
+                rs = cr.fetchall()
+                for row in rs: portf_s = row[0]; portf_fullname = row[1]
 
-            if i != 0: insert_values = insert_values + ','
-            insert_values = insert_values + "('"+ str(portf_symbol) +"','"+ str(portf_s) +"','"+ str(portf_fullname) +"',1,'"+ str(portf_type) +"','"+ str(portf_conv) +"')"
+                if i != 0: insert_values = insert_values + ','
+                insert_values = insert_values + "('"+ str(portf_symbol) +"','"+ str(portf_s) +"','"+ str(portf_fullname) +"',1,'"+ str(portf_type) +"','"+ str(portf_conv) +"')"
 
         sql = "INSERT INTO portfolios(portf_symbol,symbol,alloc_fullname,quantity,strategy_order_type,strategy_conviction) VALUES "+ insert_values
         cr.execute(sql)
