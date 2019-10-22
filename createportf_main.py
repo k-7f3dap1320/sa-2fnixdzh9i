@@ -64,7 +64,9 @@ def get_selectportf_box(burl,step,mode,x):
         l_skip_process_button = 'done'
 
         button_back = '<span style="float:left;"><button type="button" style="font-size: medium;" class="btn btn-lg btn-secondary" onClick="javascript:history.back();"><i class="fas fa-caret-left"></i>&nbsp;'+ l_back_button +'</button></span>'
-        button_process_skip = '<span style="float:right;"><a href="#" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
+        if step >1 and step < 6:
+        button_process_skip = '<span style="float:right;"><a href="'+ burl + 'p/?ins=3' +'" style="font-size: medium;" class="btn btn-lg btn-secondary">'+ l_skip_process_button +'&nbsp;<i class="fas fa-forward"></i></a></span>'
+
 
         portf_selection = '<h6>'
         for i in range(5):
