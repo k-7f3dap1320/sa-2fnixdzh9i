@@ -24,7 +24,7 @@ def get_broker_signup_button(burl,lang,broker):
     r = ''
     try:
         l_button = 'Signup with '+ str(broker)
-        button_signup = '<a href="'+burl+'join/?broker='+ str(broker) +'" class="btn btn-success" style="font-size:medium;">'+ l_button +'</a>'
+        button_signup = '<a href="'+burl+'join/?broker='+ str(broker) +'" class="btn btn-success" style="font-size:small;">'+ l_button +'</a>'
         r = button_signup
     except Exception as e: print(e)
     return r
@@ -46,7 +46,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
         style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
         class_sm_btn = 'btn btn-primary'
-        style_sm_btn = 'font-size:medium;'
+        style_sm_btn = 'font-size:small;'
 
         if size == 'lg':
             class_btn = class_lg_btn
