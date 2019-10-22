@@ -115,7 +115,7 @@ def navbar(burl,disable_search):
     '</button>'+\
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">'+\
     search_box +\
-    '  <ul class="navbar-nav mr-auto">'+\
+    '  <ul class="navbar-nav mr-auto d-none d-sm-block">'+\
     leftsidemenu +\
     '  </ul>'+\
     ' '+\
