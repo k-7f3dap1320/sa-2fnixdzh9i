@@ -10,6 +10,7 @@ from awesomplete import *; from font_awesome import *; from app_navbar import *
 from googleanalytics import *; from tablesorter import *
 from app_cookie import *
 from purechat import *
+from createuser_main import *
 
 def get_package_price():
     r = ''
@@ -85,6 +86,9 @@ def get_box_plan_selection(burl):
 
     box_content = ''
     try:
+        broker = 'eToro'
+        broker_url = '<a href="'+ get_broker_affiliate_link(broker)+'" target="_blank">'+ broker +'</a>'
+
         l_price = get_package_price()
         l_feature_01 = '<strong>Create and track your financial portfolio’s performance.</strong><br />Create unlimited trading strategies.'
         l_feature_02 = '<strong>Get clear trading instructions with entries and exits</strong><br />(Take profit, Stop loss) on stocks, forex, commodities, ETF and crypto.'
@@ -93,9 +97,9 @@ def get_box_plan_selection(burl):
         l_feature_05 = '<strong>Market Intelligence</strong><br />Get a “straight to the point” snapshot of what’s happening in the global financial market.'
         l_feature_06 = '<strong>1000+ trading instruments</strong><br />U.S. Stocks / U.K. Stocks / Germany Stocks / World Indices / Major,cross Forex pairs / Commodities / Major Cryptocurrencies, Cross Cryptocurrencies /  Commodities / Bonds... '+\
                         '<a href="'+ burl +'ls/?w=instr" target="_blank">(List of available instruments)</a>'
-        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with eToro directly from SmartAlpha with just one click.'
-        l_feature_08 = '<strong>Auto-Trade on eToro with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on eToro and profit without the hassle.'
-        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for eToro users</strong><br />Terms & Conditions: Signup to eToro from SmartAlpha or copy our Portfolio on eToro if you are already an eToro client.'
+        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with '+ broker_url+' directly from SmartAlpha with just one click.'
+        l_feature_08 = '<strong>Auto-Trade on '+ broker_url +' with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on '+ broker_url +' and profit without the hassle.'
+        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for '+ broker_url +' users</strong><br />Terms & Conditions: Signup to '+ broker_url +' from SmartAlpha or copy our Portfolio on '+ broker_url +' if you are already a client at '+ broker_url +'.'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -164,7 +168,7 @@ def get_box_plan_selection(burl):
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
-        '      <td>'+ get_broker_signup_button(burl,'en','eToro') +'</td>'+\
+        '      <td>'+ get_broker_signup_button(burl,'en',broker) +'</td>'+\
         '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
         '    </tr>'+\
         '  </tbody>'+\
