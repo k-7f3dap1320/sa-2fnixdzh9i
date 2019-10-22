@@ -201,8 +201,10 @@ def get_elapsed_time(vminutes):
 
 def go_to_url(q,return_what,uniqid):
     #---------------------------------
+    # q = [url to redirect]
     # return_what = 'form' = '<form id="form_id_xxx"><input type="hidden" value="'+ str(q) +'" id="q"></form>'
-    # return_what = link = 'href="javascript:{}" onclick="document.getElementById('form_id_xxx').submit(); return false;"'
+    # return_what = 'link' = 'href="javascript:{}" onclick="document.getElementById('form_id_xxx').submit(); return false;"'
+    # uniqid = [a unique id to identify the form]
     #---------------------------------
     r = ''
     try:

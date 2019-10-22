@@ -11,6 +11,7 @@ from googleanalytics import *; from tablesorter import *
 from app_cookie import *
 from purechat import *
 from createuser_main import *
+from sa_func import *
 
 def get_package_price():
     r = ''
@@ -82,12 +83,18 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
     except Exception as e: print(e)
     return r
 
+def get_broker_url(broker,uid):
+    r = ''
+    try:
+        r = go_to_url(get_broker_affiliate_link(broker),'form',uid) + '<a href="'+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
+    except Exception as e: print(e)
+    return r
+
 def get_box_plan_selection(burl):
 
     box_content = ''
     try:
         broker = 'eToro'
-        broker_url = '<a href="'+ get_broker_affiliate_link(broker)+'" target="_blank">'+ broker +'</a>'
 
         l_price = get_package_price()
         l_feature_01 = '<strong>Create and track your financial portfolio’s performance.</strong><br />Create unlimited trading strategies.'
@@ -97,9 +104,9 @@ def get_box_plan_selection(burl):
         l_feature_05 = '<strong>Market Intelligence</strong><br />Get a “straight to the point” snapshot of what’s happening in the global financial market.'
         l_feature_06 = '<strong>1000+ trading instruments</strong><br />U.S. Stocks / U.K. Stocks / Germany Stocks / World Indices / Major,cross Forex pairs / Commodities / Major Cryptocurrencies, Cross Cryptocurrencies /  Commodities / Bonds... '+\
                         '<a href="'+ burl +'ls/?w=instr" target="_blank">(List of available instruments)</a>'
-        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with '+ broker_url+' directly from SmartAlpha with just one click.'
-        l_feature_08 = '<strong>Auto-Trade on '+ broker_url +' with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on '+ broker_url +' and profit without the hassle.'
-        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for '+ broker_url +' users</strong><br />Terms & Conditions: Signup to '+ broker_url +' from SmartAlpha or copy our Portfolio on '+ broker_url +' if you are already a client at '+ broker_url +'.'
+        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with '+ get_broker_url(broker,1) +' directly from SmartAlpha with just one click.'
+        l_feature_08 = '<strong>Auto-Trade on '+ get_broker_url(broker,2) +' with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on '+ get_broker_url(broker,3) +' and profit without the hassle.'
+        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for '+ get_broker_url(broker,4) +' users</strong><br />Terms & Conditions: Signup to '+ get_broker_url(broker,5) +' from SmartAlpha or copy our Portfolio on '+ get_broker_url(broker,6) +' if you are already a client at '+ get_broker_url(broker,7) +'.'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
