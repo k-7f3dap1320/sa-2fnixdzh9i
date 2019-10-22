@@ -18,6 +18,15 @@ def get_package_price():
     except Exception as e: print(e)
     return r
 
+def get_broker_signup_button(burl,lang,broker):
+    r = ''
+    try:
+        l_button = 'Signup. Forever FREE.'
+        button_signup = '<a href="'+burl+'join/?broker=eToro" class="btn btn-sm btn-success" style="font-size:small;">'+ l_button +'</a>'
+        r = button_signup
+    except Exception as e: print(e)
+    return r
+
 def get_paypal_payment_button(burl,lang,is_soldout,size):
     r = ''
     try:
@@ -35,7 +44,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
         class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
         style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
         class_sm_btn = 'btn btn-sm btn-primary'
-        style_sm_btn = 'font-size:smaller;'
+        style_sm_btn = 'font-size:small;'
 
         if size == 'lg':
             class_btn = class_lg_btn
@@ -96,40 +105,49 @@ def get_box_plan_selection(burl):
         '  <thead>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">&nbsp;</th>'+\
+        '      <th scope="col" style="vertical-align: top;"><strong>SmartAlpha Trading Intelligence + Trade with eToro</strong></th>'+\
         '      <th scope="col" style="vertical-align: top;"><strong>SmartAlpha Trading Intelligence</strong></th>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <th scope="col" style="vertical-align: top; text-align: left;">Features</th>'+\
-        '      <th scope="col" style="vertical-align: top;"><h3>Monthly</h3><div>'+ l_price +'</div></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h3>FREE</h3></th>'+\
+        '      <th scope="col" style="vertical-align: top;"><h3>MONTHLY</h3><div>'+ l_price +'</div></th>'+\
         '    </tr>'+\
         '  </thead>'+\
         '  <tbody>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_01 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_02 +'</td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_03 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_04 +'</td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_05 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_06 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
+        '      <td>'+ get_broker_signup_button(burl,'en','etoro') +'</td>'+\
         '      <td>'+ get_paypal_payment_button(burl,'en', False, 'sm') +'</td>'+\
         '    </tr>'+\
         '  </tbody>'+\
