@@ -134,49 +134,49 @@ def get_box_plan_selection(burl):
         '  </thead>'+\
         '  <tbody>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_01 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_01 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_02 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_02 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_03 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_03 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_04 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_04 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_05 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_05 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_06 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_06 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="fas fa-check-circle"></i></h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_07 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_07 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="far fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block">&nbsp;</h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_08 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_08 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="far fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block">&nbsp;</h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
-        '      <td scope="row" style=" text-align: left;" >'+ l_feature_09 +'</td>'+\
-        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
-        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
+        '      <td scope="row" style=" text-align: left;" ><div class="d-none d-sm-block">'+ l_feature_09 +'</div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block"><i class="far fa-check-circle"></i></h2></div></td>'+\
+        '      <td><h2 class="text-success"><div class="d-none d-sm-block">&nbsp;</h2></div></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
