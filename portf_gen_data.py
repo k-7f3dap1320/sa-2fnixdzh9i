@@ -362,6 +362,7 @@ class portf_data:
             "FROM instruments JOIN price_instruments_data ON instruments.symbol = price_instruments_data.symbol "+\
             "WHERE price_instruments_data.symbol='"+ str(row[0]) +"' "+\
             "ORDER BY price_instruments_data.date DESC LIMIT 1"
+            print(sql_s)
             cr_s.execute(sql_s)
             rs_s = cr_s.fetchall()
             for row in rs_s:
@@ -374,6 +375,9 @@ class portf_data:
             cr_s.close()
         cr.close()
         connection.close()
+
+        print( str(self.portf_multip) + ' = ' + str(self.portf_account_ref) + ' / ' + str(self.portf_total_alloc_amount ) )
+        print('**************************************')
 
         self.portf_multip = self.portf_account_ref / self.portf_total_alloc_amount
 
@@ -528,8 +532,6 @@ def get_portf_alloc(s):
                 else:
                     alloc_conv_rate = get_market_conv_rate(alloc_market)
 
-                print(alloc_symbol)
-                print( str(portf_item_quantity) +' = ' + str(portf_item_quantity) +' / ' + str(alloc_conv_rate)  )
                 alloc_dollar_amount = round( portf_item_quantity * alloc_price * alloc_conv_rate, int(alloc_decimal_places) ) * alloc_pip
                 portf_item_quantity = round(portf_item_quantity / alloc_conv_rate,2)
                 if portf_item_quantity < 0.01: portf_item_quantity = 0.01
