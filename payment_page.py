@@ -93,6 +93,9 @@ def get_box_plan_selection(burl):
         l_feature_05 = '<strong>Market Intelligence</strong><br />Get a “straight to the point” snapshot of what’s happening in the global financial market.'
         l_feature_06 = '<strong>1000+ trading instruments</strong><br />U.S. Stocks / U.K. Stocks / Germany Stocks / World Indices / Major,cross Forex pairs / Commodities / Major Cryptocurrencies, Cross Cryptocurrencies /  Commodities / Bonds... '+\
                         '<a href="'+ burl +'ls/?w=instr" target="_blank">(List of available instruments)</a>'
+        l_feature_07 = '<strong>Place your trades and orders from SmartAlpha directly.</strong><br />Trade with eToro directly from SmartAlpha with just one click.'
+        l_feature_08 = '<strong>Auto-Trade on eToro with our proprietary SmartAlpha allocation</strong><br />Copy our winning strategy on eToro and profit without the hassle.'
+        l_feature_09 = '<strong>SmartAlpha Trading Intelligence is forever FREE for eToro users</strong><br />Terms & Conditions: Signup to eToro from SmartAlpha or copy our Portfolio on eToro if you are already an eToro client.'
 
         box_content = '<div class="box-top">' +\
         '   <div class="row">'+\
@@ -143,6 +146,21 @@ def get_box_plan_selection(burl):
         '      <td scope="row" style=" text-align: left;" >'+ l_feature_06 +'</td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
         '      <td><h2 class="text-success"><i class="fas fa-check-circle"></i></h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row" style=" text-align: left;" >'+ l_feature_07 +'</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row" style=" text-align: left;" >'+ l_feature_08 +'</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
+        '    </tr>'+\
+        '    <tr>'+\
+        '      <td scope="row" style=" text-align: left;" >'+ l_feature_09 +'</td>'+\
+        '      <td><h2 class="text-success"><i class="far fa-check-circle"></i></h2></td>'+\
+        '      <td><h2 class="text-success">&nbsp;</h2></td>'+\
         '    </tr>'+\
         '    <tr>'+\
         '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
