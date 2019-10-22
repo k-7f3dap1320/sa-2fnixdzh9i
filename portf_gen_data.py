@@ -371,6 +371,7 @@ class portf_data:
                 salloc = int( pip_s * price_s )
                 if salloc > self.portf_big_alloc_price:
                     self.portf_big_alloc_price = salloc
+                print( str(self.portf_total_alloc_amount) + ' = ' + str(self.portf_total_alloc_amount) + ' + ' + str(salloc) )
                 self.portf_total_alloc_amount = self.portf_total_alloc_amount + salloc
             cr_s.close()
         cr.close()
