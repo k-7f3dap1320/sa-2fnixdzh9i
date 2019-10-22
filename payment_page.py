@@ -86,7 +86,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
 def get_broker_url(broker,uid):
     r = ''
     try:
-        r = go_to_url(get_broker_affiliate_link(broker),'form',uid) + '<a href="'+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
+        r = go_to_url(get_broker_affiliate_link(broker),'form',uid) + '<a '+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
     except Exception as e: print(e)
     return r
 
