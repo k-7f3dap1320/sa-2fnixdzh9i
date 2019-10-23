@@ -14,7 +14,7 @@ def get_page_footer(burl):
             box_content = ' '+\
             '<div class="box">' +\
             '   <div class="row">'+\
-            '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
+            '        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1">'+\
             '            <div class="sa-center-content footer">'+\
             '            </div>'+\
             '        </div>'+\
@@ -35,20 +35,13 @@ def get_page_footer(burl):
             '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
             '            <div class="sa-center-content footer">'+\
             '               <br /><br /><strong>'+\
-            '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html#business" target="_blank" class="text-info">SmartAlpha for Business</a></span>' +\
-            '               <br /><br /></strong>'+\
-            '            </div>'+\
-            '        </div>'+\
-            '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
-            '            <div class="sa-center-content footer">'+\
-            '               <br /><br /><strong>'+\
             '               <span style="font-size:large;"><a href="'+ burl +'static/taatu/index.html#tc" target="_blank" class="text-info">Terms and Conditions</a></span>' +\
             '               <br /><br /></strong>'+\
             '            </div>'+\
             '        </div>'+\
             '   </div>'+\
             '   <div class="row">'+\
-            '        <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">'+\
+            '        <div class="col-lg-3 col-md-3 col-sm-1 col-xs-1">'+\
             '            <div class="sa-center-content footer">'+\
             '            </div>'+\
             '        </div>'+\
