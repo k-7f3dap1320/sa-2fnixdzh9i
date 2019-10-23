@@ -31,6 +31,9 @@ def get_signin_box(burl):
             get_login_form(burl,'dark','') +\
             '                </div>'+\
             '               </div>'+\
+            '               <div class="row">'+\
+            '                   <img src="'+ burl +'static/etoro-logo.png" height="100px" />'+\
+            '               </div>'+\
             '            </div>'+\
             '        </div>'+\
             '</div></div>'
