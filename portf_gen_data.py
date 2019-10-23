@@ -369,6 +369,7 @@ class portf_data:
                 pip_s = row[0]
                 price_s = row[1]
                 salloc = float( pip_s * price_s )
+                if salloc == 0: salloc == 1
                 if salloc > self.portf_big_alloc_price:
                     self.portf_big_alloc_price = salloc
                 print( str(self.portf_total_alloc_amount) + ' = ' + str(self.portf_total_alloc_amount) + ' + ' + str(salloc) )
