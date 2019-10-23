@@ -32,8 +32,8 @@ def get_signin_box(burl):
             '                   <div>'+ l_app_header_desc +'&nbsp;<a href="'+ burl +'pricing/" class="text-info">'+ l_app_call_to_action_link +'</a></div>'+\
             '                   <div class="row" style="margin: 20px;">'+\
             '                       <a '+ etoro_logo_link +'" target="_blank"><img src="'+ burl +'static/etoro-logo.png" height="50px" style="margin:20px;" /></a>'+\
-            '                       <a href="#" target="_blank"><img src="'+ burl +'static/tradingview-logo.png" height="50px" style="margin:20px;" /></a>'+\
-            '                       <a href="#" target="_blank"><img src="'+ burl +'static/aws-logo.png" height="50px" style="margin:20px;" /></a>'+\
+            '                       <a href="#" target=""><img src="'+ burl +'static/tradingview-logo.png" height="50px" style="margin:20px;" /></a>'+\
+            '                       <a href="#" target=""><img src="'+ burl +'static/aws-logo.png" height="50px" style="margin:20px;" /></a>'+\
             '                   </div>'+\
             '                </div>'+\
             '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 50px;">'+\
