@@ -27,10 +27,10 @@ def get_signin_box(burl):
             '                   <h1 style="text-align: left; font-size:x-large; font-weight:bolder;">'+ l_app_header_title +'</h1>   '+\
             '                   <div>'+ l_app_header_desc +'&nbsp;<a href="'+ burl +'pricing/" class="text-info">'+ l_app_call_to_action_link +'</a></div>'+\
             '                   <div class="row" style="margin: 20px;">'+\
-            '                       <img src="'+ burl +'static/etoro-logo.png" height="50px" />'+\
-            '                       <img src="'+ burl +'static/tradingview-logo.png" height="50px" />'+\
-            '                       <img src="'+ burl +'static/morningstar-logo.png" height="50px" />'+\
-            '                       <img src="'+ burl +'static/aws-logo.png" height="50px" />'+\
+            '                       <img src="'+ burl +'static/etoro-logo.png" height="40px" style="margin:20px;" />'+\
+            '                       <img src="'+ burl +'static/tradingview-logo.png" height="40px" style="margin:20px;" />'+\
+            '                       <img src="'+ burl +'static/morningstar-logo.png" height="40px" style="margin:20px;" />'+\
+            '                       <img src="'+ burl +'static/aws-logo.png" height="40px" style="margin:20px;" />'+\
             '                   </div>'+\
             '                </div>'+\
             '                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 50px;">'+\
