@@ -69,7 +69,6 @@ def navbar(burl,disable_search):
     search_placeholder = '<search> function, ticker...'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
-    l_myportfolio = 'My Portfolio'
     l_themeSwitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
@@ -90,8 +89,6 @@ def navbar(burl,disable_search):
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item sa-navbar-text d-none d-sm-block" href="'+ burl + 'ls/?w=portf"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_myportfolio +'</a>'+\
-        '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
