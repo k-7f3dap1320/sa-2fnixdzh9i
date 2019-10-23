@@ -91,6 +91,7 @@ def navbar(burl,disable_search):
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
