@@ -89,10 +89,10 @@ def navbar(burl,disable_search):
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+ '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i>&nbsp;'+ l_themeSwitch +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings/"><i class="fas fa-cog"></i>&nbsp;'+ l_settings +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'theme/"><i class="fas fa-toggle-on"></i> '+ l_themeSwitch +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'settings/"><i class="fas fa-cog"></i> '+ l_settings +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i>&nbsp;'+ l_logout +'</a>'+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ burl + 'logout/"><i class="fas fa-sign-out-alt"></i> '+ l_logout +'</a>'+\
         '      </div>'+\
         '    </li>'+\
         '<li class="nav-item">'+\
