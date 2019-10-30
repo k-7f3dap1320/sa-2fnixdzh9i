@@ -58,7 +58,7 @@ def get_pricing_menu(burl):
 def get_about_menu(burl):
     r = ''
     try:
-        link = burl + 'h'
+        link = get_broker_affiliate_link('googleSiteSmartAlpha')
         l_title = 'What is SmartAlpha?'
         r = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
     except Exception as e: print(e)

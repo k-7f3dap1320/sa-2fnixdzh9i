@@ -124,22 +124,6 @@ def get_user_ip_input():
         print(e)
     return r
 
-def get_broker_affiliate_link(broker):
-    r = ''
-    try:
-        affiliate_link = ''
-        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT affiliate_link FROM brokers WHERE broker_id ='"+ str(broker) +"'"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs: affiliate_link = row[0]
-        cr.close()
-        connection.close()
-        r = affiliate_link
-    except Exception as e: print(e)
-    return r
-
 def get_broker_signin_spec_form(broker):
     r = ''
     try:
