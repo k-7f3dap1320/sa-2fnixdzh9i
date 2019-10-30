@@ -20,6 +20,4 @@ mkdir %USERPROFILE%\Desktop\_aws_app_package"
 git archive --verbose --format=zip HEAD > "%USERPROFILE%\Desktop\_aws_app_package\app_ver_X_X_X.zip"
 
 START "" explorer "%USERPROFILE%\Desktop\_aws_app_package"
-
-%_EB_EXE% init
-%_EB_EXE% create
+exit
