@@ -77,7 +77,7 @@ def get_signal_details(uid,mode):
         '                   <tbody>'+\
         '                       <tr>'+\
         '                           <td style="width: 10%" rowspan="2">'+ c_signal +'</td>'+\
-        '                           <td style="width: 10%" rowspan="2">'+ c_symbol +'</td>'+\        
+        '                           <td style="width: 10%" rowspan="2">'+ c_symbol +'</td>'+\
         '                           <td style="width: 10%">'+ hd_entry +'</td>'+\
         '                           <td style="width: 10%">'+ hd_tp +'</td>'+\
         '                           <td style="width: 60%">'+ hd_sl +'</td>'+\
