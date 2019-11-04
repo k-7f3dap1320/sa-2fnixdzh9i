@@ -53,7 +53,7 @@ def get_sign_header(uid):
         content = ' '+\
         '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        get_signal_details(uid) +\
+        get_signal_details(uid,'desc') +\
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\

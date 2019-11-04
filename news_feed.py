@@ -5,6 +5,7 @@
 from app_cookie import *
 from sa_func import *
 from tradingview_single_ticker import *
+from signal_details import get_signal_details
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -148,7 +149,9 @@ def get_newsfeed(x,suid,numline,show_chart):
             if news_ranking>0 and news_ranking <=0.5: contextstyle = theme_return_this('color: black;','color: white;')
 
             news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a '+ url_href  +' >'+ l_view_article +'</a>'
-
+            
+            if suid != 0: news_content = newscontent + '<br />'+ get_signal_details(suid,'newsfeed')
+            
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
             if news_ranking>0: sentiment_badge = '<span class="badge badge-success">'+'pos: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
