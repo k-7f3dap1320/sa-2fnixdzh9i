@@ -150,7 +150,7 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
 
             news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a '+ url_href  +' >'+ l_view_article +'</a>'
             
-            if symbol != '': news_content = news_content + '<br /><br /><div style="max-width:90%">'+ get_signal_details(get_uid_from_symbol(symbol),burl,'newsfeed') +'</div>'
+            if symbol != '': news_content = news_content + '<br /><br /><div style="width: 100%; overflow-x: auto;">'+ get_signal_details(get_uid_from_symbol(symbol),burl,'newsfeed') +'</div>'
             
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'
