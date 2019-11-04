@@ -15,7 +15,10 @@ def get_signal_details(uid,burl,mode):
 # mode = 'newsfeed','desc'
 # =============================================================================
     descr_box = ''
-    button_href = burl + 's/?uid=' + str(uid)
+    if (mode == 'newsfeed'):
+        button_href = burl + 's/?uid=' + str(uid)
+    else:
+        button_href = '#'
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
