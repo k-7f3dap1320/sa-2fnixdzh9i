@@ -10,6 +10,9 @@ import datetime
 import time
 from datetime import timedelta
 
+def get_lang():
+    return request.cookies.get('lang')
+
 def set_sa_lang(lang,c):
     try:
         resp = make_response( c )
