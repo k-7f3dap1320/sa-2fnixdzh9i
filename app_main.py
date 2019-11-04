@@ -45,7 +45,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         if user_is_login() == 0: dashboard_content = dashboard_content + get_newsfeed(0,0,10,1) + '<br />'+ get_newsfeed(1,0,5,1) + '<br />'
         dashboard_content = dashboard_content + get_card(x,9,burl)
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(0,0,15,1) + '<br />'
-        if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(1,0,5,0) + '<br />'+ get_newsfeed(1,0,5,1) + '<br />'
+        if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(1,0,5,1) + '<br />'
         dashboard_content = dashboard_content + get_card(x,1,burl)
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(2,0,100,1) + '<br />'
 
