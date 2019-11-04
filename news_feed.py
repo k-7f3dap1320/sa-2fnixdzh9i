@@ -13,7 +13,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 
-def get_newsfeed(x,suid,numline,show_chart):
+def get_newsfeed(burl,x,suid,numline,show_chart):
     ### ------------------------------------------------------------------------
     # x == 0 : world top news
     # x == 1 : news based on users default market, asset_class selection
@@ -150,7 +150,7 @@ def get_newsfeed(x,suid,numline,show_chart):
 
             news_content = str( row[1].replace('http://','https://') ) +' <br /><br />'+ '<a '+ url_href  +' >'+ l_view_article +'</a>'
             
-            if symbol != '': news_content = news_content + '<br /><br />'+ get_signal_details(get_uid_from_symbol(symbol),'newsfeed')
+            if symbol != '': news_content = news_content + '<br /><br />'+ get_signal_details(get_uid_from_symbol(symbol),burl,'newsfeed')
             
             sentiment_badge = ''
             if news_ranking<0: sentiment_badge = '<span class="badge badge-danger">'+'neg: '+ str(round(news_ranking*100,1) )+'%'+'</span>'

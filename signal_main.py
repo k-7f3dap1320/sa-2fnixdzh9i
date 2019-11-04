@@ -47,13 +47,13 @@ def get_uid_from_tvs(tvws):
     except Exception as e: print(e)
     return r
 
-def get_sign_header(uid):
+def get_sign_header(uid,burl):
     content = ''
     try:
         content = ' '+\
         '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
         '            <div class="box-part rounded" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        get_signal_details(uid,'desc') +\
+        get_signal_details(uid,burl,'desc') +\
         '            </div>'+\
         '        </div>'+\
         '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
@@ -81,7 +81,7 @@ def gen_sign_page(uid,tvws,appname,burl):
         page_title = 'This is how we decide to trade ' + instfullname
         page_desc = 'Access to thousands of financial instruments, stocks, forex, commodities & cryptos analysis and recommendations.'
         r = get_head(  get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,2,page_title,page_desc) + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_sign_header(uid) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' + get_page_footer(burl))
+        r = r + get_body( get_loading_body(), navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_sign_header(uid,burl) + get_sign_ta_chart_alt_orders(uid) + get_sign_recommend_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' + get_page_footer(burl))
         r = set_page(r)
 
         cr.close()
