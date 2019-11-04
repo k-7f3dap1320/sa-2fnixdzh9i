@@ -65,6 +65,7 @@ def get_signal_details(uid,mode):
         hd_tp = 'Target price'
         hd_sl = 'Stop loss'
 
+        c_symbol = symbol
         c_signal = signal
         c_entry = str( round(entry, decimal_places) )
         c_tp = str( round(tp, decimal_places) )
@@ -76,6 +77,7 @@ def get_signal_details(uid,mode):
         '                   <tbody>'+\
         '                       <tr>'+\
         '                           <td style="width: 10%" rowspan="2">'+ c_signal +'</td>'+\
+        '                           <td style="width: 10%" rowspan="2">'+ c_symbol +'</td>'+\        
         '                           <td style="width: 10%">'+ hd_entry +'</td>'+\
         '                           <td style="width: 10%">'+ hd_tp +'</td>'+\
         '                           <td style="width: 60%">'+ hd_sl +'</td>'+\
