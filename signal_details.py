@@ -63,8 +63,10 @@ def get_signal_details(uid,mode):
     hd_sl = 'Stop loss'
 
     c_symbol = ''
+    c_signal_column_width = ''
     if (mode == 'newsfeed'):
         c_symbol = '<td rowspan="2"><a href="#" class="btn btn-outline-info"><h4>'+ str(symbol) +'</h4></a></td>'
+        c_signal_column_width = 'style="width: 10%"'
     c_signal = signal
     c_entry = str( round(entry, decimal_places) )
     c_tp = str( round(tp, decimal_places) )
@@ -75,7 +77,7 @@ def get_signal_details(uid,mode):
     '               <table class="table table-sm sa-table-sm">'+\
     '                   <tbody>'+\
     '                       <tr>'+\
-    '                           <td rowspan="2">'+ c_signal +'</td>'+\
+    '                           <td '+ c_signal_column_width +' rowspan="2">'+ c_signal +'</td>'+\
     c_symbol+\
     '                           <td style="width: 10%">'+ hd_entry +'</td>'+\
     '                           <td style="width: 10%">'+ hd_tp +'</td>'+\
