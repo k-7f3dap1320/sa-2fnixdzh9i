@@ -50,12 +50,12 @@ def get_signal_details(uid,mode):
         badge.find('-4') == -1 and badge.find('-5') == -1 and
         badge.find('-6') == -1 and badge.find('-7') == -1 and
         badge.find('-8') == -1 and badge.find('-9') == -1) :
-            signal = '<a href="#" class="btn btn-outline-success"><h4>Buy</h4></span>'
+            signal = '<a href="#" class="btn btn-outline-success"><h4>Buy</h4></a>'
             entry = trade_1_entry
             tp = trade_1_tp
             sl = trade_1_sl
         else:
-            signal = '<a href="#" class="btn btn-outline-danger"><h4>Sell</h4></span>'
+            signal = '<a href="#" class="btn btn-outline-danger"><h4>Sell</h4></a>'
             entry = trade_3_entry
             tp = trade_3_tp
             sl = trade_3_sl
@@ -65,7 +65,7 @@ def get_signal_details(uid,mode):
         hd_tp = 'Target price'
         hd_sl = 'Stop loss'
 
-        c_symbol = symbol
+        c_symbol = '<span href="#" class="btn btn-outline-info"><h4>'+ str(symbol) +'</h4></span>'
         c_signal = signal
         c_entry = str( round(entry, decimal_places) )
         c_tp = str( round(tp, decimal_places) )
@@ -76,8 +76,8 @@ def get_signal_details(uid,mode):
         '               <table class="table table-sm sa-table-sm">'+\
         '                   <tbody>'+\
         '                       <tr>'+\
-        '                           <td style="width: 10%" rowspan="2">'+ c_signal +'</td>'+\
-        '                           <td style="width: 10%" rowspan="2">'+ c_symbol +'</td>'+\
+        '                           <td rowspan="2">'+ c_signal +'</td>'+\
+        '                           <td rowspan="2">'+ c_symbol +'</td>'+\
         '                           <td style="width: 10%">'+ hd_entry +'</td>'+\
         '                           <td style="width: 10%">'+ hd_tp +'</td>'+\
         '                           <td style="width: 60%">'+ hd_sl +'</td>'+\
