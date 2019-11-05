@@ -312,8 +312,7 @@ def portf_save_conviction(burl,mode,x):
             if mode == "conv5": resp.set_cookie('portf_s_5_conv', str(x), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return resp
 
 def get_portf_table_rows(burl):
@@ -373,8 +372,7 @@ def get_portf_table_rows(burl):
                 '      </td>'+\
                 '      <td style="text-align: left" width="100%">'+ instr_selection +'</td>'+\
                 '    </tr>'
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r
 
 def get_list_portf_alloc(burl):
@@ -408,8 +406,7 @@ def get_list_portf_alloc(burl):
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'+\
         '<span>&nbsp;</span>'
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r
 
 def get_box_portf_save(burl):

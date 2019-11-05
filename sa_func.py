@@ -238,7 +238,6 @@ def send_email_to_queue(send_to,email_subject,email_content,priority):
         sql = 'INSERT INTO email_queue '+\
         '(from_email, from_email_displayname, send_to_email_bcc, email_subject, email_content, priority) '+\
         'VALUES ("", "", "'+ str(send_to) +'", "'+ str(email_subject) +'", "'+ str(email_content) +'",'+ str(priority) +')'
-        print(sql)
         cr.execute(sql)
         connection.commit()
         cr.close()

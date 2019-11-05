@@ -114,8 +114,7 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
             resp = make_response( redirect(burl+'p/?ins=3' ) )
             resp.set_cookie('portf_s_'+str(step), str(uid), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return resp
 
 def get_portf_select(select):
@@ -133,8 +132,7 @@ def get_portf_select(select):
             for row in rs: r = row[0]
             cr.close()
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r
 
 
@@ -152,8 +150,7 @@ def ini_portf_select(r):
             resp.set_cookie('portf_s_' + str(i+1) + '_type','long/short',expires=datetime.datetime.now() + datetime.timedelta(days=1) )
             resp.set_cookie('portf_s_' + str(i+1) + '_conv',conviction,expires=datetime.datetime.now() + datetime.timedelta(days=1))
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return resp
 
 def gen_selectportf_page(appname,burl,step,mode,x,portf):
@@ -172,6 +169,5 @@ def custom_save_portf_page(appname,burl,mode,x):
         r = r + get_body( get_loading_body(), navbar(burl,0) + get_selectportf_box(burl,'6',mode,'') + get_box_portf_save(burl) )
         r = set_page(r)
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r

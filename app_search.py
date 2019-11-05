@@ -83,8 +83,7 @@ def gen_search_table(burl,nonavbar):
         '  </tbody>'+\
         '</table>'
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r
 
 def get_box_search(burl,nonavbar):

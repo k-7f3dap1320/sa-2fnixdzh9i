@@ -71,7 +71,6 @@ def set_portf_feed(s):
 
         badge = w_forecast_display_info
         search = asset_class + market + symbol + " " + fullname
-        print(search +": "+ os.path.basename(__file__) )
 
         if i == 0:
             sep = ''
@@ -93,7 +92,6 @@ def set_portf_feed(s):
     "(date, short_title, short_description, content, url,"+\
         " ranking, symbol, type, badge, "+\
     "search, asset_class, market) VALUES " + inserted_value
-    print(sql_i)
     try:
         cr_i.execute(sql_i)
         connection.commit()
@@ -268,7 +266,6 @@ def get_portf_perf(s):
 
         cr_i = connection.cursor(pymysql.cursors.SSCursor)
         sql_i = "DELETE FROM chart_data WHERE uid = "+ str(portf_uid)
-        print(sql_i)
         cr_i.execute(sql_i)
         connection.commit()
         cr_i.close()
@@ -288,7 +285,6 @@ def get_portf_perf(s):
                 "FROM portfolios JOIN price_instruments_data ON portfolios.symbol = price_instruments_data.symbol "+\
                 "JOIN instruments ON portfolios.symbol = instruments.symbol "+\
                 "WHERE portfolios.portf_symbol = '"+ portf_symbol +"' AND date="+ d_str +" ORDER BY portfolios.portf_symbol"
-                print(sql_c)
 
                 cr_c.execute(sql_c)
                 rs_c = cr_c.fetchall()
@@ -319,7 +315,6 @@ def get_portf_perf(s):
             cr_i = connection.cursor(pymysql.cursors.SSCursor)
             sql_i = "INSERT IGNORE INTO chart_data(uid, symbol, date, price_close) VALUES "+\
             inserted_value
-            print(sql_i)
             cr_i.execute(sql_i)
             connection.commit()
             cr_i.close()
@@ -362,7 +357,6 @@ class portf_data:
             "FROM instruments JOIN price_instruments_data ON instruments.symbol = price_instruments_data.symbol "+\
             "WHERE price_instruments_data.symbol='"+ str(row[0]) +"' "+\
             "ORDER BY price_instruments_data.date DESC LIMIT 1"
-            print(sql_s)
             cr_s.execute(sql_s)
             rs_s = cr_s.fetchall()
             for row in rs_s:
@@ -372,15 +366,10 @@ class portf_data:
                 if salloc == 0: salloc == 1
                 if salloc > self.portf_big_alloc_price:
                     self.portf_big_alloc_price = salloc
-                print( str(self.portf_total_alloc_amount) + ' = ' + str(self.portf_total_alloc_amount) + ' + ' + str(salloc) )
                 self.portf_total_alloc_amount = self.portf_total_alloc_amount + salloc
             cr_s.close()
         cr.close()
         connection.close()
-
-        print( str(self.portf_multip) + ' = ' + str(self.portf_account_ref) + ' / ' + str(self.portf_total_alloc_amount ) )
-        print('**************************************')
-
         self.portf_multip = self.portf_account_ref / self.portf_total_alloc_amount
 
     def get_quantity(self, alloc_s, alloc_coef):
@@ -497,7 +486,6 @@ def get_portf_alloc(s):
             sql_p = "SELECT price_close, date FROM price_instruments_data WHERE symbol ='"+portf_item_symbol+"' ORDER BY date DESC LIMIT 1"
             cr_p.execute(sql_p)
             rs_p = cr_p.fetchall()
-            print(sql_p+": "+ os.path.basename(__file__) )
             for row in rs_p:
                 alloc_price = row[0]
                 alloc_date = row[1]
@@ -512,7 +500,6 @@ def get_portf_alloc(s):
 
             cr_t.execute(sql_t)
             rs_t = cr_t.fetchall()
-            print(sql_t+": "+ os.path.basename(__file__) )
 
             for row in rs_t:
                 alloc_symbol = row[0]
@@ -541,13 +528,10 @@ def get_portf_alloc(s):
 
                 entry_level = alloc_entry_level_sign + ' ' + str( round( float(alloc_price), alloc_decimal_places) )
 
-                print(portf_symbol +": " + alloc_symbol )
-
                 cr_x = connection.cursor(pymysql.cursors.SSCursor)
                 sql_x = 'UPDATE portfolios SET quantity='+ str(portf_item_quantity) +', alloc_fullname="'+ alloc_fullname +'", order_type="' + alloc_order_type + '", '+\
                 'dollar_amount='+ str(alloc_dollar_amount) +', entry_level="'+ entry_level +'", expiration='+ alloc_expiration +' '+\
                 'WHERE symbol ="'+ alloc_symbol+'" AND portf_symbol ="' + portf_symbol + '" '
-                print(sql_x)
                 cr_x.execute(sql_x)
                 connection.commit()
                 cr_x.close()
@@ -555,7 +539,6 @@ def get_portf_alloc(s):
                 alloc_forc_wf = abs(alloc_w_forecast_change * alloc_price )
 
                 alloc_forc_pnl =  alloc_forc_pnl + (abs( float(alloc_forc_wf ) * portf_item_quantity * alloc_pip ) )
-                print(str(alloc_forc_pnl) + "=" + str(alloc_forc_pnl) + "abs(" + str(alloc_price) + "-" + str(alloc_forc_wf) +")" + "*" + str(portf_item_quantity) +"*"+ str(alloc_pip) + ")")
                 portf_forc_return = portf_forc_return + alloc_forc_pnl
                 portf_nav = portf_nav + alloc_dollar_amount
             cr_t.close()
@@ -575,11 +558,7 @@ def get_portf_alloc(s):
 
 def generate_portfolio(s):
     try:
-        print('****** Start Creating portf, strategy, feed, symbol_list ******')
         get_portf_alloc(s)
-        print('******************* 1: porf_gen_data.py ***********************')
         get_portf_perf(s)
-        print('******************* 2: porf_gen_data.py ***********************')
         set_portf_feed(s)
-        print('****************** End of creation of records *****************')
     except Exception as e: print(e)

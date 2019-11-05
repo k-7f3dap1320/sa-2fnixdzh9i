@@ -22,7 +22,6 @@ def get_current_user_total_account_size(w):
             sql = "SELECT sum(instruments.account_reference) as total_account, instruments.unit, markets.conv_to_usd "+\
             "FROM instruments JOIN markets ON markets.market_id = instruments.market "+\
             "WHERE instruments.owner = "+ str( get_user_numeric_id() )
-            print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
             total_account = 0
@@ -53,7 +52,6 @@ def get_current_user_total_account_size(w):
             "JOIN instruments ON instruments.symbol = chart_data.symbol "+\
             "WHERE instruments.owner = "+ str( get_user_numeric_id() ) +" GROUP BY chart_data.date) AS s ON s.date = chart_data.date "+\
             "WHERE instruments.owner = "+ str( get_user_numeric_id() ) +" ORDER BY chart_data.date"
-            print(sql)
             cr.execute(sql)
             rs = cr.fetchall()
             for row in rs: min_balance = row[0]

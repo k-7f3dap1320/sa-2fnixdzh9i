@@ -97,7 +97,6 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,u
             "VALUES ('"+ str(uid) +"','"+ str(name) +"','"+ str(nickname) +"','"+ str(username) +"','"+ str(password) +"',"+\
             str(d) +", '"+ str(referred_by_code) +"', "+ str(avatar_id) +", '"+ str(from_ip) + "', '"+ str( get_lang() )  +"', 'ALL','"+\
             str(broker)+"', '"+ str(username_broker) +"' )"
-            print(sql)
             cr.execute(sql)
             connection.commit()
             r = set_sa_cookie(uid, set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') ) )
@@ -119,8 +118,7 @@ def get_user_ip_input():
         '</script>'+\
         '<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>'
 
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
     return r
 
 def get_broker_signin_spec_form(broker):

@@ -37,8 +37,7 @@ def save_avatar(burl,nickname):
         connection.close()
 
         r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=c" />') + get_body('','') )
-    except Exception as e:
-        print(e)
+    except Exception as e: print(e)
         r = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'n/?step=a&err=1" />') + get_body('','') )
     return r
 

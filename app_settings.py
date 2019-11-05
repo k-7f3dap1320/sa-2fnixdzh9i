@@ -213,7 +213,6 @@ def get_radio_button_Trader_prf(default_profile):
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'SELECT market_id, market_label FROM markets ORDER BY market_label'
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         for row in rs:
@@ -222,7 +221,6 @@ def get_radio_button_Trader_prf(default_profile):
             checkedRadio =''
             if value.lower() == default_profile.lower(): checkedRadio = 'checked'
             r = r + '<input type="radio" name="'+ l_radioBtn_name +'" value="'+ str(value) +'" '+ checkedRadio +'>&nbsp;'+ str(label) +'&nbsp;'+ l_market +'<br>'
-        print(sql)
         sql = 'SELECT asset_class_id, asset_class_name FROM asset_class  WHERE asset_class_id<>"'+ get_portf_suffix() +'" AND asset_class_id<>"MA:" ORDER BY asset_class_name'
         cr.execute(sql)
         rs = cr.fetchall()

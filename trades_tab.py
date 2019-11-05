@@ -135,7 +135,6 @@ def get_trades_tbl(uid,w,burl,type):
         sql = sql + single_selection
         sql = sql + portf_symbol_selection
         sql = sql + ' order by trades.entry_date DESC'
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
 

@@ -38,7 +38,6 @@ def user_login(usr,pwd,burl,redirect):
         cr = connection.cursor(pymysql.cursors.SSCursor)
         usr = usr.lower()
         sql = "SELECT uid FROM users WHERE username ='"+ str(usr) +"' AND password ='"+ str(pwd) +"' AND deactivated=0 LIMIT 1"
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         uid = ''

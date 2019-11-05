@@ -39,7 +39,6 @@ def get_stdev(sql):
         cr.execute(sql)
         a = list( cr.fetchall() )
         r = np.std(a)
-        print('stdev='+str(r) )
         cr.close()
         connection.close()
     except Exception as e: print(e)
@@ -110,7 +109,6 @@ def get_mdd(sql):
         cr.close()
 
         r = pct_dd
-        print('mdd='+ str(r) )
     except Exception as e: print(e)
     connection.close()
 
@@ -135,13 +133,10 @@ def get_romad(sql):
             i += 1
         cr.close()
 
-        print('f='+str(first) + ' l='+str(last) )
-
         rt = get_pct_change(first,last)
         dd = get_mdd(sql)
 
         r = rt / dd
-        print('romad='+ str(r) )
     except Exception as e: print(e)
     connection.close()
     return r

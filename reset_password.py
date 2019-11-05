@@ -75,7 +75,6 @@ def change_password_form(burl,data):
         rs = cr.fetchall()
         select_uid = ''
         for row in rs: select_uid = row[0]
-        print(str(select_uid)+ " ::: " + str(user_uid) )
         if select_uid == user_uid:
             validation_script = ' '+\
             '<script>'+\

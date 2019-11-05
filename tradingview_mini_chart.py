@@ -61,7 +61,6 @@ def get_tradingview_mini_chart(suid,width,height,autosize,dateRange,area_chart):
             '}'+\
             '  </script>'+\
             '</div>'
-            print(r)
         else:
             r = label_not_available
 
