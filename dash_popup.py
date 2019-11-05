@@ -11,7 +11,7 @@ def gen_tour_popup(tour,burl):
     r = ''
     try:
         label_header = 'Welcome to SmartAlpha'
-        label_content = 'Hey before you start, let us show you quickly some of the top features.'
+        label_content = 'Before you start, let us show you quickly some of the top features.'
         label_button = 'Take me to the quick tour'
 
 
