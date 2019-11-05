@@ -2,7 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from flask import make_response
+from flask import make_response, redirect
 from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
