@@ -34,9 +34,6 @@ def get_stylesheet(burl):
     btn = '.btn {font-size:x-small;}'
     section_title = '.sectiont {font-weight: lighter; font-size: medium; line-height: 50px;}'
 
-    #Customized awesomplete
-    awesomplete = '.awesomplete > ul {min-width: 200%;}'
-
     #Login Form
     form_signin = '.form-signin {width: 100%; max-width: 330px; padding: 15px; margin: 0 auto;}'
     form_signin_text_dark = '.form-signin-text-dark {color: white; text-align: center; }'
@@ -94,7 +91,6 @@ def get_stylesheet(burl):
     text +\
     btn +\
     section_title +\
-    awesomplete +\
     sa_table_sm +\
     sa_table_click_row +\
     sa_instr_n_portf_list +\

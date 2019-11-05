@@ -11,7 +11,6 @@ from app_body import *
 from bootstrap import *
 from app_loading import *
 from app_stylesheet import *
-from awesomplete import *
 from tablesorter import *
 from app_navbar import *
 from font_awesome import *

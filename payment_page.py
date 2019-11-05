@@ -2,12 +2,19 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from app_head import *; from app_body import *; from app_page import *; from app_loading import *
+from app_head import *
+from app_body import *
+from app_page import *
+from app_loading import *
 from app_footer import *
 from app_ogp import *
-from app_title import *; from app_metatags import *; from bootstrap import *
-from awesomplete import *; from font_awesome import *; from app_navbar import *
-from googleanalytics import *; from tablesorter import *
+from app_title import *
+from app_metatags import *
+from bootstrap import *
+from font_awesome import *
+from app_navbar import *
+from googleanalytics import *
+from tablesorter import *
 from app_cookie import *
 from purechat import *
 from createuser_main import *
