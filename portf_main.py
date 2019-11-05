@@ -2,7 +2,7 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from app_page import gen_portf_page, set_page
+from app_page import set_page
 from app_head import get_head
 from app_ogp import set_ogp
 from app_footer import get_page_footer
