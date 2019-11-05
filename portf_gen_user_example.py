@@ -23,10 +23,16 @@ def gen_portf_user_example(burl,acm,notstart):
             asset_class = '%%'
         else:
             asset_class = acm
+        volatilty_risk_fx = 0.01
+        if asset_class == "FX:":
+            volatility_risk = volatility_risk_fx
+        else:
+            volatility_risk = 0.05
+        
         if user_is_login() == 1:
             connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
-            sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND symbol_list.disabled=0 AND (instruments.y1_signal > 0 AND instruments.m6_signal > 0 AND instruments.m3_signal > 0 ) AND (instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
+            sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND symbol_list.disabled=0 AND (instruments.y1_signal > 0 AND instruments.volatility_risk_st < "+ str(volatility_risk) +" ) AND (instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY RAND() LIMIT 5"
             cr.execute(sql)
             rs = cr.fetchall()
             i = 0
@@ -37,7 +43,7 @@ def gen_portf_user_example(burl,acm,notstart):
                 i += 1
             if i < 5:
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
-                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.m6_signal > 0 AND instruments.m3_signal > 0) AND "+\
+                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.m6_signal > 0 AND instruments.volatilityvolatility_risk_st < "+ str(volatility_risk) +") AND "+\
                 "(instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') AND symbol_list.disabled = 0 ORDER BY RAND() LIMIT 5"
                 cr.execute(sql)
                 rs = cr.fetchall()
@@ -50,7 +56,7 @@ def gen_portf_user_example(burl,acm,notstart):
             if i < 5:
                 add_additional_asset = "FX:"
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
-                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0 AND instruments.m6_signal > 0 AND instruments.m3_signal > 0 ) AND "+\
+                "WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND (instruments.y1_signal > 0 AND instruments.volatilityvolatility_risk_st < "+ str(volatility_risk_fx) +" ) AND "+\
                 "(instruments.asset_class LIKE '"+ add_additional_asset +"') AND symbol_list.disabled = 0 ORDER BY RAND() LIMIT 5"
                 cr.execute(sql)
                 rs = cr.fetchall()
