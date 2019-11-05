@@ -6,12 +6,17 @@ DEV_MODE = False
 
 from flask import Flask, request
 from flask_compress import Compress
-from app_main import *; from portf_main import *; from signal_main import *
+from app_main import *
+from portf_main import *
+from signal_main import *
 from app_widget import *
-from createuser_main import *; from select_avatar import *; from select_market import *
+from createuser_main import *
+from select_market import *
 from createportf_main import *
 from portf_delete import *
-from app_head import *; from app_body import *; from app_page import *
+from app_head import *
+from app_body import *
+from app_page import *
 from app_cookie import *
 from sa_func import *
 from signin_main import *
@@ -115,9 +120,7 @@ def go():
         if broker is None: broker = request.values.get('broker')
         broker_username = request.values.get('username_broker')
         mode = request.values.get('mode')
-        if step == 'a': c = gen_createuser_avatar(appname,burl,err)
-        elif step == 'b': c = save_avatar(burl,nickname)
-        elif step == 'c': c = gen_selectmarket_page(appname,burl,mode)
+        if step == 'c': c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': c= save_selectmarket(burl,mode,x)
         else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
 
