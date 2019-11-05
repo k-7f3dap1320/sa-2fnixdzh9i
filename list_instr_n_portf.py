@@ -113,8 +113,6 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             else: class_m1 = "text text-danger"
             if w1 >= 0: class_w1 = "text text-success"
             else: class_w1 = "text text-danger"
-            if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
-            else: class_forecast = "bg bg-danger text-white"
 
             if user_portf:
                 class_row_style = ""
@@ -162,7 +160,6 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
             column_m3 +\
             column_m1 +\
             column_w1 +\
-            '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
             '    </tr>'
         cr.close()
         connection.close()
@@ -310,7 +307,7 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
                 signal_column = '<th scope="col" style="text-align: left">Rank</th>'
                 l_performance_note = ''
                 l_instr_portf = '<th scope="col" style="text-align: left">strategy</th>'
-                l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
+                l_forc_expect_return = ''
 
             c_1_year_column = '<th scope="col">1-Year</th>'
             c_6_month_column = '<th scope="col">6-month</th>'
