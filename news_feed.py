@@ -107,7 +107,6 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = query
-        print(sql)
         cr.execute(sql)
         rs = cr.fetchall()
         newsrow ='<span class="sectiont"><i class="far fa-newspaper"></i>&nbsp;'+ l_newsfeed_title +'</span>'

@@ -96,7 +96,7 @@ def set_portf_feed(s):
         cr_i.execute(sql_i)
         connection.commit()
     except Exception as e:
-        print(e + ' ' + os.path.basename(__file__) )
+        print(e)
         pass
     cr_i.close()
     cr.close()
@@ -476,7 +476,6 @@ def get_portf_alloc(s):
         rs_pf = cr_pf.fetchall()
         for row in rs_pf:
 
-            print(sql_pf+": "+ os.path.basename(__file__) )
             portf_item_symbol = row[0]
             portf_item_conviction = row[2]
             portf_item_conviction_coef = get_conviction_coef(portf_item_conviction)
