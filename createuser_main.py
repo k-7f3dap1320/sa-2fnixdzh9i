@@ -12,7 +12,6 @@ from app_body import *
 from bootstrap import *
 from app_loading import *
 from app_stylesheet import *
-from tablesorter import *
 from app_navbar import *
 from font_awesome import *
 from sa_func import *
@@ -72,7 +71,7 @@ def send_email_notification(broker,name,username):
 def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,username_broker):
     r = ''
     if uid == '0':
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( 'light',burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( 'light',burl ) + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl,0) + get_user_creation_form(burl,broker) + get_page_footer(burl) )
         r = set_page(r)
     else:

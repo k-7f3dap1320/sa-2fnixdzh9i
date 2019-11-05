@@ -14,7 +14,6 @@ from bootstrap import *
 from google_chart import *
 from app_loading import *
 from app_stylesheet import *
-from tablesorter import *
 from app_navbar import *
 from card import *
 from trades_tab import *
@@ -48,7 +47,7 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         dashboard_content = dashboard_content + get_card(x,1,burl)
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(burl,2,0,100,1) + '<br />'
 
-    r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+    r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
     r = r + get_body( get_loading_body(), navbarcontent + gen_tour_popup(tour,burl) + get_signin_box(burl) + get_box_user_profile_header(burl) + dashboard_content + get_page_footer(burl) +get_purechat(0) )
     r = set_page(r)
 

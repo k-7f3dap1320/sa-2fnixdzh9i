@@ -14,7 +14,6 @@ from bootstrap import *
 from font_awesome import *
 from app_navbar import *
 from googleanalytics import *
-from tablesorter import *
 from app_stylesheet import *
 from app_cookie import *
 #-------------------------------------------------------------------------------
@@ -58,7 +57,7 @@ def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second,noflexheigh
         if refresh_in_second is not None:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
 
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname,noflexheight)  )
         r = set_page(r)
     except Exception as e: print(e)

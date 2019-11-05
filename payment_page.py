@@ -14,7 +14,6 @@ from bootstrap import *
 from font_awesome import *
 from app_navbar import *
 from googleanalytics import *
-from tablesorter import *
 from app_cookie import *
 from purechat import *
 from createuser_main import *
@@ -211,7 +210,7 @@ def get_plan_selection_page(appname,burl):
     r = ''
     theme = 'light'
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( theme ,burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( theme ,burl ) + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl,0) + get_box_plan_selection(burl) + get_page_footer(burl) + get_purechat(1) )
         r = set_page(r)
     except Exception as e: print(e)

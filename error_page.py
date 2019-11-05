@@ -14,7 +14,6 @@ from bootstrap import *
 from font_awesome import *
 from app_navbar import *
 from googleanalytics import *
-from tablesorter import *
 from app_cookie import *
 
 def popup_error_msg(burl):
@@ -63,7 +62,7 @@ def get_error_page_content(burl):
 def get_error_page(appname,burl):
     r = ''
     try:
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl,0) + get_error_page_content(burl) + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)

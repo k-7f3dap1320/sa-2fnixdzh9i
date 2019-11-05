@@ -14,7 +14,6 @@ from bootstrap import *
 from font_awesome import *
 from app_navbar import *
 from googleanalytics import *
-from tablesorter import *
 from app_stylesheet import *
 from app_cookie import *
 import pymysql.cursors
@@ -217,7 +216,7 @@ def get_resetpassword_page(appname,burl,step,data,data2):
         else:
             page_content = get_resetpassword_email_input(burl)
 
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_tablesorter() + get_font_awesome() + get_stylesheet(burl) )
+        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
         r = r + get_body( get_loading_body(), navbar(burl,0) + page_content + get_page_footer(burl) )
         r = set_page(r)
     except Exception as e: print(e)
