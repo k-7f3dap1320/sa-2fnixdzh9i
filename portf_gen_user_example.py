@@ -39,7 +39,7 @@ def gen_portf_user_example(burl,acm,notstart):
             for row in rs:
                 resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                 resp.set_cookie('portf_s_'+str(i)+'_conv', str('weak'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-                resp.set_cookie('portf_s_'+str(i)+'_type', str('long'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+                resp.set_cookie('portf_s_'+str(i)+'_type', str('long/short'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                 i += 1
             if i < 5:
                 sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
@@ -51,7 +51,7 @@ def gen_portf_user_example(burl,acm,notstart):
                 for row in rs:
                     resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     resp.set_cookie('portf_s_'+str(i)+'_conv', str('weak'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-                    resp.set_cookie('portf_s_'+str(i)+'_type', str('long'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+                    resp.set_cookie('portf_s_'+str(i)+'_type', str('long/short'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     i += 1
             if i < 5:
                 add_additional_asset = "FX:"
@@ -63,7 +63,7 @@ def gen_portf_user_example(burl,acm,notstart):
                 for row in rs:
                     resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     resp.set_cookie('portf_s_'+str(i)+'_conv', str('weak'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
-                    resp.set_cookie('portf_s_'+str(i)+'_type', str('long'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
+                    resp.set_cookie('portf_s_'+str(i)+'_type', str('long/short'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     i += 1
 
 
