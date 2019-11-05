@@ -41,7 +41,7 @@ def gen_portf_user_example(burl,acm,notstart):
                 "(instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') AND symbol_list.disabled = 0 ORDER BY RAND() LIMIT 5"
                 cr.execute(sql)
                 rs = cr.fetchall()
-                #i = 1
+                i = 0
                 for row in rs:
                     resp.set_cookie('portf_s_'+str(i), str(row[0]), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
                     resp.set_cookie('portf_s_'+str(i)+'_conv', str('weak'), expires=datetime.datetime.now() + datetime.timedelta(days=1) )
