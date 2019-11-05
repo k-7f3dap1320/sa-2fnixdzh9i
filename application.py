@@ -20,8 +20,6 @@ from payment_page import *
 from error_page import *
 from portf_gen_user_example import *
 from how_page import *
-from tradingview_fundamental import *
-from tradingview_profile import *
 from intel_report import *
 from set_theme import *
 from app_settings import *
@@ -42,8 +40,6 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/join/', endpoint='join', methods=["POST", "GET"])
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
 @application.route('/w/', endpoint='w', methods=["POST","GET"])
-@application.route('/fd/', endpoint='fd', methods=["POST","GET"])
-@application.route('/ip/', endpoint='ip', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
 @application.route('/theme/', endpoint='theme', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
@@ -138,12 +134,6 @@ def go():
         refreshw = request.values.get('refreshw')
         noflexheight = request.values.get('noflexheight')
         c = get_widget_page(appname,burl,nonavbar,funcname,refreshw,noflexheight)
-
-    elif request.endpoint == 'fd':
-        c = get_tradingview_fundamental_page(uid,burl)
-
-    elif request.endpoint == 'ip':
-        c = get_tradingview_profile_page(uid,burl)
 
     elif request.endpoint == 'intelligence':
         c = get_intel_page(appname,burl)
