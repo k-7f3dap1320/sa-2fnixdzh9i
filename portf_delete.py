@@ -2,10 +2,11 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-from sa_db import *
+from flask import make_response
+from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
-from sa_func import *
+from sa_func import get_user_numeric_id
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
