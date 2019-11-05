@@ -14,7 +14,6 @@ from bootstrap import *
 from google_chart import *
 from app_loading import *
 from app_stylesheet import *
-from awesomplete import *
 from tablesorter import *
 from app_navbar import *
 from card import *
