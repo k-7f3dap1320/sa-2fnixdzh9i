@@ -36,7 +36,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def gen_portf_popup(uid,pop):
     r = ''
     label_header = 'Trading strategy created!'
-    label_content = ''
+    label_content = 'Your trading strategy has been generated.'
     label_button = 'Take me to my strategy...'
 
     if pop == '1':
