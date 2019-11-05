@@ -254,7 +254,7 @@ def portf_add_allocation(portf_symbol):
                 if i != 0: insert_values = insert_values + ','
                 insert_values = insert_values + "('"+ str(portf_symbol) +"','"+ str(portf_s) +"','"+ str(portf_fullname) +"',1,'"+ str(portf_type) +"','"+ str(portf_conv) +"')"
 
-        sql = "INSERT INTO portfolios(portf_symbol,symbol,alloc_fullname,quantity,strategy_order_type,strategy_conviction) VALUES "+ insert_values
+        sql = "INSERT IGNORE INTO portfolios(portf_symbol,symbol,alloc_fullname,quantity,strategy_order_type,strategy_conviction) VALUES "+ insert_values
         cr.execute(sql)
         connection.commit()
         cr.close()
