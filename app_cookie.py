@@ -52,7 +52,9 @@ def set_sa_cookie(uid,c):
     return resp
 
 def user_get_uid():
-    return request.cookies.get('user')
+    return_data = request.cookies.get('user')
+    if return_data is None: return_data = 0
+    return return_data
 
 def user_is_login():
     user_id = '0'

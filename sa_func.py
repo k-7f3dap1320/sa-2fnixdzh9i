@@ -17,7 +17,8 @@ def get_hash_string(s):
     return return_data
 
 def get_user():
-    return user_get_uid()
+    return_data = user_get_uid()
+    return return_data
 
 def get_avatar(burl,height):
     return_data = ''
