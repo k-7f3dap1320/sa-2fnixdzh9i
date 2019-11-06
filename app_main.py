@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from app_page import *
 from app_head import *
 from app_ogp import *
@@ -47,8 +44,8 @@ def gen_main_page(x,appname,burl,is_dashboard,tour,nonavbar):
         dashboard_content = dashboard_content + get_card(x,1,burl)
         if user_is_login() == 1: dashboard_content = dashboard_content + get_newsfeed(burl,2,0,100,1) + '<br />'
 
-    r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
-    r = r + get_body( get_loading_body(), navbarcontent + gen_tour_popup(tour,burl) + get_signin_box(burl) + get_box_user_profile_header(burl) + dashboard_content + get_page_footer(burl) +get_purechat(0) )
-    r = set_page(r)
+    return_data = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+    return_data = return_data + get_body( get_loading_body(), navbarcontent + gen_tour_popup(tour,burl) + get_signin_box(burl) + get_box_user_profile_header(burl) + dashboard_content + get_page_footer(burl) +get_purechat(0) )
+    return_data = set_page(return_data)
 
-    return r
+    return return_data

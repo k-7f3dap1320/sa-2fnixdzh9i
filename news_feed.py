@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from app_cookie import theme_return_this
 from sa_func import get_user_default_profile, get_user, get_random_str
 from sa_func import go_to_url, get_elapsed_time, get_uid_from_symbol, get_uid
@@ -23,7 +20,7 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
     # numline == []: number of line of news to return
     #show_chart == 1: show relevant chart or sentiment bar if x == 0
     ### ------------------------------------------------------------------------
-    r = ''
+    return_data = ''
     l_view_article = 'more >'
     l_newsfeed_title = 'Newsfeed'
     lang = 'en'
@@ -170,21 +167,21 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
     cr.close()
     connection.close()
 
-    r = newsrow
-    return r
+    return_data = newsrow
+    return return_data
 
 def draw_feed_chart(x,show_chart,score,symbol):
-    r = ''
+    return_data = ''
     if show_chart == 1:
-        if x == 0: r = get_sentiment_progressbar(score)
-        if x == 1: r = get_tradingview_single_ticker( get_uid(str(symbol)) )
-        if x == 2: r = get_sentiment_progressbar(score)
+        if x == 0: return_data = get_sentiment_progressbar(score)
+        if x == 1: return_data = get_tradingview_single_ticker( get_uid(str(symbol)) )
+        if x == 2: return_data = get_sentiment_progressbar(score)
     if show_chart == 0:
-        if x == 1: r = get_sentiment_progressbar(score)
-    return r
+        if x == 1: return_data = get_sentiment_progressbar(score)
+    return return_data
 
 def get_sentiment_progressbar(score):
-    r = ''
+    return_data = ''
     pos = 0; neg = 0
     if score < 0:
         pos = 1+score
@@ -199,5 +196,5 @@ def get_sentiment_progressbar(score):
     '  <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: '+ str(pos) +'%" aria-valuenow="'+ str(pos) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
     '  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: '+ str(neg) +'%" aria-valuenow="'+ str(neg) +'" aria-valuemin="0" aria-valuemax="100"></div>'+\
     '</div>'
-    r = content
-    return r
+    return_data = content
+    return return_data

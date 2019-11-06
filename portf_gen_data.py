@@ -1,7 +1,3 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
 
 import sys
 import os
@@ -19,21 +15,19 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_portf_content(user_id):
-    r = ''
-    try:
-        nickname = ''
-        avatar_id = ''
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT nickname, avatar_id FROM users WHERE id="+ str(user_id)
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs: nickname = row[0]; avatar_id = row[1]
-        r = '<img alt="" src="{burl}static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: 30px;">&nbsp;<strong>'+nickname+'</strong>'
-        cr.close()
-        connection.close()
-    except Exception as e: print(e)
-    return r
+    return_data = ''
+    nickname = ''
+    avatar_id = ''
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT nickname, avatar_id FROM users WHERE id="+ str(user_id)
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs: nickname = row[0]; avatar_id = row[1]
+    return_data = '<img alt="" src="{burl}static/avatar/'+ str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: 30px;">&nbsp;<strong>'+nickname+'</strong>'
+    cr.close()
+    connection.close()
+    return return_data
 
 def set_portf_feed(s):
 
@@ -88,16 +82,13 @@ def set_portf_feed(s):
     cr_i.execute(sql_i)
     connection.commit()
 
-    sql_i = "INSERT IGNORE INTO feed"+\
-    "(date, short_title, short_description, content, url,"+\
-        " ranking, symbol, type, badge, "+\
-    "search, asset_class, market) VALUES " + inserted_value
-    try:
+    if inserted_value != '':
+        sql_i = "INSERT IGNORE INTO feed"+\
+        "(date, short_title, short_description, content, url,"+\
+            " ranking, symbol, type, badge, "+\
+        "search, asset_class, market) VALUES " + inserted_value
         cr_i.execute(sql_i)
         connection.commit()
-    except Exception as e:
-        print(e)
-        pass
     cr_i.close()
     cr.close()
     connection.close()
@@ -310,8 +301,8 @@ def get_portf_perf(s):
                     sep = ''
                 inserted_value = inserted_value + sep + "(" + str(portf_uid) + ",'"+ str(portf_symbol) +"','" + str(d_str) + "'," + str(portf_nav) + ")"
             i +=1
-
-        try:
+        
+        if inserted_value != '':
             cr_i = connection.cursor(pymysql.cursors.SSCursor)
             sql_i = "INSERT IGNORE INTO chart_data(uid, symbol, date, price_close) VALUES "+\
             inserted_value
@@ -319,9 +310,7 @@ def get_portf_perf(s):
             connection.commit()
             cr_i.close()
             connection.close()
-        except Exception as e: print(e)
         get_portf_perf_summ(portf_symbol, portf_uid)
-
     cr.close()
 
 
@@ -408,42 +397,36 @@ class portf_data:
 
 
 def get_conviction_coef(c):
-    r = 1.01
-    try:
-        if c == 'weak': r = random.randint(3,8)
-        if c == 'neutral': r = random.randint(8,20)
-        if c == 'strong': r = random.randint(21,80)
-        r = (r * 0.01) + 1
-    except Exception as e: print(e)
-    return r
+    return_data = 1.01
+    if c == 'weak': return_data = random.randint(3,8)
+    if c == 'neutral': return_data = random.randint(8,20)
+    if c == 'strong': return_data = random.randint(21,80)
+    return_data = (return_data * 0.01) + 1
+    return return_data
 
 def get_market_conv_rate(m):
-    r = ''
-    try:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT conv_to_usd FROM markets WHERE market_id = '"+ str(m) +"'"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs: r = row[0]
-        cr.close()
-        connection.close()
-    except Exception as e: print(e)
-    return r
+    return_data = ''
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT conv_to_usd FROM markets WHERE market_id = '"+ str(m) +"'"
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs: return_data = row[0]
+    cr.close()
+    connection.close()
+    return return_data
 
 def get_market_currency(m):
-    r = ''
-    try:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT currency_code FROM markets WHERE market_id = '"+ str(m) +"'"
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs: r = row[0]
-        cr.close()
-        connection.close()
-    except Exception as e: print(e)
-    return r
+    return_data = ''
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT currency_code FROM markets WHERE market_id = '"+ str(m) +"'"
+    cr.execute(sql)
+    rs = cr.fetchall()
+    for row in rs: return_data = row[0]
+    cr.close()
+    connection.close()
+    return return_data
 
 def get_portf_alloc(s):
 
@@ -542,7 +525,6 @@ def get_portf_alloc(s):
                 portf_nav = portf_nav + alloc_dollar_amount
             cr_t.close()
         cr_pf.close()
-        ### Updatedb
         portf_perc_return = (100/(portf_nav/portf_forc_return))/100
         w_forecast_display_info = "+" + portf_unit + " " + str( round(portf_forc_return,2) )
         cr_f = connection.cursor(pymysql.cursors.SSCursor)
@@ -556,8 +538,6 @@ def get_portf_alloc(s):
 
 
 def generate_portfolio(s):
-    try:
-        get_portf_alloc(s)
-        get_portf_perf(s)
-        set_portf_feed(s)
-    except Exception as e: print(e)
+    get_portf_alloc(s)
+    get_portf_perf(s)
+    set_portf_feed(s)

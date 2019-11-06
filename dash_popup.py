@@ -1,14 +1,6 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-from sa_db import *
-
-access_obj = sa_db_access()
-import pymysql.cursors
 
 def gen_tour_popup(tour,burl):
-    r = ''
+    return_data = ''
     try:
         label_header = 'Welcome to SmartAlpha'
         label_content = 'Before you start, let us show you quickly some of the top features.'
@@ -16,7 +8,7 @@ def gen_tour_popup(tour,burl):
 
 
         if tour == '1':
-            r = '' +\
+            return_data = '' +\
             '  <script type="text/javascript">'+\
             '  $(window).on(\'load\',function(){'+\
             '    $(\'#portf_popup\').modal(\'show\');'+\
@@ -41,4 +33,4 @@ def gen_tour_popup(tour,burl):
             ' </div>'
 
     except Exception as e: print(e)
-    return r
+    return return_data
