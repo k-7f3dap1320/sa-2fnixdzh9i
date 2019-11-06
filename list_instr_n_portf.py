@@ -331,7 +331,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         col_id = 0
     else:
         col_id = 1
-
     box_content = '' +\
     '<script>'+\
     'function filterTable() {'+\
@@ -353,7 +352,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     '  }'+\
     '}'+\
     '</script>'
-
     l_placeholder = "Type to find from the list..."
     l_your_portfolios = 'Your Portfolio'
     box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
@@ -366,7 +364,6 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
         search_box = ''
         list_class = ''
         box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block'
-
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\
@@ -379,7 +376,4 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     '        </div>'+\
     '   </div>'+\
     '</div>'
-    cr.close()
-    connection.close()
-
     return box_content
