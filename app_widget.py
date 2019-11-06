@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from app_head import *
 from app_body import *
 from app_page import *
@@ -26,40 +23,30 @@ from news_feed import *
 #-------------------------------------------------------------------------------
 
 def get_widget_content(burl,nonavbar,funcname,noflexheight):
-
     box_content = ''
     box_class = 'box'
     box_vh = 'height:100vh;width:100vw;margin-left:-15px;'
-    try:
-        if nonavbar is None:
-            box_class ='box-top'
-            box_vh = 'height:89vh;'
-        if noflexheight is not None: box_vh = ''
+    if nonavbar is None:
+        box_class ='box-top'
+        box_vh = 'height:89vh;'
+    if noflexheight is not None: box_vh = ''
 
-        box_content = ' '+\
-        '<div class="'+ box_class +'"></div>' +\
-        '        <div style="'+ box_vh +'">'+\
-        eval(funcname)+\
-        '        </div>'
-
-    except Exception as e: print(e)
-
+    box_content = ' '+\
+    '<div class="'+ box_class +'"></div>' +\
+    '        <div style="'+ box_vh +'">'+\
+    eval(funcname)+\
+    '        </div>'
     return box_content
 
 
 def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second,noflexheight):
-    r = ''
+    return_data = ''
     navbarcontent = ''
     metarefresh = ''
-    try:
-        if nonavbar is None: navbarcontent = navbar(burl,0)
-
-        if refresh_in_second is not None:
-            metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
-
-        r = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname,noflexheight)  )
-        r = set_page(r)
-    except Exception as e: print(e)
-
-    return r
+    if nonavbar is None: navbarcontent = navbar(burl,0)
+    if refresh_in_second is not None:
+        metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
+    return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + metarefresh + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
+    return_data = return_data + get_body( get_loading_body(), navbarcontent + get_widget_content(burl,nonavbar,funcname,noflexheight)  )
+    return_data = set_page(return_data)
+    return return_data

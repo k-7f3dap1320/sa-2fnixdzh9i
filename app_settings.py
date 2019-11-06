@@ -166,30 +166,27 @@ def get_settings_content(burl,step,message):
 
 def get_radio_button_email_subs(selected):
     return_data = ''
-    try:
-        l_radioBtn_name = 'email_subscription'
-        checkedRadio_all = ''
-        checkedRadio_no = ''
-        checkedRadio_dir = ''
-        checkedRadio_prt = ''
+    l_radioBtn_name = 'email_subscription'
+    checkedRadio_all = ''
+    checkedRadio_no = ''
+    checkedRadio_dir = ''
+    checkedRadio_prt = ''
 
-        l_label_all_email = 'Receive all emails'
-        l_label_no_email = 'Do not send any emails'
-        l_label_dir_email = 'Intelligence Report (daily)'
-        l_label_prt_email = 'Recommendations and tips (periodically)'
+    l_label_all_email = 'Receive all emails'
+    l_label_no_email = 'Do not send any emails'
+    l_label_dir_email = 'Intelligence Report (daily)'
+    l_label_prt_email = 'Recommendations and tips (periodically)'
 
-        if selected == 'ALL': checkedRadio_all ='checked'
-        if selected == 'NO': checkedRadio_no ='checked'
-        if selected == 'DIR': checkedRadio_dir ='checked'
-        if selected == 'PRT': checkedRadio_prt ='checked'
+    if selected == 'ALL': checkedRadio_all ='checked'
+    if selected == 'NO': checkedRadio_no ='checked'
+    if selected == 'DIR': checkedRadio_dir ='checked'
+    if selected == 'PRT': checkedRadio_prt ='checked'
 
-        return_data = ' '+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="ALL" '+ checkedRadio_all +'>&nbsp;'+ str(l_label_all_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_no +'>&nbsp;'+ str(l_label_no_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_dir +'>&nbsp;'+ str(l_label_dir_email)+'<br>'+\
-        '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_prt +'>&nbsp;'+ str(l_label_prt_email)+'<br>'
-
-    except Exception as e: print(e)
+    return_data = ' '+\
+    '<input type="radio" name="'+ l_radioBtn_name +'" value="ALL" '+ checkedRadio_all +'>&nbsp;'+ str(l_label_all_email)+'<br>'+\
+    '<input type="radio" name="'+ l_radioBtn_name +'" value="NO" '+ checkedRadio_no +'>&nbsp;'+ str(l_label_no_email)+'<br>'+\
+    '<input type="radio" name="'+ l_radioBtn_name +'" value="DIR" '+ checkedRadio_dir +'>&nbsp;'+ str(l_label_dir_email)+'<br>'+\
+    '<input type="radio" name="'+ l_radioBtn_name +'" value="PRT" '+ checkedRadio_prt +'>&nbsp;'+ str(l_label_prt_email)+'<br>'
     return return_data
 
 def get_radio_button_Trader_prf(default_profile):

@@ -66,27 +66,24 @@ def gen_portf_popup(uid,pop):
     return return_data
 
 def gen_portf_page(uid,appname,burl,pop):
-
     return_data = ''
-    try:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
-        sql = "SELECT instruments.fullname FROM `symbol_list` JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
-            "WHERE symbol_list.uid = " + str(uid)
+    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    cr = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT instruments.fullname FROM `symbol_list` JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
+        "WHERE symbol_list.uid = " + str(uid)
 
-        cr.execute(sql)
-        rs = cr.fetchall()
-        for row in rs:
-            instfullname = row[0]
-
+    cr.execute(sql)
+    rs = cr.fetchall()
+    instfullname = ''
+    for row in rs:
+        instfullname = row[0]
+    cr.close()
+    connection.close()
+    
+    if instfullname != '':
         return_data = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
         return_data = return_data + get_body(  get_loading_body(), gen_portf_popup(uid,pop) + navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
         return_data = set_page(return_data)
-
-        cr.close()
-        connection.close()
-    except Exception as e:
-        print(e)
+    else:
         get_error_page(appname,burl)
-
     return return_data

@@ -276,49 +276,43 @@ def get_rsi_chart(uid):
     return return_data
 
 def get_sign_ta_chart_alt_orders(uid):
+    signal_box = ''; tech_chart = ''
+    signal_box_title = 'Alternative Orders'
+    signal_box = '' +\
+    '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
+    '            <div class="box-part rounded sa-signal-alt-ord-prf" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '               <div><h6>'+ signal_box_title +'</h6></div>'+\
+    get_alt_orders(uid) +\
+    '            </div>'+\
+    '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads" style="height: 300px;">'+\
+    print_google_ads('rectangle','left') +\
+    '            </div>'+\
+    '        </div>'
 
-    try:
-        signal_box = ''; tech_chart = ''
+    tab_1_label = 'Technical Levels'; tab_1_link = '#ta'; tab_1_id = 'ta'
+    tab_2_label = 'Technical analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
+    tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
 
-
-        signal_box_title = 'Alternative Orders'
-        signal_box = '' +\
-        '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part rounded sa-signal-alt-ord-prf" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-        '               <div><h6>'+ signal_box_title +'</h6></div>'+\
-        get_alt_orders(uid) +\
-        '            </div>'+\
-        '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads" style="height: 300px;">'+\
-        print_google_ads('rectangle','left') +\
-        '            </div>'+\
-        '        </div>'
-
-        tab_1_label = 'Technical Levels'; tab_1_link = '#ta'; tab_1_id = 'ta'
-        tab_2_label = 'Technical analysis'; tab_2_link = '#ia'; tab_2_id = 'ia'
-        tab_3_label = 'Live chart'; tab_3_link = '#chart'; tab_3_id = 'chart'
-
-        tech_chart = '' +\
-        '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
-        '            <div class="box-part rounded sa-signal-ta-chart">'+\
-        '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
-        '                    <li class="nav-item">'+\
-        '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
-        '                    </li>'+\
-        '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
-        '                    </li>'+\
-        '                    <li class="nav-item">'+\
-        '                      <a class="nav-link" data-toggle="pill" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
-        '                    </li>'+\
-        '                  </ul>'+\
-        '                  <div class="tab-content">'+\
-        '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
-        '                      <div id="'+ tab_2_id +'" style="height: 520px" class="tab-pane fade"><br /><div style="height: 510px; width:99%">'+ get_tradingview_indicators(uid,'100%','100%') + '</div></div>'+\
-        '                      <div id="'+ tab_3_id +'" style="height: 520px" class="tab-pane fade"><br /><div style="height: 510px; width: 99%">'+ get_tradingview_chart(uid,'510','"100%"') +'</div></div>'+\
-        '                  </div>'+\
-        '            </div>'+\
-        '        </div>'
-        #To disable tab: remove the data-toggle="pill"
-    except Exception as e: print(e)
-
+    tech_chart = '' +\
+    '        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
+    '            <div class="box-part rounded sa-signal-ta-chart">'+\
+    '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
+    '                    </li>'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link" data-toggle="pill" href="'+ tab_2_link +'">'+ tab_2_label +'</a>'+\
+    '                    </li>'+\
+    '                    <li class="nav-item">'+\
+    '                      <a class="nav-link" data-toggle="pill" href="'+ tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '                    </li>'+\
+    '                  </ul>'+\
+    '                  <div class="tab-content">'+\
+    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="'+ theme_return_this('','background-color: #20124d;') +'"><br />'+ get_ta_chart(uid) + get_rsi_chart(uid) + '</div>'+\
+    '                      <div id="'+ tab_2_id +'" style="height: 520px" class="tab-pane fade"><br /><div style="height: 510px; width:99%">'+ get_tradingview_indicators(uid,'100%','100%') + '</div></div>'+\
+    '                      <div id="'+ tab_3_id +'" style="height: 520px" class="tab-pane fade"><br /><div style="height: 510px; width: 99%">'+ get_tradingview_chart(uid,'510','"100%"') +'</div></div>'+\
+    '                  </div>'+\
+    '            </div>'+\
+    '        </div>'
+    #To disable tab: remove the data-toggle="pill"
     return signal_box + tech_chart

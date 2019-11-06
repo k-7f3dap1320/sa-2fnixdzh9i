@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 DEV_MODE = False
 
 from flask import Flask, request
@@ -142,16 +139,13 @@ def go():
         c = get_intel_page(appname,burl)
 
     elif request.endpoint == 'theme':
-        try:
-            switch_to = ''
-            if get_sa_theme() == 'dark':
-                switch_to = 'light'
-            else:
-                switch_to = 'dark'
-            c = theme_redirect(burl)
-            c = set_sa_theme(switch_to, c )
-
-        except Exception as e: print(e)
+        switch_to = ''
+        if get_sa_theme() == 'dark':
+            switch_to = 'light'
+        else:
+            switch_to = 'dark'
+        c = theme_redirect(burl)
+        c = set_sa_theme(switch_to, c )
 
     elif request.endpoint == 'login':
         user = request.values.get('user')
@@ -227,10 +221,8 @@ def go():
 
     sid = request.args.get('sid')
     q = request.args.get(sid)
-    try:
-        if len(sid)>5:
-            c = get_search_result(q)
-    except Exception as e: print(e)
+    if len(sid)>5:
+        c = get_search_result(q)
 
 
     if not DEV_MODE:

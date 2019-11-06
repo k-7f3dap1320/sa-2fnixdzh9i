@@ -15,7 +15,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def get_card(x,t,burl):
 
     return_data = ''
-    try:
+    if x != '' and x is not None:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
             "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND type=1 ORDER BY ranking DESC LIMIT 7"
@@ -23,7 +23,7 @@ def get_card(x,t,burl):
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
                 "WHERE (asset_class LIKE '%"+x+"%' OR market LIKE '%"+x+"%') AND globalrank<>0 AND type=9 ORDER BY globalrank ASC LIMIT 7"
-    except:
+    else:
         if t == 1:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
             "WHERE type=1 ORDER BY ranking DESC LIMIT 7"
@@ -31,7 +31,6 @@ def get_card(x,t,burl):
             if user_is_login() == 0:
                 sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
                 "WHERE type=9 ORDER BY ranking DESC LIMIT 7"
-
 
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
