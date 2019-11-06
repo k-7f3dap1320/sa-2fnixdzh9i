@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from sa_func import *
 from signin_main import *
 from app_cookie import *
@@ -38,6 +35,4 @@ def get_signin_box(burl):
         '            </div>'+\
         '        </div>'+\
         '</div></div>'
-        cr.close()
-        connection.close()
     return box_content
