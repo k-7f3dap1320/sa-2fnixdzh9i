@@ -43,6 +43,7 @@ def get_signal_details(uid,burl,mode):
     "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
     cr.execute(sql)
     rs = cr.fetchall()
+    badge = ''
     for row in rs:
         badge = row[0]
 
