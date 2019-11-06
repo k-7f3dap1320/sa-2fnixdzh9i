@@ -23,6 +23,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 def save_settings(name,nickname,username,default_profile,email_subscription):
     return_data = ''
     user_uid = user_get_uid()
+    if nickname is None: nickname = ''
     l_error_message_settings = 'Invalid data: '
     l_error_message_nickname_exists = 'Nickname "{nickname}" is already taken. Try another one.'
 
