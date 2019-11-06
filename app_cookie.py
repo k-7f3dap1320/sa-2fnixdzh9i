@@ -37,8 +37,9 @@ def theme_return_this(for_light,for_dark):
         return_data = for_dark
     return return_data
 
-def set_sa_ref_code(ref,c):
-    resp = make_response( c )
+def set_sa_ref_code(ref,content):
+    resp = make_response( content )
+    if ref is None: ref = ''
     ref_str = ref
     if len(ref_str) > 1: ref_str = str(ref)
     resp.set_cookie('ref_by', str(ref_str), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
