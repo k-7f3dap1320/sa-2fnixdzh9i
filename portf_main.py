@@ -64,6 +64,7 @@ def gen_portf_popup(uid,pop):
 
 def gen_portf_page(uid,appname,burl,pop):
     return_data = ''
+    if uid is None: uid = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.fullname FROM `symbol_list` JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
