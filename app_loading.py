@@ -1,15 +1,9 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
 
 def get_loading_body():
-
-    r = '<div id="load"></div>'
-    return r
+    return_data = '<div id="load"></div>'
+    return return_data
 
 def get_loading_head():
-
     loading_script = '<script>'+\
     'document.onreadystatechange = function () {'+\
     '   var state = document.readyState;'+\
@@ -22,5 +16,4 @@ def get_loading_head():
     '       document.getElementById("content").style.visibility="visible";'+\
     '    },10);}}'+\
     '</script>'
-
     return loading_script

@@ -34,13 +34,13 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def gen_portf_popup(uid,pop):
-    r = ''
+    return_data = ''
     label_header = 'Trading strategy created!'
     label_content = 'Your trading strategy has been generated.'
     label_button = 'Take me to my strategy...'
 
     if pop == '1':
-        r = '' +\
+        return_data = '' +\
         '  <script type="text/javascript">'+\
         '  $(window).on(\'load\',function(){'+\
         '    $(\'#portf_popup\').modal(\'show\');'+\
@@ -63,11 +63,11 @@ def gen_portf_popup(uid,pop):
         '      </div>'+\
         '    </div>'+\
         ' </div>'
-    return r
+    return return_data
 
 def gen_portf_page(uid,appname,burl,pop):
 
-    r = ''
+    return_data = ''
     try:
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -79,9 +79,9 @@ def gen_portf_page(uid,appname,burl,pop):
         for row in rs:
             instfullname = row[0]
 
-        r = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
-        r = r + get_body(  get_loading_body(), gen_portf_popup(uid,pop) + navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
-        r = set_page(r)
+        return_data = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
+        return_data = return_data + get_body(  get_loading_body(), gen_portf_popup(uid,pop) + navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
+        return_data = set_page(return_data)
 
         cr.close()
         connection.close()
@@ -89,4 +89,4 @@ def gen_portf_page(uid,appname,burl,pop):
         print(e)
         get_error_page(appname,burl)
 
-    return r
+    return return_data

@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
@@ -23,41 +20,30 @@ from list_instr_n_portf import *
 from print_google_ads import *
 from purechat import *
 
-
 def get_top_instr_n_portf_list():
 
-    box_content = ''
-
-    try:
-
-        box_content = '<div class="box-top">' +\
-        '   <div class="row">'+\
-        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '            <div class="box-part rounded sa-center-content">'+\
-        print_google_ads('leaderboard','center') +\
-        '            </div>'+\
-        '        </div>'+\
-        '   </div>'+\
-        '</div>'
-
-    except Exception as e: print(e)
-
+    box_content = '<div class="box-top">' +\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content">'+\
+    print_google_ads('leaderboard','center') +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '</div>'
     return box_content
-
 
 def gen_view_list_instr_n_portf(appname,burl,what,x):
     #what = 'instr', what = 'portf'
     #x = market or asset class
-    r = ''
-    try:
-        if what == 'instr':
-            numrow = 5000
-        else:
-            numrow = 200
-        page_title = 'Top Performing Trades of the Week'
-        page_desc = 'Access to thousands of financial instruments, stocks, forex, commodities & cryptos. Create your trading signals portfolio powered by Artificial intelligence.'
-        r = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,2,page_title,page_desc) + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
-        r = r + get_body( get_loading_body(), navbar(burl,0) + get_top_instr_n_portf_list() + get_box_list_instr_n_portf(burl,'view',what,1,None,numrow,x) + get_page_footer(burl) + get_purechat(0) )
-        r = set_page(r)
-    except Exception as e: print(e)
-    return r
+    return_data = ''
+    if what == 'instr':
+        numrow = 5000
+    else:
+        numrow = 200
+    page_title = 'Top Performing Trades of the Week'
+    page_desc = 'Access to thousands of financial instruments, stocks, forex, commodities & cryptos. Create your trading signals portfolio powered by Artificial intelligence.'
+    return_data = get_head( get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,2,page_title,page_desc) + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
+    return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_top_instr_n_portf_list() + get_box_list_instr_n_portf(burl,'view',what,1,None,numrow,x) + get_page_footer(burl) + get_purechat(0) )
+    return_data = set_page(return_data)
+    return return_data

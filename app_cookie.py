@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
@@ -14,56 +11,44 @@ def get_lang():
     return request.cookies.get('lang')
 
 def set_sa_lang(lang,c):
-    try:
-        resp = make_response( c )
-        if lang is None: lang = 'en'
-        resp.set_cookie('lang', str(lang), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
-    except Exception as e: print(e)
+    resp = make_response( c )
+    if lang is None: lang = 'en'
+    resp.set_cookie('lang', str(lang), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
     return resp
 
 def set_sa_theme(theme,c):
-    try:
-        resp = make_response( c )
-        if theme is None: theme = default_theme
-        resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
-    except Exception as e: print(e)
+    resp = make_response( c )
+    if theme is None: theme = default_theme
+    resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
     return resp
 
 def get_sa_theme():
     default_theme = 'dark'
     selected_theme = ''
-    try:
-        selected_theme = request.cookies.get('theme')
-        if selected_theme is None or selected_theme =='': selected_theme = default_theme
-    except Exception as e: print(e)
+    selected_theme = request.cookies.get('theme')
+    if selected_theme is None or selected_theme =='': selected_theme = default_theme
     return selected_theme
 
 def theme_return_this(for_light,for_dark):
-    r = ''
-    try:
-        if get_sa_theme() == 'light':
-            r = for_light
-        else:
-            r = for_dark
-    except Exception as e: print(e)
-    return r
+    return_data = ''
+    if get_sa_theme() == 'light':
+        return_data = for_light
+    else:
+        return_data = for_dark
+    return return_data
 
 def set_sa_ref_code(ref,c):
-    try:
-        resp = make_response( c )
-        ref_str = ref
-        if len(ref_str) > 1: ref_str = str(ref)
-        resp.set_cookie('ref_by', str(ref_str), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
-    except Exception as e: print(e)
+    resp = make_response( c )
+    ref_str = ref
+    if len(ref_str) > 1: ref_str = str(ref)
+    resp.set_cookie('ref_by', str(ref_str), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
     return resp
 
 def set_sa_cookie(uid,c):
-    try:
-        resp = make_response( c )
-        user_uid = '0';
-        if len(uid) > 1: user_uid = str(uid)
-        resp.set_cookie('user', str(user_uid), expires=datetime.datetime.now() + datetime.timedelta(days=20) )
-    except Exception as e: print(e)
+    resp = make_response( c )
+    user_uid = '0';
+    if len(uid) > 1: user_uid = str(uid)
+    resp.set_cookie('user', str(user_uid), expires=datetime.datetime.now() + datetime.timedelta(days=20) )
     return resp
 
 def user_get_uid():
@@ -71,16 +56,12 @@ def user_get_uid():
 
 def user_is_login():
     user_id = '0'
-    r = 0
-    try:
-        user_id = request.cookies.get('user')
-        if len(user_id) > 1 : r = 1
-    except Exception as e: print(e)
-    return r
+    return_data = 0
+    user_id = request.cookies.get('user')
+    if len(user_id) > 1 : return_data = 1
+    return return_data
 
 def get_refer_by_code():
     refer_by_code = ''
-    try:
-        refer_by_code = request.cookies.get('ref_by')
-    except Exception as e: print(e)
+    refer_by_code = request.cookies.get('ref_by')
     return refer_by_code

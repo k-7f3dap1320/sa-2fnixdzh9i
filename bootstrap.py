@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from sa_func import *
 
 def get_bootstrap(theme,burl):
@@ -21,6 +18,6 @@ def get_bootstrap(theme,burl):
     bootsmin = '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>'
     tooltip ="<script>$(function () {$('[data-toggle=\"tooltip\"]').tooltip()})</script>"
 
-    r = jquery + popper + bootcss + bootsmin + tooltip
+    return_data = jquery + popper + bootcss + bootsmin + tooltip
 
-    return r
+    return return_data

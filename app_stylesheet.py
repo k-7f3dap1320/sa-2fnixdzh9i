@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from sa_func import *
 
 def get_stylesheet(burl):
@@ -75,7 +72,7 @@ def get_stylesheet(burl):
     'z-index:1000;'+\
     'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(52, 58, 64, 1)}'
 
-    r = '<style>'+\
+    return_data = '<style>'+\
     body +\
     footer +\
     scrollbar +\
@@ -121,10 +118,8 @@ def get_stylesheet(burl):
     form_signin_input_password +\
     form_signin_btn +\
     '</style>'
-
-    return r
+    return return_data
 
 def get_theme_color():
-
     theme_color = '#343a40'
     return theme_color

@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -89,7 +86,7 @@ def get_alt_orders(uid):
     '   <td>'+ str(  round(trade_4_sl, decimal_places) ) +'</td>'+\
     '</tr>'
 
-    r = ''+\
+    return_data = ''+\
     '<table class="table table-sm table-hover sa-table-sm">'+\
     '<thead>'+\
     '    <tr>'+\
@@ -104,7 +101,7 @@ def get_alt_orders(uid):
     ' </tbody>'+\
     '</table>'
 
-    return r
+    return return_data
 
 def get_ta_chart(uid):
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -162,7 +159,7 @@ def get_ta_chart(uid):
     l_st_up_trend = 'Short-term upper trend line'; l_st_low_trend = 'Short-term lower trend line'
     l_ma200 = 'MA200'
 
-    r = "" +\
+    return_data = "" +\
     "<script>"+\
     "      google.charts.load('current', {'packages':['corechart']});"+\
     "      google.charts.setOnLoadCallback(drawChart);"+\
@@ -202,7 +199,7 @@ def get_ta_chart(uid):
     "</script>"+\
     '<div id="ta_chart" class="sa-chart-hw-100"></div>'
 
-    return r
+    return return_data
 
 
 def get_rsi_chart(uid):
@@ -245,7 +242,7 @@ def get_rsi_chart(uid):
     chart_font_size = 10
     l_date = 'date'; l_rsi_value = 'rsi14'; l_rsi_overbought = 'Overbought'; l_rsi_oversold = 'Oversold'
 
-    r = "" +\
+    return_data = "" +\
     "<script>"+\
     "      google.charts.load('current', {'packages':['corechart']});"+\
     "      google.charts.setOnLoadCallback(drawChart);"+\
@@ -276,7 +273,7 @@ def get_rsi_chart(uid):
     "</script>"+\
     '<div id="rsi_chart" class="sa-chart-hw-100-rsi"></div>'
 
-    return r
+    return return_data
 
 def get_sign_ta_chart_alt_orders(uid):
 

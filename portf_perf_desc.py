@@ -1,7 +1,4 @@
-# Copyright (c) 2018-present, Taatu Ltd.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
+
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -166,8 +163,7 @@ def get_perf_chart(uid):
 def get_chart_box(uid):
     chart_1y_perf = get_perf_chart(uid)
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
-
-    r = '' +\
+    return_data = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-portf-perf-portf-chart">'+\
     '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
@@ -181,14 +177,8 @@ def get_chart_box(uid):
     '            </div>'+\
     '        </div>'
     #To disable tab: remove the data-toggle="pill"
-
-
-    return r
+    return return_data
 
 def get_portf_perf_desc(uid):
-
-    try:
-        r = get_desc_box(uid) + ' ' + get_chart_box(uid)
-    except Exception as e: print(e)
-
-    return r
+    return_data = get_desc_box(uid) + ' ' + get_chart_box(uid)
+    return return_data

@@ -32,7 +32,7 @@ from trades_tab import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_report_title(burl):
-    content = ''
+    return_data = ''
     try:
         dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
         l_title = 'Daily Intelligence Briefing: <br />' + dnstr
@@ -48,18 +48,18 @@ def get_report_title(burl):
             name = ''
             for row in rs: name = row[0]
 
-            content = content +\
+            return_data = return_data +\
             '<h1>'+ l_title +'</h1>' +\
             l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
             '<hr />'
         else:
-            content = content +\
+            return_data = return_data +\
             '<h1>'+ l_title +'</h1>' +\
             'This report is only accessible to members only. '+\
             '<a href="'+ burl +'signin/?redirect='+ burl +'intelligence">Sign In</a>'
 
     except Exception as e: print(e)
-    return content
+    return return_data
 
 def get_market_snapshot_n_brief_text(w):
     r = ''
@@ -80,7 +80,7 @@ def get_market_snapshot_n_brief_text(w):
     return r
 
 def get_market_snapshot_section():
-    content = ''
+    return_data = ''
     try:
         l_title = 'Market Snapshot'
 
@@ -92,7 +92,7 @@ def get_market_snapshot_section():
         uid_tlt = 163
 
         if user_is_login():
-            content = ''+\
+            return_data = ''+\
             '<div class="row">' +\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
@@ -113,7 +113,7 @@ def get_market_snapshot_section():
             '</div>'
 
     except Exception as e: print(e)
-    return content
+    return return_data
 
 def get_intel_content(burl):
 
@@ -141,13 +141,13 @@ def get_intel_content(burl):
     return box_content
 
 def get_expired_signals(burl):
-    content = ''
+    return_data = ''
     try:
         if user_is_login():
             l_title = 'Expired Signals'
             dn = datetime.datetime.now() - ( timedelta(days=7) ); dnstr = dn.strftime("%A %d %B, %Y");
             l_comment = 'Signals with orders entered on <strong>' + dnstr + '</strong> and before are now expired and may be closed or managed at your own discretion.'
-            content = ''+\
+            return_data = ''+\
             '<div class="row">' +\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
@@ -160,10 +160,10 @@ def get_expired_signals(burl):
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '</div>'
     except Exception as e: print(e)
-    return content
+    return return_data
 
 def get_signals_lines(burl):
-    content = ''
+    return_data = ''
     try:
         if user_is_login():
             l_title = 'Opportunities'
@@ -183,7 +183,7 @@ def get_signals_lines(burl):
                 "(trades.entry_date >= " + dnstr + " AND instruments.owner = " + str(get_user_numeric_id()) + " AND status = 'active')"
             cr.execute(sql)
             rs = cr.fetchall()
-            content = ''+\
+            return_data = ''+\
             '<div class="row">' +\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12"><div class="box-part rounded"><h2>'+ l_title  +'</h2></div></div>'+\
@@ -191,7 +191,7 @@ def get_signals_lines(burl):
 
             for row in rs:
                 uid = row[0]
-                content = content +\
+                return_data = return_data +\
                 '<div class="row">' +\
                 '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
                 '    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><div class="box-part rounded">'+ get_tradingview_mini_chart(uid,'100%','200','false','1m',1) +'</div></div>'+\
@@ -202,7 +202,7 @@ def get_signals_lines(burl):
             connection.close()
 
     except Exception as e: print(e)
-    return content
+    return return_data
 
 def get_intel_page(appname,burl):
     r = ''
