@@ -130,7 +130,7 @@ def get_user_default_profile():
     user_uid = get_user()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT default_profile FROM users WHERE uid = '"+ user_uid +"'"
+    sql = "SELECT default_profile FROM users WHERE uid = '"+ str(user_uid) +"'"
     cr.execute(sql)
     rs = cr.fetchall()
     default_profile = ''
