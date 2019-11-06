@@ -61,6 +61,7 @@ def user_is_login():
     user_id = '0'
     return_data = 0
     user_id = request.cookies.get('user')
+    if user_id is None: user_id = ''
     if len(user_id) > 1 : return_data = 1
     return return_data
 
