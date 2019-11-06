@@ -28,7 +28,7 @@ def get_dashboard_menu(burl):
     num_dashboard_badge = get_num_orders('open') + get_num_orders('close') + get_num_orders('pending')
     l_dashboard_menu = '<li class="nav-item d-none d-sm-block"><a class="nav-link sa-navbar-text" href="'+ burl +'?dashboard=1" data-toggle="tooltip" data-placement="bottom" data-original-title="'+ l_dashboard +'" ><strong>'+ '<i class="fas fa-tachometer-alt" style="font-size: x-large;"></i>' +'</strong><sup><span class="badge badge-pill badge-danger">'+ str(num_dashboard_badge) +'</span></sup></a></li>'
     return_data = l_dashboard_menu
-    return r
+    return return_data
 
 def get_portfolio_button(burl):
     return_data = ''
