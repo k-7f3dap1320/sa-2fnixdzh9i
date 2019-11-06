@@ -57,6 +57,8 @@ def get_sign_header(uid,burl):
 
 def gen_sign_page(uid,tvws,appname,burl):
     if tvws is not None: uid = get_uid_from_tvs(tvws)
+    if uid is None: uid = 0
+    if uid == '': uid = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.fullname FROM `symbol_list` JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
