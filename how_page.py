@@ -1,8 +1,15 @@
-from app_head import *; from app_body import *; from app_page import *; from app_loading import *
+from app_head import *
+from app_body import *
+from app_page import *
+from app_loading import *
 from app_footer import *
 from app_ogp import *
-from app_title import *; from app_metatags import *; from bootstrap import *
-from font_awesome import *; from app_navbar import *
+from app_title import *
+from app_metatags import *
+from app_stylesheet import get_stylesheet
+from bootstrap import *
+from font_awesome import *
+from app_navbar import *
 from googleanalytics import *
 from app_cookie import *
 from purechat import *
