@@ -220,6 +220,7 @@ def go():
     ############################################################################
 
     sid = request.args.get('sid')
+    if sid is None: sid = ''
     q = request.args.get(sid)
     if len(sid)>5:
         c = get_search_result(q)
