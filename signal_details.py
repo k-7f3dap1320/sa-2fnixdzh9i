@@ -3,6 +3,7 @@ from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
 from sa_func import get_etoro_symbol_from_uid, get_broker_affiliate_link
+from app_popup_modal import open_window
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
@@ -13,7 +14,7 @@ def get_signal_details(uid,burl,mode):
 # =============================================================================
     descr_box = ''
     broker = 'eToro'
-    height = '550'
+    height = '600'
     width = '360'
     button_href = burl + 's/?uid=' + str(uid)
     etoro_symbol = get_etoro_symbol_from_uid(uid)
@@ -52,14 +53,14 @@ def get_signal_details(uid,burl,mode):
     badge.find('-6') == -1 and badge.find('-7') == -1 and
     badge.find('-8') == -1 and badge.find('-9') == -1) :
         signal = '<a href="javascript:{}" '+\
-        'onclick="window.open(\''+ str(trade_href) +'\', \'newwindow\', \'width='+ str(width) +',height='+ str(height) +'\'); return false;"'+\
+        'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         ' class="btn btn-outline-success"><h4>Buy</h4></a>'
         entry = trade_1_entry
         tp = trade_1_tp
         sl = trade_1_sl
     else:
         signal = '<a href="#" '+\
-        'onclick="window.open(\''+ str(trade_href) +'\', \'newwindow\', \'width='+ str(width) +',height='+ str(height) +'\'); return false;"'+\
+        'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         'class="btn btn-outline-danger"><h4>Sell</h4></a>'
         entry = trade_3_entry
         tp = trade_3_tp

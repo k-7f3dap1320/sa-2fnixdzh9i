@@ -1,5 +1,13 @@
 """ Popup and modal messages """
 
+def open_window(url, width, height, left, top):
+    """ Open window popup"""
+    return_data = ''
+    return_data = 'window.open(\''+ str(url) +'\', \'newwindow\', \'width='+ str(width) +\
+    ',height='+ str(height) +', left='+ str(left) +', top='+ str(top) +\
+    ', location=0, menubar=0, status=0,toolbar=0\')'
+    return return_data
+
 def gen_tour_popup(tour, burl):
     """ Generate popup modal message after user is created (dashboard) """
     return_data = ''
