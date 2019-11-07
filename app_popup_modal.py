@@ -18,7 +18,7 @@ def get_div_embed_content_popup(uid,url,height,width):
     '        </button> '+\
     '      </div> '+\
     '      <div class="modal-body"> '+\
-    '         <iframe src="https://bing.com" style="width='+str(width)+'; height='+ str(height) +';"></iframe>'+\
+    '         <iframe src="'+ str(url) +'" style="width:'+str(width)+'; height:'+ str(height) +';"></iframe>'+\
     '      </div> '+\
     '    </div> '+\
     '  </div> '+\
