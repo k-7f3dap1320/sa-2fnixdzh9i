@@ -12,7 +12,9 @@ def get_signal_details(uid,burl,mode):
 # mode = 'newsfeed','desc'
 # =============================================================================
     descr_box = ''
-    broker = 'eToro'    
+    broker = 'eToro'
+    height = '550'
+    width = '360'
     button_href = burl + 's/?uid=' + str(uid)
     etoro_symbol = get_etoro_symbol_from_uid(uid)
     trade_href = get_broker_affiliate_link(broker, 'baseurl') + str(etoro_symbol)
@@ -49,12 +51,16 @@ def get_signal_details(uid,burl,mode):
     badge.find('-4') == -1 and badge.find('-5') == -1 and
     badge.find('-6') == -1 and badge.find('-7') == -1 and
     badge.find('-8') == -1 and badge.find('-9') == -1) :
-        signal = '<a href="'+ str(trade_href) +'" target="_blank" class="btn btn-outline-success"><h4>Buy</h4></a>'
+        signal = '<a href="javascript:{}" '+\
+        'onclick="window.open(\''+ str(trade_href) +'\', \'newwindow\', \'width='+ str(width) +',height='+ str(height) +'\'); return false;"'+\
+        ' class="btn btn-outline-success"><h4>Buy</h4></a>'
         entry = trade_1_entry
         tp = trade_1_tp
         sl = trade_1_sl
     else:
-        signal = '<a href="'+ str(trade_href) +'" target="_blank" class="btn btn-outline-danger"><h4>Sell</h4></a>'
+        signal = '<a href="#" '+\
+        'onclick="window.open(\''+ str(trade_href) +'\', \'newwindow\', \'width='+ str(width) +',height='+ str(height) +'\'); return false;"'+\
+        'class="btn btn-outline-danger"><h4>Sell</h4></a>'
         entry = trade_3_entry
         tp = trade_3_tp
         sl = trade_3_sl
