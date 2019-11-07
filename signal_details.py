@@ -53,14 +53,14 @@ def get_signal_details(uid,burl,mode):
     badge.find('-6') == -1 and badge.find('-7') == -1 and
     badge.find('-8') == -1 and badge.find('-9') == -1) :
         signal = '<a href="javascript:{}" '+\
-        'onclick="'+ open_window(trade_href, width, height, 100, 100) +'"'+\
+        'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         ' class="btn btn-outline-success"><h4>Buy</h4></a>'
         entry = trade_1_entry
         tp = trade_1_tp
         sl = trade_1_sl
     else:
-        signal = '<a href="#" '+\
-        'onclick="'+ open_window(trade_href, width, height, 100, 100) +'"'+\
+        signal = '<a href="javascript:{}" '+\
+        'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         'class="btn btn-outline-danger"><h4>Sell</h4></a>'
         entry = trade_3_entry
         tp = trade_3_tp
