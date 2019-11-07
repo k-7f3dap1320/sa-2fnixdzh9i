@@ -5,7 +5,7 @@ def open_window(url, width, height, left, top):
     return_data = ''
     return_data = 'window.open(\''+ str(url) +'\', \'newwindow\', \'width='+ str(width) +\
     ',height='+ str(height) +', left='+ str(left) +', top='+ str(top) +\
-    ', location=0, menubar=0, status=0,toolbar=0\')'
+    ', location=no, menubar=no, status=no,toolbar=no\')'
     return return_data
 
 def gen_tour_popup(tour, burl):
