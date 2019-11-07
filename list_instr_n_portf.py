@@ -1,63 +1,15 @@
 
-from app_cookie import *
-from sa_db import *
-from sa_func import *
-from app_cookie import *
+from app_cookie import user_is_login, theme_return_this
+from sa_db import sa_db_access
+from sa_func import get_user_numeric_id, get_portf_suffix
+from app_popup_modal import get_portf_delete_data_toggle, set_modal_delete_n_view_popup
+
 access_obj = sa_db_access()
 import pymysql.cursors
 
-
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-
-def set_modal_delete_n_view_popup(portf_name,portf_id,burl,user_portf):
-    return_data = ''
-    l_delete_message_caption = 'Are you sure you want to delete this strategy? ' + '<br /><strong>'+ portf_name + '</strong>'
-    l_cancel_button = 'Cancel'
-    l_delete_button = 'Delete'
-    delete_url_redirect_list = burl +'p/?delete='+ str(portf_id)
-    delete_url_redirect_dash = burl +'p/?delete='+ str(portf_id) + '&dashboard=1'
-
-    if user_portf:
-        delete_url = delete_url_redirect_dash
-    else:
-        delete_url = delete_url_redirect_list
-
-    l_view_message_caption = 'View or edit your strategy:' + '<br /><strong>'+ portf_name + '</strong>'
-    l_view_button = 'Take me to my trading strategy'
-
-    return_data = '' +\
-    '  <div class="modal" id="popup_delete_'+ str(portf_id) +'">'+\
-    '    <div class="modal-dialog modal-dialog-centered">'+\
-    '      <div class="modal-content">'+\
-    '        <div class="modal-body">'+\
-    l_delete_message_caption +\
-    '        </div>'+\
-    '        <div class="modal-footer">'+\
-    '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
-    '           <a class="btn btn-danger" href="'+ delete_url +'">'+ l_delete_button +'</a>'+\
-    '        </div>'+\
-    '       </div>'+\
-    '     </div>'+\
-    '   </div>'
-
-    return_data = return_data  +\
-    '  <div class="modal" id="popup_view_'+ str(portf_id) +'">'+\
-    '    <div class="modal-dialog modal-dialog-centered">'+\
-    '      <div class="modal-content">'+\
-    '        <div class="modal-body">'+\
-    l_view_message_caption +\
-    '        </div>'+\
-    '        <div class="modal-footer">'+\
-    '          <button type="button" class="btn btn-secondary" data-dismiss="modal">'+ l_cancel_button +'</button>'+\
-    '           <a class="btn btn-info" href="'+ burl +'p/?uid='+ str(portf_id) +'">'+ l_view_button +'</a>'+\
-    '        </div>'+\
-    '       </div>'+\
-    '     </div>'+\
-    '   </div>'
-    return return_data
-
-def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
+def draw_portf_table(burl,maxrow,x,user_portf):
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
     'window.document.location = $(this).data("href");'+\
@@ -84,12 +36,15 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
-        uid = row[0]; w_forecast_change = row[1]
-        fullname = row[2]; volatility_risk_st = row[3]
-        y1 = row[4]; m6 = row[5]
-        m3 = row[6]; m1 = row[7]
-        w1 = row[8]; w_forecast_display_info = row[9]
-        unit = row[10]; symbol = row[11]
+        uid = row[0]
+        fullname = row[2]
+        volatility_risk_st = row[3]
+        y1 = row[4]
+        m6 = row[5]
+        m3 = row[6]
+        m1 = row[7]
+        w1 = row[8]
+        unit = row[10]
         globalrank  = row[12]
         portf_owner = row[13]
         volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
@@ -127,14 +82,13 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
         column_globalrank = '<td scope="row" class="'+ class_row_style +'" style="text-align: left"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
         target_url = burl + 'p/?uid=' + str(uid)
 
-        return_data = return_data + set_modal_delete_n_view_popup(fullname,uid,burl,user_portf)
-        l_btn_delete = 'delete'
+        return_data = return_data + set_modal_delete_n_view_popup(fullname, uid, burl, user_portf)
 
         if user_portf == False:
             column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
             data_href = 'data-href="'+ target_url +'"'
         else:
-            column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" data-toggle="modal" data-target="#popup_delete_'+ str(uid) +'"><i class="far fa-trash-alt"></i></button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
+            column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" '+ get_portf_delete_data_toggle(uid) +'><i class="far fa-trash-alt"></i></button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
             data_href = 'data-href="#"'
 
         column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
@@ -158,7 +112,7 @@ def draw_portf_table(burl,mode,what,step,portf,maxrow,x,user_portf):
 
     return return_data
 
-def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
+def draw_instr_table(burl,mode,step,maxrow,x):
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
     'window.document.location = $(this).data("href");'+\
@@ -174,12 +128,18 @@ def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
-        uid = row[0]; w_forecast_change = row[1]
-        fullname = row[2]; volatility_risk_st = row[3]
-        y1_signal = row[4]; m6_signal = row[5]
-        m3_signal = row[6]; m1_signal = row[7]
-        w1_signal = row[8]; w_forecast_display_info = row[9]
-        unit = row[10]; symbol = row[11]
+        uid = row[0]
+        w_forecast_change = row[1]
+        fullname = row[2]
+        volatility_risk_st = row[3]
+        y1_signal = row[4]
+        m6_signal = row[5]
+        m3_signal = row[6]
+        m1_signal = row[7]
+        w1_signal = row[8]
+        w_forecast_display_info = row[9]
+        unit = row[10]
+        symbol = row[11]
 
         volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
 
@@ -254,19 +214,19 @@ def draw_instr_table(burl,mode,what,step,portf,maxrow,x):
     connection.close()
     return return_data
 
-def get_table_content_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
+def get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x):
     return_data = ''
     if x is None: x = ''
 
     if what == 'instr':
-        return_data = draw_instr_table(burl,mode,what,step,portf,maxrow,x)
+        return_data = draw_instr_table(burl,mode,step,maxrow,x)
     if what == 'portf':
-        if user_is_login() == 1: return_data = draw_portf_table(burl,mode,what,step,portf,maxrow,x,True)
+        if user_is_login() == 1: return_data = draw_portf_table(burl,maxrow,x,True)
         if mode != 'dashboard':
-            return_data = return_data + draw_portf_table(burl,mode,what,step,portf,maxrow,x,False)
+            return_data = return_data + draw_portf_table(burl,maxrow,x,False)
     return return_data
 
-def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
+def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
     return_data = ''
     if mode == "portf_select":
         signal_column = ""
@@ -315,15 +275,14 @@ def gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x):
     '    </tr>'+\
     ' </thead>'+\
     '  <tbody>'+\
-    get_table_content_list_instr_n_portf(burl, mode, what, step, portf, maxrow, x) +\
+    get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x) +\
     '  </tbody>'+\
     '</table>'
     return return_data
 
-def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
+def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
     # mode = 'view', mode = 'portf_select', mode = 'dashboard'
     # what = 'instr', what = 'portf'
-    # portf = portf uid
     # maxrow = numeric number of row ie. 1000
     #  step = step of portfolio selection
     box_content = ''
@@ -371,7 +330,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,portf,maxrow,x):
     '            <div class="box-part rounded '+ list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
     search_box +\
     list_title +\
-    gen_instr_n_portf_table(burl,mode,what,step,portf,maxrow,x) +\
+    gen_instr_n_portf_table(burl, mode, what, step, maxrow, x) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\

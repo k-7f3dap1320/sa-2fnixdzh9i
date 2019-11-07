@@ -133,7 +133,7 @@ def ini_portf_select(r):
 def gen_selectportf_page(appname,burl,step,mode,x,portf):
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
-    return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,portf,1000,'') )
+    return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_selectportf_box(burl,step,mode,'') + get_box_list_instr_n_portf(burl,'portf_select','instr',step,1000,'') )
     return_data = set_page(return_data)
     if step == '1': return_data = ini_portf_select(return_data)
     return return_data

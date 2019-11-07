@@ -1,7 +1,7 @@
 
 def get_googleanalytics():
 
-    ga = '<!-- Global site tag (gtag.js) - Google Analytics -->'+\
+    ga = ' '+\
                 '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755106-1"></script>'+\
                 '<script>'+\
                 '   window.dataLayer = window.dataLayer || [];'+\
