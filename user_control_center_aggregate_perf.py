@@ -108,6 +108,7 @@ def gen_aggregate_perf_graph():
             else:
                 chart_rows = chart_rows + ",['"+ str(date) +"',  "+ str(nav) +"]"
             i += 1
+        cr_c.close()
 
     return_data = "<script>"+\
     "google.charts.load('current', {'packages':['corechart']}); "+\
@@ -137,7 +138,6 @@ def gen_aggregate_perf_graph():
     "<div id='aggr_perf_chart_div' style='height:350px;'></div>"
 
     cr.close()
-    cr_c.close()
     cr_n.close()
     connection.close()
     return return_data
