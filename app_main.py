@@ -33,7 +33,7 @@ def gen_main_page(x, appname, burl, is_dashboard, tour, nonavbar):
         navbarcontent = navbar(burl, 0)
     dashboard_content = ''
     if is_dashboard == str(1) and user_is_login() == 1:
-        dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 500, None)
+        dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
         dashboard_content = dashboard_content + '<div class="row">' + get_trades_box(0, burl, is_dashboard) + get_control_center_aggregate_perf(burl) + '</div>'
     else:
         if user_is_login() == 1:
