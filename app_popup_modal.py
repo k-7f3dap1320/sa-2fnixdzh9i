@@ -1,38 +1,5 @@
 """ Popup and modal messages """
 
-def get_div_embed_content_data_toggle(uid):
-    """ Add this function inside a button or a href """
-    return_data = 'data-toggle="modal" data-target="#popup_embed_div_'+ str(uid) +'"'
-    return return_data
-
-def get_div_embed_content_popup(uid,url,height,width):
-    return_data = '' +\
-    '<div class="modal fade" id="popup_embed_div_'+ str(uid) +'" tabindex="-1" role="dialog" '+\
-    '    aria-labelledby="popup_embed_div_title" aria-hidden="true"> '+\
-    '  <div class="modal-dialog modal-dialog-centered" role="document"> '+\
-    '    <div class="modal-content"> '+\
-    '      <div class="modal-header" style="height:10px;"> '+\
-    '        <h5 class="modal-title" id="popup_embed_div_long_title"></h5> '+\
-    '        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin=-28px;"> '+\
-    '          <span aria-hidden="true">&times;</span> '+\
-    '        </button> '+\
-    '      </div> '+\
-    '      <div class="modal-body"> '+\
-    '         <iframe src="'+ str(url) +'" style="width:'+str(width)+'; height:'+ str(height) +';"></iframe>'+\
-    '      </div> '+\
-    '    </div> '+\
-    '  </div> '+\
-    '</div> '
-    return return_data
-
-'''
-    '            <object type="text/html" data="'+ str(url) +'" '+\
-    '            width="'+ str(width) +'" '+\
-    '            height="'+ str(height) +'" style="overflow:auto;border:5px ridge blue">'+\
-    '            </object> '+\
-
-'''
-
 def gen_tour_popup(tour, burl):
     """ Generate popup modal message after user is created (dashboard) """
     return_data = ''
