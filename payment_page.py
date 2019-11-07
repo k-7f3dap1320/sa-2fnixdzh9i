@@ -82,9 +82,9 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
 def get_broker_url(broker,what,uid):
     return_data = ''
     if what == 'link':
-        return_data = '<a '+ go_to_url(get_broker_affiliate_link(broker),'link',uid) +'" target="_blank">'+ broker +'</a>'
+        return_data = '<a '+ go_to_url(get_broker_affiliate_link(broker, 'affiliate'),'link',uid) +'" target="_blank">'+ broker +'</a>'
     if what == 'form':
-        return_data = go_to_url(get_broker_affiliate_link(broker),'form',uid)
+        return_data = go_to_url(get_broker_affiliate_link(broker, 'affiliate'),'form',uid)
     return return_data
 
 def get_box_plan_selection(burl):

@@ -10,8 +10,8 @@ def get_signin_box(burl):
         l_app_header_title = 'Create unlimited optimized trading portfolios'
         l_app_header_desc = 'Chart patterns, price movements, and news analysed using quantitative methods with the power of artificial intelligence to generate trading signals. Generate more profitable trades by using SmartAlpha as your trading assistant.'
         l_app_call_to_action_link = 'Join now.'
-        etoro_logo_form = broker_link_form = go_to_url(get_broker_affiliate_link('eToro'),'form','eToro')
-        etoro_logo_link = broker_link_form = go_to_url(get_broker_affiliate_link('eToro'),'link','eToro')
+        etoro_logo_form = broker_link_form = go_to_url(get_broker_affiliate_link('eToro', 'affiliate'),'form','eToro')
+        etoro_logo_link = broker_link_form = go_to_url(get_broker_affiliate_link('eToro', 'affiliate'),'link','eToro')
 
         box_content = etoro_logo_form +\
         '<div class="box-sign"><div class="row">' +\

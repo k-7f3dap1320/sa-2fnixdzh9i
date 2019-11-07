@@ -21,46 +21,14 @@ from googleanalytics import get_googleanalytics
 from error_page import get_error_page
 from sa_func import redirect_if_not_logged_in
 from app_cookie import get_sa_theme
+from app_popup_modal import gen_portf_popup
 
 from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
 
-
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
-
-def gen_portf_popup(uid,pop):
-    return_data = ''
-    label_header = 'Trading strategy created!'
-    label_content = 'Your trading strategy has been generated.'
-    label_button = 'Take me to my strategy...'
-
-    if pop == '1':
-        return_data = '' +\
-        '  <script type="text/javascript">'+\
-        '  $(window).on(\'load\',function(){'+\
-        '    $(\'#portf_popup\').modal(\'show\');'+\
-        '  });'+\
-        '  </script>'+\
-        ' <div class="modal" id="portf_popup">'+\
-        '    <div class="modal-dialog modal-lg">'+\
-        '      <div class="modal-content">'+\
-        '        <div class="modal-header">'+\
-        '          <h4 class="modal-title">'+ label_header +'</h4>'+\
-        '          <button type="button" class="close" data-dismiss="modal">&times;</button>'+\
-        '        </div>'+\
-        '        <div class="modal-body">'+\
-        label_content +\
-        '        </div>'+\
-        '        <!-- Modal footer -->'+\
-        '        <div class="modal-footer">'+\
-        '          <button type="button" class="btn btn-info form-signin-btn" data-dismiss="modal">'+ label_button +'</button>'+\
-        '        </div>'+\
-        '      </div>'+\
-        '    </div>'+\
-        ' </div>'
-    return return_data
 
 def gen_portf_page(uid,appname,burl,pop):
     return_data = ''
@@ -81,7 +49,7 @@ def gen_portf_page(uid,appname,burl,pop):
     
     if instfullname != '':
         return_data = get_head(  get_loading_head() + get_googleanalytics() + get_title( appname +' - ' + instfullname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl) )
-        return_data = return_data + get_body(  get_loading_body(), gen_portf_popup(uid,pop) + navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
+        return_data = return_data + get_body(  get_loading_body(), gen_portf_popup(pop) + navbar(burl,0) + '<div class="box-top"><div class="row">' + get_details_header(uid,burl) + get_portf_alloc(uid,burl) + get_portf_perf_desc(uid) + get_portf_risk_trail_returns(uid) + get_trades_box(uid,burl,None) + '</div></div>' +  get_page_footer(burl)  )
         return_data = set_page(return_data)
     else:
         get_error_page(appname,burl)

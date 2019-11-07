@@ -46,7 +46,7 @@ def get_pricing_menu(burl):
 
 def get_about_menu(burl):
     return_data = ''
-    link = get_broker_affiliate_link('googleSiteSmartAlpha')
+    link = get_broker_affiliate_link('googleSiteSmartAlpha', 'affiliate')
     l_title = 'What is SmartAlpha?'
     return_data = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block"><a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+ link +'">'+ l_title +'</a></li>'
     return return_data

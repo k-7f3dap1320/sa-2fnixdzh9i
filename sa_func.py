@@ -209,16 +209,26 @@ def send_email_to_queue(send_to,email_subject,email_content,priority):
     cr.close()
     connection.close()
 
-def get_broker_affiliate_link(broker):
+def get_broker_affiliate_link(broker,what):
+    """
+    get the affiliate link or base url
+    what: affiliate, baseurl
+    """
     return_data = ''
     affiliate_link = ''
+    baseurl = ''
     connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT affiliate_link FROM brokers WHERE broker_id ='"+ str(broker) +"'"
+    sql = "SELECT affiliate_link, burl FROM brokers WHERE broker_id ='"+ str(broker) +"'"
     cr.execute(sql)
     rs = cr.fetchall()
-    for row in rs: affiliate_link = row[0]
+    for row in rs:
+        affiliate_link = row[0]
+        baseurl = row[1]
     cr.close()
     connection.close()
-    return_data = affiliate_link
+    if what == 'affiliate':
+        return_data = affiliate_link
+    else:
+        return_data = baseurl
     return return_data

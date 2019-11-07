@@ -2,6 +2,8 @@
 from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
+from sa_func import get_random_str, get_broker_affiliate_link
+from app_popup_modal import get_div_embed_content_popup, get_div_embed_content_data_toggle
 
 
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
@@ -11,7 +13,13 @@ def get_signal_details(uid,burl,mode):
 # uid = symbol uid
 # mode = 'newsfeed','desc'
 # =============================================================================
+    broker = 'eToro'
+    url = get_broker_affiliate_link(broker,'baseurl')
+    height = '640px'
+    width = '360px'
     descr_box = ''
+    random_uid = get_random_str(9)
+    
     if (mode == 'newsfeed'):
         button_href = burl + 's/?uid=' + str(uid)
     else:
@@ -49,12 +57,12 @@ def get_signal_details(uid,burl,mode):
     badge.find('-4') == -1 and badge.find('-5') == -1 and
     badge.find('-6') == -1 and badge.find('-7') == -1 and
     badge.find('-8') == -1 and badge.find('-9') == -1) :
-        signal = '<a href="'+ button_href +'" class="btn btn-outline-success"><h4>Buy</h4></a>'
+        signal = '<a href="#" class="btn btn-outline-success" '+ get_div_embed_content_data_toggle(random_uid) +'><h4>Buy</h4></a>'
         entry = trade_1_entry
         tp = trade_1_tp
         sl = trade_1_sl
     else:
-        signal = '<a href="'+ button_href +'" class="btn btn-outline-danger"><h4>Sell</h4></a>'
+        signal = '<a href="#" class="btn btn-outline-danger" '+ get_div_embed_content_data_toggle(random_uid) +'><h4>Sell</h4></a>'
         entry = trade_3_entry
         tp = trade_3_tp
         sl = trade_3_sl
@@ -73,8 +81,7 @@ def get_signal_details(uid,burl,mode):
     c_tp = str( round(tp, decimal_places) )
     c_sl = str( round(sl, decimal_places) )
 
-
-    descr_box = '' +\
+    descr_box = get_div_embed_content_popup(random_uid,url,height,width) +\
     '               <table class="table table-sm sa-table-sm">'+\
     '                   <tbody>'+\
     '                       <tr>'+\

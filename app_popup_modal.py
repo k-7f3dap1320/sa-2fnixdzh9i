@@ -1,5 +1,36 @@
 """ Popup and modal messages """
 
+def get_div_embed_content_data_toggle(uid):
+    """ Add this function inside a button or a href """
+    return_data = 'data-toggle="modal" data-target="#popup_embed_div_'+ str(uid) +'"'
+    return return_data
+
+def get_div_embed_content_popup(uid,url,height,width):
+    return_data = '' +\
+    '<div class="modal fade" id="popup_embed_div_'+ str(uid) +'" tabindex="-1" role="dialog" '+\
+    '    aria-labelledby="popup_embed_div_title" aria-hidden="true"> '+\
+    '  <div class="modal-dialog modal-dialog-centered" role="document"> '+\
+    '    <div class="modal-content"> '+\
+    '      <div class="modal-header"> '+\
+    '        <h5 class="modal-title" id="popup_embed_div_long_title"></h5> '+\
+    '        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> '+\
+    '          <span aria-hidden="true">&times;</span> '+\
+    '        </button> '+\
+    '      </div> '+\
+    '      <div class="modal-body"> '+\
+    '         <div> '+\
+    '            <object type="text/html" data="'+ str(url) +'" '+\
+    '            width="'+ str(width) +'" '+\
+    '            height="'+ str(height) +'" style="overflow:auto;border:5px ridge blue">'+\
+    '            </object> '+\
+    '         </div> '+\
+    '      </div> '+\
+    '    </div> '+\
+    '  </div> '+\
+    '</div> '
+    return return_data
+
+
 def gen_tour_popup(tour, burl):
     """ Generate popup modal message after user is created (dashboard) """
     return_data = ''
@@ -29,6 +60,40 @@ def gen_tour_popup(tour, burl):
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-info form-signin-btn" '+\
         'onClick="window.location.href=\''+ burl +'h\'">'+ label_button +'</button>'+\
+        '        </div>'+\
+        '      </div>'+\
+        '    </div>'+\
+        ' </div>'
+    return return_data
+
+def gen_portf_popup(pop):
+    """ Generate popup modal after successfully create a strategy portfolio """
+    return_data = ''
+    label_header = 'Trading strategy created!'
+    label_content = 'Your trading strategy has been generated.'
+    label_button = 'Take me to my strategy...'
+
+    if pop == '1':
+        return_data = '' +\
+        '  <script type="text/javascript">'+\
+        '  $(window).on(\'load\',function(){'+\
+        '    $(\'#portf_popup\').modal(\'show\');'+\
+        '  });'+\
+        '  </script>'+\
+        ' <div class="modal" id="portf_popup">'+\
+        '    <div class="modal-dialog modal-lg">'+\
+        '      <div class="modal-content">'+\
+        '        <div class="modal-header">'+\
+        '          <h4 class="modal-title">'+ label_header +'</h4>'+\
+        '          <button type="button" class="close" data-dismiss="modal">&times;</button>'+\
+        '        </div>'+\
+        '        <div class="modal-body">'+\
+        label_content +\
+        '        </div>'+\
+        '        <!-- Modal footer -->'+\
+        '        <div class="modal-footer">'+\
+        '          <button type="button" class="btn btn-info form-signin-btn" '+\
+        'data-dismiss="modal">'+ label_button +'</button>'+\
         '        </div>'+\
         '      </div>'+\
         '    </div>'+\
