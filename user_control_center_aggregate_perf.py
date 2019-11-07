@@ -33,7 +33,8 @@ def get_current_user_total_account_size(w):
                 if prev_unit != row[1]:
                     unit_diff = True
             conv_to_usd = row[2]
-            total_account = total_account * conv_to_usd
+            if total_account is not None:
+                total_account = total_account * conv_to_usd
         if unit_diff:
             prev_unit = 'USD'
         if w == 'total':
