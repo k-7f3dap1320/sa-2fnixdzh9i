@@ -13,23 +13,25 @@ def get_div_embed_content_popup(uid,url,height,width):
     '    <div class="modal-content"> '+\
     '      <div class="modal-header" style="height:10px;"> '+\
     '        <h5 class="modal-title" id="popup_embed_div_long_title"></h5> '+\
-    '        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> '+\
+    '        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin=-28px;"> '+\
     '          <span aria-hidden="true">&times;</span> '+\
     '        </button> '+\
     '      </div> '+\
     '      <div class="modal-body"> '+\
-    '         <div> '+\
-    '            <object type="text/html" data="'+ str(url) +'" '+\
-    '            width="'+ str(width) +'" '+\
-    '            height="'+ str(height) +'" style="overflow:auto;border:5px ridge blue">'+\
-    '            </object> '+\
-    '         </div> '+\
+    '         <iframe src="https://bing.com" style="width='+str(width)+'; height='+ str(height) +';"></iframe>'+\
     '      </div> '+\
     '    </div> '+\
     '  </div> '+\
     '</div> '
     return return_data
 
+'''
+    '            <object type="text/html" data="'+ str(url) +'" '+\
+    '            width="'+ str(width) +'" '+\
+    '            height="'+ str(height) +'" style="overflow:auto;border:5px ridge blue">'+\
+    '            </object> '+\
+
+'''
 
 def gen_tour_popup(tour, burl):
     """ Generate popup modal message after user is created (dashboard) """
