@@ -116,9 +116,10 @@ def get_box_search(burl,nonavbar):
     return box_content
 
 def get_search_result(q):
+    feed_type_filter_out = 3
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT url FROM feed WHERE search LIKE '%"+ str(q) +"%'"
+    sql = "SELECT url FROM feed WHERE search LIKE '%"+ str(q) +"%' and type<>"+ str(feed_type_filter_out)
     cr.execute(sql)
     rs = cr.fetchall()
     url = ''
