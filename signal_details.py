@@ -15,7 +15,7 @@ def get_signal_details(uid,burl,mode):
 # =============================================================================
     broker = 'eToro'
     url = get_broker_affiliate_link(broker,'baseurl')
-    height = '640px'
+    height = '550px'
     width = '360px'
     descr_box = ''
     random_uid = get_random_str(9)

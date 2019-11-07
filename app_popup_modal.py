@@ -11,7 +11,7 @@ def get_div_embed_content_popup(uid,url,height,width):
     '    aria-labelledby="popup_embed_div_title" aria-hidden="true"> '+\
     '  <div class="modal-dialog modal-dialog-centered" role="document"> '+\
     '    <div class="modal-content"> '+\
-    '      <div class="modal-header"> '+\
+    '      <div class="modal-header" style="height:10px;"> '+\
     '        <h5 class="modal-title" id="popup_embed_div_long_title"></h5> '+\
     '        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> '+\
     '          <span aria-hidden="true">&times;</span> '+\
