@@ -1,4 +1,4 @@
-
+""" Trades tab functionalities """
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -10,6 +10,7 @@ from datetime import timedelta
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_trades_tbl(uid,w,burl,type):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -225,6 +226,7 @@ def get_trades_tbl(uid,w,burl,type):
 
 
 def get_trades_box(uid,burl,is_dashboard):
+    """ xxx """
     box_content = ''
     if not uid == 0 or len(get_user()) > 1:
         l_tab_today_title = 'Today`s order execution'; tab_today_id = 'today_orders'

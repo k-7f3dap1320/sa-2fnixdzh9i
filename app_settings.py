@@ -1,4 +1,4 @@
-
+""" App settings """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -21,6 +21,7 @@ access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def save_settings(name,nickname,username,default_profile,email_subscription):
+    """ xxx """
     return_data = ''
     user_uid = user_get_uid()
     if nickname is None: nickname = ''
@@ -52,6 +53,7 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
     return return_data
 
 def get_settings_content(burl,step,message):
+    """ xxx """
     box_content = ''
     l_profile_section = 'Profile Settings'
     l_fullname = 'Fullname'
@@ -166,6 +168,7 @@ def get_settings_content(burl,step,message):
 
 
 def get_radio_button_email_subs(selected):
+    """ xxx """
     return_data = ''
     l_radioBtn_name = 'email_subscription'
     checkedRadio_all = ''
@@ -191,6 +194,7 @@ def get_radio_button_email_subs(selected):
     return return_data
 
 def get_radio_button_Trader_prf(default_profile):
+    """ xxx """
     return_data = ''
     l_market = 'market'
     l_radioBtn_name = 'default_profile'
@@ -222,6 +226,7 @@ def get_radio_button_Trader_prf(default_profile):
     return return_data
 
 def popup_after_submit(message,result):
+    """ xxx """
     #if result == 1: success else: error
     return_data = ''
     l_content = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+ str(message)
@@ -240,6 +245,7 @@ def popup_after_submit(message,result):
     return return_data
 
 def get_settings_page(appname,burl,step,message):
+    """ xxx """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,'') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_settings_content(burl,step,message) + get_page_footer(burl) )

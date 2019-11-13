@@ -1,4 +1,4 @@
-
+""" Signal details """
 from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -8,10 +8,11 @@ from app_popup_modal import open_window
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_signal_details(uid,burl,mode):
-# =============================================================================
-# uid = symbol uid
-# mode = 'newsfeed','desc'
-# =============================================================================
+    """ xxx """
+    # =============================================================================
+    # uid = symbol uid
+    # mode = 'newsfeed','desc'
+    # =============================================================================
     descr_box = ''
     broker = 'eToro'
     height = '600'

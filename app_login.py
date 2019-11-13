@@ -1,4 +1,4 @@
-
+""" App login functionalities """
 from app_head import *; from app_body import *; from app_page import *
 from sa_db import *
 from sa_func import *
@@ -8,16 +8,20 @@ from app_cookie import *
 import datetime
 import time
 from datetime import timedelta
-
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+db_usr = access_obj.username()
+db_pwd = access_obj.password()
+db_name = access_obj.db_name()
+db_srv = access_obj.db_server()
 
 def user_logout(burl):
+    """ xxx """
     resp = ''
     resp = make_response( redirect(burl + '?logout') )
     resp.set_cookie('user', '0')
     return resp
 
 def user_login(usr,pwd,burl,redirect):
+    """ xxx """
     content = ''
     redirectUrl = burl
     d = datetime.datetime.now()

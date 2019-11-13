@@ -1,10 +1,11 @@
-
+""" Signin header in the main page when user not logged in """
 from sa_func import *
 from signin_main import *
 from app_cookie import *
 from createuser_main import *
 
 def get_signin_box(burl):
+    """ xxx """
     box_content = ''
     if user_is_login() == 0:
         l_app_header_title = 'Create unlimited optimized trading portfolios'

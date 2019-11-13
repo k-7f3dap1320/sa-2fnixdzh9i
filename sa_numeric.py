@@ -1,4 +1,4 @@
-
+""" Numerical functions """
 import sys
 import os
 from pathlib import Path
@@ -13,7 +13,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 import pymysql.cursors
 
 def get_pct_change(ini_val,new_val):
-
+    """ xxx """
     if not new_val == 0:
         if new_val < ini_val:
             return_data =  ( (ini_val - new_val) / ini_val ) * (-1)
@@ -26,7 +26,7 @@ def get_pct_change(ini_val,new_val):
 
 
 def get_stdev(sql):
-
+    """ xxx """
     return_data = 0
     #sql with just one numerical value to compute standard deviation
     connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -40,7 +40,7 @@ def get_stdev(sql):
     return return_data
 
 def get_volatility_risk(sql,is_portf,s):
-
+    """ xxx """
     return_data = 0
     #sql with one numerical column to compute volatility risk
     connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -65,7 +65,7 @@ def get_volatility_risk(sql,is_portf,s):
     return return_data
 
 def get_mdd(sql):
-
+    """ xxx """
     return_data = 0
     #sql with just one numerical value to compute maximum drawdown
     connection = pymysql.connect(host=db_srv, user=db_usr,password=db_pwd,db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -101,6 +101,7 @@ def get_mdd(sql):
     return return_data
 
 def get_romad(sql):
+    """ xxx """
     return_data = 0
     #sql with one column as numerical value to compute return on maximum drawdown
     #ordered by date ASC

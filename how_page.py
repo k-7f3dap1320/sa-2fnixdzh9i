@@ -1,3 +1,4 @@
+""" Help page: This module will be dismantled soon """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -15,6 +16,7 @@ from app_cookie import *
 from purechat import *
 
 def get_help_content(burl):
+    """ xxx """
     box_content = ''
     imgsrc = burl + 'static/help/'
     sactive = ''
@@ -135,6 +137,7 @@ def get_help_content(burl):
 
 
 def get_help_page(appname,burl):
+    """ xxx """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_help_content(burl) + get_page_footer(burl) + get_purechat(1) )

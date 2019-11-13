@@ -1,7 +1,8 @@
-
+""" App OGP """
 from sa_func import get_random_num
 
 def set_ogp(burl,type,title,desc):
+    """ xxx """
     if int(type) == 1:
         return_data = '' +\
         '<meta property="og:title" content="A.I. Powered Trading Insights">'+\

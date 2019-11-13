@@ -1,4 +1,4 @@
-
+""" Signal alternative orders and technical analysis section """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -11,7 +11,7 @@ from tradingview_indicators import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_alt_orders(uid):
-
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.trade_1_entry, instruments.trade_1_tp, instruments.trade_1_sl, instruments.trade_1_type, "+\
@@ -104,6 +104,7 @@ def get_alt_orders(uid):
     return return_data
 
 def get_ta_chart(uid):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
@@ -203,6 +204,7 @@ def get_ta_chart(uid):
 
 
 def get_rsi_chart(uid):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT date, rsi, rsi_oversold, rsi_overbought, forecast FROM chart_data WHERE uid=" + str(uid) + " ORDER BY date"
@@ -276,6 +278,7 @@ def get_rsi_chart(uid):
     return return_data
 
 def get_sign_ta_chart_alt_orders(uid):
+    """ xxx """
     signal_box = ''; tech_chart = ''
     signal_box_title = 'Alternative Orders'
     signal_box = '' +\

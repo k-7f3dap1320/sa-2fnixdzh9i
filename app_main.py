@@ -1,4 +1,4 @@
-
+""" App main page """
 from app_page import set_page
 from app_head import get_head
 from app_ogp import set_ogp
@@ -26,6 +26,7 @@ from purechat import get_purechat
 from news_feed import get_newsfeed
 
 def gen_main_page(x, appname, burl, is_dashboard, tour, nonavbar):
+    """ xxx """
     metarefresh = ''
     refresh_in_second = 900
     navbarcontent = ''

@@ -1,4 +1,4 @@
-
+""" App Search functionalities """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -18,10 +18,10 @@ from app_cookie import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
-
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_search_table_content(burl,nonavbar):
+    """ xxx """
     return_data = ''
     nonavbarparam = '&nonavbar=1'
     if nonavbar is None: nonavbarparam = ''
@@ -59,6 +59,7 @@ def get_search_table_content(burl,nonavbar):
     return return_data
 
 def gen_search_table(burl,nonavbar):
+    """ xxx """
     return_data = ''
     return_data =  ' ' +\
     '<table id="table_search" class="table table-hover table-sm">'+\
@@ -76,6 +77,7 @@ def gen_search_table(burl,nonavbar):
     return return_data
 
 def get_box_search(burl,nonavbar):
+    """ xxx """
     box_content = ''
     col_id = 0
     sid = get_random_str(9)
@@ -116,6 +118,7 @@ def get_box_search(burl,nonavbar):
     return box_content
 
 def get_search_result(q):
+    """ xxx """
     feed_type_filter_out = 3
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -157,6 +160,7 @@ def get_search_page_content(burl,nonavbar):
     return box_content
 
 def get_search_page(appname,burl,nonavbar):
+    """ xxx """
     return_data = ''
     navbarcontent = ''
     if nonavbar is None: navbarcontent = navbar(burl,1)

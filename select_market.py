@@ -1,4 +1,4 @@
-
+""" Market selection module """
 from app_page import *
 from app_head import *
 from app_ogp import *
@@ -21,6 +21,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def save_selectmarket(burl,mode,x):
+    """ xxx """
     return_data = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + burl + 'genportf/?acm='+ str(x) +'&step=1&notstart=0" />') + get_body('','') )
     user_id = user_get_uid()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -33,6 +34,7 @@ def save_selectmarket(burl,mode,x):
     return return_data
 
 def get_market_list(burl,mode):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -67,6 +69,7 @@ def get_market_list(burl,mode):
     return return_data
 
 def get_selectmarket_box(burl,mode):
+    """ xxx """
     box_content = ''
     if mode == 'portf':
         l_desc_part_1 = "Select a market for your portfolio"
@@ -90,6 +93,7 @@ def get_selectmarket_box(burl,mode):
     return box_content
 
 def gen_selectmarket_page(appname,burl,mode):
+    """ xxx """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_selectmarket_box(burl,mode) )

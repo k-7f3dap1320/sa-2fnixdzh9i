@@ -1,4 +1,4 @@
-
+""" Portfolio trail return graph """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -10,6 +10,7 @@ from sa_func import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_risk_table(uid):
+    """ xxx """
     t = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -96,6 +97,7 @@ def get_risk_table(uid):
     return t
 
 def get_box_risk_content(uid):
+    """ xxx """
     box_content = ''
     lang = get_selected_lang()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -149,6 +151,7 @@ def get_box_risk_content(uid):
 
 
 def get_box_trail_returns_content(uid):
+    """ xxx """
     box_content = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -171,4 +174,5 @@ def get_box_trail_returns_content(uid):
     return box_content
 
 def get_portf_risk_trail_returns(uid):
+    """ xxx """
     return get_box_risk_content(uid) + get_box_trail_returns_content(uid)

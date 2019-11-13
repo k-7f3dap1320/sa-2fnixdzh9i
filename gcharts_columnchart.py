@@ -1,8 +1,9 @@
-
+""" Google column chart """
 from app_cookie import *
 from sa_func import *
 
 def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height):
+    """ Draw column chart """
     return_data = ''
     maxval = 0
     minval = 0
@@ -52,6 +53,7 @@ def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title
     return return_data
 
 def get_gcharts_column_data(data,data_label,data_color,data_annotation):
+    """ Get data for the column chart """
     return_data = ''
     j = len(data)-1
     i = 0

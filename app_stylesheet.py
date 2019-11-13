@@ -1,7 +1,8 @@
-
+""" App stylesheet """
 from sa_func import *
 
 def get_stylesheet(burl):
+    """ xxx """
 
     #Page main components
     body = 'body{font-family:monospace,sans-serif; overflow-x:hidden;}'
@@ -121,5 +122,6 @@ def get_stylesheet(burl):
     return return_data
 
 def get_theme_color():
+    """ xxx """
     theme_color = '#343a40'
     return theme_color

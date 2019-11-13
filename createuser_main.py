@@ -1,4 +1,4 @@
-
+""" User Creation main module """
 from app_page import *
 from app_head import *
 from app_ogp import *
@@ -23,6 +23,7 @@ access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def set_nickname():
+    """ xxx """
     p1 = ''; p2 =''; num = ''
     return_data = ''
     connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -42,6 +43,7 @@ def set_nickname():
     return return_data
 
 def send_email_notification(broker,name,username):
+    """ xxx """
     lang = 'en'
     new_user_welcome_subject = ''
     new_user_welcome_content = ''
@@ -61,6 +63,7 @@ def send_email_notification(broker,name,username):
     send_email_to_queue('','A new user has been created ['+ str(broker) +']',str(name)+'; '+str(username),9)
 
 def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,username_broker):
+    """ xxx """
     return_data = ''
     if uid == '0':
         return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( 'light',burl ) + get_font_awesome() + get_stylesheet(burl) )
@@ -99,6 +102,7 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,u
     return return_data
 
 def get_user_ip_input():
+    """ xxx """
     return_data = ''
     return_data = '' +\
     '<script type="application/javascript">'+\
@@ -110,6 +114,7 @@ def get_user_ip_input():
     return return_data
 
 def get_broker_signin_spec_form(broker):
+    """ xxx """
     return_data = ''
     if broker is not None:
         connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -149,6 +154,7 @@ def get_broker_signin_spec_form(broker):
 
 
 def get_user_creation_form(burl,broker):
+    """ xxx """
     box_content = ''
     l_enter_name = "Enter Name"
     l_enter_email = "Enter Email"

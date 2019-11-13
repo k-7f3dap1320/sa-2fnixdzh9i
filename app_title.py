@@ -1,6 +1,7 @@
+""" App title and viewport """
 
 def get_title(t):
-
+    """ xxx """
     page_title = '<meta name="viewport" content="width=device-width, initial-scale=1"><title>' + t + '</title>'
     return_data = page_title
 

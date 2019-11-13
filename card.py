@@ -1,4 +1,4 @@
-
+""" card object """
 from sa_db import *
 from sa_func import *
 from card_chart import *
@@ -13,7 +13,7 @@ from tradingview_mini_chart import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_card(x,t,burl):
-
+    """ Get card """
     return_data = ''
     if x != '' and x is not None:
         if t == 1:

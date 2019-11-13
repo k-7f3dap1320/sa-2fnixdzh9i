@@ -1,4 +1,4 @@
-
+""" App reset password module """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -21,6 +21,7 @@ access_obj = sa_db_access()
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def set_new_password(burl,data,data2):
+    """ xxx """
     box_content = ''
     message_content = '<a href="'+ burl +'logout/?resetpassword">Your password has been changed.</a>'
     new_password =  get_hash_string( str(data) )
@@ -51,6 +52,7 @@ def set_new_password(burl,data,data2):
     return box_content
 
 def change_password_form(burl,data):
+    """ xxx """
     box_content = ''
     l_invalid_link_content = 'Olala invalid link :O '
     l_section_title = 'Change your password'
@@ -125,6 +127,7 @@ def change_password_form(burl,data):
     return box_content
 
 def validate_email_input(burl,data):
+    """ xxx """
     box_content = ''
     l_email_subject = 'Reset your password'
     l_email_content = 'Hi {name_of_user},\n go to the following link to change your password: {link_to_reset_password}'
@@ -168,6 +171,7 @@ def validate_email_input(burl,data):
     return box_content
 
 def get_resetpassword_email_input(burl):
+    """ xxx """
     box_content = ''
     l_reset_password = 'Reset your password'
     l_email_placeholder = 'Enter your email'
@@ -190,6 +194,7 @@ def get_resetpassword_email_input(burl):
     return box_content
 
 def get_resetpassword_page(appname,burl,step,data,data2):
+    """ xxx """
     return_data = ''
     page_content = ''
     if step == str(2):

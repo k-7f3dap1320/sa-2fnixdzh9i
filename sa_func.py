@@ -1,4 +1,4 @@
-
+""" Main functions used thru the application """
 from sa_db import sa_db_access
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -11,16 +11,19 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_hash_string(s):
+    """ xxx """
     return_data = ''
     d = hashlib.md5(s.encode() )
     return_data = d.hexdigest()
     return return_data
 
 def get_user():
+    """ xxx """
     return_data = user_get_uid()
     return return_data
 
 def get_avatar(burl,height):
+    """ xxx """
     return_data = ''
     uid = user_get_uid()
     avatar_id = 0
@@ -37,6 +40,7 @@ def get_avatar(burl,height):
     return return_data
 
 def is_subscribed_user():
+    """ xxx """
     return_data = 0
     uid = user_get_uid()
     is_subscribed = 0
@@ -50,6 +54,7 @@ def is_subscribed_user():
     return return_data
 
 def redirect_if_not_logged_in(burl,redirect):
+    """ xxx """
     return_data = ''
     if user_is_login() != 1:
         return_data = '<meta http-equiv="refresh" content="5; url='+burl+'signin/?redirect='+ redirect +'">'
@@ -58,6 +63,7 @@ def redirect_if_not_logged_in(burl,redirect):
     return return_data
 
 def get_user_numeric_id():
+    """ xxx """
     return_data = ''
     uid = user_get_uid()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -71,6 +77,7 @@ def get_user_numeric_id():
     return return_data
 
 def get_nickname():
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -83,9 +90,11 @@ def get_nickname():
     return return_data
 
 def get_portf_suffix():
+    """ Get portfolio suffix """
     return 'PRF:'
 
 def get_uid(s):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
@@ -99,6 +108,7 @@ def get_uid(s):
     return uid
 
 def get_etoro_symbol_from_uid(uid):
+    """ xxx """
     return_data = 0
     etoro_symbol = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -112,6 +122,7 @@ def get_etoro_symbol_from_uid(uid):
     return return_data
 
 def get_uid_from_symbol(s):
+    """ xxx """
     return_data = 0
     uid = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -125,6 +136,7 @@ def get_uid_from_symbol(s):
     return return_data
 
 def get_uid_from_tvws(tvws):
+    """ xxx """
     uid = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -139,6 +151,7 @@ def get_uid_from_tvws(tvws):
     return uid
 
 def get_user_default_profile():
+    """ xxx """
     return_data = ''
     user_uid = get_user()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -155,16 +168,20 @@ def get_user_default_profile():
     return return_data
 
 def get_random_str(n):
+    """ xxx """
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
 
 def get_random_num(n):
+    """ xxx """
     max = int(n)
     return random.randint(1,max)
 
 def get_selected_lang():
+    """ xxx """
     return get_lang()
 
 def get_signal(uid):
+    """ xxx """
     signal = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -186,6 +203,7 @@ def get_signal(uid):
     return signal
 
 def get_elapsed_time(vminutes):
+    """ xxx """
     return_data = ''
     return_data = 'now'
     if vminutes >0 and vminutes < 60: return_data = str(vminutes) + 'm ago'
@@ -194,6 +212,7 @@ def get_elapsed_time(vminutes):
     return return_data
 
 def go_to_url(q,return_what,uniqid):
+    """ xxx """
     #---------------------------------
     # q = [url to redirect]
     # return_what = 'form' = '<form id="form_id_xxx"><input type="hidden" value="'+ str(q) +'" id="q"></form>'
@@ -212,6 +231,7 @@ def go_to_url(q,return_what,uniqid):
     return return_data
 
 def send_email_to_queue(send_to,email_subject,email_content,priority):
+    """ xxx """
     connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'INSERT INTO email_queue '+\

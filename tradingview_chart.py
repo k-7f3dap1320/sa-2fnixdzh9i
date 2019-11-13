@@ -1,4 +1,4 @@
-
+""" Tradingview interactive chart """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -7,6 +7,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_tradingview_chart(suid,width,height):
+    """ Get tradingview interactive chart """
     return_data = ''
     symbol = ''
     referral_id = 'smartalpha'

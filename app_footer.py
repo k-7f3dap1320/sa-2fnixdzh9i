@@ -1,7 +1,8 @@
-
+""" Footer of the page """
 from app_cookie import user_is_login
 
 def get_page_footer(burl):
+    """ xxx """
     box_content = ''
     if user_is_login() == 0:
         box_content = ' '+\

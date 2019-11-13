@@ -1,7 +1,8 @@
-
+""" bootstrap framework """
 from sa_func import *
 
 def get_bootstrap(theme,burl):
+    """ Load Bootstrap frontend framework """
 
     bootcss_url = 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
     bootcss_dark_url = burl + 'static/bootstrap_custom_dark.css?' + get_random_str(10)

@@ -1,4 +1,4 @@
-
+""" Strategy portfolio content generation """
 import sys
 import os
 import datetime
@@ -15,6 +15,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_portf_content(user_id):
+    """ xxx """
     return_data = ''
     nickname = ''
     avatar_id = ''
@@ -30,7 +31,7 @@ def get_portf_content(user_id):
     return return_data
 
 def set_portf_feed(s):
-
+    """ xxx """
     feed_id = 9
 
     d = datetime.datetime.now()
@@ -95,6 +96,7 @@ def set_portf_feed(s):
 
 
 def get_pct_from_date(d, sql_select, lp):
+    """ xxx """
     pct = 0
     pp = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -113,6 +115,7 @@ def get_pct_from_date(d, sql_select, lp):
 
 
 class instr_sum_data:
+    """ xxx """
     s = ""
     uid = ""
     sql_select = ""
@@ -128,6 +131,7 @@ class instr_sum_data:
     lp_signal = 0
 
     def __init__(self,symbol,uid):
+        """ xxx """
         self.s = symbol
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -162,56 +166,70 @@ class instr_sum_data:
         self.d_1Wf = 0
 
     def get_uid(self):
+        """ xxx """
         return self.uid
 
     def get_lp(self):
+        """ xxx """
         return self.lp
 
     def get_ticker(self):
+        """ xxx """
         return self.s
 
     def get_pct_1Yp(self):
+        """ xxx """
         str_date = self.d_1Yp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select, self.lp))
 
     def get_pct_6Mp(self):
+        """ xxx """
         str_date = self.d_6Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select, self.lp))
 
     def get_pct_3Mp(self):
+        """ xxx """
         str_date = self.d_3Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select, self.lp))
 
     def get_pct_1Mp(self):
+        """ xxx """
         str_date = self.d_1Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select, self.lp))
 
     def get_pct_1Wp(self):
+        """ xxx """
         str_date = self.d_1Wp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select, self.lp))
 
     def get_pct_1Yp_signal(self):
+        """ xxx """
         str_date = self.d_1Yp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select_signal, self.lp_signal))
 
     def get_pct_6Mp_signal(self):
+        """ xxx """
         str_date = self.d_6Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select_signal, self.lp_signal))
 
     def get_pct_3Mp_signal(self):
+        """ xxx """
         str_date = self.d_3Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select_signal, self.lp_signal))
 
     def get_pct_1Mp_signal(self):
+        """ xxx """
         str_date = self.d_1Mp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select_signal, self.lp_signal))
 
     def get_pct_1Wp_signal(self):
+        """ xxx """
         str_date = self.d_1Wp.strftime("%Y%m%d")
         return str(get_pct_from_date(str_date, self.sql_select_signal, self.lp_signal))
 
 
 def get_portf_perf_summ(s,uid):
+    """ xxx """
     pps = instr_sum_data(s, uid)
     y1 = pps.get_pct_1Yp(); m6 = pps.get_pct_6Mp(); m3 = pps.get_pct_3Mp(); m1 = pps.get_pct_1Mp(); w1 = pps.get_pct_1Wp()
     dm = datetime.datetime.now() - timedelta(days=30) ; dm = dm.strftime('%Y%m%d')
@@ -232,6 +250,7 @@ def get_portf_perf_summ(s,uid):
     connection.close()
 
 def get_portf_perf(s):
+    """ xxx """
     portf_symbol_suffix = get_portf_suffix()
     df = datetime.datetime.now() - timedelta(days=370)
 
@@ -246,7 +265,6 @@ def get_portf_perf(s):
     for row in rs:
         portf_symbol = row[0]
         portf_uid = row[1]
-        portf_fullname = row[2]
         account_reference = row[3]
 
         i = 0
@@ -317,14 +335,14 @@ def get_portf_perf(s):
 
 
 class portf_data:
-
+    """ xxx """
     portf_multip = 0
     portf_big_alloc_price = 0
     portf_total_alloc_amount = 0
     portf_account_ref = 0
 
     def __init__(self, portf_s):
-
+        """ xxx """
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT account_reference FROM instruments WHERE symbol='"+ portf_s +"' "
@@ -362,7 +380,7 @@ class portf_data:
         self.portf_multip = self.portf_account_ref / self.portf_total_alloc_amount
 
     def get_quantity(self, alloc_s, alloc_coef):
-
+        """ xxx """
         portf_reduce_risk_by = 4
         connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -397,14 +415,19 @@ class portf_data:
 
 
 def get_conviction_coef(c):
+    """ xxx """
     return_data = 1.01
-    if c == 'weak': return_data = random.randint(3,8)
-    if c == 'neutral': return_data = random.randint(8,20)
-    if c == 'strong': return_data = random.randint(21,80)
+    if c == 'weak':
+        return_data = random.randint(3,8)
+    if c == 'neutral':
+        return_data = random.randint(8,20)
+    if c == 'strong':
+        return_data = random.randint(21,80)
     return_data = (return_data * 0.01) + 1
     return return_data
 
 def get_market_conv_rate(m):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -417,6 +440,7 @@ def get_market_conv_rate(m):
     return return_data
 
 def get_market_currency(m):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -429,7 +453,7 @@ def get_market_currency(m):
     return return_data
 
 def get_portf_alloc(s):
-
+    """ xxx """
     portf_symbol_suffix = get_portf_suffix()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -538,6 +562,7 @@ def get_portf_alloc(s):
 
 
 def generate_portfolio(s):
+    """ xxx """
     get_portf_alloc(s)
     get_portf_perf(s)
     set_portf_feed(s)

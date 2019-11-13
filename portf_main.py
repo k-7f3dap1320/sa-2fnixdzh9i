@@ -1,4 +1,4 @@
-
+""" Portfolio main module """
 from app_page import set_page
 from app_head import get_head
 from app_ogp import set_ogp
@@ -31,6 +31,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def gen_portf_page(uid,appname,burl,pop):
+    """ xxx """
     return_data = ''
     if uid is None: uid = 0
     if uid == '': uid = 0

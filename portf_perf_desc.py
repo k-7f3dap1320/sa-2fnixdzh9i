@@ -1,4 +1,4 @@
-
+""" Portfolio performance content and description """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -9,7 +9,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_desc_box(uid):
-
+    """ xxx """
     desc_box_title = 'Description & Recommendations'
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -93,7 +93,7 @@ def get_desc_box(uid):
     return portf_desc_box
 
 def get_perf_chart(uid):
-
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
@@ -161,6 +161,7 @@ def get_perf_chart(uid):
     return portf_perf_box
 
 def get_chart_box(uid):
+    """ xxx """
     chart_1y_perf = get_perf_chart(uid)
     tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
     return_data = '' +\
@@ -180,5 +181,6 @@ def get_chart_box(uid):
     return return_data
 
 def get_portf_perf_desc(uid):
+    """ xxx """
     return_data = get_desc_box(uid) + ' ' + get_chart_box(uid)
     return return_data

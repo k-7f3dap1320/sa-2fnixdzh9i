@@ -1,4 +1,4 @@
-
+""" Strategy portfolio delete function """
 from flask import make_response, redirect
 from sa_db import sa_db_access
 access_obj = sa_db_access()
@@ -10,6 +10,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def del_portf(this,burl,x,dashboard):
+    """ xxx """
     #Only owner of the portfolio can delete it. to delete URL: /p/?delete={portf_id}
     if x is None: x = ''
     return_url_list = burl + 'ls/?w=portf&x='+ str(x)

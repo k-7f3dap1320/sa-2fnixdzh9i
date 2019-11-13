@@ -1,4 +1,4 @@
-
+""" Intelligence report """
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -29,6 +29,7 @@ from trades_tab import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_report_title(burl):
+    """ Get title of the report """
     return_data = ''
     dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y");
     l_title = 'Daily Intelligence Briefing: <br />' + dnstr
@@ -54,6 +55,7 @@ def get_report_title(burl):
     return return_data
 
 def get_market_snapshot_n_brief_text(w):
+    """ Get market snapshot briefing text """
     return_data = ''
     language = 'en'
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -69,6 +71,7 @@ def get_market_snapshot_n_brief_text(w):
     return return_data
 
 def get_market_snapshot_section():
+    """ Get the market snapshot section """
     return_data = ''
     l_title = 'Market Snapshot'
 
@@ -102,6 +105,7 @@ def get_market_snapshot_section():
     return return_data
 
 def get_intel_content(burl):
+    """ Get intelligence report content """
     box_content = ''
     box_content = ''+\
     '<div class="box-top">'+\
@@ -120,6 +124,7 @@ def get_intel_content(burl):
     return box_content
 
 def get_expired_signals(burl):
+    """ Get expired signals table """
     return_data = ''
     if user_is_login():
         l_title = 'Expired Signals'
@@ -140,6 +145,7 @@ def get_expired_signals(burl):
     return return_data
 
 def get_signals_lines(burl):
+    """ Get signals lines """
     return_data = ''
     if user_is_login():
         l_title = 'Opportunities'
@@ -179,6 +185,7 @@ def get_signals_lines(burl):
     return return_data
 
 def get_intel_page(appname,burl):
+    """ Get and build the entire intelligence report page """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + redirect_if_not_logged_in(burl,burl +'intelligence') + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(),  navbar(burl,0) + get_intel_content(burl) )

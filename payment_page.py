@@ -1,4 +1,4 @@
-
+""" App payment page """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -17,10 +17,12 @@ from createuser_main import *
 from sa_func import *
 
 def get_package_price():
+    """ xxx """
     return_data = '$29.00'
     return return_data
 
 def get_broker_signup_button(burl,lang,broker):
+    """ xxx """
     return_data = ''
     l_button = 'Signup with '+ str(broker)
     button_signup = '<a href="'+burl+'join/?broker='+ str(broker) +'" class="btn btn-success" style="font-size:small;">'+ l_button +'</a>'
@@ -28,6 +30,7 @@ def get_broker_signup_button(burl,lang,broker):
     return return_data
 
 def get_paypal_payment_button(burl,lang,is_soldout,size):
+    """ xxx """
     return_data = ''
     l_price = get_package_price()
     l_button_trial = '1-month Free Trial<br />'
@@ -80,6 +83,7 @@ def get_paypal_payment_button(burl,lang,is_soldout,size):
     return return_data
 
 def get_broker_url(broker,what,uid):
+    """ xxx """
     return_data = ''
     if what == 'link':
         return_data = '<a '+ go_to_url(get_broker_affiliate_link(broker, 'affiliate'),'link',uid) +'" target="_blank">'+ broker +'</a>'
@@ -88,6 +92,7 @@ def get_broker_url(broker,what,uid):
     return return_data
 
 def get_box_plan_selection(burl):
+    """ xxx """
     box_content = ''
     broker = 'eToro'
     l_price = get_package_price()
@@ -188,6 +193,7 @@ def get_box_plan_selection(burl):
     return box_content
 
 def get_plan_selection_page(appname,burl):
+    """ xxx """
     return_data = ''
     theme = 'light'
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( theme ,burl ) + get_font_awesome() + get_stylesheet(burl) )

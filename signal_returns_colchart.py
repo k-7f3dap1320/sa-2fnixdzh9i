@@ -1,4 +1,4 @@
-
+""" Signal returns column chart section """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -10,6 +10,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_signal_return_colchart(uid):
+    """ xxx """
     return_data = ''
     chart_id = 'chart_signal_returns_col'
     title = 'Signal Performance'

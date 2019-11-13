@@ -1,4 +1,4 @@
-
+""" List of instruments and strategy portfolio """
 from app_cookie import user_is_login, theme_return_this
 from sa_db import sa_db_access
 from sa_func import get_user_numeric_id, get_portf_suffix
@@ -10,6 +10,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def draw_portf_table(burl,maxrow,x,user_portf):
+    """ xxx """
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
     'window.document.location = $(this).data("href");'+\
@@ -113,6 +114,7 @@ def draw_portf_table(burl,maxrow,x,user_portf):
     return return_data
 
 def draw_instr_table(burl,mode,step,maxrow,x):
+    """ xxx """
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
     'window.document.location = $(this).data("href");'+\
@@ -215,6 +217,7 @@ def draw_instr_table(burl,mode,step,maxrow,x):
     return return_data
 
 def get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x):
+    """ xxx """
     return_data = ''
     if x is None: x = ''
 
@@ -227,6 +230,7 @@ def get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x):
     return return_data
 
 def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
+    """ xxx """
     return_data = ''
     if mode == "portf_select":
         signal_column = ""
@@ -281,6 +285,7 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
     return return_data
 
 def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
+    """ xxx """
     # mode = 'view', mode = 'portf_select', mode = 'dashboard'
     # what = 'instr', what = 'portf'
     # maxrow = numeric number of row ie. 1000

@@ -1,4 +1,4 @@
-
+""" Application main module """
 DEV_MODE = False
 
 from flask import Flask, request
@@ -59,7 +59,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/pricing/url/', endpoint='url', methods=["POST","GET"])
 
 def go():
-
+    """ xxx """
     appname = 'SmartAlpha | Trading Intelligence'
     c = ''; burl = request.url_root;
     if not DEV_MODE: burl = burl.replace('http://','https://')

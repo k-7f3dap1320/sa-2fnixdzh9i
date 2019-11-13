@@ -1,5 +1,7 @@
+""" Functionalities to display Google Ads on page """
 
 def print_google_ads(format,align):
+    """ xxx """
     return_data = ''
     if format == 'rectangle':
         return_data = '' +\

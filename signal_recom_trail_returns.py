@@ -1,4 +1,4 @@
-
+""" Signal recommendations and trail returns section """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -8,6 +8,7 @@ from trail_returns_chart import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_recomm(uid):
+    """ xxx """
     recomm_box = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -22,6 +23,7 @@ def get_recomm(uid):
     return recomm_box
 
 def get_recomm_layout(uid):
+    """ xxx """
     return_data = ''
     l_title = 'Technical Recommendation'
     return_data = '' +\
@@ -34,6 +36,7 @@ def get_recomm_layout(uid):
     return return_data
 
 def get_chart_box(uid):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.fullname FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE symbol_list.uid="+ str(uid)
@@ -54,6 +57,7 @@ def get_chart_box(uid):
     return return_data
 
 def get_sign_recommend_trail_returns(uid):
+    """ xxx """
     return_data =''
     return_data = get_recomm_layout(uid) + get_chart_box(uid)
     return return_data

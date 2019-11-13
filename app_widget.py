@@ -1,4 +1,4 @@
-
+""" App widget functionalities """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -23,6 +23,7 @@ from news_feed import *
 #-------------------------------------------------------------------------------
 
 def get_widget_content(burl,nonavbar,funcname,noflexheight):
+    """ xxx """
     box_content = ''
     box_class = 'box'
     box_vh = 'height:100vh;width:100vw;margin-left:-15px;'
@@ -40,6 +41,7 @@ def get_widget_content(burl,nonavbar,funcname,noflexheight):
 
 
 def get_widget_page(appname,burl,nonavbar,funcname,refresh_in_second,noflexheight):
+    """ xxx """
     return_data = ''
     navbarcontent = ''
     metarefresh = ''

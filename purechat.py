@@ -1,7 +1,8 @@
-
+""" PureChat library """
 from app_cookie import *
 
 def get_purechat(forceDisplay):
+    """ Get PureChat loaded on page """
     return_data = ''
     content = ""
     if user_is_login() == 0 or forceDisplay == 1:

@@ -1,4 +1,4 @@
-
+""" Manage cookies """
 from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
@@ -8,21 +8,25 @@ import time
 from datetime import timedelta
 
 def get_lang():
+    """ xxx """
     return request.cookies.get('lang')
 
 def set_sa_lang(lang,c):
+    """ xxx """
     resp = make_response( c )
     if lang is None: lang = 'en'
     resp.set_cookie('lang', str(lang), expires=datetime.datetime.now() + datetime.timedelta(days=500) )
     return resp
 
 def set_sa_theme(theme,c):
+    """ xxx """
     resp = make_response( c )
     if theme is None: theme = default_theme
     resp.set_cookie('theme', str(theme), expires=datetime.datetime.now() + datetime.timedelta(days=500))
     return resp
 
 def get_sa_theme():
+    """ xxx """
     default_theme = 'dark'
     selected_theme = ''
     selected_theme = request.cookies.get('theme')
@@ -30,6 +34,7 @@ def get_sa_theme():
     return selected_theme
 
 def theme_return_this(for_light,for_dark):
+    """ xxx """
     return_data = ''
     if get_sa_theme() == 'light':
         return_data = for_light
@@ -38,6 +43,7 @@ def theme_return_this(for_light,for_dark):
     return return_data
 
 def set_sa_ref_code(ref,content):
+    """ xxx """
     resp = make_response( content )
     if ref is None: ref = ''
     ref_str = ref
@@ -46,6 +52,7 @@ def set_sa_ref_code(ref,content):
     return resp
 
 def set_sa_cookie(uid,c):
+    """ xxx """
     resp = make_response( c )
     user_uid = '0';
     if len(uid) > 1: user_uid = str(uid)
@@ -53,11 +60,13 @@ def set_sa_cookie(uid,c):
     return resp
 
 def user_get_uid():
+    """ xxx """
     return_data = request.cookies.get('user')
     if return_data is None: return_data = 0
     return return_data
 
 def user_is_login():
+    """ xxx """
     user_id = '0'
     return_data = 0
     user_id = request.cookies.get('user')
@@ -66,6 +75,7 @@ def user_is_login():
     return return_data
 
 def get_refer_by_code():
+    """ xxx """
     refer_by_code = ''
     refer_by_code = request.cookies.get('ref_by')
     return refer_by_code

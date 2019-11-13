@@ -1,4 +1,4 @@
-
+""" App Navigation bar """
 from app_cookie import *
 from sa_func import *
 from app_login import *
@@ -7,9 +7,13 @@ from user_dashboard_count import *
 access_obj = sa_db_access()
 import pymysql.cursors
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+db_usr = access_obj.username()
+db_pwd = access_obj.password()
+db_name = access_obj.db_name()
+db_srv = access_obj.db_server()
 
 def get_how_menu(burl):
+    """ xxx """
     return_data = ''
     l_helpTooltip = 'Quick Help over there...'
     if user_is_login() == 1:
@@ -22,6 +26,7 @@ def get_how_menu(burl):
     return return_data
 
 def get_dashboard_menu(burl):
+    """ xxx """
     return_data = ''
     l_dashboard = 'Dashboard'
     i = 0
@@ -31,6 +36,7 @@ def get_dashboard_menu(burl):
     return return_data
 
 def get_portfolio_button(burl):
+    """ xxx """
     return_data = ''
     l_create_portfolio = 'Create a new trading strategy'
     portfolio_button = '<div class="d-none d-sm-block"><a href="'+burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary d-block d-md-inline-block" style="font-size:large;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="'+ l_create_portfolio +'"><i class="fas fa-edit"></i></a></div>'
@@ -38,6 +44,7 @@ def get_portfolio_button(burl):
     return return_data
 
 def get_pricing_menu(burl):
+    """ xxx """
     return_data = ''
     link = burl + 'pricing'
     l_title = 'Pricing'
@@ -45,6 +52,7 @@ def get_pricing_menu(burl):
     return return_data
 
 def get_about_menu(burl):
+    """ xxx """
     return_data = ''
     link = get_broker_affiliate_link('googleSiteSmartAlpha', 'affiliate')
     l_title = 'What is SmartAlpha?'
@@ -52,6 +60,7 @@ def get_about_menu(burl):
     return return_data
 
 def navbar(burl,disable_search):
+    """ xxx """
     search_placeholder = '<search> function, ticker...'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'

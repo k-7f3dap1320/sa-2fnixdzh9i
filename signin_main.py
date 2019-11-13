@@ -1,4 +1,4 @@
-
+""" Signin module """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -16,6 +16,7 @@ from app_cookie import *
 from purechat import *
 
 def get_login_form(burl,theme,redirect):
+    """ xxx """
     return_data = ''
     l_register_link = 'Register'
     l_forgot_password = 'Forgot password'
@@ -39,6 +40,7 @@ def get_login_form(burl,theme,redirect):
     return return_data
 
 def popup_login(err,burl):
+    """ xxx """
     return_data = ''
     l_error_title = '<i class="fas fa-exclamation-circle"></i>&nbsp;Email and password you entered did not match our records'
     l_error_descr = 'Please double-check and try again. If you have any issue connecting to your account, please do not hesitate to contact us: <a href="mailto:info@taatu.co">info@taatu.co</a>'
@@ -62,6 +64,7 @@ def popup_login(err,burl):
     return return_data
 
 def get_signin_content(burl,theme,err,redirect):
+    """ xxx """
     box_content = ''
     box_content = '<div class="box-top">' +\
     '   <div class="row">'+\
@@ -76,6 +79,7 @@ def get_signin_content(burl,theme,err,redirect):
     return box_content
 
 def get_signin_page(appname,burl,err,redirect):
+    """ xxx """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_signin_content(burl,'light',err,redirect) + get_page_footer(burl) + get_purechat(1) )

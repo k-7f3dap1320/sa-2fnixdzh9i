@@ -1,4 +1,4 @@
-
+""" News feed  """
 from app_cookie import theme_return_this
 from sa_func import get_user_default_profile, get_user, get_random_str
 from sa_func import go_to_url, get_elapsed_time, get_uid_from_symbol, get_uid
@@ -12,6 +12,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_newsfeed(burl,x,suid,numline,show_chart):
+    """ xxx """
     ### ------------------------------------------------------------------------
     # x == 0 : world top news
     # x == 1 : news based on users default market, asset_class selection
@@ -171,6 +172,7 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
     return return_data
 
 def draw_feed_chart(x,show_chart,score,symbol):
+    """ xxx """
     return_data = ''
     if show_chart == 1:
         if x == 0: return_data = get_sentiment_progressbar(score)
@@ -181,6 +183,7 @@ def draw_feed_chart(x,show_chart,score,symbol):
     return return_data
 
 def get_sentiment_progressbar(score):
+    """ xxx """
     return_data = ''
     pos = 0; neg = 0
     if score < 0:

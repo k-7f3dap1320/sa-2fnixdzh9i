@@ -1,4 +1,4 @@
-
+""" Strategy portfolio creation main module """
 from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
@@ -30,6 +30,7 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 
 def get_selectportf_box(burl,step,mode,x):
+    """ Get portfolio selection box """
     box_content = ''
     min_sel = '5'
     progress_value = '0'
@@ -93,6 +94,7 @@ def get_selectportf_box(burl,step,mode,x):
     return box_content
 
 def save_portf_select(appname,burl,step,mode,x,portf,uid):
+    """ Save strategy portfolio selection """
     next_step = int(step) +1
     if int(step) < 5:
         resp = make_response( redirect(burl+'p/?ins=1&step='+ str(next_step) ) )
@@ -103,6 +105,7 @@ def save_portf_select(appname,burl,step,mode,x,portf,uid):
     return resp
 
 def get_portf_select(select):
+    """ xxx """
     return_data = ''
     uid = request.cookies.get('portf_s_' + str(select) )
     if not uid is None or uid == '':
@@ -112,11 +115,13 @@ def get_portf_select(select):
         "WHERE symbol_list.uid=" + str(uid)
         cr.execute(sql)
         rs = cr.fetchall()
-        for row in rs: return_data = row[0]
+        for row in rs: 
+            return_data = row[0]
         cr.close()
     return return_data
 
 def ini_portf_select(r):
+    """ Initialize strategy portfolio selection """
     resp = make_response(r)
     conviction = 'neutral'
     for i in range(5):

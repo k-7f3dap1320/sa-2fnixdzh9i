@@ -1,4 +1,4 @@
-
+""" Card charts """
 from app_cookie import *
 from sa_db import *
 access_obj = sa_db_access()
@@ -11,6 +11,7 @@ from datetime import timedelta
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def write_func(uid,data,color,minval):
+    """ Draw chart within the card """
     f =""+\
     "<script>"+\
     "google.charts.load('current', {packages: ['corechart', 'line']});"+\
@@ -50,6 +51,7 @@ def write_func(uid,data,color,minval):
 
 
 def get_card_chart(uid,color):
+    """ Get card chart """
     d = datetime.datetime.now() - timedelta(days=360)
     d = d.strftime("%Y%m%d")
     data = ""

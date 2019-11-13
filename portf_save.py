@@ -1,4 +1,4 @@
-
+""" Strategy portfolio selection save function """
 from flask import Flask, make_response, request, redirect
 from sa_db import *
 from sa_func import *
@@ -16,11 +16,13 @@ db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access
 
 ################################################################################
 def set_portf_date():
+    """ xxx """
     d = datetime.datetime.now();
     return_data = datetime.datetime.strftime(d, '%Y%m%d')
     return return_data
 
 def set_portf_symbol():
+    """ xxx """
     return_data = ''
     symbol = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -37,6 +39,7 @@ def set_portf_symbol():
     return return_data
 
 def get_portf_asset_class(what):
+    """ xxx """
     #what = "n" (name) ; what = "i" (id)
     return_data = ''
     suid = ''
@@ -71,6 +74,7 @@ def get_portf_asset_class(what):
     return return_data
 
 def get_portf_market(what):
+    """ xxx """
     #what = "n" (name) ; what = "i" (id); what = "cur" (currency); what = "conv" (conversion rate)
     return_data = ''
     suid = ''
@@ -98,6 +102,7 @@ def get_portf_market(what):
     return return_data
 
 def set_portf_fullname(s,ac,m,st):
+    """ xxx """
     #portf: symbol, asset_class_name, market_label, strategy_type
     return_data = ''
     fullname = s.replace(get_portf_suffix(),'')
@@ -105,6 +110,7 @@ def set_portf_fullname(s,ac,m,st):
     return return_data
 
 def get_portf_strategy_type():
+    """ xxx """
     return_data = ''
     strategy_type = ''
     selected_type = ''
@@ -120,6 +126,7 @@ def get_portf_strategy_type():
     return return_data
 
 def get_portf_description(ac,m,st):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -137,6 +144,7 @@ def get_portf_description(ac,m,st):
     return return_data
 
 def get_portf_decimal_place():
+    """ xxx """
     return_data = 0
     suid = ''
     decimal_places = 0;
@@ -156,6 +164,7 @@ def get_portf_decimal_place():
     return return_data
 
 def portf_get_user_numeric_id():
+    """ xxx """
     return_data = ''
     uid = user_get_uid()
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -169,6 +178,7 @@ def portf_get_user_numeric_id():
     return return_data
 
 def portf_gen_portf_t_instruments():
+    """ xxx """
     return_data = ''
     portf_symbol = get_portf_suffix() + set_portf_symbol()
     portf_asset_class_id = get_portf_asset_class('i')
@@ -201,6 +211,7 @@ def portf_gen_portf_t_instruments():
     return return_data
 
 def portf_add_allocation(portf_symbol):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
@@ -233,6 +244,7 @@ def portf_add_allocation(portf_symbol):
     connection.close()
 
 def portf_insert_data():
+    """ xxx """
     return_data = ''
     portf_symbol = portf_gen_portf_t_instruments()
     return_data = portf_symbol
@@ -242,6 +254,7 @@ def portf_insert_data():
 ################################################################################
 
 def get_portf_uid_from_symbol(s):
+    """ xxx """
     return_data = ''
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -254,6 +267,7 @@ def get_portf_uid_from_symbol(s):
     return return_data
 
 def portf_save(appname,burl):
+    """ xxx """
     portf_symbol = portf_insert_data()
     generate_portfolio(portf_symbol)
     portf_uid = get_portf_uid_from_symbol(portf_symbol)
@@ -261,6 +275,7 @@ def portf_save(appname,burl):
     return resp
 
 def portf_save_conviction(burl,mode,x):
+    """ xxx """
     #mode = "type1", "type2", "type3", "conv1", "conv2"...
     #x = "long/short", "long", "short", "neutral", "weak", "strong"
     resp = make_response( redirect(burl+'p/?ins=3') )
@@ -278,6 +293,7 @@ def portf_save_conviction(burl,mode,x):
     return resp
 
 def get_portf_table_rows(burl):
+    """ xxx """
     return_data = ''
     for i in range(5):
 
@@ -336,6 +352,7 @@ def get_portf_table_rows(burl):
     return return_data
 
 def get_list_portf_alloc(burl):
+    """ xxx """
     return_data = ''
     l_conviction = 'What is your conviction?'
     l_buttonSave = 'Save and generate strategy'
@@ -368,6 +385,7 @@ def get_list_portf_alloc(burl):
     return return_data
 
 def get_box_portf_save(burl):
+    """ xxx """
     box_content = ''
     box_content = '<div class="box">' +\
     '   <div class="row">'+\

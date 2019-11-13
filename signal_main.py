@@ -1,4 +1,4 @@
-
+""" Signal main functions """
 from app_page import *
 from app_footer import *
 from app_head import *
@@ -29,6 +29,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_uid_from_tvs(tvws):
+    """ xxx """
     return_data = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -41,6 +42,7 @@ def get_uid_from_tvs(tvws):
     return return_data
 
 def get_sign_header(uid,burl):
+    """ xxx """
     return_data = ''
     return_data = ' '+\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
@@ -56,6 +58,7 @@ def get_sign_header(uid,burl):
     return return_data
 
 def gen_sign_page(uid,tvws,appname,burl):
+    """ xxx """
     if tvws is not None: uid = get_uid_from_tvs(tvws)
     if uid is None: uid = 0
     if uid == '': uid = 0

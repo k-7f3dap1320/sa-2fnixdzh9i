@@ -1,4 +1,4 @@
-
+""" details header of desc page """
 from app_cookie import *
 from sa_db import *
 from sa_func import *
@@ -11,6 +11,7 @@ from tradingview_symbol_info import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_details_header(uid,burl):
+    """ xxx """
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr_s = connection.cursor(pymysql.cursors.SSCursor)
     sql_s = "SELECT symbol_list.symbol, feed.short_title, feed.content, feed.badge, feed.asset_class, feed.market, symbol_list.isin FROM symbol_list "+\

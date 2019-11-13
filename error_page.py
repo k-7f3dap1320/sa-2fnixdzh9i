@@ -1,4 +1,4 @@
-
+""" app Error page """
 from app_head import *
 from app_body import *
 from app_page import *
@@ -15,6 +15,7 @@ from googleanalytics import *
 from app_cookie import *
 
 def popup_error_msg(burl):
+    """ xxx """
     return_data = ''
     l_error_title = '<i class="fas fa-exclamation-circle"></i>&nbsp;The page or content cannot be found.'
     l_error_descr = 'The page might not be available anymore. <div>&nbsp;</div><div><a href="'+ burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
@@ -30,6 +31,7 @@ def popup_error_msg(burl):
     return return_data
 
 def get_error_page_content(burl):
+    """ xxx """
     box_content = ''
     box_content = '<div class="box-top">' +\
     '   <div class="row">'+\
@@ -44,6 +46,7 @@ def get_error_page_content(burl):
 
 
 def get_error_page(appname,burl):
+    """ xxx """
     return_data = ''
     return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
     return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_error_page_content(burl) + get_page_footer(burl) )
