@@ -1,4 +1,4 @@
-
+""" Aggregate strategy portfolio chart and control center """
 from app_cookie import *
 from sa_db import *
 from sa_func import *
@@ -11,6 +11,7 @@ from user_dashboard_count import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_current_user_total_account_size(w):
+    """ xxx """
     return_data = 0
     connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
@@ -60,6 +61,7 @@ def get_current_user_total_account_size(w):
     return return_data
 
 def gen_aggregate_perf_graph():
+    """ xxx """
     return_data = ''
     l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
     l_aggregate_portf_Xaxis_total = '1-year aggregate performance based on a {total_account_size} {unit} invested.'
@@ -143,6 +145,7 @@ def gen_aggregate_perf_graph():
     return return_data
 
 def get_aggregate_perf():
+    """ xxx """
     box_content = ''
     l_title_aggregate_perf = 'Your Performance'
 
@@ -154,6 +157,7 @@ def get_aggregate_perf():
     return box_content
 
 def get_control_center(burl):
+    """ xxx """
     box_content = ''
     l_control_center_open_trade = 'You have {#} trade(s) to open today.'
     l_control_center_close_trade = 'You have to close {#} trade(s) at the best available price.'
@@ -207,6 +211,7 @@ def get_control_center(burl):
     return box_content
 
 def get_control_center_aggregate_perf(burl):
+    """ xxx """
     return_data = ''
     return_data = '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     get_control_center(burl)+\

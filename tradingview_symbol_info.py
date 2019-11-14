@@ -1,4 +1,4 @@
-
+""" Tradingview symbol info widget """
 from app_cookie import get_sa_theme
 from sa_db import sa_db_access
 access_obj = sa_db_access()
@@ -7,6 +7,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_tradingview_symbol_info(suid):
+    """ Get tradingview symbol info widget """
     return_data = ''
     url = 'https://app.smartalphatrade.com/s/'
     symbol = ''

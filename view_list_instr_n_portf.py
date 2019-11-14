@@ -1,4 +1,4 @@
-
+""" List of trading instruments and strategy portfolio """
 from flask import Flask, make_response, request, redirect
 from app_page import *
 from app_head import *
@@ -21,7 +21,7 @@ from print_google_ads import *
 from purechat import *
 
 def get_top_instr_n_portf_list():
-
+    """ xxx """
     box_content = '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\

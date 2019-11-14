@@ -1,7 +1,7 @@
-
-#from app_cookie import get_sa_theme
+""" Tradingview FXcross """
 
 def get_tradingview_fxcross(width,height):
+    """ Get Tradingview FXcross """
     return_data = ''
     #referral_id = 'smartalpha'
     #theme = get_sa_theme()

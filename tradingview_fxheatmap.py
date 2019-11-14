@@ -1,7 +1,8 @@
-
+""" Tradingview FX heatmap """
 #from app_cookie import get_sa_theme
 
 def get_tradingview_fxheatmap(width,height):
+    """ Get Tradingview FX heatmap """
     return_data = ''
     referral_id = 'smartalpha'
     #theme = get_sa_theme()

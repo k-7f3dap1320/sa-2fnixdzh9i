@@ -1,4 +1,4 @@
-
+""" Dashboard count trade(s) of the day """
 from sa_db import *
 from sa_func import *
 access_obj = sa_db_access()
@@ -10,6 +10,7 @@ import time
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_num_orders(t):
+    """ Get the number of orders for the day """
     return_data = 0
     query_condition = ''
     dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");

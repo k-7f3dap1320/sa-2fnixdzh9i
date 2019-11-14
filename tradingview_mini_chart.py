@@ -1,4 +1,4 @@
-
+""" Tradingview mini chart """
 from app_cookie import *
 from sa_func import *
 from sa_db import *
@@ -8,6 +8,7 @@ import pymysql.cursors
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_tradingview_mini_chart(suid,width,height,autosize,dateRange,area_chart):
+    """ Get tradingview mini chart """
     return_data = ''
     url = 'https://app.smartalphatrade.com/s/'
     symbol = ''

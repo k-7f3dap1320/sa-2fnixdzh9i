@@ -1,4 +1,4 @@
-
+""" Header with the moving tickers """
 from sa_db import *
 access_obj = sa_db_access()
 import pymysql.cursors
@@ -10,6 +10,7 @@ from tradingview_ticker import *
 db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_box_user_profile_header(burl):
+    """ Get the moving tickers header """
     box_content = ''
     if user_is_login() == 1:
         uid = user_get_uid()
