@@ -1,6 +1,13 @@
 """ Manage cookies """
 import datetime
-from flask import make_response, request
+from flask import make_response, request, redirect
+
+def user_logout(burl):
+    """ xxx """
+    resp = ''
+    resp = make_response( redirect(burl + '?logout') )
+    resp.set_cookie('user', '0')
+    return resp
 
 def get_lang():
     """ xxx """

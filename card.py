@@ -1,7 +1,7 @@
 """ card object """
-from sa_func import *
+from sa_func import get_random_str
 from card_chart import *
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 from print_google_ads import *
 import pymysql.cursors
 from tradingview_mini_chart import *

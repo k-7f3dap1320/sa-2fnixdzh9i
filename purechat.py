@@ -1,5 +1,5 @@
 """ PureChat library """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 
 def get_purechat(forceDisplay):
     """ Get PureChat loaded on page """

@@ -1,5 +1,5 @@
 """ Signal alternative orders and technical analysis section """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 import pymysql.cursors
 from tradingview_chart import *
 from print_google_ads import *

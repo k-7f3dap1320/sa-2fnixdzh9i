@@ -1,6 +1,6 @@
 """ Aggregate strategy portfolio chart and control center """
-from app_cookie import *
-from sa_func import *
+from app_cookie import theme_return_this, get_sa_theme
+from sa_func import get_random_str
 import pymysql.cursors
 import datetime
 import time

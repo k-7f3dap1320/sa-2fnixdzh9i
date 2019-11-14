@@ -1,7 +1,7 @@
 """ Signal returns column chart section """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 import pymysql.cursors
-from sa_func import *
+from sa_func import get_random_str
 from gcharts_columnchart import *
 
 from sa_db import sa_db_access

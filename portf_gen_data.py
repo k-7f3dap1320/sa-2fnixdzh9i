@@ -2,7 +2,7 @@
 import sys
 import os
 import datetime
-from sa_func import *
+from sa_func import get_random_str
 import time
 from datetime import timedelta
 from sa_numeric import *

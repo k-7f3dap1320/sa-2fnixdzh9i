@@ -1,7 +1,7 @@
 """ Header with the moving tickers """
 import pymysql.cursors
-from app_cookie import *
-from sa_func import *
+from app_cookie import theme_return_this, get_sa_theme
+from sa_func import get_random_str
 from tradingview_ticker import *
 
 from sa_db import sa_db_access

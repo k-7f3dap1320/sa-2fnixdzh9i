@@ -1,6 +1,6 @@
 """ Portfolio performance content and description """
-from app_cookie import *
-from sa_func import *
+from app_cookie import theme_return_this, get_sa_theme
+from sa_func import get_random_str
 import pymysql.cursors
 
 from sa_db import sa_db_access

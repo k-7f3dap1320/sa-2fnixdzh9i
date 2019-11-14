@@ -1,5 +1,5 @@
 """ bootstrap framework """
-from sa_func import *
+from sa_func import get_random_str
 
 def get_bootstrap(theme,burl):
     """ Load Bootstrap frontend framework """

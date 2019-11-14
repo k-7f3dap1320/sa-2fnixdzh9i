@@ -1,5 +1,5 @@
 """ Dashboard count trade(s) of the day """
-from sa_func import *
+from sa_func import get_random_str
 import pymysql.cursors
 import datetime
 import time

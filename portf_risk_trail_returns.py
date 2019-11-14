@@ -1,8 +1,8 @@
 """ Portfolio trail return graph """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 import pymysql.cursors
 from trail_returns_chart import *
-from sa_func import *
+from sa_func import get_random_str
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()

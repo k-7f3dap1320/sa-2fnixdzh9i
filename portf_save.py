@@ -1,7 +1,7 @@
 """ Strategy portfolio selection save function """
 from flask import Flask, make_response, request, redirect
-from sa_func import *
-from app_cookie import *
+from sa_func import get_random_str
+from app_cookie import theme_return_this, get_sa_theme
 import datetime
 import time
 from datetime import timedelta

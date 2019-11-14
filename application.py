@@ -14,8 +14,8 @@ from portf_delete import *
 from app_head import *
 from app_body import *
 from app_page import *
-from app_cookie import *
-from sa_func import *
+from app_cookie import theme_return_this, get_sa_theme
+from sa_func import get_random_str
 from signin_main import *
 from view_list_instr_n_portf import *
 from payment_page import *
@@ -27,7 +27,7 @@ from set_theme import *
 from app_settings import *
 from app_search import *
 from reset_password import *
-from app_loading import *
+from app_loading import get_loading_head, get_loading_body
 
 application = Flask(__name__)
 

@@ -1,5 +1,5 @@
 """ Tradingview Indicators """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 from sa_func import get_broker_affiliate_link
 import pymysql.cursors
 

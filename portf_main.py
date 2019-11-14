@@ -1,11 +1,11 @@
 """ Portfolio main module """
-from app_page import set_page
 from app_head import get_head
+from app_body import get_body
+from app_page import set_page
 from app_ogp import set_ogp
 from app_footer import get_page_footer
 from app_metatags import get_metatags
 from app_title import get_title
-from app_body import get_body
 from bootstrap import get_bootstrap
 from google_chart import get_google_chart_script
 from app_loading import get_loading_body, get_loading_head

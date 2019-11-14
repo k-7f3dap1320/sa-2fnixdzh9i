@@ -1,5 +1,5 @@
 """ App stylesheet """
-from sa_func import *
+from sa_func import get_random_str
 
 def get_stylesheet(burl):
     """ xxx """

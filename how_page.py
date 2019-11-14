@@ -1,18 +1,18 @@
 """ Help page: This module will be dismantled soon """
-from app_head import *
-from app_body import *
-from app_page import *
-from app_loading import *
-from app_footer import *
-from app_ogp import *
-from app_title import *
-from app_metatags import *
+from app_head import get_head
+from app_body import get_body
+from app_page import set_page
+from app_loading import get_loading_head, get_loading_body
+from app_footer import get_page_footer
+from app_ogp import set_ogp
+from app_title import get_title
+from app_metatags import get_metatags
 from app_stylesheet import get_stylesheet
-from bootstrap import *
-from font_awesome import *
-from app_navbar import *
-from googleanalytics import *
-from app_cookie import *
+from bootstrap import get_bootstrap
+from font_awesome import get_font_awesome
+from app_navbar import navbar
+from googleanalytics import get_googleanalytics
+from app_cookie import theme_return_this, get_sa_theme
 from purechat import *
 
 def get_help_content(burl):

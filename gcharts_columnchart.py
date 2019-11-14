@@ -1,6 +1,6 @@
 """ Google column chart """
-from app_cookie import *
-from sa_func import *
+from app_cookie import theme_return_this, get_sa_theme
+from sa_func import get_random_str
 
 def get_gcharts_column(chart_id,data,data_label,data_color,data_annotation,title,legend_position,width,height):
     """ Draw column chart """

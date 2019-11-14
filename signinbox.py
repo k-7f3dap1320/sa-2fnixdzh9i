@@ -1,7 +1,7 @@
 """ Signin header in the main page when user not logged in """
-from sa_func import *
+from sa_func import get_random_str
 from signin_main import *
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 from createuser_main import *
 
 def get_signin_box(burl):

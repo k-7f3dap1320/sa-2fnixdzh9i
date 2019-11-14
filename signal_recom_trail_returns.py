@@ -1,5 +1,5 @@
 """ Signal recommendations and trail returns section """
-from app_cookie import *
+from app_cookie import theme_return_this, get_sa_theme
 import pymysql.cursors
 from trail_returns_chart import *
 

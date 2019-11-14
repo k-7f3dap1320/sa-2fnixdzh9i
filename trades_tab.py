@@ -1,6 +1,6 @@
 """ Trades tab functionalities """
 import pymysql.cursors
-from sa_func import *
+from sa_func import get_random_str
 import datetime
 import time
 from datetime import timedelta

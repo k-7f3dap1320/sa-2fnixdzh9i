@@ -1,26 +1,27 @@
 """ Signal main functions """
-from app_page import *
-from app_footer import *
-from app_head import *
-from app_ogp import *
-from app_metatags import *
-from app_title import *
-from app_body import *
-from app_cookie import *
-from bootstrap import *
+from app_head import get_head
+from app_body import get_body
+from app_page import set_page
+
+from app_footer import get_page_footer
+from app_ogp import set_ogp
+from app_metatags import get_metatags
+from app_title import get_title
+from app_cookie import theme_return_this, get_sa_theme
+from bootstrap import get_bootstrap
 from google_chart import *
-from app_loading import *
-from app_stylesheet import *
-from app_navbar import *
+from app_loading import get_loading_head, get_loading_body
+from app_stylesheet import get_stylesheet
+from app_navbar import navbar
 from details_header import *
 from signal_details import *
 from signal_ta_chart_alt_orders import *
 from signal_recom_trail_returns import *
 from trades_tab import *
-from font_awesome import *
-from googleanalytics import *
+from font_awesome import get_font_awesome
+from googleanalytics import get_googleanalytics
 from googleadsense import *
-from sa_func import *
+from sa_func import get_random_str
 from signal_returns_colchart import *
 import pymysql.cursors
 

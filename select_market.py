@@ -1,17 +1,17 @@
 """ Market selection module """
-from app_page import *
-from app_head import *
-from app_ogp import *
-from app_metatags import *
-from app_title import *
-from app_body import *
-from bootstrap import *
-from app_loading import *
-from app_stylesheet import *
-from app_navbar import *
-from font_awesome import *
-from app_cookie import *
-from googleanalytics import *
+from app_head import get_head
+from app_body import get_body
+from app_page import set_page
+from app_ogp import set_ogp
+from app_metatags import get_metatags
+from app_title import get_title
+from bootstrap import get_bootstrap
+from app_loading import get_loading_head, get_loading_body
+from app_stylesheet import get_stylesheet
+from app_navbar import navbar
+from font_awesome import get_font_awesome
+from app_cookie import theme_return_this, get_sa_theme
+from googleanalytics import get_googleanalytics
 import pymysql.cursors
 
 from sa_db import sa_db_access
