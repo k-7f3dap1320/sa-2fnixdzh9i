@@ -4,12 +4,14 @@ from sa_func import get_user_default_profile, get_user, get_random_str
 from sa_func import go_to_url, get_elapsed_time, get_uid_from_symbol, get_uid
 from tradingview_single_ticker import get_tradingview_single_ticker
 from signal_details import get_signal_details
-from sa_db import sa_db_access
-access_obj = sa_db_access()
 import pymysql.cursors
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
-
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_newsfeed(burl,x,suid,numline,show_chart):
     """ xxx """
@@ -101,7 +103,11 @@ def get_newsfeed(burl,x,suid,numline,show_chart):
         'JOIN portfolios ON instruments.symbol = portfolios.portf_symbol WHERE instruments.owner = (SELECT users.id FROM users WHERE uid = "'+ str( get_user() ) +'") ) AND ranking < '+ str(ranking_filter) +' AND type='+ str(feed_type) + ' '+\
         'ORDER BY date DESC LIMIT '+ str(numline) +';'
 
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = query
     cr.execute(sql)

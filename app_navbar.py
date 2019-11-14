@@ -1,16 +1,9 @@
 """ App Navigation bar """
+import pymysql.cursors
 from app_cookie import *
 from sa_func import *
 from app_login import *
-from sa_db import *
 from user_dashboard_count import *
-access_obj = sa_db_access()
-import pymysql.cursors
-
-db_usr = access_obj.username()
-db_pwd = access_obj.password()
-db_name = access_obj.db_name()
-db_srv = access_obj.db_server()
 
 def get_how_menu(burl):
     """ xxx """

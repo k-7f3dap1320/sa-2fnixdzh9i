@@ -5,7 +5,7 @@ def open_window(url, width, height, left, top):
     """ Open window popup"""
     return_data = ''
     random_str = get_random_str(9)
-    
+
     return_data = 'window.open(\''+ str(url) +'\''+\
     ', \''+ str(random_str) +'\', \'width='+ str(width) +\
     ', height='+ str(height) +', left='+ str(left) +', top='+ str(top) +\

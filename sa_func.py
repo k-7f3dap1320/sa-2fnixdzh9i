@@ -1,13 +1,17 @@
 """ Main functions used thru the application """
-from sa_db import sa_db_access
-access_obj = sa_db_access()
 import pymysql.cursors
 import string
 import random
 from app_cookie import get_lang, user_get_uid, user_is_login
 import hashlib
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 
 def get_hash_string(s):
@@ -27,7 +31,11 @@ def get_avatar(burl,height):
     return_data = ''
     uid = user_get_uid()
     avatar_id = 0
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT avatar_id FROM users WHERE uid = '"+ str(uid) +"'"
     cr.execute(sql)
@@ -44,7 +52,11 @@ def is_subscribed_user():
     return_data = 0
     uid = user_get_uid()
     is_subscribed = 0
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT is_subscribed FROM users WHERE uid = '"+ str(uid) +"'"
     cr.execute(sql)
@@ -66,7 +78,11 @@ def get_user_numeric_id():
     """ xxx """
     return_data = ''
     uid = user_get_uid()
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT id FROM users WHERE uid = '"+ str(uid) +"'"
     cr.execute(sql)
@@ -79,7 +95,11 @@ def get_user_numeric_id():
 def get_nickname():
     """ xxx """
     return_data = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT nickname FROM users WHERE uid = '"+ get_user() +"'"
     cr.execute(sql)
@@ -95,7 +115,11 @@ def get_portf_suffix():
 
 def get_uid(s):
     """ xxx """
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
     cr.execute(sql)
@@ -111,7 +135,11 @@ def get_etoro_symbol_from_uid(uid):
     """ xxx """
     return_data = 0
     etoro_symbol = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql ='SELECT etoro FROM symbol_list WHERE uid = "'+ str(uid) +'"'
     cr.execute(sql)
@@ -125,7 +153,11 @@ def get_uid_from_symbol(s):
     """ xxx """
     return_data = 0
     uid = 0
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql ='SELECT uid FROM symbol_list WHERE symbol = "'+ str(s) +'"'
     cr.execute(sql)
@@ -138,7 +170,11 @@ def get_uid_from_symbol(s):
 def get_uid_from_tvws(tvws):
     """ xxx """
     uid = 0
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE tradingview = '"+ str(tvws) +"'"
     cr.execute(sql)
@@ -154,7 +190,11 @@ def get_user_default_profile():
     """ xxx """
     return_data = ''
     user_uid = get_user()
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT default_profile FROM users WHERE uid = '"+ str(user_uid) +"'"
     cr.execute(sql)
@@ -183,7 +223,11 @@ def get_selected_lang():
 def get_signal(uid):
     """ xxx """
     signal = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT badge FROM feed JOIN symbol_list ON symbol_list.symbol = feed.symbol "+\
     "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
@@ -232,7 +276,11 @@ def go_to_url(q,return_what,uniqid):
 
 def send_email_to_queue(send_to,email_subject,email_content,priority):
     """ xxx """
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'INSERT INTO email_queue '+\
     '(from_email, from_email_displayname, send_to_email_bcc, email_subject, email_content, priority) '+\
@@ -250,7 +298,11 @@ def get_broker_affiliate_link(broker,what):
     return_data = ''
     affiliate_link = ''
     baseurl = ''
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT affiliate_link, burl FROM brokers WHERE broker_id ='"+ str(broker) +"'"
     cr.execute(sql)

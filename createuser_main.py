@@ -13,20 +13,28 @@ from app_navbar import *
 from font_awesome import *
 from sa_func import *
 import pymysql.cursors
-from sa_db import *
 from app_cookie import *
 import datetime
 import time
 from googleanalytics import *
 
-access_obj = sa_db_access()
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def set_nickname():
     """ xxx """
     p1 = ''; p2 =''; num = ''
     return_data = ''
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT part_one FROM randwords ORDER BY RAND() LIMIT 1"
     cr.execute(sql)
@@ -46,9 +54,12 @@ def send_email_notification(broker,name,username):
     """ xxx """
     lang = 'en'
     new_user_welcome_subject = ''
-    new_user_welcome_content = ''
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    new_user_welcome_content = ''    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT new_user_welcome_subject, new_user_welcome_content FROM email_templates WHERE lang="'+ str(lang) +'"'
     cr.execute(sql)
@@ -69,8 +80,12 @@ def gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,u
         return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( 'light',burl ) + get_font_awesome() + get_stylesheet(burl) )
         return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_user_creation_form(burl,broker) + get_page_footer(burl) )
         return_data = set_page(return_data)
-    else:
-        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    else:        
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT username FROM users WHERE uid = '"+ str(uid) +"' OR username LIKE '"+ str(username) +"' "
         cr.execute(sql)
@@ -116,8 +131,12 @@ def get_user_ip_input():
 def get_broker_signin_spec_form(broker):
     """ xxx """
     return_data = ''
-    if broker is not None:
-        connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    if broker is not None:        
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)        
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = 'SELECT COUNT(*) FROM brokers WHERE broker_id = "'+ str(broker) +'"'
         cr.execute(sql)

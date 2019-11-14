@@ -1,17 +1,23 @@
 """ Portfolio performance content and description """
 from app_cookie import *
-from sa_db import *
-access_obj = sa_db_access()
 from sa_func import *
 import pymysql.cursors
 
-
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_desc_box(uid):
     """ xxx """
     desc_box_title = 'Description & Recommendations'
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit, instruments.symbol from instruments JOIN symbol_list "+\
     "ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
@@ -94,7 +100,11 @@ def get_desc_box(uid):
 
 def get_perf_chart(uid):
     """ xxx """
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
     sql = "SELECT price_close FROM chart_data WHERE uid="+ str(uid) + " ORDER BY price_close LIMIT 1"

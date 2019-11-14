@@ -1,17 +1,18 @@
 """ Strategy portfolio template/example creation """
 from flask import make_response, redirect
-from sa_db import sa_db_access
 from sa_func import get_portf_suffix
 from app_cookie import user_is_login
 from portf_save import portf_insert_data
 from portf_gen_data import generate_portfolio
 import datetime
-
-access_obj = sa_db_access()
 import pymysql.cursors
 
-
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def gen_portf_user_example(burl,acm,notstart):
     """ xxx """
@@ -22,7 +23,11 @@ def gen_portf_user_example(burl,acm,notstart):
         asset_class = acm
     
     if user_is_login() == 1:
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT symbol_list.uid FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol WHERE instruments.symbol NOT LIKE '%"+ get_portf_suffix() +"%' AND symbol_list.disabled=0 AND (instruments.y1_signal > 0 ) AND (instruments.asset_class LIKE '"+ asset_class +"' OR instruments.market LIKE '"+ asset_class +"') ORDER BY instruments.volatility_risk_st ASC, instruments.m6_signal DESC, instruments.m3_signal DESC LIMIT 5"
         cr.execute(sql)

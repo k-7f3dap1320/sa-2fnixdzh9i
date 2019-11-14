@@ -1,13 +1,15 @@
 """ List of instruments and strategy portfolio """
 from app_cookie import user_is_login, theme_return_this
-from sa_db import sa_db_access
 from sa_func import get_user_numeric_id, get_portf_suffix
 from app_popup_modal import get_portf_delete_data_toggle, set_modal_delete_n_view_popup
-
-access_obj = sa_db_access()
 import pymysql.cursors
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def draw_portf_table(burl,maxrow,x,user_portf):
     """ xxx """
@@ -16,7 +18,11 @@ def draw_portf_table(burl,maxrow,x,user_portf):
     'window.document.location = $(this).data("href");'+\
     '});'+\
     '});</script>'
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     if user_portf:
         sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
@@ -120,7 +126,11 @@ def draw_instr_table(burl,mode,step,maxrow,x):
     'window.document.location = $(this).data("href");'+\
     '});'+\
     '});</script>'
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
     "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\

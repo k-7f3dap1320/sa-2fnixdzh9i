@@ -1,13 +1,15 @@
 """ Dashboard count trade(s) of the day """
-from sa_db import *
 from sa_func import *
-access_obj = sa_db_access()
 import pymysql.cursors
 import datetime
 import time
 
-
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_num_orders(t):
     """ Get the number of orders for the day """
@@ -34,8 +36,12 @@ def get_num_orders(t):
         "((portfolios.strategy_order_type = 'long' AND trades.order_type = 'buy') "+\
         "OR (portfolios.strategy_order_type = 'short' AND trades.order_type = 'sell') "+\
         "OR (portfolios.strategy_order_type = 'long/short') )"
-
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = ' '+\
     'SELECT '+\

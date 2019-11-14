@@ -25,7 +25,7 @@ from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
 
-def gen_main_page(x, appname, burl, is_dashboard, tour, nonavbar):
+def gen_main_page(selection, appname, burl, is_dashboard, tour, nonavbar):
     """ xxx """
     metarefresh = ''
     refresh_in_second = 900
@@ -35,21 +35,38 @@ def gen_main_page(x, appname, burl, is_dashboard, tour, nonavbar):
     dashboard_content = ''
     if is_dashboard == str(1) and user_is_login() == 1:
         dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
-        dashboard_content = dashboard_content + '<div class="row">' + get_trades_box(0, burl, is_dashboard) + get_control_center_aggregate_perf(burl) + '</div>'
+        dashboard_content = dashboard_content +\
+        '<div class="row">' + get_trades_box(0, burl, is_dashboard) +\
+        get_control_center_aggregate_perf(burl) + '</div>'
     else:
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
         if user_is_login() == 0:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 10, 1) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
-            dashboard_content = dashboard_content + get_card(x, 9, burl)
+            dashboard_content = dashboard_content +\
+            get_newsfeed(burl, 0, 0, 10, 1) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
+            dashboard_content = dashboard_content + get_card(selection, 9, burl)
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 15, 1) + '<br />'
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
-        dashboard_content = dashboard_content + get_card(x, 1, burl)
+        dashboard_content = dashboard_content + get_card(selection, 1, burl)
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 2, 0, 100, 1) + '<br />'
-    return_data = get_head(get_loading_head() + get_googleanalytics() + get_googleadsense() + get_title(appname) + metarefresh+get_metatags(burl) + set_ogp(burl, 1, '', '') + get_bootstrap(get_sa_theme(), burl) + get_font_awesome() + get_google_chart_script() + get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(), navbarcontent + gen_tour_popup(tour, burl) + get_signin_box(burl) + get_box_user_profile_header(burl) + dashboard_content + get_page_footer(burl) +get_purechat(0))
+    return_data = get_head(get_loading_head() +\
+                           get_googleanalytics() +\
+                           get_googleadsense() +\
+                           get_title(appname) +\
+                           metarefresh+get_metatags(burl) +\
+                           set_ogp(burl, 1, '', '') +\
+                           get_bootstrap(get_sa_theme(), burl) +\
+                           get_font_awesome() +\
+                           get_google_chart_script() +\
+                           get_stylesheet(burl))
+    return_data = return_data + get_body(get_loading_body(), navbarcontent +\
+                                         gen_tour_popup(tour, burl) +\
+                                         get_signin_box(burl) +\
+                                         get_box_user_profile_header(burl) +\
+                                         dashboard_content + get_page_footer(burl) +\
+                                         get_purechat(0))
     return_data = set_page(return_data)
     return return_data

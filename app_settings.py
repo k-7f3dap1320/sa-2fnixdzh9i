@@ -14,11 +14,14 @@ from googleanalytics import *
 from app_stylesheet import *
 from app_cookie import *
 import pymysql.cursors
-from sa_db import *
 from sa_func import *
 
-access_obj = sa_db_access()
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def save_settings(name,nickname,username,default_profile,email_subscription):
     """ xxx """
@@ -31,7 +34,11 @@ def save_settings(name,nickname,username,default_profile,email_subscription):
     if name == '': return_data = l_error_message_settings + ' ' + 'name'
     if nickname == '': return_data = return_data + ' '+ 'nickname'
 
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)    
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT nickname FROM users WHERE nickname="'+ str(nickname) +'" AND uid<>"'+ str(user_uid) +'"'
     cr.execute(sql)
@@ -69,8 +76,11 @@ def get_settings_content(burl,step,message):
     popup_message = ''
 
     user_uid = user_get_uid()
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT name, nickname, username, default_profile, email_subscription, lang FROM users WHERE uid="'+ str(user_uid) +'"'
     cr.execute(sql)
@@ -200,8 +210,11 @@ def get_radio_button_Trader_prf(default_profile):
     l_radioBtn_name = 'default_profile'
     value =''; label =''
     checkedRadio = ''
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)    
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT market_id, market_label FROM markets ORDER BY market_label'
     cr.execute(sql)

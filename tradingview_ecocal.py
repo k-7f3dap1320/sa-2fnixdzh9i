@@ -4,7 +4,6 @@ from app_cookie import get_sa_theme
 def get_tradingview_ecocal(width,height):
     """ Get tradingview economic calendar """
     return_data = ''
-    #referral_id = 'smartalpha'
     theme = get_sa_theme()
 
     if str(width) == '0': width = '"100%"'

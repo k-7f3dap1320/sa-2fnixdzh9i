@@ -1,11 +1,11 @@
 """ Tradingview FXcross """
+from sa_func import get_broker_affiliate_link
 
 def get_tradingview_fxcross(width,height):
     """ Get Tradingview FXcross """
     return_data = ''
-    #referral_id = 'smartalpha'
     #theme = get_sa_theme()
-    url = 'https://app.smartalphatrade.com/s'
+    url = get_broker_affiliate_link('Tradingview','baseurl')
 
     if str(width) == '0': width = '"100%"'
     if str(height) == '0': height = '"100%"'

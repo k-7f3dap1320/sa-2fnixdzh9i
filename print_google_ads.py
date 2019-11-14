@@ -1,9 +1,9 @@
 """ Functionalities to display Google Ads on page """
 
-def print_google_ads(format,align):
+def print_google_ads(ad_format, align):
     """ xxx """
     return_data = ''
-    if format == 'rectangle':
+    if ad_format == 'rectangle':
         return_data = '' +\
         '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
         '<!-- sa-signal -->'+\
@@ -15,7 +15,7 @@ def print_google_ads(format,align):
         '(adsbygoogle = window.adsbygoogle || []).push({});'+\
         '</script>'
 
-    if format == 'billboard':
+    if ad_format == 'billboard':
         return_data = '' +\
         '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
         '<!-- sa-list-large -->'+\
@@ -27,7 +27,7 @@ def print_google_ads(format,align):
         '(adsbygoogle = window.adsbygoogle || []).push({});'+\
         '</script>'
 
-    if format == 'leaderboard':
+    if ad_format == 'leaderboard':
         return_data = '' +\
         '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
         '<!-- sa-list -->'+\
@@ -39,7 +39,7 @@ def print_google_ads(format,align):
         '(adsbygoogle = window.adsbygoogle || []).push({});'+\
         '</script>'
 
-    if format == 'small_leaderboard':
+    if ad_format == 'small_leaderboard':
         return_data = '' +\
         '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>'+\
         '<!-- sa-main -->'+\

@@ -1,16 +1,23 @@
 """ Strategy portfolio allocation """
 from app_cookie import *
-from sa_db import *
-access_obj = sa_db_access()
 import pymysql.cursors
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 
 def get_portf_alloc(uid,burl):
     """ xxx """
     signal_box = ''; pie_chart = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT portfolios.order_type, portfolios.quantity, portfolios.symbol, portfolios.entry_level, portfolios.expiration, portfolios.alloc_fullname, portfolios.strategy_order_type FROM portfolios "+\
     "JOIN symbol_list ON symbol_list.symbol = portfolios.portf_symbol WHERE symbol_list.uid="+ str(uid) +" ORDER BY portfolios.symbol"
@@ -76,15 +83,23 @@ def get_portf_alloc(uid,burl):
     '            </div>'+\
     '        </div>'
 
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT count(1) FROM `portfolios` JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
     cr.execute(sql); rs = cr.fetchall()
     for row in rs:
         num_rec = row[0]
     num_rec = round( 255 / num_rec, 0)
-
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT portfolios.alloc_fullname, portfolios.order_type, portfolios.dollar_amount, portfolios.symbol, portfolios.strategy_order_type "+\
     "FROM `portfolios` JOIN symbol_list ON portfolios.portf_symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid) + " "+\

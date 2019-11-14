@@ -1,18 +1,19 @@
 """ Strategy portfolio selection save function """
 from flask import Flask, make_response, request, redirect
-from sa_db import *
 from sa_func import *
 from app_cookie import *
 import datetime
 import time
 from datetime import timedelta
 from portf_gen_data import *
-
-access_obj = sa_db_access()
 import pymysql.cursors
 
-
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 ################################################################################
 def set_portf_date():
@@ -25,7 +26,11 @@ def set_portf_symbol():
     """ xxx """
     return_data = ''
     symbol = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT part_three FROM randwords ORDER BY RAND() LIMIT 1"
     cr.execute(sql)
@@ -43,7 +48,11 @@ def get_portf_asset_class(what):
     #what = "n" (name) ; what = "i" (id)
     return_data = ''
     suid = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     select_asset_class_id = ''
     multi_asset_selected = False
@@ -78,7 +87,11 @@ def get_portf_market(what):
     #what = "n" (name) ; what = "i" (id); what = "cur" (currency); what = "conv" (conversion rate)
     return_data = ''
     suid = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     select_market_id = ''
     market_label = ''
@@ -128,7 +141,11 @@ def get_portf_strategy_type():
 def get_portf_description(ac,m,st):
     """ xxx """
     return_data = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT portf_description FROM labels WHERE lang = '"+ get_lang() +"'"
     cr.execute(sql)
@@ -150,7 +167,11 @@ def get_portf_decimal_place():
     decimal_places = 0;
     for i in range(5):
         suid = request.cookies.get('portf_s_' + str(i+1) )
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.decimal_places FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid = " + str(suid)
@@ -167,7 +188,11 @@ def portf_get_user_numeric_id():
     """ xxx """
     return_data = ''
     uid = user_get_uid()
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT id FROM users WHERE uid='"+ str(uid) +"'"
     cr.execute(sql)
@@ -195,7 +220,11 @@ def portf_gen_portf_t_instruments():
     portf_sector = 0
     portf_unit = get_portf_market('cur')
     portf_creation_date = set_portf_date()
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "INSERT INTO symbol_list(symbol) VALUES('"+ str(portf_symbol) +"')"
     cr.execute(sql)
@@ -212,7 +241,11 @@ def portf_gen_portf_t_instruments():
 
 def portf_add_allocation(portf_symbol):
     """ xxx """
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
     portf_suid = ''
@@ -256,7 +289,11 @@ def portf_insert_data():
 def get_portf_uid_from_symbol(s):
     """ xxx """
     return_data = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE symbol = '"+ s +"'"
     cr.execute(sql)
@@ -304,7 +341,11 @@ def get_portf_table_rows(burl):
         symbol = ''
         fullname = ''
         if not uid is None or uid == '':
-            connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+            connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
             cr = connection.cursor(pymysql.cursors.SSCursor)
             sql = "SELECT instruments.fullname, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "WHERE symbol_list.uid=" + str(uid)

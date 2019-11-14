@@ -1,9 +1,13 @@
 """ Tradingview ticker """
-from sa_db import sa_db_access
-access_obj = sa_db_access()
+from sa_func import get_broker_affiliate_link
 import pymysql.cursors
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_tradingview_ticker(uid):
     """ Get tradingview ticker """
@@ -11,9 +15,13 @@ def get_tradingview_ticker(uid):
     ltvs = ''
     id = 0
     referral_id = 'smartalpha'
-    url = 'https://app.smartalphatrade.com/s/'
+    url = get_broker_affiliate_link('Tradingview','baseurl')
     theme = 'dark'
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
     sql = "SELECT id FROM users WHERE uid='"+ str(uid) +"'"

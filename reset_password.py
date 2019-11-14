@@ -14,11 +14,14 @@ from googleanalytics import *
 from app_stylesheet import *
 from app_cookie import *
 import pymysql.cursors
-from sa_db import *
 from sa_func import *
 
-access_obj = sa_db_access()
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def set_new_password(burl,data,data2):
     """ xxx """
@@ -27,8 +30,12 @@ def set_new_password(burl,data,data2):
     new_password =  get_hash_string( str(data) )
     user_uid = str(data2)
     user_new_uid = str( get_random_str(99) )
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'UPDATE Users SET password = "'+ new_password +'" WHERE uid="'+ str(user_uid) +'" '
     cr.execute(sql)
@@ -62,8 +69,12 @@ def change_password_form(burl,data):
     l_password_minimun_not_met = 'Password must be minimum 8 characters.'
     l_btn_label = 'Submit'
     user_uid = str(data)
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT uid FROM users WHERE uid="'+ str(user_uid) +'"'
     cr.execute(sql)
@@ -134,8 +145,12 @@ def validate_email_input(burl,data):
     l_email_not_found = 'Unable to find email: '+ str(data) +' in the system. Please contact us for assistance.'
     l_email_sent_notif = 'An email has been sent to your inbox with a link to reset your password. '+\
     'It might take up to 5 minutes to receive it. Please check as well your spam folder in case it lands there :( '
-
-    connection = pymysql.connect(host=db_srv, user=db_usr, password=db_pwd, db=db_name, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT username, name, uid FROM users WHERE username ="'+ str(data) +'"'
     cr.execute(sql)

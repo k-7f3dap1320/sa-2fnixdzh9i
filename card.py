@@ -1,16 +1,18 @@
 """ card object """
-from sa_db import *
 from sa_func import *
 from card_chart import *
 from app_cookie import *
 from print_google_ads import *
-access_obj = sa_db_access()
 import pymysql.cursors
-
 from tradingview_mini_chart import *
 
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
 
 def get_card(x,t,burl):
     """ Get card """
@@ -31,8 +33,12 @@ def get_card(x,t,burl):
             #if user_is_login() == 0:
             sql = "SELECT short_title, short_description, content, url, ranking, badge, symbol FROM feed "+\
             "WHERE type=9 ORDER BY ranking DESC LIMIT 7"
-
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     cr.execute(sql)
     rs = cr.fetchall()

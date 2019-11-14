@@ -16,11 +16,12 @@ from app_cookie import theme_return_this, get_sa_theme
 
 def get_xxx_content(burl):
     """ Content of the page """
-    
+
     box_content = '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="'+ theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     'URL is '+ str(burl) +\
     '            </div>'+\
     '        </div>'+\
@@ -32,7 +33,17 @@ def get_xxx_content(burl):
 def get_xxx_page(appname, burl):
     """ Return the content of the entire page """
     return_data = ''
-    return_data = get_head(get_loading_head() + get_googleanalytics() + get_title(appname) + get_metatags(burl) + set_ogp(burl, 1, '', '') + get_bootstrap(get_sa_theme(), burl) + get_font_awesome() + get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0) + get_xxx_content(burl) + get_page_footer(burl))
+    return_data = get_head(get_loading_head() +\
+                           get_googleanalytics() +\
+                           get_title(appname) +\
+                           get_metatags(burl) +\
+                           set_ogp(burl, 1, '', '') +\
+                           get_bootstrap(get_sa_theme(), burl) +\
+                           get_font_awesome() +\
+                           get_stylesheet(burl))
+    return_data = return_data +\
+    get_body(get_loading_body(), navbar(burl, 0) +\
+             get_xxx_content(burl) +\
+             get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data

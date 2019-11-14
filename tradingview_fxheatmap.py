@@ -1,12 +1,10 @@
 """ Tradingview FX heatmap """
-#from app_cookie import get_sa_theme
+from sa_func import get_broker_affiliate_link
 
 def get_tradingview_fxheatmap(width,height):
     """ Get Tradingview FX heatmap """
     return_data = ''
-    referral_id = 'smartalpha'
-    #theme = get_sa_theme()
-    url = 'https://app.smartalphatrade.com/s'
+    url = get_broker_affiliate_link('Tradingview','baseurl')
 
     if str(width) == '0': width = '"100%"'
     if str(height) == '0': height = '"100%"'

@@ -1,6 +1,4 @@
 """ Intelligence report """
-from sa_db import *
-access_obj = sa_db_access()
 import pymysql.cursors
 from sa_func import *
 import datetime
@@ -26,7 +24,12 @@ from signal_recom_trail_returns import *
 from tradingview_mini_chart import *
 from trades_tab import *
 
-db_usr = access_obj.username(); db_pwd = access_obj.password(); db_name = access_obj.db_name(); db_srv = access_obj.db_server()
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_report_title(burl):
     """ Get title of the report """
@@ -35,7 +38,11 @@ def get_report_title(burl):
     l_title = 'Daily Intelligence Briefing: <br />' + dnstr
     l_generated_for = 'Report generated for '
     if user_is_login():
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT name FROM users WHERE id= "+ str( get_user_numeric_id() )
         cr.execute(sql)
@@ -58,7 +65,11 @@ def get_market_snapshot_n_brief_text(w):
     """ Get market snapshot briefing text """
     return_data = ''
     language = 'en'
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT market_snapshot FROM reports WHERE lang='"+ language +"'"
     cr.execute(sql)
@@ -150,7 +161,11 @@ def get_signals_lines(burl):
     if user_is_login():
         l_title = 'Opportunities'
         dn = datetime.datetime.now(); dnstr = dn.strftime("%Y%m%d");
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql ="SELECT DISTINCT "+\
             "trades.uid "+\
