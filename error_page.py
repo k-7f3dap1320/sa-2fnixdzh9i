@@ -1,7 +1,7 @@
 """ app Error page """
-from app_head import *
-from app_body import *
-from app_page import *
+from app_head import get_head
+from app_body import get_body
+from app_page import set_page
 from app_loading import get_loading_head, get_loading_body
 from app_footer import get_page_footer
 from app_ogp import set_ogp
@@ -12,13 +12,19 @@ from bootstrap import get_bootstrap
 from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
-from app_cookie import theme_return_this, get_sa_theme
+from app_cookie import get_sa_theme
 
 def popup_error_msg(burl):
     """ xxx """
     return_data = ''
-    l_error_title = '<i class="fas fa-exclamation-circle"></i>&nbsp;The page or content cannot be found.'
-    l_error_descr = 'The page might not be available anymore. <div>&nbsp;</div><div><a href="'+ burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
+
+    l_error_title = '<i class="fas fa-exclamation-circle">'+\
+    '</i>&nbsp;The page or content cannot be found.'
+
+    l_error_descr = 'The page might not be available anymore. '+\
+    '<div>&nbsp;</div><div><a href="'+\
+    burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
+
     l_error_class = 'alert alert-danger'
     l_class = 'alert alert-warning'
     l_title = l_error_title
@@ -45,10 +51,20 @@ def get_error_page_content(burl):
     return box_content
 
 
-def get_error_page(appname,burl):
+def get_error_page(appname, burl):
     """ xxx """
     return_data = ''
-    return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
-    return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_error_page_content(burl) + get_page_footer(burl) )
+    return_data = get_head(get_loading_head() +\
+                           get_googleanalytics() +\
+                           get_title(appname) +\
+                           get_metatags(burl) +\
+                           set_ogp(burl, 1, '', '') +\
+                           get_bootstrap(get_sa_theme(), burl) +\
+                           get_font_awesome() +\
+                           get_stylesheet(burl))
+    return_data = return_data +\
+    get_body(get_loading_body(), navbar(burl, 0) +\
+             get_error_page_content(burl) +\
+             get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data

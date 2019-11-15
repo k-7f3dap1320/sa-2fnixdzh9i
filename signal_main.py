@@ -17,7 +17,7 @@ from details_header import *
 from signal_details import *
 from signal_ta_chart_alt_orders import *
 from signal_recom_trail_returns import *
-from trades_tab import *
+from trades_tab import get_trades_box
 from font_awesome import get_font_awesome
 from googleanalytics import get_googleanalytics
 from googleadsense import *

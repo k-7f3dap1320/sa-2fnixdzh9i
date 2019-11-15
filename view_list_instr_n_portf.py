@@ -17,7 +17,7 @@ from sa_func import get_random_str
 from googleanalytics import get_googleanalytics
 from googleadsense import *
 from list_instr_n_portf import *
-from print_google_ads import *
+from print_google_ads import print_google_ads
 from purechat import *
 
 def get_top_instr_n_portf_list():

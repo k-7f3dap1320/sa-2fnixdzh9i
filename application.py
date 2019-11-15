@@ -3,30 +3,33 @@ DEV_MODE = False
 
 from flask import Flask, request
 from flask_compress import Compress
-from app_main import *
-from portf_main import *
-from signal_main import *
-from app_widget import *
-from createuser_main import *
-from select_market import *
-from createportf_main import *
-from portf_delete import *
-from app_head import *
-from app_body import *
-from app_page import *
-from app_cookie import theme_return_this, get_sa_theme
-from sa_func import get_random_str
-from signin_main import *
-from view_list_instr_n_portf import *
-from payment_page import *
-from error_page import *
-from portf_gen_user_example import *
-from how_page import *
-from intel_report import *
-from set_theme import *
-from app_settings import *
-from app_search import *
-from reset_password import *
+from app_main import gen_main_page
+from app_login import user_login
+from portf_main import gen_portf_page
+from signal_main import gen_sign_page
+from app_widget import get_widget_page
+from createuser_main import gen_createuser_page
+from select_market import gen_selectmarket_page, save_selectmarket
+from createportf_main import gen_selectportf_page, save_portf_select, custom_save_portf_page
+from portf_delete import del_portf
+from portf_save import portf_save_conviction, portf_save
+from app_head import get_head
+from app_body import get_body
+from app_page import set_page
+from app_cookie import get_sa_theme, set_sa_lang
+from app_cookie import set_sa_ref_code, set_sa_theme, user_logout
+from sa_func import get_user_default_profile
+from signin_main import get_signin_page
+from view_list_instr_n_portf import gen_view_list_instr_n_portf
+from payment_page import get_plan_selection_page
+from error_page import get_error_page
+from portf_gen_user_example import gen_portf_user_example, gen_portf_validate_content
+from how_page import get_help_page
+from intel_report import get_intel_page
+from set_theme import theme_redirect
+from app_settings import save_settings, get_settings_page
+from app_search import get_search_page, get_search_result
+from reset_password import get_resetpassword_page
 from app_loading import get_loading_head, get_loading_body
 
 application = Flask(__name__)
@@ -67,7 +70,6 @@ def go():
     uid = request.args.get('uid')
     ref = request.args.get('ref')
     lang = request.args.get('lang')
-    theme = request.args.get('theme')
     nonavbar = request.values.get('nonavbar')
     x = request.args.get('x');
 
@@ -89,16 +91,23 @@ def go():
         pop = request.values.get('pop')
         delete = request.values.get('delete')
         dashboard = request.values.get('dashboard')
-        button = request.values.get('button')
         if ins != '' or ins != None:
-            if x == '' or x == None : x = get_user_default_profile()
-        if ins == '1': c = gen_selectportf_page(appname,burl,step,mode,x,portf)
-        if ins == '2': c = save_portf_select(appname,burl,step,mode,x,portf,uid)
-        if ins == '3': c = custom_save_portf_page(appname,burl,mode,x)
-        if ins == '4': c = portf_save_conviction(burl,mode,x)
-        if ins == '5': c = portf_save(appname,burl)
-        if ins is None: c = gen_portf_page(uid,appname,burl,pop)
-        if delete is not None: c = del_portf(delete,burl,x,dashboard)
+            if x == '' or x == None : 
+                x = get_user_default_profile()
+        if ins == '1': 
+            c = gen_selectportf_page(appname, burl, step)
+        if ins == '2': 
+            c = save_portf_select(burl, step, uid)
+        if ins == '3': 
+            c = custom_save_portf_page(appname, burl)
+        if ins == '4': 
+            c = portf_save_conviction(burl,mode,x)
+        if ins == '5': 
+            c = portf_save(appname,burl)
+        if ins is None: 
+            c = gen_portf_page(uid,appname,burl,pop)
+        if delete is not None: 
+            c = del_portf(delete,burl,x,dashboard)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -114,16 +123,21 @@ def go():
         nickname = request.values.get('nickname')
         step = request.args.get('step')
         broker = request.args.get('broker')
-        if broker is None: broker = request.values.get('broker')
+        if broker is None: 
+            broker = request.values.get('broker')
         broker_username = request.values.get('username_broker')
         mode = request.values.get('mode')
-        if step == 'c': c = gen_selectmarket_page(appname,burl,mode)
-        elif step == 'd': c= save_selectmarket(burl,mode,x)
-        else: c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
+        if step == 'c': 
+            c = gen_selectmarket_page(appname,burl,mode)
+        elif step == 'd': 
+            c= save_selectmarket(burl,mode,x)
+        else: 
+            c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
-        if broker is None: broker = 'not-specified'
+        if broker is None: 
+            broker = 'not-specified'
         c = gen_createuser_page('0',appname,burl,'','','','',broker,'')
 
     elif request.endpoint == 'h':
@@ -197,8 +211,10 @@ def go():
         acm = request.args.get('acm')
         step = request.args.get('step')
         notstart = request.args.get('notstart')
-        if step == '1': c = gen_portf_user_example(burl,acm,notstart)
-        if step == '2': c = gen_portf_validate_content(burl,notstart)
+        if step == '1': 
+            c = gen_portf_user_example(burl,acm,notstart)
+        if step == '2': 
+            c = gen_portf_validate_content(burl,notstart)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 

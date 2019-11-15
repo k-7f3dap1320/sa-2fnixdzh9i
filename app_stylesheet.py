@@ -36,31 +36,53 @@ def get_stylesheet(burl):
     form_signin = '.form-signin {width: 100%; max-width: 330px; padding: 15px; margin: 0 auto;}'
     form_signin_text_dark = '.form-signin-text-dark {color: white; text-align: center; }'
     form_signin_text_light = '.form-signin-text-light {text-align: center; }'
-    form_signin_form_control = '.form-signin .form-control {position: relative; box-sizing: border-box; height: auto; padding: 10px; font-size: medium;}'
+
+    form_signin_form_control = '.form-signin '+\
+    '.form-control {position: relative; box-sizing: border-box; '+\
+    'height: auto; padding: 10px; font-size: medium;}'
+
     form_signin_form_control_focus = '.form-signin .form-control:focus {z-index: 2;}'
-    form_signin_input_email = '.form-signin input[type="email"] {margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;}'
-    form_signin_input_password = '.form-signin input[type="password"] {margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0;}'
+
+    form_signin_input_email = '.form-signin input[type="email"] {margin-bottom: -1px; '+\
+    'border-bottom-right-radius: 0; border-bottom-left-radius: 0;}'
+
+    form_signin_input_password = '.form-signin input[type="password"] {margin-bottom: 10px; '+\
+    'border-top-left-radius: 0; border-top-right-radius: 0;}'
+
     form_signin_btn = '.form-signin-btn {font-size: medium;}'
 
     #Specific settings
-    sa_search_input = '#sa-search-input{width: 250px; font-size: small;background: transparent; border-top: none; border-left: none; border-right: none; border-bottom: solid; border-color: #00ffff;}'
+    sa_search_input = '#sa-search-input{width: 250px; font-size: '+\
+    'small;background: transparent; border-top: none; border-left: none; '+\
+    'border-right: none; border-bottom: solid; border-color: #00ffff;}'
+
     sa_table_sm = '.sa-table-sm{font-size: small;}'
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
     sa_instr_n_portf_list = '.sa-instr-n-portf-list{margin-top: -10px;}'
-    sa_signin_box = '.sa-signin-box{background-image:url('+ burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; color: white; text-align: justify; padding: 20px; }'
+
+    sa_signin_box = '.sa-signin-box{background-image:url('+\
+    burl + 'static/sibg.gif); background-size:100% 100%; height: 300px; '+\
+        'color: white; text-align: justify; padding: 20px; }'
+
     sa_user_header = '.sa-uhead-box{color: white; text-align: left;}'
     sa_descr_box_sm = '.sa-descr-box-sm{font-size: small;}'
     sa_chart_hw_90 = '.sa-chart-hw-90{height: 83%;}'
     sa_chart_hw_100 = '.sa-chart-hw-100{height: 400px;}'
     sa_chart_hw_300 = '.sa-chart-hw-290{height: 300px;}'
     sa_chart_hw_100_rsi = '.sa-chart-hw-100-rsi{height: 100px;}'
-    sa_portf_alloc ='.sa-portf-alloc{height: 250px; overflow: auto;}'
+    sa_portf_alloc = '.sa-portf-alloc{height: 250px; overflow: auto;}'
     sa_portf_perf_portf_chart = '.sa-portf-perf-portf-chart{height: 380px; overflow: auto;}'
     sa_tab_sm = '#sa-tab-sm{font-size: x-small;}'
     sa_signal_ta_chart = '.sa-signal-ta-chart{height: 580px; overflow: hidden;}'
-    sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; overflow: auto; font-size: small;}'
+
+    sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; '+\
+    'overflow: auto; font-size: small;}'
+
     sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
-    sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; overflow: auto; font-size: small;}'
+
+    sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; '+\
+    'overflow: auto; font-size: small;}'
+
     sa_center_content = '.sa-center-content{text-align:center;}'
     sa_navbar_text = '.sa-navbar-text{font-size: small;}'
 
@@ -71,7 +93,9 @@ def get_stylesheet(burl):
     'height:100%;'+\
     'position:fixed;'+\
     'z-index:1000;'+\
-    'background:url("'+ burl + 'static/loader.gif' +'?'+ get_random_str(9) +'") no-repeat center center rgba(52, 58, 64, 1)}'
+    'background:url("'+\
+    burl + 'static/loader.gif' +\
+    '?'+ get_random_str(9) +'") no-repeat center center rgba(52, 58, 64, 1)}'
 
     return_data = '<style>'+\
     body +\

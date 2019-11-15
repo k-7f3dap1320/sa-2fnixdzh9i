@@ -2,7 +2,7 @@
 from app_cookie import theme_return_this, get_sa_theme
 import pymysql.cursors
 from tradingview_chart import *
-from print_google_ads import *
+from print_google_ads import print_google_ads
 from tradingview_indicators import *
 
 from sa_db import sa_db_access

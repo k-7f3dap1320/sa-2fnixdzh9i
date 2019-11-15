@@ -1,3 +1,4 @@
+""" DISCONTINUED SOON """
 """ Help page: This module will be dismantled soon """
 from app_head import get_head
 from app_body import get_body
@@ -12,8 +13,8 @@ from bootstrap import get_bootstrap
 from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
-from app_cookie import theme_return_this, get_sa_theme
-from purechat import *
+from app_cookie import get_sa_theme
+from purechat import get_purechat
 
 def get_help_content(burl):
     """ xxx """
@@ -139,7 +140,18 @@ def get_help_content(burl):
 def get_help_page(appname,burl):
     """ xxx """
     return_data = ''
-    return_data = get_head( get_loading_head() + get_googleanalytics() + get_title( appname ) + get_metatags(burl) + set_ogp(burl,1,'','') + get_bootstrap( get_sa_theme(),burl ) + get_font_awesome() + get_stylesheet(burl) )
-    return_data = return_data + get_body( get_loading_body(), navbar(burl,0) + get_help_content(burl) + get_page_footer(burl) + get_purechat(1) )
+    return_data = get_head(get_loading_head() +\
+                           get_googleanalytics() +\
+                           get_title(appname) +\
+                           get_metatags(burl) +\
+                           set_ogp(burl, 1, '', '') +\
+                           get_bootstrap(get_sa_theme(), burl) +\
+                           get_font_awesome() +\
+                           get_stylesheet(burl))
+    return_data = return_data +\
+    get_body(get_loading_body(), navbar(burl, 0) +\
+             get_help_content(burl) +\
+             get_page_footer(burl) +\
+             get_purechat(1))
     return_data = set_page(return_data)
     return return_data
