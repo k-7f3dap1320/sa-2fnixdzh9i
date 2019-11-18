@@ -1,9 +1,8 @@
 """ List of instruments and strategy portfolio """
+import pymysql.cursors
 from app_cookie import user_is_login, theme_return_this
 from sa_func import get_user_numeric_id, get_portf_suffix
 from app_popup_modal import get_portf_delete_data_toggle, set_modal_delete_n_view_popup
-import pymysql.cursors
-
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -11,7 +10,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def draw_portf_table(burl,maxrow,x,user_portf):
+def draw_portf_table(burl, maxrow, sel, user_portf):
     """ xxx """
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
@@ -21,9 +20,10 @@ def draw_portf_table(burl,maxrow,x,user_portf):
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     if user_portf:
         sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
         "instruments.fullname, instruments.volatility_risk_st, "+\
@@ -34,8 +34,8 @@ def draw_portf_table(burl,maxrow,x,user_portf):
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
         "WHERE instruments.owner = "+\
-        str( get_user_numeric_id() ) +" AND symbol_list.symbol LIKE '%"+\
-        str( get_portf_suffix() )+ "%'" + " ORDER BY feed.globalrank LIMIT "+\
+        str(get_user_numeric_id()) +" AND symbol_list.symbol LIKE '%"+\
+        str(get_portf_suffix())+ "%'" + " ORDER BY feed.globalrank LIMIT "+\
         str(maxrow)
     else:
         sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
@@ -47,40 +47,50 @@ def draw_portf_table(burl,maxrow,x,user_portf):
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
         "WHERE symbol_list.symbol LIKE '%"+\
-        str( get_portf_suffix() ) +\
+        str(get_portf_suffix()) +\
         "%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+\
-        str(x) +"%' OR instruments.asset_class LIKE '%"+\
-        str(x) +"%') "+\
+        str(sel) +"%' OR instruments.asset_class LIKE '%"+\
+        str(sel) +"%') "+\
         "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+\
         str(maxrow)
 
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         uid = row[0]
         fullname = row[2]
         volatility_risk_st = row[3]
-        y1 = row[4]
-        m6 = row[5]
-        m3 = row[6]
-        m1 = row[7]
-        w1 = row[8]
+        y_1 = row[4]
+        m_6 = row[5]
+        m_3 = row[6]
+        m_1 = row[7]
+        w_1 = row[8]
         unit = row[10]
-        globalrank  = row[12]
+        globalrank = row[12]
         portf_owner = row[13]
-        volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
+        volatility_risk_st = str(round(volatility_risk_st * 100, 2))+'%'
         if globalrank == 0:
             globalrank = 'Not ranked'
-        if y1 >= 0: class_y1 = "text text-success"
-        else: class_y1 = "text text-danger"
-        if m6 >= 0: class_m6 = "text text-success"
-        else: class_m6 = "text text-danger"
-        if m3 >= 0: class_m3 = "text text-success"
-        else: class_m3 = "text text-danger"
-        if m1 >= 0: class_m1 = "text text-success"
-        else: class_m1 = "text text-danger"
-        if w1 >= 0: class_w1 = "text text-success"
-        else: class_w1 = "text text-danger"
+        if y_1 >= 0:
+            class_y1 = "text text-success"
+        else:
+            class_y1 = "text text-danger"
+        if m_6 >= 0:
+            class_m6 = "text text-success"
+        else:
+            class_m6 = "text text-danger"
+        if m_3 >= 0:
+            class_m3 = "text text-success"
+        else:
+            class_m3 = "text text-danger"
+        if m_1 >= 0:
+            class_m1 = "text text-success"
+        else:
+            class_m1 = "text text-danger"
+        if w_1 >= 0:
+            class_w1 = "text text-success"
+        else:
+            class_w1 = "text text-danger"
 
         if user_portf:
             class_row_style = ""
@@ -88,17 +98,17 @@ def draw_portf_table(burl,maxrow,x,user_portf):
             class_row_style = ""
 
         if unit == 'pips':
-            y1 = str(round( y1 ,0)) + ' pips'
-            m6 = str(round( m6 ,0)) + ' pips'
-            m3 = str(round( m3 ,0)) + ' pips'
-            m1 = str(round( m1 ,0)) + ' pips'
-            w1 = str(round( w1 ,0)) + ' pips'
+            y_1 = str(round(y_1, 0)) + ' pips'
+            m_6 = str(round(m_6, 0)) + ' pips'
+            m_3 = str(round(m_3, 0)) + ' pips'
+            m_1 = str(round(m_1, 0)) + ' pips'
+            w_1 = str(round(w_1, 0)) + ' pips'
         else:
-            y1 = str(round( y1 * 100 ,2)) + '%'
-            m6 = str(round( m6 * 100 ,2)) + '%'
-            m3 = str(round( m3 * 100 ,2)) + '%'
-            m1 = str(round( m1 * 100 ,2)) + '%'
-            w1 = str(round( w1 * 100 ,2)) + '%'
+            y_1 = str(round(y_1 * 100, 2)) + '%'
+            m_6 = str(round(m_6 * 100, 2)) + '%'
+            m_3 = str(round(m_3 * 100, 2)) + '%'
+            m_1 = str(round(m_1 * 100, 2)) + '%'
+            w_1 = str(round(w_1 * 100, 2)) + '%'
 
         column_globalrank = '<td scope="row" class="'+ class_row_style +\
         '" style="text-align: left"><i class="fas fa-trophy"></i>&nbsp'+\
@@ -109,10 +119,10 @@ def draw_portf_table(burl,maxrow,x,user_portf):
         return_data = (return_data +
                        set_modal_delete_n_view_popup(fullname, uid, burl, user_portf))
 
-        if user_portf == False:
+        if not user_portf:
             column_fullname = '<td  style="text-align: left" class="'+\
             class_row_style +'">'+\
-            str(portf_owner.replace('{burl}',burl) ) + ' | ' +\
+            str(portf_owner.replace('{burl}', burl)) + ' | ' +\
             str(fullname)+ '</td>'
             data_href = 'data-href="'+ target_url +'"'
         else:
@@ -126,11 +136,11 @@ def draw_portf_table(burl,maxrow,x,user_portf):
             str(fullname)+ '</button></td>'
             data_href = 'data-href="#"'
 
-        column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
-        column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m6) +'</td>'
-        column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'">'+ str(m3) +'</td>'
-        column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'">'+ str(m1) +'</td>'
-        column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w1) +'</td>'
+        column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y_1) +'</td>'
+        column_m6 = '      <td class="'+ class_m6 +" "+ class_row_style +'">'+ str(m_6) +'</td>'
+        column_m3 = '      <td class="'+ class_m3 +" "+ class_row_style +'">'+ str(m_3) +'</td>'
+        column_m1 = '      <td class="'+ class_m1 +" "+ class_row_style +'">'+ str(m_1) +'</td>'
+        column_w1 = '      <td class="'+ class_w1 +" "+ class_row_style +'">'+ str(w_1) +'</td>'
         return_data = return_data +\
         '    <tr class="sa-table-click-row" '+data_href+'>'+\
         column_globalrank +\
@@ -142,12 +152,12 @@ def draw_portf_table(burl,maxrow,x,user_portf):
         column_m1 +\
         column_w1 +\
         '    </tr>'
-    cr.close()
+    cursor.close()
     connection.close()
 
     return return_data
 
-def draw_instr_table(burl,mode,step,maxrow,x):
+def draw_instr_table(burl, mode, step, maxrow, sel):
     """ xxx """
     return_data = '<script>$(document).ready(function($) {'+\
     '$(".sa-table-click-row").click(function() {'+\
@@ -157,9 +167,10 @@ def draw_instr_table(burl,mode,step,maxrow,x):
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
     "instruments.fullname, instruments.volatility_risk_st, "+\
     "instruments.y1_signal, instruments.m6_signal, "+\
@@ -168,13 +179,13 @@ def draw_instr_table(burl,mode,step,maxrow,x):
     "instruments.symbol FROM instruments "+\
     "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
     "WHERE symbol_list.symbol NOT LIKE '%"+\
-    str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+\
-    str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+    str(get_portf_suffix()) +"%' AND ( instruments.market LIKE '%"+\
+    str(sel) +"%' OR instruments.asset_class LIKE '%"+ str(sel) +"%') "+\
     "AND symbol_list.disabled=0 ORDER BY instruments.y1_signal DESC LIMIT "+\
     str(maxrow)
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         uid = row[0]
         w_forecast_change = row[1]
         fullname = row[2]
@@ -188,42 +199,54 @@ def draw_instr_table(burl,mode,step,maxrow,x):
         unit = row[10]
         symbol = row[11]
 
-        volatility_risk_st = str(round(volatility_risk_st*100,2))+'%'
+        volatility_risk_st = str(round(volatility_risk_st * 100, 2)) + '%'
 
-        if y1_signal >= 0: class_y1 = "text text-success"
-        else: class_y1 = "text text-danger"
+        if y1_signal >= 0:
+            class_y1 = "text text-success"
+        else:
+            class_y1 = "text text-danger"
 
-        if m6_signal >= 0: class_m6 = "text text-success"
-        else: class_m6 = "text text-danger"
+        if m6_signal >= 0:
+            class_m6 = "text text-success"
+        else:
+            class_m6 = "text text-danger"
 
-        if m3_signal >= 0: class_m3 = "text text-success"
-        else: class_m3 = "text text-danger"
+        if m3_signal >= 0:
+            class_m3 = "text text-success"
+        else:
+            class_m3 = "text text-danger"
 
-        if m1_signal >= 0: class_m1 = "text text-success"
-        else: class_m1 = "text text-danger"
+        if m1_signal >= 0:
+            class_m1 = "text text-success"
+        else:
+            class_m1 = "text text-danger"
 
-        if w1_signal >= 0: class_w1 = "text text-success"
-        else: class_w1 = "text text-danger"
+        if w1_signal >= 0:
+            class_w1 = "text text-success"
+        else:
+            class_w1 = "text text-danger"
 
-        if w_forecast_change >= 0: class_forecast = "bg bg-success text-white"
-        else: class_forecast = "bg bg-danger text-white"
+        if w_forecast_change >= 0:
+            class_forecast = "bg bg-success text-white"
+        else:
+            class_forecast = "bg bg-danger text-white"
 
 
         if unit == 'pips':
-            y1_signal = str(round( y1_signal ,0)) + ' pips'
-            m6_signal = str(round( m6_signal ,0)) + ' pips'
-            m3_signal = str(round( m3_signal ,0)) + ' pips'
-            m1_signal = str(round( m1_signal ,0)) + ' pips'
-            w1_signal = str(round( w1_signal ,0)) + ' pips'
+            y1_signal = str(round(y1_signal, 0)) + ' pips'
+            m6_signal = str(round(m6_signal, 0)) + ' pips'
+            m3_signal = str(round(m3_signal, 0)) + ' pips'
+            m1_signal = str(round(m1_signal, 0)) + ' pips'
+            w1_signal = str(round(w1_signal, 0)) + ' pips'
         else:
-            y1_signal = str(round( y1_signal * 100 ,2)) + '%'
-            m6_signal = str(round( m6_signal * 100 ,2)) + '%'
-            m3_signal = str(round( m3_signal * 100 ,2)) + '%'
-            m1_signal = str(round( m1_signal * 100 ,2)) + '%'
-            w1_signal = str(round( w1_signal * 100 ,2)) + '%'
+            y1_signal = str(round(y1_signal * 100, 2)) + '%'
+            m6_signal = str(round(m6_signal * 100, 2)) + '%'
+            m3_signal = str(round(m3_signal * 100, 2)) + '%'
+            m1_signal = str(round(m1_signal * 100, 2)) + '%'
+            w1_signal = str(round(w1_signal * 100, 2)) + '%'
 
         if not mode == "portf_select":
-            if w_forecast_change >=0:
+            if w_forecast_change >= 0:
                 order_type = '<span class="badge badge-success">buy</span>'
             else:
                 order_type = '<span class="badge badge-danger">sell</span>'
@@ -244,7 +267,7 @@ def draw_instr_table(burl,mode,step,maxrow,x):
 
         if mode == 'portf_select':
             target_url = burl + 'p/?ins=2&step='+\
-            str(step) +'&uid='+ str(uid) + '&x=' + str(x)
+            str(step) +'&uid='+ str(uid) + '&x=' + str(sel)
         if mode == 'view':
             target_url = burl + 's/?uid=' + str(uid)
 
@@ -262,24 +285,26 @@ def draw_instr_table(burl,mode,step,maxrow,x):
         '      <td class="'+ class_forecast +'">'+\
         str(w_forecast_display_info) +'</td>'+\
         '    </tr>'
-    cr.close()
+    cursor.close()
     connection.close()
     return return_data
 
-def get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x):
+def get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
     """ xxx """
     return_data = ''
-    if x is None: x = ''
+    if sel is None:
+        sel = ''
 
     if what == 'instr':
-        return_data = draw_instr_table(burl,mode,step,maxrow,x)
+        return_data = draw_instr_table(burl, mode, step, maxrow, sel)
     if what == 'portf':
-        if user_is_login() == 1: return_data = draw_portf_table(burl,maxrow,x,True)
+        if user_is_login() == 1:
+            return_data = draw_portf_table(burl, maxrow, sel, True)
         if mode != 'dashboard':
-            return_data = return_data + draw_portf_table(burl,maxrow,x,False)
+            return_data = return_data + draw_portf_table(burl, maxrow, sel, False)
     return return_data
 
-def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
+def gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel):
     """ xxx """
     return_data = ''
     if mode == "portf_select":
@@ -333,12 +358,12 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
     '    </tr>'+\
     ' </thead>'+\
     '  <tbody>'+\
-    get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, x) +\
+    get_table_content_list_instr_n_portf(burl, mode, what, step, maxrow, sel) +\
     '  </tbody>'+\
     '</table>'
     return return_data
 
-def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
+def get_box_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
     """ xxx """
     # mode = 'view', mode = 'portf_select', mode = 'dashboard'
     # what = 'instr', what = 'portf'
@@ -401,7 +426,7 @@ def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
     list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
     search_box +\
     list_title +\
-    gen_instr_n_portf_table(burl, mode, what, step, maxrow, x) +\
+    gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
