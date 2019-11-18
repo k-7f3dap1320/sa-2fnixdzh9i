@@ -1,7 +1,7 @@
 """ Portfolio performance content and description """
-from app_cookie import theme_return_this, get_sa_theme
-from sa_func import get_random_str
 import pymysql.cursors
+from app_cookie import theme_return_this
+from sa_func import get_selected_lang
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -82,15 +82,18 @@ def get_desc_box(uid):
         portf_recomm = portf_recomm.replace('{portf_alloc_entry_price}', alloc_entry_price)
 
 
-    portf_descr = portf_descr.replace('{portf_recomm}', portf_recomm + '<br />')
-    portf_descr = portf_descr.replace('{portf_last_price}', str( round(portf_last_price - portf_account_ref,2) ) )
+    portf_descr = portf_descr.replace('{portf_recomm}',
+                                      portf_recomm + '<br />')
+    portf_descr = portf_descr.replace('{portf_last_price}',
+                                      str( round(portf_last_price - portf_account_ref,2)))
 
     cr.close()
     connection.close()
 
     portf_desc_box = '' +\
     '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-portf-perf-portf-chart" style="'+ theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '            <div class="box-part rounded sa-portf-perf-portf-chart" style="'+\
+    theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     '               <div><h6>'+ desc_box_title +'</h6></div>'+\
     '               <div class="sa-descr-box-sm">'+ portf_summary + ' ' + portf_descr +'</div>'+\
     '            </div>'+\
@@ -107,38 +110,45 @@ def get_perf_chart(uid):
                                  cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
 
-    sql = "SELECT price_close FROM chart_data WHERE uid="+ str(uid) + " ORDER BY price_close LIMIT 1"
+    sql = "SELECT price_close FROM chart_data WHERE uid="+\
+    str(uid) + " ORDER BY price_close LIMIT 1"
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
         minval = row[0]
 
-    sql = "SELECT chart_data.symbol, chart_data.date, chart_data.price_close, instruments.fullname, instruments.unit, instruments.account_reference FROM chart_data "+\
+    sql = "SELECT chart_data.symbol, chart_data.date, "+\
+    "chart_data.price_close, instruments.fullname, instruments.unit, "+\
+    "instruments.account_reference FROM chart_data "+\
     "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
     "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
     cr.execute(sql)
     rs = cr.fetchall()
     data = ""
     for row in rs:
-        symbol = row[0]
         chart_date = row[1]
         price_close = row[2]
-        fullname = row[3]
         portf_unit = row[4]
-        account_reference = row[5]
 
         year = chart_date.strftime("%Y")
         month = chart_date.strftime("%m")
         day = chart_date.strftime("%d")
         if data =="":
-            data = data + "[new Date("+str(year)+", "+str(int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
+            data = data +\
+            "[new Date("+\
+            str(year)+", "+\
+            str(int(month)-1 )+", "+\
+            str(day)+"),"+str(price_close)+"]"
         else:
-            data = data + ",[new Date("+str(year)+", "+str( int(month)-1 )+", "+str(day)+"),"+str(price_close)+"]"
+            data = data +\
+            ",[new Date("+\
+            str(year)+", "+\
+            str( int(month)-1 )+", "+\
+            str(day)+"),"+ str(price_close)+"]"
 
 
     chart_title = "Portfolio 1-Year Performance"
     hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
-    profit_1Y = price_close
     portf_perf_font_size = 10
 
     portf_perf_box = '' +\
@@ -152,16 +162,24 @@ def get_perf_chart(uid):
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
     '                            title: "'+ chart_title +'", '+\
-    '                            titleTextStyle: {color: '+ theme_return_this('"black"','"white"') +'},'+\
-    '                            fontSize:'+ str(portf_perf_font_size) + ', '+\
-    '                            legend: {position: "none", textStyle: {color: '+ theme_return_this('"black"','"white"') +'} },'+\
+    '                            titleTextStyle: {color: '+\
+    theme_return_this('"black"','"white"') +'},'+\
+    '                            fontSize:'+\
+    str(portf_perf_font_size) + ', '+\
+    '                            legend: {position: "none", textStyle: {color: '+\
+    theme_return_this('"black"','"white"') +'} },'+\
     '                            backgroundColor: "transparent",'+\
-    '                            vAxis: {viewWindow:{min: '+ str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+ theme_return_this('',', textStyle: {color: "white"}') +' },'+\
-    '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+ theme_return_this('',', textStyle: {color: "white"}') +' }, '+\
-    '                            series:{0: {areaOpacity: 0.3, color: '+ theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 2} },'+\
+    '                            vAxis: {viewWindow:{min: '+\
+    str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+\
+    theme_return_this('',', textStyle: {color: "white"}') +' },'+\
+    '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+\
+    theme_return_this('',', textStyle: {color: "white"}') +' }, '+\
+    '                            series:{0: {areaOpacity: 0.3, color: '+\
+    theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 2} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
-    '                          var chart = new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
+    '                          var chart = '+\
+    'new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
     '                          chart.draw(data, options);'+\
     '                       }'+\
     '                   </script>'+\
@@ -179,11 +197,17 @@ def get_chart_box(uid):
     '            <div class="box-part rounded sa-portf-perf-portf-chart">'+\
     '                  <ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
     '                    <li class="nav-item">'+\
-    '                      <a class="nav-link active" data-toggle="pill" href="'+ tab_1_link +'">'+ tab_1_label +'</a>'+\
+    '                      <a class="nav-link active" '+\
+    'data-toggle="pill" href="'+\
+    tab_1_link +'">'+\
+    tab_1_label +'</a>'+\
     '                    </li>'+\
     '                  </ul>'+\
     '                  <div class="tab-content">'+\
-    '                      <div id="'+ tab_1_id +'" class="tab-pane active" style="height: 325px; '+ theme_return_this('','background-color: #20124d;') +'" ><br />'+ chart_1y_perf +'</div>'+\
+    '                      <div id="'+\
+    tab_1_id +'" class="tab-pane active" style="height: 325px; '+\
+    theme_return_this('','background-color: #20124d;') +'" ><br />'+\
+        chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'

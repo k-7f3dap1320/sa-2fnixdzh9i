@@ -1,12 +1,10 @@
 """ Strategy portfolio content generation """
-import sys
-import os
 import datetime
-from sa_func import get_random_str
-import time
 from datetime import timedelta
-from sa_numeric import *
 import pymysql.cursors
+from sa_func import get_portf_suffix
+from sa_numeric import get_stdev, get_mdd, get_romad, get_volatility_risk
+import random
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -23,7 +21,8 @@ def get_portf_content(user_id):
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT nickname, avatar_id FROM users WHERE id="+ str(user_id)
@@ -60,7 +59,6 @@ def set_portf_feed(s):
         fullname = row[1].replace("'","")
         asset_class = row[2]
         market = row[3]
-        w_forecast_change = row[4]
         w_forecast_display_info = row[5]
         uid = row[6]
         owner = row[7]
@@ -84,7 +82,7 @@ def set_portf_feed(s):
         "('"+d+"','"+short_title+"','"+short_description+"','"+content+"','"+url+"',"+\
         "'"+ranking+"','"+symbol+"','"+type+"','"+badge+"',"+\
         "'"+search+"','"+asset_class+"','"+market+"')"
-        i += 1        
+        i += 1
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -111,7 +109,14 @@ def get_pct_from_date(d, sql_select, lp):
     """ xxx """
     pct = 0
     pp = 0
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = sql_select + "AND date <= '"+ str(d) +"' ORDER BY date DESC LIMIT 1"
     cr.execute(sql)
@@ -145,7 +150,14 @@ class instr_sum_data:
     def __init__(self,symbol,uid):
         """ xxx """
         self.s = symbol
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT symbol from symbol_list WHERE uid=" + str(uid)
         cr.execute(sql)
@@ -251,7 +263,13 @@ def get_portf_perf_summ(s,uid):
     romad_st = get_romad(sql)
     volatility_risk_st = get_volatility_risk(sql,True,s)
 
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "UPDATE instruments SET y1="+ str(y1) +", m6="+ str(m6) +", m3="+ str(m3) +", m1="+ str(m1) +", w1="+ str(w1) +", "+\
     " stdev_st="+ str(stdev_st) + ", maximum_dd_st="+ str(maximum_dd_st) + ", romad_st="+ str(romad_st) + ", volatility_risk_st="+ str(volatility_risk_st) +\
@@ -263,10 +281,15 @@ def get_portf_perf_summ(s,uid):
 
 def get_portf_perf(s):
     """ xxx """
-    portf_symbol_suffix = get_portf_suffix()
     df = datetime.datetime.now() - timedelta(days=370)
 
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT symbol_list.symbol, symbol_list.uid, instruments.fullname, instruments.account_reference "+\
     "FROM `symbol_list` INNER JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
@@ -331,7 +354,7 @@ def get_portf_perf(s):
                     sep = ''
                 inserted_value = inserted_value + sep + "(" + str(portf_uid) + ",'"+ str(portf_symbol) +"','" + str(d_str) + "'," + str(portf_nav) + ")"
             i +=1
-        
+
         if inserted_value != '':
             cr_i = connection.cursor(pymysql.cursors.SSCursor)
             sql_i = "INSERT IGNORE INTO chart_data(uid, symbol, date, price_close) VALUES "+\
@@ -355,7 +378,14 @@ class portf_data:
 
     def __init__(self, portf_s):
         """ xxx """
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT account_reference FROM instruments WHERE symbol='"+ portf_s +"' "
         cr.execute(sql)
@@ -365,7 +395,13 @@ class portf_data:
         cr.close()
         connection.close()
 
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT symbol FROM portfolios WHERE portf_symbol = '"+ portf_s +"'"
         cr.execute(sql)
@@ -394,7 +430,14 @@ class portf_data:
     def get_quantity(self, alloc_s, alloc_coef):
         """ xxx """
         portf_reduce_risk_by = 4
-        connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+        connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
         cr = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT instruments.pip, price_instruments_data.price_close, instruments.volatility_risk_st "+\
         "FROM instruments JOIN price_instruments_data ON instruments.symbol = price_instruments_data.symbol "+\
@@ -441,7 +484,14 @@ def get_conviction_coef(c):
 def get_market_conv_rate(m):
     """ xxx """
     return_data = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT conv_to_usd FROM markets WHERE market_id = '"+ str(m) +"'"
     cr.execute(sql)
@@ -454,7 +504,14 @@ def get_market_conv_rate(m):
 def get_market_currency(m):
     """ xxx """
     return_data = ''
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT currency_code FROM markets WHERE market_id = '"+ str(m) +"'"
     cr.execute(sql)
@@ -466,8 +523,14 @@ def get_market_currency(m):
 
 def get_portf_alloc(s):
     """ xxx """
-    portf_symbol_suffix = get_portf_suffix()
-    connection = pymysql.connect(host=db_srv,user=db_usr,password=db_pwd, db=db_name,charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+
     cr = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.symbol, instruments.fullname, symbol_list.uid, instruments.unit, instruments.market FROM instruments "+\
     "INNER JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
@@ -477,8 +540,6 @@ def get_portf_alloc(s):
 
     for row in rs:
         portf_symbol = row[0]
-        portf_fullname = row[1]
-        portf_uid = row[2]
         portf_unit = row[3]
         portf_market = row[4]
         portf_currency = get_market_currency(portf_market)
@@ -525,7 +586,6 @@ def get_portf_alloc(s):
                 alloc_decimal_places = row[2]
                 alloc_w_forecast_change = row[3]
                 alloc_pip = row[4]
-                alloc_uid = row[5]
                 alloc_market = row[6]
                 if alloc_w_forecast_change >= 0:
                     alloc_entry_level_sign = '<'

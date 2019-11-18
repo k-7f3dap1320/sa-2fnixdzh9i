@@ -50,10 +50,10 @@ def get_card(selection, type_sel, burl):
     res = cursor.fetchall()
     title_portf = "Top strategies by Members"
     button_portf = "More strategy Portfolios"
-    button_portf_link = burl + 'ls/?w=portf&x='+ str(selection)
+    button_portf_link = burl + 'ls/?w=portf'
     title_signals = "Top Trading Signals"
     button_signals = "More Trading Signals"
-    button_signals_link = burl + 'ls/?w=instr&x='+ str(selection)
+    button_signals_link = burl + 'ls/?w=instr'
 
     if type_sel == 9:
         return_data = '<div class="box"><span class="sectiont">'+\
