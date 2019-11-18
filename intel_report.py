@@ -1,8 +1,8 @@
 """ Intelligence report """
-import pymysql.cursors
-from sa_func import get_user_numeric_id, redirect_if_not_logged_in
 import datetime
 from datetime import timedelta
+import pymysql.cursors
+from sa_func import get_user_numeric_id, redirect_if_not_logged_in
 from app_head import get_head
 from app_body import get_body
 from app_page import set_page
@@ -30,7 +30,8 @@ DB_SRV = ACCESS_OBJ.db_server()
 def get_report_title(burl):
     """ Get title of the report """
     return_data = ''
-    dn = datetime.datetime.now(); dnstr = dn.strftime("%A %d %B, %Y")
+    date_now = datetime.datetime.now()
+    dnstr = date_now.strftime("%A %d %B, %Y")
     l_title = 'Daily Intelligence Briefing: <br />' + dnstr
     l_generated_for = 'Report generated for '
     if user_is_login():
@@ -40,12 +41,15 @@ def get_report_title(burl):
                                      db=DB_NAME,
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT name FROM users WHERE id= "+ str(get_user_numeric_id())
-        cr.execute(sql)
-        rs = cr.fetchall()
+        cursor.execute(sql)
+        res = cursor.fetchall()
         name = ''
-        for row in rs: name = row[0]
+        for row in res:
+            name = row[0]
+        cursor.close()
+        connection.close()
 
         return_data = return_data +\
         '<h1>'+ l_title +'</h1>' +\
@@ -58,7 +62,7 @@ def get_report_title(burl):
         '<a href="'+ burl +'signin/?redirect='+ burl +'intelligence">Sign In</a>'
     return return_data
 
-def get_market_snapshot_n_brief_text(w):
+def get_market_snapshot_n_brief_text(what):
     """ Get market snapshot briefing text """
     return_data = ''
     language = 'en'
@@ -68,14 +72,17 @@ def get_market_snapshot_n_brief_text(w):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT market_snapshot FROM reports WHERE lang='"+ language +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     market_snapshot = ''
-    for row in rs: market_snapshot = row[0]
+    for row in res:
+        market_snapshot = row[0]
+    cursor.close()
+    connection.close()
 
-    if w == 'market_snapshot':
+    if what == 'market_snapshot':
         return_data = market_snapshot
     return return_data
 
@@ -161,8 +168,8 @@ def get_expired_signals(burl):
     return_data = ''
     if user_is_login():
         l_title = 'Expired Signals'
-        dn = datetime.datetime.now() - (timedelta(days=7))
-        dnstr = dn.strftime("%A %d %B, %Y")
+        date_minus_seven = datetime.datetime.now() - (timedelta(days=7))
+        dnstr = date_minus_seven.strftime("%A %d %B, %Y")
         l_comment = 'Signals with orders entered on <strong>' +\
         dnstr + '</strong> '+\
         'and before are now expired and may be closed or managed at your own discretion.'
@@ -193,8 +200,8 @@ def get_signals_lines(burl):
     return_data = ''
     if user_is_login():
         l_title = 'Opportunities'
-        dn = datetime.datetime.now()
-        dnstr = dn.strftime("%Y%m%d")
+        date_now = datetime.datetime.now()
+        dnstr = date_now.strftime("%Y%m%d")
 
         connection = pymysql.connect(host=DB_SRV,
                                      user=DB_USR,
@@ -202,7 +209,7 @@ def get_signals_lines(burl):
                                      db=DB_NAME,
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
-        cr = connection.cursor(pymysql.cursors.SSCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
         sql = "SELECT DISTINCT "+\
             "trades.uid "+\
             "FROM trades "+\
@@ -215,8 +222,8 @@ def get_signals_lines(burl):
             "OR (portfolios.strategy_order_type = 'long/short') ) AND "+\
             "(trades.entry_date >= " + dnstr + " AND instruments.owner = " +\
             str(get_user_numeric_id()) + " AND status = 'active')"
-        cr.execute(sql)
-        rs = cr.fetchall()
+        cursor.execute(sql)
+        res = cursor.fetchall()
         return_data = ''+\
         '<div class="row">' +\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
@@ -226,7 +233,7 @@ def get_signals_lines(burl):
         '</div></div>'+\
         '</div>'
 
-        for row in rs:
+        for row in res:
             uid = row[0]
             return_data = return_data +\
             '<div class="row">' +\
@@ -241,7 +248,7 @@ def get_signals_lines(burl):
             '</div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
             '</div>'
-        cr.close()
+        cursor.close()
         connection.close()
     return return_data
 

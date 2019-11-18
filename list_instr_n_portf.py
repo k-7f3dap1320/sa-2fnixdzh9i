@@ -25,20 +25,34 @@ def draw_portf_table(burl,maxrow,x,user_portf):
                                  cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
     if user_portf:
-        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-        "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
-        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
+        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
+        "instruments.fullname, instruments.volatility_risk_st, "+\
+        "instruments.y1, instruments.m6, instruments.m3, instruments.m1, "+\
+        "instruments.w1, "+\
+        "instruments.w_forecast_display_info, instruments.unit, "+\
+        "instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
-        "WHERE instruments.owner = "+ str( get_user_numeric_id() ) +" AND symbol_list.symbol LIKE '%"+ str( get_portf_suffix() )+ "%'" + " ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+        "WHERE instruments.owner = "+\
+        str( get_user_numeric_id() ) +" AND symbol_list.symbol LIKE '%"+\
+        str( get_portf_suffix() )+ "%'" + " ORDER BY feed.globalrank LIMIT "+\
+        str(maxrow)
     else:
-        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-        "instruments.y1, instruments.m6, instruments.m3, instruments.m1, instruments.w1, "+\
-        "instruments.w_forecast_display_info, instruments.unit, instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
+        sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
+        "instruments.fullname, instruments.volatility_risk_st, "+\
+        "instruments.y1, instruments.m6, instruments.m3, "+\
+        "instruments.m1, instruments.w1, "+\
+        "instruments.w_forecast_display_info, instruments.unit, "+\
+        "instruments.symbol, feed.globalrank, feed.content FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN feed ON instruments.symbol = feed.symbol "+\
-        "WHERE symbol_list.symbol LIKE '%"+ str( get_portf_suffix() ) +"%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-        "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+ str(maxrow)
+        "WHERE symbol_list.symbol LIKE '%"+\
+        str( get_portf_suffix() ) +\
+        "%' AND feed.globalrank <> 0 AND ( instruments.market LIKE '%"+\
+        str(x) +"%' OR instruments.asset_class LIKE '%"+\
+        str(x) +"%') "+\
+        "AND symbol_list.disabled=0 ORDER BY feed.globalrank LIMIT "+\
+        str(maxrow)
 
     cr.execute(sql)
     rs = cr.fetchall()
@@ -86,16 +100,30 @@ def draw_portf_table(burl,maxrow,x,user_portf):
             m1 = str(round( m1 * 100 ,2)) + '%'
             w1 = str(round( w1 * 100 ,2)) + '%'
 
-        column_globalrank = '<td scope="row" class="'+ class_row_style +'" style="text-align: left"><i class="fas fa-trophy"></i>&nbsp'+ str(globalrank) +'</td>'
+        column_globalrank = '<td scope="row" class="'+ class_row_style +\
+        '" style="text-align: left"><i class="fas fa-trophy"></i>&nbsp'+\
+        str(globalrank) +'</td>'
+
         target_url = burl + 'p/?uid=' + str(uid)
 
-        return_data = return_data + set_modal_delete_n_view_popup(fullname, uid, burl, user_portf)
+        return_data = (return_data +
+                       set_modal_delete_n_view_popup(fullname, uid, burl, user_portf))
 
         if user_portf == False:
-            column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ str(portf_owner.replace('{burl}',burl) ) + ' | ' + str(fullname)+ '</td>'
+            column_fullname = '<td  style="text-align: left" class="'+\
+            class_row_style +'">'+\
+            str(portf_owner.replace('{burl}',burl) ) + ' | ' +\
+            str(fullname)+ '</td>'
             data_href = 'data-href="'+ target_url +'"'
         else:
-            column_fullname = '<td  style="text-align: left" class="'+ class_row_style +'">'+ '<button type="button" class="btn btn-danger btn-sm active" '+ get_portf_delete_data_toggle(uid) +'><i class="far fa-trash-alt"></i></button>' + ' | <button type="button" class="btn btn-info btn-sm active" data-toggle="modal" data-target="#popup_view_'+ str(uid) +'">' + str(fullname)+ '</button></td>'
+            column_fullname = '<td  style="text-align: left" class="'+\
+            class_row_style +'">'+\
+            '<button type="button" class="btn btn-danger btn-sm active" '+\
+            get_portf_delete_data_toggle(uid) +'><i class="far fa-trash-alt"></i></button>' +\
+            ' | <button type="button" class="btn btn-info btn-sm active" '+\
+            'data-toggle="modal" data-target="#popup_view_'+\
+            str(uid) +'">' +\
+            str(fullname)+ '</button></td>'
             data_href = 'data-href="#"'
 
         column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y1) +'</td>'
@@ -132,11 +160,18 @@ def draw_instr_table(burl,mode,step,maxrow,x):
                                  db=DB_NAME,charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT symbol_list.uid, instruments.w_forecast_change, instruments.fullname, instruments.volatility_risk_st, "+\
-    "instruments.y1_signal, instruments.m6_signal, instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
-    "instruments.w_forecast_display_info, instruments.unit, instruments.symbol FROM instruments JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-    "WHERE symbol_list.symbol NOT LIKE '%"+ str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+ str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
-    "AND symbol_list.disabled=0 ORDER BY instruments.y1_signal DESC LIMIT "+ str(maxrow)
+    sql = "SELECT symbol_list.uid, instruments.w_forecast_change, "+\
+    "instruments.fullname, instruments.volatility_risk_st, "+\
+    "instruments.y1_signal, instruments.m6_signal, "+\
+    "instruments.m3_signal, instruments.m1_signal, instruments.w1_signal, "+\
+    "instruments.w_forecast_display_info, instruments.unit, "+\
+    "instruments.symbol FROM instruments "+\
+    "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+    "WHERE symbol_list.symbol NOT LIKE '%"+\
+    str( get_portf_suffix() ) +"%' AND ( instruments.market LIKE '%"+\
+    str(x) +"%' OR instruments.asset_class LIKE '%"+ str(x) +"%') "+\
+    "AND symbol_list.disabled=0 ORDER BY instruments.y1_signal DESC LIMIT "+\
+    str(maxrow)
     cr.execute(sql)
     rs = cr.fetchall()
     for row in rs:
@@ -207,20 +242,25 @@ def draw_instr_table(burl,mode,step,maxrow,x):
             column_m1 = ''
             column_w1 = ''
 
-        if mode == 'portf_select': target_url = burl + 'p/?ins=2&step='+ str(step) +'&uid='+ str(uid) + '&x=' + str(x)
-        if mode == 'view': target_url = burl + 's/?uid=' + str(uid)
+        if mode == 'portf_select':
+            target_url = burl + 'p/?ins=2&step='+\
+            str(step) +'&uid='+ str(uid) + '&x=' + str(x)
+        if mode == 'view':
+            target_url = burl + 's/?uid=' + str(uid)
 
         return_data = return_data +\
         '    <tr class="sa-table-click-row" data-href="'+ target_url +'">'+\
         column_order_type +\
-        '      <td style="text-align: left">'+ '<strong>'+str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
+        '      <td style="text-align: left">'+ '<strong>'+\
+        str(fullname)+ '</strong> (' + str(symbol) + ')' + '</td>'+\
         '      <td>'+ str(volatility_risk_st) +'</td>'+\
         column_y1 +\
         column_m6 +\
         column_m3 +\
         column_m1 +\
         column_w1 +\
-        '      <td class="'+ class_forecast +'">'+ str(w_forecast_display_info) +'</td>'+\
+        '      <td class="'+ class_forecast +'">'+\
+        str(w_forecast_display_info) +'</td>'+\
         '    </tr>'
     cr.close()
     connection.close()
@@ -256,7 +296,10 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
     else:
         if what == "instr":
             signal_column = '<th scope="col" style="text-align: left">Signal</th>'
-            l_performance_note = '<span style="text-align: center; font-size: x-small;">*Signals performance</span>'
+
+            l_performance_note = '<span style="text-align: center; '+\
+            'font-size: x-small;">*Signals performance</span>'
+
             l_instr_portf = '<th scope="col" style="text-align: left">Instrument</th>'
             l_forc_expect_return = '<th scope="col">1-week Forecast</th>'
         else:
@@ -274,7 +317,8 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, x):
 
     return_data = ' ' +\
     l_performance_note +\
-    '<table id="table_instr_n_portf" class="table table-hover table-sm '+ small_font_class +' ">'+\
+    '<table id="table_instr_n_portf" class="table table-hover table-sm '+\
+    small_font_class +' ">'+\
     '  <thead>'+\
     '    <tr>'+\
     signal_column +\
@@ -329,12 +373,23 @@ def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
     l_placeholder = "Type to find from the list..."
     l_your_portfolios = 'Your Portfolio'
     box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
-    portfolio_box_style_dark_mode = theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;')
+    portfolio_box_style_dark_mode = theme_return_this('',
+                                                      'border-style:solid; '+\
+                                                      'border-width:thin; border-color:#343a40;')
     list_title = ''
     list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
-    search_box = '<div class="input-group input-group-lg"><div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-search" style="font-size: xx-large;"></i></span></div><input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="'+ l_placeholder +'" autofocus></div><div>&nbsp;</div>'
+
+    search_box = '<div class="input-group input-group-lg">'+\
+    '<div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg">'+\
+    '<i class="fas fa-search" style="font-size: xx-large;"></i></span></div>'+\
+    '<input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" '+\
+    'class="form-control" aria-label="Large" '+\
+    'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
+    l_placeholder +'" autofocus></div><div>&nbsp;</div>'
+
     if mode == 'dashboard':
-        list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+ l_your_portfolios +'</span>'
+        list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+\
+        l_your_portfolios +'</span>'
         search_box = ''
         list_class = ''
         box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block'
@@ -342,7 +397,8 @@ def get_box_list_instr_n_portf(burl,mode,what,step,maxrow,x):
     '<div class="box">' +\
     '   <div class="row">'+\
     '        <div class="'+ box_div_class +'">'+\
-    '            <div class="box-part rounded '+ list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
+    '            <div class="box-part rounded '+\
+    list_class +'" style="'+ portfolio_box_style_dark_mode +'">'+\
     search_box +\
     list_title +\
     gen_instr_n_portf_table(burl, mode, what, step, maxrow, x) +\
