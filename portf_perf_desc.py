@@ -16,15 +16,18 @@ def get_desc_box(uid):
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT instruments.description, instruments.w_forecast_display_info, instruments.account_reference, instruments.unit, instruments.symbol from instruments JOIN symbol_list "+\
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT instruments.description, instruments.w_forecast_display_info, "+\
+    "instruments.account_reference, instruments.unit, instruments.symbol "+\
+    "FROM instruments JOIN symbol_list "+\
     "ON instruments.symbol = symbol_list.symbol WHERE symbol_list.uid=" + str(uid)
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     portf_summary = ""
-    for row in rs:
+    for row in res:
         portf_summary = row[0]
         portf_forecast = row[1]
         portf_account_ref = row[2]
@@ -33,23 +36,26 @@ def get_desc_box(uid):
 
     slang = get_selected_lang()
     l_wait = 'wait'
-    sql = "SELECT portf_descr, portf_recomm_buy, portf_recomm_sell FROM recommendations WHERE lang ='"+ slang +"' "
-    cr.execute(sql)
-    rs = cr.fetchall()
-    portf_descr =''; portf_recomm_buy =''; portf_recomm_sell = ''
-    for row in rs:
+    sql = "SELECT portf_descr, portf_recomm_buy, portf_recomm_sell "+\
+    "FROM recommendations WHERE lang ='"+ slang +"' "
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    portf_descr = ''
+    portf_recomm_buy = ''
+    portf_recomm_sell = ''
+    for row in res:
         portf_descr = row[0]
         portf_recomm_buy = row[1]
         portf_recomm_sell = row[2]
 
-    portf_descr = portf_descr.replace('{account_minimum}',str(int( portf_account_ref) ) )
+    portf_descr = portf_descr.replace('{account_minimum}', str(int(portf_account_ref)))
     portf_descr = portf_descr.replace('{unit}', portf_unit)
-    portf_descr = portf_descr.replace('{display_forecast}',str(portf_forecast) )
+    portf_descr = portf_descr.replace('{display_forecast}', str(portf_forecast))
 
-    sql ="SELECT price_close FROM chart_data WHERE uid="+ str(uid) +" ORDER by date DESC LIMIT 1"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    sql = "SELECT price_close FROM chart_data WHERE uid="+ str(uid) +" ORDER by date DESC LIMIT 1"
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         portf_last_price = row[0]
 
     #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
@@ -57,25 +63,31 @@ def get_desc_box(uid):
     portf_recomm = '<br /><br />'
     sql = 'SELECT order_type, alloc_fullname, entry_level, strategy_order_type FROM portfolios '+\
     "WHERE portf_symbol ='"+ portf_symbol +"'  ORDER BY alloc_fullname"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     i = 1
-    for row in rs:
+    for row in res:
         alloc_order_type = row[0]
         alloc_fullname = row[1]
         alloc_entry_price = row[2]
         alloc_strategy_order_type = row[3]
         added_order = False
 
-        if alloc_order_type.lower() == 'buy' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'long'):
-            portf_recomm = portf_recomm  + str(i)+') ' + portf_recomm_buy.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+        if alloc_order_type.lower() == 'buy' and\
+        (alloc_strategy_order_type == 'long/short' or\
+         alloc_strategy_order_type == 'long'):
+            portf_recomm = portf_recomm  + str(i)+') ' +\
+            portf_recomm_buy.replace('{portf_alloc_instr}', alloc_fullname)+ '<br />'
             added_order = True
 
-        if alloc_order_type.lower() == 'sell' and (alloc_strategy_order_type == 'long/short' or alloc_strategy_order_type == 'short'):
-            portf_recomm = portf_recomm + str(i)+') ' + portf_recomm_sell.replace('{portf_alloc_instr}',alloc_fullname)+ '<br />'
+        if alloc_order_type.lower() == 'sell' and\
+        (alloc_strategy_order_type == 'long/short' or\
+         alloc_strategy_order_type == 'short'):
+            portf_recomm = portf_recomm + str(i)+') ' +\
+            portf_recomm_sell.replace('{portf_alloc_instr}', alloc_fullname)+ '<br />'
             added_order = True
 
-        if added_order == False:
+        if not added_order:
             portf_recomm = portf_recomm + str(i)+') ' + l_wait + ' ' + alloc_fullname + '<br />'
         i += 1
 
@@ -85,15 +97,15 @@ def get_desc_box(uid):
     portf_descr = portf_descr.replace('{portf_recomm}',
                                       portf_recomm + '<br />')
     portf_descr = portf_descr.replace('{portf_last_price}',
-                                      str( round(portf_last_price - portf_account_ref,2)))
+                                      str(round(portf_last_price - portf_account_ref, 2)))
 
-    cr.close()
+    cursor.close()
     connection.close()
 
     portf_desc_box = '' +\
     '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-portf-perf-portf-chart" style="'+\
-    theme_return_this('','border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     '               <div><h6>'+ desc_box_title +'</h6></div>'+\
     '               <div class="sa-descr-box-sm">'+ portf_summary + ' ' + portf_descr +'</div>'+\
     '            </div>'+\
@@ -106,15 +118,16 @@ def get_perf_chart(uid):
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
 
     sql = "SELECT price_close FROM chart_data WHERE uid="+\
     str(uid) + " ORDER BY price_close LIMIT 1"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         minval = row[0]
 
     sql = "SELECT chart_data.symbol, chart_data.date, "+\
@@ -122,10 +135,10 @@ def get_perf_chart(uid):
     "instruments.account_reference FROM chart_data "+\
     "JOIN instruments ON chart_data.symbol = instruments.symbol "+\
     "WHERE chart_data.uid=" + str(uid) + " ORDER BY chart_data.date"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     data = ""
-    for row in rs:
+    for row in res:
         chart_date = row[1]
         price_close = row[2]
         portf_unit = row[4]
@@ -133,22 +146,23 @@ def get_perf_chart(uid):
         year = chart_date.strftime("%Y")
         month = chart_date.strftime("%m")
         day = chart_date.strftime("%d")
-        if data =="":
+        if data == "":
             data = data +\
             "[new Date("+\
             str(year)+", "+\
-            str(int(month)-1 )+", "+\
+            str(int(month)-1)+", "+\
             str(day)+"),"+str(price_close)+"]"
         else:
             data = data +\
             ",[new Date("+\
             str(year)+", "+\
-            str( int(month)-1 )+", "+\
+            str(int(month)-1)+", "+\
             str(day)+"),"+ str(price_close)+"]"
 
 
     chart_title = "Portfolio 1-Year Performance"
-    hAxis = "Date"; vAxis = "Price (" + portf_unit + ")"
+    haxis = "Date"
+    vaxis = "Price (" + portf_unit + ")"
     portf_perf_font_size = 10
 
     portf_perf_box = '' +\
@@ -157,25 +171,25 @@ def get_perf_chart(uid):
     '                       google.charts.setOnLoadCallback(drawChart);'+\
     '                       function drawChart() {'+\
     '                          var data = new google.visualization.DataTable();'+\
-    '                          data.addColumn("date", "'+ hAxis +'");'+\
-    '                          data.addColumn("number", "'+ vAxis +'");'+\
+    '                          data.addColumn("date", "'+ haxis +'");'+\
+    '                          data.addColumn("number", "'+ vaxis +'");'+\
     '                          data.addRows(['+data+']);'+\
     '                          var options = {'+\
     '                            title: "'+ chart_title +'", '+\
     '                            titleTextStyle: {color: '+\
-    theme_return_this('"black"','"white"') +'},'+\
+    theme_return_this('"black"', '"white"') +'},'+\
     '                            fontSize:'+\
     str(portf_perf_font_size) + ', '+\
     '                            legend: {position: "none", textStyle: {color: '+\
-    theme_return_this('"black"','"white"') +'} },'+\
+    theme_return_this('"black"', '"white"') +'} },'+\
     '                            backgroundColor: "transparent",'+\
     '                            vAxis: {viewWindow:{min: '+\
-    str( minval ) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+\
-    theme_return_this('',', textStyle: {color: "white"}') +' },'+\
+    str(minval) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+\
+    theme_return_this('', ', textStyle: {color: "white"}') +' },'+\
     '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+\
-    theme_return_this('',', textStyle: {color: "white"}') +' }, '+\
+    theme_return_this('', ', textStyle: {color: "white"}') +' }, '+\
     '                            series:{0: {areaOpacity: 0.3, color: '+\
-    theme_return_this('"#17a2b8"','"#ffffff"') +', lineWidth: 2} },'+\
+    theme_return_this('"#17a2b8"', '"#ffffff"') +', lineWidth: 2} },'+\
     '                            chartArea:{width:"90%",height:"80%"}'+\
     '                          };'+\
     '                          var chart = '+\
@@ -184,14 +198,16 @@ def get_perf_chart(uid):
     '                       }'+\
     '                   </script>'+\
     '               <div id="portf_perf_chart" class="sa-chart-hw-90"></div>'
-    cr.close()
+    cursor.close()
     connection.close()
     return portf_perf_box
 
 def get_chart_box(uid):
     """ xxx """
     chart_1y_perf = get_perf_chart(uid)
-    tab_1_label = 'Performance'; tab_1_link = '#perf'; tab_1_id = tab_1_link.replace('#','')
+    tab_1_label = 'Performance'
+    tab_1_link = '#perf'
+    tab_1_id = tab_1_link.replace('#', '')
     return_data = '' +\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-portf-perf-portf-chart">'+\
@@ -206,7 +222,7 @@ def get_chart_box(uid):
     '                  <div class="tab-content">'+\
     '                      <div id="'+\
     tab_1_id +'" class="tab-pane active" style="height: 325px; '+\
-    theme_return_this('','background-color: #20124d;') +'" ><br />'+\
+    theme_return_this('', 'background-color: #20124d;') +'" ><br />'+\
         chart_1y_perf +'</div>'+\
     '                  </div>'+\
     '            </div>'+\
