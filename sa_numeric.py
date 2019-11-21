@@ -1,19 +1,13 @@
 """ Numerical functions """
-import sys
-import os
-from pathlib import Path
 import numpy as np
 import math as math
-from math import exp, expm1
-
+import pymysql.cursors
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
 DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
-
-import pymysql.cursors
 
 def get_pct_change(ini_val,new_val):
     """ xxx """

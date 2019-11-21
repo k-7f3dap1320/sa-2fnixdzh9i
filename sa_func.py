@@ -12,11 +12,11 @@ DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
 
-def get_hash_string(s):
+def get_hash_string(text):
     """ xxx """
     return_data = ''
-    d = hashlib.md5(s.encode())
-    return_data = d.hexdigest()
+    data = hashlib.md5(text.encode())
+    return_data = data.hexdigest()
     return return_data
 
 def get_user():
@@ -35,11 +35,11 @@ def get_avatar(burl, height):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT avatar_id FROM users WHERE uid = '"+ str(uid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         avatar_id = row[0]
 
     if avatar_id != 0:
@@ -48,7 +48,7 @@ def get_avatar(burl, height):
         str(avatar_id) +'.png" style="vertical-align: middle;border-style: none;width: '+\
         str(height) +'px;">'
 
-    cr.close()
+    cursor.close()
     connection.close()
     return return_data
 
@@ -63,11 +63,14 @@ def is_subscribed_user():
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT is_subscribed FROM users WHERE uid = '"+ str(uid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: is_subscribed = row[0]
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        is_subscribed = row[0]
+    cursor.close()
+    connection.close()
     return_data = is_subscribed
     return return_data
 
@@ -93,12 +96,13 @@ def get_user_numeric_id():
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT id FROM users WHERE uid = '"+ str(uid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: return_data = row[0]
-    cr.close()
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        return_data = row[0]
+    cursor.close()
     connection.close()
     return return_data
 
@@ -111,12 +115,13 @@ def get_nickname():
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT nickname FROM users WHERE uid = '"+ get_user() +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: return_data = row[0]
-    cr.close()
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        return_data = row[0]
+    cursor.close()
     connection.close()
     return return_data
 
@@ -124,7 +129,7 @@ def get_portf_suffix():
     """ Get portfolio suffix """
     return 'PRF:'
 
-def get_uid(s):
+def get_uid(symbol):
     """ xxx """
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
@@ -132,14 +137,14 @@ def get_uid(s):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT uid FROM symbol_list WHERE symbol = '"+s+"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = "SELECT uid FROM symbol_list WHERE symbol = '"+ str(symbol) +"'"
+    cursor.execute(sql)
+    res = cursor.fetchall()
     uid = 0
-    for row in rs:
+    for row in res:
         uid = row[0]
-    cr.close()
+    cursor.close()
     connection.close()
     return uid
 
@@ -153,16 +158,18 @@ def get_etoro_symbol_from_uid(uid):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT etoro FROM symbol_list WHERE uid = "' + str(uid) + '"'
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         etoro_symbol = row[0]
+    cursor.close()
+    connection.close()
     return_data = etoro_symbol
     return return_data
 
-def get_uid_from_symbol(s):
+def get_uid_from_symbol(symbol):
     """ xxx """
     return_data = 0
     uid = 0
@@ -172,12 +179,14 @@ def get_uid_from_symbol(s):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT uid FROM symbol_list WHERE symbol = "'+ str(s) +'"'
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT uid FROM symbol_list WHERE symbol = "'+ str(symbol) +'"'
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         uid = row[0]
+    cursor.close()
+    connection.close()
     return_data = uid
     return return_data
 
@@ -190,14 +199,14 @@ def get_uid_from_tvws(tvws):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE tradingview = '"+ str(tvws) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     uid = 0
-    for row in rs:
+    for row in res:
         uid = row[0]
-    cr.close()
+    cursor.close()
     connection.close()
     return uid
 
@@ -211,25 +220,25 @@ def get_user_default_profile():
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT default_profile FROM users WHERE uid = '"+ str(user_uid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     default_profile = ''
-    for row in rs:
+    for row in res:
         default_profile = row[0]
-    cr.close()
+    cursor.close()
     connection.close()
     return_data = default_profile
     return return_data
 
-def get_random_str(n):
+def get_random_str(length):
     """ xxx """
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
-def get_random_num(n):
+def get_random_num(number):
     """ xxx """
-    maxnum = int(n)
+    maxnum = int(number)
     return random.randint(1, maxnum)
 
 def get_selected_lang():
@@ -245,13 +254,15 @@ def get_signal(uid):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT badge FROM feed JOIN symbol_list ON symbol_list.symbol = feed.symbol "+\
     "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         badge = row[0]
+    cursor.close()
+    connection.close()
 
     if badge.find('-0') == -1 and\
         badge.find('-1') == -1 and\
@@ -281,7 +292,7 @@ def get_elapsed_time(vminutes):
 
     return return_data
 
-def go_to_url(q, return_what, uniqid):
+def go_to_url(url, return_what, uniqid):
     """ xxx """
     #---------------------------------
     # q = [url to redirect]
@@ -296,14 +307,14 @@ def go_to_url(q, return_what, uniqid):
     # uniqid = [a unique id to identify the form]
     #---------------------------------
     return_data = ''
-    return_data = 'url/?q=' + str(q)
+    return_data = 'url/?q=' + str(url)
 
     content = ''
     if return_what == 'form':
         content = '<form id="'+\
         str(uniqid) +'" " action="'+ 'url/' +\
         '" method="post" target="_blank"><input type="hidden" id="q" name="q" value="'+\
-        str(q) +'"></form>'
+        str(url) +'"></form>'
 
     if return_what == 'link':
         content = 'href="javascript:{}" onclick="document.getElementById(\''+\
@@ -320,7 +331,7 @@ def send_email_to_queue(send_to, email_subject, email_content, priority):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
 
     sql = 'INSERT INTO email_queue '+\
     '(from_email, from_email_displayname, send_to_email_bcc, '+\
@@ -331,9 +342,9 @@ def send_email_to_queue(send_to, email_subject, email_content, priority):
     str(email_content) +'",'+\
     str(priority) +')'
 
-    cr.execute(sql)
+    cursor.execute(sql)
     connection.commit()
-    cr.close()
+    cursor.close()
     connection.close()
 
 def get_broker_affiliate_link(broker, what):
@@ -350,15 +361,16 @@ def get_broker_affiliate_link(broker, what):
                                  db=DB_NAME,
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT affiliate_link, burl FROM brokers WHERE broker_id ='"+ str(broker) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         affiliate_link = row[0]
         baseurl = row[1]
-    cr.close()
+    cursor.close()
     connection.close()
+
     if what == 'affiliate':
         return_data = affiliate_link
     else:
