@@ -87,7 +87,6 @@ def go():
         ins = request.values.get('ins')
         step = request.values.get('step')
         mode = request.values.get('mode')
-        portf = request.values.get('portf')
         pop = request.values.get('pop')
         delete = request.values.get('delete')
         dashboard = request.values.get('dashboard')
@@ -103,7 +102,7 @@ def go():
         if ins == '4': 
             c = portf_save_conviction(burl,mode,x)
         if ins == '5': 
-            c = portf_save(appname,burl)
+            c = portf_save(burl)
         if ins is None: 
             c = gen_portf_page(uid,appname,burl,pop)
         if delete is not None: 
