@@ -13,26 +13,29 @@ DB_SRV = ACCESS_OBJ.db_server()
 def get_tradingview_symbol_info(suid):
     """ Get tradingview symbol info widget """
     return_data = ''
-    url = get_broker_affiliate_link('Tradingview','baseurl')
+    url = get_broker_affiliate_link('Tradingview', 'baseurl')
     symbol = ''
     label_not_available = 'Indicators are not available for this instrument'
     theme = get_sa_theme()
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT tradingview FROM symbol_list WHERE uid ='"+ str(suid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: symbol = row[0]
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        symbol = row[0]
 
     if symbol != '':
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
         '  <div class="tradingview-widget-container__widget"></div>'+\
-        '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>'+\
+        '  <script type="text/javascript" '+\
+        'src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>'+\
         '  {'+\
         '  "symbol": "'+ symbol +'",'+\
         '  "width": "100%",'+\
@@ -45,6 +48,6 @@ def get_tradingview_symbol_info(suid):
         '</div>'
     else:
         return_data = label_not_available
-    cr.close()
+    cursor.close()
     connection.close()
     return return_data
