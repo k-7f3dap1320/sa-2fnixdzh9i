@@ -129,7 +129,7 @@ def go():
         if step == 'c': 
             c = gen_selectmarket_page(appname,burl,mode)
         elif step == 'd': 
-            c= save_selectmarket(burl,mode,x)
+            c= save_selectmarket(burl, x)
         else: 
             c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
 

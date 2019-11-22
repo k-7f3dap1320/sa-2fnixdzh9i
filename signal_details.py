@@ -10,7 +10,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_signal_details(uid,burl,mode):
+def get_signal_details(uid, burl, mode):
     """ xxx """
     # =============================================================================
     # uid = symbol uid
@@ -23,21 +23,23 @@ def get_signal_details(uid,burl,mode):
     button_href = burl + 's/?uid=' + str(uid)
     etoro_symbol = get_etoro_symbol_from_uid(uid)
     trade_href = get_broker_affiliate_link(broker, 'baseurl') + str(etoro_symbol)
-    
+
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT instruments.symbol, "+\
     "instruments.trade_1_entry, instruments.trade_1_tp, instruments.trade_1_sl, "+\
     "instruments.trade_3_entry, instruments.trade_3_tp, instruments.trade_3_sl, "+\
-    "instruments.decimal_places FROM instruments JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
+    "instruments.decimal_places FROM instruments "+\
+    "JOIN symbol_list ON symbol_list.symbol = instruments.symbol "+\
     "WHERE symbol_list.uid=" + str(uid)
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs:
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
         symbol = row[0]
         trade_1_entry = row[1]
         trade_1_tp = row[2]
@@ -49,30 +51,30 @@ def get_signal_details(uid,burl,mode):
 
     sql = "SELECT badge FROM feed JOIN symbol_list ON symbol_list.symbol = feed.symbol "+\
     "WHERE symbol_list.uid=" + str(uid) + " AND feed.type=1 "
-    cr.execute(sql)
-    rs = cr.fetchall()
+    cursor.execute(sql)
+    res = cursor.fetchall()
     badge = ''
-    for row in rs:
+    for row in res:
         badge = row[0]
 
     if (badge.find('-0') == -1 and badge.find('-1') == -1 and
-    badge.find('-2') == -1 and badge.find('-3') == -1 and
-    badge.find('-4') == -1 and badge.find('-5') == -1 and
-    badge.find('-6') == -1 and badge.find('-7') == -1 and
-    badge.find('-8') == -1 and badge.find('-9') == -1) :
+            badge.find('-2') == -1 and badge.find('-3') == -1 and
+            badge.find('-4') == -1 and badge.find('-5') == -1 and
+            badge.find('-6') == -1 and badge.find('-7') == -1 and
+            badge.find('-8') == -1 and badge.find('-9') == -1):
         signal = '<a href="javascript:{}" '+\
         'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         ' class="btn btn-outline-success"><h4>Buy</h4></a>'
         entry = trade_1_entry
-        tp = trade_1_tp
-        sl = trade_1_sl
+        target_price = trade_1_tp
+        stop_loss = trade_1_sl
     else:
         signal = '<a href="javascript:{}" '+\
         'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         'class="btn btn-outline-danger"><h4>Sell</h4></a>'
         entry = trade_3_entry
-        tp = trade_3_tp
-        sl = trade_3_sl
+        target_price = trade_3_tp
+        stop_loss = trade_3_sl
 
     hd_entry = 'Entry @'
     hd_tp = 'Target price'
@@ -80,13 +82,18 @@ def get_signal_details(uid,burl,mode):
 
     c_symbol = ''
     c_signal_column_width = 'style="width: 10%"'
-    if (mode == 'newsfeed'):
-        c_symbol = '<td rowspan="2"><a href="'+ button_href +'" class="btn btn-outline-info"><h4>'+ str(symbol) +'</h4></a></td>'
+
+    if mode == 'newsfeed':
+        c_symbol = '<td rowspan="2"><a href="'+\
+        button_href +\
+        '" class="btn btn-outline-info"><h4>'+\
+        str(symbol) +'</h4></a></td>'
         c_signal_column_width = ''
+
     c_signal = signal
-    c_entry = str( round(entry, decimal_places) )
-    c_tp = str( round(tp, decimal_places) )
-    c_sl = str( round(sl, decimal_places) )
+    c_entry = str(round(entry, decimal_places))
+    c_tp = str(round(target_price, decimal_places))
+    c_sl = str(round(stop_loss, decimal_places))
 
     descr_box = '' +\
     '               <table class="table table-sm sa-table-sm">'+\
@@ -106,7 +113,7 @@ def get_signal_details(uid,burl,mode):
     '                   </tbody>'+\
     '               </table>'
 
-    cr.close()
+    cursor.close()
     connection.close()
 
     return descr_box

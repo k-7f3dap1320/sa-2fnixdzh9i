@@ -1,8 +1,7 @@
 """ Tradingview interactive chart """
+import pymysql.cursors
 from app_cookie import get_sa_theme
 from sa_func import get_broker_affiliate_link
-import pymysql.cursors
-
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -10,28 +9,32 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_tradingview_chart(suid,width,height):
+def get_tradingview_chart(suid, width, height):
     """ Get tradingview interactive chart """
     return_data = ''
     symbol = ''
-    referral_id = get_broker_affiliate_link('Tradingview','affiliate')
+    referral_id = get_broker_affiliate_link('Tradingview', 'affiliate')
     label_not_available = 'Live chart is not available for this instrument'
     theme = get_sa_theme()
     allow_symbol_change = 'false'
-    
+
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
-                                 db=DB_NAME,charset='utf8mb4',
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    cr = connection.cursor(pymysql.cursors.SSCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT tradingview_chart FROM symbol_list WHERE uid ='"+ str(suid) +"'"
-    cr.execute(sql)
-    rs = cr.fetchall()
-    for row in rs: symbol = row[0]
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        symbol = row[0]
 
-    if str(width) == '0': width = '"100%"'
-    if str(height) == '0': height = '"100%"'
+    if str(width) == '0':
+        width = '"100%"'
+    if str(height) == '0':
+        height = '"100%"'
 
     if symbol != '':
         return_data = '' +\
@@ -64,6 +67,6 @@ def get_tradingview_chart(suid,width,height):
     else:
         return_data = label_not_available
 
-    cr.close()
+    cursor.close()
     connection.close()
     return return_data
