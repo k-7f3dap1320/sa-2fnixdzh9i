@@ -28,25 +28,25 @@ def get_minmax(uid, what):
     res = cursor.fetchall()
 
     for row in res:
-        y1 = row[0]
-        m6 = row[1]
-        m3 = row[2]
-        m1 = row[3]
-        w1 = row[4]
+        y_1 = row[0]
+        m_6 = row[1]
+        m_3 = row[2]
+        m_1 = row[3]
+        w_1 = row[4]
         unit = row[5]
 
     margin = 0
     if unit.lower() != 'pips':
-        y1 = y1*100
-        m6 = m6*100
-        m3 = m3*100
-        m1 = m1*100
-        w1 = w1*100
+        y_1 = y_1 * 100
+        m_6 = m_6 * 100
+        m_3 = m_3 * 100
+        m_1 = m_1 * 100
+        w_1 = w_1 * 100
         margin = 0.05
     else:
         margin = 20
 
-    list_val = [y1, m6, m3, m1, w1]
+    list_val = [y_1, m_6, m_3, m_1, w_1]
     if what == 'min':
         data = min(list_val) - margin
     if what == 'max':
@@ -75,47 +75,46 @@ def get_chart_data(uid, period):
     res = cursor.fetchall()
 
     for row in res:
-        y1 = row[1]
-        m6 = row[2]
-        m3 = row[3]
-        m1 = row[4]
-        w1 = row[5]
+        y_1 = row[1]
+        m_6 = row[2]
+        m_3 = row[3]
+        m_1 = row[4]
+        w_1 = row[5]
         unit = row[6]
 
     if unit.lower() == 'pips':
-        y1 = int(y1)
-        m6 = int(m6)
-        m3 = int(m3)
-        m1 = int(m1)
-        w1 = int(w1)
+        y_1 = int(y_1)
+        m_6 = int(m_6)
+        m_3 = int(m_3)
+        m_1 = int(m_1)
+        w_1 = int(w_1)
     else:
-        y1 = round(y1 * 100, 2)
-        m6 = round(m6 * 100, 2)
-        m3 = round(m3 * 100, 2)
-        m1 = round(m1 * 100, 2)
-        w1 = round(w1 * 100, 2)
+        y_1 = round(y_1 * 100, 2)
+        m_6 = round(m_6 * 100, 2)
+        m_3 = round(m_3 * 100, 2)
+        m_1 = round(m_1 * 100, 2)
+        w_1 = round(w_1 * 100, 2)
         unit = '%'
-
 
     cursor.close()
     connection.close()
 
     data = "null,''"
     if period == 'y1':
-        if y1 != 0:
-            data = str(y1) + ',"' + str(y1) +' '+ str(unit)  + '"'
+        if y_1 != 0:
+            data = str(y_1) + ',"' + str(y_1) +' '+ str(unit)  + '"'
     if period == 'm6':
-        if m6 != 0:
-            data = str(m6) + ',"' + str(m6) +' '+ str(unit)  + '"'
+        if m_6 != 0:
+            data = str(m_6) + ',"' + str(m_6) +' '+ str(unit)  + '"'
     if period == 'm3':
-        if m3 != 0:
-            data = str(m3) + ',"' + str(m3) +' '+ str(unit)  + '"'
+        if m_3 != 0:
+            data = str(m_3) + ',"' + str(m_3) +' '+ str(unit)  + '"'
     if period == 'm1':
-        if m1 != 0:
-            data = str(m1) + ',"' + str(m1) +' '+ str(unit)  + '"'
+        if m_1 != 0:
+            data = str(m_1) + ',"' + str(m_1) +' '+ str(unit)  + '"'
     if period == 'w1':
-        if w1 != 0:
-            data = str(w1) + ',"' + str(w1) +' '+ str(unit)  + '"'
+        if w_1 != 0:
+            data = str(w_1) + ',"' + str(w_1) +' '+ str(unit)  + '"'
 
     return data
 

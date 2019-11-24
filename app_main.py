@@ -37,7 +37,7 @@ def gen_main_page(selection, appname, burl, is_dashboard, tour, nonavbar):
         dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
         dashboard_content = dashboard_content +\
         '<div class="row">' + get_trades_box(0, burl, is_dashboard) +\
-        get_control_center_aggregate_perf(burl) + '</div>'
+        get_control_center_aggregate_perf() + '</div>'
     else:
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
@@ -65,7 +65,7 @@ def gen_main_page(selection, appname, burl, is_dashboard, tour, nonavbar):
     return_data = return_data + get_body(get_loading_body(), navbarcontent +\
                                          gen_tour_popup(tour, burl) +\
                                          get_signin_box(burl) +\
-                                         get_box_user_profile_header(burl) +\
+                                         get_box_user_profile_header() +\
                                          dashboard_content + get_page_footer(burl) +\
                                          get_purechat(0))
     return_data = set_page(return_data)
