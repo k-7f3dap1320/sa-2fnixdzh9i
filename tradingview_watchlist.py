@@ -1,6 +1,6 @@
 """ Tradingview watchlist """
 import pymysql.cursors
-from sa_func import get_broker_affiliate_link, get_user_default_profile
+from sa_func import get_broker_affiliate_link, get_user_default_profile, get_user_numeric_id
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -8,7 +8,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_tradingview_watchlist(width,height):
+def get_tradingview_watchlist(width, height):
     """ xxx """
     if width == '0':
         width = '100%'
@@ -32,10 +32,10 @@ def get_tradingview_watchlist(width,height):
     '  "width": "100%",'+\
     '  "height": "100%",'+\
     '  "symbolsGroups": ['+\
-    get_tradingview_list_content(l_list_strategy_portfolio,'port', False) +\
-    get_tradingview_list_content(l_list_top_5_best_performers,'best', False) +\
-    get_tradingview_list_content(l_list_top_5_worst_performers,'worst', False) +\
-    get_tradingview_list_content(l_list_watchlist, 'watchlist', False) +\
+    get_tradingview_list_content(l_list_strategy_portfolio, 'port', False) +\
+    get_tradingview_list_content(l_list_top_5_best_performers, 'best', False) +\
+    get_tradingview_list_content(l_list_top_5_worst_performers, 'worst', False) +\
+    get_tradingview_list_content(l_list_watchlist, 'watchlist', True) +\
     '  ],'+\
     '  "locale": "en",'+\
     '  "largeChartUrl": "'+ str(url) +'"'+\
@@ -60,7 +60,8 @@ def get_tradingview_list_content(list_name, what, is_last_one):
         String: list content
     """
     ret = ''
-    user_default_profile = get_screener_market(get_user_default_profile())
+    user_default_profile = get_user_default_profile()
+    user_id = get_user_numeric_id()
     if is_last_one:
         list_separator = ''
     else:
@@ -74,13 +75,31 @@ def get_tradingview_list_content(list_name, what, is_last_one):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     if what == 'port':
-        sql = 'SELECT '
+        sql = 'SELECT DISTINCT symbol_list.tradingview, inst_2.fullname FROM portfolios '+\
+        'JOIN instruments as inst_1 ON portfolios.portf_symbol = inst_1.symbol '+\
+        'JOIN instruments as inst_2 ON  inst_2.symbol = portfolios.symbol '+\
+        'JOIN symbol_list ON symbol_list.symbol = portfolios.symbol '+\
+        'WHERE inst_1.owner = '+ str(user_id) +' ORDER BY ABS(inst_1.d1) DESC'
     elif what == 'best':
-        sql = 'SELECT '
+        sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
+        'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
+        'WHERE instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'ORDER BY instruments.d1 DESC LIMIT 5'
     elif what == 'worst':
-        sql = 'SELECT '
+        sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
+        'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
+        'WHERE instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'ORDER BY instruments.d1 LIMIT 5'
     else:
-        sql = 'SELECT '
+        sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
+        'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
+        'WHERE instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'ORDER BY ABS(instruments.d1) DESC LIMIT 100'
+
+
     cursor.execute(sql)
     res = cursor.fetchall()
 
@@ -88,17 +107,21 @@ def get_tradingview_list_content(list_name, what, is_last_one):
     '{'+\
     '  "name": "'+ str(list_name) +'",'+\
     '  "symbols": ['
-    i  = 1
+    i = 1
     sep = ''
+    symbol = ''
+    display_name = ''
     for row in res:
+        symbol = row[0]
+        display_name = row[1]
         if i != 1:
             sep = ','
 
         list_content = list_content +\
         sep +\
         '{'+\
-        '  "name": "OANDA:SPX500USD",'+\
-        '  "displayName": "S&P 500"'+\
+        '  "name": "'+ str(symbol) +'",'+\
+        '  "displayName": "'+ str(display_name) +'"'+\
         '}'
 
         i += 1
