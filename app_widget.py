@@ -19,6 +19,7 @@ from tradingview_chart import get_tradingview_chart
 from tradingview_ecocal import get_tradingview_ecocal
 from tradingview_fxcross import get_tradingview_fxcross
 from tradingview_fxheatmap import get_tradingview_fxheatmap
+from tradingview_screener import get_tradingview_screener
 from trades_tab import get_trades_box
 from news_feed import get_newsfeed
 #-------------------------------------------------------------------------------
