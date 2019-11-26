@@ -26,6 +26,7 @@ from error_page import get_error_page
 from portf_gen_user_example import gen_portf_user_example, gen_portf_validate_content
 from how_page import get_help_page
 from intel_report import get_intel_page
+from sa_terminal import get_sa_terminal_page
 from set_theme import theme_redirect
 from app_settings import save_settings, get_settings_page
 from app_search import get_search_page, get_search_result
@@ -46,6 +47,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
 @application.route('/w/', endpoint='w', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
+@application.route('/terminal/', endpoint='terminal', methods=["POST","GET"])
 @application.route('/theme/', endpoint='theme', methods=["POST","GET"])
 @application.route('/login/', endpoint='login', methods=["POST", "GET"])
 @application.route('/logout/', endpoint='logout', methods=["POST", "GET"])
@@ -150,6 +152,9 @@ def go():
 
     elif request.endpoint == 'intelligence':
         c = get_intel_page(appname,burl)
+
+    elif request.endpoint == 'terminal':
+        c = get_sa_terminal_page(appname,burl)
 
     elif request.endpoint == 'theme':
         switch_to = ''
