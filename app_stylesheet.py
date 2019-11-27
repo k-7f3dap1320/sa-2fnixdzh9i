@@ -85,6 +85,13 @@ def get_stylesheet(burl):
 
     sa_center_content = '.sa-center-content{text-align:center;}'
     sa_navbar_text = '.sa-navbar-text{font-size: small;}'
+    
+    sa_cursor = '.sa-cursor { position: relative;}'+\
+    '.sa-cursor	i { position: absolute; width: 10px; height: 80%; background-color: #00ffff;'+\
+    'left: 5px; top: 10%; animation-name: blink; animation-duration: 1000ms;'+\
+    'animation-iteration-count: infinite; opacity: 1;}'+\
+    '.sa-cursor input:focus + i {display: none;}'+\
+    '@keyframes blink {from { opacity: 1; } to { opacity: 0; }}'
 
     #Page loading gif display
     loading = ''+\
@@ -133,6 +140,7 @@ def get_stylesheet(burl):
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
     sa_navbar_text +\
+    sa_cursor +\
     loading +\
     form_signin +\
     form_signin_text_dark +\

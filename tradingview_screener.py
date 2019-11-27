@@ -32,8 +32,6 @@ def get_tradingview_screener(width, height):
     '}'+\
     '  </script>'+\
     '</div>'
-    
-    print(tradingview)
 
     ret = tradingview
     return ret
