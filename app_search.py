@@ -102,10 +102,6 @@ def get_box_search(burl, nonavbar):
 
     search_box = ' '+\
     '  <form class="" action="'+ burl +'" method="get" id="searchForm" name="searhcForm" >'+\
-    '       <div class="input-group input-group-lg">'+\
-    '       <div class="input-group-prepend"><span class="input-group-text" '+\
-    'id="inputGroup-sizing-lg"><i class="fas fa-search" '+\
-    'style="font-size: xx-large;"></i></span></div>'+\
     '<div class="sa-cursor">'+\
     '<input type="search" id="filterInput" name="'+\
     str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" '+\
@@ -113,7 +109,6 @@ def get_box_search(burl, nonavbar):
     'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
     l_placeholder +'" style="background: transparent;" autofocus>'+\
     '<i></i>'+\
-    '</div>'+\
     '</div><div>&nbsp;'+\
     '       </div>'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
