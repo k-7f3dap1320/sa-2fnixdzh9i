@@ -83,20 +83,20 @@ def get_tradingview_list_content(list_name, what, is_last_one):
     elif what == 'best':
         sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
         'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
-        'WHERE symbol_list.disabled=0 AND instruments.asset_class LIKE "%'+ str(user_default_profile) +\
-        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'WHERE symbol_list.disabled=0 AND (instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%") '+\
         'ORDER BY instruments.d1 DESC LIMIT 5'
     elif what == 'worst':
         sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
         'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
-        'WHERE symbol_list.disabled=0 AND instruments.asset_class LIKE "%'+ str(user_default_profile) +\
-        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'WHERE symbol_list.disabled=0 AND (instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%") '+\
         'ORDER BY instruments.d1 LIMIT 5'
     else:
         sql = 'SELECT symbol_list.tradingview, instruments.fullname FROM instruments '+\
         'JOIN symbol_list ON instruments.symbol = symbol_list.symbol '+\
-        'WHERE symbol_list.disabled=0 AND instruments.asset_class LIKE "%'+ str(user_default_profile) +\
-        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%" '+\
+        'WHERE symbol_list.disabled=0 AND (instruments.asset_class LIKE "%'+ str(user_default_profile) +\
+        '%" OR instruments.market LIKE "%'+ str(user_default_profile) +'%") '+\
         'ORDER BY ABS(instruments.d1) DESC LIMIT 100'
 
 
