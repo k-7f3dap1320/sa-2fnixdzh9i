@@ -152,9 +152,10 @@ def get_search_result(query):
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = "SELECT url FROM feed WHERE search LIKE '%"+\
-    str(query) +"%' and type<>"+ str(feed_type_filter_out) + " "+\
-    " and sa_function LIKE '%" + str(query) + "%'"
+    sql = "SELECT url FROM feed WHERE (search LIKE '%"+\
+    str(query) +"%' or sa_function LIKE '%" + str(query) + "%') "+\
+    "and type<>"+ str(feed_type_filter_out)
+   
     cursor.execute(sql)
     res = cursor.fetchall()
     url = ''
