@@ -5,9 +5,9 @@ from sa_func import get_broker_affiliate_link, get_user_default_profile
 def get_tradingview_screener(width, height):
     """ xxx """
     ret = ''
-    if width == '0':
+    if str(width) == '0':
         width = '100%'
-    if height == '0':
+    if str(height) == '0':
         height = '100%'
     market_selection = get_screener_market(get_user_default_profile())
     theme = get_sa_theme()
