@@ -25,7 +25,7 @@ def get_tradingview_screener(width, height, market):
     if str(market) == '0':
         market_selection = get_screener_market(get_user_default_profile())
     else:
-        market_selection = str(market)
+        market_selection = get_screener_market(str(market))
         
     theme = get_sa_theme()
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
