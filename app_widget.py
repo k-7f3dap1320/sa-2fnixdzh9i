@@ -12,6 +12,7 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import get_sa_theme
+from sa_func import redirect_if_not_logged_in
 #-------------------------------------------------------------------------------
 # Insert here module of the widget to load
 #-------------------------------------------------------------------------------
@@ -62,6 +63,7 @@ def get_widget_page(appname, burl, nonavbar, funcname, refresh_in_second, noflex
                            get_title(appname) +\
                            metarefresh +\
                            get_metatags(burl) +\
+                           redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
