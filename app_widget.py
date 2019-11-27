@@ -28,7 +28,10 @@ def get_widget_content(burl, nonavbar, funcname, noflexheight):
     """ xxx """
     box_content = ''
     box_class = 'box'
-    box_vh = 'height:100vh;width:100vw;margin-left:-15px;'
+    
+    box_vh = 'height:100vh;width:100vw;margin-left:-15px;'+\
+    'overflow-x:hidden;overflow-y:hidden;'
+    
     if nonavbar is None:
         box_class = 'box-top'
         box_vh = 'height:89vh;'
