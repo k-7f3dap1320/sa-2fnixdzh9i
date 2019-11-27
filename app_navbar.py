@@ -77,7 +77,7 @@ def get_about_menu():
 
 def navbar(burl, disable_search):
     """ xxx """
-    search_placeholder = '<search> function, ticker...'
+    search_placeholder = ' <search> function, ticker...'
     sid = get_random_str(9)
     l_join_now_btn = 'Join now'
     l_themeswitch = 'Theme: Light/Dark'
