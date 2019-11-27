@@ -11,7 +11,7 @@ from app_loading import get_loading_head, get_loading_body
 from app_stylesheet import get_stylesheet
 from app_navbar import navbar
 from font_awesome import get_font_awesome
-from app_cookie import get_sa_theme
+from app_cookie import get_sa_theme, theme_return_this
 from googleanalytics import get_googleanalytics
 from googleadsense import get_googleadsense
 from list_instr_n_portf import get_box_list_instr_n_portf

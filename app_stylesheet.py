@@ -54,7 +54,7 @@ def get_stylesheet(burl):
     #Specific settings
     sa_search_input = '#sa-search-input{width: 250px; font-size: '+\
     'small;background: transparent; border-top: none; border-left: none; '+\
-    'border-right: none; border-bottom: solid; border-color: #00ffff;}'
+    'border-right: none; border-bottom: solid; border-color: #00ffff; border-width: thin;}'
 
     sa_table_sm = '.sa-table-sm{font-size: small;}'
     sa_table_click_row = '.sa-table-click-row{cursor:pointer;}'
@@ -85,7 +85,7 @@ def get_stylesheet(burl):
 
     sa_center_content = '.sa-center-content{text-align:center;}'
     sa_navbar_text = '.sa-navbar-text{font-size: small;}'
-    
+
     sa_cursor = '.sa-cursor { position: relative;}'+\
     '.sa-cursor	i { position: absolute; width: 10px; height: 80%; background-color: #00ffff;'+\
     'left: 5px; top: 10%; animation-name: blink; animation-duration: 1000ms;'+\

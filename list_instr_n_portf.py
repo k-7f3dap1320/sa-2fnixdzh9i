@@ -404,13 +404,14 @@ def get_box_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
     list_title = ''
     list_class = 'sa-center-content sa-list-select-100pct sa-instr-n-portf-list'
 
-    search_box = '<div class="input-group input-group-lg">'+\
-    '<div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-lg">'+\
-    '<i class="fas fa-search" style="font-size: xx-large;"></i></span></div>'+\
+    search_box = '<div class="sa-cursor">'+\
     '<input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" '+\
     'class="form-control" aria-label="Large" '+\
-    'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-    l_placeholder +'" autofocus></div><div>&nbsp;</div>'
+    'aria-describedby="inputGroup-sizing-sm" style="background: transparent; '+\
+    theme_return_this('','color: white;') +'" placeholder="'+\
+    l_placeholder +'" autofocus>'+\
+    '<i></i>'+\
+    '</div><div>&nbsp;</div>'
 
     if mode == 'dashboard':
         list_title = '<span class="sectiont"><i class="fas fa-chart-pie"></i>&nbsp;'+\
