@@ -20,6 +20,7 @@ from tradingview_ecocal import get_tradingview_ecocal
 from tradingview_fxcross import get_tradingview_fxcross
 from tradingview_fxheatmap import get_tradingview_fxheatmap
 from tradingview_screener import get_tradingview_screener
+from tradingview_watchlist import get_tradingview_watchlist
 from trades_tab import get_trades_box
 from news_feed import get_newsfeed
 #-------------------------------------------------------------------------------
@@ -28,10 +29,10 @@ def get_widget_content(burl, nonavbar, funcname, noflexheight):
     """ xxx """
     box_content = ''
     box_class = 'box'
-    
+
     box_vh = 'height:100vh;width:100vw;margin-left:-15px;'+\
     'overflow-x:hidden;overflow-y:hidden;'
-    
+
     if nonavbar is None:
         box_class = 'box-top'
         box_vh = 'height:89vh;'
@@ -55,7 +56,7 @@ def get_widget_page(appname, burl, nonavbar, funcname, refresh_in_second, noflex
         navbarcontent = navbar(burl, 0)
     if refresh_in_second is not None:
         metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
-    
+
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
@@ -65,7 +66,7 @@ def get_widget_page(appname, burl, nonavbar, funcname, refresh_in_second, noflex
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
-    
+
     return_data = return_data + get_body(get_loading_body(), navbarcontent +\
                                          get_widget_content(burl,
                                                             nonavbar,
