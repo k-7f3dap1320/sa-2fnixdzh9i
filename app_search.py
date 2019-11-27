@@ -107,7 +107,8 @@ def get_box_search(burl, nonavbar):
     str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" '+\
     'class="form-control" aria-label="Large" '+\
     'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-    l_placeholder +'" style="background: transparent;" autofocus>'+\
+    l_placeholder +'" style="background: transparent;'+\
+    theme_return_this('','color: white;')  +'" autofocus>'+\
     '<i></i>'+\
     '</div><div>&nbsp;'+\
     '       </div>'+\
