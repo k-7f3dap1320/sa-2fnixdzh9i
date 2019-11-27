@@ -6,9 +6,9 @@ def get_tradingview_screener(width, height):
     """ xxx """
     ret = ''
     if width == '0':
-        width = '100%'
+        width = '"100%"'
     if height == '0':
-        height = '100%'
+        height = '"100%"'
     market_selection = get_screener_market(get_user_default_profile())
     theme = get_sa_theme()
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
@@ -27,7 +27,7 @@ def get_tradingview_screener(width, height):
     '  "showToolbar": true,'+\
     '  "colorTheme": "'+ str(theme) +'",'+\
     '  "locale": "en",'+\
-    '  "isTransparent": true'+\
+    '  "isTransparent": true,'+\
     '  "largeChartUrl": "'+ str(url) +'"'+\
     '}'+\
     '  </script>'+\
