@@ -145,7 +145,7 @@ def get_newsfeed(burl, sel, suid, numline, show_chart):
     '</style>'
 
     i = 1
-    newsrow = newnewscss + newsrow + '<div class="row">'
+    newsrow = newnewscss + newsrow + '<div class="box"><div class="row">'
     for row in res:
         unistr = 'x'+ str(get_random_str(10)) + 'x'
 
@@ -213,7 +213,7 @@ def get_newsfeed(burl, sel, suid, numline, show_chart):
         draw_feed_chart(sel, show_chart, news_ranking, symbol) +\
         '    </div>'
         i += 1
-    newsrow = newsrow + '</div>'
+    newsrow = newsrow + '</div></div>'
     cursor.close()
     connection.close()
 

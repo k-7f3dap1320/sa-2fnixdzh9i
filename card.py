@@ -139,13 +139,13 @@ def get_card(selection, type_sel, burl):
             '        </div>'
 
     if type_sel == 9:
-        return_data = return_data + '</div></div><a href="'+\
+        return_data = return_data + '</div></div><div class="box"><a href="'+\
         button_portf_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-        '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
+        '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
     if type_sel == 1:
-        return_data = return_data + '</div></div><a href="'+\
+        return_data = return_data + '</div></div><div class="box"><a href="'+\
         button_signals_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-        '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a>'
+        '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
 
     cursor.close()
     connection.close()
