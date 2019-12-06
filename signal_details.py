@@ -81,8 +81,8 @@ def get_signal_details(uid, burl, mode):
         'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
         'class="btn btn-outline-primary"><h4>Wait</h4></a>'
         entry = trade_1_entry
-        target_price = trade_1_tp
-        stop_loss = trade_1_sl
+        target_price = 0
+        stop_loss = 0
 
     hd_entry = 'Entry @'
     hd_tp = 'Target price'
