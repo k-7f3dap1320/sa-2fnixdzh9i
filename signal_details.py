@@ -56,25 +56,33 @@ def get_signal_details(uid, burl, mode):
     badge = ''
     for row in res:
         badge = row[0]
-
-    if (badge.find('-0') == -1 and badge.find('-1') == -1 and
-            badge.find('-2') == -1 and badge.find('-3') == -1 and
-            badge.find('-4') == -1 and badge.find('-5') == -1 and
-            badge.find('-6') == -1 and badge.find('-7') == -1 and
-            badge.find('-8') == -1 and badge.find('-9') == -1):
-        signal = '<a href="javascript:{}" '+\
-        'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
-        ' class="btn btn-outline-success"><h4>Buy</h4></a>'
-        entry = trade_1_entry
-        target_price = trade_1_tp
-        stop_loss = trade_1_sl
+    
+    if badge.find('-999') == -1:
+        if (badge.find('-0') == -1 and badge.find('-1') == -1 and
+                badge.find('-2') == -1 and badge.find('-3') == -1 and
+                badge.find('-4') == -1 and badge.find('-5') == -1 and
+                badge.find('-6') == -1 and badge.find('-7') == -1 and
+                badge.find('-8') == -1 and badge.find('-9') == -1):
+            signal = '<a href="javascript:{}" '+\
+            'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
+            ' class="btn btn-outline-success"><h4>Buy</h4></a>'
+            entry = trade_1_entry
+            target_price = trade_1_tp
+            stop_loss = trade_1_sl
+        else:
+            signal = '<a href="javascript:{}" '+\
+            'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
+            'class="btn btn-outline-danger"><h4>Sell</h4></a>'
+            entry = trade_3_entry
+            target_price = trade_3_tp
+            stop_loss = trade_3_sl
     else:
         signal = '<a href="javascript:{}" '+\
         'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
-        'class="btn btn-outline-danger"><h4>Sell</h4></a>'
-        entry = trade_3_entry
-        target_price = trade_3_tp
-        stop_loss = trade_3_sl
+        'class="btn btn-outline-primary"><h4>Wait</h4></a>'
+        entry = trade_1_entry
+        target_price = trade_1_tp
+        stop_loss = trade_1_sl
 
     hd_entry = 'Entry @'
     hd_tp = 'Target price'
