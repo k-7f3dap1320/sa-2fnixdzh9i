@@ -18,7 +18,8 @@ from sa_func import redirect_if_not_logged_in
 def get_xxx_content(burl):
     """ Content of the page """
 
-    box_content = '<div class="box-top">' +\
+    box_content = ''+\
+    '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\

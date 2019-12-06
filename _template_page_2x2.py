@@ -15,16 +15,24 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 
-def get_sa_terminal_content(burl):
+def get_xxx_content(burl):
     """ Content of the page """
 
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    'URL is '+ str(burl) +\
+    '*** URL is '+ str(burl) +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '   <div class="row">'+\
+    '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '*** URL is '+ str(burl) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -33,7 +41,13 @@ def get_sa_terminal_content(burl):
     box_content = box_content +\
    '<div class="box">' +\
     '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '*** URL is '+ str(burl) +\
+    '            </div>'+\
+    '        </div>'+\
+    '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     '*** URL is '+ str(burl) +\
@@ -45,21 +59,21 @@ def get_sa_terminal_content(burl):
     return box_content
 
 
-def get_sa_terminal_page(appname, burl):
+def get_xxx_page(appname, burl):
     """ Return the content of the entire page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
                            get_metatags(burl) +\
-                           redirect_if_not_logged_in(burl, burl + 'terminal') +\
+                           redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0) +\
-             get_sa_terminal_content(burl) +\
+             get_xxx_content(burl) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data
