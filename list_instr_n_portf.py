@@ -255,7 +255,7 @@ def draw_instr_table(burl, mode, step, maxrow, sel):
                 else:
                     order_type = '<span class="badge badge-danger">sell</span>'
             else:
-                order_type = '<span class="badge badge-secondary">wait</span>'
+                order_type = '<span class="text-secondary">wait</span>'
 
             column_order_type = '<td style="text-align: left" scope="row">'+ order_type +'</td>'
             column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
