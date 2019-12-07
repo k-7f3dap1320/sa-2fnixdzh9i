@@ -79,7 +79,7 @@ def get_signal_details(uid, burl, mode):
     else:
         signal = '<a href="javascript:{}" '+\
         'onclick="'+ open_window(trade_href, width, height, 0, 0) +'"'+\
-        'class="btn btn-outline-primary"><h4>Wait</h4></a>'
+        'class="btn btn-outline-secondary"><h4>Wait</h4></a>'
         entry = trade_1_entry
         target_price = 0
         stop_loss = 0

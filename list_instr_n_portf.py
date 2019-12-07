@@ -225,11 +225,14 @@ def draw_instr_table(burl, mode, step, maxrow, sel):
             class_w1 = "text text-success"
         else:
             class_w1 = "text text-danger"
-
-        if w_forecast_change >= 0:
-            class_forecast = "bg bg-success text-white"
+        
+        if w_forecast_change > -999:
+            if w_forecast_change >= 0:
+                class_forecast = "bg bg-success text-white"
+            else:
+                class_forecast = "bg bg-danger text-white"
         else:
-            class_forecast = "bg bg-danger text-white"
+            class_forecast = ""
 
 
         if unit == 'pips':
@@ -246,10 +249,13 @@ def draw_instr_table(burl, mode, step, maxrow, sel):
             w1_signal = str(round(w1_signal * 100, 2)) + '%'
 
         if not mode == "portf_select":
-            if w_forecast_change >= 0:
-                order_type = '<span class="badge badge-success">buy</span>'
+            if w_forecast_change > -999:
+                if w_forecast_change >= 0:
+                    order_type = '<span class="badge badge-success">buy</span>'
+                else:
+                    order_type = '<span class="badge badge-danger">sell</span>'
             else:
-                order_type = '<span class="badge badge-danger">sell</span>'
+                order_type = '<span class="badge badge-secondary">wait</span>'
 
             column_order_type = '<td style="text-align: left" scope="row">'+ order_type +'</td>'
             column_y1 = '      <td class="'+ class_y1 +'">'+ str(y1_signal) +'</td>'
