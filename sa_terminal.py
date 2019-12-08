@@ -19,6 +19,12 @@ from sa_func import get_random_str, get_user_default_profile
 from print_google_ads import print_google_ads
 from app_popup_modal import open_window_args
 from user_profile_header import get_box_user_profile_header
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_default_chart_symbol():
     """ xxx """
@@ -26,7 +32,7 @@ def get_default_chart_symbol():
     default_symbol = get_uid('spx')
     user_asset_class_market = get_user_default_profile()
     selected_asset_class_market = 'GO>'
-    if user_asset_class_market = selected_asset_class_market:
+    if user_asset_class_market == selected_asset_class_market:
         ret = default_symbol
     else:
         connection = pymysql.connect(host=DB_SRV,
