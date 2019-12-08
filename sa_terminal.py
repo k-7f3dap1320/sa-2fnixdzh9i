@@ -20,7 +20,7 @@ def get_terminal_desc(burl):
     """ xxx """
     ret = ''
     title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
-    description = '<div style:"text-align:left;">Add panels, charts and functions with <search> on the top-left corner. '+\
+    description = '<div style:"text-align:left;">Add panels, charts and functions with &lt;search&gt; on the top-left corner. '+\
     'Type &lt;HELP&gt; &lt;GO&gt; for Help. To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
     launch_btn ='<button type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</button>'
     btn_space = '<div>&nbsp;</div>'
