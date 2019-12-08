@@ -15,6 +15,7 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_random_str
 from print_google_ads import print_google_ads
+from app_popup_modal import open_window
 
 def get_terminal_button_func(burl, func_name):
     """ xxx """
@@ -25,8 +26,7 @@ def get_terminal_button_func(burl, func_name):
     'if((screen.availHeight || screen.height-30) > window.innerHeight) {'+\
     'var screen_y = window.screen.availHeight;'+\
     'var screen_x = window.screen.availWidth;'+\
-    'document.write(window.innerHeight + " ::: "+ screen.height);'+\
-    'document.write(screen_x + " x "+ screen_y);'+\
+    open_window(burl+'?terminal', 'screen_x/2', 'screen_y', 0, 0)+\
     '}'+\
     '}'+\
     '</script>'

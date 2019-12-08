@@ -9,7 +9,7 @@ def open_window(url, width, height, left, top):
     return_data = 'window.open(\''+ str(url) +'\''+\
     ', \''+ str(random_str) +'\', \'width='+ str(width) +\
     ', height='+ str(height) +', left='+ str(left) +', top='+ str(top) +\
-    ', location=no, menubar=no, status=no,toolbar=no\')'
+    ', location=no, menubar=no, status=no,toolbar=no\');'
     return return_data
 
 def gen_tour_popup(tour, burl):
