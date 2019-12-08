@@ -21,12 +21,14 @@ def get_terminal_desc(burl):
     ret = ''
     title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
     description = '<div style:"text-align:left;">Add panels, charts and functions with <search> on the top-left corner. '+\
-    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
+    'Type &lt;HELP&gt; &lt;GO&gt; for Help. To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
     launch_btn ='<button type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</button>'
+    btn_space = '<div>&nbsp;</div>'
 
     ret = title +\
     description +\
-    launch_btn
+    launch_btn +\
+    btn_space
     return ret
 
 def get_sa_terminal_content(burl):
@@ -37,13 +39,13 @@ def get_sa_terminal_content(burl):
     '   <div class="row">'+\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:orange;') +'">'+\
     get_terminal_desc(burl) +\
     '            </div>'+\
     '        </div>'+\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
     ''+\
     '            </div>'+\
     '        </div>'+\
