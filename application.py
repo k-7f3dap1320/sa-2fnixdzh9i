@@ -177,7 +177,7 @@ def go():
             switch_to = 'light'
         else:
             switch_to = 'dark'
-        c = theme_redirect(burl)
+        c = theme_redirect(burl, terminal)
         c = set_sa_theme(switch_to, c )
 
     elif request.endpoint == 'login':
