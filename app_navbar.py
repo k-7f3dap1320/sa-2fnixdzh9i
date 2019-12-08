@@ -20,6 +20,19 @@ def get_how_menu(burl):
     return_data = l_how_menu
     return return_data
 
+def get_sa_terminal_menu(burl):
+    """ xxx """
+    ret = ''
+    l_sa_terminal_tooltip = 'Launch Terminal'
+    l_sa_terminal = '<i class="fas fa-desktop" style="font-size: x-large;"></i>'
+
+    l_sa_terminal_menu = '<li class="nav-item d-none d-sm-block">'+\
+    '<a class="nav-link sa-navbar-text" href="'+\
+    burl +'terminal/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
+    l_sa_terminal_tooltip +'">'+ l_sa_terminal +'</a></li>'
+    ret = l_sa_terminal_menu
+    return ret
+
 def get_dashboard_menu(burl):
     """ xxx """
     return_data = ''
@@ -98,6 +111,7 @@ def navbar(burl, disable_search):
         leftsidemenu = ''
 
         rightsidemenu = '' +\
+        get_sa_terminal_menu(burl) +\
         get_dashboard_menu(burl) +\
         get_how_menu(burl) +\
         '    <li class="nav-item dropdown">'+\
