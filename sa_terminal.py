@@ -94,7 +94,7 @@ def get_sa_terminal_content(burl):
     """ Content of the page """
     box_content = get_box_user_profile_header()
     box_content = box_content +\
-    '<div class="box">' +\
+    '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
