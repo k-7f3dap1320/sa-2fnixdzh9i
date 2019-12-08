@@ -12,7 +12,7 @@ def open_window_as(url, terminal):
     if terminal is None:
         ret = url
     else:
-        ret = open_window(url, width, height, left, top)
+        ret = 'javascript:'+ open_window(url, width, height, left, top)
     return ret
 
 def open_window_args(url, args):
