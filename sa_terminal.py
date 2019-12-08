@@ -32,6 +32,15 @@ def get_terminal_desc(burl):
     btn_space
     return ret
 
+def get_settings_note(burl):
+    """ xxx """
+    ret = ''
+    description = 'To customize your newsfeed and select your default '+\
+    'market and asset class type <strong>&lt;SET&gt; &lt;GO&gt;</strong>'
+    
+    ret = description
+    return ret
+
 def get_sa_terminal_content(burl):
     """ Content of the page """
 
@@ -59,6 +68,18 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    get_settings_note(burl) +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '</div>'
+
+    box_content = box_content +\
+   '<div class="box">' +\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
     print_google_ads('billboard', 'center')
     '            </div>'+\
     '        </div>'+\
