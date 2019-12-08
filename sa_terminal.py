@@ -16,18 +16,37 @@ from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_random_str
 from print_google_ads import print_google_ads
 
+def get_terminal_button_func(burl, func_name):
+    """ xxx """
+    ret = ''
+    jsc = '' +\
+    '<script>'+\
+    'function '+ func_name +'{'+\
+    'if( (screen.availHeight || screen.height-30) <= window.innerHeight) {'+\
+    '}'+\
+    'var screen_y = window.screen.availHeight;'+\
+    'var screen_x = window.screen.availWidth;'+\
+    'document.write(screen_x + " x "+ screen_y);'+\
+    '}'+\
+    '</script>'
+    ret = jsc
+    return ret
+
 def get_terminal_desc(burl):
     """ xxx """
     ret = ''
+    func_name = 'launchTerminal()'
     title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
     description = '<div style:"text-align:left;">Add panels, charts and functions with '+\
     '<a href="'+ burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
     'Type <a href="'+ burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
     'To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
-    launch_btn ='<a href="#" type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</a>'
+    launch_btn ='<a href="javascript:'+ func_name + ';" type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</a>'
     btn_space = '<div>&nbsp;</div>'
     
-    ret = title +\
+    ret = ''+\
+    get_terminal_button_func(burl, func_name)
+    title +\
     description +\
     launch_btn +\
     btn_space
