@@ -16,6 +16,7 @@ from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_random_str
 from print_google_ads import print_google_ads
 from app_popup_modal import open_window_args
+from user_profile_header import get_box_user_profile_header
 
 def get_terminal_button_func(burl, func_name):
     """ xxx """
@@ -91,9 +92,9 @@ def get_settings_note(burl):
 
 def get_sa_terminal_content(burl):
     """ Content of the page """
-
-    box_content = ''+\
-    '<div class="box-top">' +\
+    box_content = get_box_user_profile_header()
+    box_content = box_content +\
+    '<div class="box">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
