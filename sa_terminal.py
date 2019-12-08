@@ -24,11 +24,12 @@ def get_terminal_button_func(burl, func_name):
     '<script>'+\
     'function '+ func_name +'{'+\
     'if((screen.availHeight || screen.height-30) > window.innerHeight) {'+\
-    'var screen_y = window.screen.height/1.1;'+\
+    'var screen_y = (window.screen.height-30)/1.1;'+\
     'var screen_x = window.screen.width/1.1;'+\
     'var screen_y_half = screen_y/2;'+\
     'var screen_x_half = screen_x/2;'+\
     'var screen_x_quart = screen_x/4;'+\
+    'var screen_x_right = screen_x_half + screen_x_quart;'+\
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
@@ -37,7 +38,7 @@ def get_terminal_button_func(burl, func_name):
     '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=0,\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_ecocal(0,0)&refreshw=1800&nonavbar', 'topright_one_args')+\
     'var topright_two_args = '+\
-    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', right=0, top=0,\'+ common_args;'+\
+    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=\'+ screen_x_right +\', top=0,\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
     '}'+\
     '}'+\
