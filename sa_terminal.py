@@ -26,7 +26,7 @@ def get_terminal_button_func(burl, func_name):
     'if((screen.availHeight || screen.height-30) > window.innerHeight) {'+\
     'var screen_y = (screen.height-30);'+\
     'var screen_x = (screen.width-55);'+\
-    'var screen_y_half = screen_y/2;'+\
+    'var screen_y_half = (screen_y/2)-20;'+\
     'var screen_x_half = screen_x/2;'+\
     'var screen_x_quart = screen_x/4;'+\
     'var screen_x_right = screen_x_half + screen_x_quart;'+\
