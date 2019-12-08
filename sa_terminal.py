@@ -47,7 +47,7 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
-    '<img src="'+ burl+ 'static/saterminal.png'+'" height="50%" />'+\
+    '<img src="'+ burl+ 'static/saterminal.png'+'" height="300" />'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
