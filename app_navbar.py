@@ -97,12 +97,18 @@ def navbar(burl, disable_search, terminal):
     l_themeswitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
+    if terminal is None:
+        redirect_terminal = ''
+        redirect_search_terminal_url = 'location.href = \''+ burl + 'search/\';'
+    else:
+        redirect_terminal = 'terminal'
+        redirect_search_terminal_url = open_window_as(burl+ 'search/?terminal&nonavbar', terminal)
 
     search_box = ''
     if disable_search != 1:
         search_box = ' '+\
         '<div class="sa-cursor">'+\
-        '    <input id="sa-search-input" onclick="location.href = \''+ burl + 'search/' +'\';"' +\
+        '    <input id="sa-search-input" onclick="'+ redirect_search_terminal_url +'"' +\
         '       type="text" name="'+ str(sid) +'" placeholder="'+\
         search_placeholder +'" aria-label="Search" class="d-none d-sm-block" >'+\
         '<i></i>'+\
@@ -121,10 +127,10 @@ def navbar(burl, disable_search, terminal):
         '<i class="fas fa-user-circle" style="font-size: x-large;"></i>' +'</a>'+\
         '      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+\
-        burl + 'theme/"><i class="fas fa-toggle-on"></i> '+\
+        burl + 'theme/?'+ redirect_terminal +'"><i class="fas fa-toggle-on"></i> '+\
         l_themeswitch +'</a>'+\
-        '        <a class="dropdown-item sa-navbar-text" href="'+\
-        burl + 'settings/"><i class="fas fa-cog"></i> '+\
+        '        <a class="dropdown-item sa-navbar-text" href="'+ open_window_as(burl + 'settings/', terminal) +\
+        '"><i class="fas fa-cog"></i> '+\
         l_settings +'</a>'+\
         '        <div class="dropdown-divider"></div>'+\
         '        <a class="dropdown-item sa-navbar-text" href="'+\
@@ -151,7 +157,7 @@ def navbar(burl, disable_search, terminal):
     return_data = ''+\
     '<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">'+\
     '<a class="navbar-brand" href="'+\
-    burl +'"><img src="'+\
+    burl +'?'+ redirect_terminal +'"><img src="'+\
     burl+'static/logo.png' +'?'+\
     get_random_str(9) +'" height="30" alt="logo"></a>'+\
     '<button class="navbar-toggler" type="button" data-toggle="collapse" '+\
