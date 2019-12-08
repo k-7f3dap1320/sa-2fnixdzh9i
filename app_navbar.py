@@ -2,8 +2,9 @@
 from app_cookie import user_is_login
 from sa_func import get_broker_affiliate_link, get_random_str
 from user_dashboard_count import get_num_orders
+from app_popup_modal import open_window_as
 
-def get_how_menu(burl):
+def get_how_menu(burl, terminal):
     """ xxx """
     return_data = ''
     l_helptooltip = 'Quick Help over there...'
@@ -13,8 +14,8 @@ def get_how_menu(burl):
         l_howitworks = ''
 
     l_how_menu = '<li class="nav-item d-none d-sm-block">'+\
-    '<a class="nav-link sa-navbar-text" href="'+\
-    burl +'h/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
+    '<a class="nav-link sa-navbar-text" href="'+ open_window_as(burl +'h/', terminal) +\
+    '" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
     l_helptooltip +'">'+ l_howitworks +'</a></li>'
 
     return_data = l_how_menu
@@ -33,7 +34,7 @@ def get_sa_terminal_menu(burl):
     ret = l_sa_terminal_menu
     return ret
 
-def get_dashboard_menu(burl):
+def get_dashboard_menu(burl, terminal):
     """ xxx """
     return_data = ''
     l_dashboard = 'Dashboard'
@@ -41,8 +42,8 @@ def get_dashboard_menu(burl):
                            get_num_orders('close') +
                            get_num_orders('pending'))
     l_dashboard_menu = '<li class="nav-item d-none d-sm-block">'+\
-    '<a class="nav-link sa-navbar-text" href="'+\
-    burl +'?dashboard=1" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
+    '<a class="nav-link sa-navbar-text" href="'+ open_window_as(burl +'?dashboard=1', terminal) +\
+    '" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
     l_dashboard +'" ><strong>'+\
     '<i class="fas fa-tachometer-alt" style="font-size: x-large;"></i>' +\
     '</strong><sup><span class="badge badge-pill badge-danger">'+\
@@ -50,13 +51,13 @@ def get_dashboard_menu(burl):
     return_data = l_dashboard_menu
     return return_data
 
-def get_portfolio_button(burl):
+def get_portfolio_button(burl, terminal):
     """ xxx """
     return_data = ''
 
     l_create_portfolio = 'Create a new trading strategy'
-    portfolio_button = '<div class="d-none d-sm-block"><a href="'+\
-    burl+'p/?ins=1&step=1&button=1" class="btn btn-lg btn-primary d-block d-md-inline-block" '+\
+    portfolio_button = '<div class="d-none d-sm-block"><a href="'+ open_window_as(burl+'p/?ins=1&step=1&button=1', terminal) +\
+    '" class="btn btn-lg btn-primary d-block d-md-inline-block" '+\
     'style="font-size:large;" data-toggle="tooltip" data-placement="bottom" '+\
     'title="" data-original-title="'+\
     l_create_portfolio +'"><i class="fas fa-edit"></i></a></div>'
@@ -64,7 +65,7 @@ def get_portfolio_button(burl):
     return_data = portfolio_button
     return return_data
 
-def get_pricing_menu(burl):
+def get_pricing_menu(burl, terminal):
     """ xxx """
     return_data = ''
     link = burl + 'pricing'
@@ -72,11 +73,11 @@ def get_pricing_menu(burl):
 
     return_data = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block">'+\
     '<a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+\
-    link +'">'+ l_title +'</a></li>'
+    open_window_as(link, terminal) +'">'+ l_title +'</a></li>'
 
     return return_data
 
-def get_about_menu():
+def get_about_menu(terminal):
     """ xxx """
     return_data = ''
     link = get_broker_affiliate_link('googleSiteSmartAlpha', 'affiliate')
@@ -84,7 +85,7 @@ def get_about_menu():
 
     return_data = '<li>&nbsp;&nbsp;</li><li class="nav-item d-none d-sm-block">'+\
     '<a style="font-size: medium;" class="btn btn-sm btn-outline-info" href="'+\
-    link +'">'+ l_title +'</a></li>'
+    open_window_as(link, terminal) +'">'+ l_title +'</a></li>'
 
     return return_data
 
@@ -112,8 +113,8 @@ def navbar(burl, disable_search, terminal):
 
         rightsidemenu = '' +\
         get_sa_terminal_menu(burl) +\
-        get_dashboard_menu(burl) +\
-        get_how_menu(burl) +\
+        get_dashboard_menu(burl, terminal) +\
+        get_how_menu(burl, terminal) +\
         '    <li class="nav-item dropdown">'+\
         '      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" '+\
         'role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
@@ -132,15 +133,15 @@ def navbar(burl, disable_search, terminal):
         '      </div>'+\
         '    </li>'+\
         '<li class="nav-item">'+\
-        get_portfolio_button(burl)+\
+        get_portfolio_button(burl, terminal)+\
         '</li>'
     else:
         leftsidemenu = ''+\
-        get_pricing_menu(burl)+\
-        get_about_menu()
+        get_pricing_menu(burl, terminal)+\
+        get_about_menu(terminal)
 
         rightsidemenu = '<strong>'+\
-        get_how_menu(burl) +\
+        get_how_menu(burl, terminal) +\
         '</strong>' +'<li class="nav-item"><a href="'+\
         burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn">'+\
         '<i class="fas fa-sign-in-alt"></i>&nbsp;'+\

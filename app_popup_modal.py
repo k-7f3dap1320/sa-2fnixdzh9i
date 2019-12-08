@@ -1,6 +1,20 @@
 """ Popup and modal messages """
 from sa_func import get_random_str
 
+def open_window_as(url, terminal):
+    """ xxx """
+    ret = ''
+    width = 1500
+    height = 800
+    left = 50
+    top = 50
+    
+    if terminal is None:
+        ret = url
+    else:
+        ret = open_window(url, width, height, left, top)
+    return ret
+
 def open_window_args(url, args):
     """ xxx """
     ret = ''
