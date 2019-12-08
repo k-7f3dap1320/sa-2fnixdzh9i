@@ -24,7 +24,7 @@ def get_terminal_desc(burl):
     '<a href="'+ burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
     'Type <a href="'+ burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
     'To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
-    launch_btn ='<button type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</button>'
+    launch_btn ='<a href="#" type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</a>'
     btn_space = '<div>&nbsp;</div>'
     
     ret = title +\
