@@ -27,7 +27,6 @@ def get_terminal_button_func(burl, func_name):
     'var screen_y = (screen.height-50);'+\
     'var screen_x = (screen.width-55);'+\
     'var screen_y_half = screen_y/2;'+\
-    'var screen_y_half_bottom = screen_y_half-100;'+\
     'var screen_x_half = screen_x/2;'+\
     'var screen_x_quart = screen_x/4;'+\
     'var screen_x_right = screen_x_half + screen_x_quart;'+\
@@ -42,7 +41,7 @@ def get_terminal_button_func(burl, func_name):
     '\'width=\'+ screen_x_quart +\', height=\'+ screen_y +\', left=\'+ screen_x_right +\', top=0,\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
     'var bottomright_one_args = '+\
-    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half_bottom +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
+    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_chart(566,0,0)&nonavbar', 'bottomright_one_args')+\
     '}'+\
     '}'+\
