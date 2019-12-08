@@ -22,7 +22,7 @@ def get_terminal_button_func(burl, func_name):
     jsc = '' +\
     '<script>'+\
     'function '+ func_name +'{'+\
-    'if(window.innerHeight == screen.height) {'+\
+    'if(window.innerHeight != screen.height) {'+\
     '}'+\
     'var screen_y = window.screen.availHeight;'+\
     'var screen_x = window.screen.availWidth;'+\
