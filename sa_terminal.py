@@ -32,7 +32,7 @@ def get_terminal_button_func(burl, func_name):
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
-    open_window_args(burl+'?terminal', 'news_feed_args')+\
+    open_window_args(burl+'?terminal', 'newsfeed_args')+\
     '}'+\
     '}'+\
     '</script>'
