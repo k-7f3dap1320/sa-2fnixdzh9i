@@ -126,7 +126,7 @@ def get_selectmarket_box(burl, mode):
     '</div>'
     return box_content
 
-def gen_selectmarket_page(appname, burl, mode):
+def gen_selectmarket_page(appname, burl, mode, terminal):
     """ xxx """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -137,7 +137,7 @@ def gen_selectmarket_page(appname, burl, mode):
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0) +\
+    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                                          get_selectmarket_box(burl, mode))
     return_data = set_page(return_data)
     return return_data

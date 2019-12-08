@@ -169,7 +169,7 @@ def ini_portf_select(response):
                         datetime.timedelta(days=1))
     return resp
 
-def gen_selectportf_page(appname, burl, step):
+def gen_selectportf_page(appname, burl, step, terminal):
     """ xxx """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -180,7 +180,7 @@ def gen_selectportf_page(appname, burl, step):
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() + get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_selectportf_box(burl, step) +\
              get_box_list_instr_n_portf(burl, 'portf_select', 'instr', step, 1000, ''))
     return_data = set_page(return_data)
@@ -188,7 +188,7 @@ def gen_selectportf_page(appname, burl, step):
         return_data = ini_portf_select(return_data)
     return return_data
 
-def custom_save_portf_page(appname, burl):
+def custom_save_portf_page(appname, burl, terminal):
     """ xxx """
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
@@ -199,7 +199,7 @@ def custom_save_portf_page(appname, burl):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_selectportf_box(burl, '6') +\
              get_box_portf_save(burl))
     return_data = set_page(return_data)

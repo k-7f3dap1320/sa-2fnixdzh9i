@@ -88,7 +88,7 @@ def get_about_menu():
 
     return return_data
 
-def navbar(burl, disable_search):
+def navbar(burl, disable_search, terminal):
     """ xxx """
     search_placeholder = '  <search> function, ticker...'
     sid = get_random_str(9)

@@ -67,7 +67,7 @@ def get_sign_header(uid, burl):
     '        </div>'
     return return_data
 
-def gen_sign_page(uid, tvws, appname, burl):
+def gen_sign_page(uid, tvws, appname, burl, terminal):
     """ xxx """
     if tvws is not None:
         uid = get_uid_from_tvs(tvws)
@@ -110,7 +110,7 @@ def gen_sign_page(uid, tvws, appname, burl):
                            get_font_awesome() +\
                            get_google_chart_script() +\
                            get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0) +\
+    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                                          '<div class="box-top"><div class="row">' +\
                                          get_details_header(uid, burl) +\
                                          get_sign_header(uid, burl) +\

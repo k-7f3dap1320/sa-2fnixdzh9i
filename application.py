@@ -73,6 +73,7 @@ def go():
     ref = request.args.get('ref')
     lang = request.args.get('lang')
     nonavbar = request.values.get('nonavbar')
+    terminal = request.args.get('terminal')
     x = request.args.get('x');
 
 
@@ -81,7 +82,7 @@ def go():
     ############################################################################
     if request.endpoint == 's':
         tvws = request.args.get('tvwidgetsymbol')
-        c = gen_sign_page(uid,tvws,appname,burl)
+        c = gen_sign_page(uid, tvws, appname, burl, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -96,17 +97,17 @@ def go():
             if x == '' or x == None : 
                 x = get_user_default_profile()
         if ins == '1': 
-            c = gen_selectportf_page(appname, burl, step)
+            c = gen_selectportf_page(appname, burl, step, terminal)
         if ins == '2': 
             c = save_portf_select(burl, step, uid)
         if ins == '3': 
-            c = custom_save_portf_page(appname, burl)
+            c = custom_save_portf_page(appname, burl, terminal)
         if ins == '4': 
             c = portf_save_conviction(burl,mode,x)
         if ins == '5': 
             c = portf_save(burl)
         if ins is None: 
-            c = gen_portf_page(uid,appname,burl,pop)
+            c = gen_portf_page(uid,appname,burl,pop, terminal)
         if delete is not None: 
             c = del_portf(delete,burl,x,dashboard)
         c = set_sa_lang(lang,c)
@@ -114,7 +115,7 @@ def go():
 
     elif request.endpoint == 'ls':
         what = request.values.get('w')
-        c = gen_view_list_instr_n_portf(appname,burl,what,x)
+        c = gen_view_list_instr_n_portf(appname, burl, what, x, terminal)
 
     elif request.endpoint == 'n':
         name = request.values.get('name')
@@ -129,32 +130,46 @@ def go():
         broker_username = request.values.get('username_broker')
         mode = request.values.get('mode')
         if step == 'c': 
-            c = gen_selectmarket_page(appname,burl,mode)
+            c = gen_selectmarket_page(appname, burl, mode, terminal)
         elif step == 'd': 
             c= save_selectmarket(burl, x)
         else: 
-            c = gen_createuser_page(uid,appname,burl,name,username,password,from_ip,broker,broker_username)
+            c = gen_createuser_page(uid,
+                                    appname,
+                                    burl,
+                                    name,
+                                    username,
+                                    password,
+                                    from_ip,broker,
+                                    broker_username,
+                                    terminal)
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
         if broker is None: 
             broker = 'not-specified'
-        c = gen_createuser_page('0',appname,burl,'','','','',broker,'')
+        c = gen_createuser_page('0',appname,burl,'','','','',broker,'', terminal)
 
     elif request.endpoint == 'h':
-        c = get_help_page(appname,burl)
+        c = get_help_page(appname, burl, terminal)
 
     elif request.endpoint == 'w':
         funcname = request.values.get('funcname')
         refreshw = request.values.get('refreshw')
         noflexheight = request.values.get('noflexheight')
-        c = get_widget_page(appname,burl,nonavbar,funcname,refreshw,noflexheight)
+        c = get_widget_page(appname,
+                            burl,
+                            nonavbar,
+                            funcname,
+                            refreshw,
+                            noflexheight,
+                            terminal)
 
     elif request.endpoint == 'intelligence':
-        c = get_intel_page(appname,burl)
+        c = get_intel_page(appname, burl, terminal)
 
     elif request.endpoint == 'terminal':
-        c = get_sa_terminal_page(appname,burl)
+        c = get_sa_terminal_page(appname,burl, terminal)
 
     elif request.endpoint == 'theme':
         switch_to = ''
@@ -178,12 +193,12 @@ def go():
 
     elif request.endpoint == 'signin':
         redirect = request.values.get('redirect')
-        c = get_signin_page(appname,burl,err,redirect)
+        c = get_signin_page(appname, burl, err, redirect, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'pricing':
-        c = get_plan_selection_page(appname,burl)
+        c = get_plan_selection_page(appname, burl, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -195,7 +210,7 @@ def go():
         default_profile = request.values.get('default_profile')
         email_subscription = request.values.get('email_subscription')
         message = save_settings(name,nickname,username,default_profile,email_subscription)
-        c = get_settings_page(appname,burl,step,message)
+        c = get_settings_page(appname, burl, step, message, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -203,11 +218,16 @@ def go():
         step = request.args.get('step')
         data = request.values.get('data')
         data2 = request.values.get('data2')
-        c = get_resetpassword_page(appname,burl,step,data,data2)
+        c = get_resetpassword_page(appname,
+                                   burl,
+                                   step,
+                                   data,
+                                   data2,
+                                   terminal)
 
     elif request.endpoint == 'search':
         nonavbar = request.args.get('nonavbar')
-        c = get_search_page(appname,burl,nonavbar)
+        c = get_search_page(appname,burl,nonavbar, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -223,7 +243,7 @@ def go():
         c = set_sa_ref_code(ref,c)
 
     elif request.endpoint == 'error':
-        c = get_error_page(appname,burl)
+        c = get_error_page(appname, burl, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
 
@@ -234,7 +254,6 @@ def go():
         if x == '' or x == None : x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
         tour = request.args.get('tour')
-        terminal = request.args.get('terminal')
         c = gen_main_page(x,appname,burl,dashboard,tour,nonavbar, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)

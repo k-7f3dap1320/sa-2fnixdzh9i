@@ -194,12 +194,12 @@ def get_search_page_content(burl, nonavbar):
     '</div>'
     return box_content
 
-def get_search_page(appname, burl, nonavbar):
+def get_search_page(appname, burl, nonavbar, terminal):
     """ xxx """
     return_data = ''
     navbarcontent = ''
     if nonavbar is None:
-        navbarcontent = navbar(burl, 1)
+        navbarcontent = navbar(burl, 1, terminal)
 
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\

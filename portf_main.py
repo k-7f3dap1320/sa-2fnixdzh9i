@@ -32,7 +32,7 @@ DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
 
-def gen_portf_page(uid, appname, burl, pop):
+def gen_portf_page(uid, appname, burl, pop, terminal):
     """ xxx """
     return_data = ''
     if uid is None:
@@ -71,7 +71,7 @@ def gen_portf_page(uid, appname, burl, pop):
                                get_stylesheet(burl))
         return_data = return_data +\
         get_body(get_loading_body(), gen_portf_popup(pop) +\
-                 navbar(burl, 0) +\
+                 navbar(burl, 0, terminal) +\
                  '<div class="box-top"><div class="row">' +\
                  get_details_header(uid, burl) +\
                  get_portf_alloc(uid, burl) +\
@@ -82,5 +82,5 @@ def gen_portf_page(uid, appname, burl, pop):
                  get_page_footer(burl))
         return_data = set_page(return_data)
     else:
-        get_error_page(appname, burl)
+        get_error_page(appname, burl, terminal)
     return return_data

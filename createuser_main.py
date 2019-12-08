@@ -85,7 +85,8 @@ def send_email_notification(broker, name, username):
                         str(name)+'; '+str(username), 9)
 
 def gen_createuser_page(uid, appname, burl, name, username,
-                        password, from_ip, broker, username_broker):
+                        password, from_ip, broker, username_broker,
+                        terminal):
     """ xxx """
     return_data = ''
     if uid == '0':
@@ -98,7 +99,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
                                get_font_awesome() +\
                                get_stylesheet(burl))
         return_data = return_data +\
-        get_body(get_loading_body(), navbar(burl, 0) +\
+        get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                  get_user_creation_form(burl, broker) +\
                  get_page_footer(burl))
         return_data = set_page(return_data)

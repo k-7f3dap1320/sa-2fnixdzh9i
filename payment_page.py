@@ -318,7 +318,7 @@ def get_box_plan_selection(burl):
     '</div>'
     return box_content
 
-def get_plan_selection_page(appname, burl):
+def get_plan_selection_page(appname, burl, terminal):
     """ xxx """
     return_data = ''
     theme = 'light'
@@ -331,7 +331,7 @@ def get_plan_selection_page(appname, burl):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_box_plan_selection(burl) +\
              get_page_footer(burl) +\
              get_purechat(1))

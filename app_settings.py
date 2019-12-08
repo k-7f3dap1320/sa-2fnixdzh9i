@@ -328,7 +328,7 @@ def popup_after_submit(message, result):
     '</div><div>&nbsp;</div>'
     return return_data
 
-def get_settings_page(appname, burl, step, message):
+def get_settings_page(appname, burl, step, message, terminal):
     """ xxx """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -341,7 +341,7 @@ def get_settings_page(appname, burl, step, message):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_settings_content(burl, step, message) +\
              get_page_footer(burl))
     return_data = set_page(return_data)

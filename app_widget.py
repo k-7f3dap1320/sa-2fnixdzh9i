@@ -48,13 +48,19 @@ def get_widget_content(burl, nonavbar, funcname, noflexheight):
     return box_content
 
 
-def get_widget_page(appname, burl, nonavbar, funcname, refresh_in_second, noflexheight):
+def get_widget_page(appname,
+                    burl,
+                    nonavbar,
+                    funcname,
+                    refresh_in_second,
+                    noflexheight,
+                    terminal):
     """ xxx """
     return_data = ''
     navbarcontent = ''
     metarefresh = ''
     if nonavbar is None:
-        navbarcontent = navbar(burl, 0)
+        navbarcontent = navbar(burl, 0, terminal)
     if refresh_in_second is not None:
         metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
 

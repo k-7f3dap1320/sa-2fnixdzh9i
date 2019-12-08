@@ -252,7 +252,7 @@ def get_signals_lines(burl):
         connection.close()
     return return_data
 
-def get_intel_page(appname, burl):
+def get_intel_page(appname, burl, terminal):
     """ Get and build the entire intelligence report page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -265,7 +265,7 @@ def get_intel_page(appname, burl):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_intel_content(burl))
 
     return_data = set_page(return_data)

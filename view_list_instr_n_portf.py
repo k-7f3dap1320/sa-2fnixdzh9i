@@ -31,7 +31,7 @@ def get_top_instr_n_portf_list():
     '</div>'
     return box_content
 
-def gen_view_list_instr_n_portf(appname, burl, what, sel):
+def gen_view_list_instr_n_portf(appname, burl, what, sel, terminal):
     """ xxx """
     #what = 'instr', what = 'portf'
     #sel = market or asset class
@@ -55,7 +55,7 @@ def gen_view_list_instr_n_portf(appname, burl, what, sel):
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() + get_stylesheet(burl))
     return_data = return_data + get_body(get_loading_body(),
-                                         navbar(burl, 0) +\
+                                         navbar(burl, 0, terminal) +\
                                          get_top_instr_n_portf_list() +\
                                          get_box_list_instr_n_portf(burl,
                                                                     'view',

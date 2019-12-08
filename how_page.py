@@ -137,7 +137,7 @@ def get_help_content(burl):
     return box_content
 
 
-def get_help_page(appname,burl):
+def get_help_page(appname, burl, terminal):
     """ xxx """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -149,7 +149,7 @@ def get_help_page(appname,burl):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0) +\
+    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_help_content(burl) +\
              get_page_footer(burl) +\
              get_purechat(1))

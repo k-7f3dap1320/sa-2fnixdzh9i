@@ -37,7 +37,7 @@ def gen_main_page(selection,
     refresh_in_second = 900
     navbarcontent = ''
     if nonavbar is None:
-        navbarcontent = navbar(burl, 0)
+        navbarcontent = navbar(burl, 0, terminal)
     dashboard_content = ''
     if is_dashboard == str(1) and user_is_login() == 1:
         dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
