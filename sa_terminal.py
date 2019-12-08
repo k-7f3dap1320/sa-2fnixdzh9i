@@ -79,7 +79,7 @@ def get_terminal_button_func(burl, func_name):
     open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
-    open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol) +',0,0)&nonavbar', 'bottomright_one_args')+\
+    open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol()) +',0,0)&nonavbar', 'bottomright_one_args')+\
     '}'+\
     '}'+\
     '</script>'
