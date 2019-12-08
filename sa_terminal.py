@@ -14,6 +14,20 @@ from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
+from print_google_ads import print_google_ads
+
+def get_terminal_desc(burl):
+    """ xxx """
+    ret = ''
+    title = '<h1 style="'+ theme_return_this('','white') +'">Smartalpha Trading Intelligence</h1>'
+    description = 'Add panels, charts and functions with <search> on the top-left corner. '+\
+    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.'
+    launch_btn ='<button type="button" class="btn btn-info btn-lg">Launch Terminal</button>'
+
+    ret = title +\
+    description +\
+    launch_btn
+    return ret
 
 def get_sa_terminal_content(burl):
     """ Content of the page """
@@ -24,7 +38,7 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    'URL is '+ str(burl) +\
+    get_terminal_desc(burl) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -36,7 +50,7 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '*** URL is '+ str(burl) +\
+    print_google_ads('billboard', 'center')
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
