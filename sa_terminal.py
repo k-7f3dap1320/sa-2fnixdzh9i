@@ -24,10 +24,10 @@ def get_terminal_button_func(burl, func_name):
     '<script>'+\
     'function '+ func_name +'{'+\
     'if((screen.availHeight || screen.height-30) > window.innerHeight) {'+\
-    'var screen_y = window.screen.availHeight;'+\
-    'var screen_x = window.screen.availWidth;'+\
+    'var screen_y = window.screen.height;'+\
+    'var screen_x = window.screen.width;'+\
     'var screen_y_half = screen_y/2;'+\
-    'var screen_x_half = screen_x/10;'+\
+    'var screen_x_half = screen_x/3;'+\
     'var screen_x_quart = screen_x/4;'+\
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var newsfeed_args = '+\
