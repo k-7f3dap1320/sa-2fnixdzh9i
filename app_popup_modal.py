@@ -1,6 +1,15 @@
 """ Popup and modal messages """
 from sa_func import get_random_str
 
+def open_window_args(url, args):
+    """ xxx """
+    ret = ''
+    random_str = get_random_str(9)
+
+    ret = 'window.open(\''+ str(url) +'\''+\
+    ', \''+ str(random_str) +'\', ' +str(args) +');'
+    return ret
+
 def open_window(url, width, height, left, top):
     """ Open window popup"""
     return_data = ''

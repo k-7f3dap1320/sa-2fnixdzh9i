@@ -15,7 +15,7 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_random_str
 from print_google_ads import print_google_ads
-from app_popup_modal import open_window
+from app_popup_modal import open_window_args
 
 def get_terminal_button_func(burl, func_name):
     """ xxx """
@@ -26,7 +26,13 @@ def get_terminal_button_func(burl, func_name):
     'if((screen.availHeight || screen.height-30) > window.innerHeight) {'+\
     'var screen_y = window.screen.availHeight;'+\
     'var screen_x = window.screen.availWidth;'+\
-    open_window(burl+'?terminal', 'screen_x/2', 'screen_y', 0, 0)+\
+    'var screen_y_half = screen_y/2;'+\
+    'var screen_x_half = screen_x/2;'+\
+    'var screen_x_quart = screen_x/4;'+\
+    'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
+    'var newsfeed_args = '+\
+    '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
+    open_window_args(burl+'?terminal', 'news_feed_args')+\
     '}'+\
     '}'+\
     '</script>'
@@ -37,14 +43,23 @@ def get_terminal_desc(burl):
     """ xxx """
     ret = ''
     func_name = 'launchTerminal()'
-    title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
+
+    title = '<h3 style="'+ theme_return_this('', 'color:white;') +\
+    'text-align: left;">Smartalpha Terminal</h3>'
+
     description = '<div style:"text-align:left;">Add panels, charts and functions with '+\
-    '<a href="'+ burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
-    'Type <a href="'+ burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
+    '<a href="'+\
+    burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
+    'Type <a href="'+\
+    burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
     'To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
-    launch_btn ='<a href="javascript:'+ func_name + ';" type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</a>'
+
+    launch_btn = '<a href="javascript:'+\
+    func_name +\
+    ';" type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</a>'
+
     btn_space = '<div>&nbsp;</div>'
-    
+
     ret = ''+\
     get_terminal_button_func(burl, func_name)+\
     title +\
@@ -57,8 +72,9 @@ def get_settings_note(burl):
     """ xxx """
     ret = ''
     description = 'To customize your newsfeed and select your default '+\
-    'market and asset class type <a href="'+ burl +'settings'+'"><strong>&lt;SET&gt; &lt;GO&gt;</strong></a>'
-    
+    'market and asset class type <a href="'+\
+    burl +'settings'+'"><strong>&lt;SET&gt; &lt;GO&gt;</strong></a>'
+
     ret = description
     return ret
 
@@ -101,7 +117,7 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
-    print_google_ads('billboard', 'center')
+    print_google_ads('billboard', 'center')+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
