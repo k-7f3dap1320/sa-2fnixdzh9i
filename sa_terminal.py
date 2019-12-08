@@ -13,7 +13,7 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
-from sa_func import redirect_if_not_logged_in
+from sa_func import redirect_if_not_logged_in, get_random_str
 from print_google_ads import print_google_ads
 
 def get_terminal_desc(burl):
@@ -47,7 +47,7 @@ def get_sa_terminal_content(burl):
     '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
-    '<img src="'+ burl+ 'static/saterminal.png'+'" height="300" />'+\
+    '<img src="'+ burl+ 'static/saterminal.png?'+ get_random_str(9) +'" height="200" />'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
