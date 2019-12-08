@@ -19,10 +19,10 @@ from print_google_ads import print_google_ads
 def get_terminal_desc(burl):
     """ xxx """
     ret = ''
-    title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Trading Intelligence</h3>'
-    description = '<div>Add panels, charts and functions with <search> on the top-left corner. '+\
-    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.</div>'
-    launch_btn ='<button type="button" class="btn btn-info btn-lg" style="font-size: large;">Launch Terminal</button>'
+    title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
+    description = '<div style:"text-align:left;">Add panels, charts and functions with <search> on the top-left corner. '+\
+    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
+    launch_btn ='<button type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</button>'
 
     ret = title +\
     description +\
@@ -35,10 +35,16 @@ def get_sa_terminal_content(burl):
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     get_terminal_desc(burl) +\
+    '            </div>'+\
+    '        </div>'+\
+    '        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    ''+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
