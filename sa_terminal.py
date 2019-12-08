@@ -45,7 +45,7 @@ def get_terminal_desc(burl):
     btn_space = '<div>&nbsp;</div>'
     
     ret = ''+\
-    get_terminal_button_func(burl, func_name)
+    get_terminal_button_func(burl, func_name)+\
     title +\
     description +\
     launch_btn +\
