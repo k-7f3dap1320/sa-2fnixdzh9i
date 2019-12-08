@@ -93,7 +93,7 @@ def get_terminal_desc(burl):
     func_name = 'launchTerminal()'
 
     title = '<h3 style="'+ theme_return_this('', 'color:white;') +\
-    'text-align: left;">Smartalpha Terminal</h3>'
+    'text-align: left;">Smartalpha Terminal (beta)</h3>'
 
     description = '<div style:"text-align:left;">Add panels, charts and functions with '+\
     '<a href="'+\
