@@ -1,4 +1,5 @@
 """ A template page """
+import pymysql.cursors
 from app_head import get_head
 from app_body import get_body
 from app_page import set_page
@@ -13,10 +14,39 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
-from sa_func import redirect_if_not_logged_in, get_random_str
+from sa_func import redirect_if_not_logged_in, get_uid
+from sa_func import get_random_str, get_user_default_profile
 from print_google_ads import print_google_ads
 from app_popup_modal import open_window_args
 from user_profile_header import get_box_user_profile_header
+
+def get_default_chart_symbol():
+    """ xxx """
+    ret = ''
+    default_symbol = get_uid('spx')
+    user_asset_class_market = get_user_default_profile()
+    selected_asset_class_market = 'GO>'
+    if user_asset_class_market = selected_asset_class_market:
+        ret = default_symbol
+    else:
+        connection = pymysql.connect(host=DB_SRV,
+                                     user=DB_USR,
+                                     password=DB_PWD,
+                                     db=DB_NAME,
+                                     charset='utf8mb4',
+                                     cursorclass=pymysql.cursors.DictCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT symbol FROM instruments WHERE asset_class LIKE "%'+\
+        user_asset_class_market +'%" OR market LIKE "%'+ user_asset_class_market +'%"'
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        selected_symbol = ''
+        for row in res:
+            selected_symbol = row[0]
+        if selected_symbol != '':
+            ret = get_uid(selected_symbol)
+        cursor.close()
+    return ret
 
 def get_terminal_button_func(burl, func_name):
     """ xxx """
@@ -43,7 +73,7 @@ def get_terminal_button_func(burl, func_name):
     open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
-    open_window_args(burl+'w/?funcname=get_tradingview_chart(566,0,0)&nonavbar', 'bottomright_one_args')+\
+    open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol) +',0,0)&nonavbar', 'bottomright_one_args')+\
     '}'+\
     '}'+\
     '</script>'

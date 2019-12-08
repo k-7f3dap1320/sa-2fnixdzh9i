@@ -4,10 +4,10 @@ from sa_func import get_random_str
 def open_window_as(url, terminal):
     """ xxx """
     ret = ''
-    width = 1500
-    height = 800
-    left = 50
-    top = 50
+    width = 1366
+    height = 768
+    left = 20
+    top = 20
     
     if terminal is None:
         ret = url
