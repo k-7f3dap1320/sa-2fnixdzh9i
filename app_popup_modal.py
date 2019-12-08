@@ -7,7 +7,7 @@ def open_window_args(url, args):
     random_str = get_random_str(9)
 
     ret = 'window.open(\''+ str(url) +'\''+\
-    ', \''+ str(random_str) +'\',\'' +str(args) +'\');'
+    ', \''+ str(random_str) +'\', '+str(args) +');'
     return ret
 
 def open_window(url, width, height, left, top):
