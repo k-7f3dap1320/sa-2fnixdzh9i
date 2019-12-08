@@ -33,7 +33,13 @@ def get_terminal_button_func(burl, func_name):
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
     open_window_args(burl+'?terminal', 'newsfeed_args')+\
-    'document.write(newsfeed_args+" ::: "+ screen_x +"x"+screen_y);'+\
+    'var topright_one_args = '+\
+    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=0,\'+ common_args;'+\
+    open_window_args(burl+'w/?funcname=get_tradingview_ecocal(0,0)&refreshw=1800&nonavbar', 'topright_one_args')+\
+    '}'+\
+    'var topright_two_args = '+\
+    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', right=0, top=0,\'+ common_args;'+\
+    open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
     '}'+\
     '}'+\
     '</script>'
