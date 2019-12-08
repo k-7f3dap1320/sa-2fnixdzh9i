@@ -40,9 +40,6 @@ def get_terminal_button_func(burl, func_name):
     'var topright_two_args = '+\
     '\'width=\'+ screen_x_quart +\', height=\'+ screen_y +\', left=\'+ screen_x_right +\', top=0,\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_watchlist(0,0)&nonavbar', 'topright_two_args')+\
-    'var bottomright_one_args = '+\
-    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
-    open_window_args(burl+'w/?funcname=get_tradingview_chart(566,0,0)&nonavbar', 'bottomright_one_args')+\
     '}'+\
     '}'+\
     '</script>'
