@@ -260,7 +260,7 @@ def get_resetpassword_email_input(burl):
     '</div>'
     return box_content
 
-def get_resetpassword_page(appname, burl, step, data, data2):
+def get_resetpassword_page(appname, burl, step, data, data2, terminal):
     """ xxx """
     return_data = ''
     page_content = ''
