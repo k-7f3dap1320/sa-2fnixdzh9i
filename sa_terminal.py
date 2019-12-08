@@ -20,8 +20,9 @@ def get_terminal_desc(burl):
     """ xxx """
     ret = ''
     title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Terminal</h3>'
-    description = '<div style:"text-align:left;">Add panels, charts and functions with <strong>&lt;search&gt;</strong> on the top-left corner. '+\
-    'Type <strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong> for Help. '+\
+    description = '<div style:"text-align:left;">Add panels, charts and functions with '+\
+    '<a href="'+ burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
+    'Type <a href="'+ burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
     'To run terminal, do no operate the browser in fullscreen mode.</div><div>&nbsp;</div>'
     launch_btn ='<button type="button" class="btn btn-primary btn-lg" style="font-size: large;">Launch Terminal</button>'
     btn_space = '<div>&nbsp;</div>'
@@ -36,7 +37,7 @@ def get_settings_note(burl):
     """ xxx """
     ret = ''
     description = 'To customize your newsfeed and select your default '+\
-    'market and asset class type <strong>&lt;SET&gt; &lt;GO&gt;</strong>'
+    'market and asset class type <a href="'+ burl +'settings'+'"><strong>&lt;SET&gt; &lt;GO&gt;</strong></a>'
     
     ret = description
     return ret
@@ -87,7 +88,6 @@ def get_sa_terminal_content(burl):
     '</div>'
 
     return box_content
-
 
 def get_sa_terminal_page(appname, burl):
     """ Return the content of the entire page """
