@@ -26,6 +26,7 @@ def get_terminal_button_func(burl, func_name):
     '}'+\
     'var screen_y = window.screen.availHeight;'+\
     'var screen_x = window.screen.availWidth;'+\
+    'document.write(window.innerHeight + " ::: "+ screen.height);'+\
     'document.write(screen_x + " x "+ screen_y);'+\
     '}'+\
     '</script>'
