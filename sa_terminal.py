@@ -19,10 +19,10 @@ from print_google_ads import print_google_ads
 def get_terminal_desc(burl):
     """ xxx """
     ret = ''
-    title = '<h1 style="'+ theme_return_this('','white') +'">Smartalpha Trading Intelligence</h1>'
-    description = 'Add panels, charts and functions with <search> on the top-left corner. '+\
-    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.'
-    launch_btn ='<button type="button" class="btn btn-info btn-lg">Launch Terminal</button>'
+    title = '<h3 style="'+ theme_return_this('','color:white;') +'text-align: left;">Smartalpha Trading Intelligence</h3>'
+    description = '<div>Add panels, charts and functions with <search> on the top-left corner. '+\
+    'Type <HELP> <GO> for Help. To run terminal, do no operate the browser in fullscreen mode.</div>'
+    launch_btn ='<button type="button" class="btn btn-info btn-lg" style="font-size: large;">Launch Terminal</button>'
 
     ret = title +\
     description +\
