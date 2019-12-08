@@ -1,6 +1,15 @@
 """ Popup and modal messages """
 from sa_func import get_random_str
 
+def check_popup_blocked():
+    """ xxx """
+    ret = '' +\
+    'if(!newWin || newWin.closed || typeof newWin.closed==\'undefined\')'+\
+    '{'+\
+    'document.write(\'popup have been blocked, please ALLOW popup to use Terminal\');'+\
+    '}'
+    return ret
+
 def open_window_as(url, terminal):
     """ xxx """
     ret = ''

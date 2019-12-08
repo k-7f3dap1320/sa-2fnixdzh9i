@@ -17,7 +17,7 @@ from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_uid
 from sa_func import get_random_str, get_user_default_profile
 from print_google_ads import print_google_ads
-from app_popup_modal import open_window_args
+from app_popup_modal import open_window_args, check_popup_blocked
 from user_profile_header import get_box_user_profile_header
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -80,6 +80,7 @@ def get_terminal_button_func(burl, func_name):
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol()) +',0,0)&nonavbar', 'bottomright_one_args')+\
+    check_popup_blocked()+\
     '}'+\
     '}'+\
     '</script>'
