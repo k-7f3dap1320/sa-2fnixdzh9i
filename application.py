@@ -234,7 +234,8 @@ def go():
         if x == '' or x == None : x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
         tour = request.args.get('tour')
-        c = gen_main_page(x,appname,burl,dashboard,tour,nonavbar)
+        terminal = request.args.get('terminal')
+        c = gen_main_page(x,appname,burl,dashboard,tour,nonavbar, terminal)
         c = set_sa_lang(lang,c)
         c = set_sa_ref_code(ref,c)
     ############################################################################

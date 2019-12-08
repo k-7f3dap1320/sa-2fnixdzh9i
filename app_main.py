@@ -25,7 +25,13 @@ from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
 
-def gen_main_page(selection, appname, burl, is_dashboard, tour, nonavbar):
+def gen_main_page(selection,
+                  appname,
+                  burl,
+                  is_dashboard,
+                  tour,
+                  nonavbar,
+                  terminal):
     """ xxx """
     metarefresh = ''
     refresh_in_second = 900

@@ -16,7 +16,7 @@ def get_tradingview_chart(suid, width, height):
     referral_id = get_broker_affiliate_link('Tradingview', 'affiliate')
     label_not_available = 'Live chart is not available for this instrument'
     theme = get_sa_theme()
-    allow_symbol_change = 'false'
+    allow_symbol_change = 'true'
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
