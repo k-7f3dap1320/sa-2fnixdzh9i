@@ -142,7 +142,7 @@ def get_settings_note(burl):
 def get_sa_terminal_content(burl):
     """ Content of the page """
     box_content = get_box_user_profile_header()
-    box_content = box_content + '<div id="notification_div"></div>'
+    box_content = box_content + '<div id="popup_notification"></div>'
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\
