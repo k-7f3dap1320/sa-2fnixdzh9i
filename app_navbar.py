@@ -21,17 +21,18 @@ def get_how_menu(burl, terminal):
     return_data = l_how_menu
     return return_data
 
-def get_sa_terminal_menu(burl):
+def get_sa_terminal_menu(burl, terminal):
     """ xxx """
     ret = ''
-    l_sa_terminal_tooltip = 'Launch Terminal'
-    l_sa_terminal = '<i class="fas fa-desktop" style="font-size: x-large;"></i>'
+    if terminal is None:
+        l_sa_terminal_tooltip = 'Launch Terminal'
+        l_sa_terminal = '<i class="fas fa-desktop" style="font-size: x-large;"></i>'
 
-    l_sa_terminal_menu = '<li class="nav-item d-none d-sm-block">'+\
-    '<a class="nav-link sa-navbar-text" href="'+\
-    burl +'terminal/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
-    l_sa_terminal_tooltip +'">'+ l_sa_terminal +'</a></li>'
-    ret = l_sa_terminal_menu
+        l_sa_terminal_menu = '<li class="nav-item d-none d-sm-block">'+\
+        '<a class="nav-link sa-navbar-text" href="'+\
+        burl +'terminal/" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
+        l_sa_terminal_tooltip +'">'+ l_sa_terminal +'</a></li>'
+        ret = l_sa_terminal_menu
     return ret
 
 def get_dashboard_menu(burl, terminal):
@@ -118,7 +119,7 @@ def navbar(burl, disable_search, terminal):
         leftsidemenu = ''
 
         rightsidemenu = '' +\
-        get_sa_terminal_menu(burl) +\
+        get_sa_terminal_menu(burl, terminal) +\
         get_dashboard_menu(burl, terminal) +\
         get_how_menu(burl, terminal) +\
         '    <li class="nav-item dropdown">'+\
