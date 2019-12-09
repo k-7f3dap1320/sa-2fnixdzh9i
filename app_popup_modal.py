@@ -11,8 +11,8 @@ def check_popup_blocked(var_name, redirect_url, popup_url):
     'if(!'+ var_name +' || '+ var_name +'.closed || typeof '+\
     var_name +'.closed==\'undefined\')'+\
     '{'+\
-    'window.location.href = "'+ redirect_url +'";'+\
     open_window(popup_url, 100, 100, 0, 0)+\
+    'window.location.href = "'+ redirect_url +'";'+\
     '}'
     return ret
 
