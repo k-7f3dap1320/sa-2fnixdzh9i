@@ -17,7 +17,7 @@ def check_popup_blocked(var_name):
     '\'<div class="alert alert-danger" role="alert">'+\
     '  <h5 class="alert-heading">Please disable popup blocker!</h5>'+\
     '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
-    '</div>\''+\
+    '</div>\';'+\
     'document.body.append(div);'+\
     '}'
     return ret
