@@ -70,7 +70,7 @@ def get_terminal_button_func(burl, func_name):
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var help_panel_args = '+\
     '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=0, top=\'+ screen_x_half +\',\'+ common_args;'+\
-    open_window_args(burl+'terminalhelp/?nonavbar', 'help_panel_args')+\
+    open_window_args(burl+'terminalhelp/', 'help_panel_args')+\
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
     'newsfeed_panel = ' + open_window_args(burl+'?terminal', 'newsfeed_args')+\
@@ -123,7 +123,7 @@ def get_terminal_desc(burl):
 def get_notification_popup_blocked():
     ret = ''+\
     '<div class="alert alert-danger" role="alert">'+\
-    '  <h3 class="alert-heading">Please allow popup for Smartalpha!</h3>'+\
+    '  <h4 class="alert-heading">Please disable popup blocker!</h4>'+\
     '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
     '</div>'
     return ret

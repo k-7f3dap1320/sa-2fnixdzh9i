@@ -36,7 +36,7 @@ def get_sa_terminal_help_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '*** URL is '+ str(burl) +\
+    ''+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -58,7 +58,7 @@ def get_sa_terminal_help_page(appname, burl, terminal):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
-    get_body(get_loading_body(), navbar(burl, 0, terminal) +\
+    get_body(get_loading_body(),
              get_sa_terminal_help_content(burl) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
