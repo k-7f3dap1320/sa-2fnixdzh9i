@@ -83,7 +83,7 @@ def get_terminal_button_func(burl, func_name):
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol()) +',0,0)&nonavbar', 'bottomright_one_args')+\
-    check_popup_blocked('newsfeed_panel', burl+'terminal/?popup', burl+'terminalhelp/?')+\
+    check_popup_blocked('newsfeed_panel')+\
     '}'+\
     '}'+\
     '</script>'
@@ -139,13 +139,9 @@ def get_settings_note(burl):
     ret = description
     return ret
 
-def get_sa_terminal_content(burl, popup):
+def get_sa_terminal_content(burl):
     """ Content of the page """
     box_content = get_box_user_profile_header()
-
-    if popup is not None:
-        box_content = box_content + get_notification_popup_blocked()
-
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\
@@ -190,7 +186,7 @@ def get_sa_terminal_content(burl, popup):
 
     return box_content
 
-def get_sa_terminal_page(appname, burl, terminal, popup):
+def get_sa_terminal_page(appname, burl, terminal):
     """ Return the content of the entire page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -204,7 +200,7 @@ def get_sa_terminal_page(appname, burl, terminal, popup):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_sa_terminal_content(burl, popup) +\
+             get_sa_terminal_content(burl) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data

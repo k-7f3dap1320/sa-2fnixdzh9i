@@ -171,8 +171,7 @@ def go():
         c = get_intel_page(appname, burl, terminal)
 
     elif request.endpoint == 'terminal':
-        popup_notification = request.args.get('popup')
-        c = get_sa_terminal_page(appname,burl, terminal, popup_notification)
+        c = get_sa_terminal_page(appname,burl, terminal)
 
     elif request.endpoint == 'terminalhelp':
         c = get_sa_terminal_help_page(appname,burl, terminal)
