@@ -70,7 +70,7 @@ def get_terminal_button_func(burl, func_name):
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var help_panel_args = '+\
     '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=0, top=\'+ screen_x_half +\',\'+ common_args;'+\
-    open_window_args(burl+'terminalhelp/?', 'help_panel_args')+\
+    open_window_args(burl+'terminalhelp/?nonavbar', 'help_panel_args')+\
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
     'newsfeed_panel = ' + open_window_args(burl+'?terminal', 'newsfeed_args')+\
@@ -83,7 +83,7 @@ def get_terminal_button_func(burl, func_name):
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol()) +',0,0)&nonavbar', 'bottomright_one_args')+\
-    check_popup_blocked('newsfeed_panel')+\
+    check_popup_blocked('newsfeed_panel', burl+'terminal/?popup')+\
     '}'+\
     '}'+\
     '</script>'
@@ -120,6 +120,15 @@ def get_terminal_desc(burl):
     btn_space
     return ret
 
+def get_notification_popup_blocked():
+    ret = ''+\
+    '<div class="alert alert-danger" role="alert">'+\
+    '  <h3 class="alert-heading">Please allow popup for Smartalpha!</h3>'+\
+    '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
+    '</div>'
+    return ret
+
+
 def get_settings_note(burl):
     """ xxx """
     ret = ''
@@ -130,9 +139,13 @@ def get_settings_note(burl):
     ret = description
     return ret
 
-def get_sa_terminal_content(burl):
+def get_sa_terminal_content(burl, popup):
     """ Content of the page """
     box_content = get_box_user_profile_header()
+
+    if popup is not None:
+        box_content = box_content + get_notification_popup_blocked()
+
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\
@@ -177,7 +190,7 @@ def get_sa_terminal_content(burl):
 
     return box_content
 
-def get_sa_terminal_page(appname, burl, terminal):
+def get_sa_terminal_page(appname, burl, terminal, popup):
     """ Return the content of the entire page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -191,7 +204,7 @@ def get_sa_terminal_page(appname, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_sa_terminal_content(burl) +\
+             get_sa_terminal_content(burl, popup) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data

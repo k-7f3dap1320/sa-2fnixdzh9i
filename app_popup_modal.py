@@ -1,7 +1,7 @@
 """ Popup and modal messages """
 from sa_func import get_random_str
 
-def check_popup_blocked(var_name):
+def check_popup_blocked(var_name, redirect_url):
     """
     Args:
         String: var name is the variable that define the window to check
@@ -11,7 +11,7 @@ def check_popup_blocked(var_name):
     'if(!'+ var_name +' || '+ var_name +'.closed || typeof '+\
     var_name +'.closed==\'undefined\')'+\
     '{'+\
-    'document.write(\'popup have been blocked, please ALLOW popup to use Terminal\');'+\
+    'window.location.href = "'+ redirect_url +'";'+\
     '}'
     return ret
 
