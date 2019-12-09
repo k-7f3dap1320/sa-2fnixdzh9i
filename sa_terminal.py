@@ -83,7 +83,7 @@ def get_terminal_button_func(burl, func_name):
     'var bottomright_one_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y_half +\', left=\'+ screen_x_half +\', top=\'+ screen_y_half +\',\'+ common_args;'+\
     open_window_args(burl+'w/?funcname=get_tradingview_chart('+ str(get_default_chart_symbol()) +',0,0)&nonavbar', 'bottomright_one_args')+\
-    check_popup_blocked('newsfeed_panel')+\
+    check_popup_blocked('newsfeed_panel','popup_notification')+\
     '}'+\
     '}'+\
     '</script>'
@@ -142,6 +142,7 @@ def get_settings_note(burl):
 def get_sa_terminal_content(burl):
     """ Content of the page """
     box_content = get_box_user_profile_header()
+    box_content = box_content + '<div id="notification_div"></div>'
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\

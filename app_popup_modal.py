@@ -1,7 +1,7 @@
 """ Popup and modal messages """
 from sa_func import get_random_str
 
-def check_popup_blocked(var_name):
+def check_popup_blocked(var_name, notification_div_id):
     """
     Args:
         String: var name is the variable that define the window to check
@@ -11,14 +11,11 @@ def check_popup_blocked(var_name):
     'if(!'+ var_name +' || '+ var_name +'.closed || typeof '+\
     var_name +'.closed==\'undefined\')'+\
     '{'+\
-    'let div = document.createElement(\'div\');'+\
-    'div.className = "popupNote";'+\
-    'div.innerHTML = '+\
+    'document.getElementById("'+ notification_div_id +'").innerHTML = '+\
     '\'<div class="alert alert-danger" role="alert">'+\
     '  <h5 class="alert-heading">Please disable popup blocker!</h5>'+\
     '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
     '</div>\';'+\
-    'document.body.append(div);'+\
     '}'
     return ret
 
