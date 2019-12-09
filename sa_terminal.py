@@ -123,7 +123,7 @@ def get_terminal_desc(burl):
 def get_notification_popup_blocked():
     ret = ''+\
     '<div class="alert alert-danger" role="alert">'+\
-    '  <h4 class="alert-heading">Please disable popup blocker!</h4>'+\
+    '  <h5 class="alert-heading">Please disable popup blocker!</h5>'+\
     '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
     '</div>'
     return ret
