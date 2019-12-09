@@ -13,8 +13,8 @@ def check_popup_blocked(var_name, notification_div_id):
     '{'+\
     'document.getElementById("'+ notification_div_id +'").innerHTML = '+\
     '\'<div class="alert alert-danger" role="alert">'+\
-    '  <h5 class="alert-heading">Please disable popup blocker!</h5>'+\
-    '  <p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
+    '<h5 class="alert-heading">Please disable popup blocker and click on "Launch Terminal"</h5>'+\
+    '<p>To operate Smartalpha Terminal, you need to enable and allow popup and redirects.</p>'+\
     '</div>\';'+\
     '}'
     return ret
