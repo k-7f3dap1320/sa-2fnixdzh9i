@@ -68,8 +68,10 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 def go():
     """ xxx """
     appname = 'SmartAlpha | Trading Intelligence'
-    c = ''; burl = request.url_root;
-    if not DEV_MODE: burl = burl.replace('http://','https://')
+    c = ''
+    burl = request.url_root;
+    if not DEV_MODE: 
+        burl = burl.replace('http://','https://')
 
     uid = request.args.get('uid')
     ref = request.args.get('ref')
@@ -268,7 +270,7 @@ def go():
     if sid is None: sid = ''
     q = request.args.get(sid)
     if len(sid)>5:
-        c = get_search_result(q)
+        c = get_search_result(q, burl, nonavbar)
 
 
     if not DEV_MODE:

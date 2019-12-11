@@ -15,6 +15,7 @@ from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from sa_func import get_random_str
 from app_cookie import theme_return_this, get_sa_theme
+from app_popup_modal import open_window
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -23,7 +24,22 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_search_table_content(burl, nonavbar):
+def format_url(url, burl, nonavbarparam, terminal):
+    """ xxx """
+    ret = url + nonavbarparam
+    if terminal is None:
+        if url.find(burl) == -1:
+            width = 1200
+            height = 700
+            left = 0
+            top = 0
+            ret = open_window(url, width, height, left, top)
+    else:
+        if url.find(burl) == -1:
+            ret = url
+    return ret
+
+def get_search_table_content(burl, nonavbar, terminal):
     """ xxx """
     return_data = ''
     nonavbarparam = '&nonavbar=1'
@@ -54,7 +70,7 @@ def get_search_table_content(burl, nonavbar):
         search_text = row[0]
         content_details = row[1]
         scope_text = row[2]
-        url = row[3].replace('{burl}', burl) + nonavbarparam
+        url = format_url(row[3].replace('{burl}', burl), burl, nonavbarparam, terminal)
         feed_type = row[4]
 
         textcolor = ''
@@ -74,7 +90,7 @@ def get_search_table_content(burl, nonavbar):
     connection.close()
     return return_data
 
-def gen_search_table(burl, nonavbar):
+def gen_search_table(burl, nonavbar, terminal):
     """ xxx """
     return_data = ''
     return_data = '' +\
@@ -87,12 +103,12 @@ def gen_search_table(burl, nonavbar):
     '    </tr>'+\
     ' </thead>'+\
     '  <tbody>'+\
-    get_search_table_content(burl, nonavbar) +\
+    get_search_table_content(burl, nonavbar, terminal) +\
     '  </tbody>'+\
     '</table>'
     return return_data
 
-def get_box_search(burl, nonavbar):
+def get_box_search(burl, nonavbar, terminal):
     """ xxx """
     box_content = ''
     col_id = 0
@@ -101,14 +117,14 @@ def get_box_search(burl, nonavbar):
     l_placeholder = "Enter function, ticker or search. Hit <enter> to go."
 
     search_box = ' '+\
-    '  <form class="" action="'+ burl +'" method="get" id="searchForm" name="searhcForm" >'+\
+    '  <form class="" action="'+ burl +'" method="get" id="searchForm" name="searchForm" >'+\
     '<div class="sa-cursor">'+\
     '<input type="search" id="filterInput" name="'+\
     str(sid) +'" onkeyup="filterTable(); this.value = this.value.toUpperCase();" '+\
     'class="form-control" aria-label="Large" '+\
     'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
     l_placeholder +'" style="background: transparent;'+\
-    theme_return_this('','color: white;')  +'" autofocus>'+\
+    theme_return_this('', 'color: white;')  +'" autofocus>'+\
     '<i></i>'+\
     '</div><div>&nbsp;'+\
     '       </div>'+\
@@ -138,12 +154,15 @@ def get_box_search(burl, nonavbar):
     '</script>'
     box_content = box_content +\
     search_box +\
-    gen_search_table(burl, nonavbar)
+    gen_search_table(burl, nonavbar, terminal)
     return box_content
 
-def get_search_result(query):
+def get_search_result(query, burl, nonavbar):
     """ xxx """
     feed_type_filter_out = 3
+    nonavbarparam = '&nonavbar=1'
+    if nonavbar is None:
+        nonavbarparam = ''
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
@@ -155,7 +174,7 @@ def get_search_result(query):
     sql = "SELECT url FROM feed WHERE (search LIKE '%"+\
     str(query) +"%' or sa_function LIKE '%" + str(query) + "%') "+\
     "and type<>"+ str(feed_type_filter_out)
-   
+
     cursor.execute(sql)
     res = cursor.fetchall()
     url = ''
@@ -163,8 +182,10 @@ def get_search_result(query):
 
     for row in res:
         url = row[0].replace('{burl}', '')
+        if url.find(burl) == -1:
+            nonavbarparam = ''
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
-                                         str(url) + '" />') + get_body('', ''))
+                                         str(url) + nonavbarparam + '" />') + get_body('', ''))
 
     if return_data == '':
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=/?s=0" />') +\
@@ -174,7 +195,7 @@ def get_search_result(query):
     connection.close()
     return return_data
 
-def get_search_page_content(burl, nonavbar):
+def get_search_page_content(burl, nonavbar, terminal):
     """ xxx """
     box_content = ''
     box_class = 'box'
@@ -187,7 +208,7 @@ def get_search_page_content(burl, nonavbar):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    get_box_search(burl, nonavbar) +\
+    get_box_search(burl, nonavbar, terminal) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -211,7 +232,7 @@ def get_search_page(appname, burl, nonavbar, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbarcontent +\
-             get_search_page_content(burl, nonavbar) +\
+             get_search_page_content(burl, nonavbar, terminal) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data
