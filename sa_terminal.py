@@ -100,9 +100,9 @@ def get_terminal_desc(burl):
 
     description = '<div style:"text-align:left;">Add panels, charts and functions with '+\
     '<a href="'+\
-    burl +'search'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
+    burl +'search/#'+'"><strong>&lt;search&gt;</strong></a> on the top-left corner. '+\
     'Type <a href="'+\
-    burl +'h"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
+    burl +'h/#"><strong>&lt;HELP&gt;</strong> <strong>&lt;GO&gt;</strong></a> for Help. '+\
     'To run terminal, do no operate the browser in fullscreen mode. <strong>ALLOW popup and redirects.</strong>'+\
     '</div><div>&nbsp;</div>'
 
@@ -125,7 +125,7 @@ def get_settings_note(burl):
     ret = ''
     description = 'To customize your newsfeed and select your default '+\
     'market and asset class type <a href="'+\
-    burl +'settings'+'"><strong>&lt;SET&gt; &lt;GO&gt;</strong></a>'
+    burl +'settings/#'+'"><strong>&lt;SET&gt; &lt;GO&gt;</strong></a>'
 
     ret = description
     return ret

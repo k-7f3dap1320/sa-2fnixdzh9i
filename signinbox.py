@@ -33,7 +33,7 @@ def get_signin_box(burl):
         l_app_header_title +'</h1>   '+\
         '                   <div>'+\
         l_app_header_desc +'&nbsp;<a href="'+\
-        burl +'pricing/" class="text-info">'+\
+        burl +'join/?broker=eToro/" class="text-info">'+\
         l_app_call_to_action_link +'</a></div>'+\
         '                   <div class="row d-none d-sm-block style="margin: 20px;">'+\
         '                       <a '+\

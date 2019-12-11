@@ -67,7 +67,7 @@ def get_portfolio_button(burl, terminal):
     return return_data
 
 def get_pricing_menu(burl, terminal):
-    """ xxx """
+    """ DEPRECATED """
     return_data = ''
     link = burl + 'pricing'
     l_title = 'Pricing'
@@ -145,13 +145,12 @@ def navbar(burl, disable_search, terminal):
         '</li>'
     else:
         leftsidemenu = ''+\
-        get_pricing_menu(burl, terminal)+\
         get_about_menu(terminal)
 
         rightsidemenu = '<strong>'+\
         get_how_menu(burl, terminal) +\
         '</strong>' +'<li class="nav-item"><a href="'+\
-        burl+'pricing/" class="btn btn-sm btn-danger btn-block form-signin-btn">'+\
+        burl+'join/?broker=eToro/" class="btn btn-sm btn-danger btn-block form-signin-btn">'+\
         '<i class="fas fa-sign-in-alt"></i>&nbsp;'+\
         l_join_now_btn +'</a></li>'
 
