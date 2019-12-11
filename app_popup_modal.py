@@ -22,8 +22,8 @@ def check_popup_blocked(var_name, notification_div_id):
 def open_window_as(url, terminal):
     """ xxx """
     ret = ''
-    width = 1366
-    height = 768
+    width = 1200
+    height = 700
     left = 20
     top = 20
 

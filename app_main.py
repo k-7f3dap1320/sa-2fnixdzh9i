@@ -50,12 +50,12 @@ def gen_main_page(selection,
         if user_is_login() == 0:
             dashboard_content = dashboard_content +\
             get_newsfeed(burl, 0, 0, 10, 1) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
-            dashboard_content = dashboard_content + get_card(selection, 9, burl)
+            dashboard_content = dashboard_content + get_card(selection, 9, burl, terminal)
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 15, 1) + '<br />'
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
-        dashboard_content = dashboard_content + get_card(selection, 1, burl)
+        dashboard_content = dashboard_content + get_card(selection, 1, burl, terminal)
         if user_is_login() == 1:
             dashboard_content = dashboard_content + get_newsfeed(burl, 2, 0, 100, 1) + '<br />'
     return_data = get_head(get_loading_head() +\

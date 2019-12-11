@@ -5,6 +5,7 @@ from card_chart import get_card_chart
 from app_cookie import theme_return_this
 from print_google_ads import print_google_ads
 from tradingview_mini_chart import get_tradingview_mini_chart
+from app_popup_modal import open_window_as
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -13,7 +14,7 @@ DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
 
-def get_card(selection, type_sel, burl):
+def get_card(selection, type_sel, burl, terminal):
     """ Get card """
     return_data = ''
     if selection != '' and selection is not None:
@@ -109,7 +110,7 @@ def get_card(selection, type_sel, burl):
             get_tradingview_mini_chart(uid, '100%', '250', 'true', '1y', 1) +\
             '<div>&nbsp;</div>'+\
             '                <div class="title"><a href="' +\
-            url + '" class="'+\
+            url + '" target="_blank" class="'+\
             badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+\
             expl_label +'" >'+\
             badge+'</a>&nbsp;<span class="expl">'+\
@@ -124,14 +125,14 @@ def get_card(selection, type_sel, burl):
             '            <div class="box-part text-center rounded">'+\
             '                <div id="chart_div_'+str(get_uid(symbol))+'"></div>'+\
             '                <div class="title"><h6 style="line-height: 1.5;">'+\
-            short_title+'&nbsp;<a href="' + url + '" class="'+\
+            short_title+'&nbsp;<a href="' + url + '" target="_blank" class="'+\
             badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+\
             expl_label +'" >'+badge+'</a></h6></div>'+\
             '                <div class="text"><span class="desc">'+\
             portf_content_by +\
             content.replace('{burl}', burl) +'</span></div>'+\
             '                <a href="' +\
-            url + '" class="btn btn-outline-primary" role="button" aria-pressed="true">'+\
+            url + '" target="_blank" class="btn btn-outline-primary" role="button" aria-pressed="true">'+\
             link_label+'</a>'+\
             '                <div class="text"><span class="expl">'+\
             expl_label+'</span></div>'+\
@@ -140,11 +141,11 @@ def get_card(selection, type_sel, burl):
 
     if type_sel == 9:
         return_data = return_data + '</div></div><div class="box"><a href="'+\
-        button_portf_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+        open_window_as(button_portf_link, terminal) +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
         '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
     if type_sel == 1:
         return_data = return_data + '</div></div><div class="box"><a href="'+\
-        button_signals_link +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+        open_window_as(button_signals_link, terminal) +'" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
         '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
 
     cursor.close()
