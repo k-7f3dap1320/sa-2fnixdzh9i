@@ -103,7 +103,8 @@ def navbar(burl, disable_search, terminal):
         redirect_search_terminal_url = 'location.href = \''+ burl + 'search/\';'
     else:
         redirect_terminal = 'terminal'
-        redirect_search_terminal_url = open_window_as(burl+ 'search/?terminal&nonavbar', terminal)
+        redirect_search_terminal_url = open_window_as(burl+ 'search/?terminal&nonavbar', terminal)+\
+        ' location.reload();'
 
     search_box = ''
     if disable_search != 1:
