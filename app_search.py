@@ -168,6 +168,8 @@ def get_search_result(query, burl, nonavbar):
     nonavbarparam = '&nonavbar=1'
     if nonavbar is None:
         nonavbarparam = ''
+    print("###########")
+    print(nonavbarparam)
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
