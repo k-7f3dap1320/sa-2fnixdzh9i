@@ -191,6 +191,8 @@ def get_search_result(query, burl, nonavbar):
         url = row[0].replace('{burl}', '')
         if url.find(burl) == -1:
             nonavbarparam = ''
+        print(nonavbarparam)
+        print("###########")
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                          str(url) + nonavbarparam + '" />') + get_body('', ''))
 
