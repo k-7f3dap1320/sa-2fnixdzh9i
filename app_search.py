@@ -114,7 +114,7 @@ def get_box_search(burl, nonavbar, terminal):
     col_id = 0
     sid = get_random_str(9)
 
-    nonavbarparam = '&nonavbar=1'
+    nonavbarparam = '<input type="hidden" name="nonavbar" value="1">'
     if nonavbar is None:
         nonavbarparam = ''
 
@@ -133,7 +133,7 @@ def get_box_search(burl, nonavbar, terminal):
     '</div><div>&nbsp;'+\
     '       </div>'+\
     '     <input type="hidden" name="sid" value="'+ str(sid) +'">'+\
-    '     <input type="hidden" name="nonavbar" value="'+ str(nonavbarparam) +'">'+\
+    nonavbarparam +\
     '  </form>'
 
     box_content = '' +\
