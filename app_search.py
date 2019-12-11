@@ -188,7 +188,7 @@ def get_search_result(query, burl, nonavbar):
     return_data = ''
 
     for row in res:
-        url = row[0].replace('{burl}', '')
+        url = row[0].replace('{burl}', burl)
         if url.find(burl) == -1:
             nonavbarparam = ''
         print(nonavbarparam)
