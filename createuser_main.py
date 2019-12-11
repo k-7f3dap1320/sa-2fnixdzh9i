@@ -196,7 +196,7 @@ def get_broker_signin_spec_form(broker):
         connection.close()
 
         if str(broker_count) == '1':
-            l_username_placeholder = 'enter your '+ str(broker) + ' username or id'
+            l_username_placeholder = str(broker) + ' username or id (optional)'
             return_data = ' '+\
             '        <div>'+\
             '            <div>'+\
@@ -208,7 +208,7 @@ def get_broker_signin_spec_form(broker):
             '                 <input type="text" id="username_broker" '+\
             'name="username_broker" class="form-control" aria-label="Large" '+\
             'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-            l_username_placeholder +'" required autofocus>'+\
+            l_username_placeholder +'" autofocus>'+\
             '                 <input type="hidden" id="broker" '+\
             'name="broker" value="'+\
             str(broker) +'">'+\
@@ -240,7 +240,7 @@ def get_user_creation_form(burl, broker):
 
     if broker is not None:
         l_create_broker_account = "If you do not have a trading account at "+\
-        str(broker) + ", create one with our affilate link: "
+        str(broker) + ", create one now to trade with Smartalpha: "
 
         l_create_broker_account_btn_label = 'Create' + ' ' +\
         str(broker) + ' ' +'account'
