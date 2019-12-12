@@ -61,7 +61,7 @@ def get_portf_asset_class(what):
     multi_asset_selected = False
     asset_class_name = ''
     asset_class_id = ''
-    for i in range(5):
+    for i in range(4):
         suid = request.cookies.get('portf_s_' + str(i+1))
         sql = "SELECT asset_class.asset_class_name, asset_class.asset_class_id FROM instruments "+\
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
