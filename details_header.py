@@ -27,6 +27,13 @@ def get_details_header(uid, burl):
     str(uid) + " LIMIT 1"
     cr_s.execute(sql_s)
     rs_s = cr_s.fetchall()
+    symbol = ''
+    instr_name = ''
+    content = ''
+    badge = ''
+    asset_class = ''
+    market = ''
+    isin = ''
     for row in rs_s:
         symbol = row[0]
         instr_name = row[1]
