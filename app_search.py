@@ -33,7 +33,7 @@ def format_url(url, burl, nonavbarparam, terminal):
             height = 700
             left = 0
             top = 0
-            ret = open_window(url, width, height, left, top)
+            ret = 'javascript:' + open_window(url, width, height, left, top)
     else:
         if url.find(burl) == -1:
             ret = url
