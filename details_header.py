@@ -25,7 +25,6 @@ def get_details_header(uid, burl):
     "FROM symbol_list "+\
     "JOIN feed ON symbol_list.symbol = feed.symbol WHERE symbol_list.uid =" +\
     str(uid) + " LIMIT 1"
-    print(sql_s)
     cr_s.execute(sql_s)
     rs_s = cr_s.fetchall()
     for row in rs_s:
