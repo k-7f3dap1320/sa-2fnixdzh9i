@@ -9,11 +9,11 @@ from app_title import get_title
 from app_metatags import get_metatags
 from bootstrap import get_bootstrap
 from font_awesome import get_font_awesome
-from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
+from purechat import get_purechat
 
 def get_sa_terminal_help_content(burl):
     """ Content of the page """
@@ -24,7 +24,7 @@ def get_sa_terminal_help_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '<h3>Smartalpha Help and Support</h3>'+\
+    '<h4>Smartalpha Help and Support</h4>'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -36,7 +36,7 @@ def get_sa_terminal_help_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    ''+\
+    'email: <a href="mailto:info@taatu.co">info@taatu.co</a>'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -56,7 +56,8 @@ def get_sa_terminal_help_page(appname, burl, terminal):
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
-                           get_stylesheet(burl))
+                           get_stylesheet(burl)+\
+                           get_purechat(1))
     return_data = return_data +\
     get_body(get_loading_body(),
              get_sa_terminal_help_content(burl) +\
