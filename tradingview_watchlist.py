@@ -21,9 +21,9 @@ def get_tradingview_watchlist(width, height):
     
     ret = ''
     l_list_strategy_portfolio = 'My Strategy Portfolio'
-    l_list_top_5_best_performers = 'Top 5 Best Performers'
-    l_list_top_5_worst_performers = 'Top 5 Worst Performers'
-    l_list_watchlist = 'Watchlist'
+    l_list_top_5_best_performers = 'Top 5 Negative Movers'
+    l_list_top_5_worst_performers = 'Top 5 Positive Movers'
+    l_list_watchlist = 'In the Radar'
 
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
 
