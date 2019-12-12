@@ -11,9 +11,9 @@ DB_SRV = ACCESS_OBJ.db_server()
 
 def get_tradingview_watchlist(width, height):
     """ xxx """
-    if width == '0':
+    if str(width) == '0':
         width = '100%'
-    if height == '0':
+    if str(height) == '0':
         height = '100%'
     
     theme = get_sa_theme()
