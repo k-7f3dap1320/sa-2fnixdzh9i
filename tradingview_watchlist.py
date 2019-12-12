@@ -136,8 +136,8 @@ def get_tradingview_list_content(list_name, what, is_last_one):
         list_content = list_content +\
         sep +\
         '{'+\
-        '  "name": "'+ str(symbol) +'",'+\
-        '  "displayName": "'+ str(display_name) +'"'+\
+        '  "s": "'+ str(symbol) +'",'+\
+        '  "d": "'+ str(display_name) +'"'+\
         '}'
 
         i += 1
