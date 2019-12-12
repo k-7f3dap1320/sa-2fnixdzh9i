@@ -1,6 +1,7 @@
 """ Tradingview watchlist """
 import pymysql.cursors
 from sa_func import get_broker_affiliate_link, get_user_default_profile, get_user_numeric_id
+from app_cookie import get_sa_theme
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -14,7 +15,10 @@ def get_tradingview_watchlist(width, height):
         width = '100%'
     if height == '0':
         height = '100%'
-
+    
+    theme = get_sa_theme()
+    url = get_broker_affiliate_link('Tradingview', 'baseurl')
+    
     ret = ''
     l_list_strategy_portfolio = 'My Strategy Portfolio'
     l_list_top_5_best_performers = 'Top 5 Best Performers'
@@ -26,12 +30,24 @@ def get_tradingview_watchlist(width, height):
     tradingview = '' +\
     '<div class="tradingview-widget-container">'+\
     '  <div class="tradingview-widget-container__widget"></div>'+\
-    '  <script type="text/javascript" '+\
-    'src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>'+\
+    '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>'+\
     '  {'+\
-    '  "width": "100%",'+\
-    '  "height": "100%",'+\
-    '  "symbolsGroups": ['+\
+    '  "colorTheme": "'+ theme +'",'+\
+    '  "dateRange": "12m",'+\
+    '  "showChart": true,'+\
+    '  "locale": "en",'+\
+    '  "width": "'+ width +'",'+\
+    '  "height": "'+ height +'",'+\
+    '  "largeChartUrl": "'+ url +'",'+\
+    '  "isTransparent": true,'+\
+    '  "plotLineColorGrowing": "rgba(25, 118, 210, 1)",'+\
+    '  "plotLineColorFalling": "rgba(25, 118, 210, 1)",'+\
+    '  "gridLineColor": "rgba(42, 46, 57, 1)",'+\
+    '  "scaleFontColor": "rgba(120, 123, 134, 1)",'+\
+    '  "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",'+\
+    '  "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",'+\
+    '  "symbolActiveColor": "rgba(33, 150, 243, 0.12)",'+\
+    '  "tabs": ['+\
     get_tradingview_list_content(l_list_strategy_portfolio, 'port', False) +\
     get_tradingview_list_content(l_list_top_5_best_performers, 'best', False) +\
     get_tradingview_list_content(l_list_top_5_worst_performers, 'worst', False) +\
@@ -105,7 +121,7 @@ def get_tradingview_list_content(list_name, what, is_last_one):
 
     list_content = ''+\
     '{'+\
-    '  "name": "'+ str(list_name) +'",'+\
+    '  "title": "'+ str(list_name) +'",'+\
     '  "symbols": ['
     i = 1
     sep = ''
@@ -127,7 +143,8 @@ def get_tradingview_list_content(list_name, what, is_last_one):
         i += 1
 
     list_content = list_content +\
-    '  ]'+\
+    '  ],'+\
+    '    "originalTitle": "'+ str(list_name) +'"'+\
     '}'+\
     list_separator
 

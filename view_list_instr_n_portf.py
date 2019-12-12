@@ -37,7 +37,7 @@ def gen_view_list_instr_n_portf(appname, burl, what, sel, terminal):
     #sel = market or asset class
     return_data = ''
     if what == 'instr':
-        numrow = 5000
+        numrow = 10000
     else:
         numrow = 200
     page_title = 'Top Performing Trades of the Week'

@@ -154,7 +154,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
                                             get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                                          burl + 'n/?step=c" />') +\
                                                          get_body('', '')))
-            #send_email_notification(broker,name,username)
+            send_email_notification(broker,name,username)
         else:
             return_data = 'user already exists :P !'
         cursor.close()
