@@ -49,9 +49,9 @@ def get_tradingview_watchlist(width, height):
     '  "symbolActiveColor": "rgba(33, 150, 243, 0.12)",'+\
     '  "tabs": ['+\
     get_tradingview_list_content(l_list_strategy_portfolio, 'port', False) +\
-    get_tradingview_list_content(l_list_watchlist, 'watchlist', True) +\
+    get_tradingview_list_content(l_list_watchlist, 'watchlist', False) +\
     get_tradingview_list_content(l_list_top_5_best_performers, 'best', False) +\
-    get_tradingview_list_content(l_list_top_5_worst_performers, 'worst', False) +\
+    get_tradingview_list_content(l_list_top_5_worst_performers, 'worst', True) +\
     '  ],'+\
     '  "locale": "en",'+\
     '  "largeChartUrl": "'+ str(url) +'"'+\
