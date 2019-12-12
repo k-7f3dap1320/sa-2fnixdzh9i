@@ -65,11 +65,12 @@ def get_terminal_button_func(burl, func_name):
     'var screen_x = (screen.width-55);'+\
     'var screen_y_half = screen_y/2;'+\
     'var screen_x_half = screen_x/2;'+\
+    'var screen_x_half_quart = (screen_x/2)+(screen_x/4);'+\
     'var screen_x_quart = screen_x/4;'+\
     'var screen_x_right = screen_x_half + screen_x_quart;'+\
     'var common_args = \'location=no, menubar=no, status=no,toolbar=no\';'+\
     'var help_panel_args = '+\
-    '\'width=\'+ screen_x_quart +\', height=\'+ screen_y_half +\', left=0, top=\'+ screen_x_half +\',\'+ common_args;'+\
+    '\'width=\'+ screen_x_half_quart +\', height=\'+ screen_y_half +\', left=0, top=\'+ screen_x_half +\',\'+ common_args;'+\
     open_window_args(burl+'terminalhelp/', 'help_panel_args')+\
     'var newsfeed_args = '+\
     '\'width=\'+ screen_x_half +\', height=\'+ screen_y +\', left=0, top=0,\'+ common_args;'+\
