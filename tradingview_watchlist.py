@@ -21,8 +21,8 @@ def get_tradingview_watchlist(width, height):
     
     ret = ''
     l_list_strategy_portfolio = 'My Strategy Portfolio'
-    l_list_top_5_best_performers = 'Top 5 Positive Movers'
-    l_list_top_5_worst_performers = 'Top 5 Negative Movers'
+    l_list_top_5_best_performers = 'Top 5 Pos Movers'
+    l_list_top_5_worst_performers = 'Top 5 Neg Movers'
     l_list_watchlist = 'In the Radar'
 
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
@@ -49,9 +49,9 @@ def get_tradingview_watchlist(width, height):
     '  "symbolActiveColor": "rgba(33, 150, 243, 0.12)",'+\
     '  "tabs": ['+\
     get_tradingview_list_content(l_list_strategy_portfolio, 'port', False) +\
+    get_tradingview_list_content(l_list_watchlist, 'watchlist', True) +\
     get_tradingview_list_content(l_list_top_5_best_performers, 'best', False) +\
     get_tradingview_list_content(l_list_top_5_worst_performers, 'worst', False) +\
-    get_tradingview_list_content(l_list_watchlist, 'watchlist', True) +\
     '  ],'+\
     '  "locale": "en",'+\
     '  "largeChartUrl": "'+ str(url) +'"'+\
