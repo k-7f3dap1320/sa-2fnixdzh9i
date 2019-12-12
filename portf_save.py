@@ -67,7 +67,6 @@ def get_portf_asset_class(what):
         "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
         "JOIN asset_class ON instruments.asset_class = asset_class.asset_class_id "+\
         "WHERE symbol_list.uid = "+ str(suid)
-        print(sql)
         cursor.execute(sql)
         res = cursor.fetchall()
         for row in res:
