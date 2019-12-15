@@ -33,7 +33,7 @@ def get_tradingview_watchlist(width, height):
     '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>'+\
     '  {'+\
     '  "colorTheme": "'+ theme +'",'+\
-    '  "dateRange": "12m",'+\
+    '  "dateRange": "1d",'+\
     '  "showChart": true,'+\
     '  "locale": "en",'+\
     '  "width": "'+ width +'",'+\

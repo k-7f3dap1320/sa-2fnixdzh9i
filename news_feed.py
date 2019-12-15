@@ -12,7 +12,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_newsfeed(burl, sel, suid, numline, show_chart):
+def get_newsfeed(burl, sel, suid, numline, show_chart, terminal):
     """ xxx """
     ### ------------------------------------------------------------------------
     # sel == 0 : world top news
@@ -174,7 +174,7 @@ def get_newsfeed(burl, sel, suid, numline, show_chart):
         if symbol != '':
             news_content = news_content +\
             '<br /><br /><div style="width: 100%; overflow-x: auto;">'+\
-            get_signal_details(get_uid_from_symbol(symbol), burl, 'newsfeed') +\
+            get_signal_details(get_uid_from_symbol(symbol), burl, 'newsfeed', terminal) +\
             '</div>'
 
         newsrow = newsrow + url_form +\

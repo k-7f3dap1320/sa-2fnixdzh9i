@@ -142,7 +142,7 @@ def get_market_snapshot_section():
         '</div>'
     return return_data
 
-def get_intel_content(burl):
+def get_intel_content(burl, terminal):
     """ Get intelligence report content """
     box_content = ''
     box_content = ''+\
@@ -153,7 +153,7 @@ def get_intel_content(burl):
     '<div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
     '</div>'+\
     get_market_snapshot_section() +\
-    get_signals_lines(burl) +\
+    get_signals_lines(burl, terminal) +\
     get_expired_signals(burl) +\
     '<div class="row">' +\
     '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
@@ -195,7 +195,7 @@ def get_expired_signals(burl):
         '</div>'
     return return_data
 
-def get_signals_lines(burl):
+def get_signals_lines(burl, terminal):
     """ Get signals lines """
     return_data = ''
     if user_is_login():
@@ -243,7 +243,7 @@ def get_signals_lines(burl):
             get_tradingview_mini_chart(uid, '100%', '200', 'false', '1m', 1) +\
             '</div></div>'+\
             '    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-            '<div class="box-part rounded">'+ get_signal_details(uid, burl, 'desc') +\
+            '<div class="box-part rounded">'+ get_signal_details(uid, burl, 'desc', terminal) +\
             '<span style="font-size: small">'+ get_recomm(uid)  +'</span>'+\
             '</div></div>'+\
             '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
@@ -266,7 +266,7 @@ def get_intel_page(appname, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_intel_content(burl))
+             get_intel_content(burl, terminal))
 
     return_data = set_page(return_data)
     return return_data

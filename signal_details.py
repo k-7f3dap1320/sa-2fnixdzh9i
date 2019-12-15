@@ -1,7 +1,7 @@
 """ Signal details """
 import pymysql.cursors
 from sa_func import get_etoro_symbol_from_uid, get_broker_affiliate_link
-from app_popup_modal import open_window
+from app_popup_modal import open_window, open_window_as
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -10,7 +10,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_signal_details(uid, burl, mode):
+def get_signal_details(uid, burl, mode, terminal):
     """ xxx """
     # =============================================================================
     # uid = symbol uid
@@ -20,7 +20,7 @@ def get_signal_details(uid, burl, mode):
     broker = 'eToro'
     height = '600'
     width = '360'
-    button_href = burl + 's/?uid=' + str(uid)
+    button_href = open_window_as(burl + 's/?uid=' + str(uid), terminal)
     etoro_symbol = get_etoro_symbol_from_uid(uid)
     trade_href = get_broker_affiliate_link(broker, 'baseurl') + str(etoro_symbol)
 
@@ -56,7 +56,7 @@ def get_signal_details(uid, burl, mode):
     badge = ''
     for row in res:
         badge = row[0]
-    
+
     if badge.find('-999') == -1:
         if (badge.find('-0') == -1 and badge.find('-1') == -1 and
                 badge.find('-2') == -1 and badge.find('-3') == -1 and

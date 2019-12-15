@@ -31,7 +31,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_uid_from_tvs(tvws):
+def get_uid_from_tvs(tvws, terminal):
     """ xxx """
     return_data = 0
     connection = pymysql.connect(host=DB_SRV,
@@ -50,14 +50,14 @@ def get_uid_from_tvs(tvws):
     connection.close()
     return return_data
 
-def get_sign_header(uid, burl):
+def get_sign_header(uid, burl, terminal):
     """ xxx """
     return_data = ''
     return_data = ' '+\
     '        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    get_signal_details(uid, burl, 'desc') +\
+    get_signal_details(uid, burl, 'desc', terminal) +\
     '            </div>'+\
     '        </div>'+\
     '        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">'+\
@@ -70,7 +70,7 @@ def get_sign_header(uid, burl):
 def gen_sign_page(uid, tvws, appname, burl, terminal):
     """ xxx """
     if tvws is not None:
-        uid = get_uid_from_tvs(tvws)
+        uid = get_uid_from_tvs(tvws, terminal)
     if uid is None:
         uid = 0
     if uid == '':
@@ -113,7 +113,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
     return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                                          '<div class="box-top"><div class="row">' +\
                                          get_details_header(uid, burl) +\
-                                         get_sign_header(uid, burl) +\
+                                         get_sign_header(uid, burl, terminal) +\
                                          get_sign_ta_chart_alt_orders(uid) +\
                                          get_sign_recommend_trail_returns(uid) +\
                                          get_trades_box(uid, burl, None) +\

@@ -49,15 +49,15 @@ def gen_main_page(selection,
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
         if user_is_login() == 0:
             dashboard_content = dashboard_content +\
-            get_newsfeed(burl, 0, 0, 10, 1) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
+            get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
             dashboard_content = dashboard_content + get_card(selection, 9, burl, terminal)
         if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 15, 1) + '<br />'
+            dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
         if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 1, 0, 5, 1) + '<br />'
+            dashboard_content = dashboard_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
         dashboard_content = dashboard_content + get_card(selection, 1, burl, terminal)
         if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 2, 0, 100, 1) + '<br />'
+            dashboard_content = dashboard_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_googleadsense() +\
