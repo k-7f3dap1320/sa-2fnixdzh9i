@@ -168,8 +168,6 @@ def get_search_result(query, burl, nonavbar):
     nonavbarparam = '&nonavbar=1'
     if nonavbar is None:
         nonavbarparam = ''
-    print("###########")
-    print(nonavbarparam)
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
@@ -191,8 +189,6 @@ def get_search_result(query, burl, nonavbar):
         url = row[0].replace('{burl}', burl)
         if url.find(burl) == -1:
             nonavbarparam = ''
-        print(nonavbarparam)
-        print("###########")
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                          str(url) + nonavbarparam + '" />') + get_body('', ''))
 

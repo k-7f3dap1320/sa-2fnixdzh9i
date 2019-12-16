@@ -68,7 +68,7 @@ def gen_portf_user_example(burl, acm, notstart):
             "instruments.m3_signal DESC LIMIT 5"
             cursor.execute(sql)
             res = cursor.fetchall()
-            i = 0
+            i = 1
             for row in cursor:
                 resp.set_cookie('portf_s_' + str(i),
                                 str(row[0]),
