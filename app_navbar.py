@@ -7,7 +7,7 @@ from app_popup_modal import open_window_as
 def get_how_menu(burl, terminal):
     """ xxx """
     return_data = ''
-    l_helptooltip = 'Quick Help over there...'
+    l_helptooltip = 'Help'
     if user_is_login() == 1:
         l_howitworks = '<i class="far fa-question-circle" style="font-size: x-large;"></i>'
     else:
@@ -38,7 +38,7 @@ def get_sa_terminal_menu(burl, terminal):
 def get_dashboard_menu(burl, terminal):
     """ xxx """
     return_data = ''
-    l_dashboard = 'Dashboard'
+    l_dashboard = 'Portfolio Dashboard'
     num_dashboard_badge = (get_num_orders('open') +
                            get_num_orders('close') +
                            get_num_orders('pending'))
@@ -98,6 +98,7 @@ def navbar(burl, disable_search, terminal):
     l_themeswitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
+    l_feed_tooltip = 'Feed'
     if terminal is None:
         redirect_terminal = ''
         redirect_search_terminal_url = 'location.href = \''+ burl + 'search/\';'
@@ -160,7 +161,9 @@ def navbar(burl, disable_search, terminal):
     '<a class="navbar-brand" href="'+\
     burl +'?'+ redirect_terminal +'"><img src="'+\
     burl+'static/logo.png' +'?'+\
-    get_random_str(9) +'" height="30" alt="logo"></a>'+\
+    get_random_str(9) +'" data-toggle="tooltip" data-placement="bottom" '+\
+    'data-original-title="'+ l_feed_tooltip + '" ' +\
+    ' height="30" alt="logo"></a>'+\
     '<button class="navbar-toggler" type="button" data-toggle="collapse" '+\
     'data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" '+\
     'aria-expanded="false" aria-label="Toggle navigation">'+\
