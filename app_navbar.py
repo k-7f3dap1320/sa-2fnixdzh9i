@@ -56,7 +56,7 @@ def get_portfolio_button(burl, terminal):
     """ xxx """
     return_data = ''
 
-    l_create_portfolio = 'Create a new trading strategy'
+    l_create_portfolio = 'New trading strategy'
     portfolio_button = '<div class="d-none d-sm-block"><a href="'+ open_window_as(burl+'p/?ins=1&step=1&button=1', terminal) +\
     '" class="btn btn-lg btn-primary d-block d-md-inline-block" '+\
     'style="font-size:large;" data-toggle="tooltip" data-placement="bottom" '+\
