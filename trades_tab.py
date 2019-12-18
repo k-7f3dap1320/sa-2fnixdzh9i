@@ -272,11 +272,9 @@ def get_trades_tbl(uid, what, burl, type_trade):
                     return_data = return_data +\
                     '<td>'+ str(close_price) +'</td>'
 
-                if what != 'today':
-                    return_data = return_data +\
-                    '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'
                 return_data = return_data +\
+                '      <td>'+ str(expiration_date) +'</td>'+\
+                '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'
                 '    </tr>'
                 i += 1
         else:
@@ -297,10 +295,14 @@ def get_trades_tbl(uid, what, burl, type_trade):
                 return_data = return_data +\
                 '<td>'+ str(close_price) +'</td>'
 
+            if what != 'today':
+                return_data = return_data +\
+                '      <td>'+ str(expiration_date) +'</td>'+\
+                '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'
+
             return_data = return_data +\
-            '      <td>'+ str(expiration_date) +'</td>'+\
-            '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
             '    </tr>'
+
             i += 1
         if i == list_limit:
             break
