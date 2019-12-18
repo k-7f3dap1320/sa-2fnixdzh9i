@@ -194,10 +194,12 @@ def get_trades_tbl(uid, what, burl, type_trade):
     if what != 'today':
         return_data = return_data +\
         '      <th scope="col">'+ l_expiration_date +'</th>'+\
-        '      <th scope="col">'+ l_pnl +'</th>'+\
-        '    </tr>'+\
-        '  </thead>'+\
-        '  <tbody>'
+        '      <th scope="col">'+ l_pnl +'</th>'
+
+    return_data = return_data+\
+    '    </tr>'+\
+    '  </thead>'+\
+    '  <tbody>'
 
     i = 0
     for row in res:
@@ -273,8 +275,9 @@ def get_trades_tbl(uid, what, burl, type_trade):
                 if what != 'today':
                     return_data = return_data +\
                     '      <td>'+ str(expiration_date) +'</td>'+\
-                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'+\
-                    '    </tr>'
+                    '      <td><span class="'+ text_class +'">'+ str(pnl_pct) +'</span></td>'
+                return_data = return_data +\
+                '    </tr>'
                 i += 1
         else:
             return_data = return_data +\
