@@ -166,21 +166,22 @@ def get_allocation_for_table(uid, connection):
     """ xxx """
     ret = ''
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT portfolios.symbol, portfolios.strategy_order_type FROM symbol_list ' +\
+    sql = 'SELECT portfolios.symbol, instruments.w1_signal FROM symbol_list ' +\
     'JOIN portfolios ON portfolios.portf_symbol = symbol_list.symbol '+\
+    'JOIN instruments ON instruments.symbol = portfolios.symbol '+\
     'WHERE symbol_list.uid = '+ str(uid)
     cursor.execute(sql)
     res = cursor.fetchall()
     symbol = ''
     badge = ''
-    strategy_order_type = ''
+    w1_signal = ''
     for row in res:
         symbol = row[0]
-        strategy_order_type = row[1]
-        if strategy_order_type == 'long':
+        w1_signal = row[1]
+        if w1_signal > 0:
             badge = '<span class="badge badge-pill badge-success">'+\
             symbol +'</span>'
-        elif strategy_order_type == 'short':
+        elif w1_signal < 0:
             badge = '<span class="badge badge-pill badge-danger">'+\
             symbol +'</span>'
         else:
