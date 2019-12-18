@@ -218,7 +218,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
             strategy_order_type = row[9]
 
         if date_now == entry_date:
-            badge_today = '&nbsp;&nbsp;<span class="badge badge-primary">open today</span>'
+            badge_today = '&nbsp;&nbsp;<span class="badge badge-primary">today</span>'
 
         elif int(dnstr) >= int(expiration_date_str) and\
         (what == 'active' or what == 'today') and (close_price == -1):
@@ -226,7 +226,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
         elif int(dnstr) == int(expiration_date_str) and\
         (what == 'expired' or what == 'today'):
-            badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">closed today</span>'
+            badge_today = '&nbsp;&nbsp;<span class="badge badge-warning">closed</span>'
 
         else:
             badge_today = ''
