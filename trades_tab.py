@@ -175,7 +175,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
     l_entry_date = 'Entry date'
     l_open_price = 'Open price'
     l_close_price = 'Close price'
-    l_expiration_date = 'Expiration date'
+    l_expiration_date = 'Expires on'
     l_pnl = 'PnL'
 
     return_data = ''+\
