@@ -133,7 +133,7 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
             ' | <button type="button" class="btn btn-info btn-sm active" '+\
             'data-toggle="modal" data-target="#popup_view_'+\
             str(uid) +'">' +\
-            str(fullname)+ '</button></td>'
+            '<i class="far fa-folder-open"></i>'+ '</button></td>'
             data_href = 'data-href="#"'
 
         column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y_1) +'</td>'
