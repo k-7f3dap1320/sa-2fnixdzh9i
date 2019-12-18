@@ -249,8 +249,13 @@ def get_sentiment_progressbar(score):
     pos = pos *100
     neg = neg *100
 
+    l_score = str(pos) + '% positive; '+ str(neg) + '% negative'
+    l_tooltip = 'sentiment: {score}'
+    l_tooltip = l_tooltip.replace('{score}', l_score)
+
     content = ' '+\
-    '<div class="progress" style="width: 100%;">'+\
+    '<div class="progress" style="width: 100%;" '+\
+    'data-toggle="tooltip" data-placement="bottom" title="'+ l_tooltip +'">'+\
     '  <div class="progress-bar bg-success progress-bar-striped" '+\
     'role="progressbar" style="width: '+\
     str(pos) +'%" aria-valuenow="'+\
