@@ -68,7 +68,11 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
         unit = row[10]
         globalrank = row[12]
         portf_owner = row[13]
-        volatility_risk_st = str(round(volatility_risk_st * 100, 2))+'%'
+        if user_portf:
+            volatility_risk_st = ''
+        else:
+            volatility_risk_st = str(round(volatility_risk_st * 100, 2))+'%'
+
         if globalrank == 0:
             globalrank = 'Not ranked'
         if y_1 >= 0:
@@ -347,6 +351,10 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel):
         c_1_week_column = '<th scope="col">1-week</th>'
         small_font_class = "sa-table-sm"
 
+    l_vol_risk_pct = '<th scope="col">Vol. risk (%)</th>'
+    if mode == 'dashboard':
+        l_vol_risk_pct = ''
+        
     return_data = ' ' +\
     l_performance_note +\
     '<table id="table_instr_n_portf" class="table table-hover table-sm '+\
@@ -355,7 +363,7 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel):
     '    <tr>'+\
     signal_column +\
     l_instr_portf +\
-    '      <th scope="col">Vol. risk (%)</th>'+\
+    l_vol_risk_pct +\
     c_1_year_column +\
     c_6_month_column +\
     c_3_month_column +\
