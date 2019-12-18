@@ -137,7 +137,7 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
             ' | <button type="button" class="btn btn-info btn-sm active" '+\
             'data-toggle="modal" data-target="#popup_view_'+\
             str(uid) +'">' +\
-            '<i class="far fa-folder-open"></i>'+ '</button></td>'
+            '<i class="far fa-folder-open"></i>'+ get_allocation_for_table(uid, connection) +'</button></td>'
             data_href = 'data-href="#"'
 
         column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y_1) +'</td>'
@@ -160,6 +160,32 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
     connection.close()
 
     return return_data
+
+def get_allocation_for_table(uid, connection):
+    """ xxx """
+    ret = ''
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT portfolios.symbol, portfolios.strategy_order_type FROM symbol_list ' +\
+    'JOIN portfolios ON portfolios.portf_symbol = symbol_list.symbol '+\
+    'WHERE symbol_list.uid = '+ str(uid)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    symbol = ''
+    badge = ''
+    strategy_order_type = ''
+    for row in res:
+        symbol = row[0]
+        strategy_order_type = row[1]
+        if strategy_order_type == 'long':
+            badge = '<span class="badge badge-pill badge-success">'+ symbol +'</span>'
+        elif strategy_order_type == 'short':
+            badge = '<span class="badge badge-pill badge-danger">'+ symbol +'</span>'
+        else:
+            badge = '<span class="badge badge-pill badge-info">'+ symbol +'</span>'
+        ret = ret + '&nbsp;' + badge
+        
+    cursor.close()
+    return ret
 
 def draw_instr_table(burl, mode, step, maxrow, sel):
     """ xxx """
