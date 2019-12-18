@@ -178,13 +178,13 @@ def get_allocation_for_table(uid, connection):
         symbol = row[0]
         strategy_order_type = row[1]
         if strategy_order_type == 'long':
-            badge = '<span class="badge badge-pill badge-success" style="font-size: small;">'+\
+            badge = '<span class="badge badge-pill badge-success">'+\
             symbol +'</span>'
         elif strategy_order_type == 'short':
-            badge = '<span class="badge badge-pill badge-danger" style="font-size: small;">'+\
+            badge = '<span class="badge badge-pill badge-danger">'+\
             symbol +'</span>'
         else:
-            badge = '<span class="badge badge-pill badge-info" style="font-size: small;">'+\
+            badge = '<span class="badge badge-pill badge-info">'+\
             symbol +'</span>'
         ret = ret + '&nbsp;' + badge
 
