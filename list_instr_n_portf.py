@@ -137,8 +137,8 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
             ' | <button type="button" class="btn btn-info btn-sm active" '+\
             'data-toggle="modal" data-target="#popup_view_'+\
             str(uid) +'">' +\
-            '<i class="far fa-folder-open"></i></button></td>'+\
-            '&nbsp;' + get_allocation_for_table(uid, connection)
+            '<i class="far fa-folder-open"></i></button>'+\
+            '&nbsp;' + get_allocation_for_table(uid, connection) +'</td>'
             data_href = 'data-href="#"'
 
         column_y1 = '      <td class="'+ class_y1 +" "+ class_row_style +'">'+ str(y_1) +'</td>'
