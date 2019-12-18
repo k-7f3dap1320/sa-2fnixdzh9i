@@ -67,7 +67,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
     if selected_is_portf:
         sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
+            "trades.symbol, "+\
             "trades.entry_date,  "+\
             "trades.entry_price, "+\
             "trades.close_price, "+\
@@ -84,7 +84,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
     elif is_user_prf and what != 'today':
         sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
+            "trades.symbol, "+\
             "trades.entry_date, "+\
             "trades.entry_price, "+\
             "trades.close_price, "+\
@@ -123,7 +123,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
         sql = "SELECT "+\
             "trades.order_type, "+\
-            "trades.fullname, "+\
+            "trades.symbol, "+\
             "trades.entry_date, "+\
             "trades.entry_price, "+\
             "trades.close_price, "+\
@@ -144,7 +144,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
             type_status_filter
     else:
         sql = "SELECT trades.order_type, "+\
-            "trades.fullname, "+\
+            "trades.symbol, "+\
             "trades.entry_date,  "+\
             "trades.entry_price, "+\
             "trades.close_price, "+\
@@ -200,7 +200,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
     i = 0
     for row in res:
         order_type = row[0]
-        fullname = row[1]
+        symbol = row[1]
         entry_date = row[2].strftime("%d-%b-%Y")
         entry_price = row[3]
         close_price = row[4]
@@ -260,7 +260,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
                 '      <td><a href="'+\
                 burl + 's/?uid='+\
                 str(alloc_uid) +'">'+\
-                str(fullname) +'</a></td>'+\
+                str(symbol) +'</a></td>'+\
                 '      <td>'+ str(entry_date) +'</td>'+\
                 '      <td>'+ str(entry_price) +'</td>'
 
@@ -283,7 +283,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
             '      <td><a href="'+\
             burl + 's/?uid='+\
             str(alloc_uid) +'">'+\
-            str(fullname) +'</a></td>'+\
+            str(symbol) +'</a></td>'+\
             '      <td>'+ str(entry_date) +'</td>'+\
             '      <td>'+ str(entry_price) +'</td>'
 
