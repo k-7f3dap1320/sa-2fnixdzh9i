@@ -353,7 +353,7 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel):
 
     l_vol_risk_pct = '<th scope="col">Vol. risk (%)</th>'
     if mode == 'dashboard':
-        l_vol_risk_pct = ''
+        l_vol_risk_pct = '<th scope="col"></th>'
         
     return_data = ' ' +\
     l_performance_note +\
