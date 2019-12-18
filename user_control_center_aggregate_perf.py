@@ -229,23 +229,26 @@ def get_control_center():
 
     if num_open_trades != 0:
         open_trades = ' '+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small; background-color: transparent; border-color: '+\
-        theme_return_this('','#343a40') +';">' + l_control_center_open_trade +'</span>'+\
+        '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
+        'style="background-color: transparent; border-color: '+\
+        theme_return_this('','#343a40') +';">'+\
+        '<span style="font-size: small;">' + l_control_center_open_trade +'</span>'+\
         '    <span class="badge badge-primary badge-pill">'+ str(num_open_trades) +'</span>'+\
         '  </li>'
     if num_close_trades != 0:
         close_trades = ' '+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small; background-color: transparent; border-color: '+\
-        theme_return_this('','#343a40') +';">' + l_control_center_close_trade +'</span>' +\
+        '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
+        'style="background-color: transparent; border-color: '+\
+        theme_return_this('','#343a40') +';">'+\
+        '<span style="font-size: small;">' + l_control_center_close_trade +'</span>' +\
         '    <span class="badge badge-warning badge-pill">'+ str(num_close_trades) +'</span>'+\
         '  </li>'
     if num_pending_trades != 0:
         pending_trades = ' '+\
-        '  <li class="list-group-item d-flex justify-content-between align-items-center">'+\
-        '<span style="font-size: small; background-color: transparent; border-color: '+\
-        theme_return_this('','#343a40') +';">' + l_control_center_pending_trade +'</span>' +\
+        '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
+        'style="background-color: transparent; border-color: '+\
+        theme_return_this('','#343a40') +';">'+\
+        '<span style="font-size: small;">' + l_control_center_pending_trade +'</span>' +\
         '    <span class="badge badge-secondary badge-pill">'+\
         str(num_pending_trades) +'</span>'+\
         '  </li>'
