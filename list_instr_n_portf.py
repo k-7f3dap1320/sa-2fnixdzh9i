@@ -184,7 +184,7 @@ def get_allocation_for_table(uid, connection):
             badge = '<span class="badge badge-pill badge-danger">'+\
             symbol +'</span>'
         else:
-            badge = '<span class="badge badge-pill badge-info">'+\
+            badge = '<span class="badge badge-pill badge-warning">'+\
             symbol +'</span>'
         ret = ret + '&nbsp;' + badge
 
