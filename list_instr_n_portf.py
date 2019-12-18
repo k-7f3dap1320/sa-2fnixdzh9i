@@ -463,7 +463,7 @@ def get_box_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
         l_your_portfolios +'</span>'
         search_box = ''
         list_class = ''
-        box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-md-block'
+        box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none d-lg-block'
     box_content = box_content +\
     '<div class="box">' +\
     '   <div class="row">'+\
