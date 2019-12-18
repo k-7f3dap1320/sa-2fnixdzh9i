@@ -178,13 +178,16 @@ def get_allocation_for_table(uid, connection):
         symbol = row[0]
         strategy_order_type = row[1]
         if strategy_order_type == 'long':
-            badge = '<span class="badge badge-pill badge-success">'+ symbol +'</span>'
+            badge = '<span class="badge badge-pill badge-success" style="font-size: small;">'+\
+            symbol +'</span>'
         elif strategy_order_type == 'short':
-            badge = '<span class="badge badge-pill badge-danger">'+ symbol +'</span>'
+            badge = '<span class="badge badge-pill badge-danger" style="font-size: small;">'+\
+            symbol +'</span>'
         else:
-            badge = '<span class="badge badge-pill badge-info">'+ symbol +'</span>'
+            badge = '<span class="badge badge-pill badge-info" style="font-size: small;">'+\
+            symbol +'</span>'
         ret = ret + '&nbsp;' + badge
-        
+
     cursor.close()
     return ret
 
@@ -256,7 +259,7 @@ def draw_instr_table(burl, mode, step, maxrow, sel):
             class_w1 = "text text-success"
         else:
             class_w1 = "text text-danger"
-        
+
         if w_forecast_change > -999:
             if w_forecast_change >= 0:
                 class_forecast = "bg bg-success text-white"
@@ -381,7 +384,7 @@ def gen_instr_n_portf_table(burl, mode, what, step, maxrow, sel):
     l_vol_risk_pct = '<th scope="col">Vol. risk (%)</th>'
     if mode == 'dashboard':
         l_vol_risk_pct = '<th scope="col"></th>'
-        
+
     return_data = ' ' +\
     l_performance_note +\
     '<table id="table_instr_n_portf" class="table table-hover table-sm '+\
@@ -450,7 +453,7 @@ def get_box_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
     '<input type="text" id="filterInput" name="filterInput" onkeyup="filterTable()" '+\
     'class="form-control" aria-label="Large" '+\
     'aria-describedby="inputGroup-sizing-sm" style="background: transparent; '+\
-    theme_return_this('','color: white;') +'" placeholder="'+\
+    theme_return_this('', 'color: white;') +'" placeholder="'+\
     l_placeholder +'" autofocus>'+\
     '<i></i>'+\
     '</div><div>&nbsp;</div>'
