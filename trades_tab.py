@@ -222,7 +222,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
         elif int(dnstr) >= int(expiration_date_str) and\
         (what == 'active' or what == 'today') and (close_price == -1):
-            badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @marketOpen</span>'
+            badge_today = '&nbsp;&nbsp;<span class="badge badge-secondary">close @market</span>'
 
         elif int(dnstr) == int(expiration_date_str) and\
         (what == 'expired' or what == 'today'):
