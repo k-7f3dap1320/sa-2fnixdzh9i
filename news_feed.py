@@ -249,7 +249,7 @@ def get_sentiment_progressbar(score):
     pos = pos *100
     neg = neg *100
 
-    l_score = str(int(pos)) + '% positive | '+ str(int(neg)) + '% negative'
+    l_score = str(int(pos)) + '% positive, '+ str(int(neg)) + '% negative'
     l_tooltip = 'sentiment score: {score}'
     l_tooltip = l_tooltip.replace('{score}', l_score)
 
