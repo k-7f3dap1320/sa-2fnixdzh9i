@@ -7,7 +7,7 @@ def get_signin_box(burl):
     """ xxx """
     box_content = ''
     if user_is_login() == 0:
-        l_app_header_title = 'Create unlimited optimized trading portfolios'
+        l_app_header_title = 'Create unlimited optimized trading strategies'
 
         l_app_header_desc = 'Chart patterns, price movements, '+\
         'and news analysed using quantitative methods '+\
