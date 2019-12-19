@@ -14,6 +14,7 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 from purechat import get_purechat
+from app_popup_modal import open_window_as
 
 def get_sa_terminal_help_content(burl):
     """ Content of the page """
@@ -37,6 +38,8 @@ def get_sa_terminal_help_content(burl):
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     'email: <a href="mailto:info@taatu.co">info@taatu.co</a>'+\
+    'help and learning page: <a href="'+\
+    open_window_as(burl +'h/#', 1) +'">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
