@@ -15,19 +15,31 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 
+def get_list_video_tutorials():
+    ret = 'video tutorial list'
+    return ret
+
+def get_list_articles(burl):
+    ret = 'articles list'
+    return ret
+
 def get_help_tabs(burl):
     ret = '' +\
     '<ul class="nav nav-tabs" id="helpTab" role="tablist">'+\
     '  <li class="nav-item">'+\
-    '    <a class="nav-link active" id="helptab" data-toggle="tab" href="#helptab" role="tab" aria-controls="Help" aria-selected="true">Help</a>'+\
+    '    <a class="nav-link active" id="helptab" data-toggle="tab" '+\
+    'href="#helptab" role="tab" aria-controls="Help" aria-selected="true">Help</a>'+\
     '  </li>'+\
     '  <li class="nav-item">'+\
-    '    <a class="nav-link" id="articlestab" data-toggle="tab" href="#articles" role="tab" aria-controls="Articles" aria-selected="false">More articles</a>'+\
+    '    <a class="nav-link" id="articlestab" data-toggle="tab" '+\
+    'href="#articles" role="tab" aria-controls="Articles" aria-selected="false">More articles</a>'+\
     '  </li>'+\
     '</ul>'+\
     '<div class="tab-content" id="myTabContent">'+\
-    '  <div class="tab-pane fade show active" id="helptab" role="tabpanel" aria-labelledby="helptab">...</div>'+\
-    '  <div class="tab-pane fade" id="articlestab" role="tabpanel" aria-labelledby="articlestab">...</div>'+\
+    '  <div class="tab-pane fade show active" id="helptab" role="tabpanel" '+\
+    'aria-labelledby="helptab">'+ get_list_video_tutorials() +'</div>'+\
+    '  <div class="tab-pane fade" id="articlestab" role="tabpanel" '+\
+    'aria-labelledby="articlestab">'+ get_list_articles(burl) +'</div>'+\
     '</div>'
     return ret
 
