@@ -74,9 +74,7 @@ def get_current_user_total_account_size(what):
 def gen_aggregate_perf_graph():
     """ xxx """
     return_data = ''
-    min_yaxis = get_current_user_total_account_size('total')
-    if min_yaxis is None:
-        min_yaxis = 0
+    min_yaxis = 0
 
     l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
 
@@ -85,7 +83,7 @@ def gen_aggregate_perf_graph():
 
     l_aggregate_portf_xaxis_total = '' +\
     l_aggregate_portf_xaxis_total.replace('{total_account_size}',
-                                          str(min_yaxis))
+                                          str(get_current_user_total_account_size('total')))
 
     l_aggregate_portf_xaxis_total = '' +\
     l_aggregate_portf_xaxis_total.replace('{unit}',
@@ -130,6 +128,10 @@ def gen_aggregate_perf_graph():
     for row in res:
         date = row[0].strftime("%d-%m-%Y")
         nav = row[1]
+        if min_yaxis == 0:
+            min_yaxis = nav
+        if nav < min_yaxis:
+            min_yaxis = nav
         cr_c = connection.cursor(pymysql.cursors.SSCursor)
 
         sql_c = "SELECT chart_data.date, chart_data.price_close, chart_data.symbol "+\
