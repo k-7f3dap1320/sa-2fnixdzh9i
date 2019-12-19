@@ -15,7 +15,23 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 
-def get_xxx_content(burl):
+def get_help_tabs(burl):
+    ret = '' +\
+    '<ul class="nav nav-tabs" id="helpTab" role="tablist">'+\
+    '  <li class="nav-item">'+\
+    '    <a class="nav-link active" id="helptab" data-toggle="tab" href="#helptab" role="tab" aria-controls="Help" aria-selected="true">Help</a>'+\
+    '  </li>'+\
+    '  <li class="nav-item">'+\
+    '    <a class="nav-link" id="articlestab" data-toggle="tab" href="#articles" role="tab" aria-controls="Articles" aria-selected="false">More articles</a>'+\
+    '  </li>'+\
+    '</ul>'+\
+    '<div class="tab-content" id="myTabContent">'+\
+    '  <div class="tab-pane fade show active" id="helptab" role="tabpanel" aria-labelledby="helptab">...</div>'+\
+    '  <div class="tab-pane fade" id="articlestab" role="tabpanel" aria-labelledby="articlestab">...</div>'+\
+    '</div>'
+    return ret
+
+def get_help_content(burl):
     """ Content of the page """
 
     box_content = ''+\
@@ -24,7 +40,7 @@ def get_xxx_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    'URL is '+ str(burl) +\
+    get_help_tabs(burl) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -46,7 +62,7 @@ def get_help_page(appname, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_xxx_content(burl) +\
+             get_help_content(burl) +\
              get_page_footer(burl))
     return_data = set_page(return_data)
     return return_data
