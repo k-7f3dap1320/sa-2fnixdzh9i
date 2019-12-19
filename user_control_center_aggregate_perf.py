@@ -274,7 +274,7 @@ def get_control_center():
 def get_control_center_aggregate_perf():
     """ xxx """
     return_data = ''
-    return_data = '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
+    return_data = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     get_control_center()+\
     get_aggregate_perf()+\
     '</div>'

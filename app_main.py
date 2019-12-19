@@ -42,8 +42,14 @@ def gen_main_page(selection,
     if is_dashboard == str(1) and user_is_login() == 1:
         dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
         dashboard_content = dashboard_content +\
-        '<div class="box"><div class="row">' + get_trades_box(0, burl, is_dashboard) +\
-        get_control_center_aggregate_perf() + '</div></div>'
+        '<div class="box">'+\
+        '<div class="row">'+\
+        get_control_center_aggregate_perf() +\
+        '</div>'+\
+        '<div class="row">' +\
+        get_trades_box(0, burl, is_dashboard) +\
+        '</div>'+\
+        '</div>'
     else:
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
