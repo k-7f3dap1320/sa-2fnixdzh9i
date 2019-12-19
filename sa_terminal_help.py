@@ -37,7 +37,7 @@ def get_sa_terminal_help_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    'email: <a href="mailto:info@taatu.co">info@taatu.co</a>'+\
+    'email: <a href="mailto:info@taatu.co">info@taatu.co</a><br />'+\
     'help and learning page: <a href="'+\
     open_window_as(burl +'h/#', 1) +'">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>'+\
     '            </div>'+\
