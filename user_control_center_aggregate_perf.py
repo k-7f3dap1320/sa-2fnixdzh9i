@@ -177,7 +177,7 @@ def gen_aggregate_perf_graph():
     "  chart.draw(data, options); "+\
     "} "+\
     "</script>"+\
-    "<div id='aggr_perf_chart_div' style='height:350px;'></div>"
+    "<div id='aggr_perf_chart_div' style='height:300px;'></div>"
 
     cursor.close()
     cursor.close()
@@ -263,7 +263,7 @@ def get_control_center():
     l_title_control_center = 'Control Center'
 
     box_content = '' +\
-    '            <div class="box-part rounded" style="height: 250px; '+\
+    '            <div class="box-part rounded" style="height: 300px; '+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'" >'+\
     '               <span class="sectiont"><i class="fas fa-tasks"></i>&nbsp;'+\
     l_title_control_center +'</span>'+\
