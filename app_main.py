@@ -44,19 +44,23 @@ def get_dashboard(burl, is_dashboard):
 def get_feed(burl, terminal, selection):
     feed_content = ''
     google_ad = ''
-    if user_is_login() == 1:
+    if user_is_login() == 1 and terminal is None:
         google_ad = print_google_ads('leaderboard', 'center')
 
     if user_is_login() == 0:
-        feed_content = feed_content +\
-        get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
+        feed_content = feed_content + get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'
+        feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
         feed_content = feed_content + get_card(selection, 9, burl, terminal)
+
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
         feed_content = feed_content + google_ad + '<br />'
+
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
+
     feed_content = feed_content + get_card(selection, 1, burl, terminal)
+
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
         
