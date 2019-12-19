@@ -24,6 +24,43 @@ from user_control_center_aggregate_perf import get_control_center_aggregate_perf
 from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
+from print_google_ads import print_google_ads
+
+def get_dashboard(burl, is_dashboard):
+    ret = ''
+    dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
+    dashboard_content = dashboard_content +\
+    '<div class="box">'+\
+    '<div class="row">'+\
+    get_control_center_aggregate_perf() +\
+    '</div>'+\
+    '<div class="row">' +\
+    get_trades_box(0, burl, is_dashboard) +\
+    '</div>'+\
+    '</div>'
+    ret = dashboard_content
+    return ret
+
+def get_feed(burl, terminal, selection):
+    feed_content = ''
+    google_ad = ''
+    if user_is_login() == 1:
+        google_ad = print_google_ads('leaderboard', 'center')
+
+    if user_is_login() == 0:
+        feed_content = feed_content +\
+        get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
+        feed_content = feed_content + get_card(selection, 9, burl, terminal)
+    if user_is_login() == 1:
+        feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
+        feed_content = feed_content + google_ad
+    if user_is_login() == 1:
+        feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
+    feed_content = feed_content + get_card(selection, 1, burl, terminal)
+    if user_is_login() == 1:
+        feed_content = feed_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
+        
+    return feed_content
 
 def gen_main_page(selection,
                   appname,
@@ -38,32 +75,15 @@ def gen_main_page(selection,
     navbarcontent = ''
     if nonavbar is None:
         navbarcontent = navbar(burl, 0, terminal)
-    dashboard_content = ''
+    page_content = ''
     if is_dashboard == str(1) and user_is_login() == 1:
-        dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
-        dashboard_content = dashboard_content +\
-        '<div class="box">'+\
-        '<div class="row">'+\
-        get_control_center_aggregate_perf() +\
-        '</div>'+\
-        '<div class="row">' +\
-        get_trades_box(0, burl, is_dashboard) +\
-        '</div>'+\
-        '</div>'
+        page_content = get_dashboard(burl, is_dashboard)
     else:
+        get_feed(burl, terminal, selection)
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
-        if user_is_login() == 0:
-            dashboard_content = dashboard_content +\
-            get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'+ get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
-            dashboard_content = dashboard_content + get_card(selection, 9, burl, terminal)
-        if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
-        if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
-        dashboard_content = dashboard_content + get_card(selection, 1, burl, terminal)
-        if user_is_login() == 1:
-            dashboard_content = dashboard_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
+
+        
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_googleadsense() +\
@@ -78,7 +98,7 @@ def gen_main_page(selection,
                                          gen_tour_popup(tour, burl) +\
                                          get_signin_box(burl) +\
                                          get_box_user_profile_header() +\
-                                         dashboard_content + get_page_footer(burl) +\
+                                         page_content + get_page_footer(burl) +\
                                          get_purechat(0))
     return_data = set_page(return_data)
     return return_data
