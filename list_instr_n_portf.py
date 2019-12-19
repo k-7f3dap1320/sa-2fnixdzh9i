@@ -195,15 +195,16 @@ def get_allocation_for_table(uid, connection):
             total_trade_pnl = row[0]
         cr_o.close()
 
-        if total_trade_pnl > 0:
-            badge = '<span class="badge badge-pill badge-success">'+\
-            symbol +'</span>'
-        elif total_trade_pnl < 0:
-            badge = '<span class="badge badge-pill badge-danger">'+\
-            symbol +'</span>'
-        else:
-            badge = '<span class="badge badge-pill badge-warning">'+\
-            symbol +'</span>'
+        badge = '<span class="badge badge-pill badge-warning">'+\
+        symbol +'</span>'
+
+        if total_trade_pnl is not None:
+            if total_trade_pnl > 0:
+                badge = '<span class="badge badge-pill badge-success">'+\
+                symbol +'</span>'
+            if total_trade_pnl < 0:
+                badge = '<span class="badge badge-pill badge-danger">'+\
+                symbol +'</span>'
         ret = ret + '&nbsp;' + badge
 
     cursor.close()
