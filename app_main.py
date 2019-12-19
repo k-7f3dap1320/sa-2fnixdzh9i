@@ -45,7 +45,7 @@ def get_feed(burl, terminal, selection):
     feed_content = ''
     google_ad = ''
     if user_is_login() == 1 and terminal is None:
-        google_ad = '<div style+"text-align: center;">'
+        google_ad = '<div style="text-align: center;">'
         google_ad = google_ad + print_google_ads('leaderboard', 'none')
         google_ad = google_ad + '</div>'
 
