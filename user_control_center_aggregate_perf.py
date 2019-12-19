@@ -75,6 +75,7 @@ def gen_aggregate_perf_graph():
     """ xxx """
     return_data = ''
     min_yaxis = 0
+    max_yaxis = 0
 
     l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
 
@@ -132,6 +133,8 @@ def gen_aggregate_perf_graph():
             min_yaxis = nav
         if nav < min_yaxis:
             min_yaxis = nav
+        if nav > max_yaxis:
+            max_yaxis = nav
         cr_c = connection.cursor(pymysql.cursors.SSCursor)
 
         sql_c = "SELECT chart_data.date, chart_data.price_close, chart_data.symbol "+\
@@ -171,8 +174,9 @@ def gen_aggregate_perf_graph():
     "    legend: {position: 'none'}, "+\
     "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
     "    vAxis: { "+\
-    "    textStyle: { color:'"+ theme_return_this("#343a40", "#ffffff") +"' },"+\
-    "    viewWindow:{ min: "+ str(min_yaxis) +", viewWindowMode: 'explicit'}, "+\
+    "    textStyle: { color:'"+ theme_return_this("#343a40", "#ffffff") + "' },"+\
+    "    viewWindow:{ min: "+ str(min_yaxis) + ", max: "+ str(max_yaxis) + ","+\
+    "    viewWindowMode: 'explicit'}, "+\
     "    gridlines: {color: 'transparent'} }, "+\
     "    lineWidth: 1, "+\
     "    areaOpacity: 0.2, "+\
