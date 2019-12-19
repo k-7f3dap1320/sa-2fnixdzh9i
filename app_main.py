@@ -27,6 +27,7 @@ from news_feed import get_newsfeed
 from print_google_ads import print_google_ads
 
 def get_dashboard(burl, is_dashboard):
+    """ xxx """
     ret = ''
     dashboard_content = get_box_list_instr_n_portf(burl, 'dashboard', 'portf', 0, 500, None)
     dashboard_content = dashboard_content +\
@@ -42,6 +43,7 @@ def get_dashboard(burl, is_dashboard):
     return ret
 
 def get_feed(burl, terminal, selection):
+    """ xxx """
     feed_content = ''
     google_ad = ''
     if user_is_login() == 1 and terminal is None:

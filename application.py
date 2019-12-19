@@ -24,7 +24,7 @@ from view_list_instr_n_portf import gen_view_list_instr_n_portf
 from payment_page import get_plan_selection_page
 from error_page import get_error_page
 from portf_gen_user_example import gen_portf_user_example, gen_portf_validate_content
-from how_page import get_help_page
+from help_page import get_help_page
 from intel_report import get_intel_page
 from sa_terminal import get_sa_terminal_page
 from sa_terminal_help import get_sa_terminal_help_page
