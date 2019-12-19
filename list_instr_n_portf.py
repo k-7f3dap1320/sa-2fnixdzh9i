@@ -166,22 +166,39 @@ def get_allocation_for_table(uid, connection):
     """ xxx """
     ret = ''
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT portfolios.symbol, instruments.w1_signal FROM symbol_list ' +\
+    sql = 'SELECT portfolios.symbol, portfolios.strategy_order_type FROM symbol_list ' +\
     'JOIN portfolios ON portfolios.portf_symbol = symbol_list.symbol '+\
-    'JOIN instruments ON instruments.symbol = portfolios.symbol '+\
     'WHERE symbol_list.uid = '+ str(uid)
     cursor.execute(sql)
     res = cursor.fetchall()
     symbol = ''
     badge = ''
-    w1_signal = ''
+    total_trade_pnl = 0
     for row in res:
         symbol = row[0]
-        w1_signal = row[1]
-        if w1_signal > 0:
+        strategy_order_type = row[1]
+        if strategy_order_type == 'long':
+            order_type = 'buy'
+        elif strategy_order_type == 'short':
+            order_type = 'sell'
+        else:
+            order_type = '%%'
+
+        cr_o = connection.cursor(pymysql.cursors.SSCursor)
+        sql_o = 'SELECT SUM(pnl_pct) FROM trades '+\
+        'WHERE status="Active" AND symbol = "'+\
+        str(symbol) +'" AND order_type LIKE "'+\
+        str(order_type) +'"'
+        cr_o.execute(sql_o)
+        res_o = cr_o.fetchall()
+        for row in res_o:
+            total_trade_pnl = row[0]
+        cr_o.close()
+
+        if total_trade_pnl > 0:
             badge = '<span class="badge badge-pill badge-success">'+\
             symbol +'</span>'
-        elif w1_signal < 0:
+        elif total_trade_pnl < 0:
             badge = '<span class="badge badge-pill badge-danger">'+\
             symbol +'</span>'
         else:
