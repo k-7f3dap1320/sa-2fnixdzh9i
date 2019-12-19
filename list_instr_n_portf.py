@@ -196,15 +196,15 @@ def get_allocation_for_table(uid, connection):
         cr_o.close()
 
         badge = '<span class="badge badge-pill badge-warning" '+\
-        'style="background-color: transparent; font-size=x-small;">'+\
+        'style="background-color: transparent; font-size:x-small;">'+\
         symbol +'</span>'
 
         if total_trade_pnl is not None:
             if total_trade_pnl > 0:
-                badge = '<span class="badge badge-pill badge-success" style="font-size=x-small;">'+\
+                badge = '<span class="badge badge-pill badge-success" style="font-size:x-small;">'+\
                 symbol +'</span>'
             if total_trade_pnl < 0:
-                badge = '<span class="badge badge-pill badge-danger" style="font-size=x-small;">'+\
+                badge = '<span class="badge badge-pill badge-danger" style="font-size:x-small;">'+\
                 symbol +'</span>'
         ret = ret + '&nbsp;' + badge
 
