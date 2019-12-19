@@ -168,7 +168,7 @@ def gen_aggregate_perf_graph():
     "    textStyle: { color:'"+ theme_return_this("#343a40", "#ffffff") +"' },"+\
     "    viewWindow:{viewWindowMode: 'explicit'}, gridlines: {color: 'transparent'} }, "+\
     "    lineWidth: 1, "+\
-    "    areaOpacity: 0.3, "+\
+    "    areaOpacity: 0.2, "+\
     "    colors: ['"+ theme_return_this("#17a2b8", "orange") + "'],"+\
     "    backgroundColor: 'transparent'"+\
     "  }; "+\
