@@ -45,7 +45,9 @@ def get_feed(burl, terminal, selection):
     feed_content = ''
     google_ad = ''
     if user_is_login() == 1 and terminal is None:
-        google_ad = print_google_ads('leaderboard', 'center')
+        google_ad = '<div style+"text-align: center;">'
+        google_ad = google_ad + print_google_ads('leaderboard', 'none')
+        google_ad = google_ad + '</div>'
 
     if user_is_login() == 0:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'
@@ -80,8 +82,12 @@ def gen_main_page(selection,
     if nonavbar is None:
         navbarcontent = navbar(burl, 0, terminal)
     page_content = ''
-    if is_dashboard == str(1) and user_is_login() == 1:
-        page_content = get_dashboard(burl, is_dashboard)
+    
+    if is_dashboard == str(1):
+        if user_is_login() == 1:
+            page_content = get_dashboard(burl, is_dashboard)
+        else:
+            page_content = ''
     else:
         page_content = get_feed(burl, terminal, selection)
         if user_is_login() == 1:
