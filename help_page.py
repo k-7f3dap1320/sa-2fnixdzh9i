@@ -28,18 +28,18 @@ def get_help_tabs(burl):
     '<ul class="nav nav-tabs" id="helpTab" role="tablist">'+\
     '  <li class="nav-item">'+\
     '    <a class="nav-link active" id="helptab" data-toggle="tab" '+\
-    'href="#helptab" role="tab" aria-controls="Help" aria-selected="true">Help</a>'+\
+    'href="#help" role="tab" aria-controls="help" aria-selected="true">Help</a>'+\
     '  </li>'+\
     '  <li class="nav-item">'+\
     '    <a class="nav-link" id="articlestab" data-toggle="tab" '+\
-    'href="#articles" role="tab" aria-controls="Articles" aria-selected="false">More articles</a>'+\
+    'href="#articles" role="tab" aria-controls="articles" aria-selected="false">More articles</a>'+\
     '  </li>'+\
     '</ul>'+\
     '<div class="tab-content" id="myTabContent">'+\
-    '  <div class="tab-pane fade show active" id="helptab" role="tabpanel" '+\
-    'aria-labelledby="helptab">'+ get_list_video_tutorials() +'</div>'+\
-    '  <div class="tab-pane fade" id="articlestab" role="tabpanel" '+\
-    'aria-labelledby="articlestab">'+ get_list_articles(burl) +'</div>'+\
+    '  <div class="tab-pane fade show active" id="help" role="tabpanel" '+\
+    'aria-labelledby="help">'+ get_list_video_tutorials() +'</div>'+\
+    '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
+    'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
     '</div>'
     return ret
 
