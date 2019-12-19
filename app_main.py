@@ -53,7 +53,7 @@ def get_feed(burl, terminal, selection):
         feed_content = feed_content + get_card(selection, 9, burl, terminal)
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
-        feed_content = feed_content + google_ad
+        feed_content = feed_content + google_ad + '<br />'
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
     feed_content = feed_content + get_card(selection, 1, burl, terminal)
@@ -79,7 +79,7 @@ def gen_main_page(selection,
     if is_dashboard == str(1) and user_is_login() == 1:
         page_content = get_dashboard(burl, is_dashboard)
     else:
-        get_feed(burl, terminal, selection)
+        page_content = get_feed(burl, terminal, selection)
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
 
