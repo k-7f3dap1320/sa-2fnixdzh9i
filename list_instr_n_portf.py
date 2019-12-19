@@ -134,7 +134,7 @@ def draw_portf_table(burl, maxrow, sel, user_portf):
             class_row_style +'">'+\
             '<button type="button" class="btn btn-danger btn-sm active" '+\
             get_portf_delete_data_toggle(uid) +'><i class="far fa-trash-alt"></i></button>' +\
-            '&bnsp;<button type="button" class="btn btn-info btn-sm active" '+\
+            '&nbsp;<button type="button" class="btn btn-info btn-sm active" '+\
             'data-toggle="modal" data-target="#popup_view_'+\
             str(uid) +'">' +\
             '<i class="far fa-folder-open"></i></button>'+\
