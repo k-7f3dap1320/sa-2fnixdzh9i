@@ -195,7 +195,8 @@ def get_allocation_for_table(uid, connection):
             total_trade_pnl = row[0]
         cr_o.close()
 
-        badge = '<span class="badge badge-pill badge-warning">'+\
+        badge = '<span class="badge badge-pill badge-warning" '+\
+        'style="background-color: transparent;">'+\
         symbol +'</span>'
 
         if total_trade_pnl is not None:
