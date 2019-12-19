@@ -339,7 +339,7 @@ def get_trades_box(uid, burl, is_dashboard):
         if is_dashboard == str(1):
         #    div_placement = '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'
         #    tab_style_overflow = 'overflow-y: scroll; max-height: 600px; min-height: 600px;'
-        #    tab_active_trade = ''
+            tab_active_trade = ''
             tab_today_orders = '<li class="nav-item">'+\
             '<a class="nav-link active" data-toggle="pill" href="#'+\
             tab_today_id +'">'+\
