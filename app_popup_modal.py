@@ -1,5 +1,12 @@
 """ Popup and modal messages """
+import pymysql.cursors
 from sa_func import get_random_str
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def check_popup_blocked(var_name, notification_div_id):
     """
@@ -58,9 +65,22 @@ def gen_tour_popup(tour, burl):
     """ Generate popup modal message after user is created (dashboard) """
     return_data = ''
     label_header = 'Welcome to SmartAlpha'
-    label_content = 'Before you start, let us show you quickly some of the top features.'
-    label_button = 'Take me to the quick tour'
+    label_content = ''
+    label_button = 'Close'
 
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT content FROM documents WHERE category ="help intro" LIMIT 1'
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        label_content = row[0]
+    cursor.close()
 
     if tour == '1':
         return_data = '' +\
@@ -82,7 +102,7 @@ def gen_tour_popup(tour, burl):
         '        <!-- Modal footer -->'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-info form-signin-btn" '+\
-        'onClick="window.location.href=\''+ burl +'h\'">'+ label_button +'</button>'+\
+        'onClick="window.location.href=\''+ burl +'\'">'+ label_button +'</button>'+\
         '        </div>'+\
         '      </div>'+\
         '    </div>'+\
