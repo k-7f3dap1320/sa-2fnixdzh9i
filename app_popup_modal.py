@@ -102,7 +102,7 @@ def gen_tour_popup(tour, burl):
         '        <!-- Modal footer -->'+\
         '        <div class="modal-footer">'+\
         '          <button type="button" class="btn btn-info form-signin-btn" '+\
-        'onClick="window.location.href=\''+ burl +'\'">'+ label_button +'</button>'+\
+        'onClick="window.location.href=\''+ burl +'?dashboard=1\'">'+ label_button +'</button>'+\
         '        </div>'+\
         '      </div>'+\
         '    </div>'+\
