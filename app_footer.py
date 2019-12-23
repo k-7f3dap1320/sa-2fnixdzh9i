@@ -4,6 +4,20 @@ from app_cookie import user_is_login
 def get_page_footer(burl, force_display):
     """ xxx """
     box_content = ''
+    copyright_line = ''
+    if not force_display:
+        copyright_line = ''+\
+        '<div class="box">'+\
+        '   <div class="row">'+\
+        '      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '           <div class="sa-center-content text-secondary">'+\
+        'Made with <i class="fas fa-heart"></i> '+\
+        'from London, Nairobi to Bangkok - <span class="text-muted">'+\
+        'Copyright &copy; Taatu Ltd. 2019</span></div>'+\
+        '      </div>'+\
+        '   </div>'+\
+        '</div>'
+
     if user_is_login() == 0 or force_display:
         box_content = ' '+\
         '<div class="box">' +\
@@ -57,15 +71,6 @@ def get_page_footer(burl, force_display):
         '   </div>'+\
         '</div>'+\
         '<hr />'+\
-        '<div class="box">'+\
-        '   <div class="row">'+\
-        '      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-        '           <div class="sa-center-content text-secondary">'+\
-        'Made with <i class="fas fa-heart"></i> '+\
-        'from London, Nairobi to Bangkok - <span class="text-muted">'+\
-        'Copyright &copy; Taatu Ltd. 2019</span></div>'+\
-        '      </div>'+\
-        '   </div>'+\
-        '</div>'+\
+        copyright_line+\
         '<br /><br /><br /><br />'
     return box_content
