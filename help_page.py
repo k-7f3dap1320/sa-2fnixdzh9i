@@ -1,4 +1,5 @@
 """ A template page """
+import pymysql.cursors
 from app_head import get_head
 from app_body import get_body
 from app_page import set_page
@@ -15,14 +16,61 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
+
 def get_list_video_tutorials():
-    ret = ''+\
-    '<table>'+\
-    '  <tr>'+\
-    '    <td></td>'+\
-    '    <td></td>'+\
-    '  </tr>'+\
-    '</table>'
+    ret = ''
+    list_row = ''
+    doc_cat_1 = 'intro'
+    doc_cat_2 = 'help'
+    title = ''
+    content = ''
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT title, content FROM documents WHERE category LIKE "%'+ str(doc_cat_1) +'%"'
+
+    header = ''+\
+    '   <div class="row">'
+
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        title = row[0]
+        content = row[1]
+        list_row = list_row +\
+        '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        str(content) +\
+        '<br />'+\
+        str(title)+\
+        '</div>'
+    sql = 'SELECT title, content FROM documents WHERE category LIKE "%'+ str(doc_cat_2) +'%"'
+    footer = ''+\
+    '   </div>'
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        title = row[0]
+        content = row[1]
+        list_row = list_row +\
+        '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        str(content) +\
+        '<br />'+\
+        str(title)+\
+        '</div>'
+    cursor.close()
+    connection.close()
+
+    ret = header + list_row + footer
     return ret
 
 def get_list_articles(burl):
