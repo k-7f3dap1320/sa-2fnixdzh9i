@@ -34,12 +34,19 @@ def get_help_tabs(burl):
     '    <a class="nav-link" id="articlestab" data-toggle="tab" '+\
     'href="#articles" role="tab" aria-controls="articles" aria-selected="false">More articles</a>'+\
     '  </li>'+\
+    '  <li class="nav-item">'+\
+    '    <a class="nav-link" id="contacttab" data-toggle="tab" '+\
+    'href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>'+\
+    '  </li>'+\
     '</ul>'+\
     '<div class="tab-content" id="myTabContent">'+\
     '  <div class="tab-pane fade show active" id="help" role="tabpanel" '+\
     'aria-labelledby="help">'+ get_list_video_tutorials() +'</div>'+\
     '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
     'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
+    '</div>'
+    '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
+    'aria-labelledby="articles">'+ 'contact' +'</div>'+\
     '</div>'
     return ret
 
