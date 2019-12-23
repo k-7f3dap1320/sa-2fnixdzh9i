@@ -51,7 +51,7 @@ def get_help_tabs(burl):
     'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
     '  <div class="tab-pane fade" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
-    '</div>'+\
+    '</div>'
     return ret
 
 def get_help_content(burl):
