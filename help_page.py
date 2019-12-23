@@ -72,12 +72,11 @@ def get_list_video_tutorials():
     return ret
 
 def get_list_articles(burl):
+    
     ret = ''+\
-    '<table>'+\
-    '  <tr>'+\
-    '    <td></td>'+\
-    '  </tr>'+\
-    '</table>'
+    '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" '+\
+    'style="border-top:0.5px; border-top-style: dotted; ">'+\
+    '</div>'
 
     return ret
 
@@ -104,9 +103,9 @@ def get_help_tabs(burl):
     '</ul>'+\
     '<div class="tab-content" id="myTabContent">'+\
     '  <div class="tab-pane fade show active" style="overflow: hidden;" id="help" role="tabpanel" '+\
-    'aria-labelledby="help">'+ get_list_video_tutorials() +'</div>'+\
+    'aria-labelledby="help"><br />'+ get_list_video_tutorials() +'<br /></div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="articles" role="tabpanel" '+\
-    'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
+    'aria-labelledby="articles"><br />'+ get_list_articles(burl) +'<br /></div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
     '</div>'
