@@ -117,7 +117,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
         str(get_user_numeric_id()) +" AND status = 'expired')) "
 
         if type_trade == 'expired':
-            type_status_filter = "((trades.expiration_date = " +\
+            type_status_filter = "((trades.expiration_date <= " +\
             dnstr + " AND instruments.owner = "+\
             str(get_user_numeric_id()) +")) "
 
