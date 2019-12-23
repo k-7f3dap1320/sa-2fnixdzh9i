@@ -16,11 +16,23 @@ from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 
 def get_list_video_tutorials():
-    ret = 'video tutorial list'
+    ret = ''+\
+    '<table>'+\
+    '  <tr>'+\
+    '    <td></td>'+\
+    '    <td></td>'+\
+    '  </tr>'+\
+    '</table>'
     return ret
 
 def get_list_articles(burl):
-    ret = 'articles list'
+    ret = ''+\
+    '<table>'+\
+    '  <tr>'+\
+    '    <td></td>'+\
+    '  </tr>'+\
+    '</table>'
+
     return ret
 
 def get_contact_tab(burl):
