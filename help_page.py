@@ -23,6 +23,11 @@ def get_list_articles(burl):
     ret = 'articles list'
     return ret
 
+def get_contact_tab(burl):
+    ret = ''
+    ret = ret + get_page_footer(burl)
+    return ret
+
 def get_help_tabs(burl):
     ret = '' +\
     '<ul class="nav nav-tabs" id="helpTab" role="tablist">'+\
@@ -45,8 +50,8 @@ def get_help_tabs(burl):
     '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
     'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
     '</div>'
-    '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
-    'aria-labelledby="articles">'+ 'contact' +'</div>'+\
+    '  <div class="tab-pane fade" id="contact" role="tabpanel" '+\
+    'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
     '</div>'
     return ret
 
