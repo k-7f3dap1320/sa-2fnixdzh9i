@@ -37,7 +37,7 @@ def get_list_video_tutorials():
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT content FROM documents WHERE category LIKE "'+ str(doc_cat_1) +'"'
+    sql = 'SELECT content FROM documents WHERE category LIKE "%'+ str(doc_cat_1) +'%"'
 
     header = ''+\
     '   <div class="row">'
