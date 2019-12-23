@@ -118,7 +118,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
                                          get_sign_recommend_trail_returns(uid) +\
                                          get_trades_box(uid, burl, None) +\
                                          '</div></div>' +\
-                                         get_page_footer(burl))
+                                         get_page_footer(burl), False)
     return_data = set_page(return_data)
 
     cursor.close()

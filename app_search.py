@@ -238,6 +238,6 @@ def get_search_page(appname, burl, nonavbar, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbarcontent +\
              get_search_page_content(burl, nonavbar, terminal) +\
-             get_page_footer(burl))
+             get_page_footer(burl), False)
     return_data = set_page(return_data)
     return return_data

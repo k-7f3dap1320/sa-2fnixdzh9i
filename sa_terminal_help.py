@@ -64,6 +64,6 @@ def get_sa_terminal_help_page(appname, burl, terminal):
     return_data = return_data +\
     get_body(get_loading_body(),
              get_sa_terminal_help_content(burl) +\
-             get_page_footer(burl))
+             get_page_footer(burl), False)
     return_data = set_page(return_data)
     return return_data

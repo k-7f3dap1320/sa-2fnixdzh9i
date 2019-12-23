@@ -343,6 +343,6 @@ def get_settings_page(appname, burl, step, message, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_settings_content(burl, step, message) +\
-             get_page_footer(burl))
+             get_page_footer(burl), False)
     return_data = set_page(return_data)
     return return_data

@@ -25,7 +25,7 @@ def get_list_articles(burl):
 
 def get_contact_tab(burl):
     ret = ''
-    ret = ret + get_page_footer(burl)
+    ret = ret + get_page_footer(burl, True)
     return ret
 
 def get_help_tabs(burl):
@@ -86,6 +86,6 @@ def get_help_page(appname, burl, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_help_content(burl) +\
-             get_page_footer(burl))
+             get_page_footer(burl), False)
     return_data = set_page(return_data)
     return return_data

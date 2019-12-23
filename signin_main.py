@@ -115,7 +115,7 @@ def get_signin_page(appname, burl, err, redirect, terminal):
                            get_stylesheet(burl))
     return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                                          get_signin_content(burl, 'light', err, redirect) +\
-                                         get_page_footer(burl) +\
+                                         get_page_footer(burl, False) +\
                                          get_purechat(1))
     return_data = set_page(return_data)
     return return_data
