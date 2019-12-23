@@ -79,7 +79,7 @@ def gen_portf_page(uid, appname, burl, pop, terminal):
                  get_portf_risk_trail_returns(uid) +\
                  get_trades_box(uid, burl, None) +\
                  '</div></div>' +\
-                 get_page_footer(burl), False)
+                 get_page_footer(burl, False))
         return_data = set_page(return_data)
     else:
         get_error_page(appname, burl, terminal)
