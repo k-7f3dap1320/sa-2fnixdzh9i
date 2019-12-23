@@ -91,7 +91,8 @@ def get_list_articles(burl):
         title = row[1]
         ret = ret +\
         '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" '+\
-        'style="border-top:0.5px; border-top-style: dotted; ">'+\
+        'style="border-top:0.5px; border-top-style: dotted; text-align: left;">'+\
+        '<i class="fas fa-file-alt"></i> '+\
         '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'">'+ str(title) +'</a>'+\
         '</div>'
     cursor.close()
