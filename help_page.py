@@ -37,7 +37,7 @@ def get_list_video_tutorials():
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT title, content FROM documents WHERE category LIKE "%'+ str(doc_cat_1) +'%"'
+    sql = 'SELECT content FROM documents WHERE category LIKE "'+ str(doc_cat_1) +'"'
 
     header = ''+\
     '   <div class="row">'
@@ -45,22 +45,20 @@ def get_list_video_tutorials():
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
-        title = row[0]
-        content = row[1]
+        content = row[0]
         list_row = list_row +\
         '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         str(content) +\
         '<br />'+\
         str(title)+\
         '</div>'
-    sql = 'SELECT title, content FROM documents WHERE category LIKE "%'+ str(doc_cat_2) +'%"'
+    sql = 'SELECT content FROM documents WHERE category LIKE "'+ str(doc_cat_2) +'"'
     footer = ''+\
     '   </div>'
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
-        title = row[0]
-        content = row[1]
+        content = row[0]
         list_row = list_row +\
         '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
         str(content) +\
@@ -105,9 +103,9 @@ def get_help_tabs(burl):
     '  </li>'+\
     '</ul>'+\
     '<div class="tab-content" id="myTabContent">'+\
-    '  <div class="tab-pane fade show active" id="help" role="tabpanel" '+\
+    '  <div class="tab-pane fade show active" style="overflow: hidden;" id="help" role="tabpanel" '+\
     'aria-labelledby="help">'+ get_list_video_tutorials() +'</div>'+\
-    '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
+    '  <div class="tab-pane fade" style="overflow: hidden;" id="articles" role="tabpanel" '+\
     'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
