@@ -49,10 +49,9 @@ def get_help_tabs(burl):
     'aria-labelledby="help">'+ get_list_video_tutorials() +'</div>'+\
     '  <div class="tab-pane fade" id="articles" role="tabpanel" '+\
     'aria-labelledby="articles">'+ get_list_articles(burl) +'</div>'+\
-    '</div>'+\
     '  <div class="tab-pane fade" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
-    '</div>'
+    '</div>'+\
     return ret
 
 def get_help_content(burl):
