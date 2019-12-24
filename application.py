@@ -65,10 +65,6 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/join/url/', endpoint='url', methods=["POST","GET"])
 @application.route('/pricing/url/', endpoint='url', methods=["POST","GET"])
 
-@application.errorhandler(404)
-def error_page_handling():
-    return 'error'
-    #return redirect(request.url_root + 'error', code=302)
 
 def go():
     """ xxx """
@@ -287,6 +283,11 @@ def go():
             c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' ) )
 
     return c
+
+@application.errorhandler(404)
+def error_page_handling():
+    return 'error'
+    #return redirect(request.url_root + 'error', code=302)
 
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
