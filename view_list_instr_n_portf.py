@@ -50,7 +50,7 @@ def gen_view_list_instr_n_portf(appname, burl, what, sel, terminal):
                            get_googleanalytics() +\
                            get_googleadsense() +\
                            get_title(appname) +\
-                           get_metatags(burl) +\
+                           get_metatags(burl, terminal, None) +\
                            set_ogp(burl, 2, page_title, page_desc) +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() + get_stylesheet(burl))
