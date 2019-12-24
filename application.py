@@ -285,12 +285,12 @@ def go():
     return c
 
 @application.errorhandler(500)
-def error_500(error):
+def error_handler(error):
     return redirect(request.url_root + 'error', code=302)
 
-@application.errorhandler(404)
-def error_404(error):
-    return redirect(request.url_root + 'error', code=302)
+#@application.errorhandler(404)
+#def page_func_not_found(error):
+#    return redirect(request.url_root + 'error', code=302)
 
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
