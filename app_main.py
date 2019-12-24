@@ -100,7 +100,7 @@ def gen_main_page(selection,
                            get_googleanalytics() +\
                            get_googleadsense() +\
                            get_title(appname) +\
-                           metarefresh+get_metatags(burl, terminal, nonavbar) +\
+                           metarefresh+get_metatags(burl) +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
