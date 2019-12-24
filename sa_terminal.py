@@ -26,6 +26,19 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
+def terminal_window_zoom(terminal):
+    """ xxx """
+    ret = ''
+    if terminal is not None:
+        ret = ''+\
+        '<script>'+\
+        'var scale = "scale(0.75)";'+\
+        'document.body.style.webkitTransform = scale;'+\
+        'document.body.style.msTransform = scale;'+\
+        'document.body.style.transform = scale;'+\
+        '</script>'
+    return ret
+
 def get_default_chart_symbol():
     """ xxx """
     ret = ''

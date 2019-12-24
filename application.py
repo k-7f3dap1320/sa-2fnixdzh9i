@@ -288,6 +288,6 @@ if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
     #For AWS Beanstalk --> application.run()
     if not DEV_MODE:
-        application.run(debug=True)
+        application.run()
     else:
         application.run(host='0.0.0.0', port=80, debug=True, threaded=True)
