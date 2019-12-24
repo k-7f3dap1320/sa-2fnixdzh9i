@@ -1,7 +1,7 @@
 """ Application main module """
 DEV_MODE = False
 
-from flask import Flask, request, redirect
+from flask import Flask, request
 from flask_compress import Compress
 from app_main import gen_main_page
 from app_login import user_login
@@ -283,11 +283,6 @@ def go():
             c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' ) )
 
     return c
-
-#@application.errorhandler(500)
-#def error_handler(error):
-    #return redirect(request.url_root + 'error', code=302)
-#    return 'error'
 
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
