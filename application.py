@@ -1,7 +1,7 @@
 """ Application main module """
 DEV_MODE = False
 
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_compress import Compress
 from app_main import gen_main_page
 from app_login import user_login
@@ -64,6 +64,10 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/w/url/', endpoint='url', methods=["POST","GET"])
 @application.route('/join/url/', endpoint='url', methods=["POST","GET"])
 @application.route('/pricing/url/', endpoint='url', methods=["POST","GET"])
+
+@application.errorhandler(500)
+def error_page_handling():
+    return redirect(request.url_root + 'error', code=302)
 
 def go():
     """ xxx """
