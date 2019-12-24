@@ -290,4 +290,4 @@ if __name__ == '__main__':
     if not DEV_MODE:
         application.run()
     else:
-        application.run(host='0.0.0.0', port=80, threaded=True)
+        application.run(host='0.0.0.0', port=80, debug=DEV_MODE, threaded=True)
