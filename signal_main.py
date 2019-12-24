@@ -31,7 +31,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_uid_from_tvs(tvws, terminal):
+def get_uid_from_tvs(tvws):
     """ xxx """
     return_data = 0
     connection = pymysql.connect(host=DB_SRV,
@@ -69,58 +69,62 @@ def get_sign_header(uid, burl, terminal):
 
 def gen_sign_page(uid, tvws, appname, burl, terminal):
     """ xxx """
+    return_data = ''
     if tvws is not None:
-        uid = get_uid_from_tvs(tvws, terminal)
+        uid = get_uid_from_tvs(tvws)
     if uid is None:
         uid = 0
     if uid == '':
         uid = 0
 
-    connection = pymysql.connect(host=DB_SRV,
-                                 user=DB_USR,
-                                 password=DB_PWD,
-                                 db=DB_NAME,
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
-    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    if uid != 0:
+        connection = pymysql.connect(host=DB_SRV,
+                                     user=DB_USR,
+                                     password=DB_PWD,
+                                     db=DB_NAME,
+                                     charset='utf8mb4',
+                                     cursorclass=pymysql.cursors.DictCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
 
-    sql = "SELECT instruments.fullname FROM symbol_list "+\
-    "JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
-    "WHERE symbol_list.uid = " +\
-    str(uid)
+        sql = "SELECT instruments.fullname FROM symbol_list "+\
+        "JOIN instruments ON symbol_list.symbol = instruments.symbol "+\
+        "WHERE symbol_list.uid = " +\
+        str(uid)
 
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    for row in res:
-        instfullname = row[0]
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        for row in res:
+            instfullname = row[0]
 
-    page_title = 'This is how we decide to trade ' + instfullname
+        page_title = 'This is how we decide to trade ' + instfullname
 
-    page_desc = 'Access to thousands of financial instruments, '+\
-    'stocks, forex, commodities & cryptos analysis and recommendations.'
+        page_desc = 'Access to thousands of financial instruments, '+\
+        'stocks, forex, commodities & cryptos analysis and recommendations.'
 
-    return_data = get_head(get_loading_head() +\
-                           get_googleanalytics() +\
-                           get_googleadsense() +\
-                           get_title(appname +' - ' + instfullname) +\
-                           get_metatags(burl) +\
-                           redirect_if_not_logged_in(burl, '') +\
-                           set_ogp(burl, 2, page_title, page_desc) +\
-                           get_bootstrap(get_sa_theme(), burl) +\
-                           get_font_awesome() +\
-                           get_google_chart_script() +\
-                           get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-                                         '<div class="box-top"><div class="row">' +\
-                                         get_details_header(uid, burl) +\
-                                         get_sign_header(uid, burl, terminal) +\
-                                         get_sign_ta_chart_alt_orders(uid) +\
-                                         get_sign_recommend_trail_returns(uid) +\
-                                         get_trades_box(uid, burl, None) +\
-                                         '</div></div>' +\
-                                         get_page_footer(burl, False))
-    return_data = set_page(return_data)
+        return_data = get_head(get_loading_head() +\
+                               get_googleanalytics() +\
+                               get_googleadsense() +\
+                               get_title(appname +' - ' + instfullname) +\
+                               get_metatags(burl) +\
+                               redirect_if_not_logged_in(burl, '') +\
+                               set_ogp(burl, 2, page_title, page_desc) +\
+                               get_bootstrap(get_sa_theme(), burl) +\
+                               get_font_awesome() +\
+                               get_google_chart_script() +\
+                               get_stylesheet(burl))
+        return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
+                                             '<div class="box-top"><div class="row">' +\
+                                             get_details_header(uid, burl) +\
+                                             get_sign_header(uid, burl, terminal) +\
+                                             get_sign_ta_chart_alt_orders(uid) +\
+                                             get_sign_recommend_trail_returns(uid) +\
+                                             get_trades_box(uid, burl, None) +\
+                                             '</div></div>' +\
+                                             get_page_footer(burl, False))
+        return_data = set_page(return_data)
 
-    cursor.close()
-    connection.close()
+        cursor.close()
+        connection.close()
+    else: return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
+                                          str(burl) + 'error" />') + get_body('', ''))
     return return_data
