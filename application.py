@@ -284,8 +284,8 @@ def go():
 
     return c
 
-@application.errorhandler(500)
-def error_page_handling():
+@application.errorhandler(404)
+def error_page_handling(error):
     return 'error'
     #return redirect(request.url_root + 'error', code=302)
 
