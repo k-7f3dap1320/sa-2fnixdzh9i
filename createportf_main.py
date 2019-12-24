@@ -175,7 +175,7 @@ def gen_selectportf_page(appname, burl, step, terminal):
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
-                           get_metatags(burl) +\
+                           get_metatags(burl, terminal) +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() + get_stylesheet(burl))
@@ -193,7 +193,7 @@ def custom_save_portf_page(appname, burl, terminal):
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
-                           get_metatags(burl) +\
+                           get_metatags(burl, terminal) +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\

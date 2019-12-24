@@ -54,7 +54,7 @@ def get_sa_terminal_help_page(appname, burl, terminal):
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
-                           get_metatags(burl) +\
+                           get_metatags(burl, terminal) +\
                            redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
