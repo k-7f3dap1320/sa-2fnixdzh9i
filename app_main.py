@@ -25,7 +25,6 @@ from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
 from print_google_ads import print_google_ads
-from sa_terminal import terminal_window_zoom
 
 def get_dashboard(burl, is_dashboard):
     """ xxx """
@@ -107,8 +106,7 @@ def gen_main_page(selection,
                            get_font_awesome() +\
                            get_google_chart_script() +\
                            get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body() +\
-                                         terminal_window_zoom(terminal),
+    return_data = return_data + get_body(get_loading_body(),
                                          navbarcontent +\
                                          gen_tour_popup(tour, burl) +\
                                          get_signin_box(burl) +\
