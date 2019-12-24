@@ -17,13 +17,16 @@ from app_cookie import get_sa_theme
 def popup_error_msg(burl):
     """ xxx """
     return_data = ''
+    message_header = 'The function or content is not available.'
+    message_content = 'The content might be currently being indexed or is not accessible anymore.'
+    button_back = 'Go back'
 
     l_error_title = '<i class="fas fa-exclamation-circle">'+\
-    '</i>&nbsp;The page or content cannot be found.'
+    '</i>&nbsp;'+ message_header
 
-    l_error_descr = 'The page might not be available anymore. '+\
+    l_error_descr = message_content + ' '+\
     '<div>&nbsp;</div><div><a href="'+\
-    burl +'" class="btn btn-sm btn-info">Back to homepage</a></div>'
+    burl +'" class="btn btn-sm btn-info">'+ button_back +'</a></div>'
 
     l_error_class = 'alert alert-danger'
     l_class = 'alert alert-warning'
