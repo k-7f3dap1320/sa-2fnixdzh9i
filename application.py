@@ -67,7 +67,8 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 
 @application.errorhandler(500)
 def error_page_handling():
-    return redirect(request.url_root + 'error', code=302)
+    return 'error 500'
+    #return redirect(request.url_root + 'error', code=302)
 
 def go():
     """ xxx """
