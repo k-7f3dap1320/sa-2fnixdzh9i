@@ -42,6 +42,7 @@ def get_uid_from_tvs(tvws):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE tradingview ='"+ str(tvws) +"' "
+    print(sql)
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
@@ -69,7 +70,6 @@ def get_sign_header(uid, burl, terminal):
 
 def gen_sign_page(uid, tvws, appname, burl, terminal):
     """ xxx """
-    print(str(uid)+ ' ********** ')
     return_data = ''
     if tvws is not None:
         uid = get_uid_from_tvs(tvws)
@@ -77,7 +77,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
         uid = 0
     if uid == '':
         uid = 0
-    print(str(uid)+ ' ########### ')
+
     if uid != 0:
         connection = pymysql.connect(host=DB_SRV,
                                      user=DB_USR,
