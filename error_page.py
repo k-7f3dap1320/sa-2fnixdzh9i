@@ -18,7 +18,9 @@ def popup_error_msg(burl):
     """ xxx """
     return_data = ''
     message_header = 'The function or content is not available.'
-    message_content = 'The content might be currently being indexed or is not accessible anymore.'
+    message_content = 'Please try again later. '+\
+    'For support and assistance type: <a href="' + burl + 'h/?">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>.'
+
     button_back = 'Go back'
 
     l_error_title = '<i class="fas fa-exclamation-circle">'+\

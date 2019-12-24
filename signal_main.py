@@ -42,7 +42,6 @@ def get_uid_from_tvs(tvws):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = "SELECT uid FROM symbol_list WHERE tradingview ='"+ str(tvws) + "' AND disabled=0"
-    print(sql)
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
