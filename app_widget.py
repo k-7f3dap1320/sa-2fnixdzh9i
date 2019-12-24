@@ -68,7 +68,7 @@ def get_widget_page(appname,
                            get_googleanalytics() +\
                            get_title(appname) +\
                            metarefresh +\
-                           get_metatags(burl, terminal) +\
+                           get_metatags(burl) +\
                            redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\

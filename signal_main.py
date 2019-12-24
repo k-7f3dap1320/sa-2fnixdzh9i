@@ -110,7 +110,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
                                get_googleanalytics() +\
                                get_googleadsense() +\
                                get_title(appname +' - ' + instfullname) +\
-                               get_metatags(burl, terminal) +\
+                               get_metatags(burl) +\
                                redirect_if_not_logged_in(burl, '') +\
                                set_ogp(burl, 2, page_title, page_desc) +\
                                get_bootstrap(get_sa_theme(), burl) +\

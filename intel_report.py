@@ -258,7 +258,7 @@ def get_intel_page(appname, burl, terminal):
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
-                           get_metatags(burl, terminal) +\
+                           get_metatags(burl) +\
                            redirect_if_not_logged_in(burl, burl +'intelligence') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\

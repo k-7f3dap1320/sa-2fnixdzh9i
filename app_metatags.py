@@ -2,11 +2,9 @@
 from app_stylesheet import get_theme_color
 from sa_func import get_random_str
 
-def get_metatags(burl, terminal):
+def get_metatags(burl):
     """ xxx """
     scale = 1
-    if terminal is not None:
-        scale = 0.5
     viewport = '<meta name="viewport" content="width=device-width, initial-scale='+str(scale)+'">'
     charset = '<meta charset="UTF-8" />'
     theme_color = '<meta name="theme-color" content="'+ get_theme_color() +'" />'
