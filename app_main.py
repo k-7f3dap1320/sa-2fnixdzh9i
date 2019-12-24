@@ -107,8 +107,8 @@ def gen_main_page(selection,
                            get_font_awesome() +\
                            get_google_chart_script() +\
                            get_stylesheet(burl))
-    return_data = return_data + get_body(get_loading_body(),
-                                         terminal_window_zoom(terminal)+\
+    return_data = return_data + get_body(get_loading_body() +\
+                                         terminal_window_zoom(terminal),
                                          navbarcontent +\
                                          gen_tour_popup(tour, burl) +\
                                          get_signin_box(burl) +\
