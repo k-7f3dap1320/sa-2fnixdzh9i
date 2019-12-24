@@ -65,7 +65,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/join/url/', endpoint='url', methods=["POST","GET"])
 @application.route('/pricing/url/', endpoint='url', methods=["POST","GET"])
 
-@application.errorhandler(500)
+@application.root.errorhandler(500)
 def error_page_handling():
     return 'error 500'
     #return redirect(request.url_root + 'error', code=302)
