@@ -284,10 +284,9 @@ def go():
 
     return c
 
-@application.errorhandler(404)
+@application.errorhandler(500)
 def error_page_handling(error):
-    return 'error'
-    #return redirect(request.url_root + 'error', code=302)
+    return redirect(request.url_root + 'error', code=302)
 
 if __name__ == '__main__':
     #For dev_mode and testing --> application.run(host='0.0.0.0', port=80, threaded=True)
