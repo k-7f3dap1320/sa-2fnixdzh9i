@@ -76,7 +76,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
         uid = 0
     if uid == '':
         uid = 0
-
+    print(str(uid)+ ' ########### ')
     if uid != 0:
         connection = pymysql.connect(host=DB_SRV,
                                      user=DB_USR,
