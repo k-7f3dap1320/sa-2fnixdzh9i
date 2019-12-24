@@ -6,7 +6,7 @@ def get_metatags(burl, terminal):
     """ xxx """
     scale = 1
     if terminal is not None:
-        scale = 0.75
+        scale = 0.5
     viewport = '<meta name="viewport" content="width=device-width, initial-scale='+str(scale)+'">'
     charset = '<meta charset="UTF-8" />'
     theme_color = '<meta name="theme-color" content="'+ get_theme_color() +'" />'
