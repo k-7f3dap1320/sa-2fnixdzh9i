@@ -17,9 +17,10 @@ from app_cookie import get_sa_theme
 def popup_error_msg(burl):
     """ xxx """
     return_data = ''
-    message_header = 'The function or content is not available.'
+    message_header = 'The function or content is not available at the moment.'
     message_content = 'Please try again later. '+\
-    'For support and assistance type: <a href="' + burl + 'h/?">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>.'
+    'For support and assistance type: <a href="' + burl + 'h/?" '+\
+    'style="text-decoration: none; font-weight: bolder;">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>.'
 
     button_back = 'Go back'
 
