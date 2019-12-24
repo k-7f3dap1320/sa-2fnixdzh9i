@@ -286,7 +286,8 @@ def go():
 
 @application.errorhandler(500)
 def error_handler(error):
-    return redirect(request.url_root + 'error', code=302)
+    #return redirect(request.url_root + 'error', code=302)
+    return 'error'
 
 #@application.errorhandler(404)
 #def page_func_not_found(error):
