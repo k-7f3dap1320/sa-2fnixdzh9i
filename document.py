@@ -54,7 +54,7 @@ def get_doc_content(burl, uid):
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="text-align: left;">'+\
+    '            <div class="box-part rounded">'+\
     '<h1>' + str(doc_title) + '</h1>' +\
     str(doc_content) +\
     '            </div>'+\
@@ -70,7 +70,7 @@ def get_doc_content(burl, uid):
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content">'+\
-    '<h4>'+ str(more_articles) +'</h4>'+\
+    '<h10><strong>'+ str(more_articles) +'</strong></h10>'+\
     get_list_articles(burl, 10) +\
     '            </div>'+\
     '        </div>'+\
