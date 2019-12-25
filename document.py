@@ -26,7 +26,7 @@ DB_SRV = ACCESS_OBJ.db_server()
 
 def get_doc_content(burl, uid):
     """ Content of the page """
-    more_articles = 'More articles...'
+    more_articles = 'More posts and articles'
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -69,7 +69,7 @@ def get_doc_content(burl, uid):
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content">'+\
+    '            <div class="box-part rounded">'+\
     '<h10><strong>'+ str(more_articles) +'</strong></h10>'+\
     get_list_articles(burl, 10) +\
     '            </div>'+\
