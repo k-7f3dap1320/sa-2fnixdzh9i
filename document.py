@@ -98,7 +98,7 @@ def get_doc_page(appname, burl, uid, terminal):
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl)+\
-                           get_google_chart_script()))
+                           get_google_chart_script())
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_doc_content(burl, uid, terminal) +\
