@@ -46,16 +46,23 @@ def get_doc_content(burl, uid):
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content">'+\
-    print_google_ads('billboard', 'center') +\
+    print_google_ads('leaderboard', 'center') +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="'+\
+    '            <div class="box-part rounded sa-center-content" style="text-align: left; '+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '<h2>' + str(doc_title) + '</h2>' +\
+    '<h1>' + str(doc_title) + '</h1>' +\
     str(doc_content) +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content">'+\
+    print_google_ads('leaderboard', 'center') +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
