@@ -24,24 +24,35 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_doc_content(burl, uid, terminal):
+class doc_data:
+    """ xxx """
+    title = ''
+    content = ''
+
+    def __init__(self, uid):
+        connection = pymysql.connect(host=DB_SRV,
+                                     user=DB_USR,
+                                     password=DB_PWD,
+                                     db=DB_NAME,
+                                     charset='utf8mb4',
+                                     cursorclass=pymysql.cursors.DictCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT title, content FROM documents WHERE uid='+ str(uid)
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        for row in res:
+            self.title = row[0]
+            self.content = row[1]
+
+    def get_title(self):
+        return self.title
+
+    def get_content(self):
+        return self.content
+
+def get_doc_content(burl, title, content, terminal):
     """ Content of the page """
     more_articles = 'More posts and articles'
-    connection = pymysql.connect(host=DB_SRV,
-                                 user=DB_USR,
-                                 password=DB_PWD,
-                                 db=DB_NAME,
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
-    cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT title, content FROM documents WHERE uid='+ str(uid)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    doc_title = ''
-    doc_content = ''
-    for row in res:
-        doc_title = row[0]
-        doc_content = row[1]
 
     box_content = ''+\
     '<div class="box-top">' +\
@@ -54,9 +65,10 @@ def get_doc_content(burl, uid, terminal):
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded" style="text-align: justify; margin: 5%;">'+\
-    '<h1>' + str(doc_title) + '</h1>' +\
-    str(doc_content) +\
+    '            <div class="box-part rounded" '+\
+    'style="text-align: justify; margin-left: 10%; margin-right: 10%;">'+\
+    '<h1>' + str(title) + '</h1>' +\
+    str(content) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -70,7 +82,7 @@ def get_doc_content(burl, uid, terminal):
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded">'+\
-    '<h10><strong>'+ str(more_articles) +'</strong></h10>'+\
+    '<span class="sectiont">'+ str(more_articles) +'</span>'+\
     get_list_articles(burl, 10) +\
     '            </div>'+\
     '        </div>'+\
@@ -89,17 +101,22 @@ def get_doc_content(burl, uid, terminal):
 def get_doc_page(appname, burl, uid, terminal):
     """ Return the content of the entire page """
     return_data = ''
+
+    document = doc_data(uid)
+    title = document.get_title()
+    content = document.get_content()
+
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
                            get_title(appname) +\
                            get_metatags(burl) +\
-                           set_ogp(burl, 1, '', '') +\
+                           set_ogp(burl, 2, title, '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_doc_content(burl, uid, terminal) +\
+             get_doc_content(burl, title, content, terminal) +\
              get_page_footer(burl, False))
     return_data = set_page(return_data)
     return return_data
