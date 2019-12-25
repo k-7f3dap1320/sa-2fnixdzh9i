@@ -16,7 +16,7 @@ def set_ogp(burl, ogp_type, title, desc):
         return_data = '' +\
         '<meta property="og:title" content="'+ title +'">'+\
         '<meta property="og:site_name" content="SmartAlpha Trade">'+\
-        '<meta property="og:url" content="http://smartalphatrade.com">'+\
+        '<meta property="og:url" content="'+ desc +'">'+\
         '<meta property="og:description" content="'+ desc +'">'+\
         '<meta property="og:type" content="article">'+\
         '<meta property="og:image" content="'+ burl +'static/ogp.png?'+ str(get_random_num(9)) +'">'

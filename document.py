@@ -111,7 +111,7 @@ def get_doc_page(appname, burl, uid, terminal):
                            get_googleanalytics() +\
                            get_title(appname) +\
                            get_metatags(burl) +\
-                           set_ogp(page_url, 2, title, content[0:100]) +\
+                           set_ogp(burl, 2, title, page_url) +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
