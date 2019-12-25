@@ -13,9 +13,10 @@ from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
-from app_cookie import theme_return_this, get_sa_theme
+from app_cookie import get_sa_theme
 from sa_func import redirect_if_not_logged_in
 from print_google_ads import print_google_ads
+from help_page import get_list_articles
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -25,6 +26,7 @@ DB_SRV = ACCESS_OBJ.db_server()
 
 def get_doc_content(burl, uid):
     """ Content of the page """
+    more_articles = 'More articles...'
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -52,8 +54,7 @@ def get_doc_content(burl, uid):
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="text-align: left; '+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '            <div class="box-part rounded sa-center-content" style="text-align: left;">'+\
     '<h1>' + str(doc_title) + '</h1>' +\
     str(doc_content) +\
     '            </div>'+\
@@ -68,9 +69,9 @@ def get_doc_content(burl, uid):
     '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '' +\
+    '            <div class="box-part rounded sa-center-content">'+\
+    '<h4>'+ str(more_articles) +'</h4>'+\
+    get_list_articles(burl, 10) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\

@@ -24,6 +24,7 @@ DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
 def get_list_video_tutorials():
+    """ xxx """
     ret = ''
     list_row = ''
     doc_cat_1 = 'intro'
@@ -71,7 +72,8 @@ def get_list_video_tutorials():
     ret = header + list_row + footer
     return ret
 
-def get_list_articles(burl):
+def get_list_articles(burl, max_list):
+    """ xxx """
     ret = ''
     doc_cat = 'article'
     title = ''
@@ -84,7 +86,7 @@ def get_list_articles(burl):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT uid, title FROM documents WHERE category LIKE "%'+ str(doc_cat) +'%" '+\
-    'ORDER BY RAND()'
+    'ORDER BY RAND() LIMIT ' + str(max_list)
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
@@ -101,11 +103,13 @@ def get_list_articles(burl):
     return ret
 
 def get_contact_tab(burl):
+    """ xxx """
     ret = ''
     ret = ret + get_page_footer(burl, True)
     return ret
 
 def get_help_tabs(burl):
+    """ xxx """
     ret = '' +\
     '<ul class="nav nav-tabs" id="helpTab" role="tablist">'+\
     '  <li class="nav-item">'+\
@@ -125,7 +129,7 @@ def get_help_tabs(burl):
     '  <div class="tab-pane fade show active" style="overflow: hidden;" id="help" role="tabpanel" '+\
     'aria-labelledby="help"><br />'+ get_list_video_tutorials() +'<br /></div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="articles" role="tabpanel" '+\
-    'aria-labelledby="articles"><br />'+ get_list_articles(burl) +'<br /></div>'+\
+    'aria-labelledby="articles"><br />'+ get_list_articles(burl, 500) +'<br /></div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
     '</div>'
