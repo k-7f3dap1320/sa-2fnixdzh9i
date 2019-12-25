@@ -79,7 +79,7 @@ def get_doc_content(burl, uid, terminal):
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" style="overflow: hidden;">'+\
-    get_card('', 9, burl, terminal) +\
+    get_card('', 1, burl, terminal) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
