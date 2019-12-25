@@ -36,7 +36,7 @@ def get_newsfeed(burl, sel, suid, numline, show_chart, terminal):
 
 
     if sel == 0 and suid == 0:
-        l_newsfeed_title = 'World News and Top Stories'
+        l_newsfeed_title = 'What`s happening right now'
     if sel == 1 and suid == 0:
         l_newsfeed_title = 'Featured Articles'
     if sel == 1 and suid == 0 and show_chart == 0:
