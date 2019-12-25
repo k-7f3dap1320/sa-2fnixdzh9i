@@ -25,7 +25,6 @@ def get_card(selection, type_sel, burl, terminal):
             "WHERE (asset_class LIKE '%"+selection+"%' OR market LIKE '%"+selection+"%') "+\
             "AND type=1 AND badge<>'-999' ORDER BY ranking DESC LIMIT 7"
         if type_sel == 9:
-            #if user_is_login() == 0:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
             "WHERE (asset_class LIKE '%"+selection+"%' OR market LIKE '%"+selection+"%') "+\
@@ -36,7 +35,6 @@ def get_card(selection, type_sel, burl, terminal):
             "url, ranking, badge, symbol FROM feed "+\
             "WHERE type=1 and badge<>'-999' ORDER BY ranking DESC LIMIT 7"
         if type_sel == 9:
-            #if user_is_login() == 0:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
             "WHERE type=9 ORDER BY ranking DESC LIMIT 7"

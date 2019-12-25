@@ -14,9 +14,9 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import get_sa_theme
-from sa_func import redirect_if_not_logged_in
 from print_google_ads import print_google_ads
 from help_page import get_list_articles
+from card import get_card
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -24,7 +24,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_doc_content(burl, uid):
+def get_doc_content(burl, uid, terminal):
     """ Content of the page """
     more_articles = 'More posts and articles'
     connection = pymysql.connect(host=DB_SRV,
@@ -75,6 +75,14 @@ def get_doc_content(burl, uid):
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded">'+\
+    '<h10><strong>'+ str(more_articles) +'</strong></h10>'+\
+    get_card('', 9, burl, terminal) +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
     '</div>'
     return box_content
 
@@ -86,14 +94,13 @@ def get_doc_page(appname, burl, uid, terminal):
                            get_googleanalytics() +\
                            get_title(appname) +\
                            get_metatags(burl) +\
-                           redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_doc_content(burl, uid) +\
+             get_doc_content(burl, uid, terminal) +\
              get_page_footer(burl, False))
     return_data = set_page(return_data)
     return return_data

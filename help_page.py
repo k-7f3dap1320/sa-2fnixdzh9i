@@ -14,7 +14,7 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
-from sa_func import redirect_if_not_logged_in
+from purechat import get_purechat
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -159,11 +159,11 @@ def get_help_page(appname, burl, terminal):
                            get_googleanalytics() +\
                            get_title(appname) +\
                            get_metatags(burl) +\
-                           redirect_if_not_logged_in(burl, '') +\
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
-                           get_stylesheet(burl))
+                           get_stylesheet(burl)+\
+                           get_purechat(1))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_help_content(burl) +\

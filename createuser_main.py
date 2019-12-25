@@ -16,7 +16,7 @@ from font_awesome import get_font_awesome
 from sa_func import get_random_str, get_broker_affiliate_link
 from sa_func import go_to_url, get_hash_string, get_random_num
 from sa_func import send_email_to_queue
-from app_cookie import set_sa_cookie, get_lang, get_refer_by_code
+from app_cookie import set_sa_cookie, get_lang, get_refer_by_code, get_sa_theme
 from googleanalytics import get_googleanalytics
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -95,7 +95,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
                                get_title(appname) +\
                                get_metatags(burl) +\
                                set_ogp(burl, 1, '', '') +\
-                               get_bootstrap('light', burl) +\
+                               get_bootstrap(get_sa_theme(), burl) +\
                                get_font_awesome() +\
                                get_stylesheet(burl))
         return_data = return_data +\
