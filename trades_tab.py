@@ -297,9 +297,8 @@ def get_trades_tbl(uid, what, burl, type_trade):
         else:
             return_data = return_data +\
             '    <tr>'+\
-            '      <td><span class="'+\
-            badge_class +'">'+\
-            str(order_type) +'</span>'+\
+            '      <td>'+ place_trade_link(symbol, '<span class="'+\
+            badge_class +'">'+ str(order_type) +'</span>') +\
             badge_today +'</td>'+\
             '      <td><a href="'+\
             burl + 's/?uid='+\
@@ -330,9 +329,6 @@ def get_trades_tbl(uid, what, burl, type_trade):
     cursor.close()
     connection.close()
     return return_data
-
-
-
 
 def get_trades_box(uid, burl, is_dashboard):
     """ xxx """
