@@ -1,4 +1,4 @@
-""" A template page """
+""" Help and learning page """
 import pymysql.cursors
 from app_head import get_head
 from app_body import get_body
@@ -83,7 +83,8 @@ def get_list_articles(burl):
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT uid, title FROM documents WHERE category LIKE "%'+ str(doc_cat) +'%"'
+    sql = 'SELECT uid, title FROM documents WHERE category LIKE "%'+ str(doc_cat) +'%" '+\
+    'ORDER BY RAND()'
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:

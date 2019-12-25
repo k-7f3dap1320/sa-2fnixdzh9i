@@ -25,6 +25,7 @@ from payment_page import get_plan_selection_page
 from error_page import get_error_page
 from portf_gen_user_example import gen_portf_user_example, gen_portf_validate_content
 from help_page import get_help_page
+from document import get_doc_page
 from intel_report import get_intel_page
 from sa_terminal import get_sa_terminal_page
 from sa_terminal_help import get_sa_terminal_help_page
@@ -46,6 +47,7 @@ COMPRESS_LEVEL = 6; COMPRESS_MIN_SIZE = 500; Compress(application)
 @application.route('/n/', endpoint='n', methods=["POST", "GET"])
 @application.route('/join/', endpoint='join', methods=["POST", "GET"])
 @application.route('/h/', endpoint='h', methods=["POST","GET"])
+@application.route('/doc/', endpoint='doc', methods=["POST","GET"])
 @application.route('/w/', endpoint='w', methods=["POST","GET"])
 @application.route('/intelligence/', endpoint='intelligence', methods=["POST","GET"])
 @application.route('/terminal/', endpoint='terminal', methods=["POST","GET"])
@@ -157,6 +159,9 @@ def go():
 
     elif request.endpoint == 'h':
         c = get_help_page(appname, burl, terminal)
+    
+    elif request.endpoint == 'doc':
+        c = get_doc_page(appname, burl, terminal)
 
     elif request.endpoint == 'w':
         funcname = request.values.get('funcname')
