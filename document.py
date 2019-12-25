@@ -1,4 +1,5 @@
 """ Document / article page """
+import pymysql.cursors
 from app_head import get_head
 from app_body import get_body
 from app_page import set_page
@@ -14,17 +15,55 @@ from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
+from print_google_ads import print_google_ads
+from sa_db import sa_db_access
+ACCESS_OBJ = sa_db_access()
+DB_USR = ACCESS_OBJ.username()
+DB_PWD = ACCESS_OBJ.password()
+DB_NAME = ACCESS_OBJ.db_name()
+DB_SRV = ACCESS_OBJ.db_server()
 
 def get_doc_content(burl, uid):
     """ Content of the page """
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT title, content FROM documents WHERE uid='+ str(uid)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    doc_title = ''
+    doc_content = ''
+    for row in res:
+        doc_title = row[0]
+        doc_content = row[1]
 
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content">'+\
+    print_google_ads('billboard', 'center') +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    'Document uid = '+ str(uid) +\
+    '<h2>' + str(doc_title) + '</h2>' +\
+    str(doc_content) +\
+    '            </div>'+\
+    '        </div>'+\
+    '   </div>'+\
+    '   <div class="row">'+\
+    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+    '            <div class="box-part rounded sa-center-content" style="'+\
+    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '' +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
