@@ -16,7 +16,6 @@ from app_stylesheet import get_stylesheet
 from app_cookie import get_sa_theme
 from print_google_ads import print_google_ads
 from help_page import get_list_articles
-from google_chart import get_google_chart_script
 from card import get_card
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -97,8 +96,7 @@ def get_doc_page(appname, burl, uid, terminal):
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
-                           get_stylesheet(burl)+\
-                           get_google_chart_script())
+                           get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_doc_content(burl, uid, terminal) +\
