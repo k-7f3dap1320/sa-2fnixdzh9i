@@ -161,7 +161,7 @@ def go():
         c = get_help_page(appname, burl, terminal)
     
     elif request.endpoint == 'doc':
-        c = get_doc_page(appname, burl, terminal)
+        c = get_doc_page(appname, burl, uid, terminal)
 
     elif request.endpoint == 'w':
         funcname = request.values.get('funcname')

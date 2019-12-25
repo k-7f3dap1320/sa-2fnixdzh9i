@@ -32,7 +32,7 @@ def get_doc_content(burl, uid):
     return box_content
 
 
-def get_doc_page(appname, burl, terminal):
+def get_doc_page(appname, burl, uid, terminal):
     """ Return the content of the entire page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
