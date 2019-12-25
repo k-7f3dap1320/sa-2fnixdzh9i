@@ -148,6 +148,27 @@ def get_uid(symbol):
     connection.close()
     return uid
 
+def get_etoro_symbol_from_symbol(symbol):
+    """ xxx """
+    return_data = 0
+    etoro_symbol = ''
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql = 'SELECT etoro FROM symbol_list WHERE symbol = "' + str(symbol) + '"'
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    for row in res:
+        etoro_symbol = row[0]
+    cursor.close()
+    connection.close()
+    return_data = etoro_symbol
+    return return_data
+
 def get_etoro_symbol_from_uid(uid):
     """ xxx """
     return_data = 0

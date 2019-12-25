@@ -2,12 +2,27 @@
 import datetime
 import pymysql.cursors
 from sa_func import get_portf_suffix, get_user_numeric_id, get_user
+from sa_func import get_broker_affiliate_link, get_etoro_symbol_from_symbol
+from app_popup_modal import open_window
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
 DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
+
+def place_trade_link(symbol,content):
+    ret = ''
+    broker = 'eToro'
+    height = '600'
+    width = '360'
+    etoro_symbol = get_etoro_symbol_from_symbol(symbol)
+    trade_href = get_broker_affiliate_link(broker, 'baseurl') + str(etoro_symbol)
+    ret = '<a href="javascript:{}" '+\
+            'onclick="'+ open_window(trade_href, width, height, 0, 0) +'">'+\
+            content +\
+            '</a>'
+    return ret
 
 def get_trades_tbl(uid, what, burl, type_trade):
     """ xxx """
@@ -260,9 +275,8 @@ def get_trades_tbl(uid, what, burl, type_trade):
 
                 return_data = return_data +\
                 '    <tr>'+\
-                '      <td><span class="'+\
-                badge_class +'">'+\
-                str(order_type) +'</span>'+\
+                '      <td>'+ place_trade_link(symbol, '<span class="'+\
+                badge_class +'">' + str(order_type) +'</span>') +\
                 badge_today +'</td>'+\
                 '      <td><a href="'+\
                 burl + 's/?uid='+\
