@@ -83,136 +83,137 @@ def get_settings_content(burl, step, message):
     popup_message = ''
 
     user_uid = user_get_uid()
-    connection = pymysql.connect(host=DB_SRV,
-                                 user=DB_USR,
-                                 password=DB_PWD,
-                                 db=DB_NAME,
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
-    cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql = 'SELECT name, nickname, username, default_profile, '+\
-    'email_subscription, lang FROM users WHERE uid="'+ str(user_uid) +'"'
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    name = ''
-    nickname = ''
-    username_email = ''
-    default_profile = ''
-
-    for row in res:
-        name = row[0]
-        nickname = row[1]
-        username_email = row[2]
-        default_profile = row[3]
-        email_subscription = row[4]
-
-    cursor.close()
-    connection.close()
-
-    if step == str(2):
-        success = 0
-        if message == '':
-            message = l_saved_changes
-            success = 1
-        popup_message = popup_after_submit(message, success)
-
-    box_content = ' '+\
-    '<div class="box-top">' +\
-    popup_message +\
-    '   <div class="row d-none d-sm-block">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '               <form name="settingsForm" id="settingsForm" method="post" action="'+\
-    burl +'settings/?step=2" >'+\
-    '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+\
-    l_profile_section +'</span><div style="height: 30px;"></div>'+\
-    '                   <!--------------------- Name --------------------->'+\
-    '                   <div class="input-group" style="max-width:888px">'+\
-    '                       <span class="text-primary" style="width:200px;">'+\
-    l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
-    '                       <div class="input-group-prepend">'+\
-    '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
-    '<i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
-    '                       </div>'+\
-    '                           <input type="text" id="name" name="name" value="'+\
-    str(name) +'" class="form-control" aria-label="Large" '+\
-    'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-    l_fullname +'" required autofocus>'+\
-    '                   </div>'+\
-    '                   <!--------------------- Nickname ----------------->'+\
-    '                   <div class="input-group" style="max-width:888px">'+\
-    '                       <span class="text-primary" style="width:200px;">'+\
-    l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
-    '                       <div class="input-group-prepend">'+\
-    '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
-    '<i class="fa fa-user-ninja" style="font-size: 20px;"></i></span>'+\
-    '                       </div>'+\
-    '                           <input type="text" id="nickname" name="nickname" value="'+\
-    str(nickname) +'" class="form-control" aria-label="Large" '+\
-    'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-    l_nickname +'" required autofocus>'+\
-    '                   </div>'+\
-    '                   <!--------------------- Email -------------------->'+\
-    '                   <div class="input-group" style="max-width:888px">'+\
-    '                       <span class="text-primary" style="width:200px;">'+\
-    l_email +'</span><span>&nbsp;&nbsp;</span>'+\
-    '                       <div class="input-group-prepend">'+\
-    '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
-    '<i class="fa fa-at" style="font-size: large;"></i></span>'+\
-    '                       </div>'+\
-    '                           <input type="email" id="username" name="username" value="'+\
-    str(username_email) +'" class="form-control" aria-label="Large" '+\
-    'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
-    l_email +'" required autofocus>'+\
-    '                   </div>'+\
-    '                   <div style="height: 30px;"></div>'+\
-    '                   <div class="row" style="margin:0px">'+\
-    '                     <!---------------- Trader: Market ---------------->'+\
-    '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-    '                          <div>'+\
-    '                               <span class="text-primary">'+\
-    l_market_ac +'</span><div style="height: 15px;"></div>'+\
-    get_radio_button_trader_prf(default_profile) +\
-    '                          </div>'+\
-    '                          <div style="height: 30px;"></div>'+\
-    '                       </div>'+\
-    '                       <!-------------- Email Subscription -------------->'+\
-    '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
-    '                           <div>'+\
-    '                               <span class="text-primary">'+\
-    l_email_subscr +'</span><div style="height: 15px;"></div>'+\
-    get_radio_button_email_subs(email_subscription) +\
-    '                           </div>'+\
-    '                           <div style="height: 30px;"></div>'+\
-    '                       </div>'+\
-    '                   </div>'+\
-    '                       <div style="height: 30px;"></div>'+\
-    '                       <input type="submit" class="btn btn-info btn-lg active" '+\
-    'style="max-width:888px; width: 100%" value="'+\
-    l_save_btn +'">'+\
-    '               </form>'+\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '</div>'+\
-    '<div class="box">' +\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '               <span class="sectiont"><i class="fas fa-key"></i>&nbsp;'+\
-    l_password +'</span><div style="height: 30px;"></div>'+\
-    '               <span class="text-primary" style="width:200px;">'+\
-    l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
-    '               <a href="'+\
-    burl +'reset/?password" class="btn btn-primary btn-md active" role="button" '+\
-    'aria-pressed="true">'+\
-    l_password_btn +'</a>'+\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '</div>'
+    if user_uid != 0:
+        connection = pymysql.connect(host=DB_SRV,
+                                     user=DB_USR,
+                                     password=DB_PWD,
+                                     db=DB_NAME,
+                                     charset='utf8mb4',
+                                     cursorclass=pymysql.cursors.DictCursor)
+        cursor = connection.cursor(pymysql.cursors.SSCursor)
+        sql = 'SELECT name, nickname, username, default_profile, '+\
+        'email_subscription, lang FROM users WHERE uid="'+ str(user_uid) +'"'
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        name = ''
+        nickname = ''
+        username_email = ''
+        default_profile = ''
+        email_subscription = ''
+        for row in res:
+            name = row[0]
+            nickname = row[1]
+            username_email = row[2]
+            default_profile = row[3]
+            email_subscription = row[4]
+    
+        cursor.close()
+        connection.close()
+    
+        if step == str(2):
+            success = 0
+            if message == '':
+                message = l_saved_changes
+                success = 1
+            popup_message = popup_after_submit(message, success)
+    
+        box_content = ' '+\
+        '<div class="box-top">' +\
+        popup_message +\
+        '   <div class="row d-none d-sm-block">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded" style="'+\
+        theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '               <form name="settingsForm" id="settingsForm" method="post" action="'+\
+        burl +'settings/?step=2" >'+\
+        '                   <span class="sectiont"><i class="fas fa-sliders-h"></i>&nbsp;'+\
+        l_profile_section +'</span><div style="height: 30px;"></div>'+\
+        '                   <!--------------------- Name --------------------->'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span class="text-primary" style="width:200px;">'+\
+        l_fullname +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <div class="input-group-prepend">'+\
+        '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
+        '<i class="fa fa-user-alt" style="font-size: large;"></i></span>'+\
+        '                       </div>'+\
+        '                           <input type="text" id="name" name="name" value="'+\
+        str(name) +'" class="form-control" aria-label="Large" '+\
+        'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
+        l_fullname +'" required autofocus>'+\
+        '                   </div>'+\
+        '                   <!--------------------- Nickname ----------------->'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span class="text-primary" style="width:200px;">'+\
+        l_nickname +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <div class="input-group-prepend">'+\
+        '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
+        '<i class="fa fa-user-ninja" style="font-size: 20px;"></i></span>'+\
+        '                       </div>'+\
+        '                           <input type="text" id="nickname" name="nickname" value="'+\
+        str(nickname) +'" class="form-control" aria-label="Large" '+\
+        'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
+        l_nickname +'" required autofocus>'+\
+        '                   </div>'+\
+        '                   <!--------------------- Email -------------------->'+\
+        '                   <div class="input-group" style="max-width:888px">'+\
+        '                       <span class="text-primary" style="width:200px;">'+\
+        l_email +'</span><span>&nbsp;&nbsp;</span>'+\
+        '                       <div class="input-group-prepend">'+\
+        '                           <span class="input-group-text" id="inputGroup-sizing-lg">'+\
+        '<i class="fa fa-at" style="font-size: large;"></i></span>'+\
+        '                       </div>'+\
+        '                           <input type="email" id="username" name="username" value="'+\
+        str(username_email) +'" class="form-control" aria-label="Large" '+\
+        'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
+        l_email +'" required autofocus>'+\
+        '                   </div>'+\
+        '                   <div style="height: 30px;"></div>'+\
+        '                   <div class="row" style="margin:0px">'+\
+        '                     <!---------------- Trader: Market ---------------->'+\
+        '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '                          <div>'+\
+        '                               <span class="text-primary">'+\
+        l_market_ac +'</span><div style="height: 15px;"></div>'+\
+        get_radio_button_trader_prf(default_profile) +\
+        '                          </div>'+\
+        '                          <div style="height: 30px;"></div>'+\
+        '                       </div>'+\
+        '                       <!-------------- Email Subscription -------------->'+\
+        '                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">'+\
+        '                           <div>'+\
+        '                               <span class="text-primary">'+\
+        l_email_subscr +'</span><div style="height: 15px;"></div>'+\
+        get_radio_button_email_subs(email_subscription) +\
+        '                           </div>'+\
+        '                           <div style="height: 30px;"></div>'+\
+        '                       </div>'+\
+        '                   </div>'+\
+        '                       <div style="height: 30px;"></div>'+\
+        '                       <input type="submit" class="btn btn-info btn-lg active" '+\
+        'style="max-width:888px; width: 100%" value="'+\
+        l_save_btn +'">'+\
+        '               </form>'+\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'+\
+        '<div class="box">' +\
+        '   <div class="row">'+\
+        '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
+        '            <div class="box-part rounded" style="'+\
+        theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+        '               <span class="sectiont"><i class="fas fa-key"></i>&nbsp;'+\
+        l_password +'</span><div style="height: 30px;"></div>'+\
+        '               <span class="text-primary" style="width:200px;">'+\
+        l_password_label +'</span><span>&nbsp;&nbsp;</span>'+\
+        '               <a href="'+\
+        burl +'reset/?password" class="btn btn-primary btn-md active" role="button" '+\
+        'aria-pressed="true">'+\
+        l_password_btn +'</a>'+\
+        '            </div>'+\
+        '        </div>'+\
+        '   </div>'+\
+        '</div>'
     return box_content
 
 
