@@ -82,8 +82,6 @@ def go():
     nonavbar = request.values.get('nonavbar')
     terminal = request.args.get('terminal')
     x = request.args.get('x');
-
-
     err = request.args.get('err')
 
     ############################################################################
@@ -264,7 +262,8 @@ def go():
         url_q = request.values.get('q')
         c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','') )
     else:
-        if x == '' or x == None : x = get_user_default_profile()
+        if x == '' or x == None :
+            x = get_user_default_profile()
         dashboard = request.args.get('dashboard')
         tour = request.args.get('tour')
         c = gen_main_page(x,appname,burl,dashboard,tour,nonavbar, terminal)
@@ -287,6 +286,11 @@ def go():
                 burl = burl.replace('https://','https://app.')
             c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' ) )
 
+    return c
+
+@application.errorhandler(404)
+def page_not_found(error):
+    c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(request.url_root) + 'error/?" />') + get_body('','') )
     return c
 
 if __name__ == '__main__':

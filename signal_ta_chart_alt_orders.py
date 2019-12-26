@@ -134,6 +134,7 @@ def get_alt_orders(uid):
 
 def get_ta_chart(uid):
     """ xxx """
+    return_data = ''
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -147,127 +148,129 @@ def get_ta_chart(uid):
 
     cursor.execute(sql)
     res = cursor.fetchall()
+    minval = -9
     for row in res:
         minval = row[0]
-
-    sql = "SELECT symbol, date, price_close, forecast, lt_upper_trend_line, lt_lower_trend_line, "+\
-    "st_upper_trend_line, st_lower_trend_line, ma200 FROM chart_data WHERE uid=" + str(uid) +" "+\
-    "ORDER BY date "
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    data = ''
-    i = 0
-    for row in res:
-        chart_date = row[1]
-        price_close = str(row[2])
-        forecast = str(row[3])
-        lt_upper_trend_line = str(row[4])
-        lt_lower_trend_line = str(row[5])
-        st_upper_trend_line = str(row[6])
-        st_lower_trend_line = str(row[7])
-        ma200 = str(row[8])
-
-        year = chart_date.strftime("%Y")
-        month = chart_date.strftime("%m")
-        day = chart_date.strftime("%d")
-
-        if forecast == '0' or forecast == '0.0':
-            forecast = 'null'
-        if price_close == '0' or price_close == '0.0' or forecast != 'null':
-            price_close = 'null'
-        if lt_upper_trend_line == '0' or lt_upper_trend_line == '0.0':
-            lt_upper_trend_line = 'null'
-        if lt_lower_trend_line == '0' or lt_lower_trend_line == '0.0':
-            lt_lower_trend_line = 'null'
-        if st_upper_trend_line == '0' or st_upper_trend_line == '0.0':
-            st_upper_trend_line = 'null'
-        if st_lower_trend_line == '0' or st_lower_trend_line == '0.0':
-            st_lower_trend_line = 'null'
-        if ma200 == '0' or ma200 == '0.0':
-            ma200 = 'null'
-
-        if i > 0:
-            data = data + ','
-
-        data = data + '[new Date('+\
-        str(year)+','+\
-        str(int(month)-1)+', '+\
-        str(day)+')'+','+\
-        str(price_close) +','+\
-        str(forecast) + ','+\
-        str(lt_upper_trend_line) + ','+\
-        str(lt_lower_trend_line) + ',' +\
-        str(st_upper_trend_line) + ','+\
-        str(st_lower_trend_line) + ',' +\
-        str(ma200)  + ']'
-
-        i += 1
-    cursor.close()
-    connection.close()
-
-    chart_title = 'Technical analysis and Forecast'
-    chart_font_size = 10
-    l_date = 'Date'
-    l_price_close = "price"
-    l_forecast = 'Forecast'
-    l_lt_up_trend = 'Long-term upper trend line'
-    l_lt_low_trend = 'Long-term lower trend line'
-    l_st_up_trend = 'Short-term upper trend line'
-    l_st_low_trend = 'Short-term lower trend line'
-    l_ma200 = 'MA200'
-
-    return_data = "" +\
-    "<script>"+\
-    "      google.charts.load('current', {'packages':['corechart']});"+\
-    "      google.charts.setOnLoadCallback(drawChart);"+\
-    "      function drawChart() {"+\
-    "        var data = new google.visualization.DataTable();"+\
-    "        data.addColumn('date', '"+ l_date +"');"+\
-    "        data.addColumn('number', '"+ l_price_close +"');"+\
-    "        data.addColumn('number', '"+ l_forecast +"');"+\
-    "        data.addColumn('number', '"+ l_lt_up_trend +"');"+\
-    "        data.addColumn('number', '"+ l_lt_low_trend +"');"+\
-    "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
-    "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
-    "        data.addColumn('number', '"+ l_ma200 +"');"+\
-    "        data.addRows(["+data+"]);"+\
-    '        var options = {'+\
-    '          title: "'+\
-    chart_title +'", '+\
-    '          titleTextStyle: {color: '+\
-    theme_return_this('"black"', '"white"') +' },'+\
-    '          fontSize: '+\
-    str(chart_font_size)+','+\
-    '          legend: {position:"top" '+\
-    theme_return_this('', ', textStyle: {color: "white"}') +'},'+\
-    '          vAxis: { viewWindow:{min: '+\
-    str(minval) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } '+\
-    theme_return_this('', ', textStyle: {color: "white"}') +' },'+\
-    '          hAxis: { gridlines: { count: 4, color: "transparent" } '+\
-    theme_return_this('', ', textStyle: {color: "white"}') +'}, '+\
-    '          series:{'+\
-    '                   0: {areaOpacity: 0.3, color: '+\
-    theme_return_this('"#17a2b8"', '"#ffffff"') +', lineWidth: 2},'+\
-    '                   1: {areaOpacity: 0.3, color: "#ff9800", lineWidth: 3},'+\
-    '                   2: {areaOpacity: 0, color: '+\
-    theme_return_this('"gray"', '"white"') +', lineWidth: 1},'+\
-    '                   3: {areaOpacity: 0, color: '+\
-    theme_return_this('"gray"', '"white"') +', lineWidth: 1},'+\
-    '                   4: {areaOpacity: 0.05, color: '+\
-    theme_return_this('"#ff3399"', '"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
-    '                   5: {areaOpacity: 0.1, color: '+\
-    theme_return_this('"#ff3399"', '"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
-    '                   6: {areaOpacity: 0.05, color: '+\
-    theme_return_this('"red"', '"#00f2ff"') +', lineWidth: 1}'+\
-    '                  },'+\
-    '          chartArea:{width:"90%",height:"80%"},'+\
-    '          backgroundColor: "transparent"'+\
-    '        };'+\
-    '        var chart = new google.visualization.AreaChart(document.getElementById("ta_chart"));'+\
-    '        chart.draw(data, options);'+\
-    "      }"+\
-    "</script>"+\
-    '<div id="ta_chart" class="sa-chart-hw-100"></div>'
+    
+    if minval != -9:
+        sql = "SELECT symbol, date, price_close, forecast, lt_upper_trend_line, lt_lower_trend_line, "+\
+        "st_upper_trend_line, st_lower_trend_line, ma200 FROM chart_data WHERE uid=" + str(uid) +" "+\
+        "ORDER BY date "
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        data = ''
+        i = 0
+        for row in res:
+            chart_date = row[1]
+            price_close = str(row[2])
+            forecast = str(row[3])
+            lt_upper_trend_line = str(row[4])
+            lt_lower_trend_line = str(row[5])
+            st_upper_trend_line = str(row[6])
+            st_lower_trend_line = str(row[7])
+            ma200 = str(row[8])
+    
+            year = chart_date.strftime("%Y")
+            month = chart_date.strftime("%m")
+            day = chart_date.strftime("%d")
+    
+            if forecast == '0' or forecast == '0.0':
+                forecast = 'null'
+            if price_close == '0' or price_close == '0.0' or forecast != 'null':
+                price_close = 'null'
+            if lt_upper_trend_line == '0' or lt_upper_trend_line == '0.0':
+                lt_upper_trend_line = 'null'
+            if lt_lower_trend_line == '0' or lt_lower_trend_line == '0.0':
+                lt_lower_trend_line = 'null'
+            if st_upper_trend_line == '0' or st_upper_trend_line == '0.0':
+                st_upper_trend_line = 'null'
+            if st_lower_trend_line == '0' or st_lower_trend_line == '0.0':
+                st_lower_trend_line = 'null'
+            if ma200 == '0' or ma200 == '0.0':
+                ma200 = 'null'
+    
+            if i > 0:
+                data = data + ','
+    
+            data = data + '[new Date('+\
+            str(year)+','+\
+            str(int(month)-1)+', '+\
+            str(day)+')'+','+\
+            str(price_close) +','+\
+            str(forecast) + ','+\
+            str(lt_upper_trend_line) + ','+\
+            str(lt_lower_trend_line) + ',' +\
+            str(st_upper_trend_line) + ','+\
+            str(st_lower_trend_line) + ',' +\
+            str(ma200)  + ']'
+    
+            i += 1
+        cursor.close()
+        connection.close()
+    
+        chart_title = 'Technical analysis and Forecast'
+        chart_font_size = 10
+        l_date = 'Date'
+        l_price_close = "price"
+        l_forecast = 'Forecast'
+        l_lt_up_trend = 'Long-term upper trend line'
+        l_lt_low_trend = 'Long-term lower trend line'
+        l_st_up_trend = 'Short-term upper trend line'
+        l_st_low_trend = 'Short-term lower trend line'
+        l_ma200 = 'MA200'
+    
+        return_data = "" +\
+        "<script>"+\
+        "      google.charts.load('current', {'packages':['corechart']});"+\
+        "      google.charts.setOnLoadCallback(drawChart);"+\
+        "      function drawChart() {"+\
+        "        var data = new google.visualization.DataTable();"+\
+        "        data.addColumn('date', '"+ l_date +"');"+\
+        "        data.addColumn('number', '"+ l_price_close +"');"+\
+        "        data.addColumn('number', '"+ l_forecast +"');"+\
+        "        data.addColumn('number', '"+ l_lt_up_trend +"');"+\
+        "        data.addColumn('number', '"+ l_lt_low_trend +"');"+\
+        "        data.addColumn('number', '"+ l_st_up_trend +"');"+\
+        "        data.addColumn('number', '"+ l_st_low_trend +"');"+\
+        "        data.addColumn('number', '"+ l_ma200 +"');"+\
+        "        data.addRows(["+data+"]);"+\
+        '        var options = {'+\
+        '          title: "'+\
+        chart_title +'", '+\
+        '          titleTextStyle: {color: '+\
+        theme_return_this('"black"', '"white"') +' },'+\
+        '          fontSize: '+\
+        str(chart_font_size)+','+\
+        '          legend: {position:"top" '+\
+        theme_return_this('', ', textStyle: {color: "white"}') +'},'+\
+        '          vAxis: { viewWindow:{min: '+\
+        str(minval) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" } '+\
+        theme_return_this('', ', textStyle: {color: "white"}') +' },'+\
+        '          hAxis: { gridlines: { count: 4, color: "transparent" } '+\
+        theme_return_this('', ', textStyle: {color: "white"}') +'}, '+\
+        '          series:{'+\
+        '                   0: {areaOpacity: 0.3, color: '+\
+        theme_return_this('"#17a2b8"', '"#ffffff"') +', lineWidth: 2},'+\
+        '                   1: {areaOpacity: 0.3, color: "#ff9800", lineWidth: 3},'+\
+        '                   2: {areaOpacity: 0, color: '+\
+        theme_return_this('"gray"', '"white"') +', lineWidth: 1},'+\
+        '                   3: {areaOpacity: 0, color: '+\
+        theme_return_this('"gray"', '"white"') +', lineWidth: 1},'+\
+        '                   4: {areaOpacity: 0.05, color: '+\
+        theme_return_this('"#ff3399"', '"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
+        '                   5: {areaOpacity: 0.1, color: '+\
+        theme_return_this('"#ff3399"', '"yellow"') +', lineWidth: 2, lineDashStyle:[10,2] },'+\
+        '                   6: {areaOpacity: 0.05, color: '+\
+        theme_return_this('"red"', '"#00f2ff"') +', lineWidth: 1}'+\
+        '                  },'+\
+        '          chartArea:{width:"90%",height:"80%"},'+\
+        '          backgroundColor: "transparent"'+\
+        '        };'+\
+        '        var chart = new google.visualization.AreaChart(document.getElementById("ta_chart"));'+\
+        '        chart.draw(data, options);'+\
+        "      }"+\
+        "</script>"+\
+        '<div id="ta_chart" class="sa-chart-hw-100"></div>'
 
     return return_data
 
