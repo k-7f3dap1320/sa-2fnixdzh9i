@@ -58,8 +58,6 @@ def get_desc_box(uid):
     for row in res:
         portf_last_price = row[0]
 
-    #{portf_recomm} = "buy {portf_alloc_instr} below {portf_alloc_entry_price}"
-    #{portf_recomm} = "sell {portf_alloc_instr} above {portf_alloc_entry_price}"
     portf_recomm = '<br /><br />'
     sql = 'SELECT order_type, alloc_fullname, entry_level, strategy_order_type FROM portfolios '+\
     "WHERE portf_symbol ='"+ portf_symbol +"'  ORDER BY alloc_fullname"

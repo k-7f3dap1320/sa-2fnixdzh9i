@@ -264,7 +264,10 @@ def get_random_num(number):
 
 def get_selected_lang():
     """ xxx """
-    return get_lang()
+    ret = get_lang()
+    if ret is None:
+        ret = ''
+    return ret
 
 def get_signal(uid):
     """ xxx """
