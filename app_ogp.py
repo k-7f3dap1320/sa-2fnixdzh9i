@@ -19,5 +19,5 @@ def set_ogp(burl, ogp_type, title, desc):
         '<meta property="og:url" content="'+ desc +'">'+\
         '<meta property="og:description" content="'+ desc +'">'+\
         '<meta property="og:type" content="article">'+\
-        '<meta property="og:image" content="'+ burl +'static/ogp.png?'+ str(get_random_num(9)) +'">'
+        '<meta property="og:image" content="'+ burl +'static/img/'+ str(get_random_num(10)) +'.png?'+ str(get_random_num(9)) +'">'
     return return_data
