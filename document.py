@@ -13,7 +13,7 @@ from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
-from app_cookie import get_sa_theme
+from app_cookie import get_sa_theme, theme_return_this
 from print_google_ads import print_google_ads
 from help_page import get_list_articles
 from card import get_card
@@ -67,7 +67,7 @@ def get_doc_content(burl, title, content, terminal):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" '+\
     'style="text-align: justify; margin-left: 10%; margin-right: 10%;">'+\
-    '<h1>' + str(title) + '</h1>' +\
+    '<h1 style="'+ theme_return_this('', 'color: orange;') +'">' + str(title) + '</h1>' +\
     str(content) +\
     '            </div>'+\
     '        </div>'+\
