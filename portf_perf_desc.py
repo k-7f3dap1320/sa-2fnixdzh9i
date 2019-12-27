@@ -137,6 +137,8 @@ def get_perf_chart(uid):
     cursor.execute(sql)
     res = cursor.fetchall()
     data = ""
+    price_close = 0
+    portf_unit = ''
     for row in res:
         chart_date = row[1]
         price_close = row[2]
