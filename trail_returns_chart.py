@@ -153,10 +153,12 @@ def get_trailing_returns(uid):
     cursor.execute(sql)
     res = cursor.fetchall()
     as_date = ''
+    l_as_date = ''
     for row in res:
         as_date = row[0]
 
-    l_as_date = 'Trailing returns as of '+ as_date.strftime("%d-%b-%Y")
+    if as_date != '':
+        l_as_date = 'Trailing returns as of '+ as_date.strftime("%d-%b-%Y")
 
     font_size = 10
     l_y1 = '1-Year'
