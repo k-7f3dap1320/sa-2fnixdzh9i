@@ -42,6 +42,7 @@ def get_widget_content(burl, nonavbar, funcname, noflexheight):
 
     refresh_once = ''+\
     '<script>'+\
+    'window.onresize = function(){ location.reload(); };'+\
     'if(!window.location.hash) {'+\
     '    window.location = window.location + "#";'+\
     '    window.location.reload();'+\
