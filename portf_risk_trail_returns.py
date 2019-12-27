@@ -116,6 +116,7 @@ def get_box_risk_content(uid):
     sql = "SELECT portf_risk_consider FROM `recommendations` WHERE lang='"+ lang +"' "
     cursor.execute(sql)
     res = cursor.fetchall()
+    text_content = ''
     for row in res:
         text_content = row[0]
 
@@ -128,6 +129,10 @@ def get_box_risk_content(uid):
     "WHERE symbol_list.uid=" + str(uid)
     cursor.execute(sql)
     res = cursor.fetchall()
+    account_reference = 0
+    unit = ''
+    stdev_st = 0
+    volatility_risk_st = 0
     for row in res:
         account_reference = row[0]
         unit = row[1]

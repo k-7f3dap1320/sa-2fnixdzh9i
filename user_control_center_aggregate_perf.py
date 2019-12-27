@@ -76,7 +76,7 @@ def gen_aggregate_perf_graph():
     return_data = ''
     min_yaxis = 0
     max_yaxis = 0
-
+    l_indexing_in_progress_note = 'Indexing in progress. Data will be available in 10 minutes...'
     l_aggregate_perf_series_name = 'Aggregate Portfolio Performance'
 
     l_aggregate_portf_xaxis_total = '1-year aggregate performance based '+\
@@ -157,38 +157,44 @@ def gen_aggregate_perf_graph():
             i += 1
         cr_c.close()
 
-    return_data = "<script>"+\
-    "google.charts.load('current', {'packages':['corechart']}); "+\
-    "google.charts.setOnLoadCallback(drawChart); "+\
-    "function drawChart() { "+\
-    "  var data = google.visualization.arrayToDataTable([ "+\
-    "    ['text', '"+ l_aggregate_perf_series_name +"'], "+\
-    chart_rows +\
-    "  ]); "+\
-    "  var options = { "+\
-    "    title: '', "+\
-    "    hAxis: {title: '"+\
-    l_aggregate_portf_xaxis_total +"',  titleTextStyle: {color: '"+\
-    theme_return_this("#343a40", "#ffffff") +\
-    "'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
-    "    legend: {position: 'none'}, "+\
-    "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
-    "    vAxis: { "+\
-    "    textStyle: { color:'"+ theme_return_this("#343a40", "#ffffff") + "' },"+\
-    "    viewWindow:{ min: "+ str(min_yaxis) + ", max: "+ str(max_yaxis) + ","+\
-    "    viewWindowMode: 'explicit'}, "+\
-    "    gridlines: {color: 'transparent'} }, "+\
-    "    lineWidth: 1, "+\
-    "    areaOpacity: 0.2, "+\
-    "    colors: ['"+ theme_return_this("#17a2b8", "orange") + "'],"+\
-    "    backgroundColor: 'transparent'"+\
-    "  }; "+\
-    "  var chart = "+\
-    "new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
-    "  chart.draw(data, options); "+\
-    "} "+\
-    "</script>"+\
-    "<div id='aggr_perf_chart_div' style='height:200px;'></div>"
+    if chart_rows != '':
+        return_data = "<script>"+\
+        "google.charts.load('current', {'packages':['corechart']}); "+\
+        "google.charts.setOnLoadCallback(drawChart); "+\
+        "function drawChart() { "+\
+        "  var data = google.visualization.arrayToDataTable([ "+\
+        "    ['text', '"+ l_aggregate_perf_series_name +"'], "+\
+        chart_rows +\
+        "  ]); "+\
+        "  var options = { "+\
+        "    title: '', "+\
+        "    hAxis: {title: '"+\
+        l_aggregate_portf_xaxis_total +"',  titleTextStyle: {color: '"+\
+        theme_return_this("#343a40", "#ffffff") +\
+        "'}, textPosition: 'none', gridlines: {color: 'transparent'} }, "+\
+        "    legend: {position: 'none'}, "+\
+        "    chartArea:{right: '5', width:'90%',height:'80%'}, "+\
+        "    vAxis: { "+\
+        "    textStyle: { color:'"+ theme_return_this("#343a40", "#ffffff") + "' },"+\
+        "    viewWindow:{ min: "+ str(min_yaxis) + ", max: "+ str(max_yaxis) + ","+\
+        "    viewWindowMode: 'explicit'}, "+\
+        "    gridlines: {color: 'transparent'} }, "+\
+        "    lineWidth: 1, "+\
+        "    areaOpacity: 0.2, "+\
+        "    colors: ['"+ theme_return_this("#17a2b8", "orange") + "'],"+\
+        "    backgroundColor: 'transparent'"+\
+        "  }; "+\
+        "  var chart = "+\
+        "new google.visualization.AreaChart(document.getElementById('aggr_perf_chart_div')); "+\
+        "  chart.draw(data, options); "+\
+        "} "+\
+        "</script>"+\
+        "<div id='aggr_perf_chart_div' style='height:200px;'></div>"
+    else:
+        return_data = ''+\
+        '<div class="alert alert-info" role="alert">'+\
+        l_indexing_in_progress_note +\
+        '</div>'
 
     cursor.close()
     cursor.close()
