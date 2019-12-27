@@ -114,6 +114,7 @@ def get_desc_box(uid):
 
 def get_perf_chart(uid):
     """ xxx """
+    l_indexing_in_progress_note = 'Indexing in progress. Data will be available in 10 minutes...'
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -126,6 +127,7 @@ def get_perf_chart(uid):
     str(uid) + " ORDER BY price_close LIMIT 1"
     cursor.execute(sql)
     res = cursor.fetchall()
+    minval = -9999
     for row in res:
         minval = row[0]
 
@@ -166,39 +168,46 @@ def get_perf_chart(uid):
     vaxis = "Price (" + portf_unit + ")"
     portf_perf_font_size = 10
 
-    portf_perf_box = '' +\
-    '                   <script>'+\
-    '                       google.charts.load("current", {"packages":["corechart"]});'+\
-    '                       google.charts.setOnLoadCallback(drawChart);'+\
-    '                       function drawChart() {'+\
-    '                          var data = new google.visualization.DataTable();'+\
-    '                          data.addColumn("date", "'+ haxis +'");'+\
-    '                          data.addColumn("number", "'+ vaxis +'");'+\
-    '                          data.addRows(['+data+']);'+\
-    '                          var options = {'+\
-    '                            title: "'+ chart_title +'", '+\
-    '                            titleTextStyle: {color: '+\
-    theme_return_this('"black"', '"white"') +'},'+\
-    '                            fontSize:'+\
-    str(portf_perf_font_size) + ', '+\
-    '                            legend: {position: "none", textStyle: {color: '+\
-    theme_return_this('"black"', '"white"') +'} },'+\
-    '                            backgroundColor: "transparent",'+\
-    '                            vAxis: {viewWindow:{min: '+\
-    str(minval) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+\
-    theme_return_this('', ', textStyle: {color: "white"}') +' },'+\
-    '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+\
-    theme_return_this('', ', textStyle: {color: "white"}') +' }, '+\
-    '                            series:{0: {areaOpacity: 0.3, color: '+\
-    theme_return_this('"#17a2b8"', '"#ffffff"') +', lineWidth: 2} },'+\
-    '                            chartArea:{width:"90%",height:"80%"}'+\
-    '                          };'+\
-    '                          var chart = '+\
-    'new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
-    '                          chart.draw(data, options);'+\
-    '                       }'+\
-    '                   </script>'+\
-    '               <div id="portf_perf_chart" class="sa-chart-hw-90"></div>'
+    if minval != -9999:
+        portf_perf_box = '' +\
+        '                   <script>'+\
+        '                       google.charts.load("current", {"packages":["corechart"]});'+\
+        '                       google.charts.setOnLoadCallback(drawChart);'+\
+        '                       function drawChart() {'+\
+        '                          var data = new google.visualization.DataTable();'+\
+        '                          data.addColumn("date", "'+ haxis +'");'+\
+        '                          data.addColumn("number", "'+ vaxis +'");'+\
+        '                          data.addRows(['+data+']);'+\
+        '                          var options = {'+\
+        '                            title: "'+ chart_title +'", '+\
+        '                            titleTextStyle: {color: '+\
+        theme_return_this('"black"', '"white"') +'},'+\
+        '                            fontSize:'+\
+        str(portf_perf_font_size) + ', '+\
+        '                            legend: {position: "none", textStyle: {color: '+\
+        theme_return_this('"black"', '"white"') +'} },'+\
+        '                            backgroundColor: "transparent",'+\
+        '                            vAxis: {viewWindow:{min: '+\
+        str(minval) +', viewWindowMode: "explicit"}, gridlines: { color: "transparent" }'+\
+        theme_return_this('', ', textStyle: {color: "white"}') +' },'+\
+        '                            hAxis: { gridlines: { count: 4, color: "transparent" } '+\
+        theme_return_this('', ', textStyle: {color: "white"}') +' }, '+\
+        '                            series:{0: {areaOpacity: 0.3, color: '+\
+        theme_return_this('"#17a2b8"', '"#ffffff"') +', lineWidth: 2} },'+\
+        '                            chartArea:{width:"90%",height:"80%"}'+\
+        '                          };'+\
+        '                          var chart = '+\
+        'new google.visualization.AreaChart(document.getElementById("portf_perf_chart"));'+\
+        '                          chart.draw(data, options);'+\
+        '                       }'+\
+        '                   </script>'+\
+        '               <div id="portf_perf_chart" class="sa-chart-hw-90"></div>'
+    else:
+        portf_perf_box = ''+\
+        '<div class="alert alert-info" role="alert">'+\
+        l_indexing_in_progress_note +\
+        '</div>'
+
     cursor.close()
     connection.close()
     return portf_perf_box
