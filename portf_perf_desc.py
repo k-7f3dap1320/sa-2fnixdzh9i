@@ -55,6 +55,7 @@ def get_desc_box(uid):
     sql = "SELECT price_close FROM chart_data WHERE uid="+ str(uid) +" ORDER by date DESC LIMIT 1"
     cursor.execute(sql)
     res = cursor.fetchall()
+    portf_last_price = 0
     for row in res:
         portf_last_price = row[0]
 
