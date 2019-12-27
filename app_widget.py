@@ -40,7 +40,15 @@ def get_widget_content(burl, nonavbar, funcname, noflexheight):
     if noflexheight is not None:
         box_vh = ''
 
-    box_content = ' '+\
+    refresh_once = ''+\
+    '<script>'+\
+    'if(!window.location.hash) {'+\
+    '    window.location = window.location + "#";'+\
+    '    window.location.reload();'+\
+    '}'+\
+    '</script>'
+
+    box_content = refresh_once +\
     '<div class="'+ box_class +'"></div>' +\
     '        <div style="'+ box_vh +'">'+\
     eval(funcname)+\
