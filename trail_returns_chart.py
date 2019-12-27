@@ -152,7 +152,7 @@ def get_trailing_returns(uid):
 
     cursor.execute(sql)
     res = cursor.fetchall()
-
+    as_date = ''
     for row in res:
         as_date = row[0]
 
