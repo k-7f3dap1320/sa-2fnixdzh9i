@@ -63,7 +63,7 @@ def get_feed(burl, terminal, selection):
         feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
 
     if user_is_login() == 1:
-        feed_content = feed_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
+        feed_content = feed_content + get_newsfeed(burl, 2, 0, 30, 1, terminal) + '<br />'
 
     feed_content = feed_content + get_card(selection, 1, burl, terminal)
     feed_content = feed_content + get_card(selection, 9, burl, terminal)
