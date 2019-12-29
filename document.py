@@ -3,6 +3,7 @@ import pymysql.cursors
 from app_head import get_head
 from app_body import get_body
 from app_page import set_page
+from sa_func import get_random_num
 from app_loading import get_loading_head, get_loading_body
 from app_footer import get_page_footer
 from app_ogp import set_ogp
@@ -50,6 +51,13 @@ class doc_data:
     def get_content(self):
         return self.content
 
+def get_doc_illustration(burl):
+    ret = ''
+    img_filename = str(get_random_num(9)) + 'a.png'
+    file_location = burl + 'static/img/' + img_filename
+    ret = '<img src="'+ str(file_location) +'" width="100%" alt="article image">'
+    return ret
+
 def get_doc_content(burl, title, content, terminal):
     """ Content of the page """
     more_articles = 'More posts and articles'
@@ -68,6 +76,7 @@ def get_doc_content(burl, title, content, terminal):
     '            <div class="box-part rounded" '+\
     'style="text-align: justify; margin-left: 10%; margin-right: 10%;">'+\
     '<h1 style="'+ theme_return_this('', 'color: orange;') +'">' + str(title) + '</h1>' +\
+    str(get_doc_illustration(burl)) +\
     str(content) +\
     '            </div>'+\
     '        </div>'+\
