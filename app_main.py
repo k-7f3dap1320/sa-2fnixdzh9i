@@ -54,7 +54,6 @@ def get_feed(burl, terminal, selection):
     if user_is_login() == 0:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'
         feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
-        feed_content = feed_content + get_card(selection, 9, burl, terminal)
 
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
@@ -63,11 +62,12 @@ def get_feed(burl, terminal, selection):
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
 
-    feed_content = feed_content + get_card(selection, 1, burl, terminal)
-
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 2, 0, 100, 1, terminal) + '<br />'
-        
+
+    feed_content = feed_content + get_card(selection, 1, burl, terminal)
+    feed_content = feed_content + get_card(selection, 9, burl, terminal)
+
     return feed_content
 
 def gen_main_page(selection,
