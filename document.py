@@ -76,7 +76,9 @@ def get_doc_content(burl, title, content, terminal):
     '            <div class="box-part rounded" '+\
     'style="text-align: justify; margin-left: 10%; margin-right: 10%;">'+\
     '<h1 style="'+ theme_return_this('', 'color: orange;') +'">' + str(title) + '</h1>' +\
+    '<br>'+\
     str(get_doc_illustration(burl)) +\
+    '<br><br><br>'+\
     str(content) +\
     '            </div>'+\
     '        </div>'+\
