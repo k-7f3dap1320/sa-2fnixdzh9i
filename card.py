@@ -151,7 +151,7 @@ def get_card(selection, type_sel, burl, terminal):
         '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
         '</strong></a></div>'
 
-    if type == 1:
+    if type_sel == 1:
         date_today = datetime.datetime.now()
         if date_today.weekday() == 5:
             return_data = ''
