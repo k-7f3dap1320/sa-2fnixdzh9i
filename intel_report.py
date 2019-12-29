@@ -27,6 +27,41 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
+def report_is_available():
+    """ check if report is available and generated """
+    ret = False
+    date_now = datetime.datetime.now()
+
+    not_weekend = False
+    if date_now.weekday() != 5:
+        if date_now.weekday() != 6:
+            not_weekend = True
+
+    date_now = date_now.strftime("%Y%m%d")
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    sql ='SELECT COUNT(*) FROM log '+\
+    'WHERE date_time >= '+ str(date_now) +\
+    ' AND module = "Data update terminated" AND status = 1'
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    data_generated = 0
+    for row in res:
+        data_generated = row[0]
+    cursor.close()
+    connection.close()
+
+    if data_generated != 0:
+        if not_weekend:
+            ret = True
+
+    return ret
+
 def get_report_title(burl):
     """ Get title of the report """
     return_data = ''
@@ -50,7 +85,7 @@ def get_report_title(burl):
             name = row[0]
         cursor.close()
         connection.close()
-
+    
         return_data = return_data +\
         '<h1>'+ l_title +'</h1>' +\
         l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
@@ -145,6 +180,21 @@ def get_market_snapshot_section():
 def get_intel_content(burl, terminal):
     """ Get intelligence report content """
     box_content = ''
+
+    l_report_not_available = 'The report is being compiled. '+\
+    'You will receive an email once the report will be available for today.'
+
+    if report_is_available():
+        report_content = ''+\
+        get_market_snapshot_section() +\
+        get_signals_lines(burl, terminal) +\
+        get_expired_signals(burl)
+    else:
+        report_content = ''+\
+        '<div class="alert alert-info" role="alert">'+\
+        l_report_not_available +\
+        '</div>'
+
     box_content = ''+\
     '<div class="box-top">'+\
     '<div class="row">' +\
@@ -152,9 +202,7 @@ def get_intel_content(burl, terminal):
     '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
     '<div class="box-part rounded">'+ get_report_title(burl) +'</div></div>'+\
     '</div>'+\
-    get_market_snapshot_section() +\
-    get_signals_lines(burl, terminal) +\
-    get_expired_signals(burl) +\
+    report_content +\
     '<div class="row">' +\
     '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
     '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
@@ -232,8 +280,9 @@ def get_signals_lines(burl, terminal):
         '<h2>'+ l_title  +'</h2>'+\
         '</div></div>'+\
         '</div>'
-
+        signal_available = False
         for row in res:
+            signal_available = True
             uid = row[0]
             return_data = return_data +\
             '<div class="row">' +\
@@ -250,6 +299,11 @@ def get_signals_lines(burl, terminal):
             '</div>'
         cursor.close()
         connection.close()
+
+    if not signal_available:
+        return_data = return_data +\
+        'There is no trading signal according to your strategy for today.'
+
     return return_data
 
 def get_intel_page(appname, burl, terminal):

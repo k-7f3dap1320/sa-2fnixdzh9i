@@ -42,13 +42,19 @@ def get_dashboard_menu(burl, terminal):
     num_dashboard_badge = (get_num_orders('open') +
                            get_num_orders('close') +
                            get_num_orders('pending'))
+
+    dashboard_badge = '<sup><span class="badge badge-pill badge-danger">'+\
+    str(num_dashboard_badge) +'</span></sup>'
+
+    if num_dashboard_badge == 0:
+        dashboard_badge = ''
+
     l_dashboard_menu = '<li class="nav-item d-none d-sm-block">'+\
     '<a class="nav-link sa-navbar-text" href="'+ open_window_as(burl +'?dashboard=1', terminal) +\
     '" data-toggle="tooltip" data-placement="bottom" data-original-title="'+\
     l_dashboard +'" ><strong>'+\
     '<i class="fas fa-tachometer-alt" style="font-size: x-large;"></i>' +\
-    '</strong><sup><span class="badge badge-pill badge-danger">'+\
-    str(num_dashboard_badge) +'</span></sup></a></li>'
+    '</strong>'+ dashboard_badge +'</a></li>'
     return_data = l_dashboard_menu
     return return_data
 

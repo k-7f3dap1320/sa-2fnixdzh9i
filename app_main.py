@@ -33,7 +33,7 @@ def get_dashboard(burl, is_dashboard):
     dashboard_content = dashboard_content +\
     '<div class="box">'+\
     '<div class="row">'+\
-    get_control_center_aggregate_perf() +\
+    get_control_center_aggregate_perf(burl) +\
     '</div>'+\
     '<div class="row">' +\
     get_trades_box(0, burl, is_dashboard) +\

@@ -3,6 +3,7 @@ import pymysql.cursors
 from app_cookie import theme_return_this
 from sa_func import get_user_numeric_id
 from user_dashboard_count import get_num_orders
+from intel_report import report_is_available
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -215,7 +216,7 @@ def get_aggregate_perf():
     '            </div>'
     return box_content
 
-def get_control_center():
+def get_control_center(burl):
     """ xxx """
     box_content = ''
 
@@ -226,6 +227,9 @@ def get_control_center():
 
     l_control_center_pending_trade = 'You have {#} trade(s) '+\
     'that you have to get ready to close at market open.'
+
+    l_control_center_intel_report = 'Your daily intelligence report is available. '+\
+    '<strong><a href="'+ burl +'intelligence">Open Report</a></strong>'
 
     num_open_trades = get_num_orders('open')
     num_close_trades = get_num_orders('close')
@@ -243,9 +247,10 @@ def get_control_center():
     open_trades = ''
     close_trades = ''
     pending_trades = ''
+    intel_report = ''
 
     if num_open_trades != 0:
-        open_trades = ' '+\
+        open_trades = ''+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
         'style="background-color: transparent; border-color: '+\
         theme_return_this('','#343a40') +';">'+\
@@ -253,7 +258,7 @@ def get_control_center():
         '    <span class="badge badge-primary badge-pill">'+ str(num_open_trades) +'</span>'+\
         '  </li>'
     if num_close_trades != 0:
-        close_trades = ' '+\
+        close_trades = ''+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
         'style="background-color: transparent; border-color: '+\
         theme_return_this('','#343a40') +';">'+\
@@ -261,7 +266,7 @@ def get_control_center():
         '    <span class="badge badge-warning badge-pill">'+ str(num_close_trades) +'</span>'+\
         '  </li>'
     if num_pending_trades != 0:
-        pending_trades = ' '+\
+        pending_trades = ''+\
         '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
         'style="background-color: transparent; border-color: '+\
         theme_return_this('','#343a40') +';">'+\
@@ -269,12 +274,20 @@ def get_control_center():
         '    <span class="badge badge-secondary badge-pill">'+\
         str(num_pending_trades) +'</span>'+\
         '  </li>'
+    if report_is_available():
+        intel_report = ''+\
+        '  <li class="list-group-item d-flex justify-content-between align-items-center" '+\
+        'style="background-color: transparent; border-color: '+\
+        theme_return_this('','#343a40') +';">'+\
+        '<span style="font-size: small;">' + l_control_center_intel_report +'</span>' +\
+        '  </li>'
 
     control_center_content = ' '+\
     '<ul class="list-group">'+\
     open_trades +\
     close_trades +\
     pending_trades +\
+    intel_report +\
     '</ul>'
 
     l_title_control_center = 'Control Center'
@@ -288,11 +301,11 @@ def get_control_center():
     '            </div>'
     return box_content
 
-def get_control_center_aggregate_perf():
+def get_control_center_aggregate_perf(burl):
     """ xxx """
     return_data = ''+\
     '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
-    get_control_center()+\
+    get_control_center(burl)+\
     '</div>'+\
     '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     get_aggregate_perf()+\

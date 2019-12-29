@@ -103,22 +103,19 @@ def get_card(selection, type_sel, burl, terminal):
 
         ### Trading Instruments ###
         if type_sel == 1:
-            date_today = datetime.datetime.now()
-            if date_today.weekday() != 5:
-                if date_today.weekday() != 6:
-                    return_data = return_data + '' +\
-                    '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
-                    '            <div class="box-part text-center rounded">'+\
-                    get_tradingview_mini_chart(uid, '100%', '250', 'true', '1y', 1) +\
-                    '<div>&nbsp;</div>'+\
-                    '                <div class="title"><a href="' +\
-                    url + '" target="_blank" class="'+\
-                    badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+\
-                    expl_label +'" >'+\
-                    badge+'</a>&nbsp;<span class="expl">'+\
-                    expl_label+'</span></div>'+\
-                    '            </div>'+\
-                    '        </div>'
+            return_data = return_data + '' +\
+            '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
+            '            <div class="box-part text-center rounded">'+\
+            get_tradingview_mini_chart(uid, '100%', '250', 'true', '1y', 1) +\
+            '<div>&nbsp;</div>'+\
+            '                <div class="title"><a href="' +\
+            url + '" target="_blank" class="'+\
+            badge_class+'" data-toggle="tooltip" data-placement="bottom" title="'+\
+            expl_label +'" >'+\
+            badge+'</a>&nbsp;<span class="expl">'+\
+            expl_label+'</span></div>'+\
+            '            </div>'+\
+            '        </div>'
 
         ### Portfolios ###
         if type_sel == 9:
@@ -148,11 +145,14 @@ def get_card(selection, type_sel, burl, terminal):
         '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
         '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
     if type_sel == 1:
-        return_data = return_data + '</div></div><div class="box"><a href="'+\
-        open_window_as(button_signals_link, terminal) +\
-        '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-        '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
-        '</strong></a></div>'
+        date_today = datetime.datetime.now()
+        if date_today.weekday() != 5:
+            if date_today.weekday() != 6:
+                return_data = return_data + '</div></div><div class="box"><a href="'+\
+                open_window_as(button_signals_link, terminal) +\
+                '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+                '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
+                '</strong></a></div>'
 
     cursor.close()
     connection.close()
