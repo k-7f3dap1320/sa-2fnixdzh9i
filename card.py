@@ -151,11 +151,12 @@ def get_card(selection, type_sel, burl, terminal):
         '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
         '</strong></a></div>'
 
-    date_today = datetime.datetime.now()
-    if date_today.weekday() == 5:
-        return_data = ''
-    if date_today.weekday() == 6:
-        return_data = ''
+    if type == 1:
+        date_today = datetime.datetime.now()
+        if date_today.weekday() == 5:
+            return_data = ''
+        if date_today.weekday() == 6:
+            return_data = ''
 
     cursor.close()
     connection.close()
