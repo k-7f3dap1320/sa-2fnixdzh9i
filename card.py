@@ -145,14 +145,16 @@ def get_card(selection, type_sel, burl, terminal):
         '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
         '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
     if type_sel == 1:
-        date_today = datetime.datetime.now()
-        if date_today.weekday() != 5:
-            if date_today.weekday() != 6:
-                return_data = return_data + '</div></div><div class="box"><a href="'+\
-                open_window_as(button_signals_link, terminal) +\
-                '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-                '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
-                '</strong></a></div>'
+        return_data = return_data + '</div></div><div class="box"><a href="'+\
+        open_window_as(button_signals_link, terminal) +\
+        '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+        '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
+        '</strong></a></div>'
+
+    date_today = datetime.datetime.now()
+    if date_today.weekday() != 5:
+        if date_today.weekday() != 6:
+            return_data = ''
 
     cursor.close()
     connection.close()

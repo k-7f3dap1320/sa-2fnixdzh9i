@@ -182,7 +182,7 @@ def get_intel_content(burl, terminal):
     box_content = ''
 
     l_report_not_available = 'The report is being compiled. '+\
-    'You will receive an email once the report will be available for today.'
+    'You will receive an email once the report will be available.'
 
     if report_is_available():
         report_content = ''+\
