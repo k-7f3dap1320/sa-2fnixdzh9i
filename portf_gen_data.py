@@ -626,9 +626,9 @@ def get_portf_alloc(symbol):
                 connection.commit()
                 cr_x.close()
 
-                alloc_forc_wf = abs(alloc_w_forecast_change * alloc_price )
+                alloc_forc_wf = abs(alloc_w_forecast_change)
 
-                alloc_forc_pnl = (abs( float(alloc_forc_wf ) * portf_item_quantity * alloc_pip ))
+                alloc_forc_pnl = (abs(float(alloc_forc_wf) * portf_item_quantity * alloc_pip))
                 portf_forc_return = portf_forc_return + alloc_forc_pnl
                 portf_nav = portf_nav + alloc_dollar_amount
             cr_t.close()
