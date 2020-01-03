@@ -45,7 +45,7 @@ def report_is_available():
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
-    sql ='SELECT COUNT(*) FROM log '+\
+    sql = 'SELECT COUNT(*) FROM log '+\
     'WHERE date_time >= '+ str(date_now) +\
     ' AND module = "Data update terminated" AND status = 1'
     cursor.execute(sql)
@@ -85,7 +85,7 @@ def get_report_title(burl):
             name = row[0]
         cursor.close()
         connection.close()
-    
+
         return_data = return_data +\
         '<h1>'+ l_title +'</h1>' +\
         l_generated_for + '<strong>'+ name.capitalize() + '</strong>'+\
@@ -246,6 +246,7 @@ def get_expired_signals(burl):
 def get_signals_lines(burl, terminal):
     """ Get signals lines """
     return_data = ''
+    signal_available = False
     if user_is_login():
         l_title = 'Opportunities'
         date_now = datetime.datetime.now()
@@ -280,7 +281,6 @@ def get_signals_lines(burl, terminal):
         '<h2>'+ l_title  +'</h2>'+\
         '</div></div>'+\
         '</div>'
-        signal_available = False
         for row in res:
             signal_available = True
             uid = row[0]
