@@ -259,7 +259,9 @@ def get_user_creation_form(burl, broker):
     user_creation_header = ''
     if broker is None:
         user_creation_header = '<div style="text-align: center;">'+\
+        '<h2>' +\
         l_create_your_account +\
+        '</h2>' +\
         '</div>'
     else:
         user_creation_header = '<div style="text-align: center;">'+\
