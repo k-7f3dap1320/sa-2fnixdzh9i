@@ -205,7 +205,7 @@ def get_broker_signin_spec_form(broker):
             '                   <span class="input-group-text" '+\
             'id="inputGroup-sizing-lg"><i class="fas fa-user-tie"></i></span>'+\
             '                 </div>'+\
-            '                 <input type="hidden" id="username_broker" '+\
+            '                 <input type="text" id="username_broker" '+\
             'name="username_broker" class="form-control" aria-label="Large" '+\
             'aria-describedby="inputGroup-sizing-sm" placeholder="'+\
             l_username_placeholder +'" autofocus>'+\
@@ -234,8 +234,6 @@ def get_user_creation_form(burl, broker):
     box_content = ''
     l_enter_name = "Enter Name"
     l_enter_email = "Enter Email"
-    l_received_payment_subscription_thank_you = "We have received your payment thank you."
-    l_note_user_creation_after_payment = "You are just 1 step away. Create your account."
     l_affiliate_submit_form = ''
 
     if broker is not None:
@@ -259,11 +257,7 @@ def get_user_creation_form(burl, broker):
 
     user_creation_header = ''
     if broker is None:
-        user_creation_header = ' '+\
-        '<div style="text-align: center;"><span class="text-success"><h2>'+\
-        l_received_payment_subscription_thank_you +'</h2></span></div>'+\
-        '<div style="text-align: center;">'+\
-        l_note_user_creation_after_payment +'</div>'
+        user_creation_header = ''
     else:
         user_creation_header = '<div style="text-align: center;">'+\
         l_create_broker_account + ' '+\
