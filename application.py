@@ -151,8 +151,8 @@ def go():
 
     elif request.endpoint == 'join':
         broker = request.args.get('broker')
-        if broker is None: 
-            broker = 'not-specified'
+        #if broker is None: 
+            #broker = 'not-specified'
         c = gen_createuser_page('0',appname,burl,'','','','',broker,'', terminal)
 
     elif request.endpoint == 'h':
