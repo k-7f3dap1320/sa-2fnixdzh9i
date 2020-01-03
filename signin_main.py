@@ -43,7 +43,7 @@ def get_login_form(burl, theme, redirect):
     'type="submit">Login</button>'+\
     '<div>&nbsp;</div>'+\
     '<div><span style="float: left;"><a href="'+\
-    burl +'join/?broker=eToro" class="text-info">'+\
+    burl +'join/?" class="text-info">'+\
     l_register_link +'</a></span><span style="float: right;"><a href="'+\
     burl +'reset/?password" class="text-info">'+\
     l_forgot_password +'</a></span></div>'+\
@@ -72,7 +72,7 @@ def popup_login(err, burl):
     'Signup below if you do not have an account.  '+\
     '<div>&nbsp;</div>' +\
     '<div><a href="'+\
-    burl +'join/?broker=eToro" class="btn btn-sm btn-info form-signin-btn">'+\
+    burl +'join/?" class="btn btn-sm btn-info form-signin-btn">'+\
     l_join_now_button +'</a></div>'
     l_class = 'alert alert-warning'
 

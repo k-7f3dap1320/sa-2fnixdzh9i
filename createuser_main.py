@@ -235,6 +235,7 @@ def get_user_creation_form(burl, broker):
     l_enter_name = "Enter Name"
     l_enter_email = "Enter Email"
     l_affiliate_submit_form = ''
+    l_create_your_account = 'Create your account'
 
     if broker is not None:
         l_create_broker_account = "If you do not have a trading account at "+\
@@ -257,7 +258,9 @@ def get_user_creation_form(burl, broker):
 
     user_creation_header = ''
     if broker is None:
-        user_creation_header = ''
+        user_creation_header = '<div style="text-align: center;">'+\
+        l_create_your_account +\
+        '</div>'
     else:
         user_creation_header = '<div style="text-align: center;">'+\
         l_create_broker_account + ' '+\
