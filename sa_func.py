@@ -370,6 +370,19 @@ def send_email_to_queue(send_to, email_subject, email_content, priority):
     connection.commit()
     cursor.close()
     connection.close()
+    
+def is_ascii_chars(text):
+    """
+    check if the text contains "non-latin"
+    characters. If have non start char then
+    return true.
+    """
+    is_not_ascii = False
+    try:
+        text.encode(encoding='utf-8').decode('ascii')
+    except UnicodeDecodeError:
+        is_not_ascii = True
+    return is_not_ascii
 
 def get_broker_affiliate_link(broker, what):
     """

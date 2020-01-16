@@ -15,7 +15,7 @@ from app_navbar import navbar
 from font_awesome import get_font_awesome
 from sa_func import get_random_str, get_broker_affiliate_link
 from sa_func import go_to_url, get_hash_string, get_random_num
-from sa_func import send_email_to_queue
+from sa_func import send_email_to_queue, is_ascii_chars
 from app_cookie import set_sa_cookie, get_lang, get_refer_by_code, get_sa_theme
 from googleanalytics import get_googleanalytics
 from sa_db import sa_db_access
@@ -60,6 +60,10 @@ def send_email_notification(broker, name, username):
     lang = 'en'
     new_user_welcome_subject = ''
     new_user_welcome_content = ''
+
+    if not is_ascii_chars(name):
+        name = ''
+
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -154,7 +158,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
                                             get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                                          burl + 'n/?step=c" />') +\
                                                          get_body('', '')))
-            send_email_notification(broker,name,username)
+            send_email_notification(broker, name, username)
         else:
             return_data = 'user already exists :P !'
         cursor.close()
