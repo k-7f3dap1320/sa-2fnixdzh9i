@@ -14,6 +14,7 @@ from bootstrap import get_bootstrap
 from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
+from print_google_ads import print_google_ads
 from app_cookie import get_sa_theme, user_is_login
 from app_stylesheet import get_stylesheet
 from signal_details import get_signal_details
@@ -187,6 +188,7 @@ def get_intel_content(burl, terminal):
     if report_is_available():
         report_content = ''+\
         get_market_snapshot_section() +\
+        print_google_ads('leaderboard', 'center') +\
         get_signals_lines(burl, terminal) +\
         get_expired_signals(burl)
     else:
@@ -250,9 +252,9 @@ def get_signals_lines(burl, terminal):
     if user_is_login():
         l_title = 'Opportunities'
         l_customize_label = 'Customize your Report'
-        l_customize_link = '&nbsp;[<a href="'+\
-        burl +'p/?ins=1&step=1" style="font-size: small;">'+\
-        l_customize_label +'</a>]'
+        l_customize_link = '&nbsp;<span style="font-size: small;">[<a href="'+\
+        burl +'p/?ins=1&step=1">'+\
+        l_customize_label +'</a>]</span>'
         date_now = datetime.datetime.now()
         dnstr = date_now.strftime("%Y%m%d")
 
