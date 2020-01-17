@@ -83,7 +83,7 @@ def get_newsfeed(burl, sel, suid, numline, show_chart, terminal):
         query = 'SELECT DISTINCT short_title, short_description, url, badge, ranking, '+\
         '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time, symbol '+\
         'FROM feed '+\
-        'WHERE asset_class="" AND market="" AND lang LIKE "%'+ str(lang) +'%" '+\
+        'WHERE lang LIKE "%'+ str(lang) +'%" '+\
         'AND ranking < '+ str(ranking_filter) +' AND type='+ str(feed_type) + ' ' +\
         'ORDER BY date DESC LIMIT '+ str(numline)
 
