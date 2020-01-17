@@ -230,6 +230,9 @@ def get_expired_signals(burl):
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
         '<div class="box-part rounded">'+\
+        '<div style="text-align: center;">'+\
+        print_google_ads('leaderboard', 'none') +\
+        '</div>'+\
         '<h2>'+ l_title  +'</h2>'+\
         '</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
