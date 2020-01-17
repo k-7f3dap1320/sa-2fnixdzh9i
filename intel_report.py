@@ -172,7 +172,9 @@ def get_market_snapshot_section():
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
         '<div class="box-part rounded">'+\
-        get_market_snapshot_n_brief_text('market_snapshot')  +\
+        get_market_snapshot_n_brief_text('market_snapshot') +\
+        '<br /><br />'+\
+        print_google_ads('leaderboard', 'none') +\
         '</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '</div>'
@@ -188,7 +190,6 @@ def get_intel_content(burl, terminal):
     if report_is_available():
         report_content = ''+\
         get_market_snapshot_section() +\
-        print_google_ads('leaderboard', 'center') +\
         get_signals_lines(burl, terminal) +\
         get_expired_signals(burl)
     else:
