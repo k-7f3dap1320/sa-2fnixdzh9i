@@ -377,12 +377,12 @@ def is_ascii_chars(text):
     characters. If have non start char then
     return true.
     """
-    is_not_ascii = False
+    is_ascii = True
     try:
         text.encode(encoding='utf-8').decode('ascii')
     except UnicodeDecodeError:
-        is_not_ascii = True
-    return is_not_ascii
+        is_ascii = False
+    return is_ascii
 
 def get_broker_affiliate_link(broker, what):
     """
