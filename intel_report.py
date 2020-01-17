@@ -249,6 +249,10 @@ def get_signals_lines(burl, terminal):
     signal_available = False
     if user_is_login():
         l_title = 'Opportunities'
+        l_customize_label = 'Customize your Report'
+        l_customize_link = '&nbsp;[<a href="'+\
+        burl +'p/?ins=1&step=1" style="font-size: small;">'+\
+        l_customize_label +'</a>]'
         date_now = datetime.datetime.now()
         dnstr = date_now.strftime("%Y%m%d")
 
@@ -278,7 +282,7 @@ def get_signals_lines(burl, terminal):
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
         '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
         '<div class="box-part rounded">'+\
-        '<h2>'+ l_title  +'</h2>'+\
+        '<h2>'+ l_title + l_customize_link +'</h2>'+\
         '</div></div>'+\
         '</div>'
         for row in res:

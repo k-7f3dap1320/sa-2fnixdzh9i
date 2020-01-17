@@ -462,8 +462,9 @@ def get_box_list_instr_n_portf(burl, mode, what, step, maxrow, sel):
     '</script>'
     l_placeholder = "Type to find from the list..."
     l_your_portfolios = 'Your Portfolio'
-    l_add_portf_link = 'Add to my portfolio'
-    l_your_portfolios = l_your_portfolios + '&nbsp;<a href="'+ burl +'p/?ins=1&step=1">['+ l_add_portf_link +']</a>'
+    l_add_portf_link = 'Add to portfolio'
+    l_your_portfolios = l_your_portfolios +\
+    '&nbsp;[<a href="'+ burl +'p/?ins=1&step=1" style="font-size: small;">'+ l_add_portf_link +'</a>]'
     box_div_class = 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
     portfolio_box_style_dark_mode = theme_return_this('',
                                                       'border-style:solid; '+\
