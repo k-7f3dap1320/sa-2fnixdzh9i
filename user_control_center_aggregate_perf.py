@@ -229,7 +229,7 @@ def get_control_center(burl):
     'that you have to get ready to close at market open.'
 
     l_control_center_intel_report = 'Your daily intelligence report is available. '+\
-    '<strong><a href="'+ burl +'intelligence">Open Report</a></strong>'
+    '<strong><a href="'+ burl +'intelligence/#">Open Report</a></strong>'
 
     num_open_trades = get_num_orders('open')
     num_close_trades = get_num_orders('close')
