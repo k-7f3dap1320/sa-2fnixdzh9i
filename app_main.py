@@ -53,7 +53,6 @@ def get_feed(burl, terminal, selection):
 
     if user_is_login() == 0:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'
-        feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
 
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
