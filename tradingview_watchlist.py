@@ -9,13 +9,14 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_tradingview_watchlist(width, height):
+def get_tradingview_watchlist(width, height, show_copyright):
     """ xxx """
     if str(width) == '0':
         width = '100%'
     if str(height) == '0':
         height = '100%'
     
+    tradingview_copyright = ''
     theme = get_sa_theme()
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
     
@@ -26,10 +27,18 @@ def get_tradingview_watchlist(width, height):
     l_list_watchlist = 'In the Radar'
 
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
+    
+    if str(show_copyright) == '1':
+        tradingview_copyright = ''+\
+        '<div class="tradingview-widget-copyright">'+\
+        '<a href="https://www.tradingview.com" rel="noopener" target="_blank">'+\
+        '<span class="blue-text">Market Data</span></a> by TradingView'+\
+        '</div>'
 
     tradingview = '' +\
     '<div class="tradingview-widget-container">'+\
     '  <div class="tradingview-widget-container__widget"></div>'+\
+    tradingview_copyright+\
     '  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>'+\
     '  {'+\
     '  "colorTheme": "'+ theme +'",'+\
