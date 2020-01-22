@@ -39,7 +39,7 @@ def get_tradingview_chart(suid, width, height,show_copyright):
         height = '"100%"'
 
     if symbol != '':
-        if show_copyright == 1:
+        if str(show_copyright) == '1':
             tradingview_copyright = ''+\
             '<div class="tradingview-widget-copyright">'+\
             '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
