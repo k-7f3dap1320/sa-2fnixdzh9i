@@ -18,6 +18,7 @@ def get_tradingview_chart(suid, width, height):
     theme = get_sa_theme()
     allow_symbol_change = 'true'
 
+
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
@@ -37,9 +38,15 @@ def get_tradingview_chart(suid, width, height):
         height = '"100%"'
 
     if symbol != '':
+        tradingview_copyright = ''+\
+        '<div class="tradingview-widget-copyright">'+\
+        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
+        '<span class="blue-text">'+ symbol +' Chart</span></a> by TradingView</div>'
+        
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
         ' <div id="tradingview_713ab"></div>'+\
+        tradingview_copyright+\
         '<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>'+\
         '<script type="text/javascript">'+\
         'new TradingView.widget('+\

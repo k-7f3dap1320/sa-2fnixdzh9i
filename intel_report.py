@@ -173,7 +173,7 @@ def get_market_snapshot_section():
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
         '<div class="box-part rounded">'+\
         get_market_snapshot_n_brief_text('market_snapshot') +\
-        '<br />'+\
+        '<br /><br />'+\
         '<div style="text-align: center; overflow: hidden;">'+\
         print_google_ads('leaderboard', 'none') +\
         '</div>'+\
@@ -259,7 +259,7 @@ def get_signals_lines(burl, terminal):
     if user_is_login():
         l_title = 'Opportunities'
         l_customize_label = 'Customize your Report'
-        l_customize_link = '&nbsp;<span style="font-size: small;">[<a href="'+\
+        l_customize_link = '<span style="font-size: small;">[<a href="'+\
         burl +'p/?ins=1&step=1">'+\
         l_customize_label +'</a>]</span>'
         date_now = datetime.datetime.now()

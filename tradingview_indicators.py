@@ -31,9 +31,17 @@ def get_tradingview_indicators(suid, width, height):
         symbol = row[0]
 
     if symbol != '':
+        tradingview_copyright = ''+\
+        '<div class="tradingview-widget-container__widget"></div>'+\
+        '<div class="tradingview-widget-copyright">'+\
+        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/technicals/" rel="noopener" target="_blank">'+\
+        '<span class="blue-text">Technical Analysis for '+ symbol +'</span></a> by TradingView'+\
+        '</div>'
+
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
         '  <div class="tradingview-widget-container__widget"></div>'+\
+        tradingview_copyright+\
         '  <script type="text/javascript" '+\
         'src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" '+\
         'async>'+\

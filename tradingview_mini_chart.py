@@ -53,9 +53,16 @@ def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_c
                                              'rgba(217,83,79,'+ str(area_chart) +')')
 
     if symbol != '':
+        tradingview_copyright = ''+\
+        '<div class="tradingview-widget-copyright">'+\
+        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
+        '<span class="blue-text">'+ symbol +' Rates</span></a> by TradingView'+\
+        '</div>'
+        
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
         '  <div class="tradingview-widget-container__widget"></div>'+\
+        tradingview_copyright+\
         '  <script type="text/javascript" '+\
         'src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"'+\
         ' async>'+\
