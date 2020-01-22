@@ -9,7 +9,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_tradingview_chart(suid, width, height):
+def get_tradingview_chart(suid, width, height,show_copyright):
     """ Get tradingview interactive chart """
     return_data = ''
     symbol = ''
@@ -17,6 +17,7 @@ def get_tradingview_chart(suid, width, height):
     label_not_available = 'Live chart is not available for this instrument'
     theme = get_sa_theme()
     allow_symbol_change = 'true'
+    tradingview_copyright = ''
 
 
     connection = pymysql.connect(host=DB_SRV,
@@ -38,11 +39,12 @@ def get_tradingview_chart(suid, width, height):
         height = '"100%"'
 
     if symbol != '':
-        tradingview_copyright = ''+\
-        '<div class="tradingview-widget-copyright">'+\
-        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
-        '<span class="blue-text">'+ symbol +' Chart</span></a> by TradingView</div>'
-        
+        if show_copyright == 1:
+            tradingview_copyright = ''+\
+            '<div class="tradingview-widget-copyright">'+\
+            '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
+            '<span class="blue-text">'+ symbol +' Chart</span></a> by TradingView</div>'
+
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
         ' <div id="tradingview_713ab"></div>'+\

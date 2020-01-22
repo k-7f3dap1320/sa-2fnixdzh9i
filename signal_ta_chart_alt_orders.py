@@ -442,7 +442,7 @@ def get_sign_ta_chart_alt_orders(uid):
     '                      <div id="'+\
     tab_3_id +'" style="height: 520px" class="tab-pane fade"><br />'+\
     '<div style="height: 510px; width: 99%">'+\
-    get_tradingview_chart(uid, '510', '"100%"') +'</div></div>'+\
+    get_tradingview_chart(uid, '510', '"100%"','0') +'</div></div>'+\
     '                  </div>'+\
     '            </div>'+\
     '        </div>'
