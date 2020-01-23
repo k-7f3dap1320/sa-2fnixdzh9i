@@ -141,5 +141,9 @@ def get_romad(sql):
     instrument_returns = get_pct_change(first, last)
     drawdown = get_mdd(sql)
 
-    return_data = instrument_returns / drawdown
+    if drawdown >0:
+        return_data = instrument_returns / drawdown
+    else:
+        return_data = 0
+
     return return_data
