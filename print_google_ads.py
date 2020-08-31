@@ -50,5 +50,5 @@ def print_google_ads(ad_format, align):
         '<script>'+\
         '(adsbygoogle = window.adsbygoogle || []).push({});'+\
         '</script>'
-    return_data = '<div style="margin: 0px; float: '+ align +';">' + return_data + '</div>'
+    return_data = '<div style="margin: 0px; text-align: '+ align +';">' + return_data + '</div>'
     return return_data
