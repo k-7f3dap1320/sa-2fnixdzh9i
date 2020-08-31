@@ -14,10 +14,8 @@ from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
-from app_cookie import get_sa_theme, theme_return_this
+from app_cookie import get_sa_theme
 from print_google_ads import print_google_ads
-from help_page import get_list_articles
-from card import get_card
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -60,7 +58,8 @@ def get_doc_illustration(burl):
 
 def get_doc_content(title, content, terminal):
     """ Content of the page """
-    content_height = '90vh'
+    content_height = '105vh'
+    iframe_margin ='-40px'
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
@@ -68,7 +67,8 @@ def get_doc_content(title, content, terminal):
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
     '            overflow: hidden;">'+\
     '<iframe src="'+ str(content)+'" frameborder="0" '+\
-        'style="overflow:hidden;height:100%;width:100%" height="100%" width="100%">'+\
+        'style="overflow:hidden;height:100%;width:100%; margin-top:'+ iframe_margin +'" '+\
+        'height="100%" width="100%">'+\
     '</iframe>'+\
     '            </div>'+\
     '        </div>'+\
