@@ -117,10 +117,6 @@ def get_help_tabs(burl):
     'href="#help" role="tab" aria-controls="help" aria-selected="true">Help</a>'+\
     '  </li>'+\
     '  <li class="nav-item">'+\
-    '    <a class="nav-link" id="articlestab" data-toggle="tab" '+\
-    'href="#articles" role="tab" aria-controls="articles" aria-selected="false">More articles</a>'+\
-    '  </li>'+\
-    '  <li class="nav-item">'+\
     '    <a class="nav-link" id="contacttab" data-toggle="tab" '+\
     'href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>'+\
     '  </li>'+\
