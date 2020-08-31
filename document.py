@@ -60,16 +60,9 @@ def get_doc_illustration(burl):
 
 def get_doc_content(title, content, terminal):
     """ Content of the page """
-    content_height = '5000px'
+    content_height = '90vh'
     box_content = ''+\
     '<div class="box-top">' +\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content">'+\
-    print_google_ads('leaderboard', 'center') +\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
