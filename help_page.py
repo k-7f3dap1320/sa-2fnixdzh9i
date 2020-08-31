@@ -128,8 +128,6 @@ def get_help_tabs(burl):
     '<div class="tab-content" id="myTabContent">'+\
     '  <div class="tab-pane fade show active" style="overflow: hidden;" id="help" role="tabpanel" '+\
     'aria-labelledby="help"><br />'+ get_list_video_tutorials() +'<br /></div>'+\
-    '  <div class="tab-pane fade" style="overflow: hidden;" id="articles" role="tabpanel" '+\
-    'aria-labelledby="articles"><br />'+ get_list_articles(burl, 500) +'<br /></div>'+\
     '  <div class="tab-pane fade" style="overflow: hidden;" id="contact" role="tabpanel" '+\
     'aria-labelledby="contact">'+ get_contact_tab(burl) +'</div>'+\
     '</div>'
