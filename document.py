@@ -60,25 +60,13 @@ def get_doc_illustration(burl):
 
 def get_doc_content(burl, title, content, terminal):
     """ Content of the page """
-    more_articles = 'More posts and articles'
-
+    
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content">'+\
-    print_google_ads('leaderboard', 'center') +\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" '+\
     'style="text-align: justify; margin-left: 13%; margin-right: 13%;">'+\
-    '<h1 style="'+ theme_return_this('', 'color: orange;') +'">' + str(title) + '</h1>' +\
-    '<br>'+\
-    str(get_doc_illustration(burl)) +\
-    '<br><br><br>'+\
     str(content) +\
     '            </div>'+\
     '        </div>'+\
@@ -87,21 +75,6 @@ def get_doc_content(burl, title, content, terminal):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content">'+\
     print_google_ads('leaderboard', 'center') +\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded">'+\
-    '<span class="sectiont">'+ str(more_articles) +'</span>'+\
-    get_list_articles(burl, 10) +\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded" style="overflow: hidden;">'+\
-    get_card('', 1, burl, terminal) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
