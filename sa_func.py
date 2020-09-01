@@ -77,9 +77,11 @@ def is_subscribed_user():
 def redirect_if_not_logged_in(burl, redirect):
     """ xxx """
     return_data = ''
+    redirect_after_second = '90'
 
     if user_is_login() != 1:
-        return_data = '<meta http-equiv="refresh" content="5; url='+\
+        return_data = '<meta http-equiv="refresh" content="'+\
+        redirect_after_second +'; url='+\
         burl+'signin/?redirect='+ redirect +'">'
     else:
         return_data = ''
