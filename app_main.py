@@ -112,6 +112,6 @@ def gen_main_page(selection,
                                          get_signin_box(burl) +\
                                          get_box_user_profile_header() +\
                                          page_content + get_page_footer(burl, False) +\
-                                         get_purechat(0))
+                                         get_purechat(0),'')
     return_data = set_page(return_data)
     return return_data

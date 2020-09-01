@@ -125,11 +125,11 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
                                              get_sign_recommend_trail_returns(uid) +\
                                              get_trades_box(uid, burl, None) +\
                                              '</div></div>' +\
-                                             get_page_footer(burl, False))
+                                             get_page_footer(burl, False),'')
         return_data = set_page(return_data)
 
         cursor.close()
         connection.close()
     else: return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
-                                          str(burl) + 'error" />') + get_body('', ''))
+                                          str(burl) + 'error" />') + get_body('', '', ''))
     return return_data

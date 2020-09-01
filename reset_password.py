@@ -284,6 +284,6 @@ def get_resetpassword_page(appname, burl, step, data, data2, terminal):
     return_data = return_data + get_body(get_loading_body(),
                                          navbar(burl, 0, terminal) +\
                                          page_content +\
-                                         get_page_footer(burl, False))
+                                         get_page_footer(burl, False),'')
     return_data = set_page(return_data)
     return return_data

@@ -88,6 +88,6 @@ def get_widget_page(appname,
                                          get_widget_content(burl,
                                                             nonavbar,
                                                             funcname,
-                                                            noflexheight))
+                                                            noflexheight),'')
     return_data = set_page(return_data)
     return return_data

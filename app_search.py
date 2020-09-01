@@ -190,11 +190,11 @@ def get_search_result(query, burl, nonavbar):
         if url.find(burl) == -1:
             nonavbarparam = ''
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
-                                         str(url) + nonavbarparam + '" />') + get_body('', ''))
+                                         str(url) + nonavbarparam + '" />') + get_body('', '',''))
 
     if return_data == '':
         return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=/?s=0" />') +\
-                               get_body('', ''))
+                               get_body('', '',''))
 
     cursor.close()
     connection.close()
@@ -238,6 +238,6 @@ def get_search_page(appname, burl, nonavbar, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbarcontent +\
              get_search_page_content(burl, nonavbar, terminal) +\
-             get_page_footer(burl, False))
+             get_page_footer(burl, False),'')
     return_data = set_page(return_data)
     return return_data

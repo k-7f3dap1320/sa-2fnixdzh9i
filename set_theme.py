@@ -13,5 +13,5 @@ def theme_redirect(burl, terminal):
 
     return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                      burl +'?'+ redirect_terminal +\
-                                     '" />') + get_body('', ''))
+                                     '" />') + get_body('', '', ''))
     return return_data

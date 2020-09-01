@@ -64,6 +64,7 @@ def gen_view_list_instr_n_portf(appname, burl, what, sel, terminal):
                                                                     numrow,
                                                                     sel) +\
                                          get_page_footer(burl, False) +\
-                                         get_purechat(0))
+                                         get_purechat(0),
+                                         '')
     return_data = set_page(return_data)
     return return_data

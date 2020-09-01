@@ -53,10 +53,10 @@ def user_login(usr, pwd, burl, redirect):
         content = set_sa_cookie(uid,
                                 set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                                    redirect_url +\
-                                                   '" />') + get_body('', '')))
+                                                   '" />') + get_body('', '','')))
     else:
         content = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                      burl + 'signin/?err=1&redirect='+\
-                                     redirect_url +'" />') + get_body('', ''))
+                                     redirect_url +'" />') + get_body('', '',''))
 
     return content

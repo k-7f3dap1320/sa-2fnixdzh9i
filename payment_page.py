@@ -334,6 +334,6 @@ def get_plan_selection_page(appname, burl, terminal):
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_box_plan_selection(burl) +\
              get_page_footer(burl, False) +\
-             get_purechat(1))
+             get_purechat(1),'')
     return_data = set_page(return_data)
     return return_data

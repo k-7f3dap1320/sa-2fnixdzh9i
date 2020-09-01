@@ -334,7 +334,7 @@ def get_intel_page(appname, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_intel_content(burl, terminal))
+             get_intel_content(burl, terminal),'')
 
     return_data = set_page(return_data)
     return return_data

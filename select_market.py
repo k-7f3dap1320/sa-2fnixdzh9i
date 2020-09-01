@@ -24,7 +24,7 @@ def save_selectmarket(burl, sel):
     """ xxx """
     return_data = set_page(get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                     burl + 'genportf/?acm='+\
-                                    str(sel) +'&step=1&notstart=0" />') + get_body('', ''))
+                                    str(sel) +'&step=1&notstart=0" />') + get_body('', '',''))
     user_id = user_get_uid()
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
@@ -138,6 +138,6 @@ def gen_selectmarket_page(appname, burl, mode, terminal):
                            get_font_awesome() +\
                            get_stylesheet(burl))
     return_data = return_data + get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-                                         get_selectmarket_box(burl, mode))
+                                         get_selectmarket_box(burl, mode),'')
     return_data = set_page(return_data)
     return return_data

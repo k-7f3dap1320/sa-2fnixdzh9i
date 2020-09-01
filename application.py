@@ -260,7 +260,7 @@ def go():
 
     elif request.endpoint == 'url':
         url_q = request.values.get('q')
-        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','') )
+        c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(url_q) + '" />') + get_body('','','') )
     else:
         if x == '' or x == None :
             x = get_user_default_profile()
@@ -284,13 +284,13 @@ def go():
                 burl = burl.replace('https://www.','https://app.')
             else:
                 burl = burl.replace('https://','https://app.')
-            c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' ) )
+            c = set_page( get_head(get_loading_head() + '<script>window.location = "'+ burl +'";</script>' ) + get_body( get_loading_body() , '' , '') )
 
     return c
 
 @application.errorhandler(404)
 def page_not_found(error):
-    c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(request.url_root) + 'error/?" />') + get_body('','') )
+    c = set_page( get_head('<meta http-equiv="refresh" content="0;URL=' + str(request.url_root) + 'error/?" />') + get_body('','','') )
     return c
 
 if __name__ == '__main__':

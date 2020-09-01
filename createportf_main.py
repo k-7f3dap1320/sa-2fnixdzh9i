@@ -182,7 +182,7 @@ def gen_selectportf_page(appname, burl, step, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_selectportf_box(burl, step) +\
-             get_box_list_instr_n_portf(burl, 'portf_select', 'instr', step, 10000, ''))
+             get_box_list_instr_n_portf(burl, 'portf_select', 'instr', step, 10000, ''),'')
     return_data = set_page(return_data)
     if step == '1':
         return_data = ini_portf_select(return_data)
@@ -201,6 +201,6 @@ def custom_save_portf_page(appname, burl, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_selectportf_box(burl, '6') +\
-             get_box_portf_save(burl))
+             get_box_portf_save(burl),'')
     return_data = set_page(return_data)
     return return_data

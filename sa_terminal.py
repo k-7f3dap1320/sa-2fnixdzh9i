@@ -193,6 +193,6 @@ def get_sa_terminal_page(appname, burl, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_sa_terminal_content(burl) +\
-             get_page_footer(burl, False))
+             get_page_footer(burl, False),'')
     return_data = set_page(return_data)
     return return_data

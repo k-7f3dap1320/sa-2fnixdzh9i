@@ -1,6 +1,8 @@
 """ html body """
-def get_body(outside_container, content):
+def get_body(outside_container, content, style):
     """ xxx """
-    return_data = '<body>'+ outside_container +\
+    if style != '':
+        style = ' style="'+ style +'"'
+    return_data = '<body'+ style +'>'+ outside_container +\
     '<div class="container-fluid" id="content">'+ content +'</div></body>'
     return return_data

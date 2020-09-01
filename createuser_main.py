@@ -105,7 +105,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
         return_data = return_data +\
         get_body(get_loading_body(), navbar(burl, 0, terminal) +\
                  get_user_creation_form(burl, broker) +\
-                 get_page_footer(burl, False))
+                 get_page_footer(burl, False),'')
         return_data = set_page(return_data)
     else:
         connection = pymysql.connect(host=DB_SRV,
@@ -157,7 +157,7 @@ def gen_createuser_page(uid, appname, burl, name, username,
                                         set_page(
                                             get_head('<meta http-equiv="refresh" content="0;URL=' +\
                                                          burl + 'n/?step=c" />') +\
-                                                         get_body('', '')))
+                                                         get_body('', '','')))
             send_email_notification(broker, name, username)
         else:
             return_data = 'user already exists :P !'
