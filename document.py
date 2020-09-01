@@ -64,9 +64,6 @@ def get_doc_content(title, content, terminal):
     '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded" '+\
-    '<font style="color:white">Test test test test toolbar</font>'+\
-    '            </div>'+\
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
     '            overflow: hidden;">'+\
     '<iframe src="'+ str(content)+'" frameborder="0" '+\
