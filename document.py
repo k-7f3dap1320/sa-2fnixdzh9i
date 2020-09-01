@@ -60,11 +60,14 @@ def get_doc_content(title, content, terminal):
     """ Content of the page """
     content_height = '105vh'
     iframe_margin ='-40px'
+    toolbar_height = '60px'
+    toolbar_padding = '30px'
     box_content = ''+\
     '<div class="box-top">' +\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded">'+\
+    '            <div class="box-part rounded" '+\
+    '            style="height:'+ toolbar_height +'; padding:'+ toolbar_padding +';">'+\
     '            </div>'+\
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
     '            overflow: hidden;">'+\
