@@ -58,10 +58,10 @@ def get_doc_illustration(burl):
 
 def get_doc_content(title, content, terminal):
     """ Content of the page """
-    content_height = '97vh'
+    content_height = '99vh'
     iframe_margin ='-40px'
-    toolbar_height = '60px'
-    toolbar_padding = '30px'
+    toolbar_height = '30px'
+    toolbar_padding = '20px'
     box_content = ''+\
     '<div class="box-top" style="max-width: 100%">' +\
     '   <div class="row">'+\
