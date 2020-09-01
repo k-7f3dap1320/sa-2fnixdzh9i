@@ -97,6 +97,6 @@ def get_doc_page(appname, burl, uid, terminal):
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
              get_doc_content(title, content, terminal) +\
-             get_page_footer(burl, False),'')
+             get_page_footer(burl, False),'overflow: hidden;')
     return_data = set_page(return_data)
     return return_data
