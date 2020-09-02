@@ -65,10 +65,31 @@ def get_feed(burl, terminal, selection):
         feed_content = feed_content + get_newsfeed(burl, 2, 0, 30, 1, terminal) + '<br />'
 
     feed_content = feed_content + get_card(selection, 1, burl, terminal)
-    if terminal is None:
-        feed_content = feed_content + get_card(selection, 9, burl, terminal)
 
     return feed_content
+
+def get_page_content(burl, terminal, selection):
+    """ xxx """
+    news_feed_content = get_feed(burl, terminal, selection)
+    tab_content = ''+\
+    '<ul class="nav nav-tabs">'+\
+    '<li class="active"><a data-toggle="pill" href="#signals">Signals</a></li>'+\
+    '<li><a data-toggle="pill" href="#feed">Feed</a></li>'+\
+    '<li><a data-toggle="pill" href="#analysis">Analysis</a></li>'+\
+    '</ul>'+\
+    ''+\
+    '<div class="tab-content">'+\
+    '<div id="signals" class="tab-pane fade in active">'+\
+    '</div>'+\
+    '<div id="feed" class="tab-pane fade">'+\
+    news_feed_content +\
+    '</div>'+\
+    '<div id="analysis" class="tab-pane fade">'+\
+    '</div>'+\
+    '</div>'
+    
+    tab_content = news_feed_content
+    return tab_content
 
 def gen_main_page(selection,
                   appname,
@@ -91,7 +112,7 @@ def gen_main_page(selection,
         else:
             page_content = ''
     else:
-        page_content = get_feed(burl, terminal, selection)
+        page_content = get_page_content(burl, terminal, selection)
         if user_is_login() == 1:
             metarefresh = '<meta http-equiv="refresh" content="'+ str(refresh_in_second) +'">'
 
