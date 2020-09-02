@@ -73,9 +73,9 @@ def get_page_content(burl, terminal, selection):
     news_feed_content = get_feed(burl, terminal, selection)
     tab_content = ''+\
     '<ul class="nav nav-tabs">'+\
-    '<li class="active"><a data-toggle="pill" href="#signals">Signals</a></li>'+\
-    '<li><a data-toggle="pill" href="#feed">Feed</a></li>'+\
-    '<li><a data-toggle="pill" href="#analysis">Analysis</a></li>'+\
+    '<li class="active"><a class="nav-link" data-toggle="pill" href="#signals">Signals</a></li>'+\
+    '<li><a  class="nav-link" data-toggle="pill" href="#feed">Feed</a></li>'+\
+    '<li><a  class="nav-link" data-toggle="pill" href="#analysis">Analysis</a></li>'+\
     '</ul>'+\
     ''+\
     '<div class="tab-content">'+\
