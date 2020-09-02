@@ -43,11 +43,13 @@ def get_list_articles(burl, max_list):
         'style="border-top:0.5px; border-top-style: dotted; text-align: left;">'+\
         '<i class="fas fa-file-alt"></i> '+\
         '&nbsp;'+\
+        '<strong>'+\
         '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'" target="_blank">'+\
         '<span style="'+\
         theme_return_this('color:black;', 'color:#00ffff;') +' ">'+\
         str(article_date) +'</span>&nbsp;'+\
         str(title) +'</a>'+\
+        '</strong>'+\
         '</div>'
     cursor.close()
     connection.close()
