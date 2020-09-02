@@ -71,10 +71,14 @@ def get_page_content(burl, terminal, selection):
     news_feed_content = get_feed(burl, terminal, selection)
     if terminal is None:
         signals_tab_active = 'active'
+        signals_tab_fade = ''
         feed_tab_active = ''
+        feed_tab_fade = 'fade'
     else:
         signals_tab_active = ''
+        signals_tab_fade = 'fade'
         feed_tab_active = 'active'
+        feed_tab_fade = ''
         
     tab_content = ''+\
     '<ul class="nav nav-tabs">'+\
@@ -84,10 +88,10 @@ def get_page_content(burl, terminal, selection):
     '</ul>'+\
     ''+\
     '<div class="tab-content">'+\
-    '<div id="signals" class="tab-pane '+ signals_tab_active +'">'+\
+    '<div id="signals" class="tab-pane '+ signals_tab_fade +' '+ signals_tab_active +'">'+\
     signals_content +\
     '</div>'+\
-    '<div id="feed" class="tab-pane fade '+ feed_tab_active +'">'+\
+    '<div id="feed" class="tab-pane fade '+ feed_tab_fade +' ' + feed_tab_active +'">'+\
     news_feed_content +\
     '</div>'+\
     '<div id="analysis" class="tab-pane fade">'+\
