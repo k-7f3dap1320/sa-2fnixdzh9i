@@ -27,7 +27,7 @@ def get_list_articles(burl, max_list):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT uid, title FROM documents WHERE category LIKE "%'+ str(doc_cat) +'%" '+\
-    'ORDER BY RAND() LIMIT ' + str(max_list)
+    'ORDER BY date DESC LIMIT ' + str(max_list)
     cursor.execute(sql)
     res = cursor.fetchall()
     for row in res:
@@ -37,7 +37,7 @@ def get_list_articles(burl, max_list):
         '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" '+\
         'style="border-top:0.5px; border-top-style: dotted; text-align: left;">'+\
         '<i class="fas fa-file-alt"></i> '+\
-        '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'">'+ str(title) +'</a>'+\
+        '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'" target="_blank">'+ str(title) +'</a>'+\
         '</div>'
     cursor.close()
     connection.close()

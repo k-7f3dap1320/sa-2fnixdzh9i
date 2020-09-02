@@ -98,8 +98,8 @@ def get_page_content(burl, terminal, selection):
     news_feed_content +\
     '</div>'+\
     '<div id="analysis" class="tab-pane fade">'+\
-    '</div>'+\
     articles_content+\
+    '</div>'+\
     '</div>'
     
     return tab_content
