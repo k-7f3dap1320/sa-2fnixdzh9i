@@ -14,6 +14,11 @@ def get_list_articles(burl, max_list):
     doc_cat = 'article'
     title = ''
     uid = 0
+    l_latest_articles = 'Latest analysis'
+    
+    ret = '<span class="sectiont"><i class="fas fa-file-alt"></i>&nbsp;'+\
+    l_latest_articles +'</span>'
+    
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
