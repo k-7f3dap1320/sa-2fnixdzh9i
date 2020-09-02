@@ -3,6 +3,7 @@ from app_cookie import user_is_login
 
 def get_page_footer(burl, force_display):
     """ xxx """
+    copyright_year = '2020'
     box_content = ''
     copyright_line = ''
     if not force_display:
@@ -13,7 +14,7 @@ def get_page_footer(burl, force_display):
         '           <div class="sa-center-content text-secondary">'+\
         'Made with <i class="fas fa-heart"></i> '+\
         'from London, Nairobi to Bangkok - <span class="text-muted">'+\
-        'Copyright &copy; Taatu Ltd. 2019</span></div>'+\
+        'Copyright &copy; Taatu Ltd. '+ copyright_year +'</span></div>'+\
         '      </div>'+\
         '   </div>'+\
         '</div>'

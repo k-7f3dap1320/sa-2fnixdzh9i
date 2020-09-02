@@ -24,6 +24,7 @@ from user_control_center_aggregate_perf import get_control_center_aggregate_perf
 from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
+from articles_analysis import get_list_articles
 from print_google_ads import print_google_ads
 
 def get_dashboard(burl, is_dashboard):
@@ -69,6 +70,8 @@ def get_page_content(burl, terminal, selection):
     """ xxx """
     signals_content = get_card(selection, 1, burl, terminal)
     news_feed_content = get_feed(burl, terminal, selection)
+    articles_content = get_list_articles(burl, 20)
+    
     if terminal is None:
         signals_tab_active = 'active'
         signals_tab_fade = ''
@@ -96,6 +99,7 @@ def get_page_content(burl, terminal, selection):
     '</div>'+\
     '<div id="analysis" class="tab-pane fade">'+\
     '</div>'+\
+    articles_content+\
     '</div>'
     
     return tab_content
