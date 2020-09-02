@@ -23,7 +23,7 @@ def get_card(selection, type_sel, burl, terminal):
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
             "WHERE (asset_class LIKE '%"+selection+"%' OR market LIKE '%"+selection+"%') "+\
-            "AND type=1 AND badge<>'-999' ORDER BY ranking DESC LIMIT 7"
+            "AND type=1 AND badge<>'-999' ORDER BY ranking DESC LIMIT 21"
         if type_sel == 9:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
@@ -33,7 +33,7 @@ def get_card(selection, type_sel, burl, terminal):
         if type_sel == 1:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
-            "WHERE type=1 and badge<>'-999' ORDER BY ranking DESC LIMIT 7"
+            "WHERE type=1 and badge<>'-999' ORDER BY ranking DESC LIMIT 21"
         if type_sel == 9:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
