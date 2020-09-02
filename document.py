@@ -58,10 +58,22 @@ def get_doc_illustration(burl):
 
 def get_doc_content(title, content, terminal):
     """ Content of the page """
-    content_height = '99vh'
-    iframe_margin ='-40px'
+    content_height = ''
+    iframe_margin = ''
+    gsheet_content_height = '99vh'
+    gsheet_iframe_margin ='-40px'
+    gdoc_content_height = '100vh'
+    gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
     toolbar_padding = '20px'
+    
+    if content.find('google.com/spreadsheets') > 0:
+        content_height = gsheet_content_height
+        iframe_margin = gsheet_iframe_margin
+    if content.find('google.com/document') > 0:
+        content_height = gdoc_content_height
+        iframe_margin = gdoc_iframe_margin
+    
     box_content = ''+\
     '<div class="box-top" style="max-width: 100%">' +\
     '   <div class="row">'+\
