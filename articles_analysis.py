@@ -29,7 +29,7 @@ def get_list_articles(burl, max_list):
                                  cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     sql = 'SELECT uid, title, '+\
-    'ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
+    '(SELECT ROUND((UNIX_TIMESTAMP() - UNIX_TIMESTAMP(date)) / 60) ) AS elapsed_time '+\
     'FROM documents WHERE category LIKE "%'+ str(doc_cat) +'%" '+\
     'ORDER BY date DESC LIMIT ' + str(max_list)
     cursor.execute(sql)
