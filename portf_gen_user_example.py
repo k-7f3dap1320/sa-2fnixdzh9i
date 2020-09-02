@@ -111,7 +111,7 @@ def gen_portf_validate_content(burl, notstart):
     tour = '1'
     if str(notstart) == '1':
         tour = ''
-    resp = make_response(redirect(burl+'?dashboard=1&tour='+str(tour)))
+    resp = make_response(redirect(burl+'?tour='+str(tour)))
     portf_symbol = portf_insert_data()
     generate_portfolio(portf_symbol)
     return resp
