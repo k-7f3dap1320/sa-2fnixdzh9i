@@ -64,24 +64,33 @@ def get_feed(burl, terminal, selection):
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 2, 0, 30, 1, terminal) + '<br />'
 
-    feed_content = feed_content + get_card(selection, 1, burl, terminal)
+    """ feed_content = feed_content + get_card(selection, 1, burl, terminal) """
 
     return feed_content
 
 def get_page_content(burl, terminal, selection):
     """ xxx """
+    signals_content = get_card(selection, 1, burl, terminal)
     news_feed_content = get_feed(burl, terminal, selection)
+    if terminal is None:
+        signals_tab_active = 'active'
+        feed_tab_active = ''
+    else:
+        signals_tab_active = ''
+        feed_tab_active = 'active'
+        
     tab_content = ''+\
     '<ul class="nav nav-tabs">'+\
-    '<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#signals">Signals</a></li>'+\
-    '<li class="nav-item"><a  class="nav-link" data-toggle="pill" href="#feed">Feed</a></li>'+\
+    '<li class="nav-item"><a class="nav-link '+ signals_tab_active +'" data-toggle="pill" href="#signals">Signals</a></li>'+\
+    '<li class="nav-item"><a  class="nav-link '+ feed_tab_active +'" data-toggle="pill" href="#feed">Feed</a></li>'+\
     '<li class="nav-item"><a  class="nav-link" data-toggle="pill" href="#analysis">Analysis</a></li>'+\
     '</ul>'+\
     ''+\
     '<div class="tab-content">'+\
-    '<div id="signals" class="tab-pane active">'+\
+    '<div id="signals" class="tab-pane '+ signals_tab_active +'">'+\
+    signals_content +\
     '</div>'+\
-    '<div id="feed" class="tab-pane fade">'+\
+    '<div id="feed" class="tab-pane fade '+ feed_tab_active +'">'+\
     news_feed_content +\
     '</div>'+\
     '<div id="analysis" class="tab-pane fade">'+\

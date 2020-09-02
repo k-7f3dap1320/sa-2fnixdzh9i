@@ -104,7 +104,7 @@ def navbar(burl, disable_search, terminal):
     l_themeswitch = 'Theme: Light/Dark'
     l_settings = 'Settings'
     l_logout = 'Logout'
-    l_feed_tooltip = 'Feed'
+    l_feed_tooltip = 'Signals / Feed / Analysis'
     if terminal is None:
         redirect_terminal = ''
         redirect_search_terminal_url = 'location.href = \''+ burl + 'search/\';'
