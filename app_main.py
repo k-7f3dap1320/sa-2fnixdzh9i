@@ -88,7 +88,6 @@ def get_page_content(burl, terminal, selection):
     '</div>'+\
     '</div>'
     
-    tab_content = news_feed_content
     return tab_content
 
 def gen_main_page(selection,
