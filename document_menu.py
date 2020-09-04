@@ -45,7 +45,7 @@ def default_menu(burl):
     
     # Latest Analysis (color: danger)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE %article% ORDER BY date DESC"
+    "category LIKE '%article%' ORDER BY date DESC"
     color = "danger"
     menu_label = "Latest"
     ret = ret + default_menu_content(sql, color, burl, menu_label)
