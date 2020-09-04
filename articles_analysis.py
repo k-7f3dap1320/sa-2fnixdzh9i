@@ -44,7 +44,7 @@ def get_list_articles(burl, max_list):
         '<i class="fas fa-file-alt"></i> '+\
         '&nbsp;'+\
         '<strong>'+\
-        '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'" target="_blank">'+\
+        '<a href="'+ str(burl) +'doc/?uid='+ str(uid) +'">'+\
         '<span style="'+\
         theme_return_this('color:black;', 'color:#00ffff;') +' ">'+\
         str(article_date) +'</span>&nbsp;'+\
