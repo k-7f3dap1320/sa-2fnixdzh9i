@@ -24,21 +24,21 @@ def default_menu(burl):
     color = ''
     # Top Analysis (color: primary)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE %perma% ORDER BY title"
+    "category LIKE '%perma%' ORDER BY title"
     color = "primary"
     menu_label = "Top Analysis"
     ret = ret + default_menu_content(sql, color, burl, menu_label)
     
     # By Asset Class (color: info)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE %assetclass% ORDER BY title"
+    "category LIKE '%assetclass%' ORDER BY title"
     color = "info"
     menu_label = "By Asset Class"
     ret = ret + default_menu_content(sql, color, burl, menu_label)
     
     # By Sectors (color: warning)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE %sector% ORDER BY title"
+    "category LIKE '%sector%' ORDER BY title"
     color = "warning"
     menu_label = "By Sectors"
     ret = ret + default_menu_content(sql, color, burl, menu_label)
