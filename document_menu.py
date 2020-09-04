@@ -75,8 +75,13 @@ def default_menu_content(sql, color, burl, menu_label):
     for row in res:
         uid = row[0]
         title = row[1]
+        ret = ret +\
         '<a class="dropdown-item" href="'+ burl + 'doc/?uid='+ str(uid) +'">'+ str(title) +'</a>'
+
     ret = ret +\
     '  </div>'+\
     '</div>'
+    cursor.close()
+    connection.close()
+    
     return ret

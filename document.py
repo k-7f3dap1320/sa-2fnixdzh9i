@@ -45,6 +45,8 @@ class doc_data:
             self.title = row[0]
             self.content = row[1]
             self.category = row[2]
+        cursor.close()
+        connection.close()
 
     def get_title(self):
         return self.title
