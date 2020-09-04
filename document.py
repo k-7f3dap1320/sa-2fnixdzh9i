@@ -71,7 +71,7 @@ def get_doc_content(burl, title, content, category, terminal):
     gdoc_content_height = '100vh'
     gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
-    toolbar_padding = '20px'
+    toolbar_padding = '0px'
     
     if content.find('google.com/spreadsheets') > 0:
         content_height = gsheet_content_height
