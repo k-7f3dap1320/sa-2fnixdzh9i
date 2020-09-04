@@ -16,6 +16,7 @@ from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import get_sa_theme
 from print_google_ads import print_google_ads
+from document_menu import get_doc_menu
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
 DB_USR = ACCESS_OBJ.username()
@@ -27,6 +28,7 @@ class doc_data:
     """ xxx """
     title = ''
     content = ''
+    category = ''
 
     def __init__(self, uid):
         connection = pymysql.connect(host=DB_SRV,
@@ -36,18 +38,22 @@ class doc_data:
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
         cursor = connection.cursor(pymysql.cursors.SSCursor)
-        sql = 'SELECT title, content FROM documents WHERE uid='+ str(uid)
+        sql = 'SELECT title, content, category FROM documents WHERE uid='+ str(uid)
         cursor.execute(sql)
         res = cursor.fetchall()
         for row in res:
             self.title = row[0]
             self.content = row[1]
+            self.category = row[2]
 
     def get_title(self):
         return self.title
 
     def get_content(self):
         return self.content
+    
+    def get_category(self):
+        return self.category
 
 def get_doc_illustration(burl):
     ret = ''
@@ -56,7 +62,7 @@ def get_doc_illustration(burl):
     ret = '<img src="'+ str(file_location) +'" width="100%" alt="article image">'
     return ret
 
-def get_doc_content(title, content, terminal):
+def get_doc_content(burl, title, content, category, terminal):
     """ Content of the page """
     content_height = ''
     iframe_margin = ''
@@ -80,6 +86,7 @@ def get_doc_content(title, content, terminal):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded" '+\
     '            style="height:'+ toolbar_height +'; padding:'+ toolbar_padding +';">'+\
+    get_doc_menu(burl, category)+\
     '            </div>'+\
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
     '            overflow: hidden;">'+\
@@ -101,6 +108,7 @@ def get_doc_page(appname, burl, uid, terminal):
     document = doc_data(uid)
     title = document.get_title()
     content = document.get_content()
+    category = document.get_category()
     page_url = burl+'doc/?uid=' + str(uid)
 
     return_data = get_head(get_loading_head() +\
@@ -113,7 +121,7 @@ def get_doc_page(appname, burl, uid, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_doc_content(title, content, terminal) +\
+             get_doc_content(burl, title, content, category, terminal) +\
              get_page_footer(burl, False),'overflow: hidden;')
     return_data = set_page(return_data)
     return return_data
