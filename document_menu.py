@@ -65,7 +65,7 @@ def default_menu_content(sql, color, burl, menu_label):
     cursor.execute(sql)
     res = cursor.fetchall()
     ret = ''+\
-    '<div class="btn-group">'+\
+    '<div class="btn-group" style="position: absolute;">'+\
     '  <button type="button" class="btn btn-'+ str(color) +' dropdown-toggle" '+\
     'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+\
     menu_label+\
