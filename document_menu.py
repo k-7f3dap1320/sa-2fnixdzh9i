@@ -13,7 +13,7 @@ def get_doc_menu(burl, category):
     category is: 
         [...]
     """
-    ret = default_menu()
+    ret = default_menu(burl)
     return ret
 
 def default_menu(burl):
