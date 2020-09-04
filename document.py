@@ -68,9 +68,9 @@ def get_doc_content(burl, title, content, category, terminal):
     """ Content of the page """
     content_height = ''
     iframe_margin = ''
-    gsheet_content_height = '99vh'
+    gsheet_content_height = '100vh'
     gsheet_iframe_margin ='-40px'
-    gdoc_content_height = '100vh'
+    gdoc_content_height = '102vh'
     gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
     toolbar_padding = '0px'
