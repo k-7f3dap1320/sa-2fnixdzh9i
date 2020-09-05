@@ -70,7 +70,7 @@ def get_page_content(burl, terminal, selection):
     """ xxx """
     signals_content = get_card(selection, 1, burl, terminal)
     news_feed_content = get_feed(burl, terminal, selection)
-    articles_content = get_list_articles(burl, 20)
+    articles_content = get_list_articles(burl, 10)
     
     if terminal is None:
         signals_tab_active = 'active'

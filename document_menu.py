@@ -32,7 +32,7 @@ def default_menu(burl):
     
     # By Asset Class (color: info)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE '%assetclass%' ORDER BY title"
+    "category LIKE '%assetclass%' ORDER BY title LIMIT 10"
     color = "info"
     menu_label = "By Asset Class"
     pos = '140px'
@@ -40,7 +40,7 @@ def default_menu(burl):
     
     # By Sectors (color: warning)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE '%sector%' ORDER BY title"
+    "category LIKE '%sector%' ORDER BY title LIMIT 10"
     color = "warning"
     menu_label = "By Sectors"
     pos = '270px'
@@ -48,7 +48,7 @@ def default_menu(burl):
     
     # Latest Analysis (color: danger)
     sql = "SELECT uid, title FROM documents WHERE "+\
-    "category LIKE '%article%' ORDER BY date DESC"
+    "category LIKE '%article%' ORDER BY date DESC LIMIT 10"
     color = "danger"
     menu_label = "Latest"
     pos = '380px'
@@ -81,7 +81,9 @@ def default_menu_content(sql, color, burl, menu_label, pos):
         title = row[1]
         ret = ret +\
         '<a class="dropdown-item" href="'+ burl + 'doc/?uid='+ str(uid) +'">'+ str(title) +'</a>'
-
+    ret = ret +\
+    '<div class="dropdown-divider"></div>'+\
+    '<a class="dropdown-item" href="#">close menu</a>'
     ret = ret +\
     '  </div>'+\
     '</div>'

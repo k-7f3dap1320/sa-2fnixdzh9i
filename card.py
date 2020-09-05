@@ -6,6 +6,7 @@ from card_chart import get_card_chart
 from app_cookie import theme_return_this
 from print_google_ads import print_google_ads
 from tradingview_mini_chart import get_tradingview_mini_chart
+from list_instr_n_portf import get_box_list_instr_n_portf
 from app_popup_modal import open_window_as
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -68,8 +69,9 @@ def get_card(selection, type_sel, burl, terminal):
     print_google_ads('rectangle', 'center') +\
     '   </div>'+\
     '</div>'
-
+    i = 0
     for row in res:
+        i += 1
         short_title = row[0]
         content = row[2]
         url = row[3].replace('{burl}', burl)
@@ -157,6 +159,9 @@ def get_card(selection, type_sel, burl, terminal):
             return_data = ''
         if date_today.weekday() == 6:
             return_data = ''
+    
+    if i == 0:
+        return_data =get_box_list_instr_n_portf(burl, 'view', 'instr', 1, 100, '')
 
     cursor.close()
     connection.close()
