@@ -93,7 +93,7 @@ def get_page_content(burl, terminal, selection):
     '<div class="tab-content">'+\
     '<div id="signals" class="tab-pane '+\
     signals_tab_fade +' '+ signals_tab_active +'"'+\
-    'style="padding-top: 15pxl">'+\
+    'style="padding-top: 15px">'+\
     signals_content +\
     '</div>'+\
     '<div id="feed" class="tab-pane '+ feed_tab_fade +' ' + feed_tab_active +'">'+\
