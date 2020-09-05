@@ -161,7 +161,7 @@ def get_card(selection, type_sel, burl, terminal):
             return_data = ''
     
     if i == 0:
-        return_data =get_box_list_instr_n_portf(burl, 'view', 'instr', 1, 100, '')
+        return_data =get_box_list_instr_n_portf(burl, 'view', 'instr', 1, 60, '')
 
     cursor.close()
     connection.close()
