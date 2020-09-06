@@ -54,3 +54,6 @@ def get_list_articles(burl, max_list):
     cursor.close()
     connection.close()
     return ret
+
+def get_list_trading_intel(burl, max_list):
+    return True
