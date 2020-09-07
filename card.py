@@ -16,6 +16,25 @@ DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
 
+def found_signals(sql):
+    ret = 0
+    connection = pymysql.connect(host=DB_SRV,
+                                 user=DB_USR,
+                                 password=DB_PWD,
+                                 db=DB_NAME,
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    cursor = connection.cursor(pymysql.cursors.SSCursor)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    i = 0
+    for row in res:
+        i += 1
+    ret = i
+    cursor.close()
+    connection.close()
+    return ret
+
 def get_card(selection, type_sel, burl, terminal):
     """ Get card """
     return_data = ''
@@ -25,6 +44,10 @@ def get_card(selection, type_sel, burl, terminal):
             "url, ranking, badge, symbol FROM feed "+\
             "WHERE (asset_class LIKE '%"+selection+"%' OR market LIKE '%"+selection+"%') "+\
             "AND type=1 AND badge<>'-999' ORDER BY ranking DESC LIMIT 15"
+            if found_signals(sql) == 0:
+                sql = "SELECT short_title, short_description, content, "+\
+                "url, ranking, badge, symbol FROM feed "+\
+                "WHERE type=1 AND badge<>'-999' ORDER BY ranking DESC LIMIT 15"
         if type_sel == 9:
             sql = "SELECT short_title, short_description, content, "+\
             "url, ranking, badge, symbol FROM feed "+\
@@ -49,6 +72,7 @@ def get_card(selection, type_sel, burl, terminal):
     cursor = connection.cursor(pymysql.cursors.SSCursor)
     cursor.execute(sql)
     res = cursor.fetchall()
+    
     title_portf = "Top strategies by Members"
     button_portf = "More strategy Portfolios"
     button_portf_link = burl + 'ls/?w=portf'
@@ -69,9 +93,7 @@ def get_card(selection, type_sel, burl, terminal):
     print_google_ads('rectangle', 'center') +\
     '   </div>'+\
     '</div>'
-    i = 0
     for row in res:
-        i += 1
         short_title = row[0]
         content = row[2]
         url = row[3].replace('{burl}', burl)
@@ -159,10 +181,7 @@ def get_card(selection, type_sel, burl, terminal):
             return_data = ''
         if date_today.weekday() == 6:
             return_data = ''
-    
-    if i == 0:
-        #return_data =get_box_list_instr_n_portf(burl, 'view', 'instr', 1, 10000, '')
-        get_card('FX:', 1, burl, terminal)
+
 
     cursor.close()
     connection.close()
