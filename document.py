@@ -75,7 +75,7 @@ def get_doc_content(burl, title, content, category, terminal):
     gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
     toolbar_padding = '0px'
-    content_no_doc_found = '<i class="fas fa-exclamation-circle">'+\
+    content_no_doc_found = '<i class="fas fa-exclamation-circle"></i>'+\
     '<strong>The function or content is not available at the moment.</strong><br />'+\
     'Please try again later. For support and assistance type: <HELP> <GO>.'
 
