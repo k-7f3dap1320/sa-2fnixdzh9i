@@ -37,7 +37,7 @@ def found_signals(sql):
 
 def get_card(selection, type_sel, burl, terminal):
     """ Get card """
-    no_signal_weekend = 'There is no trading signal at the moment.'
+    no_signal_weekend = 'There is no trading signals at the moment.'
     return_data = ''
     if selection != '' and selection is not None:
         if type_sel == 1:
@@ -188,8 +188,6 @@ def get_card(selection, type_sel, burl, terminal):
         if date_today.weekday() == 5:
             return_data = no_signal_content
         if date_today.weekday() == 6:
-            return_data = no_signal_content
-        if date_today.weekday() == 0:
             return_data = no_signal_content
 
     cursor.close()
