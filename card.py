@@ -182,7 +182,7 @@ def get_card(selection, type_sel, burl, terminal):
             return_data = ''
         if date_today.weekday() == 6:
             return_data = ''
-        if date_today.weekday() == 1:
+        if date_today.weekday() == 0:
             return_data = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+\
             '<strong>'+ no_signal_weekend +'</strong><br />'
 
