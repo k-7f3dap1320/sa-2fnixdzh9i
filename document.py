@@ -29,6 +29,8 @@ class doc_data:
     title = ''
     content = ''
     category = ''
+    content_no_doc_found = '<strong>The function or content is not available at the moment.</strong><br />'+\
+    'Please try again later. For support and assistance type: <HELP> <GO>.'
 
     def __init__(self, uid):
         connection = pymysql.connect(host=DB_SRV,
@@ -52,6 +54,8 @@ class doc_data:
         return self.title
 
     def get_content(self):
+        if self.content == '':
+            self.content = self.content_no_doc_found;
         return self.content
     
     def get_category(self):
