@@ -163,29 +163,34 @@ def get_card(selection, type_sel, burl, terminal):
             expl_label+'</span></div>'+\
             '            </div>'+\
             '        </div>'
+            
+    button_more_signals = '</div></div><div class="box"><a href="'+\
+    open_window_as(button_signals_link, terminal) +\
+    '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+    '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
+    '</strong></a></div>'
+    
+    button_more_strategies = '</div></div><div class="box"><a href="'+\
+    open_window_as(button_portf_link, terminal) +\
+    '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
+    '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
 
     if type_sel == 9:
-        return_data = return_data + '</div></div><div class="box"><a href="'+\
-        open_window_as(button_portf_link, terminal) +\
-        '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-        '<strong>'+button_portf+'&nbsp;<i class="fas fa-angle-double-down"></i></strong></a></div>'
+        return_data = return_data + button_more_strategies
     if type_sel == 1:
-        return_data = return_data + '</div></div><div class="box"><a href="'+\
-        open_window_as(button_signals_link, terminal) +\
-        '" role="button" class="btn btn-outline-secondary btn-lg btn-block">'+\
-        '<strong>'+button_signals+'&nbsp;<i class="fas fa-angle-double-down"></i>'+\
-        '</strong></a></div>'
+        return_data = return_data + button_more_signals
 
     if type_sel == 1:
         date_today = datetime.datetime.now()
+        no_signal_content = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+\
+        '<strong>'+ no_signal_weekend +'</strong><br /><br />'+ button_more_signals
+        
         if date_today.weekday() == 5:
-            return_data = ''
+            return_data = no_signal_content
         if date_today.weekday() == 6:
-            return_data = ''
+            return_data = no_signal_content
         if date_today.weekday() == 0:
-            return_data = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+\
-            '<strong>'+ no_signal_weekend +'</strong><br />'
-
+            return_data = no_signal_content
 
     cursor.close()
     connection.close()
