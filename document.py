@@ -75,10 +75,11 @@ def get_doc_content(burl, title, content, category, terminal):
     gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
     toolbar_padding = '0px'
-    content_no_doc_found = '<i class="fas fa-exclamation-circle"></i>'+\
+    content_no_doc_found = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+\
     '<strong>The function or content is not available at the moment.</strong><br />'+\
-    'Please try again later. For support and assistance type: <HELP> <GO>.'
-
+    'Please try again later. For support and assistance type:&nbsp;'+\
+    '<a href="' + burl + 'h/?" '+\
+    'style="text-decoration: none; font-weight: bolder;">&lt;HELP&gt;&nbsp;&lt;GO&gt;</a>.'
     
     if content.find('google.com/spreadsheets') > 0:
         content_height = gsheet_content_height
