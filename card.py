@@ -182,7 +182,7 @@ def get_card(selection, type_sel, burl, terminal):
 
     if type_sel == 1:
         date_today = datetime.datetime.now()
-        no_signal_content = '<i class="fas fa-exclamation-circle"></i>&nbsp;'+\
+        no_signal_content = '<div><div><i class="fas fa-exclamation-circle"></i>&nbsp;'+\
         '<strong>'+ no_signal_weekend +'</strong><br /><br />'+ button_more_signals
         
         if date_today.weekday() == 5:
