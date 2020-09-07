@@ -29,8 +29,6 @@ class doc_data:
     title = ''
     content = ''
     category = ''
-    content_no_doc_found = '<strong>The function or content is not available at the moment.</strong><br />'+\
-    'Please try again later. For support and assistance type: <HELP> <GO>.'
 
     def __init__(self, uid):
         connection = pymysql.connect(host=DB_SRV,
@@ -54,8 +52,6 @@ class doc_data:
         return self.title
 
     def get_content(self):
-        if self.content == '':
-            self.content = self.content_no_doc_found;
         return self.content
     
     def get_category(self):
@@ -72,12 +68,17 @@ def get_doc_content(burl, title, content, category, terminal):
     """ Content of the page """
     content_height = ''
     iframe_margin = ''
+    iframe_content = ''
     gsheet_content_height = '100vh'
     gsheet_iframe_margin ='-40px'
     gdoc_content_height = '102vh'
     gdoc_iframe_margin = '-72px'
     toolbar_height = '30px'
     toolbar_padding = '0px'
+    content_no_doc_found = '<i class="fas fa-exclamation-circle">'+\
+    '<strong>The function or content is not available at the moment.</strong><br />'+\
+    'Please try again later. For support and assistance type: <HELP> <GO>.'
+
     
     if content.find('google.com/spreadsheets') > 0:
         content_height = gsheet_content_height
@@ -85,7 +86,16 @@ def get_doc_content(burl, title, content, category, terminal):
     if content.find('google.com/document') > 0:
         content_height = gdoc_content_height
         iframe_margin = gdoc_iframe_margin
-    
+        
+    if content == '':
+        iframe_content = content_no_doc_found
+    else:
+        iframe_content = ''+\
+        '<iframe src="'+ str(content)+'" frameborder="0" '+\
+        'style="overflow:hidden;height:100%;width:100%; margin-top:'+ iframe_margin +'" '+\
+        'height="100%" width="100%">'+\
+        '</iframe>'
+
     box_content = ''+\
     '<div class="box-top" style="max-width: 100%">' +\
     '   <div class="row">'+\
@@ -96,10 +106,7 @@ def get_doc_content(burl, title, content, category, terminal):
     '            </div>'+\
     '            <div class="box-part rounded" style="height:'+ content_height +';'+\
     '            overflow: hidden;">'+\
-    '<iframe src="'+ str(content)+'" frameborder="0" '+\
-        'style="overflow:hidden;height:100%;width:100%; margin-top:'+ iframe_margin +'" '+\
-        'height="100%" width="100%">'+\
-    '</iframe>'+\
+    iframe_content +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
