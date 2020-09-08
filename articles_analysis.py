@@ -10,13 +10,16 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_list_articles(burl, max_list):
-    """ xxx """
+def get_list_articles(burl, max_list, section_header, category):
+    """
+    section_header = title of the section.
+    category = category of document to display.
+    """
     ret = ''
-    doc_cat = 'article'
+    doc_cat = category
     title = ''
     uid = 0
-    l_latest_articles = 'Latest analysis'
+    l_latest_articles = section_header
     
     ret = '<span class="sectiont"><i class="fas fa-file-alt"></i>&nbsp;'+\
     l_latest_articles +'</span>'
@@ -37,7 +40,9 @@ def get_list_articles(burl, max_list):
     for row in res:
         uid = row[0]
         title = row[1]
-        article_date = get_elapsed_time(row[2])
+        article_date = ''
+        if category == 'article':
+            article_date = get_elapsed_time(row[2])
         ret = ret +\
         '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" '+\
         'style="border-top:0.5px; border-top-style: dotted; text-align: left;">'+\
