@@ -32,10 +32,7 @@ def get_tradingview_indicators(suid, width, height):
 
     if symbol != '':
         tradingview_copyright = ''+\
-        '<div class="tradingview-widget-container__widget"></div>'+\
-        '<div class="tradingview-widget-copyright">'+\
-        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/technicals/" rel="noopener" target="_blank">'+\
-        '</div>'
+        '<div class="tradingview-widget-container__widget"></div>'
 
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
