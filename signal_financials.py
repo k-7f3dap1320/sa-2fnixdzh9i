@@ -14,8 +14,9 @@ from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
+from details_header import get_details_header
 
-def get_xxx_content(burl):
+def get_financials_content(uid, burl):
     """ Content of the page """
 
     box_content = ''+\
@@ -24,7 +25,7 @@ def get_xxx_content(burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '*** URL is '+ str(burl) +\
+    get_details_header(uid, burl)+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
@@ -51,7 +52,7 @@ def get_xxx_content(burl):
     return box_content
 
 
-def get_xxx_page(appname, burl, terminal):
+def get_financials_page(appname, uid, burl, terminal):
     """ Return the content of the entire page """
     return_data = ''
     return_data = get_head(get_loading_head() +\
@@ -65,7 +66,7 @@ def get_xxx_page(appname, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_xxx_content(burl) +\
+             get_financials_content(uid, burl) +\
              get_page_footer(burl, False),'')
     return_data = set_page(return_data)
     return return_data
