@@ -408,11 +408,11 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_2_label = 'Chart'
     tab_2_link = '#chart'
     tab_2_id = 'chart'
-    tab_3_label = 'Financials'
+    tab_3_label = '[FA] Financials'
     tab_3_link = '#financials'
-    tab_4_label = 'Profile'
+    tab_4_label = '[PF] Profile'
     tab_4_link = '#profile'
-    tab_5_label = 'Analytics'
+    tab_5_label = '[AX] Analytics'
     tab_5_link = '#analytics'
 
     tech_chart = '' +\
