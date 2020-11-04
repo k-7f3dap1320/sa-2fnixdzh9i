@@ -15,7 +15,6 @@ from app_navbar import navbar
 from googleanalytics import get_googleanalytics
 from app_stylesheet import get_stylesheet
 from app_cookie import get_sa_theme
-from print_google_ads import print_google_ads
 from document_menu import get_doc_menu
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
