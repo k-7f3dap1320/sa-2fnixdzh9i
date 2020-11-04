@@ -35,7 +35,7 @@ def get_tab_component(uid, burl):
     tab_1_link +'">'+ tab_1_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link Active" href="'+\
+    '      <a class="nav-link Active" data-toggle="pill" href="'+\
     tab_2_link +'">'+ tab_2_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
