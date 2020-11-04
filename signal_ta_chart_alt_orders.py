@@ -410,7 +410,6 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_2_id = 'chart'
     tab_3_label = 'Financials'
     tab_3_link = '#financials'
-    tab_3_id = 'financial'
 
     tech_chart = '' +\
     '<div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
@@ -439,8 +438,8 @@ def get_sign_ta_chart_alt_orders(uid):
     get_rsi_chart(uid) +\
     '   </div>'+\
     '   <div id="'+\
-    tab_2_id +'" style="height: 520px; width: 520px" class="tab-pane fade"><br />'+\
-    '      <div style="height: 99%; width:99%">'+\
+    tab_2_id +'" style="height: 520px;" class="tab-pane fade"><br />'+\
+    '      <div style="height: 510px; width:99%">'+\
     get_tradingview_chart(uid, '510', '"100%"','1') +\
     '      </div>'+\
     '   </div>'+\
