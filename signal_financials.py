@@ -31,11 +31,11 @@ def get_tab_component(uid, burl):
     tab_component = '' +\
     '<ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link" data-toggle="pill" href="'+\
+    '      <a class="nav-link" href="'+\
     tab_1_link +'">'+ tab_1_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link Active" data-toggle="pill" href="'+\
+    '      <a class="nav-link Active" href="'+\
     tab_2_link +'">'+ tab_2_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
@@ -58,8 +58,7 @@ def get_financials_content(uid, burl):
     '   <div class="row">'+\
     get_details_header(uid, burl)+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
+    '            <div class="box-part rounded sa-center-content">'+\
     get_tab_component(uid, burl)+\
     '            </div>'+\
     '        </div>'+\
