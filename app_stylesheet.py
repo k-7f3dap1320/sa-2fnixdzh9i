@@ -78,7 +78,7 @@ def get_stylesheet(burl):
     sa_signal_alt_ord_prf = '.sa-signal-alt-ord-prf{height: 250px; '+\
     'overflow: auto; font-size: small;}'
 
-    sa_signal_ads = '.sa-signal-ads{padding: 0px;}'
+    sa_signal_indic = '.sa-signal-indic{padding: 0px;}'
 
     sa_signal_recomm_trail_ret = '.sa-signal-recomm-trail-ret{height: 350px; '+\
     'overflow: auto; font-size: small;}'

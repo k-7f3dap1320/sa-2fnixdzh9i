@@ -386,6 +386,7 @@ def get_sign_ta_chart_alt_orders(uid):
     signal_box = ''
     tech_chart = ''
     signal_box_title = 'Alternative Orders'
+    indicator_box_height = '380px'
 
     signal_box = '' +\
     '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
@@ -395,8 +396,8 @@ def get_sign_ta_chart_alt_orders(uid):
     signal_box_title +'</h6></div>'+\
     get_alt_orders(uid) +\
     '            </div>'+\
-    '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads" '+\
-    'style="height: 405px; overflow: hidden;">'+\
+    '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-indic" '+\
+    'style="height: '+ indicator_box_height +'; overflow: hidden;">'+\
     get_tradingview_indicators(uid, '100%', '100%')  +\
     '            </div>'+\
     '        </div>'
