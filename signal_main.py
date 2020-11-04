@@ -121,7 +121,7 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
                                              '<div class="box-top"><div class="row">' +\
                                              get_details_header(uid, burl) +\
                                              get_sign_header(uid, burl, terminal) +\
-                                             get_sign_ta_chart_alt_orders(uid) +\
+                                             get_sign_ta_chart_alt_orders(uid, burl) +\
                                              get_sign_recommend_trail_returns(uid) +\
                                              get_trades_box(uid, burl, None) +\
                                              '</div></div>' +\

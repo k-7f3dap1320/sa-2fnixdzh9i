@@ -2,7 +2,6 @@
 import pymysql.cursors
 from app_cookie import theme_return_this
 from tradingview_chart import get_tradingview_chart
-from print_google_ads import print_google_ads
 from tradingview_indicators import get_tradingview_indicators
 
 from sa_db import sa_db_access
@@ -381,7 +380,7 @@ def get_rsi_chart(uid):
 
     return return_data
 
-def get_sign_ta_chart_alt_orders(uid):
+def get_sign_ta_chart_alt_orders(uid, burl):
     """ xxx """
     signal_box = ''
     tech_chart = ''
@@ -409,7 +408,7 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_2_link = '#chart'
     tab_2_id = 'chart'
     tab_3_label = '[FA] Financials'
-    tab_3_link = '#financials'
+    tab_3_link = burl + 'financials/?uid=' + str(uid)
     tab_4_label = '[PF] Profile'
     tab_4_link = '#profile'
     tab_5_label = '[AX] Analytics'
