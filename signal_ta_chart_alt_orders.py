@@ -410,6 +410,10 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_2_id = 'chart'
     tab_3_label = 'Financials'
     tab_3_link = '#financials'
+    tab_4_label = 'Profile'
+    tab_4_link = '#profile'
+    tab_5_label = 'Analytics'
+    tab_5_link = '#analytics'
 
     tech_chart = '' +\
     '<div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
@@ -427,6 +431,14 @@ def get_sign_ta_chart_alt_orders(uid):
     '   <li class="nav-item">'+\
     '      <a class="nav-link" href="'+\
     tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_4_link +'">'+ tab_4_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_5_link +'">'+ tab_5_label +'</a>'+\
     '   </li>'+\
     '</ul>'+\
     ''+\
