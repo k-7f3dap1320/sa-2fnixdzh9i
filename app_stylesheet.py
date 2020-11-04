@@ -136,7 +136,7 @@ def get_stylesheet(burl):
     sa_tab_sm +\
     sa_signal_ta_chart +\
     sa_signal_alt_ord_prf +\
-    sa_signal_ads +\
+    sa_signal_indic +\
     sa_signal_recomm_trail_ret +\
     sa_center_content +\
     sa_navbar_text +\
