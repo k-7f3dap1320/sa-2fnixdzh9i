@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['..\\..\\.spyder-py3\\temp.py', 'document_menu.py', 'document.py', 'articles_analysis.py', 'app_main.py', 'list_instr_n_portf.py', 'card.py', 'view_list_instr_n_portf.py', 'portf_main.py', 'sa_func.py', 'signal_ta_chart_alt_orders.py', 'tradingview_indicators.py']
+recent_files = ['..\\..\\.spyder-py3\\temp.py']
 
