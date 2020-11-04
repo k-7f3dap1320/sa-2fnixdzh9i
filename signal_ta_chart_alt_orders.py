@@ -396,7 +396,7 @@ def get_sign_ta_chart_alt_orders(uid):
     get_alt_orders(uid) +\
     '            </div>'+\
     '            <div class=" rounded sa-signal-alt-ord-prf  sa-signal-ads" '+\
-    'style="height: 450px;">'+\
+    'style="height: 405px; overflow: hidden;">'+\
     get_tradingview_indicators(uid, '100%', '100%')  +\
     '            </div>'+\
     '        </div>'
