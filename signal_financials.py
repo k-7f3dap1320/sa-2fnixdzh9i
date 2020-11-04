@@ -16,6 +16,40 @@ from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 from details_header import get_details_header
 
+def get_tab_component(uid, burl):
+    """ Get the tab component """
+
+    tab_1_label = '[DES] Tearsheet'
+    tab_1_link = burl + 's/?uid=' + str(uid)
+    tab_2_label = '[FA] Financials'
+    tab_2_link = '#financials'
+    tab_3_label = '[PF] Profile'
+    tab_3_link = '#profile'
+    tab_4_label = '[AX] Analytics'
+    tab_4_link = '#analytics'
+
+    tab_component = '' +\
+    '<ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" data-toggle="pill" href="'+\
+    tab_1_link +'">'+ tab_1_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link Active" data-toggle="pill" href="'+\
+    tab_2_link +'">'+ tab_2_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_3_link +'">'+ tab_3_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_4_link +'">'+ tab_4_label +'</a>'+\
+    '   </li>'+\
+    '</ul>'
+
+    return tab_component
+
 def get_financials_content(uid, burl):
     """ Content of the page """
 
@@ -26,7 +60,7 @@ def get_financials_content(uid, burl):
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '*** URL is '+ str(burl) +\
+    get_tab_component(uid, burl)+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
