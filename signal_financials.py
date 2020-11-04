@@ -21,11 +21,12 @@ def get_financials_content(uid, burl):
 
     box_content = ''+\
     '<div class="box-top">' +\
+    get_details_header(uid, burl)+\
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    get_details_header(uid, burl)+\
+    '*** URL is '+ str(burl) +\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
