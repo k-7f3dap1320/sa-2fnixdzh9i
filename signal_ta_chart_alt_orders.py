@@ -405,12 +405,12 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_1_label = 'Technical Levels'
     tab_1_link = '#ta'
     tab_1_id = 'ta'
-    tab_2_label = 'Technical analysis'
-    tab_2_link = '#ia'
-    tab_2_id = 'ia'
-    tab_3_label = 'Live chart'
-    tab_3_link = '#chart'
-    tab_3_id = 'chart'
+    tab_2_label = 'Chart'
+    tab_2_link = '#chart'
+    tab_2_id = 'chart'
+    tab_3_label = 'Financials'
+    tab_3_link = '#financials'
+    tab_3_id = 'financial'
 
     tech_chart = '' +\
     '<div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
@@ -426,7 +426,7 @@ def get_sign_ta_chart_alt_orders(uid):
     tab_2_link +'">'+ tab_2_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link" data-toggle="pill" href="'+\
+    '      <a class="nav-link" href="'+\
     tab_3_link +'">'+ tab_3_label +'</a>'+\
     '   </li>'+\
     '</ul>'+\
