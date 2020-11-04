@@ -16,7 +16,6 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in, get_uid
 from sa_func import get_random_str, get_user_default_profile
-from print_google_ads import print_google_ads
 from app_popup_modal import open_window_args, check_popup_blocked
 from user_profile_header import get_box_user_profile_header
 from sa_db import sa_db_access
@@ -159,18 +158,6 @@ def get_sa_terminal_content(burl):
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     get_settings_note(burl) +\
-    '            </div>'+\
-    '        </div>'+\
-    '   </div>'+\
-    '</div>'
-
-    box_content = box_content +\
-   '<div class="box">' +\
-    '   <div class="row">'+\
-    '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
-    '            <div class="box-part rounded sa-center-content" style="'+\
-    theme_return_this('', 'border-style:solid; border-width:thin; border-color:black;') +'">'+\
-    print_google_ads('leaderboard', 'center')+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
