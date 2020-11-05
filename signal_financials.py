@@ -75,7 +75,7 @@ def get_financials_content(uid, burl, terminal):
     '   <div class="row">'+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
-    'height: 500px; '+\
+    'height: 888px; '+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
     get_tradingview_financials(uid)+\
     '            </div>'+\
