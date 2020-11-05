@@ -15,7 +15,7 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 from details_header import get_details_header
-from signal_main import get_signal_details
+from signal_main import get_sign_header
 
 def get_tab_component(uid, burl):
     """ Get the tab component """
