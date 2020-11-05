@@ -17,6 +17,7 @@ def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_c
     symbol = ''
     label_not_available = 'Symbol is not available'
     theme = get_sa_theme()
+    tradingview_copyright = ''
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
