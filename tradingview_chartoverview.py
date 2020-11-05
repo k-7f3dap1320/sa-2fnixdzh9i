@@ -1,6 +1,6 @@
 """ Tradingview symbol info widget """
 import pymysql.cursors
-from app_cookie import get_sa_theme
+#from app_cookie import get_sa_theme
 
 from sa_db import sa_db_access
 ACCESS_OBJ = sa_db_access()
@@ -14,7 +14,8 @@ def get_tradingview_chartoverview(suid):
     return_data = ''
     symbol = ''
     label_not_available = 'Indicators are not available for this instrument'
-    theme = get_sa_theme()
+    #theme = get_sa_theme()
+    theme = 'dark'
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
