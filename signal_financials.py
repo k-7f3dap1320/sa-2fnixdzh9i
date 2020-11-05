@@ -11,6 +11,7 @@ from bootstrap import get_bootstrap
 from font_awesome import get_font_awesome
 from app_navbar import navbar
 from googleanalytics import get_googleanalytics
+from google_chart import get_google_chart_script
 from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
