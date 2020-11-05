@@ -413,6 +413,8 @@ def get_sign_ta_chart_alt_orders(uid, burl):
     tab_4_link = burl + 'profile/?uid=' + str(uid)
     tab_5_label = '[AX] Analytics'
     tab_5_link = '#analytics'
+    tab_6_label = '[TOP] Events/News'
+    tab_6_link = '#events'
 
     tech_chart = '' +\
     '<div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">'+\
@@ -438,6 +440,10 @@ def get_sign_ta_chart_alt_orders(uid, burl):
     '   <li class="nav-item">'+\
     '      <a class="nav-link" href="'+\
     tab_5_link +'">'+ tab_5_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_6_link +'">'+ tab_6_label +'</a>'+\
     '   </li>'+\
     '</ul>'+\
     ''+\

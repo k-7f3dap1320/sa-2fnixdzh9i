@@ -32,6 +32,8 @@ def get_tab_component(uid, burl):
     tab_3_link = '#profile'
     tab_4_label = '[AX] Analytics'
     tab_4_link = '#analytics'
+    tab_5_label = '[TOP] Events/News'
+    tab_5_link = '#events'
 
     tab_component = '' +\
     '<ul id="sa-tab-sm" class="nav nav-tabs" role="tablist">'+\
@@ -50,6 +52,10 @@ def get_tab_component(uid, burl):
     '   <li class="nav-item">'+\
     '      <a class="nav-link" href="'+\
     tab_4_link +'">'+ tab_4_label +'</a>'+\
+    '   </li>'+\
+    '   <li class="nav-item">'+\
+    '      <a class="nav-link" href="'+\
+    tab_5_link +'">'+ tab_5_label +'</a>'+\
     '   </li>'+\
     '</ul>'
 
