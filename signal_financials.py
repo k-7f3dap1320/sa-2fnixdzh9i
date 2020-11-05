@@ -100,6 +100,7 @@ def get_financials_page(appname, uid, burl, terminal):
                            set_ogp(burl, 1, '', '') +\
                            get_bootstrap(get_sa_theme(), burl) +\
                            get_font_awesome() +\
+                           get_google_chart_script() +\
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
