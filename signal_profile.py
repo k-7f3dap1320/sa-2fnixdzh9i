@@ -27,7 +27,7 @@ def get_tab_component(uid, burl):
     tab_1_label = '[DES] Tearsheet'
     tab_1_link = burl + 's/?uid=' + str(uid)
     tab_2_label = '[FA] Financials'
-    tab_2_link = '#financials'
+    tab_2_link = 'financials/?uid=' + str(uid)
     tab_3_label = '[PF] Profile'
     tab_3_link = '#profile'
     tab_4_label = '[AX] Analytics'
@@ -40,11 +40,11 @@ def get_tab_component(uid, burl):
     tab_1_link +'">'+ tab_1_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link active" href="'+\
+    '      <a class="nav-link" href="'+\
     tab_2_link +'">'+ tab_2_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
-    '      <a class="nav-link" href="'+\
+    '      <a class="nav-link active" href="'+\
     tab_3_link +'">'+ tab_3_label +'</a>'+\
     '   </li>'+\
     '   <li class="nav-item">'+\
