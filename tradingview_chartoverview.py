@@ -38,7 +38,6 @@ def get_tradingview_chartoverview(suid):
         '  {'+\
         '  "symbols": ['+\
         '    ['+\
-        '      "",'+\
         '      "'+ str(symbol) +'|12M"'+\
         '    ]'+\
         '  ],'+\
