@@ -41,7 +41,6 @@ def get_tradingview_financials(suid):
         '  "colorTheme": "'+ str(theme) +'",'+\
         '  "isTransparent": true,'+\
         '  "largeChartUrl": "'+ str(url) +'",'+\
-        '  "largeChartUrl": "",'+\
         '  "displayMode": "adaptive",'+\
         '  "width": "100%",'+\
         '  "height": "100%",'+\
