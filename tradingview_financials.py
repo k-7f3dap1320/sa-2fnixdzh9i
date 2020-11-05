@@ -1,5 +1,6 @@
 """ Tradingview symbol info widget """
 import pymysql.cursors
+from sa_func import get_broker_affiliate_link
 from app_cookie import get_sa_theme
 
 from sa_db import sa_db_access
@@ -12,6 +13,7 @@ DB_SRV = ACCESS_OBJ.db_server()
 def get_tradingview_financials(suid):
     """ Get tradingview symbol info widget """
     return_data = ''
+    url = get_broker_affiliate_link('Tradingview', 'baseurl')
     symbol = ''
     label_not_available = 'Indicators are not available for this instrument'
     theme = get_sa_theme()
@@ -38,6 +40,7 @@ def get_tradingview_financials(suid):
         '  "symbol": "'+ str(symbol) +'",'+\
         '  "colorTheme": "'+ str(theme) +'",'+\
         '  "isTransparent": true,'+\
+        '  "largeChartUrl": "'+ str(url) +'",'+\
         '  "largeChartUrl": "",'+\
         '  "displayMode": "adaptive",'+\
         '  "width": "100%",'+\
