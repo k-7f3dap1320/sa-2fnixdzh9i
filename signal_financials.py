@@ -86,7 +86,6 @@ def get_financials_content(uid, burl, terminal):
     '*** (2) URL is '+ str(burl) +\
     '            </div>'+\
     '        </div>'+\
-    '   </div>'+\
     '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
