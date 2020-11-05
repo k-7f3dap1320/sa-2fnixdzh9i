@@ -51,7 +51,7 @@ def get_tab_component(uid, burl):
 
     return tab_component
 
-def get_financials_content(uid, burl):
+def get_financials_content(uid, burl, terminal):
     """ Content of the page """
 
     box_content = ''+\
@@ -102,7 +102,7 @@ def get_financials_page(appname, uid, burl, terminal):
                            get_stylesheet(burl))
     return_data = return_data +\
     get_body(get_loading_body(), navbar(burl, 0, terminal) +\
-             get_financials_content(uid, burl) +\
+             get_financials_content(uid, burl, terminal) +\
              get_page_footer(burl, False),'')
     return_data = set_page(return_data)
     return return_data
