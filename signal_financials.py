@@ -15,6 +15,7 @@ from app_stylesheet import get_stylesheet
 from app_cookie import theme_return_this, get_sa_theme
 from sa_func import redirect_if_not_logged_in
 from details_header import get_details_header
+from signal_details import get_signal_details
 
 def get_tab_component(uid, burl):
     """ Get the tab component """
@@ -57,6 +58,7 @@ def get_financials_content(uid, burl):
     '<div class="box-top">' +\
     '   <div class="row">'+\
     get_details_header(uid, burl)+\
+    get_sign_header(uid, burl, terminal)+\
     '        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content">'+\
     get_tab_component(uid, burl)+\
