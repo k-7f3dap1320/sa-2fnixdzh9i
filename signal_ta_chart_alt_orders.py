@@ -410,7 +410,7 @@ def get_sign_ta_chart_alt_orders(uid, burl):
     tab_3_label = '[FA] Financials'
     tab_3_link = burl + 'financials/?uid=' + str(uid)
     tab_4_label = '[PF] Profile'
-    tab_4_link = '#profile'
+    tab_4_link = burl + 'profile/?uid=' + str(uid)
     tab_5_label = '[AX] Analytics'
     tab_5_link = '#analytics'
 
