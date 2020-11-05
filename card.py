@@ -131,7 +131,7 @@ def get_card(selection, type_sel, burl, terminal):
             return_data = return_data + '' +\
             '        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">'+\
             '            <div class="box-part text-center rounded">'+\
-            get_tradingview_mini_chart(uid, '100%', '250', 'true', '1y', 1) +\
+            get_tradingview_mini_chart(uid, '100%', '250', 'true', '1y', 1,'1') +\
             '<div>&nbsp;</div>'+\
             '                <div class="title"><a href="' +\
             url + '" target="_blank" class="'+\

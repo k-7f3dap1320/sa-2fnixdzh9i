@@ -10,7 +10,7 @@ DB_PWD = ACCESS_OBJ.password()
 DB_NAME = ACCESS_OBJ.db_name()
 DB_SRV = ACCESS_OBJ.db_server()
 
-def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_chart):
+def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_chart, show_copyright):
     """ Get tradingview mini chart """
     return_data = ''
     url = get_broker_affiliate_link('Tradingview', 'baseurl')
@@ -53,11 +53,12 @@ def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_c
                                              'rgba(217,83,79,'+ str(area_chart) +')')
 
     if symbol != '':
-        tradingview_copyright = ''+\
-        '<div class="tradingview-widget-copyright">'+\
-        '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
-        '<span class="blue-text">'+ symbol +' Rates</span></a> by TradingView'+\
-        '</div>'
+        if str(show_copyright) = '1':
+            tradingview_copyright = ''+\
+            '<div class="tradingview-widget-copyright">'+\
+            '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
+            '<span class="blue-text">'+ symbol +' Rates</span></a> by TradingView'+\
+            '</div>'
         
         return_data = '' +\
         '<div class="tradingview-widget-container">'+\
