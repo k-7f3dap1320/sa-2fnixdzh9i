@@ -92,7 +92,6 @@ def get_financials_content(uid, burl, terminal):
     '*** URL is '+ str(burl) +\
     '            </div>'+\
     '        </div>'+\
-
     '   </div>'+\
     '</div>'
 
