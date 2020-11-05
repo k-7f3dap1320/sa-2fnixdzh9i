@@ -53,7 +53,7 @@ def get_tradingview_mini_chart(suid, width, height, autosize, date_range, area_c
                                              'rgba(217,83,79,'+ str(area_chart) +')')
 
     if symbol != '':
-        if str(show_copyright) = '1':
+        if str(show_copyright) == '1':
             tradingview_copyright = ''+\
             '<div class="tradingview-widget-copyright">'+\
             '<a href="https://www.tradingview.com/symbols/'+ symbol +'/" rel="noopener" target="_blank">'+\
