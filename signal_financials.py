@@ -18,6 +18,7 @@ from sa_func import redirect_if_not_logged_in
 from details_header import get_details_header
 from signal_main import get_sign_header
 from tradingview_financials import get_tradingview_financials
+from signal_recom_trail_returns import get_chart_box
 
 def get_tab_component(uid, burl):
     """ Get the tab component """
@@ -91,7 +92,7 @@ def get_financials_content(uid, burl, terminal):
     '        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">'+\
     '            <div class="box-part rounded sa-center-content" style="'+\
     theme_return_this('', 'border-style:solid; border-width:thin; border-color:#343a40;') +'">'+\
-    '*** (3) URL is '+ str(burl) +\
+    get_chart_box(uid)+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
