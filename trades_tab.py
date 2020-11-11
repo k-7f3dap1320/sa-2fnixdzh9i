@@ -70,7 +70,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
             i += 1
 
         portf_symbol_selection = portf_symbol_selection +\
-        ') AND portfolios.portf_symbol ="'+ str(portf_symbol) +'" '
+        ' AND portfolios.portf_symbol ="'+ str(portf_symbol) +'" '
 
     single_selection = ''
     if not selected_is_portf and not is_user_prf:
