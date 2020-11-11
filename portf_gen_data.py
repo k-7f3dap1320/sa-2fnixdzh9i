@@ -433,7 +433,8 @@ class portf_data:
             cr_s.close()
         cr.close()
         connection.close()
-        self.portf_multip = self.portf_account_ref / self.portf_total_alloc_amount
+        if self.portf_total_alloc_amount != 0:
+            self.portf_multip = self.portf_account_ref / self.portf_total_alloc_amount
 
     def get_quantity(self, alloc_s, alloc_coef):
         """ xxx """
