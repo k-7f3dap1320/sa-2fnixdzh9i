@@ -98,6 +98,10 @@ def get_portf_market(what):
     #what = "n" (name) ; what = "i" (id); what = "cur" (currency); what = "conv" (conversion rate)
     return_data = ''
     suid = ''
+    market_id = 0
+    market_label = ''
+    currency_code = ''
+    conv_to_usd = 0
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
                                  password=DB_PWD,
