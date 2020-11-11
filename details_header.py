@@ -60,7 +60,6 @@ def get_details_header(uid, burl):
         get_tradingview_symbol_info(uid) + '</div>'
     else:
         # Any other instruments
-        header_float_right = print_google_ads('small_leaderboard', 'right')
         header_portfolio_info = ''+\
         '                <span class="title"><font style="font-size: x-large;">'+\
         instr_name +'&nbsp;<span class="'+\

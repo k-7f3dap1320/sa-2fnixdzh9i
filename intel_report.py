@@ -175,7 +175,6 @@ def get_market_snapshot_section():
         get_market_snapshot_n_brief_text('market_snapshot') +\
         '<br /><br />'+\
         '<div style="text-align: center; overflow: hidden;">'+\
-        print_google_ads('leaderboard', 'none') +\
         '</div>'+\
         '</div></div>'+\
         '    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>'+\
@@ -232,7 +231,6 @@ def get_expired_signals(burl):
         '    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">'+\
         '<div class="box-part rounded">'+\
         '<div style="text-align: center; overflow: hidden;">'+\
-        print_google_ads('leaderboard', 'none') +\
         '</div>'+\
         '<br />'+\
         '<h2>'+ l_title  +'</h2>'+\
