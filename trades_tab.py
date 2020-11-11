@@ -63,7 +63,7 @@ def get_trades_tbl(uid, what, burl, type_trade):
             portf_symbol = row[1]
             if i == 0:
                 portf_symbol_selection = portf_symbol_selection +\
-                " AND (trades.symbol = '"+ str(row[0]) +"' "
+                " AND trades.symbol = '"+ str(row[0]) +"' "
             else:
                 portf_symbol_selection = portf_symbol_selection +\
                 " OR trades.symbol = '"+ str(row[0]) +"' "
