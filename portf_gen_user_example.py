@@ -23,8 +23,6 @@ def gen_portf_user_example(burl, acm, notstart):
         asset_class = '%%'
     else:
         asset_class = acm
-        
-    print("TESTTESTETSSdsgsdgsdgfsdgsdfgsdfgsdfgsdfggsd")
 
     if user_is_login() == 1:
         connection = pymysql.connect(host=DB_SRV,
@@ -43,7 +41,6 @@ def gen_portf_user_example(burl, acm, notstart):
         asset_class +"' OR instruments.market LIKE '"+\
         asset_class +"') ORDER BY instruments.volatility_risk_st ASC, "+\
         "instruments.m6_signal DESC, instruments.m3_signal DESC LIMIT 5"
-        print(sql)
         cursor.execute(sql)
         res = cursor.fetchall()
         i = 1
