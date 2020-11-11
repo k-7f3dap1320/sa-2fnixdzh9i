@@ -323,7 +323,7 @@ def portf_add_allocation(portf_symbol):
         portf_type = request.cookies.get('portf_s_' + str(i+1) + '_type')
         portf_conv = request.cookies.get('portf_s_' + str(i+1) + '_conv')
 
-        if str(portf_suid) != '' and str(portf_suid) != '0':
+        if str(portf_suid) != '' and str(portf_suid) != '0' and portf_suid != None:
             sql = "SELECT instruments.symbol, instruments.fullname FROM instruments "+\
             "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
             "WHERE symbol_list.uid = " +\
