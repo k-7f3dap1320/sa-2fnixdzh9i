@@ -115,9 +115,11 @@ def get_portf_alloc(uid, burl):
 
     cursor.execute(sql)
     res = cursor.fetchall()
+    num_rec = 0
     for row in res:
         num_rec = row[0]
-    num_rec = round(255 / num_rec, 0)
+    if num_rec != 0:
+        num_rec = round(255 / num_rec, 0)
 
     connection = pymysql.connect(host=DB_SRV,
                                  user=DB_USR,
