@@ -63,20 +63,21 @@ def get_portf_asset_class(what):
     asset_class_id = ''
     for i in range(5):
         suid = request.cookies.get('portf_s_' + str(i+1))
-        sql = "SELECT asset_class.asset_class_name, asset_class.asset_class_id FROM instruments "+\
-        "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-        "JOIN asset_class ON instruments.asset_class = asset_class.asset_class_id "+\
-        "WHERE symbol_list.uid = "+ str(suid)
-        cursor.execute(sql)
-        res = cursor.fetchall()
-        for row in res:
-            asset_class_name = row[0]
-            asset_class_id = row[1]
-        if i == 0:
-            select_asset_class_id = asset_class_id
-        else:
-            if select_asset_class_id != asset_class_id:
-                multi_asset_selected = True
+        if suid != None:
+            sql = "SELECT asset_class.asset_class_name, asset_class.asset_class_id FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+            "JOIN asset_class ON instruments.asset_class = asset_class.asset_class_id "+\
+            "WHERE symbol_list.uid = "+ str(suid)
+            cursor.execute(sql)
+            res = cursor.fetchall()
+            for row in res:
+                asset_class_name = row[0]
+                asset_class_id = row[1]
+            if i == 0:
+                select_asset_class_id = asset_class_id
+            else:
+                if select_asset_class_id != asset_class_id:
+                    multi_asset_selected = True
     cursor.close()
     connection.close()
 

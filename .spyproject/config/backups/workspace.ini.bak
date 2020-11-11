@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['signal_profile.py', 'application.py', 'signal_ta_chart_alt_orders.py', 'signal_financials.py']
+recent_files = ['signal_profile.py', 'application.py', 'signal_ta_chart_alt_orders.py', 'signal_financials.py', 'portf_save.py', 'createportf_main.py', 'portf_gen_user_example.py', 'select_market.py']
 
