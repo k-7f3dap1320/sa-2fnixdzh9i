@@ -109,21 +109,21 @@ def get_portf_market(what):
     market_id = ''
     for i in range(5):
         suid = request.cookies.get('portf_s_' + str(i+1))
-
-        sql = "SELECT markets.market_id, markets.market_label, "+\
-        "markets.currency_code, markets.conv_to_usd FROM instruments "+\
-        "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-        "JOIN markets ON instruments.market = markets.market_id "+\
-        "WHERE symbol_list.uid = " +\
-        str(suid)
-
-        cursor.execute(sql)
-        res = cursor.fetchall()
-        for row in res:
-            market_id = row[0]
-            market_label = row[1]
-            currency_code = row[2]
-            conv_to_usd = row[3]
+        if suid != None:
+            sql = "SELECT markets.market_id, markets.market_label, "+\
+            "markets.currency_code, markets.conv_to_usd FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+            "JOIN markets ON instruments.market = markets.market_id "+\
+            "WHERE symbol_list.uid = " +\
+            str(suid)
+    
+            cursor.execute(sql)
+            res = cursor.fetchall()
+            for row in res:
+                market_id = row[0]
+                market_label = row[1]
+                currency_code = row[2]
+                conv_to_usd = row[3]
     cursor.close()
     connection.close()
 
