@@ -74,7 +74,7 @@ def get_portf_alloc(uid, burl):
         '                          <td>'+ str(entry_price) +'</td>'+\
         '                          <td>'+ exp_date_str +'</td>'+\
         '                       </tr>'
-    cr_s.close()
+        cr_s.close()
     cursor.close()
     connection.close()
 
