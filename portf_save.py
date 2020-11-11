@@ -345,7 +345,7 @@ def portf_add_allocation(portf_symbol):
             str(portf_type) +"','"+\
             str(portf_conv) +"')"
 
-    if portf_suid() != None:
+    if portf_suid != None:
         sql = "INSERT IGNORE INTO "+\
         "portfolios(portf_symbol,symbol,alloc_fullname,quantity,"+\
         "strategy_order_type,strategy_conviction) VALUES "+\
