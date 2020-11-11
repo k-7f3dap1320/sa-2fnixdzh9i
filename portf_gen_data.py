@@ -634,7 +634,8 @@ def get_portf_alloc(symbol):
                 portf_nav = portf_nav + alloc_dollar_amount
             cr_t.close()
         cr_pf.close()
-        portf_perc_return = (100/(portf_nav/portf_forc_return))/100
+        if portf_forc_return != 0:
+            portf_perc_return = (100/(portf_nav/portf_forc_return))/100
         w_forecast_display_info = str(round(portf_perc_return,2)) +'%'
         cr_f = connection.cursor(pymysql.cursors.SSCursor)
         sql_f = "UPDATE instruments SET w_forecast_change=" + str(portf_perc_return) + ", w_forecast_display_info='" + w_forecast_display_info + "' " +\
