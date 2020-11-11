@@ -203,17 +203,17 @@ def get_portf_decimal_place():
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
         cursor = connection.cursor(pymysql.cursors.SSCursor)
-
-        sql = "SELECT instruments.decimal_places FROM instruments "+\
-        "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
-        "WHERE symbol_list.uid = " +\
-        str(suid)
-
-        cursor.execute(sql)
-        res = cursor.fetchall()
-        for row in res:
-            if row[0] > decimal_places:
-                decimal_places = row[0]
+        if suid != None:
+            sql = "SELECT instruments.decimal_places FROM instruments "+\
+            "JOIN symbol_list ON instruments.symbol = symbol_list.symbol "+\
+            "WHERE symbol_list.uid = " +\
+            str(suid)
+    
+            cursor.execute(sql)
+            res = cursor.fetchall()
+            for row in res:
+                if row[0] > decimal_places:
+                    decimal_places = row[0]
         cursor.close()
         connection.close()
     return_data = decimal_places
