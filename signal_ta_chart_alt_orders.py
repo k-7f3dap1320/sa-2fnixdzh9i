@@ -385,7 +385,7 @@ def get_sign_ta_chart_alt_orders(uid, burl):
     signal_box = ''
     tech_chart = ''
     signal_box_title = 'Alternative Orders'
-    indicator_box_height = '390px'
+    indicator_box_height = '400px'
 
     signal_box = '' +\
     '        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">'+\
