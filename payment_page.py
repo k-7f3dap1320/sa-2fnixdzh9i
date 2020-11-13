@@ -41,13 +41,14 @@ def get_paypal_payment_notice(burl):
     l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. '+\
     'You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. '+\
     'Fintech company based in London.'
-    paypal_notice = '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+\
+    paypal_notice = ''+\
+    '<br><br><br>'+\
+    '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+\
     ' <i class="fas fa-lock"></i> ('+\
     l_secure_payment_with_paypal +') '+\
     l_subscribe_payment_notice +'</strong>'+\
-            '<div>'+ '' +'</div>'+\
-            '<div><img alt="" src="'+\
-            burl +'static/ccico.png" style="height: 30px;" /></div></div>'
+    '<img alt="" src="'+\
+    burl +'static/ccico.png" style="height: 30px;" /></div>'
     return paypal_notice
 
 def get_paypal_payment_button(burl, is_soldout, size, what):
