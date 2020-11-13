@@ -17,7 +17,7 @@ from sa_func import go_to_url, get_broker_affiliate_link
 
 def get_package_price():
     """ xxx """
-    return_data = '$29.00'
+    return_data = '$5.00'
     return return_data
 
 def get_broker_signup_button(burl, broker):
@@ -37,8 +37,8 @@ def get_paypal_payment_button(burl, is_soldout, size):
     """ xxx """
     return_data = ''
     l_price = get_package_price()
-    l_button_trial = '1-month Free Trial<br />'
-    l_button_soldout = '1-month trial<br />(SOLD OUT!)'
+    l_button_trial = 'Signup<br />'
+    l_button_soldout = 'Signup<br />(SOLD OUT!)'
     l_then_recurring_monthly = 'Then '+ l_price +' for each month'
     l_secure_payment_with_paypal = 'Secure payment with PayPal'
 
@@ -308,7 +308,7 @@ def get_box_plan_selection(burl):
     get_broker_signup_button(burl, broker) +'</div></td>'+\
     '      <td style="vertical-align: top;">'+\
     '<div class="d-none d-sm-block">'+\
-    get_paypal_payment_button(burl, False, 'sm') +'</div></td>'+\
+    get_paypal_payment_button(burl, False, 'lg') +'</div></td>'+\
     '    </tr>'+\
     '  </tbody>'+\
     '</table>'+\
