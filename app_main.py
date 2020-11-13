@@ -55,6 +55,7 @@ def get_feed(burl, terminal, selection):
 
 def get_page_content(burl, terminal, selection):
     """ xxx """
+    tab_content = ''
     signals_content = get_card(selection, 1, burl, terminal)
     news_feed_content = get_feed(burl, terminal, selection)
     articles_content = ''+\
@@ -71,27 +72,28 @@ def get_page_content(burl, terminal, selection):
         signals_tab_fade = 'fade'
         feed_tab_active = 'active'
         feed_tab_fade = ''
-        
-    tab_content = ''+\
-    '<ul class="nav nav-tabs">'+\
-    '<li class="nav-item"><a class="nav-link '+ signals_tab_active +'" data-toggle="pill" href="#signals">Signals</a></li>'+\
-    '<li class="nav-item"><a  class="nav-link '+ feed_tab_active +'" data-toggle="pill" href="#feed">Feed</a></li>'+\
-    '<li class="nav-item"><a  class="nav-link" data-toggle="pill" href="#analysis">Analysis</a></li>'+\
-    '</ul>'+\
-    ''+\
-    '<div class="tab-content">'+\
-    '<div id="signals" class="tab-pane '+\
-    signals_tab_fade +' '+ signals_tab_active +'"'+\
-    'style="padding-top: 15px">'+\
-    signals_content +\
-    '</div>'+\
-    '<div id="feed" class="tab-pane '+ feed_tab_fade +' ' + feed_tab_active +'">'+\
-    news_feed_content +\
-    '</div>'+\
-    '<div id="analysis" class="tab-pane fade">'+\
-    articles_content+\
-    '</div>'+\
-    '</div>'
+    
+    if user_is_login() == 1:
+        tab_content = ''+\
+        '<ul class="nav nav-tabs">'+\
+        '<li class="nav-item"><a class="nav-link '+ signals_tab_active +'" data-toggle="pill" href="#signals">Signals</a></li>'+\
+        '<li class="nav-item"><a  class="nav-link '+ feed_tab_active +'" data-toggle="pill" href="#feed">Feed</a></li>'+\
+        '<li class="nav-item"><a  class="nav-link" data-toggle="pill" href="#analysis">Analysis</a></li>'+\
+        '</ul>'+\
+        ''+\
+        '<div class="tab-content">'+\
+        '<div id="signals" class="tab-pane '+\
+        signals_tab_fade +' '+ signals_tab_active +'"'+\
+        'style="padding-top: 15px">'+\
+        signals_content +\
+        '</div>'+\
+        '<div id="feed" class="tab-pane '+ feed_tab_fade +' ' + feed_tab_active +'">'+\
+        news_feed_content +\
+        '</div>'+\
+        '<div id="analysis" class="tab-pane fade">'+\
+        articles_content+\
+        '</div>'+\
+        '</div>'
     
     return tab_content
 
