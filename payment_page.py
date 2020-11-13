@@ -54,7 +54,11 @@ def get_paypal_payment_notice(burl):
 def get_paypal_payment_button(burl, is_soldout, size, what):
     """ xxx """
     return_data = ''
-    l_button_trial = 'Signup<br />'
+    if what == 'broker':
+        l_button_signup = 'Signup with eToro<br />'
+    else:
+        l_button_signup = 'Signup<br />'
+
     l_button_soldout = 'Signup<br />(SOLD OUT!)'
 
     paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
@@ -68,7 +72,10 @@ def get_paypal_payment_button(burl, is_soldout, size, what):
     style_btn = ''
     class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
     style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
-    class_sm_btn = 'btn btn-primary'
+    if what == 'broker':
+        class_sm_btn = 'btn btn-success'
+    else:
+        class_sm_btn = 'btn btn-primary'
     style_sm_btn = 'font-size:small;'
 
     if size == 'lg':
@@ -82,7 +89,7 @@ def get_paypal_payment_button(burl, is_soldout, size, what):
     button_checkout = '<button type="submit" class="'+\
     class_btn +'" style="'+\
     style_btn +'">'+\
-    l_button_trial +'</button>'
+    l_button_signup +'</button>'
 
     button_soldout = '<button class="'+\
     class_btn +' disabled" style="'+\
