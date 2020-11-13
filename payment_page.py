@@ -20,7 +20,7 @@ def get_package_price(what):
     if what == 'broker':
         return_data = '$1.00'
     else:
-    return_data = '$5.00'
+        return_data = '$5.00'
     return return_data
 
 def get_broker_signup_button(burl, broker):
@@ -42,23 +42,20 @@ def get_paypal_payment_notice(burl):
     'You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. '+\
     'Fintech company based in London.'
     paypal_notice = '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+\
-    l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+\
+    ' <i class="fas fa-lock"></i> ('+\
     l_secure_payment_with_paypal +') '+\
     l_subscribe_payment_notice +'</strong></div>'+\
             '<div>'+ '' +'</div>'+\
             '<div>&nbsp;</div>'+\
             '<img alt="" src="'+\
             burl +'static/ccico.png" style="height: 30px;" />'
-    return l_subscribe_payment_notice
+    return paypal_notice
 
 def get_paypal_payment_button(burl, is_soldout, size, what):
     """ xxx """
     return_data = ''
-    l_price_broker = get_package_price('broker')
-    l_price = get_package_price('')
     l_button_trial = 'Signup<br />'
     l_button_soldout = 'Signup<br />(SOLD OUT!)'
-    l_then_recurring_monthly = l_price +' for each month'
 
     paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
     if what != 'broker':
@@ -313,10 +310,10 @@ def get_box_plan_selection(burl):
     '<div class="d-none d-sm-block">&nbsp;</div></td>'+\
     '      <td style="vertical-align: top;">'+\
     '<div class="d-none d-sm-block">'+\
-    get_broker_signup_button(burl, broker) +'</div></td>'+\
+    get_paypal_payment_button(burl, False, 'sm', 'broker') +'</div></td>'+\
     '      <td style="vertical-align: top;">'+\
     '<div class="d-none d-sm-block">'+\
-    get_paypal_payment_button(burl, False, 'sm') +'</div></td>'+\
+    get_paypal_payment_button(burl, False, 'sm', '') +'</div></td>'+\
     '    </tr>'+\
     '  </tbody>'+\
     '</table>'+\
