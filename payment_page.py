@@ -75,7 +75,7 @@ def get_paypal_payment_button(burl, is_soldout, size, what):
         class_sm_btn = 'btn btn-success'
     else:
         class_sm_btn = 'btn btn-primary'
-    style_sm_btn = 'font-size:small;'
+    style_sm_btn = 'font-size:large;'
 
     if size == 'lg':
         class_btn = class_lg_btn
