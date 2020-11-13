@@ -96,8 +96,12 @@ def get_page_content(burl, terminal, selection):
         '</div>'+\
         '</div>'
     else:
-        tab_content = '<img src="'+ str(sa_terminal_img) +'">'
-    
+        tab_content = ''+\
+        '<br><br><br>'+\
+        '<img src="'+ str(sa_terminal_img) +'" '+\
+        'style="width: 90%; margin-left: auto; margin-right: auto; display: block;"'+\
+        '>'
+
     return tab_content
 
 def gen_main_page(selection,
