@@ -203,10 +203,10 @@ def get_box_plan_selection(burl):
     '      <th scope="col" style="vertical-align: top; text-align: left;">'+\
     '<div class="d-none d-sm-block">&nbsp;</div></th>'+\
     '      <th scope="col" style="vertical-align: top;">'+\
-    '<h3>MONTHLY</h3><div style:"font-size: xx-large;">'+\
+    '<h3>MONTHLY</h3><div style="font-size: xx-large;">'+\
     l_price_broker +'</div></th>'+\
     '      <th scope="col" style="vertical-align: top;">'+\
-    '<h3>MONTHLY</h3><div style:"font-size: xx-large;">'+\
+    '<h3>MONTHLY</h3><div style="font-size: xx-large;">'+\
     l_price +'</div></th>'+\
     '    </tr>'+\
     '  </thead>'+\
