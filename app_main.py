@@ -55,6 +55,7 @@ def get_feed(burl, terminal, selection):
 
 def get_page_content(burl, terminal, selection):
     """ xxx """
+    sa_terminal_img = burl + 'static/saterminalhomepage.png'
     tab_content = ''
     signals_content = get_card(selection, 1, burl, terminal)
     news_feed_content = get_feed(burl, terminal, selection)
@@ -94,6 +95,8 @@ def get_page_content(burl, terminal, selection):
         articles_content+\
         '</div>'+\
         '</div>'
+    else:
+        tab_content = '<img src="'+ str(sa_terminal_img) +'">'
     
     return tab_content
 
