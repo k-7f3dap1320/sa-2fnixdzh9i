@@ -18,14 +18,12 @@ from signinbox import get_signin_box
 from user_profile_header import get_box_user_profile_header
 from font_awesome import get_font_awesome
 from googleanalytics import get_googleanalytics
-from googleadsense import get_googleadsense
 from list_instr_n_portf import get_box_list_instr_n_portf
 from user_control_center_aggregate_perf import get_control_center_aggregate_perf
 from app_popup_modal import gen_tour_popup
 from purechat import get_purechat
 from news_feed import get_newsfeed
 from articles_analysis import get_list_articles
-from print_google_ads import print_google_ads
 
 def get_dashboard(burl, is_dashboard):
     """ xxx """
@@ -46,20 +44,13 @@ def get_dashboard(burl, is_dashboard):
 def get_feed(burl, terminal, selection):
     """ xxx """
     feed_content = ''
-    google_ad = ''
-
-    if user_is_login() == 0:
-        feed_content = feed_content + get_newsfeed(burl, 0, 0, 10, 1, terminal) + '<br />'
 
     if user_is_login() == 1:
         feed_content = feed_content + get_newsfeed(burl, 0, 0, 15, 1, terminal) + '<br />'
-        feed_content = feed_content + google_ad + '<br />'
-
-    feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
-
-    if user_is_login() == 1:
+        feed_content = feed_content + '<br />'
+        feed_content = feed_content + get_newsfeed(burl, 1, 0, 5, 1, terminal) + '<br />'
         feed_content = feed_content + get_newsfeed(burl, 2, 0, 30, 1, terminal) + '<br />'
-        
+
     return feed_content
 
 def get_page_content(burl, terminal, selection):
@@ -132,7 +123,6 @@ def gen_main_page(selection,
         
     return_data = get_head(get_loading_head() +\
                            get_googleanalytics() +\
-                           get_googleadsense() +\
                            get_title(appname) +\
                            metarefresh+get_metatags(burl) +\
                            set_ogp(burl, 1, '', '') +\

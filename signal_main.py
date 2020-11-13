@@ -20,7 +20,6 @@ from signal_recom_trail_returns import get_sign_recommend_trail_returns
 from trades_tab import get_trades_box
 from font_awesome import get_font_awesome
 from googleanalytics import get_googleanalytics
-from googleadsense import get_googleadsense
 from sa_func import redirect_if_not_logged_in
 from signal_returns_colchart import get_signal_return_colchart
 
@@ -108,7 +107,6 @@ def gen_sign_page(uid, tvws, appname, burl, terminal):
 
         return_data = get_head(get_loading_head() +\
                                get_googleanalytics() +\
-                               get_googleadsense() +\
                                get_title(appname +' - ' + instfullname) +\
                                get_metatags(burl) +\
                                redirect_if_not_logged_in(burl, '') +\
