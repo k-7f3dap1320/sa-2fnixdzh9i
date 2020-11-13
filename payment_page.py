@@ -46,9 +46,8 @@ def get_paypal_payment_notice(burl):
     l_secure_payment_with_paypal +') '+\
     l_subscribe_payment_notice +'</strong></div>'+\
             '<div>'+ '' +'</div>'+\
-            '<div>&nbsp;</div>'+\
-            '<img alt="" src="'+\
-            burl +'static/ccico.png" style="height: 30px;" />'
+            '<div><img alt="" src="'+\
+            burl +'static/ccico.png" style="height: 30px;" /></div>'
     return paypal_notice
 
 def get_paypal_payment_button(burl, is_soldout, size, what):
