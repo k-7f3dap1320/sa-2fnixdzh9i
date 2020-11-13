@@ -178,7 +178,7 @@ def get_box_plan_selection(burl):
     get_broker_url(broker, 'link', 1) +' and profit without the hassle.'
 
     l_feature_09 = '<div style="font-weight: bold; text-decoration: underline;">'+\
-    'SmartAlpha Trading Intelligence is forever FREE for '+\
+    'SmartAlpha Trading Intelligence is forever $1 for '+\
     get_broker_url(broker, 'link', 1) +' users</div>Terms & Conditions: Signup to '+\
     get_broker_url(broker, 'link', 1) +' from SmartAlpha or copy our Portfolio on '+\
     get_broker_url(broker, 'link', 1) +' if you are already a client at '+\

@@ -157,7 +157,7 @@ def navbar(burl, disable_search, terminal):
         rightsidemenu = '<strong>'+\
         get_how_menu(burl, terminal) +\
         '</strong>' +'<li class="nav-item"><a href="'+\
-        burl+'join/?" class="btn btn-sm btn-danger btn-block form-signin-btn">'+\
+        burl+'pricing/?" class="btn btn-sm btn-danger btn-block form-signin-btn">'+\
         '<i class="fas fa-sign-in-alt"></i>&nbsp;'+\
         l_join_now_btn +'</a></li>'
 
