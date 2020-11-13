@@ -7,7 +7,7 @@ def get_signin_box(burl):
     """ xxx """
     box_content = ''
     if user_is_login() == 0:
-        l_app_header_title = 'Create unlimited optimized trading strategies'
+        l_app_header_title = 'Smartalpha Terminal'
 
         l_app_header_desc = 'Chart patterns, price movements, '+\
         'and news analysed using quantitative methods '+\
@@ -29,7 +29,7 @@ def get_signin_box(burl):
         '               <div class="row sign-row">'+\
         '                <div class="col-lg-6 col-md-6 col-sm-23 col-xs-12 sa-signin-box">'+\
         '                   <div>&nbsp;</div>'+\
-        '                   <h1 style="text-align: left; font-size:x-large; font-weight:bolder;">'+\
+        '                   <h1 style="text-align: left; font-size:xx-large; font-weight:bolder;">'+\
         l_app_header_title +'</h1>   '+\
         '                   <div>'+\
         l_app_header_desc +'&nbsp;<a href="'+\
