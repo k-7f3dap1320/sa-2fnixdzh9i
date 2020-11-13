@@ -15,8 +15,11 @@ from googleanalytics import get_googleanalytics
 from purechat import get_purechat
 from sa_func import go_to_url, get_broker_affiliate_link
 
-def get_package_price():
+def get_package_price(what):
     """ xxx """
+    if what == 'broker':
+        return_data = '$1.00'
+    else:
     return_data = '$5.00'
     return return_data
 
@@ -33,26 +36,39 @@ def get_broker_signup_button(burl, broker):
     return_data = button_signup
     return return_data
 
-def get_paypal_payment_button(burl, is_soldout, size):
-    """ xxx """
-    return_data = ''
-    l_price = get_package_price()
-    l_button_trial = 'Signup<br />'
-    l_button_soldout = 'Signup<br />(SOLD OUT!)'
-    l_then_recurring_monthly = 'Then '+ l_price +' for each month'
+def get_paypal_payment_notice(burl):
     l_secure_payment_with_paypal = 'Secure payment with PayPal'
-
     l_subscribe_payment_notice = ' Subscribe with confidence with PayPal Buyer Protection. '+\
     'You can cancel anytime. SmartAlpha is developed by Taatu Ltd. a U.K. '+\
     'Fintech company based in London.'
+    paypal_notice = '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+\
+    l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+\
+    l_secure_payment_with_paypal +') '+\
+    l_subscribe_payment_notice +'</strong></div>'+\
+            '<div>'+ '' +'</div>'+\
+            '<div>&nbsp;</div>'+\
+            '<img alt="" src="'+\
+            burl +'static/ccico.png" style="height: 30px;" />'
+    return l_subscribe_payment_notice
+
+def get_paypal_payment_button(burl, is_soldout, size, what):
+    """ xxx """
+    return_data = ''
+    l_price_broker = get_package_price('broker')
+    l_price = get_package_price('')
+    l_button_trial = 'Signup<br />'
+    l_button_soldout = 'Signup<br />(SOLD OUT!)'
+    l_then_recurring_monthly = l_price +' for each month'
 
     paypal_form_action = 'https://www.paypal.com/cgi-bin/webscr'
-    paypal_button_id = 'HS42U57YF4HKL'
+    if what != 'broker':
+        paypal_button_id = 'HS42U57YF4HKL'
+    else:
+        paypal_button_id = 'L3FX73NUJVF64'
     soldout_form_action = '#'
 
     class_btn = ''
     style_btn = ''
-    paypal_notice = ''
     class_lg_btn = 'btn btn-lg btn-primary form-signin-btn'
     style_lg_btn = 'font-size:x-large; font-weight:bolder; width: 100%; max-width: 888px;'
     class_sm_btn = 'btn btn-primary'
@@ -62,18 +78,9 @@ def get_paypal_payment_button(burl, is_soldout, size):
         class_btn = class_lg_btn
         style_btn = style_lg_btn
 
-        paypal_notice = '<div style="margin-left: 8%; margin-right: 8%;"><strong>'+\
-        l_then_recurring_monthly +' <i class="fas fa-lock"></i> ('+\
-        l_secure_payment_with_paypal +') '+\
-        l_subscribe_payment_notice +'</strong></div>'+\
-                '<div>'+ '' +'</div>'+\
-                '<div>&nbsp;</div>'+\
-                '<img alt="" src="'+\
-                burl +'static/ccico.png" style="height: 30px;" />'
     if size == 'sm':
         class_btn = class_sm_btn
         style_btn = style_sm_btn
-        paypal_notice = '&nbsp;'
 
     button_checkout = '<button type="submit" class="'+\
     class_btn +'" style="'+\
@@ -101,7 +108,6 @@ def get_paypal_payment_button(burl, is_soldout, size):
     '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" '+\
     'width="1" height="1">'+\
     '</form>'+\
-    paypal_notice +\
     '<!-- ----------------------------------------------------------------->'
     return return_data
 
@@ -121,7 +127,8 @@ def get_box_plan_selection(burl):
     """ xxx """
     box_content = ''
     broker = 'eToro'
-    l_price = get_package_price()
+    l_price = get_package_price('')
+    l_price_broker = get_package_price('broker')
     broker_link_form = get_broker_url(broker, 'form', 1)
 
     l_feature_01 = '<div style="font-weight: bold; text-decoration: underline;">'+\
@@ -193,7 +200,8 @@ def get_box_plan_selection(burl):
     '      <th scope="col" style="vertical-align: top; text-align: left;">'+\
     '<div class="d-none d-sm-block">&nbsp;</div></th>'+\
     '      <th scope="col" style="vertical-align: top;">'+\
-    '<h3>FREE</h3></th>'+\
+    '<h3>MONTHLY</h3><div>'+\
+    l_price_broker +'</div></th>'+\
     '      <th scope="col" style="vertical-align: top;">'+\
     '<h3>MONTHLY</h3><div>'+\
     l_price +'</div></th>'+\
@@ -203,9 +211,9 @@ def get_box_plan_selection(burl):
     '    <tr>'+\
     '      <td scope="row" style=" text-align: left;" >&nbsp;</td>'+\
     '      <td style="vertical-align: top;">'+\
-    get_broker_signup_button(burl, broker) +'</td>'+\
+    get_paypal_payment_button(burl, False, 'sm', 'broker') +'</td>'+\
     '      <td style="vertical-align: top;">'+\
-    get_paypal_payment_button(burl, False, 'sm') +'</td>'+\
+    get_paypal_payment_button(burl, False, 'sm', '') +'</td>'+\
     '    </tr>'+\
     '    <tr>'+\
     '      <td scope="row" style=" text-align: left;" >'+\
@@ -308,14 +316,15 @@ def get_box_plan_selection(burl):
     get_broker_signup_button(burl, broker) +'</div></td>'+\
     '      <td style="vertical-align: top;">'+\
     '<div class="d-none d-sm-block">'+\
-    get_paypal_payment_button(burl, False, 'lg') +'</div></td>'+\
+    get_paypal_payment_button(burl, False, 'sm') +'</div></td>'+\
     '    </tr>'+\
     '  </tbody>'+\
     '</table>'+\
     '            </div>'+\
     '        </div>'+\
     '   </div>'+\
-    '</div>'
+    '</div>'+\
+    get_paypal_payment_notice(burl)
     return box_content
 
 def get_plan_selection_page(appname, burl, terminal):
